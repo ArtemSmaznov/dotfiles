@@ -126,10 +126,12 @@ fi
 
 # pacman for Arch based systems
 if [[ $distribution = 'arch' ]]; then
-  alias pacman-upgrade='sudo pacman -Suy'
+  alias pacman-upgrade='sudo pacman -Syu'
   alias pacman-update-mirrors='sudo pacman-mirrors --geoip'
   alias pacman-clean-orphans='sudo pacman -Rs $(pacman -Qtdq)'
   alias pacman-fullclean-orphans='sudo pacman -Rns $(pacman -Qtdq)'
+
+  alias yay-upgrade='yay -Syu'
 fi
 
 # Start ArchiSteamFarm
