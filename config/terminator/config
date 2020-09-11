@@ -8,11 +8,15 @@
 [keybindings]
 [profiles]
   [[default]]
+    audible_bell = True
+    visible_bell = True
     background_darkness = 0.4
     background_type = transparent
     cursor_blink = False
     cursor_color = "#aaaaaa"
     show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
