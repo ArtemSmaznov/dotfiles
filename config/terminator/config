@@ -8,10 +8,11 @@
 [keybindings]
 [profiles]
   [[default]]
-    background_darkness = 0.8
+    background_darkness = 0.4
     background_type = transparent
     cursor_blink = False
     cursor_color = "#aaaaaa"
+    show_titlebar = False
 [layouts]
   [[default]]
     [[[child1]]]

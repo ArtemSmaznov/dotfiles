@@ -219,7 +219,7 @@ alias openports='netstat -nape --inet'
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
 alias shutdown='sudo shutdown -P'
-alias suspend='sudo systemctl suspend'
+alias suspend='systemctl suspend'
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
