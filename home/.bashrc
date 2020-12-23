@@ -142,6 +142,11 @@ fi
 # Update Proton
 alias update-proton='development/cproton.sh'
 
+# Audio Outout info
+alias aoutput='cat /proc/asound/card2/pcm0p/sub0/hw_params'
+
+alias cdawesome='cd ~/development/ArtemSmaznov/awesome-config'
+
 ###############################
 # GENERAL
 ###############################

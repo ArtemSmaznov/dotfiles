@@ -9,7 +9,6 @@
 [profiles]
   [[default]]
     audible_bell = True
-    visible_bell = True
     background_darkness = 0.4
     background_type = transparent
     cursor_blink = False
