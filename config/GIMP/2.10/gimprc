@@ -20,6 +20,16 @@
     (color-profile "/home/artem/Pictures/Color Profiles/ProPhoto.icc")
     (fill-type transparent)
     (comment "Created with GIMP"))
+(default-grid
+    (style on-off-dash)
+    (fgcolor (color-rgba 0 0 0 1))
+    (bgcolor (color-rgba 1 1 1 1))
+    (xspacing 50)
+    (yspacing 50)
+    (spacing-unit inches)
+    (xoffset 0)
+    (yoffset 0)
+    (offset-unit inches))
 (undo-levels 15)
 (layer-preview-size large)
 (color-management

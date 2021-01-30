@@ -15,14 +15,14 @@
     (size 1877 1042)
     (open-on-exit)
     (aux-info
-        (left-docks-width "290")
-        (right-docks-width "298")
+        (left-docks-width "317")
+        (right-docks-width "302")
         (maximized "no"))
     (gimp-toolbox
         (side left))
     (gimp-dock
         (side left)
-        (position 81)
+        (position 80)
         (book
             (current-page 0)
             (dockable "gimp-tool-options"
@@ -30,17 +30,17 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 467)
+            (position 422)
             (current-page 0)
             (dockable "gimp-brush-grid"
                 (tab-style automatic)
                 (aux-info
                     (show-button-bar "true")))
-            (dockable "gimp-gradient-list"
+            (dockable "gimp-pattern-grid"
                 (tab-style automatic)
                 (aux-info
                     (show-button-bar "true")))
-            (dockable "gimp-pattern-grid"
+            (dockable "gimp-gradient-list"
                 (tab-style automatic)
                 (aux-info
                     (show-button-bar "true")))))
@@ -63,9 +63,19 @@
             (dockable "gimp-sample-point-editor"
                 (tab-style automatic)))
         (book
-            (position 501)
+            (position 267)
+            (current-page 0)
+            (dockable "gimp-vectors-list"
+                (locked)
+                (tab-style automatic)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true"))))
+        (book
+            (position 550)
             (current-page 0)
             (dockable "gimp-layer-list"
+                (locked)
                 (tab-style automatic)
                 (preview-size 32)
                 (aux-info
@@ -74,15 +84,10 @@
                 (tab-style automatic)
                 (preview-size 32)
                 (aux-info
-                    (show-button-bar "true")))
-            (dockable "gimp-vectors-list"
-                (tab-style automatic)
-                (preview-size 32)
-                (aux-info
                     (show-button-bar "true"))))))
 (session-info "toplevel"
     (factory-entry "gimp-preferences-dialog")
-    (position 726 129)
+    (position 624 183)
     (size 899 715))
 (session-info "toplevel"
     (factory-entry "gimp-input-devices-dialog")
@@ -120,6 +125,9 @@
     (factory-entry "gimp-text-tool-dialog")
     (position 818 392)
     (size 337 237))
+(session-info "toplevel"
+    (factory-entry "gimp-brightness-contrast-tool-dialog")
+    (position 1422 261))
 
 (hide-docks no)
 (single-window-mode yes)

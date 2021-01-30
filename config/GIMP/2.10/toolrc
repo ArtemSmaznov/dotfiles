@@ -4,7 +4,7 @@
 
 (GimpToolGroup "tool group"
     (visible yes)
-    (active-tool "gimp-rect-select-tool")
+    (active-tool "gimp-ellipse-select-tool")
     (children
         (GimpToolInfo "gimp-rect-select-tool"
             (icon-name "gimp-tool-rect-select")
@@ -128,7 +128,7 @@
     (visible yes))
 (GimpToolGroup "tool group"
     (visible yes)
-    (active-tool "gimp-scale-tool")
+    (active-tool "gimp-rotate-tool")
     (children
         (GimpToolInfo "gimp-unified-transform-tool"
             (icon-name "gimp-tool-unified-transform")

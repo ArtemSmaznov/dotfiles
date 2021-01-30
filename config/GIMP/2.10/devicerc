@@ -3,9 +3,10 @@
 (GimpDeviceInfo "Core Pointer"
     (icon-name "gimp-cursor")
     (name "Core Pointer")
-    (tool-options "GimpRectangleSelectOptions"
-        (tool "gimp-rect-select-tool")
-        (highlight yes))
+    (tool-options "GimpCropOptions"
+        (aspect-denominator 1150)
+        (aspect-numerator 1743)
+        (tool "gimp-crop-tool"))
     (use-fg-bg no)
     (use-opacity-paint-mode no)
     (use-brush no)

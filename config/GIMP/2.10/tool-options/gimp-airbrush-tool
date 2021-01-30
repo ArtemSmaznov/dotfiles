@@ -6,7 +6,7 @@
 (dynamics "Size")
 (gradient "FG to Transparent")
 (palette "Default")
-(brush-size 51)
-(brush-hardness 0.75)
+(brush-size 8)
+(brush-hardness 0.92000000000000004)
 
 # end of gimp-airbrush-tool options

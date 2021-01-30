@@ -5,7 +5,7 @@
 (brush "2. Hardness 075")
 (dynamics "Size")
 (palette "Default")
-(brush-size 51)
-(brush-hardness 0.75)
+(brush-size 8)
+(brush-hardness 0.92000000000000004)
 
 # end of gimp-convolve-tool options
