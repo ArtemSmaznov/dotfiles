@@ -49,10 +49,11 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
-export EDITOR=nano
+export EDITOR=vim
 export VISUAL=xed
 alias nano='nano -c'
 alias snano='sudo nano'
+alias svim='sudo vim'
 
 # Color for manpages in less makes manpages a little easier to read
 export LESS_TERMCAP_mb=$'\E[01;31m'
