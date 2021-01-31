@@ -102,6 +102,19 @@ autocmd BufWinEnter * silent NERDTreeMirror
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") 
       \ && b:NERDTree.isTabTree()) | q | endif
 
+" Remapping Keys
+"Preview
+let NERDTreeMapPreview='o'
+let NERDTreeMapOpenInTabSilent='T'
+let NERDTreeMapPreviewSplit='-'
+let NERDTreeMapPreviewVSplit='\'
+
+"Activate 
+let NERDTreeMapActivateNode='O'
+let NERDTreeMapOpenInTab='t'
+let NERDTreeMapOpenSplit='g-'
+let NERDTreeMapOpenVSplit='g\'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

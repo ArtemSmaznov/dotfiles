@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ln -s vim_runtime ~/.vim_runtime
+ln -s vim_runtime/vimrc ~/.vimrc
+
+echo "Done!"
