@@ -3,7 +3,6 @@
 [[ $- != *i* ]] && return
 
 iatest=$(expr index "$-" i)
-distribution=$(cat /etc/os-release | awk 'NR==3' | awk -F '=' '{print $2}')
 
 # Disable the bell
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
@@ -126,14 +125,11 @@ if [[ -f ~/.bash_wake ]]; then
 fi
 
 # pacman for Arch based systems
-if [[ $distribution = 'arch' ]]; then
-  alias pacman-upgrade='sudo pacman -Syu'
-  alias pacman-update-mirrors='sudo pacman-mirrors --geoip'
-  alias pacman-clean-orphans='sudo pacman -Rs $(pacman -Qtdq)'
-  alias pacman-fullclean-orphans='sudo pacman -Rns $(pacman -Qtdq)'
-
-  alias yay-upgrade='yay -Syu'
-fi
+alias pacman-upgrade='sudo pacman -Syu'
+alias pacman-update-mirrors='sudo pacman-mirrors --geoip'
+alias pacman-clean-orphans='sudo pacman -Rs $(pacman -Qtdq)'
+alias pacman-fullclean-orphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias yay-upgrade='yay -Syu'
 
 # Start ArchiSteamFarm
 if [[ -d ~/ASF ]]; then
@@ -338,3 +334,9 @@ editbash() {
     $EDITOR ~/development/ArtemSmaznov/dotfiles/home/.bashrc
   fi
 }
+
+# Load custom overwrites
+if [[ -f ~/.mybashrc ]]; then
+  . ~/.mybashrc
+fi
+
