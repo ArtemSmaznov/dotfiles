@@ -109,7 +109,7 @@ let NERDTreeMapOpenInTabSilent='T'
 let NERDTreeMapPreviewSplit='-'
 let NERDTreeMapPreviewVSplit='\'
 
-"Activate 
+"Activate (shift)
 let NERDTreeMapActivateNode='O'
 let NERDTreeMapOpenInTab='t'
 let NERDTreeMapOpenSplit='g-'
