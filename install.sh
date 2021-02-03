@@ -5,27 +5,31 @@ options=("Bash" "Vim" "Tmux" ".configs" "Quit")
 select opt in "${options[@]}"; do
     case $opt in
     "Bash")
-        if [[ -f ~/.bashrc ]]
-        rm -r ~/.bashrc
+        if [[ -f ~/.bashrc ]]; then
+          rm -r ~/.bashrc
         fi
         ln -s $(pwd)/home/bashrc ~/.bashrc
         echo "symlink for .bashrc  recreated"
         ;;
 
     "Vim")
-        if [[ -f ~/.vim_runtime ]]
-          rm -r ~/.vim_rubntime
+        if [[ -f ~/.vimrc ]]; then
+          rm ~/.vimrc
+          echo "vimrc replaced"
         fi
-        if [[ -f ~/.vimrc ]]
-          rm .vimrc
+        ln -s $(pwd)/home/vim/rc.vim ~/.vimrc
+
+        if [[ -f ~/.vim ]]; then
+          rm ~/.vim
+          echo "vim runtime replaced"
         fi
-        ln -s $(pwd)/home/vim_runtime ~/.vim_runtime
-        ln -s $(pwd)/home/vim_runtime/vimrc ~/.vimrc
-        echo "symlinks for .vimrc and .vim_runtime/ recreated"
+        ln -s $(pwd)/home/vim ~/.vim
+
+        echo "symlinks for .vimrc and .vim/ recreated"
         ;;
 
     "Tmux")
-        if [[ -f ~/.tmux.conf ]]
+        if [[ -f ~/.tmux.conf ]]; then
         rm ~/.tmux.conf
         fi
         ln -s $(pwd)/home/tmux.conf ~/.tmux.conf
