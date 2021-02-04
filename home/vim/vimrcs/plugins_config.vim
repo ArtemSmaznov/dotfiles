@@ -39,6 +39,7 @@ Plug 'preservim/nerdtree' |
 " To learn
 Plug 'mileszs/ack.vim'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'vim-syntastic/syntastic'
 
 " Color Schemes
 Plug 'lifepillar/vim-gruvbox8'
