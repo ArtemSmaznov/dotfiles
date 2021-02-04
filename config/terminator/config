@@ -6,6 +6,7 @@
   title_inactive_bg_color = "#624634"
   suppress_multiple_term_dialog = True
 [keybindings]
+  layout_launcher = None
 [profiles]
   [[default]]
     audible_bell = True

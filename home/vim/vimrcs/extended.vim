@@ -21,6 +21,7 @@ elseif has("unix")
     set gfn=Monospace\ 11
 endif
 
+  "set guifont=DroidSansMono\ Nerd\ Font\ 11
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
 set guioptions-=R
@@ -131,7 +132,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
+" map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 " Make sure that enter is never overriden in the quickfix window
