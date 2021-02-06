@@ -6,45 +6,48 @@ autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plug
 
 
 """"""""""""""""""""""""""""""
-" => Load Plugs
+" => Load Plugins
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-" Plugs
-"Plug 'dense-analysis/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'itchyny/lightline.vim'
-"Plug 'maximbaz/lightline-ale'
-Plug 'ctrlpvim/ctrlp.vim' 
-Plug 'rust-lang/rust.vim'
-Plug 'godlygeek/tabular'
-Plug 'leafgarland/typescript-vim'
-"Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'pangloss/vim-javascript'
-Plug 'farmergreg/vim-lastplace'
-Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-cucumber'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'preservim/nerdtree' |
+Plug 'jiangmiao/auto-pairs'                     " Insert or delete brackets, parens, quotes in pair
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support for Vim & Neovim
+Plug 'itchyny/lightline.vim'                    " A light and configurable statusline/tabline for Vim
+Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, ... finder
+Plug 'godlygeek/tabular'                        " Configurable, flexible, intuitive text aligning
+Plug 'terryma/vim-expand-region'                " Incremental visual selection
+Plug 'airblade/vim-gitgutter'                   " A Vim plugin which shows a git diff in the gutter
+Plug 'michaeljsmith/vim-indent-object'          " Text objects based on indent levels
+Plug 'farmergreg/vim-lastplace'                 " Intelligently reopen files where you left off
+Plug 'maxbrunsfeld/vim-yankstack'               " Plugin for storing and cycling through yanked text strings
+Plug 'tpope/vim-fugitive'                       " A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-surround'                       " Plugin for deleting, changing, and adding surroundings
+Plug 'tpope/vim-cucumber'                       " Filetype plugin for Cucumber
+Plug 'pangloss/vim-javascript'                  " Filetype plugin for JavaScript
+Plug 'leafgarland/typescript-vim'               " Filetype plugin for TypeScript
+Plug 'plasticboy/vim-markdown'                  " Vim Markdown
+Plug 'rust-lang/rust.vim'                       " Filetype plugin for Rust
+Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
+Plug 'preservim/nerdtree' |                     
   \ Plug 'Xuyuanp/nerdtree-git-plugin' |
   \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
   \ Plug 'ryanoasis/vim-devicons'
 
 " To learn
-Plug 'mileszs/ack.vim'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'vim-syntastic/syntastic'
+Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
+Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
+" Plug 'vim-syntastic/syntastic'
 
 " Color Schemes
 Plug 'lifepillar/vim-gruvbox8'
 
 call plug#end()
+
+""""""""""""""""""""""""""""""
+" => Tabularize plugin
+""""""""""""""""""""""""""""""
+map <leader>t: :Tabularize /:<cr>
+map <leader>t= :Tabularize /=<cr>
+map <leader>t" :Tabularize /"<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -165,12 +168,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => lightline (bottom status bar)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
-      \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
@@ -180,10 +177,46 @@ let g:lightline = {
       \   'readonly': '(&filetype!="help"&& &readonly)',
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*FugitiveHead") && ""!=FugitiveHead())'
-      \ },
-      \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
+      \}
+
+let g:lightline.colorscheme = 'jellybeans'
+let g:lightline.active = {
+      \ 'left': [ 
+      \   ['mode', 'paste'],
+      \   ['fugitive'],
+      \   ['readonly', 'filename', 'modified']
+      \ ],
+      \ 'right': [
+      \   ['lineinfo'],
+      \   ['percent'],
+		  \   [ 'fileformat', 'fileencoding', 'filetype' ] 
+      \ ]
+      \}
+
+let g:lightline.inactive = { 
+      \ 'left' : [
+      \   ['filename'],
+      \   ['fugitive']
+      \ ],
+      \ 'right' : [
+      \   ['lineinfo'],
+      \   ['percent']
+      \ ]
+      \}
+
+let g:lightline.tab = {
+	    \ 'active': [ 'tabnum', 'filename', 'modified' ],
+	    \ 'inactive': [ 'tabnum', 'filename', 'modified' ]
+      \}
+
+
+let g:lightline.separator = { 'left': ' ', 'right': ' ' }
+let g:lightline.subseparator = { 'left': '|', 'right': '|' }
+let g:lightline.tabline_separator = { 'left': ' ', 'right': ' ' }
+let g:lightline.tabline_subseparator = { 'left': '|', 'right': '|' }
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom
@@ -202,6 +235,20 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 
 """"""""""""""""""""""""""""""
+" => Syntastic
+""""""""""""""""""""""""""""""
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_javascript_checkers = ['eslint']
+
+""""""""""""""""""""""""""""""
 " => COC plugin
 """"""""""""""""""""""""""""""
 " prettier command for coc
@@ -209,13 +256,21 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc config
 let g:coc_global_extensions = [
+  \ 'coc-explorer',
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-tsserver',
   \ 'coc-eslint',
+  \ 'coc-tsserver',
   \ 'coc-prettier',
-  \ 'coc-json',
   \ 'coc-lua',
+  \ 'coc-html',
+  \ 'coc-sh',
+  \ 'coc-css',
+  \ 'coc-xml',
+  \ 'coc-markdownlint',
+  \ 'coc-json',
+  \ 'coc-yaml',
+  \ 'coc-cmake',
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
