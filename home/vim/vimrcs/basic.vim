@@ -285,6 +285,8 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <C-PageDown> mz:m+<cr>`z
 nmap <C-PageUp> mz:m-2<cr>`z
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
@@ -316,8 +318,6 @@ endif
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 

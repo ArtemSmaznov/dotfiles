@@ -28,9 +28,9 @@ Plug 'plasticboy/vim-markdown'                  " Vim Markdown
 Plug 'rust-lang/rust.vim'                       " Filetype plugin for Rust
 Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
 Plug 'preservim/nerdtree' |                     
-  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-  \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
-  \ Plug 'ryanoasis/vim-devicons'
+      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
+      \ Plug 'ryanoasis/vim-devicons'
 
 " To learn
 Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
