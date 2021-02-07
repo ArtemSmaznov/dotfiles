@@ -110,8 +110,9 @@ set grepprg=/bin/grep\ -nH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Commenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDSpaceDelims=1 
 let g:NERDCustomDelimiters = {
-  \ 'vim': { 'left': '" ' },
+  \ 'vim': { 'left': '"' },
 \ }
 
 " Comment lines with CTRL+/
