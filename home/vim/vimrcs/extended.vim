@@ -21,7 +21,6 @@ elseif has("unix")
     set gfn=Monospace\ 11
 endif
 
-  "set guifont=DroidSansMono\ Nerd\ Font\ 11
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
 set guioptions-=R
