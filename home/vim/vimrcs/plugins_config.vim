@@ -125,7 +125,7 @@ map <C-/> <plug>NERDCommenterToggle
 " ==> Nerd Tree Git
 let g:NERDTreeGitStatusWithFlags = 1
 
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['^node_modules','\.pyc$', '__pycache__']
 
 map <C-n> :NERDTreeToggle<cr> :wincmd p<cr>
@@ -197,12 +197,13 @@ let g:lightline.active = {
 
 let g:lightline.inactive = { 
       \ 'left' : [
-      \   ['filename'],
-      \   ['fugitive']
+      \   ['fugitive'],
+      \   ['readonly', 'filename', 'modified']
       \ ],
       \ 'right' : [
       \   ['lineinfo'],
-      \   ['percent']
+      \   ['percent'],
+		  \   [ 'filetype' ] 
       \ ]
       \}
 

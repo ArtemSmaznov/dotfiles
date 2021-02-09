@@ -29,8 +29,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
+set history=500 " Sets how many lines of history VIM has to remember
 
 " Enable filetype plugins
 filetype plugin on
@@ -55,8 +54,7 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=7 " Set 7 lines to the cursor - when moving vertically using j/k
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -64,8 +62,7 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-" Turn on the Wild menu
-set wildmenu
+set wildmenu " Turn on the Wild menu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -75,47 +72,25 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-" Show line numbers
-set number
-
-" Always show current position
-set ruler
-
-" Show commands
-set showcmd
-
-" Height of the command bar
-set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
+set number      " Show line numbers
+set ruler       " Always show current position
+set showcmd     " Show commands
+set cmdheight=2 " Height of the command bar
+set hid         " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
-set ignorecase
+set ignorecase " Ignore case when searching
+set smartcase  " When searching try to be smart about cases
+set hlsearch   " Highlight search results
+set incsearch  " Makes search act like search in modern browsers
+set lazyredraw " Don't redraw while executing macros (good performance config)
+set magic      " For regular expressions turn magic on
 
-" When searching try to be smart about cases 
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch 
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
+set showmatch  " Show matching brackets when text indicator is over them
+set mat=2      " How many tenths of a second to blink when matching brackets
 
 " No annoying sound on errors
 set noerrorbells
@@ -128,16 +103,13 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
-" Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=1 " Add a bit extra margin to the left
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable 
+syntax enable  " Enable syntax highlighting
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -152,11 +124,8 @@ if has("gui_running")
     set guitablabel=%M\ %t
 endif
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf-8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac " Use Unix as the standard file type
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,11 +140,8 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
+set expandtab " Use spaces instead of tabs
+set smarttab  " Be smart when using tabs ;)
 
 " Tab size
 set shiftwidth=2
@@ -185,9 +151,9 @@ set tabstop=2
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set ai   " Auto indent
+set si   " Smart indent
+set wrap " Wrap lines
 
 
 """"""""""""""""""""""""""""""
@@ -240,7 +206,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>t<leader> :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
