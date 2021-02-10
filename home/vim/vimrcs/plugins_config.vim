@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'                     " Insert or delete brackets, parens, quotes in pair
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support for Vim & Neovim
 Plug 'itchyny/lightline.vim'                    " A light and configurable statusline/tabline for Vim
+" Plug 'powerline/powerline'                      " A more powerfull statusline
 Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, ... finder
 Plug 'godlygeek/tabular'                        " Configurable, flexible, intuitive text aligning
 Plug 'terryma/vim-expand-region'                " Incremental visual selection
@@ -21,21 +22,24 @@ Plug 'farmergreg/vim-lastplace'                 " Intelligently reopen files whe
 Plug 'maxbrunsfeld/vim-yankstack'               " Plugin for storing and cycling through yanked text strings
 Plug 'tpope/vim-fugitive'                       " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-surround'                       " Plugin for deleting, changing, and adding surroundings
+Plug 'preservim/nerdtree' |                     
+      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
+      \ Plug 'ryanoasis/vim-devicons' |
+      \ Plug 'Xuyuanp/nerdtree-git-plugin' 
+      " \ Plug 'tsony-tsonev/nerdtree-git-plugin' 
+
+" To learn
+Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
+Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
+" Plug 'vim-syntastic/syntastic'
+
+" Language Support
 Plug 'tpope/vim-cucumber'                       " Filetype plugin for Cucumber
 Plug 'pangloss/vim-javascript'                  " Filetype plugin for JavaScript
 Plug 'leafgarland/typescript-vim'               " Filetype plugin for TypeScript
 Plug 'plasticboy/vim-markdown'                  " Vim Markdown
 Plug 'rust-lang/rust.vim'                       " Filetype plugin for Rust
 Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
-Plug 'preservim/nerdtree' |                     
-      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
-      \ Plug 'ryanoasis/vim-devicons'
-
-" To learn
-Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
-Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
-" Plug 'vim-syntastic/syntastic'
 
 " Color Schemes
 Plug 'lifepillar/vim-gruvbox8'
@@ -45,7 +49,9 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " => Tabularize plugin
 """"""""""""""""""""""""""""""
+map <leader>tt :Tabularize /
 map <leader>t: :Tabularize /:<cr>
+map <leader>t- :Tabularize /=<cr>
 map <leader>t= :Tabularize /=<cr>
 map <leader>t" :Tabularize /"<cr>
 
@@ -124,6 +130,7 @@ map <C-/> <plug>NERDCommenterToggle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> Nerd Tree Git
 let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['^node_modules','\.pyc$', '__pycache__']
@@ -131,8 +138,7 @@ let NERDTreeIgnore = ['^node_modules','\.pyc$', '__pycache__']
 map <C-n> :NERDTreeToggle<cr> :wincmd p<cr>
 map <leader>n :NERDTreeFind<cr> 
 
-autocmd VimEnter * NERDTreeFind | wincmd p
-" autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
+" autocmd VimEnter * NERDTreeFind | wincmd p
 
 " Close NERDTree with tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") 

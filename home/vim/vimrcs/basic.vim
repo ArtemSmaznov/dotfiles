@@ -76,7 +76,7 @@ set number      " Show line numbers
 set ruler       " Always show current position
 set showcmd     " Show commands
 set cmdheight=2 " Height of the command bar
-set hid         " A buffer becomes hidden when it is abandoned
+" set hid         " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
