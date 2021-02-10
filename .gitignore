@@ -2,7 +2,7 @@ home/vim/plugged/*
 home/vim/plugged/ack.vim/.netrwhist
 home/vim/temp_dirs/undodir/*
 home/vim/temp_dirs/yankring_history_v2.txt
-home/vim/local_rc.vim
+home/vim/local.vim
 home/vim/tags
 home/vim/spell
 home/vim/.DS_Store

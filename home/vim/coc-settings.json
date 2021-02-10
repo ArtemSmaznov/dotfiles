@@ -5,16 +5,38 @@
     "typescript",
     "typescriptreact",
     "json",
+    "yaml",
+    "python",
     "javascriptreact",
     "typescript.tsx",
     "graphql",
+    "markdown",
+    "html",
+    "css",
     "lua"
   ],
+
+  // Prettier
   "prettier.trailingComma": "es5",
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.semi": true,
   "prettier.bracketSpacing": true,
+
+  // ESLint
   "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+
+  // Python
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+  // Explorer
+  "explorer.width": 40,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
 }
