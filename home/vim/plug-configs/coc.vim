@@ -65,7 +65,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <space>k :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -130,8 +130,8 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>  " Manage extensions
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>    " Show commands
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>     " Find symbol of current document
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>  " Search workspace symbols
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>             " Do default action for next item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>             " Do default action for previous item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>             " Do default action for next item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>             " Do default action for previous item.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>       " Resume latest coc list
 
 

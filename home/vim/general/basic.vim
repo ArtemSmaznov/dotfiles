@@ -249,19 +249,19 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " map 0 ^
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
-for i in range(97,122)
-  let c = nr2char(i)
-  exec "map \e".c." <M-".c.">"
-  exec "map! \e".c." <M-".c.">"
-endfor
+" for i in range(97,122)
+  " let c = nr2char(i)
+  " exec "map \e".c." <M-".c.">"
+  " exec "map! \e".c." <M-".c.">"
+" endfor
 
-" Move a line of text using Alt+j/k in all modes 
-nnoremap <M-k> :m-2<cr>
-nnoremap <M-j> :m+<cr>
-inoremap <M-k> <Esc>:m-2<cr>
-inoremap <M-j> <Esc>:m+<cr>
-vnoremap <M-k> :m '<-2<cr>gv=gv
-vnoremap <M-j> :m '>+1<cr>gv=gv
+" Move a line of text using Shift+j/k in all modes 
+nnoremap K :m-2<cr>==
+nnoremap J :m+<cr>==
+vnoremap K :m '<-2<cr>gv=gv
+vnoremap J :m '>+1<cr>gv=gv
+" inoremap <M-k> <Esc>:m-2<cr>
+" inoremap <M-j> <Esc>:m+<cr>
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
