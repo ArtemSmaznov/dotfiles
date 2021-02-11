@@ -52,3 +52,10 @@ source ~/.vim/plug-configs/nerdcommenter.vim
 source ~/.vim/plug-configs/surround.vim
 source ~/.vim/plug-configs/lightline.vim
 source ~/.vim/plug-configs/gitGutter.vim
+
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif

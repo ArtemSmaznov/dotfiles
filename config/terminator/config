@@ -6,6 +6,10 @@
   title_inactive_bg_color = "#624634"
   suppress_multiple_term_dialog = True
 [keybindings]
+  go_up = None
+  go_down = None
+  go_left = None
+  go_right = None
   layout_launcher = None
 [profiles]
   [[default]]

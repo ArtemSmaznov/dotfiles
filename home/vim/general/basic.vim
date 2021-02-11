@@ -248,13 +248,20 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 " map 0 ^
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <C-PageDown> mz:m+<cr>`z
-nmap <C-PageUp> mz:m-2<cr>`z
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" fix meta-keys which generate <Esc>a .. <Esc>z
+for i in range(97,122)
+  let c = nr2char(i)
+  exec "map \e".c." <M-".c.">"
+  exec "map! \e".c." <M-".c.">"
+endfor
+
+" Move a line of text using Alt+j/k in all modes 
+nnoremap <M-k> :m-2<cr>
+nnoremap <M-j> :m+<cr>
+inoremap <M-k> <Esc>:m-2<cr>
+inoremap <M-j> <Esc>:m+<cr>
+vnoremap <M-k> :m '<-2<cr>gv=gv
+vnoremap <M-j> :m '>+1<cr>gv=gv
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
