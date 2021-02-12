@@ -1,7 +1,8 @@
-source ~/.vim/general/basic.vim
-source ~/.vim/general/filetypes.vim
-source ~/.vim/general/plugins.vim
-source ~/.vim/general/extended.vim
+source ~/.vim/settings/filetypes.vim
+source ~/.vim/settings/basic.vim
+source ~/.vim/settings/plugins.vim
+source ~/.vim/settings/ui.vim
+source ~/.vim/settings/key-mappings.vim
 
 try
   source ~/.vim/local.vim
