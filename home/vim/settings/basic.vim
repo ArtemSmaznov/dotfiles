@@ -45,7 +45,7 @@ iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " Stop newline continution of comments
-autocmd BufNewFile,BufRead * setlocal fo-=cro 
+autocmd BufNewFile,BufRead,BufEnter * setlocal fo-=cro 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,6 +98,8 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang=en_us,ru_ru
+
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell

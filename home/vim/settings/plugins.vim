@@ -42,16 +42,16 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " => Load Configs
 """"""""""""""""""""""""""""""
-source ~/.vim/plug-configs/coc.vim
-source ~/.vim/plug-configs/tabularize.vim
-source ~/.vim/plug-configs/buffExplorer.vim
-source ~/.vim/plug-configs/yankstack.vim
-source ~/.vim/plug-configs/ctrlp.vim 
-source ~/.vim/plug-configs/nerdcommenter.vim
-" source ~/.vim/plug-configs/nerdtree.vim
-source ~/.vim/plug-configs/surround.vim
-source ~/.vim/plug-configs/lightline.vim
-source ~/.vim/plug-configs/gitGutter.vim
+source ~/.vim/settings/plugins/coc.vim
+source ~/.vim/settings/plugins/tabularize.vim
+source ~/.vim/settings/plugins/buffExplorer.vim
+source ~/.vim/settings/plugins/yankstack.vim
+source ~/.vim/settings/plugins/ctrlp.vim 
+source ~/.vim/settings/plugins/nerdcommenter.vim
+" source ~/.vim/settings/plugins/nerdtree.vim
+source ~/.vim/settings/plugins/surround.vim
+source ~/.vim/settings/plugins/lightline.vim
+source ~/.vim/settings/plugins/gitGutter.vim
 
 
 " Automatically install missing plugins on startup
