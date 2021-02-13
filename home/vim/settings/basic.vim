@@ -103,6 +103,7 @@ set spelllang=en_us,ru_ru
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
+  autocmd BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 augroup END
 
 
