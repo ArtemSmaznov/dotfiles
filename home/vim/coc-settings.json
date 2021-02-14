@@ -1,5 +1,5 @@
 {
-  "suggest.noselect": false,
+  "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -15,31 +15,90 @@
     "css",
     "lua"
   ],
+  "suggest.noselect": false,
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter": true,
+
+  // Explorer
+  "explorer.buffer.tabOnly": true,
+  "explorer.file.autoReveal": true,
+  "explorer.file.revealWhenOpen": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.focus": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.enableVimDevicons": true,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
+  "explorer.previewAction.onHover": false,
+  "explorer.width": 40,
 
   // Prettier
-  "prettier.trailingComma": "es5",
-  "prettier.tabWidth": 2,
-  "prettier.singleQuote": true,
-  "prettier.semi": true,
   "prettier.bracketSpacing": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
 
   // ESLint
-  "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+
+  // TSServer
+  "tsserver.enable": true,
+  "tsserver.enableJavascript": true,
+
+  // --------------- LSP --------------- //
 
   // Python
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
 
-  // Explorer
-  "explorer.width": 40,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
-  "explorer.file.showHiddenFiles": true,
-  "explorer.focus": false,
-  "explorer.file.autoReveal": true,
-  "explorer.keyMappings.global": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit"
-  }
+  // Lua
+  "lua.enable": true,
+  "lua.checkForUpdates": "inform",
+  "Lua.hover.enable": true,
+  "Lua.completion.enable": true,
+
+  // HTML
+  "html.enable": true,
+  "html.format.enable": true,
+  "html.suggest.html5": true,
+  "html.validate.html": true,
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "html.autoClosingTags": true,
+
+  // CSS
+  "css.enable": true,
+  "css.validate": true,
+  "css.colorDecorators.enable": true,
+  "css.completion.completePropertyWithSemicolon": true,
+  "css.completion.triggerPropertyValueCompletion": true,
+
+  // Vim
+  "vimlsp.suggest.fromVimruntime": true,
+
+  // Bash
+  "sh.enable": true,
+
+  // JSON
+  "json.enable": true,
+  "json.format.enable": true,
+
+  // Yaml
+  "yaml.hover": true,
+  "yaml.validate": true,
+  "yaml.completion": true,
+
+  // XML
+  "xml.format.enabled": true,
+  "xml.symbols.enabled": true,
+  "xml.validation.enabled": true,
+
+  // Markdown
+  "markdownlint.onOpen": true,
+  "markdownlint.onSave": true,
+  "markdownlint.onChange": true
 }

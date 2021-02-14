@@ -3,22 +3,22 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc config
 let g:coc_global_extensions = [
-  \ 'coc-explorer',
   \ 'coc-snippets',
   \ 'coc-pairs',
+  \ 'coc-explorer',
+  \ 'coc-prettier',
   \ 'coc-eslint',
   \ 'coc-tsserver',
-  \ 'coc-prettier',
+  \ 'coc-python',
   \ 'coc-lua',
   \ 'coc-html',
-  \ 'coc-sh',
   \ 'coc-css',
+  \ 'coc-vimlsp',
+  \ 'coc-sh',
+  \ 'coc-json',
+  \ 'coc-yaml',
   \ 'coc-xml',
   \ 'coc-markdownlint',
-  \ 'coc-json',
-  \ 'coc-python',
-  \ 'coc-vimlsp',
-  \ 'coc-yaml',
   \ 'coc-cmake',
   \ ]
 " from readme
