@@ -1,3 +1,5 @@
+config/bashtop/error.log
+config/nano/nanorc.save*
 home/vim/plugged/*
 home/vim/plugged/ack.vim/.netrwhist
 home/vim/temp_dirs/undodir/*
