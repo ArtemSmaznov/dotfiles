@@ -14,7 +14,8 @@
     "markdown",
     "html",
     "css",
-    "lua"
+    "lua",
+    "sh"
   ],
   "suggest.noselect": false,
   "suggest.autoTrigger": "always",
@@ -71,6 +72,20 @@
   "lua.checkForUpdates": "inform",
   "Lua.hover.enable": true,
   "Lua.completion.enable": true,
+
+  // JavaScript
+  "javascript.showUnused": true,
+  "javascript.suggest.names": true,
+  "javascript.suggest.paths": true,
+  "javascript.format.enabled": true,
+  "javascript.validate.enable": true,
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.referencesCodeLens.enable": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "javascript.updateImportsOnFileMove.enable": true,
+  "javascript.implementationsCodeLens.enable": true,
+  "javascript.suggest.includeAutomaticOptionalChainCompletions": true,
 
   // HTML
   "html.enable": true,

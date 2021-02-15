@@ -17,7 +17,7 @@ Album Monitoring=true
 Album Sort Role=0
 All Groups Open=false
 Default Icon Size=153
-Default Tree Icon Size=22
+Default Tree Icon Size=18
 Icon Show Aspect Ratio=false
 Icon Show Comments=false
 Icon Show Coordinates=true
@@ -88,10 +88,10 @@ ToolTips Show Video Frame Rate=true
 TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
-CurrentIndex=989
-Expansion=0,1,989,484,11,40,41,906
+CurrentIndex=1084
+Expansion=0,1,11,58,1084,906,1083
 RestoreChecked=false
-Selection=989
+Selection=1084
 SortColumn=0
 SortOrder=0
 
@@ -246,7 +246,7 @@ RenderingIntent=0
 WorkProfileFile[$e]=/usr/share/digikam/profiles/srgb-d65.icm
 
 [CoreDB Settings]
-Recently Used Tags=505,292,1754,1078,1077,196,575,194,165,163
+Recently Used Tags=1767,1765,1764,1762,1761,1760,1763,1768,1766,137
 
 [DMetadata Settings]
 unifyReadWrite=true
@@ -925,7 +925,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwJubm4=
+Database Encrypted Password=AwLU1NQ=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -947,7 +947,7 @@ SortColumn=0
 SortOrder=0
 
 [Digikam Left Sidebar]
-ActiveTab=0
+ActiveTab=1
 Minimized=false
 RestoreSize=-1
 
@@ -966,8 +966,8 @@ Contact Expanded=true
 ItemDescEdit Tab=1
 ItemDescEditTab CaptionsLang=x-default
 ItemDescEditTab SearchBarCaseSensitive=0
-ItemDescEditTab TagCheckViewCurrentIndex=
-ItemDescEditTab TagCheckViewExpansion=0,4,8,383
+ItemDescEditTab TagCheckViewCurrentIndex=1767
+ItemDescEditTab TagCheckViewExpansion=0,4,8,357
 ItemDescEditTab TagCheckViewRestoreChecked=false
 ItemDescEditTab TagCheckViewSelection=
 ItemDescEditTab TagCheckViewSortColumn=0
@@ -1171,7 +1171,7 @@ targetUrl=
 [Find Duplicates View]
 AlbumComboBox-Checked=
 AlbumComboBox-CurrentIndex=
-AlbumComboBox-Expansion=
+AlbumComboBox-Expansion=1,906
 AlbumComboBox-RestoreChecked=true
 AlbumComboBox-Selection=
 AlbumComboBox-SortColumn=0
@@ -1184,7 +1184,7 @@ Last search results restriction=0
 Lower bound for minimum similarity=40
 TagComboBox-Checked=
 TagComboBox-CurrentIndex=
-TagComboBox-Expansion=
+TagComboBox-Expansion=906
 TagComboBox-RestoreChecked=true
 TagComboBox-Selection=
 TagComboBox-SortColumn=0
@@ -1195,7 +1195,7 @@ UseWholeTagsEntry=false
 [Fuzzy Search Sidebar]
 CurrentIndex=
 Expansion=
-FuzzySearch Tab=1
+FuzzySearch Tab=0
 Pen Sketch Hue=0
 Pen Sketch Saturation=0
 Pen Sketch Size=10
@@ -1262,10 +1262,10 @@ Application Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 Application Style=breeze
 Apply Sidebar Changes Directly=true
 Clean core DB At Start=true
-DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Width 1920=1861
-DVI-D-0 DP-1 XPosition=51
-DVI-D-0 DP-1 YPosition=46
+DVI-D-0 DP-1 Height 1080=1042
+DVI-D-0 DP-1 Width 1920=1877
+DVI-D-0 DP-1 XPosition=43
+DVI-D-0 DP-1 YPosition=38
 Draw Frames To Grouped Items=true
 Face Scanner First Run=true
 FullScreen Hide SideBars=true
@@ -1281,7 +1281,7 @@ Show Only Face Tags For Assigning Name=true
 Show Permanent Delete Dialog=true
 Show Splash=false
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAAB0UAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB1UAAAOhAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=false
@@ -1777,9 +1777,9 @@ ToolBarsMovable=Disabled
 Width 1920=855
 
 [MainWindow]
-InitialAlbumID=989
+InitialAlbumID=134218085
 SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABGcAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABHEAAAOhAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [MaintenanceDlg Settings]
 AlbumComboBox-Checked=
@@ -1931,10 +1931,10 @@ TypeGeolocationFilter Expanded=true
 TypeMimeFilter Expanded=true
 
 [TagView Sidebar]
-CurrentIndex=
-Expansion=0,4,45,1012,1326,8,613
+CurrentIndex=357
+Expansion=0,4,8,357,1767,1762,1766,1760,1765,1764,1761,1763
 RestoreChecked=false
-Selection=
+Selection=357
 SortColumn=0
 SortOrder=0
 TagsSource=false

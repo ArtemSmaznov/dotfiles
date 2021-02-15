@@ -2,11 +2,13 @@
 " => Load Plugins
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
+Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, ... finder
 Plug 'jiangmiao/auto-pairs'                     " Insert or delete brackets, parens, quotes in pair
+Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support for Vim & Neovim
 Plug 'itchyny/lightline.vim'                    " A light and configurable statusline/tabline for Vim
 " Plug 'powerline/powerline'                      " A more powerful status line
-Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, ... finder
 Plug 'godlygeek/tabular'                        " Configurable, flexible, intuitive text aligning
 Plug 'terryma/vim-expand-region'                " Incremental visual selection
 Plug 'airblade/vim-gitgutter'                   " A Vim plugin which shows a git diff in the gutter
@@ -15,16 +17,14 @@ Plug 'farmergreg/vim-lastplace'                 " Intelligently reopen files whe
 Plug 'maxbrunsfeld/vim-yankstack'               " Plugin for storing and cycling through yanked text strings
 Plug 'tpope/vim-fugitive'                       " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-surround'                       " Plugin for deleting, changing, and adding surroundings
+Plug 'honza/vim-snippets'
+Plug 'liuchengxu/vim-which-key'
 Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
 Plug 'ryanoasis/vim-devicons' 
 " Plug 'preservim/nerdtree' |                     
       " \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
       " \ Plug 'Xuyuanp/nerdtree-git-plugin' 
       " \ Plug 'tsony-tsonev/nerdtree-git-plugin' 
-
-" To learn
-Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
-Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
 
 " Language Support
 Plug 'tpope/vim-cucumber'                       " Filetype plugin for Cucumber
