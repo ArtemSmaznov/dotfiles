@@ -44,7 +44,7 @@ Preview Raw Use Embedded Preview=false
 Preview Raw Use Half Size Data=false
 Preview Show Icons=true
 Rating Filter Condition=0
-Recursive Albums=false
+Recursive Albums=true
 Recursive Tags=true
 Show Album ToolTips=true
 Show Folder Tree View Items Count=true
@@ -88,10 +88,10 @@ ToolTips Show Video Frame Rate=true
 TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
-CurrentIndex=1083
-Expansion=0,1,11,58,1084,906,1083
+CurrentIndex=1094
+Expansion=0,11,58,1084,906,1048,1091,1093,1083,1094
 RestoreChecked=false
-Selection=1083
+Selection=1094
 SortColumn=0
 SortOrder=0
 
@@ -246,7 +246,7 @@ RenderingIntent=0
 WorkProfileFile[$e]=/usr/share/digikam/profiles/srgb-d65.icm
 
 [CoreDB Settings]
-Recently Used Tags=1740,965,614,1194,1767,1765,1764,1762,1761,1760
+Recently Used Tags=1768,1740,966,871,134,1478,180,115,93,258
 
 [DMetadata Settings]
 unifyReadWrite=true
@@ -925,7 +925,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwLm5uY=
+Database Encrypted Password=AwKmpqY=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -966,10 +966,10 @@ Contact Expanded=true
 ItemDescEdit Tab=1
 ItemDescEditTab CaptionsLang=x-default
 ItemDescEditTab SearchBarCaseSensitive=0
-ItemDescEditTab TagCheckViewCurrentIndex=1740
-ItemDescEditTab TagCheckViewExpansion=0,11
+ItemDescEditTab TagCheckViewCurrentIndex=
+ItemDescEditTab TagCheckViewExpansion=0,4,8,134
 ItemDescEditTab TagCheckViewRestoreChecked=false
-ItemDescEditTab TagCheckViewSelection=1740
+ItemDescEditTab TagCheckViewSelection=
 ItemDescEditTab TagCheckViewSortColumn=0
 ItemDescEditTab TagCheckViewSortOrder=0
 ItemDescEditTab TagCheckViewToggle Auto Tags=0
@@ -1263,7 +1263,7 @@ Application Style=breeze
 Apply Sidebar Changes Directly=true
 Clean core DB At Start=true
 DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Width 1920=1861
+DVI-D-0 DP-1 Width 1920=1106
 DVI-D-0 DP-1 XPosition=51
 DVI-D-0 DP-1 YPosition=46
 Draw Frames To Grouped Items=true
@@ -1281,7 +1281,7 @@ Show Only Face Tags For Assigning Name=true
 Show Permanent Delete Dialog=true
 Show Splash=false
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAAB0UAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABFIAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=false
@@ -1338,7 +1338,7 @@ Brightness Multiplier=1
 Custom White Balance=6500
 Custom White Balance Green=1
 DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Width 1920=927
+DVI-D-0 DP-1 Width 1920=751
 DVI-D-0 DP-1 XPosition=0
 DVI-D-0 DP-1 YPosition=0
 Dcb Enhance Filter=false
@@ -1397,7 +1397,7 @@ SlideShowProgressIndicator=true
 SlideShowStartCurrent=false
 SlideShowSuffle=false
 SplitterState=AAAA/wAAAAEAAAACAAAAqwAAAXQB/////wAAAAABAQ==
-State=AAAA/wAAAAD9AAAAAAAAA58AAAOVAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAAu8AAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 TIFFCompression=false
 ToolBarsMovable=Disabled
 Unclip Color=0
@@ -1777,9 +1777,9 @@ ToolBarsMovable=Disabled
 Width 1920=855
 
 [MainWindow]
-InitialAlbumID=134219362
+InitialAlbumID=134218694
 SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABGcAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAAAXQAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [MaintenanceDlg Settings]
 AlbumComboBox-Checked=
@@ -1931,10 +1931,10 @@ TypeGeolocationFilter Expanded=true
 TypeMimeFilter Expanded=true
 
 [TagView Sidebar]
-CurrentIndex=1634
-Expansion=0,4,45,1012,1456,8,1286,720,136,1193,1183,1184,69,1686,1687,1595,1634
+CurrentIndex=966
+Expansion=0,4,45,461,8,635,965,966
 RestoreChecked=false
-Selection=1634
+Selection=966
 SortColumn=0
 SortOrder=0
 TagsSource=false

@@ -15,7 +15,7 @@ filetype plugin on
 filetype indent on
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = ","
+let mapleader = " "
 
 set history=500 " Sets how many lines of history VIM has to remember
 set clipboard=unnamedplus " Copy paste between vim and everything else

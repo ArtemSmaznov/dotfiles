@@ -13,9 +13,6 @@
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
@@ -73,15 +70,24 @@ map <leader>t<leader> :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Working with buffers
-map <silent> <leader><space> :noh<cr>     " Disable search highlight
-map <leader>bd :Bclose<cr>:tabclose<cr>gT " Close the current buffer
-map <leader>ba :bufdo bd<cr>              " Close all the buffers
-map <leader>h :bprevious<cr>              " Prev buffer
-map <leader>l :bnext<cr>                  " Next buffer
+" Disable search highlight
+map <silent> <leader><leader> :noh<cr>
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT 
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>              
+
+" Prev buffer
+map <leader>bh :bprevious<cr>              
+
+" Next buffer
+map <leader>bl :bnext<cr>                  
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
