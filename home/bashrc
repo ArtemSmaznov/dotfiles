@@ -142,7 +142,6 @@ alias update-proton='development/cproton.sh'
 # Audio Outout info
 alias aoutput='cat /proc/asound/card2/pcm0p/sub0/hw_params'
 
-alias cdawesome='cd ~/development/ArtemSmaznov/awesome-config'
 
 ###############################
 # GENERAL
@@ -222,6 +221,11 @@ alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
 alias shutdown='sudo shutdown -P'
 alias suspend='systemctl suspend'
+
+# Use Dust for better disk usage (available in the AUR)
+# if [[ -f /usr/bin/dust ]]; then
+  # alias du='dust'
+# fi
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
@@ -328,11 +332,7 @@ up() {
 }
 
 editbash() {
-  if [[ -f /usr/bin/xed ]]; then
-    $VISUAL ~/development/ArtemSmaznov/dotfiles/home/.bashrc
-  else
-    $EDITOR ~/development/ArtemSmaznov/dotfiles/home/.bashrc
-  fi
+  $EDITOR ~/.bashrc
 }
 
 # Load custom overwrites

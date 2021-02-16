@@ -1,9 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>eb :e! ~/.vim/vimrcs/basic.vim<cr>
-autocmd! bufwritepost ~/.vim/vimrcs/basic.vim source ~/.vim/vimrcs/basic.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
 "    -> General
 "    -> Colors and Fonts
@@ -226,3 +221,10 @@ endfunc
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>eb :e! ~/.vim/settings/basic.vim<cr>
+autocmd! bufwritepost ~/.vim/settings/basic.vim source ~/.vim/settings/basic.vim

@@ -1,6 +1,6 @@
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Load Plugins
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'                          " Plugin that integrates ack with Vim
 Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, ... finder
@@ -38,9 +38,9 @@ Plug 'lifepillar/vim-gruvbox8'
 
 
 call plug#end()
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Load Configs
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.vim/settings/plugins/ack.vim
 source ~/.vim/settings/plugins/buffExplorer.vim
 source ~/.vim/settings/plugins/coc.vim
@@ -51,6 +51,7 @@ source ~/.vim/settings/plugins/nerdcommenter.vim
 " source ~/.vim/settings/plugins/nerdtree.vim
 source ~/.vim/settings/plugins/surround.vim
 source ~/.vim/settings/plugins/tabularize.vim
+source ~/.vim/settings/plugins/which-key.vim
 source ~/.vim/settings/plugins/yankstack.vim
 
 
@@ -59,3 +60,10 @@ autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>ep :e! ~/.vim/settings/plugins.vim<cr>
+autocmd! bufwritepost ~/.vim/settings/plugins.vim source ~/.vim/settings/plugins.vim

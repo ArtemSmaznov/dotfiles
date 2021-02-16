@@ -87,4 +87,8 @@ map <leader>l :bnext<cr>                  " Next buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>ek :e! ~/.vim/settings/key-mappings.vim<cr>
+autocmd! bufwritepost ~/.vim/settings/key-mappings.vim source ~/.vim/settings/key-mappings.vim

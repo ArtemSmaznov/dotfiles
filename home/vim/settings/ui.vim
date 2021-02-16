@@ -1,3 +1,4 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual Elements
 set foldcolumn=1   " Add a bit extra margin to the left
 set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time
@@ -59,3 +60,10 @@ endif
 if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>eu :e! ~/.vim/settings/ui.vim<cr>
+autocmd! bufwritepost ~/.vim/settings/ui.vim source ~/.vim/settings/ui.vim
