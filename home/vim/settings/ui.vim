@@ -18,6 +18,10 @@ set cmdheight=2    " Height of the command bar
 " Remove separator pipes
 set fillchars+=vert:\ 
 
+" Enable Mouse Support
+set mouse=a
+set ttymouse=sgr
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l

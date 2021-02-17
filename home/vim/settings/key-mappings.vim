@@ -56,10 +56,14 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Resize windows
-noremap <silent> <C-Left> :vertical resize +4<CR>
-noremap <silent> <C-Right> :vertical resize -4<CR>
-noremap <silent> <C-Up> :resize +4<CR>
-noremap <silent> <C-Down> :resize -4<CR>
+noremap <silent> <C-Up> :resize +5<CR>
+noremap <silent> <C-Down> :resize -5<CR>
+noremap <silent> <C-Left> :vertical resize +5<CR>
+noremap <silent> <C-Right> :vertical resize -5<CR>
+noremap <C-w>+ :resize +5<CR>
+noremap <C-w>- :resize -5<CR>
+noremap <C-w>< :vertical:resize -5<CR>
+noremap <C-w>> :vertical:resize +5<CR>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
