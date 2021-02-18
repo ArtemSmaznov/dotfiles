@@ -99,7 +99,7 @@ map <leader>bh :bprevious<cr>
 map <leader>bl :bnext<cr>                  
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map ,cd :cd %:p:h<cr>:pwd<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -1,35 +1,49 @@
-let g:which_key_vertical = 1
 let g:which_key_position = 'botright'
+let g:which_key_vertical = 1
+let g:which_key_centered = 0
+let g:which_key_flatten = 1
 let g:which_key_use_floating_win = 1
-let g:which_key_default_group_name = '+ unnamed'
+let g:which_key_fallback_to_native_key=1
 
 " register dictionary for the <Space>-prefix
-call which_key#register(' ', "g:which_key_map")
-
+call which_key#register(' ', "g:leader_map")
 nnoremap <silent> <leader> :WhichKey ' '<CR>
 vnoremap <silent> <leader> :WhichKeyVisual ' '<CR>
 
 " default mappings like ]s stop working if which-key doesn't know about them
-" nnoremap <silent> [ :WhichKey '['<CR>
-" nnoremap <silent> ] :WhichKey ']'<CR>
+call which_key#register('[', "g:left_square_bracket_map")
+call which_key#register(']', "g:right_square_bracket_map")
+nnoremap <silent> [ :WhichKey '['<CR>
+nnoremap <silent> ] :WhichKey ']'<CR>
+
+
+let g:which_key_default_group_name = '+Group'
 
 " Define prefix dictionary
-let g:which_key_map =  {}
-let g:which_key_map.b = { 'name' : '+buffer' }
-let g:which_key_map.c = { 'name' : '+NERDCommenter' }
-let g:which_key_map.e = { 'name' : '+edit' }
-let g:which_key_map.g = { 'name' : '+git' }
-  let g:which_key_map.g.d = [ 'vertical Gdiffsplit', 'Diff Split' ]
-  let g:which_key_map.g.g = [ 'vertical Gstatus', 'Status' ]
-let g:which_key_map.i = { 'name' : '+coc' }
-let g:which_key_map.s = { 'name' : '+search' }
-let g:which_key_map.t = { 'name' : '+tabs' }
-let g:which_key_map.u = { 'name' : '+ui' }
+let g:leader_map =  {}
+let g:leader_map['`'] = [ 'term', 'Terminal' ]
+let g:leader_map['k'] = [ 'call <SID>show_documentation()', 'Search Documentation' ]
+let g:leader_map.b = { 'name' : '+ Buffers' }
+let g:leader_map.c = { 'name' : '+ Coc' }
+let g:leader_map.e = { 'name' : '+ Edit Config' }
+let g:leader_map.g = { 'name' : '+ Git' }
+  let g:leader_map.g.d = [ 'vertical Gdiffsplit', 'Diff Split' ]
+  let g:leader_map.g.g = [ 'vertical Gstatus', 'Status' ]
+let g:leader_map.s = { 'name' : '+ Search' }
+let g:leader_map.t = { 'name' : '+ Tabs' }
+let g:leader_map.u = { 'name' : '+ UI' }
 
-let g:which_key_map[']'] = {
-      \ 'name' : '+leaderless []',
-      \ 's' : [':echo "Use without leader"', 'Spell Checking'],
-      \ 'g' : [':echo "Use without leader"', 'Coc Linters'],
-      \ 'c' : [':echo "Use without leader"', 'Git Hunks']
+let g:leader_map[','] = {
+      \ 'name' : '+Leaderless',
+      \ 'cd' : ['cd %:p:h<cr>:pwd', 'CD to PWD of open Buffer']
       \}
 
+let g:right_square_bracket_map = {}
+let g:right_square_bracket_map.c = [ '<Plug>(GitGutterNextHunk)', 'Next Git Hunk' ]
+let g:right_square_bracket_map.g = [ '<Plug>(coc-diagnostic-next)', 'Next Coc Problem' ]
+" let g:right_square_bracket_map.s = [ '', 'Next Spell Check Problem' ]
+
+let g:left_square_bracket_map = {}
+let g:left_square_bracket_map.c = [ '<Plug>(GitGutterNextHunk)', 'Next Git Hunk' ]
+let g:left_square_bracket_map.g = [ '<Plug>(coc-diagnostic-next)', 'Next Coc Problem' ]
+" let g:left_square_bracket_map.s = [ '', 'Next Spell Check Problem' ]

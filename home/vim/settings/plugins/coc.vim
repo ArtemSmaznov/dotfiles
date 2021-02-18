@@ -82,8 +82,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <F2> <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -93,14 +93,15 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>c<space> <Plug>(coc-codeaction)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>cv <Plug>(coc-codeaction-selected)
+nmap <leader>cv <Plug>(coc-codeaction-selected)
+
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ca  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
@@ -127,28 +128,28 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Using CocList
 
 " Show all diagnostics
-nnoremap <silent> <leader>ia  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 
 " Manage extensions
-nnoremap <silent> <leader>ie  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>
 
 " Show commands
-nnoremap <silent> <leader>ic  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 
 " Find symbol of current document
-nnoremap <silent> <leader>io  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
 
 " Search workspace symbols
-nnoremap <silent> <leader>is  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
 " Do default action for next item.
-" nnoremap <silent> <leader>ij  :<C-u>CocNext<CR>
+" nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
 
 " Do default action for previous item. (K is taken)
-" nnoremap <silent> <leader>ik  :<C-u>CocPrev<CR>
+" nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 
 " Resume latest coc list
-nnoremap <silent> <leader>ip  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
 
 
