@@ -15,11 +15,11 @@ filetype plugin on
 filetype indent on
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = ","
+let mapleader = " "
 
 set history=500 " Sets how many lines of history VIM has to remember
 set clipboard=unnamedplus " Copy paste between vim and everything else
-set iskeyword+=-          " treat dash separated words as a word text object
+" set iskeyword+=-          " treat dash separated words as a word text object
 set conceallevel=0        " So that I can see `` in markdown files
 
 " Set to auto read when a file is changed from the outside
@@ -118,8 +118,6 @@ set wrap        " Wrap lines
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hidden     " A buffer becomes hidden when it is abandoned
-set splitbelow " Horizontal splits will automatically be below
-set splitright " Vertical splits will automatically be to the right
 
 " Specify the behavior when switching between buffers 
 try
@@ -221,7 +219,6 @@ endfunc
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs

@@ -65,7 +65,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <space>k :call <SID>show_documentation()<CR>
+nnoremap <leader>k :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -125,14 +125,31 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr> " Show all diagnostics
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>  " Manage extensions
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>    " Show commands
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>     " Find symbol of current document
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>  " Search workspace symbols
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>             " Do default action for next item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>             " Do default action for previous item. (K is taken)
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>       " Resume latest coc list
+
+" Show all diagnostics
+nnoremap <silent> <leader>ia  :<C-u>CocList diagnostics<cr>
+
+" Manage extensions
+nnoremap <silent> <leader>ie  :<C-u>CocList extensions<cr>
+
+" Show commands
+nnoremap <silent> <leader>ic  :<C-u>CocList commands<cr>
+
+" Find symbol of current document
+nnoremap <silent> <leader>io  :<C-u>CocList outline<cr>
+
+" Search workspace symbols
+nnoremap <silent> <leader>is  :<C-u>CocList -I symbols<cr>
+
+" Do default action for next item.
+" nnoremap <silent> <leader>ij  :<C-u>CocNext<CR>
+
+" Do default action for previous item. (K is taken)
+" nnoremap <silent> <leader>ik  :<C-u>CocPrev<CR>
+
+" Resume latest coc list
+nnoremap <silent> <leader>ip  :<C-u>CocListResume<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
