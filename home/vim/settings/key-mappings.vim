@@ -68,7 +68,7 @@ noremap <C-w>> :vertical:resize +5<CR>
 " Open Splits
 nnoremap <leader>uv :vertical split<cr>
 nnoremap <leader>uh :split<cr>
-nnoremap <leader>ut :vertical term<cr>
+nnoremap <leader>` :term<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>

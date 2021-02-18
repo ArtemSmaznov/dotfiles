@@ -118,8 +118,6 @@ set wrap        " Wrap lines
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hidden     " A buffer becomes hidden when it is abandoned
-set splitbelow " Horizontal splits will automatically be below
-set splitright " Vertical splits will automatically be to the right
 
 " Specify the behavior when switching between buffers 
 try
