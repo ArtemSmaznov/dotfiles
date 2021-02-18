@@ -8,6 +8,7 @@ call which_key#register(' ', "g:which_key_map")
 
 nnoremap <silent> <leader> :WhichKey ' '<CR>
 vnoremap <silent> <leader> :WhichKeyVisual ' '<CR>
+
 " default mappings like ]s stop working if which-key doesn't know about them
 " nnoremap <silent> [ :WhichKey '['<CR>
 " nnoremap <silent> ] :WhichKey ']'<CR>
@@ -26,9 +27,9 @@ let g:which_key_map.t = { 'name' : '+tabs' }
 let g:which_key_map.u = { 'name' : '+ui' }
 
 let g:which_key_map[']'] = {
-      \ 'name' : '+[]',
-      \ 's' : ['', 'Spell Checking'],
-      \ 'g' : ['', 'Coc Linters'],
-      \ 'c' : ['', 'Git Hunks']
+      \ 'name' : '+leaderless []',
+      \ 's' : [':echo "Use without leader"', 'Spell Checking'],
+      \ 'g' : [':echo "Use without leader"', 'Coc Linters'],
+      \ 'c' : [':echo "Use without leader"', 'Git Hunks']
       \}
 
