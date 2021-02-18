@@ -8,8 +8,9 @@ call which_key#register(' ', "g:which_key_map")
 
 nnoremap <silent> <leader> :WhichKey ' '<CR>
 vnoremap <silent> <leader> :WhichKeyVisual ' '<CR>
-nnoremap <silent> [ :WhichKey '['<CR>
-nnoremap <silent> ] :WhichKey ']'<CR>
+" default mappings like ]s stop working if which-key doesn't know about them
+" nnoremap <silent> [ :WhichKey '['<CR>
+" nnoremap <silent> ] :WhichKey ']'<CR>
 
 " Define prefix dictionary
 let g:which_key_map =  {}
@@ -23,4 +24,11 @@ let g:which_key_map.i = { 'name' : '+coc' }
 let g:which_key_map.s = { 'name' : '+search' }
 let g:which_key_map.t = { 'name' : '+tabs' }
 let g:which_key_map.u = { 'name' : '+ui' }
+
+let g:which_key_map[']'] = {
+      \ 'name' : '+[]',
+      \ 's' : ['', 'Spell Checking'],
+      \ 'g' : ['', 'Coc Linters'],
+      \ 'c' : ['', 'Git Hunks']
+      \}
 
