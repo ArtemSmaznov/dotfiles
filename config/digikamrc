@@ -925,7 +925,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwKhoaE=
+Database Encrypted Password=AwJ6eno=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -1263,7 +1263,7 @@ Application Style=breeze
 Apply Sidebar Changes Directly=true
 Clean core DB At Start=true
 DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Width 1920=1106
+DVI-D-0 DP-1 Width 1920=1861
 DVI-D-0 DP-1 XPosition=51
 DVI-D-0 DP-1 YPosition=46
 Draw Frames To Grouped Items=true
@@ -1281,7 +1281,7 @@ Show Only Face Tags For Assigning Name=true
 Show Permanent Delete Dialog=true
 Show Splash=false
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAABFIAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB0UAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=false
@@ -1781,7 +1781,7 @@ Width 1920=855
 [MainWindow]
 InitialAlbumID=1097
 SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAAAXQAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABGcAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [MaintenanceDlg Settings]
 AlbumComboBox-Checked=

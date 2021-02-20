@@ -32,6 +32,7 @@ let g:leader_map.g = { 'name' : '+ Git' }
 let g:leader_map.s = { 'name' : '+ Search' }
 let g:leader_map.t = { 'name' : '+ Tabs' }
 let g:leader_map.u = { 'name' : '+ UI' }
+let g:leader_map.y = { 'name' : '+ YankStack' }
 
 let g:leader_map[','] = {
       \ 'name' : '+Leaderless',

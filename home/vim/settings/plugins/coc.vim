@@ -156,5 +156,6 @@ nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc-Explorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <C-n> :CocCommand explorer<CR>
+" nmap <C-n> :CocCommand explorer<CR>
+nmap <leader><Tab> :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

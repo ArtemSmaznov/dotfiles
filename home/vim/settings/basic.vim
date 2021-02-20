@@ -19,8 +19,6 @@ let mapleader = " "
 
 set history=500 " Sets how many lines of history VIM has to remember
 set clipboard=unnamedplus " Copy paste between vim and everything else
-" set iskeyword+=-          " treat dash separated words as a word text object
-set conceallevel=0        " So that I can see `` in markdown files
 
 " Set to auto read when a file is changed from the outside
 set autoread
