@@ -33,7 +33,7 @@
     "filenames": [],
     "patternMatches": ["^\\."]
   },
-  "explorer.focus": false,
+  "explorer.focus": true,
   "explorer.git.enable": true,
   "explorer.git.showIgnored": true,
   "explorer.icon.enableNerdfont": true,

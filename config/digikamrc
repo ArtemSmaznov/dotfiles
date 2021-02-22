@@ -88,10 +88,10 @@ ToolTips Show Video Frame Rate=true
 TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
-CurrentIndex=1097
-Expansion=0,1,906,1095,1096,1097
+CurrentIndex=1095
+Expansion=0,1,906,1037,1095,1096,1097,1100,1101,1102,1103,1098,1099
 RestoreChecked=false
-Selection=1097
+Selection=1095
 SortColumn=0
 SortOrder=0
 
@@ -130,6 +130,7 @@ BqmVerticalSplitter=AAAA/wAAAAEAAAACAAAApwAAAJ8B/////wEAAAACAA==
 DVI-D-0 DP-1 XPosition=0
 DVI-D-0 DP-1 YPosition=0
 Height 1080=1026
+RestorePositionForNextInstance=false
 State=AAAA/wAAAAD9AAAAAAAAAs8AAAOtAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1920=719
@@ -246,7 +247,7 @@ RenderingIntent=0
 WorkProfileFile[$e]=/usr/share/digikam/profiles/srgb-d65.icm
 
 [CoreDB Settings]
-Recently Used Tags=1775,1774,1776,1773,1772,1768,1740,966,871,134
+Recently Used Tags=1778,1777,1775,1774,1776,1782,1779,1781,1784,1783
 
 [DMetadata Settings]
 unifyReadWrite=true
@@ -925,7 +926,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwJ6eno=
+Database Encrypted Password=AwIGBgY=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -947,7 +948,7 @@ SortColumn=0
 SortOrder=0
 
 [Digikam Left Sidebar]
-ActiveTab=0
+ActiveTab=1
 Minimized=false
 RestoreSize=-1
 
@@ -1275,6 +1276,7 @@ FullScreen Hide ToolBars=false
 Height 1080=1042
 Height 1440=689
 Icon Theme=breeze-dark
+RestorePositionForNextInstance=false
 Scan At Start=false
 Scroll Current Item To Center=true
 Show Only Face Tags For Assigning Name=true
@@ -1374,6 +1376,7 @@ PGFLossLess=true
 PNGCompression=9
 PreviewMode=128
 RawImportToolIid=
+RestorePositionForNextInstance=false
 RestoreToolSettings=true
 Show Thumbbar=false
 ShowImageSettingsDialog=true
@@ -1601,14 +1604,15 @@ Auto Sync Preview=true
 Clear On Close=false
 DVI-D-0 DP-1 Height 1080=1026
 DVI-D-0 DP-1 Width 1920=751
-DVI-D-0 DP-1 XPosition=1161
-DVI-D-0 DP-1 YPosition=46
+DVI-D-0 DP-1 XPosition=0
+DVI-D-0 DP-1 YPosition=0
 FullScreen Hide SideBars=false
 FullScreen Hide StatusBar=false
 FullScreen Hide ToolBars=false
 Height 1080=1026
 Horizontal Splitter State=AAAA/wAAAAEAAAADAAABdAAAAGUAAAF0Af////8AAAAAAQE=
 Navigate By Pair=false
+RestorePositionForNextInstance=false
 Show Thumbbar=true
 State=AAAA/wAAAAD9AAAAAAAAAu8AAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
@@ -1779,7 +1783,7 @@ ToolBarsMovable=Disabled
 Width 1920=855
 
 [MainWindow]
-InitialAlbumID=1097
+InitialAlbumID=134219506
 SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
 ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABGcAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
 
@@ -1933,10 +1937,10 @@ TypeGeolocationFilter Expanded=true
 TypeMimeFilter Expanded=true
 
 [TagView Sidebar]
-CurrentIndex=556
-Expansion=0,39,40,556
+CurrentIndex=1778
+Expansion=0,4,69,1773,1776,1775,1780,1782,1778,1777,1783,1781
 RestoreChecked=false
-Selection=556
+Selection=1778
 SortColumn=0
 SortOrder=0
 TagsSource=false

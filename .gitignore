@@ -7,5 +7,6 @@ home/vim/plugged/*
 home/vim/plugged/ack.vim/.netrwhist
 home/vim/temp_dirs/undodir/*
 home/vim/temp_dirs/yankring_history_v2.txt
+home/tmux/*
 config/bashtop/error.log
 config/nano/nanorc.save*
