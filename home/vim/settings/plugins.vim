@@ -21,6 +21,7 @@ Plug 'honza/vim-snippets'
 Plug 'liuchengxu/vim-which-key'
 Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
 Plug 'ryanoasis/vim-devicons' 
+Plug 'chrisbra/Colorizer',
 " Plug 'preservim/nerdtree' |                     
       " \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
       " \ Plug 'Xuyuanp/nerdtree-git-plugin' 
@@ -44,6 +45,7 @@ call plug#end()
 source ~/.vim/settings/plugins/ack.vim
 source ~/.vim/settings/plugins/buffExplorer.vim
 source ~/.vim/settings/plugins/coc.vim
+source ~/.vim/settings/plugins/colorizer.vim
 source ~/.vim/settings/plugins/ctrlp.vim 
 source ~/.vim/settings/plugins/gitGutter.vim
 source ~/.vim/settings/plugins/lightline.vim
