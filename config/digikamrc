@@ -45,7 +45,7 @@ Preview Raw Use Half Size Data=false
 Preview Show Icons=true
 Rating Filter Condition=0
 Recursive Albums=false
-Recursive Tags=true
+Recursive Tags=false
 Show Album ToolTips=true
 Show Folder Tree View Items Count=true
 Show Thumbbar=false
@@ -88,10 +88,10 @@ ToolTips Show Video Frame Rate=true
 TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
-CurrentIndex=1038
-Expansion=0,1,11,93,906,1038
+CurrentIndex=906
+Expansion=0,11,93,1104,1108,36,906,1019,1059,1027,1031,1000,990,1091,1083,1070
 RestoreChecked=false
-Selection=1038
+Selection=906
 SortColumn=0
 SortOrder=0
 
@@ -128,7 +128,9 @@ BqmBottomSplitter=AAAA/wAAAAEAAAACAAAAkQAAAJEB/////wEAAAABAA==
 BqmTopSplitter=AAAA/wAAAAEAAAADAAAAkQAAAHwAAAB0Af////8BAAAAAQA=
 BqmVerticalSplitter=AAAA/wAAAAEAAAACAAAApwAAAJ8B/////wEAAAACAA==
 DVI-D-0 DP-1 XPosition=0
+DVI-D-0 DP-1 XPosition 1920x1080=0
 DVI-D-0 DP-1 YPosition=0
+DVI-D-0 DP-1 YPosition 1920x1080=0
 Height 1080=1026
 State=AAAA/wAAAAD9AAAAAAAAAs8AAAOtAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
@@ -246,7 +248,7 @@ RenderingIntent=0
 WorkProfileFile[$e]=/usr/share/digikam/profiles/srgb-d65.icm
 
 [CoreDB Settings]
-Recently Used Tags=859,135,1786,858,1792,868,1788,111,1789,1791
+Recently Used Tags=111,261,135,273,251,188,278,268,195,189
 
 [DMetadata Settings]
 unifyReadWrite=true
@@ -925,7 +927,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwLNzc0=
+Database Encrypted Password=AwJMTEw=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -966,10 +968,10 @@ Contact Expanded=true
 ItemDescEdit Tab=1
 ItemDescEditTab CaptionsLang=x-default
 ItemDescEditTab SearchBarCaseSensitive=0
-ItemDescEditTab TagCheckViewCurrentIndex=135
-ItemDescEditTab TagCheckViewExpansion=0,4,8,134
+ItemDescEditTab TagCheckViewCurrentIndex=
+ItemDescEditTab TagCheckViewExpansion=0,30,6,4,8,9,11,86,12,227,228,13,39,37
 ItemDescEditTab TagCheckViewRestoreChecked=false
-ItemDescEditTab TagCheckViewSelection=135
+ItemDescEditTab TagCheckViewSelection=
 ItemDescEditTab TagCheckViewSortColumn=0
 ItemDescEditTab TagCheckViewSortOrder=0
 ItemDescEditTab TagCheckViewToggle Auto Tags=0
@@ -1229,7 +1231,7 @@ Selection=
 Sort Order=0
 SortColumn=0
 SortOrder=0
-SplitterState=AAAA/wAAAAEAAAACAAABqAAAAOYB/////wEAAAACAA==
+SplitterState=AAAA/wAAAAEAAAACAAABrAAAAOYB/////wEAAAACAA==
 
 [GPS Search Sidebar][GPSSearch Map Widget]
 Backend=googlemaps
@@ -1263,9 +1265,13 @@ Application Style=breeze
 Apply Sidebar Changes Directly=true
 Clean core DB At Start=true
 DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Width 1920=1861
+DVI-D-0 DP-1 Height 1920x1080=1031
+DVI-D-0 DP-1 Width 1920=1106
+DVI-D-0 DP-1 Width 1920x1080=1106
 DVI-D-0 DP-1 XPosition=51
+DVI-D-0 DP-1 XPosition 1920x1080=46
 DVI-D-0 DP-1 YPosition=46
+DVI-D-0 DP-1 YPosition 1920x1080=41
 Draw Frames To Grouped Items=true
 Face Scanner First Run=true
 FullScreen Hide SideBars=true
@@ -1281,7 +1287,7 @@ Show Only Face Tags For Assigning Name=true
 Show Permanent Delete Dialog=true
 Show Splash=false
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAAB0UAAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABFIAAAOKAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=false
@@ -1340,7 +1346,9 @@ Custom White Balance Green=1
 DVI-D-0 DP-1 Height 1080=1026
 DVI-D-0 DP-1 Width 1920=751
 DVI-D-0 DP-1 XPosition=0
+DVI-D-0 DP-1 XPosition 1920x1080=0
 DVI-D-0 DP-1 YPosition=0
+DVI-D-0 DP-1 YPosition 1920x1080=0
 Dcb Enhance Filter=false
 Dcb Iterations=-1
 Decoding Quality=0
@@ -1578,10 +1586,10 @@ CaseSensitive=0
 CaseSensitive=0
 
 [ItemIconViewTagFilterView]
-CurrentIndex=7
-Expansion=6
+CurrentIndex=
+Expansion=37
 RestoreChecked=false
-Selection=7
+Selection=
 SortColumn=0
 SortOrder=0
 Toggle Auto Tags=0
@@ -1602,7 +1610,9 @@ Clear On Close=false
 DVI-D-0 DP-1 Height 1080=1026
 DVI-D-0 DP-1 Width 1920=751
 DVI-D-0 DP-1 XPosition=0
+DVI-D-0 DP-1 XPosition 1920x1080=0
 DVI-D-0 DP-1 YPosition=0
+DVI-D-0 DP-1 YPosition 1920x1080=0
 FullScreen Hide SideBars=false
 FullScreen Hide StatusBar=false
 FullScreen Hide ToolBars=false
@@ -1774,14 +1784,14 @@ DVI-D-0 DP-1 Width 1920=855
 DVI-D-0 DP-1 XPosition=0
 DVI-D-0 DP-1 YPosition=0
 Height 1080=917
-State=AAAA/wAAAAD9AAAAAQAAAAIAAAKjAAABDvwBAAAAAfsAAAAmAGwAaQBnAGgAdAB0AGEAYgBsAGUAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAAAqMAAABpAQAAAwAAAqMAAAKCAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAQAAAAIAAAKjAAABDvwBAAAAAfsAAAAmAGwAaQBnAGgAdAB0AGEAYgBsAGUAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAAAqMAAABxAQAAAwAAAqMAAAKCAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=855
 
 [MainWindow]
-InitialAlbumID=134219208
+InitialAlbumID=134217894
 SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABpAQAAAwAABGcAAAORAAAABAAAAAQAAAAIAAAACPwAAAAA
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABxAQAAAwAAAXQAAAOKAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [MaintenanceDlg Settings]
 AlbumComboBox-Checked=
@@ -1921,22 +1931,22 @@ Width 1920=1920
 CaseSensitive=0
 
 [TagFilter Sidebar]
-FaceTagsFilter Expanded=true
-LabelsFilter Expanded=true
+FaceTagsFilter Expanded=false
+LabelsFilter Expanded=false
 Matching Condition=0
 Search Text Filter Fields=127
 Show Untagged=false
 Show Without Face=false
 TagsFilter Expanded=true
-TextFilter Expanded=true
-TypeGeolocationFilter Expanded=true
-TypeMimeFilter Expanded=true
+TextFilter Expanded=false
+TypeGeolocationFilter Expanded=false
+TypeMimeFilter Expanded=false
 
 [TagView Sidebar]
-CurrentIndex=1480
-Expansion=0,4,69,8,1138,104,105
+CurrentIndex=166
+Expansion=0,11,12,227,228,166
 RestoreChecked=false
-Selection=1480
+Selection=166
 SortColumn=0
 SortOrder=0
 TagsSource=false
@@ -1947,7 +1957,9 @@ Items=
 [Time Adjust Dialog]
 DVI-D-0 DP-1 Height 1080=1026
 DVI-D-0 DP-1 Height 1440=1402
+DVI-D-0 DP-1 Height 1920x1080=1026
 DVI-D-0 DP-1 Width 1920=900
+DVI-D-0 DP-1 Width 1920x1080=900
 DVI-D-0 DP-1 Width 900=900
 Height 1080=1026
 Width 1920=927

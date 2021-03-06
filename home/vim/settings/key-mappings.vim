@@ -60,14 +60,14 @@ noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
-noremap <C-w>+ :resize +5<CR>
-noremap <C-w>- :resize -5<CR>
-noremap <C-w>< :vertical:resize -5<CR>
-noremap <C-w>> :vertical:resize +5<CR>
+noremap <leader>= :resize +5<CR>
+noremap <leader>- :resize -5<CR>
+noremap <leader>, :vertical:resize -5<CR>
+noremap <leader>. :vertical:resize +5<CR>
 
 " Open Splits
 nnoremap <leader>uv :vertical split<cr>
-nnoremap <leader>uh :split<cr>
+nnoremap <leader>us :split<cr>
 nnoremap <leader>` :term<cr>
 
 " Useful mappings for managing tabs
@@ -99,7 +99,7 @@ map <leader>bh :bprevious<cr>
 map <leader>bl :bnext<cr>                  
 
 " Switch CWD to the directory of the open buffer
-map ,cd :cd %:p:h<cr>:pwd<cr>
+map <leader>bd :cd %:p:h<cr>:pwd<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

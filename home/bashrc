@@ -340,3 +340,4 @@ if [[ -f ~/.mybashrc ]]; then
   . ~/.mybashrc
 fi
 
+neofetch
