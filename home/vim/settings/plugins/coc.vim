@@ -9,7 +9,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-eslint',
   \ 'coc-tsserver',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-lua',
   \ 'coc-html',
   \ 'coc-css',

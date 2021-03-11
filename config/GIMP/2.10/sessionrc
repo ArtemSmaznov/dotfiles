@@ -11,8 +11,8 @@
     (size 1920 1025))
 (session-info "toplevel"
     (factory-entry "gimp-single-image-window")
-    (position 1161 46)
-    (size 751 1026)
+    (position 6 30)
+    (size 1908 1044)
     (open-on-exit)
     (aux-info
         (left-docks-width "317")
@@ -30,7 +30,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 422)
+            (position 428)
             (current-page 0)
             (dockable "gimp-brush-grid"
                 (tab-style automatic)
@@ -63,7 +63,7 @@
             (dockable "gimp-sample-point-editor"
                 (tab-style automatic)))
         (book
-            (position 267)
+            (position 270)
             (current-page 0)
             (dockable "gimp-vectors-list"
                 (locked)
@@ -72,7 +72,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 550)
+            (position 557)
             (current-page 0)
             (dockable "gimp-layer-list"
                 (locked)

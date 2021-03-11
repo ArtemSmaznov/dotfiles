@@ -88,10 +88,10 @@ ToolTips Show Video Frame Rate=true
 TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
-CurrentIndex=906
-Expansion=0,11,93,1104,1108,36,906,1019,1059,1027,1031,1000,990,1091,1083,1070
+CurrentIndex=1086
+Expansion=0,1,906
 RestoreChecked=false
-Selection=906
+Selection=1086
 SortColumn=0
 SortOrder=0
 
@@ -248,7 +248,7 @@ RenderingIntent=0
 WorkProfileFile[$e]=/usr/share/digikam/profiles/srgb-d65.icm
 
 [CoreDB Settings]
-Recently Used Tags=111,261,135,273,251,188,278,268,195,189
+Recently Used Tags=505,288,753,7,75,556,196,178,1487,1486
 
 [DMetadata Settings]
 unifyReadWrite=true
@@ -927,7 +927,7 @@ tagPaths=1
 
 [Database Settings]
 Database Connectoptions=
-Database Encrypted Password=AwJMTEw=
+Database Encrypted Password=AwJhYWE=
 Database Hostname=
 Database Name=/home/artem/Pictures/digikam/
 Database Name Face=/home/artem/Pictures/digikam/
@@ -969,7 +969,7 @@ ItemDescEdit Tab=1
 ItemDescEditTab CaptionsLang=x-default
 ItemDescEditTab SearchBarCaseSensitive=0
 ItemDescEditTab TagCheckViewCurrentIndex=
-ItemDescEditTab TagCheckViewExpansion=0,30,6,4,8,9,11,86,12,227,228,13,39,37
+ItemDescEditTab TagCheckViewExpansion=0,6,39,4
 ItemDescEditTab TagCheckViewRestoreChecked=false
 ItemDescEditTab TagCheckViewSelection=
 ItemDescEditTab TagCheckViewSortColumn=0
@@ -1265,13 +1265,17 @@ Application Style=breeze
 Apply Sidebar Changes Directly=true
 Clean core DB At Start=true
 DVI-D-0 DP-1 Height 1080=1026
-DVI-D-0 DP-1 Height 1920x1080=1031
+DVI-D-0 DP-1 Height 1440x900=864
+DVI-D-0 DP-1 Height 1920x1080=1044
+DVI-D-0 DP-1 Width 1440x900=1428
 DVI-D-0 DP-1 Width 1920=1106
-DVI-D-0 DP-1 Width 1920x1080=1106
+DVI-D-0 DP-1 Width 1920x1080=1908
 DVI-D-0 DP-1 XPosition=51
-DVI-D-0 DP-1 XPosition 1920x1080=46
+DVI-D-0 DP-1 XPosition 1440x900=1926
+DVI-D-0 DP-1 XPosition 1920x1080=6
 DVI-D-0 DP-1 YPosition=46
-DVI-D-0 DP-1 YPosition 1920x1080=41
+DVI-D-0 DP-1 YPosition 1440x900=210
+DVI-D-0 DP-1 YPosition 1920x1080=30
 Draw Frames To Grouped Items=true
 Face Scanner First Run=true
 FullScreen Hide SideBars=true
@@ -1287,7 +1291,7 @@ Show Only Face Tags For Assigning Name=true
 Show Permanent Delete Dialog=true
 Show Splash=false
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAABFIAAAOKAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB3QAAAOXAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=false
@@ -1344,7 +1348,9 @@ Brightness Multiplier=1
 Custom White Balance=6500
 Custom White Balance Green=1
 DVI-D-0 DP-1 Height 1080=1026
+DVI-D-0 DP-1 Height 1920x1080=1031
 DVI-D-0 DP-1 Width 1920=751
+DVI-D-0 DP-1 Width 1920x1080=756
 DVI-D-0 DP-1 XPosition=0
 DVI-D-0 DP-1 XPosition 1920x1080=0
 DVI-D-0 DP-1 YPosition=0
@@ -1405,7 +1411,7 @@ SlideShowProgressIndicator=true
 SlideShowStartCurrent=false
 SlideShowSuffle=false
 SplitterState=AAAA/wAAAAEAAAACAAAAqwAAAXQB/////wAAAAABAQ==
-State=AAAA/wAAAAD9AAAAAAAAAu8AAAORAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAAvQAAAOKAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 TIFFCompression=false
 ToolBarsMovable=Disabled
 Unclip Color=0
@@ -1566,7 +1572,7 @@ CaseSensitive=0
 
 [ItemIconViewFaceTagFilterView]
 CurrentIndex=
-Expansion=4,69,1621,1607
+Expansion=4,8,78,79,1837
 RestoreChecked=false
 Selection=
 SortColumn=0
@@ -1789,9 +1795,9 @@ ToolBarsMovable=Disabled
 Width 1920=855
 
 [MainWindow]
-InitialAlbumID=134217894
-SplitterState=AAAA/wAAAAEAAAADAAABFgAABGcAAAF0Af////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABxAQAAAwAAAXQAAAOKAAAABAAAAAQAAAAIAAAACPwAAAAA
+InitialAlbumID=134217887
+SplitterState=AAAA/wAAAAEAAAADAAABFgAABGsAAAF1Af////8AAAAAAQE=
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAARnAAAArfwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABGcAAABxAQAAAwAABIUAAAOXAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [MaintenanceDlg Settings]
 AlbumComboBox-Checked=
@@ -1931,7 +1937,7 @@ Width 1920=1920
 CaseSensitive=0
 
 [TagFilter Sidebar]
-FaceTagsFilter Expanded=false
+FaceTagsFilter Expanded=true
 LabelsFilter Expanded=false
 Matching Condition=0
 Search Text Filter Fields=127
@@ -1943,10 +1949,10 @@ TypeGeolocationFilter Expanded=false
 TypeMimeFilter Expanded=false
 
 [TagView Sidebar]
-CurrentIndex=166
-Expansion=0,11,12,227,228,166
+CurrentIndex=
+Expansion=0,4,69
 RestoreChecked=false
-Selection=166
+Selection=
 SortColumn=0
 SortOrder=0
 TagsSource=false
@@ -1957,9 +1963,9 @@ Items=
 [Time Adjust Dialog]
 DVI-D-0 DP-1 Height 1080=1026
 DVI-D-0 DP-1 Height 1440=1402
-DVI-D-0 DP-1 Height 1920x1080=1026
+DVI-D-0 DP-1 Height 1920x1080=1042
 DVI-D-0 DP-1 Width 1920=900
-DVI-D-0 DP-1 Width 1920x1080=900
+DVI-D-0 DP-1 Width 1920x1080=946
 DVI-D-0 DP-1 Width 900=900
 Height 1080=1026
 Width 1920=927

@@ -64,8 +64,8 @@
   // --------------- LSP --------------- //
 
   // Python
+  "pyright.enable": true,
   "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
 
   // Lua
   "lua.enable": true,

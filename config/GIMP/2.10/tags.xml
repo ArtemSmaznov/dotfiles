@@ -1501,9 +1501,6 @@
   <resource identifier="Corbel Light Italic" checksum="(null)">
   </resource>
 
-  <resource identifier="Courier" checksum="(null)">
-  </resource>
-
   <resource identifier="Courier New" checksum="(null)">
   </resource>
 
@@ -1546,6 +1543,42 @@
   <resource identifier="DejaVu Sans Mono Bold Oblique" checksum="(null)">
   </resource>
 
+  <resource identifier="DejaVuSansMono Nerd Font" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Bold Oblique" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Mono" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Mono Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Mono Bold Oblique" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Mono Oblique" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono Nerd Font Oblique" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono NF" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono NF Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono NF Bold Oblique" checksum="(null)">
+  </resource>
+
+  <resource identifier="DejaVuSansMono NF Oblique" checksum="(null)">
+  </resource>
+
   <resource identifier="DejaVu Sans Mono Oblique" checksum="(null)">
   </resource>
 
@@ -1583,6 +1616,15 @@
   </resource>
 
   <resource identifier="DejaVu Serif Semi-Condensed" checksum="(null)">
+  </resource>
+
+  <resource identifier="DroidSansMono Nerd Font" checksum="(null)">
+  </resource>
+
+  <resource identifier="DroidSansMono Nerd Font Mono" checksum="(null)">
+  </resource>
+
+  <resource identifier="DroidSansMono NF" checksum="(null)">
   </resource>
 
   <resource identifier="Franklin Gothic Medium," checksum="(null)">
@@ -1748,15 +1790,6 @@
   </resource>
 
   <resource identifier="Monospace Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="MS Sans Serif" checksum="(null)">
-  </resource>
-
-  <resource identifier="MS Serif" checksum="(null)">
-  </resource>
-
-  <resource identifier="mtx" checksum="(null)">
   </resource>
 
   <resource identifier="Nimbus Mono PS" checksum="(null)">
@@ -3851,9 +3884,6 @@
   </resource>
 
   <resource identifier="Sitka Text Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Small Fonts" checksum="(null)">
   </resource>
 
   <resource identifier="Source Code Pro" checksum="(null)">
