@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'                       " Plugin for deleting, changing,
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'christoomey/vim-system-copy'
 Plug 'liuchengxu/vim-which-key'
 " Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
 Plug 'ryanoasis/vim-devicons' 
