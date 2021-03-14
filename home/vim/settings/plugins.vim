@@ -18,8 +18,10 @@ Plug 'maxbrunsfeld/vim-yankstack'               " Plugin for storing and cycling
 Plug 'tpope/vim-fugitive'                       " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-surround'                       " Plugin for deleting, changing, and adding surroundings
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'liuchengxu/vim-which-key'
-Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
+" Plug 'scrooloose/nerdcommenter'                 " Plugin for commenting code
 Plug 'ryanoasis/vim-devicons' 
 Plug 'chrisbra/Colorizer',
 " Plug 'preservim/nerdtree' |                     
@@ -49,7 +51,8 @@ source ~/.vim/settings/plugins/colorizer.vim
 source ~/.vim/settings/plugins/ctrlp.vim 
 source ~/.vim/settings/plugins/gitGutter.vim
 source ~/.vim/settings/plugins/lightline.vim
-source ~/.vim/settings/plugins/nerdcommenter.vim
+source ~/.vim/settings/plugins/commentary.vim
+" source ~/.vim/settings/plugins/nerdcommenter.vim
 " source ~/.vim/settings/plugins/nerdtree.vim
 source ~/.vim/settings/plugins/surround.vim
 source ~/.vim/settings/plugins/tabularize.vim
