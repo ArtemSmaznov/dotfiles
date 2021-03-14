@@ -59,6 +59,7 @@ source ~/.vim/settings/plugins/surround.vim
 source ~/.vim/settings/plugins/tabularize.vim
 source ~/.vim/settings/plugins/which-key.vim
 source ~/.vim/settings/plugins/yankstack.vim
+source ~/.vim/settings/plugins/system-copy.vim
 
 
 " Automatically install missing plugins on startup
