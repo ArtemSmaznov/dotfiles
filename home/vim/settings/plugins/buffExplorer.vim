@@ -3,5 +3,5 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 
-map <leader>bo :BufExplorer<cr>
+" map <leader>bo :BufExplorer<cr>
 

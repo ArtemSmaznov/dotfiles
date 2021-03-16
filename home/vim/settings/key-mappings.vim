@@ -30,15 +30,6 @@ nnoremap J :m+<cr>==
 vnoremap K :m '<-2<cr>gv=gv
 vnoremap J :m '>+1<cr>gv=gv
 
-" Encase in parenthesis/brackets
-vnoremap $> <esc>`>a)<esc>`<i(<esc>
-vnoremap $] <esc>`>a]<esc>`<i[<esc>
-vnoremap $} <esc>`>a}<esc>`<i{<esc>
-vnoremap $" <esc>`>a"<esc>`<i"<esc>
-vnoremap $' <esc>`>a'<esc>`<i'<esc>
-vnoremap $` <esc>`>a`<esc>`<i`<esc>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
