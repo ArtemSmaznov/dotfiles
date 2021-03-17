@@ -1,0 +1,9 @@
+.DS_Store
+.netrwhist
+local.vim
+tags
+spell
+plugged/*
+plugged/ack.vim/.netrwhist
+temp_dirs/undodir/*
+temp_dirs/yankring_history_v2.txt
