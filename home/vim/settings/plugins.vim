@@ -45,6 +45,7 @@ call plug#end()
 " => Load Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.vim/settings/plugins/ack.vim
+source ~/.vim/settings/plugins/auto-pairs.vim
 source ~/.vim/settings/plugins/buffExplorer.vim
 source ~/.vim/settings/plugins/coc.vim
 source ~/.vim/settings/plugins/colorizer.vim

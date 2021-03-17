@@ -12,7 +12,6 @@ set showcmd          " Show commands
 set cmdheight=2      " Height of the command bar
 set splitbelow       " Horizontal splits will automatically be below
 set splitright       " Vertical splits will automatically be to the right
-set termwinsize=10x0 " Set size for terminal
 " Disable scrollbars 
 " set guioptions-=r
 " set guioptions-=R
@@ -24,7 +23,11 @@ set fillchars+=vert:\
 
 " Enable Mouse Support
 set mouse=a
-set ttymouse=sgr
+
+if !has('nvim')
+  set ttymouse=sgr
+  set termwinsize=10x0 " Set size for terminal
+endif
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
