@@ -18,7 +18,7 @@ filetype indent on
 let mapleader = " "
 
 set history=500 " Sets how many lines of history VIM has to remember
-set clipboard=unnamedplus " Copy paste between vim and everything else
+set clipboard=unnamed " Copy paste between vim and everything else
 
 " Set to auto read when a file is changed from the outside
 set autoread
