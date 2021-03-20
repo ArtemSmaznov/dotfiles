@@ -1,0 +1,15 @@
+pane	automation	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/cypress	1	vim	:vim cypress/integration/WebPoker/playground.feature
+pane	awesome	1	:apps	1	:*	1	:/home/artem/development/ArtemSmaznov/awesome-config	1	vim	:vim configuration/apps.lua
+pane	awesome	2	:config	0	:#-	1	:/home/artem/development/ArtemSmaznov/awesome-config	1	vim	:vim theme/default.lua
+pane	dotfiles	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	vim	:vim home/vim/settings/plugins.vim
+pane	dotfiles	2	:tmux	0	:#-	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	vim	:vim home/tmux/plugins/tmux-resurrect/README.md
+pane	music	1	:tizonia	1	:*	1	:/home/artem	1	tizonia	:tizonia --youtube-audio-mix-search japan lofi
+pane	music	2	:alsa	0	:-	1	:/home/artem	1	bash	:
+window	automation	1	1	:*	d39e,206x59,0,0,1
+window	awesome	1	1	:*	d39f,206x59,0,0,2
+window	awesome	2	0	:#-	d3a0,206x59,0,0,3
+window	dotfiles	1	1	:*	d3a1,206x59,0,0,4
+window	dotfiles	2	0	:#-	d3a2,206x59,0,0,5
+window	music	1	1	:*	d3a3,206x59,0,0,6
+window	music	2	0	:-	d3a4,206x59,0,0,7
+state	awesome	music

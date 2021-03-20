@@ -1,0 +1,5 @@
+pane	dotfiles	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	bash	:
+pane	music	1	:bash	1	:*	1	:/home/artem	1	bash	:
+window	dotfiles	1	1	:*	ccfe,101x58,0,0,1
+window	music	1	1	:*	ccfd,101x58,0,0,0
+state	dotfiles	music

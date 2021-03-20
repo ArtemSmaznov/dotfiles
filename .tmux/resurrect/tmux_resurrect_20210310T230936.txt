@@ -1,0 +1,13 @@
+pane	awesome	1	:[tmux]	1	:*	1	:/home/artem/development/ArtemSmaznov/awesome	1	vim	:vim configuration/apps.lua
+pane	dotfiles	1	:bash	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	bash	:
+pane	music	1	:tizonia	1	:*	1	:/home/artem	1	tizonia	:tizonia --youtube-audio-mix-search gris ost
+pane	music	2	:alsa	0	:#-	1	:/home/artem	1	bash	:
+pane	qtile	1	:[tmux]	1	:*	1	:/home/artem/development/ArtemSmaznov/qtile	1	vim	:vim config.py
+pane	vim	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles/home/vim	1	vim	:vim settings/plugins.vim
+window	awesome	1	1	:*	d0e1,210x59,0,0,4
+window	dotfiles	1	1	:*	d0e2,210x59,0,0,5
+window	music	1	1	:*	d0dd,210x59,0,0,0
+window	music	2	0	:#-	d0de,210x59,0,0,1
+window	qtile	1	1	:*	d0df,210x59,0,0,2
+window	vim	1	1	:*	d0e3,210x59,0,0,6
+state	vim	dotfiles

@@ -1,0 +1,21 @@
+pane	awesome	1	:config	1	:*	1	:/home/artem/development/ArtemSmaznov/awesome	1	vim	:vim configuration/apps.lua
+pane	awesome	2	:bash	0	:-	1	:/home/artem/development/ArtemSmaznov/awesome	1	bash	:
+pane	dotfiles	1	:root	0	:-	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	bash	:
+pane	dotfiles	2	:powerline	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles/config/powerline	1	vim	:vim
+pane	dotfiles	3	:tmux	0	:	1	:/home/artem	1	vim	:vim .tmux.conf
+pane	music	1	:tizonia	1	:*	1	:/home/artem	1	bash	:
+pane	music	2	:alsa	0	:-	1	:/home/artem	1	bash	:
+pane	qtile	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/qtile	1	vim	:vim lib/widgets.py
+pane	vim	1	:vim	0	:#-	1	:/home/artem/development/ArtemSmaznov/dotfiles/home/vim	1	vim	:vim settings/ui.vim
+pane	vim	2	:powerline	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles/config/powerline	1	vim	:vim config.py
+window	awesome	1	1	:*	d0e1,210x59,0,0,4
+window	awesome	2	0	:-	d0e5,210x59,0,0,8
+window	dotfiles	1	0	:-	d0e0,210x59,0,0,3
+window	dotfiles	2	1	:*	689f,210x59,0,0,10
+window	dotfiles	3	0	:	68a0,210x59,0,0,11
+window	music	1	1	:*	d0dd,210x59,0,0,0
+window	music	2	0	:-	d0df,210x59,0,0,2
+window	qtile	1	1	:*	c284,169x35,0,0,7
+window	vim	1	0	:#-	c282,169x35,0,0,5
+window	vim	2	1	:*	c286,169x35,0,0,9
+state	dotfiles	vim

@@ -1,0 +1,17 @@
+pane	automation	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/cypress	1	vim	:vim cypress/integration/WebPoker/playground.feature
+pane	awesome	1	:apps	0	:#-	1	:/home/artem/development/ArtemSmaznov/awesome	1	vim	:vim configuration/apps.lua
+pane	awesome	2	:config	1	:*	1	:/home/artem/development/ArtemSmaznov/awesome	1	vim	:vim theme/default.lua
+pane	dotfiles	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	vim	:vim home/vim/settings/plugins/coc.vim
+pane	dotfiles	2	:tmux	0	:#-	1	:/home/artem/development/ArtemSmaznov/dotfiles	1	vim	:vim home/tmux/plugins/tmux-resurrect/README.md
+pane	music	1	:tizonia	1	:*	1	:/home/artem	1	tizonia	:tizonia --youtube-audio-mix-search nier ost
+pane	music	2	:alsa	0	:#-	1	:/home/artem	1	alsamixer	:alsamixer
+pane	qtile	1	:vim	1	:*	1	:/home/artem/development/ArtemSmaznov/qtile	1	vim	:vim config.py
+window	automation	1	1	:*	af5e,211x60,0,0,1
+window	awesome	1	0	:#-	d1ff,103x59,0,0,2
+window	awesome	2	1	:*	d200,103x59,0,0,3
+window	dotfiles	1	1	:*	d201,103x59,0,0,4
+window	dotfiles	2	0	:#-	d202,103x59,0,0,5
+window	music	1	1	:*	d203,103x59,0,0,6
+window	music	2	0	:#-	d204,103x59,0,0,7
+window	qtile	1	1	:*	68a3,210x59,0,0,14
+state	qtile	music
