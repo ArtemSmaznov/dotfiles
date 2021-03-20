@@ -10,6 +10,9 @@ if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 # ** to mean reclusive
 shopt -s globstar
 
+# VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
+# set -o vi
+
 # ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
 # ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
@@ -166,7 +169,7 @@ alias less='less -R'
 alias makepkg='makepkg -si'
 
 # Change directory aliases
-alias home='cd ~'
+alias ~='cd ~'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -207,8 +210,8 @@ GIT_DIR="$HOME/Documents/git/ArtemSmaznov"
 
 alias gdot="/usr/bin/git --git-dir=$GIT_DIR/dotfiles/ --work-tree=$HOME" 
 alias gpdot="/usr/bin/git --git-dir=$GIT_DIR/private-dotfiles/ --work-tree=$HOME" 
-alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qtile/ --work-tree=$HOME" 
-alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/awesome/ --work-tree=$HOME" 
+alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qtile/ --work-tree=$HOME/.config/qtile"
+alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/awesome/ --work-tree=$HOME/.config/awesome" 
 
 ###############################
 # NETWORKING
@@ -351,4 +354,4 @@ if [[ -f ~/.mybashrc ]]; then
   . ~/.mybashrc
 fi
 
-neofetch
+neofetch | lolcat
