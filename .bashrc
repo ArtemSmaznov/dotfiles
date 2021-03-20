@@ -209,7 +209,7 @@ alias countfiles="for t in files links directories; do echo \`find . -type \${t:
 GIT_DIR="$HOME/Documents/git/ArtemSmaznov"
 
 alias gdot="/usr/bin/git --git-dir=$GIT_DIR/dotfiles/ --work-tree=$HOME" 
-alias gpdot="/usr/bin/git --git-dir=$GIT_DIR/private-dotfiles/ --work-tree=$HOME" 
+alias gprivate="/usr/bin/git --git-dir=$GIT_DIR/private-dotfiles/ --work-tree=$HOME" 
 alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qtile/ --work-tree=$HOME/.config/qtile"
 alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/awesome/ --work-tree=$HOME/.config/awesome" 
 
