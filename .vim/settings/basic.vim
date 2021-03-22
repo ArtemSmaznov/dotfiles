@@ -40,6 +40,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " Stop newline continution of comments
 autocmd BufNewFile,BufRead,BufEnter * setlocal fo-=cro 
 
+set nrformats=bin,hex
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
