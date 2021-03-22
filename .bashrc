@@ -354,4 +354,11 @@ if [[ -f ~/.mybashrc ]]; then
   . ~/.mybashrc
 fi
 
-neofetch | lolcat
+# Startup
+if [[ -f /usr/bin/neofetch ]]; then
+  if [[ -f /usr/bin/lolcat ]]; then
+    neofetch | lolcat
+  else
+    neofetch
+  fi
+fi
