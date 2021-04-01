@@ -9,7 +9,8 @@
 #               Simon Ingelsson
 
 # Define LOCKER in .xprofile to set to different LOCKER program
-LOCKER="${LOCKER:-slock}"
+# LOCKER="${LOCKER:-lock}"
+LOCKER="xscreensaver-command -lock"
 
 # use notify-send if run in dumb term
 OUTPUT="echo"
@@ -28,12 +29,12 @@ declare -a MANAGERS=(
 
 # An array of options to choose.
 declare -a options=(
-"Lock screen"
-"Logout"
+"Suspend"
 "Reboot"
 "Shutdown"
-"Suspend"
-"Win"
+"Logout"
+"Lock screen"
+"Reboot to Windows"
 "Quit"
 )
 
@@ -68,7 +69,7 @@ case $choice in
       ${OUTPUT} "User chose not to reboot." && exit 0
     fi
     ;;
-  'Win')
+  'Reboot to Windows')
     if [[ $(yesno "Reboot?") == "Yes" ]]; then
       winreboot
     else
