@@ -1,2 +1,26 @@
-xscreensaver.Dialog.foreground: #FFFF00
+! Dark gray theme:
+!
+xscreensaver.Dialog.foreground:             #CCCCCC
+xscreensaver.Dialog.background:             #333333
+xscreensaver.Dialog.topShadowColor:         #444444
+xscreensaver.Dialog.bottomShadowColor:      #111111
+xscreensaver.Dialog.text.foreground:        #DDDDDD
+xscreensaver.Dialog.text.background:        #666666
+xscreensaver.Dialog.Button.foreground:      #CCCCCC
+xscreensaver.Dialog.Button.background:      #666666
+xscreensaver.passwd.thermometer.foreground: #4464AC
+xscreensaver.passwd.thermometer.background: #666666
 
+! Black borderless theme:
+!
+! xscreensaver.Dialog.foreground:             #CCCCCC
+! xscreensaver.Dialog.background:             #000000
+! xscreensaver.Dialog.topShadowColor:         #000000
+! xscreensaver.Dialog.bottomShadowColor:      #000000
+! xscreensaver.Dialog.text.foreground:        #CCCCCC
+! xscreensaver.Dialog.text.background:        #000000
+! xscreensaver.Dialog.Button.foreground:      #CCCCCC
+! xscreensaver.Dialog.Button.background:      #333333
+! xscreensaver.passwd.thermometer.foreground: #CCCCCC
+! xscreensaver.passwd.thermometer.background: #333333
+! xscreensaver.passwd.thermometer.width:      3
