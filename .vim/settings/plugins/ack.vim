@@ -28,7 +28,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "   <leader>p
 "
 map <leader>sc :botright cope<cr>
-map <leader>so ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+" map <leader>so ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " map <leader>n :cn<cr>
 " map <leader>p :cp<cr>
 

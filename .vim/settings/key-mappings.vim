@@ -4,6 +4,7 @@
 " Sections:
 "    -> General
 "    -> File navigation
+"    -> Workspace navigation
 "    -> Spell checking
 "    -> Tabs, windows and buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -15,6 +16,10 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" Disable search highlight
+map <silent> <leader><leader> :noh<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => File navigation
@@ -29,6 +34,12 @@ nnoremap K :m-2<cr>==
 nnoremap J :m+<cr>==
 vnoremap K :m '<-2<cr>gv=gv
 vnoremap J :m '>+1<cr>gv=gv
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Workspace navigation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>sg :vimgrep 
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -74,8 +85,6 @@ nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Working with buffers
-" Disable search highlight
-map <silent> <leader><leader> :noh<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT 
@@ -90,7 +99,7 @@ map <leader>bh :bprevious<cr>
 map <leader>bl :bnext<cr>                  
 
 " Switch CWD to the directory of the open buffer
-map <leader>bd :cd %:p:h<cr>:pwd<cr>
+map <leader>bc :cd %:p:h<cr>:pwd<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

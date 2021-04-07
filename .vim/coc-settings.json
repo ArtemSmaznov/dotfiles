@@ -23,7 +23,7 @@
 
   // Explorer
   "explorer.activeMode": true,
-  "explorer.buffer.tabOnly": true,
+  "explorer.buffer.tabOnly": false,
   "explorer.filename.colored.enable": true,
   "explorer.file.autoReveal": true,
   "explorer.file.revealWhenOpen": true,

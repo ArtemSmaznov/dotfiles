@@ -1,11 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
 "    -> General
+"    -> Search
 "    -> Colors and Fonts
 "    -> Files and backups
 "    -> Spell checking
 "    -> Text, tab and indent related
-"    -> Moving around, tabs and buffers
+"    -> Tabs and buffers
 "    -> Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -17,20 +18,6 @@ filetype indent on
 " With a map leader it's possible to do extra key combinations
 let mapleader = " "
 
-set history=500 " Sets how many lines of history VIM has to remember
-set clipboard=unnamed " Copy paste between vim and everything else
-
-" Set to auto read when a file is changed from the outside
-set autoread
-au FocusGained,BufEnter * checktime
-
-" Turn persistent undo on - you can undo even when you close a buffer/VIM
-try
-    set undodir=~/.vim/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
 " General abbreviations
 iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
@@ -40,7 +27,21 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " Stop newline continution of comments
 autocmd BufNewFile,BufRead,BufEnter * setlocal fo-=cro 
 
-set nrformats=bin,hex
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ignorecase " Ignore case when searching
+set smartcase  " When searching try to be smart about cases
+set hlsearch   " Highlight search results
+set incsearch  " Makes search act like search in modern browsers
+set magic      " For regular expressions turn magic on
+
+set wildmenu   " Turn on the Wild menu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -83,6 +84,20 @@ set nobackup              " This is recommended by coc
 set nowritebackup         " This is recommended by coc
 set noswapfile
 
+set history=500       " Sets how many lines of history VIM has to remember
+set clipboard=unnamed " Copy paste between vim and everything else
+
+" Set to auto read when a file is changed from the outside
+set autoread
+au FocusGained,BufEnter * checktime
+
+" Turn persistent undo on - you can undo even when you close a buffer/VIM
+try
+    set undodir=~/.vim/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -112,9 +127,12 @@ set autoindent  " Good auto indent
 set smartindent " Makes indenting smart
 set wrap        " Wrap lines
 
+" CTRL+A/X will only treat numbers as decimals or hex
+set nrformats=bin,hex
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hidden     " A buffer becomes hidden when it is abandoned
 

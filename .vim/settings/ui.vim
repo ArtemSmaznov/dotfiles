@@ -12,11 +12,12 @@ set showcmd          " Show commands
 set cmdheight=2      " Height of the command bar
 set splitbelow       " Horizontal splits will automatically be below
 set splitright       " Vertical splits will automatically be to the right
+
 " Disable scrollbars 
-" set guioptions-=r
-" set guioptions-=R
-" set guioptions-=l
-" set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 " Remove separator pipes
 set fillchars+=vert:\ 
@@ -26,28 +27,19 @@ set mouse=a
 
 if !has('nvim')
   set ttymouse=sgr
-  set termwinsize=10x0 " Set size for terminal
+  set termwinsize=15x0 " Set size for terminal
 endif
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-set ignorecase " Ignore case when searching
-set smartcase  " When searching try to be smart about cases
-set hlsearch   " Highlight search results
-set incsearch  " Makes search act like search in modern browsers
 set lazyredraw " Don't redraw while executing macros (good performance config)
-set magic      " For regular expressions turn magic on
-
-set showmatch " Show matching brackets when text indicator is over them
-set mat=2     " How many tenths of a second to blink when matching brackets
-set wildmenu  " Turn on the Wild menu
-set so=7      " Leave 7 lines on screen above/below the cursor
+set showmatch  " Show matching brackets when text indicator is over them
+set mat=2      " How many tenths of a second to blink when matching brackets
 
 " Step size for navigating with CTRL+e/y
 noremap <C-e> 4<C-e>
 noremap <C-y> 4<C-y>
+
+" Leave 7 lines on screen above/below the cursor
+set so=7
 
 " No annoying sound on errors
 set noerrorbells
@@ -62,9 +54,9 @@ colorscheme gruvbox8
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-  set wildignore+=.git\*,.hg\*,.svn\*
+  set wildignore+=.git\*,.hg\*,.svn\*,**\node_modules\**
 else
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,**/node_modules/**,*/.DS_Store
 endif
 
 " Properly disable sound on errors on MacVim
