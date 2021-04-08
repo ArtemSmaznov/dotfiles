@@ -358,9 +358,5 @@ fi
 
 # Startup
 if [[ -f /usr/bin/neofetch ]]; then
-  if [[ -f /usr/bin/lolcat ]]; then
-    neofetch | lolcat
-  else
-    neofetch
-  fi
+  neofetch
 fi
