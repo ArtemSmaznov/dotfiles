@@ -7,6 +7,7 @@ Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy file, buffer, mru, tag, 
 Plug 'jiangmiao/auto-pairs'                     " Insert or delete brackets, parens, quotes in pair
 Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support for Vim & Neovim
+Plug 'vim-airline/vim-airline'
 " Plug 'itchyny/lightline.vim'                    " A light and configurable statusline/tabline for Vim
 " Plug 'powerline/powerline'                      " A more powerful status line
 Plug 'godlygeek/tabular'                        " Configurable, flexible, intuitive text aligning
@@ -24,6 +25,7 @@ Plug 'christoomey/vim-system-copy'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons' 
 Plug 'chrisbra/Colorizer',
+Plug 'justinmk/vim-sneak'
 " Plug 'preservim/nerdtree' |                     
       " \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
       " \ Plug 'Xuyuanp/nerdtree-git-plugin' 
@@ -51,7 +53,7 @@ source ~/.vim/settings/plugins/coc.vim
 source ~/.vim/settings/plugins/colorizer.vim
 source ~/.vim/settings/plugins/ctrlp.vim 
 source ~/.vim/settings/plugins/gitGutter.vim
-source ~/.vim/settings/plugins/lightline.vim
+" source ~/.vim/settings/plugins/lightline.vim
 source ~/.vim/settings/plugins/commentary.vim
 " source ~/.vim/settings/plugins/nerdtree.vim
 source ~/.vim/settings/plugins/surround.vim
