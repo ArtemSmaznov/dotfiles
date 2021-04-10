@@ -26,7 +26,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons' 
 Plug 'chrisbra/Colorizer',
 Plug 'justinmk/vim-sneak'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Language Support
