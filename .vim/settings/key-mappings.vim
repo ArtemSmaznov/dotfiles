@@ -15,7 +15,7 @@
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>sp :setlocal paste!<cr>
 
 " Disable search highlight
 map <silent> <leader><leader> :noh<cr>
@@ -38,7 +38,7 @@ vnoremap J :m '>+1<cr>gv=gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Workspace navigation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>sg :vimgrep 
+nnoremap <leader>fv :vimgrep 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

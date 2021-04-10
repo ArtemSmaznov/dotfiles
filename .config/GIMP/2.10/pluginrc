@@ -98,22 +98,6 @@
          ""
          1 0
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/tile-small/tile-small" 1614445490
-    (proc-def "plug-in-small-tiles" 1
-         "Tile image into smaller versions of the original"
-         "More here later"
-         "Andy Thomas"
-         "Andy Thomas"
-         "1997"
-         "_Small Tiles..."
-         0
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         4 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "num-tiles" "Number of tiles to make")))
 (plug-in-def "${gimp_plug_in_dir}/plug-ins/tile/tile" 1614445490
     (proc-def "plug-in-tile" 1
          "Create an array of copies of the image"
@@ -135,6 +119,22 @@
         (proc-arg 0 "new-image" "Create a new image?")
         (proc-arg 13 "new-image" "Output image (-1 if new-image == FALSE)")
         (proc-arg 14 "new-layer" "Output layer (-1 if new-image == FALSE)")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/tile-small/tile-small" 1614445490
+    (proc-def "plug-in-small-tiles" 1
+         "Tile image into smaller versions of the original"
+         "More here later"
+         "Andy Thomas"
+         "Andy Thomas"
+         "1997"
+         "_Small Tiles..."
+         0
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         4 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "num-tiles" "Number of tiles to make")))
 (plug-in-def "${gimp_plug_in_dir}/plug-ins/sphere-designer/sphere-designer" 1614445490
     (proc-def "plug-in-spheredesigner" 1
          "Create an image of a textured sphere"

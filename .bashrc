@@ -13,6 +13,17 @@ shopt -s globstar
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 # set -o vi
 
+# Sourcing fzf configs
+if [[ -f /usr/share/fzf/key-bindings.bash ]];
+then
+  source /usr/share/fzf/key-bindings.bash;
+fi
+if [[ -f /usr/share/fzf/completion.bash ]];
+then
+  source /usr/share/fzf/completion.bash;
+fi
+
+
 # ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
 # ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
@@ -149,7 +160,12 @@ alias update-proton='development/cproton.sh'
 # Audio Outout info
 alias aoutput='cat /proc/asound/card2/pcm0p/sub0/hw_params'
 
-alias picom='picom -b --experimental-backends --dbus'
+alias startpicom='picom -b --experimental-backends --dbus'
+
+# fzf
+alias pacmanbrowse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias pacmanlist="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
+
 
 ###############################
 # GENERAL
