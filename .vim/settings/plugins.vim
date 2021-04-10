@@ -61,6 +61,7 @@ source ~/.vim/settings/plugins/sneak.vim
 source ~/.vim/settings/plugins/system-copy.vim
 source ~/.vim/settings/plugins/surround.vim
 source ~/.vim/settings/plugins/tabularize.vim
+source ~/.vim/settings/plugins/tmuxline.vim
 source ~/.vim/settings/plugins/which-key.vim
 " source ~/.vim/settings/plugins/yankstack.vim
 
