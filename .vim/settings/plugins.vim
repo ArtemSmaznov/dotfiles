@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'                     " Insert or delete brackets, par
 Plug 'jlanzarotta/bufexplorer'                  " Buffer Explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support for Vim & Neovim
 Plug 'vim-airline/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'                        " Configurable, flexible, intuitive text aligning
 Plug 'terryma/vim-expand-region'                " Incremental visual selection
 Plug 'airblade/vim-gitgutter'                   " A Vim plugin which shows a git diff in the gutter
