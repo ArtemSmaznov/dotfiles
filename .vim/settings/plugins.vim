@@ -26,6 +26,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons' 
 Plug 'chrisbra/Colorizer',
 Plug 'justinmk/vim-sneak'
+Plug 'severin-lemaignan/vim-minimap'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -57,6 +58,7 @@ source ~/.vim/settings/plugins/commentary.vim
 " source ~/.vim/settings/plugins/ctrlp.vim 
 source ~/.vim/settings/plugins/fzf.vim 
 source ~/.vim/settings/plugins/gitGutter.vim
+source ~/.vim/settings/plugins/minimap.vim
 source ~/.vim/settings/plugins/sneak.vim
 source ~/.vim/settings/plugins/system-copy.vim
 source ~/.vim/settings/plugins/surround.vim
