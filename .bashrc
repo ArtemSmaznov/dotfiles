@@ -29,7 +29,7 @@ fi
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
-export PATH=$PATH:~/.bin:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.local/bin/dmscripts
 
 # Git Indicators
 export GIT_PS1_SHOWDIRTYSTATE=true
@@ -198,11 +198,17 @@ alias .....='cd ../../../..'
 alias bd='cd "$OLDPWD"'
 
 # Aliases for multiple directory listing commands
-alias ls='ls -Fh --color=always'  # add colors and file type extensions
-alias la='ls -Ah'                 # show hidden files
-alias ll='ls -als'                # long listing format
-alias llf="ls -l | egrep -v '^d'" # long list files only
-alias lld="ls -l | egrep '^d'"    # long list directories only
+if [[ -f /usr/bin/exa ]]; then
+  alias ls='exa -Fh'                # add file type extensions
+  alias la='ls -ah'                 # show hidden files
+  alias ll='ls -al'                 # long listing format
+else
+  alias ls='ls -Fh --color=always'  # add colors and file type extensions
+  alias la='ls -Ah'                 # show hidden files
+  alias ll='ls -als'                # long listing format
+fi
+alias llf="\ls -l | egrep -v '^d'" # long list files only
+alias lld="\ls -l | egrep '^d'"    # long list directories only
 
 # Grep
 alias grep='grep --colour=auto'
@@ -225,11 +231,15 @@ alias countfiles="for t in files links directories; do echo \`find . -type \${t:
 
 # Dotfiles bare git repos
 GIT_DIR="$HOME/Documents/git/ArtemSmaznov"
+WALL_DIR="$HOME/Pictures/wallpapers"
 
-alias gdot="/usr/bin/git --git-dir=$GIT_DIR/dotfiles/ --work-tree=$HOME" 
-alias gprivate="/usr/bin/git --git-dir=$GIT_DIR/private-dotfiles/ --work-tree=$HOME" 
-alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qtile/ --work-tree=$HOME/.config/qtile"
-alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/awesome/ --work-tree=$HOME/.config/awesome" 
+alias gdot="/usr/bin/git --git-dir=$GIT_DIR/Dotfiles/ --work-tree=$HOME" 
+alias gvim="/usr/bin/git --git-dir=$GIT_DIR/Vim/ --work-tree=$HOME" 
+alias gprivate="/usr/bin/git --git-dir=$GIT_DIR/private-Dotfiles/ --work-tree=$HOME" 
+alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qTile/ --work-tree=$HOME/.config/qtile"
+alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/AwesomeWM/ --work-tree=$HOME/.config/awesome"
+alias gdmscripts="/usr/bin/git --git-dir=$GIT_DIR/dmscripts/ --work-tree=$HOME/.local/bin/dmscripts" 
+alias gwallpapers="/usr/bin/git --git-dir=$GIT_DIR/Wallpapers/ --work-tree=$WALL_DIR" 
 
 ###############################
 # NETWORKING
