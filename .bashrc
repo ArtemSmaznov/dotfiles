@@ -198,7 +198,7 @@ alias .....='cd ../../../..'
 alias bd='cd "$OLDPWD"'
 
 # Aliases for multiple directory listing commands
-if [[ -f /usr/bin/exa ]]; then
+if hash exa 2>/dev/null; then
   alias ls='exa -Fh'                # add file type extensions
   alias la='ls -ah'                 # show hidden files
   alias ll='ls -al'                 # long listing format
@@ -383,6 +383,6 @@ if [[ -f ~/.mybashrc ]]; then
 fi
 
 # Startup
-if [[ -f /usr/bin/neofetch ]]; then
+if hash neofetch 2>/dev/null; then
   neofetch
 fi
