@@ -1,4 +1,5 @@
 [General]
 type=image
 color=#1d1e19
-background="components/artwork/rbates_mam_tor.jpg"
+background.blur.intensity=30
+background="components/artwork/leigh-kendell-581.jpg"
