@@ -10,6 +10,9 @@ if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 # ** to mean reclusive
 shopt -s globstar
 
+# auto cd when entering just the path
+shopt -s autocd
+
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 # set -o vi
 
@@ -50,6 +53,10 @@ PROMPT_COMMAND='history -a'
 
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
+
+# Enable history completion with up and down arrow keys
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
