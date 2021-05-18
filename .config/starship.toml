@@ -1,0 +1,16 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]
+success_symbol = "[➜](bold green)"
+
+# [hostname]
+# ssh_only = false
+
+# [username]
+# show_always = true
+
+# [directory]
+# truncation_length = 3
+# truncate_to_repo = true
