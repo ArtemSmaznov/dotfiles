@@ -390,6 +390,8 @@ if [[ -f ~/.mybashrc ]]; then
 fi
 
 # Startup
+eval "$(starship init bash)"
+
 if hash neofetch 2>/dev/null; then
   neofetch
 fi
