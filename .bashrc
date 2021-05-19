@@ -137,7 +137,9 @@ fi
 # ░▀▀▀░▀░▀░▀▀░
 
 # Source the Starship Prompt
-eval "$(starship init bash)"
+if hash starship 2>/dev/null; then
+  eval "$(starship init bash)"
+fi
 
 # Script to run on terminal launch
 if hash neofetch 2>/dev/null; then
