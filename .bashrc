@@ -112,23 +112,23 @@ then
 fi
 
 # Aliases
-if [[ -f ~/.bash/aliases ]]; then
-  . ~/.bash/aliases
+if [[ -f ~/.config/bash/aliases ]]; then
+  . ~/.config/bash/aliases
 fi
 
 # Prompt
-if [[ -f ~/.bash/prompt ]]; then
-  . ~/.bash/prompt
+if [[ -f ~/.config/bash/prompt ]]; then
+  . ~/.config/bash/prompt
 fi
 
 # Wake Commands
-if [[ -f ~/.bash/wol ]]; then
-  . ~/.bash/wol
+if [[ -f ~/.config/bash/wol ]]; then
+  . ~/.config/bash/wol
 fi
 
 # Source custom overwrites - needs to be placed at the very end
-if [[ -f ~/.bash/bashrc ]]; then
-  . ~/.bash/bashrc
+if [[ -f ~/.config/bash/bashrc ]]; then
+  . ~/.config/bash/bashrc
 fi
 
 
