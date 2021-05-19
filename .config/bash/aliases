@@ -145,13 +145,13 @@ alias gdmscripts="/usr/bin/git --git-dir=$GIT_DIRECTORY/dmscripts/ --work-tree=$
 alias gwallpapers="/usr/bin/git --git-dir=$GIT_DIRECTORY/Wallpapers/ --work-tree=$WALL_DIRECTORY" 
 
 # Committing to bate repositories
-alias gcdot="gdot add -u && gdot commit"
-alias gcvim="gvim add -u && gvim commit"
-alias gcprivate="gprivate add -u && gprivate commit"
-alias gcqtile="gqtile add -u && gqtile commit"
-alias gcawesome="gawesome add -u && gawesome commit"
-alias gcdmscripts="gdmscripts add -u && gdmscripts commit"
-alias gcwallpapers="gwallpapers add -u && gwallpapers commit"
+alias gcdot="gdot commit -a"
+alias gcvim="gvim commit -a"
+alias gcprivate="gprivate commit -a"
+alias gcqtile="gqtile commit -a"
+alias gcawesome="gawesome commit -a"
+alias gcdmscripts="gdmscripts commit -a"
+alias gcwallpapers="gwallpapers commit -a"
 
 
 # ░█▀▀░█░█░█▀█░█▀▀░▀█▀░▀█▀░█▀█░█▀█░█▀▀
