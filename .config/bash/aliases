@@ -136,13 +136,13 @@ alias openports='netstat -nape --inet'
 # ░▀▀▀░▀▀▀░░▀░░░░▀▀░░▀░▀░▀░▀░▀▀▀
 
 # Dotfiles bare git repositories
-alias gdot="/usr/bin/git --git-dir=$GIT_DIR/Dotfiles/ --work-tree=$HOME" 
-alias gvim="/usr/bin/git --git-dir=$GIT_DIR/Vim/ --work-tree=$HOME" 
-alias gprivate="/usr/bin/git --git-dir=$GIT_DIR/private-Dotfiles/ --work-tree=$HOME" 
-alias gqtile="/usr/bin/git --git-dir=$GIT_DIR/qTile/ --work-tree=$HOME/.config/qtile"
-alias gawesome="/usr/bin/git --git-dir=$GIT_DIR/AwesomeWM/ --work-tree=$HOME/.config/awesome"
-alias gdmscripts="/usr/bin/git --git-dir=$GIT_DIR/dmscripts/ --work-tree=$HOME/.local/bin/dmscripts" 
-alias gwallpapers="/usr/bin/git --git-dir=$GIT_DIR/Wallpapers/ --work-tree=$WALL_DIR" 
+alias gdot="/usr/bin/git --git-dir=$GIT_DIRECTORY/Dotfiles/ --work-tree=$HOME" 
+alias gvim="/usr/bin/git --git-dir=$GIT_DIRECTORY/Vim/ --work-tree=$HOME" 
+alias gprivate="/usr/bin/git --git-dir=$GIT_DIRECTORY/private-Dotfiles/ --work-tree=$HOME" 
+alias gqtile="/usr/bin/git --git-dir=$GIT_DIRECTORY/qTile/ --work-tree=$HOME/.config/qtile"
+alias gawesome="/usr/bin/git --git-dir=$GIT_DIRECTORY/AwesomeWM/ --work-tree=$HOME/.config/awesome"
+alias gdmscripts="/usr/bin/git --git-dir=$GIT_DIRECTORY/dmscripts/ --work-tree=$HOME/.local/bin/dmscripts" 
+alias gwallpapers="/usr/bin/git --git-dir=$GIT_DIRECTORY/Wallpapers/ --work-tree=$WALL_DIRECTORY" 
 
 # Committing to bate repositories
 alias gcdot="gdot add -u && gdot commit"

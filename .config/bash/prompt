@@ -2,6 +2,12 @@
 #
 # Custom cli prompt
 
+# Git Indicators
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWSTASHSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM=auto
+
 # Define colors
 gray="\033[1;30m"
 red="\033[1;31m"

@@ -45,14 +45,8 @@ shopt -s checkwinsize
 export PATH=$PATH:~/.local/bin:~/.local/bin/dmscripts
 
 # Set user folder paths
-export GIT_DIR="$HOME/Documents/git/ArtemSmaznov"
-export WALL_DIR="$HOME/Pictures/wallpapers"
-
-# Git Indicators
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWSTASHSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWUPSTREAM=auto
+export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
+export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
 
 # Expand the history size
 export HISTFILESIZE=10000
