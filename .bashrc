@@ -105,14 +105,14 @@ then
   source /usr/share/fzf/completion.bash;
 fi
 
-# Aliases
-if [[ -f ~/.config/bash/aliases ]]; then
-  . ~/.config/bash/aliases
-fi
-
 # Prompt
 if [[ -f ~/.config/bash/prompt ]]; then
   . ~/.config/bash/prompt
+fi
+
+# Aliases
+if [[ -f ~/.config/bash/aliases ]]; then
+  . ~/.config/bash/aliases
 fi
 
 # Wake Commands
