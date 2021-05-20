@@ -1,7 +1,17 @@
 # History
 SAVEHIST=10000
 HISTSIZE=10000
-HISTFILE=~/.cache/shell_history
+HISTFILE=$HOME/.cache/shell_history
+
+# Don't put duplicate lines in the history and do not add lines that start with a space
+HISTCONTROL=erasedups:ignoreboth
+
+# Causes zsh to append to history instead of overwriting it so if you start a new terminal, you have old session history
+setopt APPEND_HISTORY
+
+# Don't put duplicate lines in the history and do not add lines that start with a space
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
 
 unsetopt beep
 
@@ -81,11 +91,8 @@ fi
 # ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
-# Aliases
-[ -f "$HOME/.config/bash/aliases" ] && source $HOME/.config/bash/aliases
-
-# Wake Commands
-[ -f "$HOME/.config/bash/wol" ] && source $HOME/.config/bash/wol
+[ -f $HOME/.config/bash/aliases ] && source $HOME/.config/bash/aliases
+[ -f $HOME/.config/bash/wol ] && source $HOME/.config/bash/wol
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -42,7 +42,7 @@ shopt -s checkwinsize
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
-export PATH=$PATH:~/.local/bin:~/.local/bin/dmscripts
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
@@ -51,7 +51,7 @@ export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
 # Expand the history size
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export HISTFILE=~/.cache/shell_history
+export HISTFILE=$HOME/.cache/shell_history
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 export HISTCONTROL=erasedups:ignoreboth
@@ -97,34 +97,13 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
 # FZF configs
-if [[ -f /usr/share/fzf/key-bindings.bash ]];
-then
-  source /usr/share/fzf/key-bindings.bash;
-fi
-if [[ -f /usr/share/fzf/completion.bash ]];
-then
-  source /usr/share/fzf/completion.bash;
-fi
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 
-# Prompt
-if [[ -f ~/.config/bash/prompt ]]; then
-  . ~/.config/bash/prompt
-fi
-
-# Aliases
-if [[ -f ~/.config/bash/aliases ]]; then
-  . ~/.config/bash/aliases
-fi
-
-# Wake Commands
-if [[ -f ~/.config/bash/wol ]]; then
-  . ~/.config/bash/wol
-fi
-
-# Source custom overwrites - needs to be placed at the very end
-if [[ -f ~/.config/bash/bashrc ]]; then
-  . ~/.config/bash/bashrc
-fi
+[ -f $HOME/.config/bash/prompt ] && source $HOME/.config/bash/prompt
+[ -f $HOME/.config/bash/aliases ] && source $HOME/.config/bash/aliases
+[ -f $HOME/.config/bash/wol ] && source $HOME/.config/bash/wol
+[ -f $HOME/.config/bash/bashrc ] && source $HOME/.config/bash/bashrc
 
 
 # ░█▀▀░█▀█░█▀▄
@@ -136,12 +115,7 @@ if hash starship 2>/dev/null; then
   eval "$(starship init bash)"
 fi
 
-if hash zsh 2>/dev/null; then
-  # Switch to ZSH shell if it exists
-  zsh
-else
-  # Script to run on terminal launch
-  if hash neofetch 2>/dev/null; then
-    neofetch
-  fi
+# Script to run on terminal launch
+if hash neofetch 2>/dev/null; then
+  neofetch
 fi
