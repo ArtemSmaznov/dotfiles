@@ -62,22 +62,22 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 # ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
 # ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
 
+fpath=(~/.config/zsh/completion $fpath)
 zstyle :compinstall filename '/home/artem/.zshrc'
+
+# Autocompletion
+autoload -Uz compinit && compinit # Load autocompletion
+zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true                 # automatically rehash bin files
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")' # Color the common prefix
 
 # enable history search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
-# Autocompletion
-autoload -Uz compinit # Load autocompletion
-zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
-zstyle ':completion:*' menu select
-zstyle ':completion:*' rehash true                 # automatically rehash bin files
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-compinit
-
-unsetopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 
 
 # ░█░█░█▀▀░█░█░█▀▀
