@@ -135,7 +135,12 @@ if hash starship 2>/dev/null; then
   eval "$(starship init bash)"
 fi
 
-# Script to run on terminal launch
-if hash neofetch 2>/dev/null; then
-  neofetch
+if hash zsh 2>/dev/null; then
+  # Switch to ZSH shell if it exists
+  zsh
+else
+  # Script to run on terminal launch
+  if hash neofetch 2>/dev/null; then
+    neofetch
+  fi
 fi
