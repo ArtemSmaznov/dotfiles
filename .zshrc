@@ -1,21 +1,66 @@
+# Table of contents:
+#   1. Options
+#   2. History
+#   3. Exports
+#   4. Autocomplete
+#   5. Keys
+#   6. Sources
+#   7. End Section
+
+
+# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
+# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
+# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
+
+# VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
+bindkey -v
+
+# Disable the bell
+unsetopt beep
+
+setopt autocd           # auto cd when entering just the path
+
+
+# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
+# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
+# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
+
 # History
 SAVEHIST=10000
 HISTSIZE=10000
 HISTFILE=$HOME/.cache/shell_history
 
-# Don't put duplicate lines in the history and do not add lines that start with a space
-HISTCONTROL=erasedups:ignoreboth
-
 # Causes zsh to append to history instead of overwriting it so if you start a new terminal, you have old session history
-setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 
-unsetopt beep
 
-bindkey -v
+# ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
+# ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
+# ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
+
+# Make local bin files usable
+path+=($HOME/.local/bin)
+path+=($HOME/.local/bin/dmscripts)
+
+# Set user folder paths
+export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
+export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
+
+# Set the default editor
+export EDITOR=vim
+export VISUAL=vim
+
+### SET MANPAGER
+export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+
+
+# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
+# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
+# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
 
 zstyle :compinstall filename '/home/artem/.zshrc'
 
@@ -26,13 +71,13 @@ zle -N down-line-or-beginning-search
 
 # Autocompletion
 autoload -Uz compinit # Load autocompletion
-zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
+zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true                 # automatically rehash bin files
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 compinit
 
-setopt autocd
-setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
+unsetopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 
 
 # ░█░█░█▀▀░█░█░█▀▀

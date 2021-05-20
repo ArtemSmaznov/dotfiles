@@ -1,40 +1,52 @@
 #!/bin/bash
 #
-# Table of content:
-#   1. Shopt
-#   2. Exports
-#   3. Bindings
-#   4. Sources
-#   5. End Section
+# Table of contents:
+#   1. Options
+#   2. History
+#   3. Exports
+#   4. Autocomplete
+#   5. Sources
+#   6. End Section
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 iatest=$(expr index "$-" i)
 
-# Allow ctrl-S for history navigation (with ctrl-R)
-stty -ixon
+
+# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
+# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
+# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
 
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 # set -o vi
 
+# Disable the bell
+if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 
-# ░█▀▀░█░█░█▀█░█▀█░▀█▀
-# ░▀▀█░█▀█░█░█░█▀▀░░█░
-# ░▀▀▀░▀░▀░▀▀▀░▀░░░░▀░
+shopt -s globstar     # ** to mean reclusive
+shopt -s autocd       # auto cd when entering just the path
+shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 
-# ** to mean reclusive
-shopt -s globstar
 
-# auto cd when entering just the path
-shopt -s autocd
+# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
+# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
+# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
+
+# Allow ctrl-S for history navigation (with ctrl-R)
+stty -ixon
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
 PROMPT_COMMAND='history -a'
 
-# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-shopt -s checkwinsize
+# Expand the history size
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+export HISTFILE=$HOME/.cache/shell_history
+
+# Don't put duplicate lines in the history and do not add lines that start with a space
+export HISTCONTROL=erasedups:ignoreboth
 
 
 # ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
@@ -47,14 +59,6 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
 export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
-
-# Expand the history size
-export HISTFILESIZE=10000
-export HISTSIZE=10000
-export HISTFILE=$HOME/.cache/shell_history
-
-# Don't put duplicate lines in the history and do not add lines that start with a space
-export HISTCONTROL=erasedups:ignoreboth
 
 # Set the default editor
 export EDITOR=vim
@@ -73,12 +77,9 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
-# ░█▀▄░▀█▀░█▀█░█▀▄░▀█▀░█▀█░█▀▀░█▀▀
-# ░█▀▄░░█░░█░█░█░█░░█░░█░█░█░█░▀▀█
-# ░▀▀░░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀
-
-# Disable the bell
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
+# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
+# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
 
 # Enable history completion with up and down arrow keys
 bind '"\e[A": history-search-backward'
@@ -100,9 +101,9 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 
-[ -f $HOME/.config/bash/prompt ] && source $HOME/.config/bash/prompt
 [ -f $HOME/.config/bash/aliases ] && source $HOME/.config/bash/aliases
 [ -f $HOME/.config/bash/wol ] && source $HOME/.config/bash/wol
+[ -f $HOME/.config/bash/prompt ] && source $HOME/.config/bash/prompt
 [ -f $HOME/.config/bash/bashrc ] && source $HOME/.config/bash/bashrc
 
 
