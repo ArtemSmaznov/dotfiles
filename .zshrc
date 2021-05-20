@@ -1,6 +1,7 @@
-HISTFILE=~/.config/zsh/histfile
-HISTSIZE=1000
+# History
 SAVEHIST=10000
+HISTSIZE=10000
+HISTFILE=~/.cache/shell_history
 
 unsetopt beep
 
@@ -13,13 +14,12 @@ autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# Load autocompletion
-autoload -Uz compinit
-compinit
-
+# Autocompletion
+autoload -Uz compinit # Load autocompletion
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
 zstyle ':completion:*' rehash true                 # automatically rehash bin files
+compinit
 
 setopt autocd
 setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
@@ -63,6 +63,9 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
+# Bind ctrl + space to accept the current suggestion.
+bindkey '^ ' end-of-line
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
@@ -79,14 +82,10 @@ fi
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
 # Aliases
-if [[ -f ~/.config/bash/aliases ]]; then
-  . ~/.config/bash/aliases
-fi
+[ -f "$HOME/.config/bash/aliases" ] && source $HOME/.config/bash/aliases
 
 # Wake Commands
-if [[ -f ~/.config/bash/wol ]]; then
-  . ~/.config/bash/wol
-fi
+[ -f "$HOME/.config/bash/wol" ] && source $HOME/.config/bash/wol
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
