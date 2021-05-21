@@ -97,14 +97,19 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
-# FZF configs
-[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
-[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
+source_config() {
+  [ -f $1 ] && source $1
+}
 
-[ -f $HOME/.config/bash/aliases ] && source $HOME/.config/bash/aliases
-[ -f $HOME/.config/bash/wol ] && source $HOME/.config/bash/wol
-[ -f $HOME/.config/bash/prompt ] && source $HOME/.config/bash/prompt
-[ -f $HOME/.config/bash/bashrc ] && source $HOME/.config/bash/bashrc
+# Primary imports
+source_config $HOME/.config/bash/aliases
+source_config $HOME/.config/bash/wol
+source_config $HOME/.config/bash/prompt
+source_config $HOME/.config/bash/bashrc
+
+# FZF configs
+source_config /usr/share/fzf/key-bindings.bash
+source_config /usr/share/fzf/completion.bash
 
 
 # ░█▀▀░█▀█░█▀▄

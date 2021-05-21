@@ -15,10 +15,9 @@
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 bindkey -v
 
-# Disable the bell
-unsetopt beep
+unsetopt beep # Disable the bell
 
-setopt autocd           # auto cd when entering just the path
+setopt autocd # auto cd when entering just the path
 
 
 # ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
@@ -63,7 +62,7 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 # ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
 
 fpath=(~/.config/zsh/completion $fpath)
-zstyle :compinstall filename '/home/artem/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 # Autocompletion
 autoload -Uz compinit && compinit # Load autocompletion
@@ -136,11 +135,17 @@ fi
 # ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
-[ -f $HOME/.config/bash/aliases ] && source $HOME/.config/bash/aliases
-[ -f $HOME/.config/bash/wol ] && source $HOME/.config/bash/wol
+source_config() {
+  [ -f $1 ] && source $1
+}
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Primary imports
+source_config $HOME/.config/bash/aliases 
+source_config $HOME/.config/bash/wol 
+
+# Plugins - need to be loaded at the very end
+source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 # ░█▀▀░█▀█░█▀▄
