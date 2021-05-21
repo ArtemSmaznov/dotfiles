@@ -142,6 +142,7 @@ source_config() {
 # Primary imports
 source_config $HOME/.config/bash/aliases 
 source_config $HOME/.config/bash/wol 
+source_config $HOME/.config/zsh/zshrc
 
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
