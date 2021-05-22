@@ -54,14 +54,14 @@ export EDITOR=vim
 export VISUAL=vim
 
 ### SET MANPAGER
-export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
 
 # ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
 # ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
 # ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
 
-fpath=(~/.config/zsh/completion $fpath)
+fpath=($HOME/.config/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
 # Autocompletion
@@ -143,6 +143,10 @@ source_config() {
 source_config $HOME/.config/bash/aliases 
 source_config $HOME/.config/bash/wol 
 source_config $HOME/.config/zsh/zshrc
+
+# FZF configs
+source_config /usr/share/fzf/key-bindings.zsh
+source_config /usr/share/fzf/completion.zsh
 
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
