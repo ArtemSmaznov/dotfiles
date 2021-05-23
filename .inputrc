@@ -22,12 +22,11 @@ set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
 
-
-
-
+# Enable mode indicator
 $if mode=vi
   set show-mode-in-prompt on
 
+  # Indicate mode with the cursor shape
   $if term=linux
     set vi-ins-mode-string \1\e[?0c\2
     set vi-cmd-mode-string \1\e[?8c\2

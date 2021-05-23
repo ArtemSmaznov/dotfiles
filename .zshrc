@@ -120,6 +120,9 @@ key[Control-Right]="${terminfo[kRIT5]}"
 # Bind ctrl + space to accept the current suggestion.
 bindkey '^ ' end-of-line
 
+# Bind Alt + . to insert last argument
+bindkey '^[.' insert-last-word
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then

@@ -19,7 +19,7 @@ iatest=$(expr index "$-" i)
 # ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
 
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
-# set -o vi
+set -o vi
 
 # Disable the bell
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
