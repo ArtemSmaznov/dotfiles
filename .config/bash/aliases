@@ -92,7 +92,7 @@ fi
 alias startpicom='picom -b --experimental-backends --dbus'
 
 # Update Proton
-alias update-proton='development/cproton.sh'
+alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 
 ###############################
 # POWER CONTROL
