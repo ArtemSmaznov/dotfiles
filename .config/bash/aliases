@@ -158,7 +158,7 @@ for repo in "${bare_repos[@]}"; do
       bare_work_tree="$HOME" ;;
     vim)
       bare_git_dir="$GIT_DIRECTORY/Vim/"
-      bare_work_tree="$HOME" ;;
+      bare_work_tree="$HOME/.vim" ;;
     private)
       bare_git_dir="$GIT_DIRECTORY/private-Dotfiles/"
       bare_work_tree="$HOME" ;;
