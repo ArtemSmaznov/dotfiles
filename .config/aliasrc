@@ -131,6 +131,9 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 # Show open ports
 alias openports='netstat -nape --inet'
 
+# SSH
+alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
+
 
 # ░█▀▀░▀█▀░▀█▀
 # ░█░█░░█░░░█░

@@ -44,6 +44,7 @@ setopt HIST_IGNORE_SPACE
 # Make local bin files usable
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dmscripts)
+path+=($HOME/.emacs.d/bin)
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
@@ -126,11 +127,11 @@ bindkey '^[.' insert-last-word
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 
@@ -143,7 +144,7 @@ source_config() {
 }
 
 # Primary imports
-source_config $HOME/.config/bash/aliases 
+source_config $HOME/.config/aliasrc
 source_config $HOME/.config/bash/wol 
 source_config $HOME/.config/zsh/zshrc
 

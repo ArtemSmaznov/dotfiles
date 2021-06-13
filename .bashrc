@@ -54,7 +54,7 @@ export HISTCONTROL=erasedups:ignoreboth
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.emacs.d/bin
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
@@ -102,7 +102,7 @@ source_config() {
 }
 
 # Primary imports
-source_config $HOME/.config/bash/aliases
+source_config $HOME/.config/aliasrc
 source_config $HOME/.config/bash/wol
 source_config $HOME/.config/bash/prompt
 source_config $HOME/.config/bash/bashrc
