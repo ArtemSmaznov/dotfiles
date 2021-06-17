@@ -163,6 +163,7 @@ for repo in "${bare_repos[@]}"; do
   alias g$repo="/usr/bin/git --git-dir=$bare_git_dir --work-tree=$bare_work_tree" 
   alias gs$repo="g$repo fetch && g$repo status"
   alias gc$repo="g$repo commit -a"
+  alias gp$repo="g$repo commit -a && g$repo push"
   alias gd$repo="g$repo pull"
 done
 
