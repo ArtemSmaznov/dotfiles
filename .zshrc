@@ -44,7 +44,7 @@ setopt HIST_IGNORE_SPACE
 # Make local bin files usable
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dmscripts)
-path+=($HOME/.emacs.d/bin)
+path+=($HOME/.config/emacs/bin)
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"

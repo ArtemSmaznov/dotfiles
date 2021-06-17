@@ -142,16 +142,12 @@ alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 alias gs="git fetch && git status"
 alias gc="git commit -a"
 alias gp="git commit -a && git push"
+alias gd="git pull"
 
 # Dotfiles bare git repositories
 bare_repos=(
   "dot"
-  "vim"
   "private"
-  "qtile"
-  "awesome"
-  "dmscripts"
-  "wallpapers"
 )
 
 for repo in "${bare_repos[@]}"; do
@@ -159,29 +155,15 @@ for repo in "${bare_repos[@]}"; do
     dot)
       bare_git_dir="$GIT_DIRECTORY/Dotfiles/"
       bare_work_tree="$HOME" ;;
-    vim)
-      bare_git_dir="$GIT_DIRECTORY/Vim/"
-      bare_work_tree="$HOME/.vim" ;;
     private)
       bare_git_dir="$GIT_DIRECTORY/private-Dotfiles/"
       bare_work_tree="$HOME" ;;
-    qtile)
-      bare_git_dir="$GIT_DIRECTORY/qTile/"
-      bare_work_tree="$HOME/.config/qtile" ;;
-    awesome)
-      bare_git_dir="$GIT_DIRECTORY/AwesomeWM/"
-      bare_work_tree="$HOME/.config/awesome" ;;
-    dmscripts)
-      bare_git_dir="$GIT_DIRECTORY/dmscripts/"
-      bare_work_tree="$HOME/.local/bin/dmscripts" ;;
-    wallpapers)
-      bare_git_dir="$GIT_DIRECTORY/Wallpapers/"
-      bare_work_tree="$WALL_DIRECTORY" ;;
   esac
 
   alias g$repo="/usr/bin/git --git-dir=$bare_git_dir --work-tree=$bare_work_tree" 
   alias gs$repo="g$repo fetch && g$repo status"
   alias gc$repo="g$repo commit -a"
+  alias gd$repo="g$repo pull"
 done
 
 

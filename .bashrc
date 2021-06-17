@@ -54,7 +54,7 @@ export HISTCONTROL=erasedups:ignoreboth
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.emacs.d/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
