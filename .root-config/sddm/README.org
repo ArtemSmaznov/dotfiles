@@ -1,14 +1,15 @@
 #+TITLE: SDDM Theme
-#+DESCRIPTION: SDDM Theme
 #+AUTHOR: Artem Smaznov
-
-* Source
-
-SDDM sober theme forked from [[https://github.com/Rokin05/SDDM-Themes][Rokin05]]
 
 * Preview Theme
 
-sddm-greeter --test-mode --theme /usr/share/sddm/themes/[THEME NAME]
+#+begin_src shell
+sddm-greeter --test-mode --theme /usr/share/sddm/themes/THEME_FOLDER
+#+end_src
+
+* Source
+
+- SDDM sober theme forked from [[https://github.com/Rokin05/SDDM-Themes][Rokin05]]
 
 * Screenshots
 
