@@ -1,21 +1,21 @@
-#+TITLE: Grub
+#+TITLE: GIMP
 #+AUTHOR: Artem Smaznov
 
 * Config location
 ** Linux
 
-#+begin_src
+#+begin_comment
 ~/.config/GIMP/{version}
-#+end_src
+#+end_comment
 
 ** Windows 10
 
-#+begin_src
+#+begin_comment
 C:\Users{USERNAME}\AppData\Roaming\GIMP{version}
-#+end_src
+#+end_comment
 
 ** Older Windows
 
-#+begin_src
+#+begin_comment
 C:\Documents and Settings{USERNAME}.gimp-{version}
-#+end_src
+#+end_comment

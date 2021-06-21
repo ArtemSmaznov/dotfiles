@@ -1,10 +1,11 @@
-#+TITLE: SDDM Theme
+#+TITLE: SDDM
 #+AUTHOR: Artem Smaznov
 
 * Preview Theme
+You can preview the theme by pointing to the specific theme's folder like this:
 
 #+begin_src shell
-sddm-greeter --test-mode --theme /usr/share/sddm/themes/THEME_FOLDER
+sddm-greeter --test-mode --theme /usr/share/sddm/themes/sober
 #+end_src
 
 * Source
