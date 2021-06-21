@@ -4,18 +4,18 @@
 * Config location
 ** Linux
 
-#+begin_comment
+#+begin_src
 ~/.config/GIMP/{version}
-#+end_comment
+#+end_src
 
 ** Windows 10
 
-#+begin_comment
+#+begin_src
 C:\Users{USERNAME}\AppData\Roaming\GIMP{version}
-#+end_comment
+#+end_src
 
 ** Older Windows
 
-#+begin_comment
+#+begin_src
 C:\Documents and Settings{USERNAME}.gimp-{version}
-#+end_comment
+#+end_src

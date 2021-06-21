@@ -1,3 +1,31 @@
+#+TITLE: Dotfiles
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A collection of personal dotfiles
+
+* Table of Content :toc:
+- [[#intro][Intro]]
+- [[#aliases][Aliases]]
+  - [[#start][Start]]
+  - [[#editors][Editors]]
+  - [[#listing-directories][Listing directories]]
+  - [[#changing-directories][Changing directories]]
+  - [[#copy][Copy]]
+  - [[#search][Search]]
+  - [[#tools][Tools]]
+  - [[#system][System]]
+  - [[#git][Git]]
+  - [[#archives][Archives]]
+
+* Intro
+This is a set of my dotfiles for smaller configs. Larger configurations such as WMs, VIM, etc are hosted on their own separate repositories
+
+* Aliases
+To temporarily bypass an alias, we preceed the command with a `\`
+e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
+
+** Start
+
+#+begin_src shell :tangle ~/.config/aliasrc
 #!/usr/bin/env bash
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -8,11 +36,19 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias sudo='sudo '
 
 alias makepkg='makepkg -si'
+#+end_src
 
+** Editors
+
+#+begin_src shell :tangle ~/.config/aliasrc
 alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
+#+end_src
 
+** Listing directories
+
+#+begin_src shell :tangle ~/.config/aliasrc
 if hash exa 2>/dev/null; then
     alias exa='exa --icons --group-directories-first'
     alias ls='exa -Fh'                # add file type extensions
@@ -25,7 +61,11 @@ else
 fi
 alias llf="\ls -l | egrep -v '^d'" # long list files only
 alias lld="\ls -l | egrep '^d'"    # long list directories only
+#+end_src
 
+** Changing directories
+
+#+begin_src shell :tangle ~/.config/aliasrc
 alias ~='cd ~'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -44,7 +84,12 @@ mkdirg() {
     mkdir -p $1
     cd $1
 }
+#+end_src
 
+** Copy
+Copy file with a progress bar
+
+#+begin_src shell :tangle ~/.config/aliasrc
 cpp() {
     set -e
     strace -q -ewrite cp -- "${1}" "${2}" 2>&1 |
@@ -63,7 +108,11 @@ cpp() {
         }
     END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
 }
+#+end_src
 
+** Search
+
+#+begin_src shell :tangle ~/.config/aliasrc
 # Less
 alias less='less -R'
 
@@ -93,7 +142,11 @@ ftext() {
     # optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
     grep -iIHrn --color=always "$1" . | less -r
 }
+#+end_src
 
+** Tools
+
+#+begin_src shell :tangle ~/.config/aliasrc
 # Start ArchiSteamFarm
 if [[ -d ~/ASF ]]; then
     alias asf='~/ASF/ArchiSteamFarm'
@@ -104,7 +157,12 @@ alias startpicom='picom -b --experimental-backends --dbus'
 
 # Update Proton
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
+#+end_src
 
+** System
+*** Pacman
+
+#+begin_src shell :tangle ~/.config/aliasrc
 alias pacman-upgrade='sudo pacman -syu'
 alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
 alias pacman-orphans-clean='sudo pacman -rs $(pacman -qtdq)'
@@ -112,12 +170,20 @@ alias pacman-orphans-fullclean='sudo pacman -rns $(pacman -qtdq)'
 # fzf
 alias pacman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
+#+end_src
 
+*** Power Control
+
+#+begin_src shell :tangle ~/.config/aliasrc
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
 alias shutdown='sudo shutdown -P'
 alias suspend='systemctl suspend'
+#+end_src
 
+*** System Tools
+
+#+begin_src shell :tangle ~/.config/aliasrc
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
@@ -135,7 +201,11 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # Show all logs in /var/log
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+#+end_src
 
+*** Networking
+
+#+begin_src shell :tangle ~/.config/aliasrc
 # Show used DNS addresses
 alias dnsview='cat /etc/resolv.conf'
 
@@ -147,12 +217,20 @@ alias openports='netstat -nape --inet'
 
 # SSH
 alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
+#+end_src
 
+** Git
+
+#+begin_src shell :tangle ~/.config/aliasrc
 alias gs="git fetch && git status"
 alias gc="git commit -a"
 alias gp="git commit -a && git push"
 alias gd="git pull"
+#+end_src
 
+*** Bare Repositories
+
+#+begin_src shell :tangle ~/.config/aliasrc
 bare_repos=(
     "dot"
     "private"
@@ -174,26 +252,32 @@ for repo in "${bare_repos[@]}"; do
     alias gp$repo="g$repo commit -a && g$repo push"
     alias gd$repo="g$repo pull"
 done
+#+end_src
 
+** Archives
+Extracts any archive(s) (if unp isn't installed)
+
+#+begin_src shell :tangle ~/.config/aliasrc
 ex() {
     for archive in $*; do
         if [ -f $archive ]; then
             case $archive in
-                *.tar.bz2) tar xvjf $archive ;;
-                *.tar.gz) tar xvzf $archive ;;
-                *.bz2) bunzip2 $archive ;;
-                *.rar) rar x $archive ;;
-                *.gz) gunzip $archive ;;
-                *.tar) tar xvf $archive ;;
-                *.tbz2) tar xvjf $archive ;;
-                *.tgz) tar xvzf $archive ;;
-                *.zip) unzip $archive ;;
-                *.Z) uncompress $archive ;;
-                *.7z) 7z x $archive ;;
-                *) echo "don't know how to extract '$archive'..." ;;
+                ,*.tar.bz2) tar xvjf $archive ;;
+                ,*.tar.gz) tar xvzf $archive ;;
+                ,*.bz2) bunzip2 $archive ;;
+                ,*.rar) rar x $archive ;;
+                ,*.gz) gunzip $archive ;;
+                ,*.tar) tar xvf $archive ;;
+                ,*.tbz2) tar xvjf $archive ;;
+                ,*.tgz) tar xvzf $archive ;;
+                ,*.zip) unzip $archive ;;
+                ,*.Z) uncompress $archive ;;
+                ,*.7z) 7z x $archive ;;
+                ,*) echo "don't know how to extract '$archive'..." ;;
             esac
         else
             echo "'$archive' is not a valid file!"
         fi
     done
 }
+#+end_src

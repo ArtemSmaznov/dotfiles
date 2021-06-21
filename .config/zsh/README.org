@@ -1,3 +1,20 @@
+#+TITLE: ZSH
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.zshrc
+
+* Table of Contents :toc:
+- [[#options][Options]]
+- [[#history][History]]
+- [[#exports][Exports]]
+- [[#autocomplete][Autocomplete]]
+- [[#keys][Keys]]
+- [[#sources][Sources]]
+- [[#end][End]]
+
+* Options
+
+#+begin_src shell
 # ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
 # ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
 # ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
@@ -8,7 +25,11 @@ bindkey -v
 unsetopt beep # Disable the bell
 
 setopt autocd # auto cd when entering just the path
+#+end_src
 
+* History
+
+#+begin_src shell
 # ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
 # ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
 # ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
@@ -24,7 +45,11 @@ setopt INC_APPEND_HISTORY
 # Don't put duplicate lines in the history and do not add lines that start with a space
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
+#+end_src
 
+* Exports
+
+#+begin_src shell
 # ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
 # ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
 # ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
@@ -44,7 +69,11 @@ export VISUAL=vim
 
 ### SET MANPAGER
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+#+end_src
 
+* Autocomplete
+
+#+begin_src shell
 # ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
 # ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
 # ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
@@ -65,7 +94,11 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+#+end_src
 
+* Keys
+
+#+begin_src shell
 # ░█░█░█▀▀░█░█░█▀▀
 # ░█▀▄░█▀▀░░█░░▀▀█
 # ░▀░▀░▀▀▀░░▀░░▀▀▀
@@ -119,7 +152,11 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
   add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
   add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+#+end_src
 
+* Sources
+
+#+begin_src shell
 # ░█▀▀░█▀█░█░█░█▀▄░█▀▀░█▀▀░█▀▀
 # ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
 # ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
@@ -140,7 +177,11 @@ source_config /usr/share/fzf/completion.zsh
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#+end_src
 
+* End
+
+#+begin_src shell
 # ░█▀▀░█▀█░█▀▄
 # ░█▀▀░█░█░█░█
 # ░▀▀▀░▀░▀░▀▀░
@@ -154,3 +195,4 @@ fi
 if hash neofetch 2>/dev/null; then
   neofetch
 fi
+#+end_src
