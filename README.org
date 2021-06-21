@@ -1,20 +1,28 @@
 #+TITLE: Dotfiles
 #+AUTHOR: Artem Smaznov
 #+DESCRIPTION: A collection of personal dotfiles
+#+STARTUP: overview
 
 * Table of Content :toc:
 - [[#intro][Intro]]
 - [[#shell-rcs][Shell RCs]]
-  - [[#bash][Bash]]
-  - [[#zsh][ZSH]]
   - [[#aliases][Aliases]]
 
 * Intro
-This is a set of my dotfiles for smaller configs. Larger configurations such as WMs, VIM, etc are hosted on their own separate repositories
+This is a set of my dotfiles for smaller configs.
+
+Larger configurations such as WMs, VIM, etc are hosted on their own separate repositories:
+- [[https://github.com/ArtemSmaznov/Doom-emacs/blob/master/config.org][Doom-emacs]]
+- [[https://github.com/ArtemSmaznov/Vim][Vim]]
+- [[https://github.com/ArtemSmaznov/qTile][qTile]]
+- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
+- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
+- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
+
 
 * Shell RCs
-** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
-** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
+- [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
+- [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
 ** Aliases
 To temporarily bypass an alias, we preceed the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
