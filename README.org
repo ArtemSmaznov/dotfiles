@@ -4,26 +4,22 @@
 
 * Table of Content :toc:
 - [[#intro][Intro]]
-- [[#aliases][Aliases]]
-  - [[#start][Start]]
-  - [[#editors][Editors]]
-  - [[#listing-directories][Listing directories]]
-  - [[#changing-directories][Changing directories]]
-  - [[#copy][Copy]]
-  - [[#search][Search]]
-  - [[#tools][Tools]]
-  - [[#system][System]]
-  - [[#git][Git]]
-  - [[#archives][Archives]]
+- [[#shell-rcs][Shell RCs]]
+  - [[#bash][Bash]]
+  - [[#zsh][ZSH]]
+  - [[#aliases][Aliases]]
 
 * Intro
 This is a set of my dotfiles for smaller configs. Larger configurations such as WMs, VIM, etc are hosted on their own separate repositories
 
-* Aliases
+* Shell RCs
+** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
+** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
+** Aliases
 To temporarily bypass an alias, we preceed the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
 
-** Start
+*** Start
 
 #+begin_src shell :tangle ~/.config/aliasrc
 #!/usr/bin/env bash
@@ -38,7 +34,7 @@ alias sudo='sudo '
 alias makepkg='makepkg -si'
 #+end_src
 
-** Editors
+*** Editors
 
 #+begin_src shell :tangle ~/.config/aliasrc
 alias nano='nano -c'
@@ -46,7 +42,7 @@ alias snano='sudo nano'
 alias svim='sudo vim'
 #+end_src
 
-** Listing directories
+*** Listing directories
 
 #+begin_src shell :tangle ~/.config/aliasrc
 if hash exa 2>/dev/null; then
@@ -63,7 +59,7 @@ alias llf="\ls -l | egrep -v '^d'" # long list files only
 alias lld="\ls -l | egrep '^d'"    # long list directories only
 #+end_src
 
-** Changing directories
+*** Changing directories
 
 #+begin_src shell :tangle ~/.config/aliasrc
 alias ~='cd ~'
@@ -86,7 +82,7 @@ mkdirg() {
 }
 #+end_src
 
-** Copy
+*** Copy
 Copy file with a progress bar
 
 #+begin_src shell :tangle ~/.config/aliasrc
@@ -110,7 +106,7 @@ cpp() {
 }
 #+end_src
 
-** Search
+*** Search
 
 #+begin_src shell :tangle ~/.config/aliasrc
 # Less
@@ -144,7 +140,7 @@ ftext() {
 }
 #+end_src
 
-** Tools
+*** Tools
 
 #+begin_src shell :tangle ~/.config/aliasrc
 # Start ArchiSteamFarm
@@ -159,8 +155,8 @@ alias startpicom='picom -b --experimental-backends --dbus'
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 #+end_src
 
-** System
-*** Pacman
+*** System
+**** Pacman
 
 #+begin_src shell :tangle ~/.config/aliasrc
 alias pacman-upgrade='sudo pacman -syu'
@@ -172,7 +168,7 @@ alias pacman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xarg
 alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
 #+end_src
 
-*** Power Control
+**** Power Control
 
 #+begin_src shell :tangle ~/.config/aliasrc
 alias reboot='sudo shutdown -r now'
@@ -181,7 +177,7 @@ alias shutdown='sudo shutdown -P'
 alias suspend='systemctl suspend'
 #+end_src
 
-*** System Tools
+**** System Tools
 
 #+begin_src shell :tangle ~/.config/aliasrc
 # Alias's to show disk space and space used in a folder
@@ -203,7 +199,7 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 #+end_src
 
-*** Networking
+**** Networking
 
 #+begin_src shell :tangle ~/.config/aliasrc
 # Show used DNS addresses
@@ -219,7 +215,7 @@ alias openports='netstat -nape --inet'
 alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 #+end_src
 
-** Git
+*** Git
 
 #+begin_src shell :tangle ~/.config/aliasrc
 alias gs="git fetch && git status"
@@ -228,7 +224,7 @@ alias gp="git commit -a && git push"
 alias gd="git pull"
 #+end_src
 
-*** Bare Repositories
+**** Bare Repositories
 
 #+begin_src shell :tangle ~/.config/aliasrc
 bare_repos=(
@@ -254,7 +250,7 @@ for repo in "${bare_repos[@]}"; do
 done
 #+end_src
 
-** Archives
+*** Archives
 Extracts any archive(s) (if unp isn't installed)
 
 #+begin_src shell :tangle ~/.config/aliasrc
