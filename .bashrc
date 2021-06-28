@@ -46,7 +46,7 @@ export HISTCONTROL=erasedups:ignoreboth
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
 
 # Set user folder paths
-export GIT_DIRECTORY="$HOME/Documents/git/ArtemSmaznov"
+export GIT_DIRECTORY="$HOME/projects"
 export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
 
 # Set the default editor

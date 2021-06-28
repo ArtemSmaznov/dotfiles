@@ -151,7 +151,7 @@ alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 alias gs="git fetch && git status"
 alias gc="git commit -a"
 alias gp="git commit -a && git push"
-alias gd="git pull"
+alias gf="git pull"
 
 bare_repos=(
     "dot"
@@ -172,7 +172,7 @@ for repo in "${bare_repos[@]}"; do
     alias gs$repo="g$repo fetch && g$repo status"
     alias gc$repo="g$repo commit -a"
     alias gp$repo="g$repo commit -a && g$repo push"
-    alias gd$repo="g$repo pull"
+    alias gf$repo="g$repo pull"
 done
 
 ex() {

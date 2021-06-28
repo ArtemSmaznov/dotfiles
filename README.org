@@ -19,12 +19,11 @@ Larger configurations such as WMs, VIM, etc are hosted on their own separate rep
 - [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
 - [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
 
-
 * Shell RCs
 - [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
 - [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
 ** Aliases
-To temporarily bypass an alias, we preceed the command with a `\`
+To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
 
 *** Start
@@ -229,7 +228,7 @@ alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 alias gs="git fetch && git status"
 alias gc="git commit -a"
 alias gp="git commit -a && git push"
-alias gd="git pull"
+alias gf="git pull"
 #+end_src
 
 **** Bare Repositories
@@ -254,7 +253,7 @@ for repo in "${bare_repos[@]}"; do
     alias gs$repo="g$repo fetch && g$repo status"
     alias gc$repo="g$repo commit -a"
     alias gp$repo="g$repo commit -a && g$repo push"
-    alias gd$repo="g$repo pull"
+    alias gf$repo="g$repo pull"
 done
 #+end_src
 
