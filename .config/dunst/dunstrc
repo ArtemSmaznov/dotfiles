@@ -159,7 +159,7 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = 60
+    show_age_threshold = -1
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
@@ -204,7 +204,7 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 40
 
     ### Misc/Advanced ###
 
@@ -213,7 +213,7 @@
 
     # Browser for opening urls in context menu.
     # browser = /usr/bin/firefox -new-tab
-    browser = /usr/bin/brave
+    browser = /usr/bin/brave -new-tab
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -284,8 +284,8 @@
     # * close_all: Close all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_current
     mouse_right_click = close_all
 
 # Experimental features that may or may not work correctly. Do not expect them
@@ -330,14 +330,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#1f1f1f"
     foreground = "#978965"
-    timeout = 10
+    timeout = 15
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
     background = "#1f1f1f"
     foreground = "#c0b18b"
-    timeout = 20
+    timeout = 60
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
