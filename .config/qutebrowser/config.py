@@ -1,61 +1,3 @@
-# special
-foreground = "#c0b18b"
-foreground_bold = "#c0b18b"
-cursorColor = "#c0b18b"
-background = "#1f1f1f"
-
-# black
-color0 = "#4a3637"
-color8 = "#402e2e"
-
-# red
-color1 = "#d17b49"
-color9 = "#ac5d2f"
-
-# green
-color2 = "#7b8748"
-color10 = "#647035"
-
-# yellow
-color3 = "#af865a"
-color11 = "#8f6840"
-
-# blue
-color4 = "#535c5c"
-color12 = "#444b4b"
-
-# magenta
-color5 = "#775759"
-color13 = "#614445"
-
-# cyan
-color6 = "#6d715e"
-color14 = "#585c49"
-
-# white
-color7 = "#c0b18b"
-color15 = "#978965"
-
-# --- End of import section ---
-
-# Rassigning variable names
-black_0 = color0
-black_dark_8 = color8
-red_1 = color1
-red_dark_9 = color9
-green_2 = color2
-green_dark_10 = color10
-yellow_3 = color3
-yellow_dark_11 = color11
-blue_4 = color4
-blue_dark_12 = color12
-magenta_5 = color5
-magenta_dark_13 = color13
-cyan_6 = color6
-cyan_dark_14 = color14
-white_7 = color7
-white_dark_15 = color15
-
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
 # either a float value with a "pt" suffix, or an integer value with a
@@ -167,25 +109,107 @@ c.fonts.default_size = '14pt'
 ## Type: Int
 # c.fonts.web.size.minimum_logical = 6
 
-c.colors.completion.category.fg = foreground
-c.colors.completion.category.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 ' + background + ', stop:1 ' + black_dark_8 + ')'
-c.colors.completion.category.border.top = background
-c.colors.completion.category.border.bottom = black_dark_8
+# Gruvbox dark, soft scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+
+grey_0 = "#32302f"
+grey_10 = "#3c3836"
+grey_25 = "#504945"
+grey_40 = "#665c54"
+grey_55 = "#bdae93"
+grey_70 = "#d5c4a1"
+grey_85 = "#ebdbb2"
+grey_100 = "#fbf1c7"
+red = "#fb4934"
+orange = "#fe8019"
+yellow = "#fabd2f"
+green = "#b8bb26"
+cyan = "#8ec07c"
+blue = "#83a598"
+magenta = "#d3869b"
+brown = "#d65d0e"
+
+# special
+foreground = "#c0b18b"
+background = "#1f1f1f"
+
+# black
+color0 = "#4a3637"
+color8 = "#402e2e"
+
+# red
+color1 = "#d17b49"
+color9 = "#ac5d2f"
+
+# green
+color2 = "#7b8748"
+color10 = "#647035"
+
+# yellow
+color3 = "#af865a"
+color11 = "#8f6840"
+
+# blue
+color4 = "#535c5c"
+color12 = "#444b4b"
+
+# magenta
+color5 = "#775759"
+color13 = "#614445"
+
+# cyan
+color6 = "#6d715e"
+color14 = "#585c49"
+
+# white
+color7 = "#c0b18b"
+color15 = "#978965"
+
+# --- End of import section ---
+
+# Rassigning variable names
+black_0 = color0
+black_dark_8 = color8
+red_1 = color1
+red_dark_9 = color9
+green_2 = color2
+green_dark_10 = color10
+yellow_3 = color3
+yellow_dark_11 = color11
+blue_4 = color4
+blue_dark_12 = color12
+magenta_5 = color5
+magenta_dark_13 = color13
+cyan_6 = color6
+cyan_dark_14 = color14
+white_7 = color7
+white_dark_15 = color15
+
+c.colors.completion.category.fg = yellow
+c.colors.completion.category.bg = grey_0
+c.colors.completion.category.border.top = grey_0
+c.colors.completion.category.border.bottom = grey_0
 
 # c.colors.completion.fg = ['white', 'white', 'white']
-c.colors.completion.fg = foreground
-c.colors.completion.match.fg = red_dark_9
-c.colors.completion.odd.bg = cyan_dark_14
-c.colors.completion.even.bg = background
+c.colors.completion.fg = grey_70
+c.colors.completion.match.fg = green
+c.colors.completion.odd.bg = grey_10
+c.colors.completion.even.bg = grey_0
 
-c.colors.completion.item.selected.fg = white_dark_15
-c.colors.completion.item.selected.match.fg = '#ff4444'
-c.colors.completion.item.selected.bg = black_dark_8
-c.colors.completion.item.selected.border.bottom = black_dark_8
-c.colors.completion.item.selected.border.top = black_dark_8
+c.colors.completion.item.selected.fg = grey_70
+c.colors.completion.item.selected.bg = grey_25
+c.colors.completion.item.selected.border.top = grey_25
+c.colors.completion.item.selected.border.bottom = grey_25
+c.colors.completion.item.selected.match.fg = green
 
-c.colors.completion.scrollbar.fg = foreground
-c.colors.completion.scrollbar.bg = background
+c.colors.completion.scrollbar.fg = grey_70
+c.colors.completion.scrollbar.bg = grey_0
+
+c.colors.contextmenu.disabled.bg = grey_10
+c.colors.contextmenu.disabled.fg = grey_55
+c.colors.contextmenu.menu.bg = grey_0
+c.colors.contextmenu.menu.fg =  grey_70
+c.colors.contextmenu.selected.bg = grey_25
+c.colors.contextmenu.selected.fg = grey_70
 
 # Background color of disabled items in the context menu. If set to
 # null, the Qt default is used.
@@ -216,6 +240,13 @@ c.colors.completion.scrollbar.bg = background
 # the Qt default is used.
 ## Type: QssColor
 # c.colors.contextmenu.selected.fg = None
+
+c.colors.downloads.bar.bg = grey_0
+c.colors.downloads.start.fg = grey_0
+c.colors.downloads.start.bg = blue
+c.colors.downloads.stop.fg = grey_0
+c.colors.downloads.stop.bg = cyan
+c.colors.downloads.error.fg = red
 
 # Background color for the download bar.
 ## Type: QssColor
@@ -287,6 +318,23 @@ c.colors.completion.scrollbar.bg = background
 # Highlight color for keys to complete the current keychain.
 ## Type: QssColor
 # c.colors.keyhint.suffix.fg = '#FFFF00'
+c.colors.hints.fg = grey_0
+c.colors.hints.bg = yellow
+c.colors.hints.match.fg = grey_70
+
+c.colors.keyhint.fg = grey_70
+c.colors.keyhint.suffix.fg = grey_70
+c.colors.keyhint.bg = grey_0
+
+c.colors.messages.error.fg = grey_0
+c.colors.messages.error.bg = red
+c.colors.messages.error.border = red
+c.colors.messages.warning.fg = grey_0
+c.colors.messages.warning.bg = magenta
+c.colors.messages.warning.border = magenta
+c.colors.messages.info.fg = grey_70
+c.colors.messages.info.bg = grey_0
+c.colors.messages.info.border = grey_0
 
 # Background color of an error message.
 ## Type: QssColor
@@ -324,6 +372,12 @@ c.colors.completion.scrollbar.bg = background
 ## Type: QssColor
 # c.colors.messages.warning.fg = 'black'
 
+c.colors.prompts.fg = grey_70
+c.colors.prompts.border = grey_0
+c.colors.prompts.bg = grey_0
+c.colors.prompts.selected.bg = grey_25
+c.colors.prompts.selected.fg = grey_70
+
 # Background color for prompts.
 ## Type: QssColor
 # c.colors.prompts.bg = '#444444'
@@ -344,110 +398,70 @@ c.colors.completion.scrollbar.bg = background
 ## Type: QssColor
 # c.colors.prompts.selected.fg = 'white'
 
-# Background color of the statusbar in caret mode.
-## Type: QssColor
-# c.colors.statusbar.caret.bg = 'purple'
+# Color of the statusbar.
+c.colors.statusbar.normal.fg = green
+c.colors.statusbar.normal.bg = grey_0
 
-# Foreground color of the statusbar in caret mode.
-## Type: QssColor
-c.colors.statusbar.caret.fg = foreground
+# Color of the statusbar in insert mode.
+c.colors.statusbar.insert.fg = grey_0
+c.colors.statusbar.insert.bg = blue
 
-# Background color of the statusbar in caret mode with a selection.
-## Type: QssColor
-# c.colors.statusbar.caret.selection.bg = '#a12dff'
+# Color of the statusbar in passthrough mode.
+c.colors.statusbar.passthrough.fg = grey_0
+c.colors.statusbar.passthrough.bg = cyan
 
-# Foreground color of the statusbar in caret mode with a selection.
-## Type: QssColor
-c.colors.statusbar.caret.selection.fg = foreground
+# Color of the statusbar in private browsing mode.
+c.colors.statusbar.private.fg = grey_0
+c.colors.statusbar.private.bg = grey_10
 
-# Background color of the statusbar in command mode.
-## Type: QssColor
-# c.colors.statusbar.command.bg = 'black'
+# Color of the statusbar in command mode.
+c.colors.statusbar.command.fg = grey_70
+c.colors.statusbar.command.bg = grey_0
 
-# Foreground color of the statusbar in command mode.
-## Type: QssColor
-c.colors.statusbar.command.fg = foreground
+# Color of the statusbar in private browsing + command mode.
+c.colors.statusbar.command.private.fg = grey_70
+c.colors.statusbar.command.private.bg = grey_0
 
-# Background color of the statusbar in private browsing + command mode.
-## Type: QssColor
-# c.colors.statusbar.command.private.bg = 'darkslategray'
+# Color of the statusbar in caret mode.
+c.colors.statusbar.caret.fg = grey_0
+c.colors.statusbar.caret.bg = magenta
 
-# Foreground color of the statusbar in private browsing + command mode.
-## Type: QssColor
-c.colors.statusbar.command.private.fg = foreground
+# Color of the statusbar in caret mode with a selection.
+c.colors.statusbar.caret.selection.fg = grey_0
+c.colors.statusbar.caret.selection.bg = blue
 
-# Background color of the statusbar in insert mode.
-## Type: QssColor
-# c.colors.statusbar.insert.bg = 'darkgreen'
-
-# Foreground color of the statusbar in insert mode.
-## Type: QssColor
-c.colors.statusbar.insert.fg = foreground
-
-# Background color of the statusbar.
-## Type: QssColor
-c.colors.statusbar.normal.bg = background
-
-# Foreground color of the statusbar.
-## Type: QssColor
-c.colors.statusbar.normal.fg = foreground
-
-# Background color of the statusbar in passthrough mode.
-## Type: QssColor
-# c.colors.statusbar.passthrough.bg = 'darkblue'
-
-# Foreground color of the statusbar in passthrough mode.
-## Type: QssColor
-c.colors.statusbar.passthrough.fg = foreground
-
-# Background color of the statusbar in private browsing mode.
-## Type: QssColor
-# c.colors.statusbar.private.bg = '#666666'
-
-# Foreground color of the statusbar in private browsing mode.
-## Type: QssColor
-c.colors.statusbar.private.fg = foreground
-
-# Background color of the progress bar.
-## Type: QssColor
-c.colors.statusbar.progress.bg = foreground
-
-# Foreground color of the URL in the statusbar on error.
-## Type: QssColor
-# c.colors.statusbar.url.error.fg = 'orange'
+# Color of the progress bar.
+c.colors.statusbar.progress.bg = blue
 
 # Default foreground color of the URL in the statusbar.
-## Type: QssColor
-c.colors.statusbar.url.fg = foreground
+c.colors.statusbar.url.fg = grey_70
+
+# Foreground color of the URL in the statusbar on error.
+c.colors.statusbar.url.error.fg = red
 
 # Foreground color of the URL in the statusbar for hovered links.
-## Type: QssColor
-# c.colors.statusbar.url.hover.fg = 'aqua'
+c.colors.statusbar.url.hover.fg = grey_70
 
 # Foreground color of the URL in the statusbar on successful load
-# (http).
-## Type: QssColor
-c.colors.statusbar.url.success.http.fg = foreground
-
-# Foreground color of the URL in the statusbar on successful load
-# (https).
-## Type: QssColor
-# c.colors.statusbar.url.success.https.fg = 'lime'
+c.colors.statusbar.url.success.http.fg = cyan
+c.colors.statusbar.url.success.https.fg = green
 
 # Foreground color of the URL in the statusbar when there's a warning.
-## Type: QssColor
-# c.colors.statusbar.url.warn.fg = 'yellow'
+c.colors.statusbar.url.warn.fg = magenta
 
-c.colors.tabs.bar.bg = '#555555'
-
-# Color for the tab indicator on errors.
+# Background color for webpages if unset (or empty to use the theme's
+# color).
 ## Type: QtColor
-# c.colors.tabs.indicator.error = '#ff0000'
+# c.colors.webpage.bg = grey_0
+
+c.colors.tabs.bar.bg = grey_0
 
 # Color gradient for the tab indicator.
-## Type: QtColor
-# c.colors.tabs.indicator.start = '#0000aa'
-# c.colors.tabs.indicator.stop = '#00aa00'
+c.colors.tabs.indicator.start = blue
+c.colors.tabs.indicator.stop = cyan
+
+# Color for the tab indicator on errors.
+c.colors.tabs.indicator.error = red
 
 # Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -458,52 +472,23 @@ c.colors.tabs.bar.bg = '#555555'
 # - none: Do not show a gradient.
 # c.colors.tabs.indicator.system = 'rgb'
 
-c.colors.tabs.selected.odd.fg = foreground
-c.colors.tabs.selected.odd.bg = background
-c.colors.tabs.selected.even.fg = foreground
-c.colors.tabs.selected.even.bg = background
+c.colors.tabs.odd.fg = grey_70
+c.colors.tabs.odd.bg = grey_10
+c.colors.tabs.even.fg = grey_70
+c.colors.tabs.even.bg = grey_0
+c.colors.tabs.pinned.odd.fg = grey_70
+c.colors.tabs.pinned.odd.bg = grey_25
+c.colors.tabs.pinned.even.fg = grey_70
+c.colors.tabs.pinned.even.bg = grey_25
 
-c.colors.tabs.odd.fg = 'black'
-c.colors.tabs.odd.bg = 'grey'
-c.colors.tabs.even.fg = 'black'
-c.colors.tabs.even.bg = 'darkgrey'
-
-# Background color of pinned unselected even tabs.
-## Type: QtColor
-# c.colors.tabs.pinned.even.bg = 'darkseagreen'
-
-# Foreground color of pinned unselected even tabs.
-## Type: QtColor
-c.colors.tabs.pinned.even.fg = foreground
-
-# Background color of pinned unselected odd tabs.
-## Type: QtColor
-# c.colors.tabs.pinned.odd.bg = 'seagreen'
-
-# Foreground color of pinned unselected odd tabs.
-## Type: QtColor
-c.colors.tabs.pinned.odd.fg = foreground
-
-# Background color of pinned selected even tabs.
-## Type: QtColor
-# c.colors.tabs.pinned.selected.even.bg = 'black'
-
-# Foreground color of pinned selected even tabs.
-## Type: QtColor
-c.colors.tabs.pinned.selected.even.fg = foreground
-
-# Background color of pinned selected odd tabs.
-## Type: QtColor
-# c.colors.tabs.pinned.selected.odd.bg = 'black'
-
-# Foreground color of pinned selected odd tabs.
-## Type: QtColor
-c.colors.tabs.pinned.selected.odd.fg = foreground
-
-# Background color for webpages if unset (or empty to use the theme's
-# color).
-## Type: QtColor
-c.colors.webpage.bg = background
+c.colors.tabs.selected.odd.fg = grey_0
+c.colors.tabs.selected.odd.bg = cyan
+c.colors.tabs.selected.even.fg = grey_0
+c.colors.tabs.selected.even.bg = cyan
+c.colors.tabs.pinned.selected.odd.fg = grey_0
+c.colors.tabs.pinned.selected.odd.bg = cyan
+c.colors.tabs.pinned.selected.even.fg = grey_0
+c.colors.tabs.pinned.selected.even.bg = cyan
 
 # Which algorithm to use for modifying how colors are rendered with
 # darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14
@@ -531,7 +516,7 @@ c.colors.webpage.bg = background
 # `colors.webpage.darkmode.threshold.background` to 205.  - "With
 # selective inversion of everything": Combines the two variants   above.
 # ## Type: Bool
-c.colors.webpage.darkmode.enabled = True
+# c.colors.webpage.darkmode.enabled = True
 
 # Render all colors as grayscale. This only has an effect when
 # `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -756,6 +741,68 @@ c.changelog_after_upgrade = "major"
 ## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 
+c.tabs.background = True
+
+c.tabs.close_mouse_button = 'middle'
+
+c.tabs.close_mouse_button_on_bar = 'new-tab'
+
+# c.tabs.favicons.scale = 1.0
+
+c.tabs.favicons.show = 'always'
+
+# c.tabs.focus_stack_size = 10
+
+# c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+
+# c.tabs.indicator.width = 3
+
+c.tabs.last_close = 'startpage'
+
+c.tabs.max_width = 200
+
+# c.tabs.min_width = -1
+
+c.tabs.mode_on_change = 'normal'
+
+c.tabs.mousewheel_switching = True
+
+c.tabs.new_position.related = 'next'
+
+# c.tabs.new_position.stacking = True
+
+c.tabs.new_position.unrelated = 'last'
+
+# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+
+c.tabs.pinned.frozen = True
+
+c.tabs.pinned.shrink = True
+
+c.tabs.position = 'top'
+
+c.tabs.select_on_remove = 'prev'
+
+c.tabs.show = 'multiple'
+
+# c.tabs.show_switching_delay = 800
+
+c.tabs.tabs_are_windows = False
+
+c.tabs.title.alignment = 'left'
+
+c.tabs.title.format = '{audio}{private} {current_title}'
+
+c.tabs.title.format_pinned = '{audio}{private}'
+
+# c.tabs.tooltips = True
+
+# c.tabs.undo_stack_size = 100
+
+# c.tabs.width = '15%'
+
+c.tabs.wrap = True
+
 # Require a confirmation before quitting the application.
 ## Type: ConfirmQuit
 # Valid values:
@@ -809,41 +856,51 @@ c.content.dns_prefetch = True
 ## Type: File
 # c.content.netrc_file = None
 
+c.url.auto_search = 'naive'
+
+c.url.default_page = 'https://search.brave.com/'
+
+# c.url.incdec_segments = ['path', 'query']
+
+c.url.open_base_url = True
+
+c.url.searchengines = {
+    "DEFAULT": "https://search.brave.com/search?q={}",
+    "ArchWiki": "https://wiki.archlinux.org/index.php?search={}",
+    "QtileDocs": "http://docs.qtile.org/en/latest/search.html?q{}&check_keywords=yes&area=default",
+    "GitHub": "https://github.com/search?q={}&ref=opensearch",
+    "YouTube": "https://www.youtube.com/results?search_query={}",
+    "Odysee": "https://odysee.com/$/search?q={}",
+    "GoogleDrive": "https://drive.google.com/drive/search?q={}",
+    "GoogleMaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "Google": "https://www.google.com/search?q={}",
+    "AmazonUK": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+}
+
+c.url.start_pages = ["https://search.brave.com"]
+
+# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
-# Time interval (in milliseconds) between auto-saves of
-# config/cookies/etc.
-## Type: Int
-# c.auto_save.interval = 15000
+c.auto_save.session = True
 
-# Always restore open sites when qutebrowser is reopened. Without this
-# option set, `:wq` (`:quit --save`) needs to be used to save open tabs
-# (and restore them), while quitting qutebrowser in any other way will
-# not save/restore the session. By default, this will save to the
-# session which was last loaded. This behavior can be customized via the
-# `session.default_name` setting.
-## Type: Bool
-# c.auto_save.session = True
+c.auto_save.interval = 15000
 
 # Number of commands to save in the command history. 0: no history / -1:
 # unlimited
 ## Type: Int
 # c.completion.cmd_history_max_items = 100
 
-# Map keys to other keys, so that they are equivalent in all modes. When
-# the key used as dictionary-key is pressed, the binding for the key
-# used as dictionary-value is invoked instead. This is useful for global
-# remappings of keys, for example to map <Ctrl-[> to <Escape>. NOTE:
-# This should only be used if two keys should always be equivalent, i.e.
-# for things like <Enter> (keypad) and <Return> (non-keypad). For normal
-# command bindings, qutebrowser works differently to vim: You always
-# bind keys to commands, usually via `:bind` or `config.bind()`. Instead
-# of using this setting, consider finding the command a key is bound to
-# (e.g. via `:bind gg`) and then binding the same command to the desired
-# key. Note that when a key is bound (via `bindings.default` or
-# `bindings.commands`), the mapping is ignored.
-## Type: Dict
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
+
+# config.bind('J', 'tab-prev')
+# config.bind('K', 'tab-next')
+
+config.bind('<z><l>', 'spawn --userscript qute-pass')
+config.bind('<z><u><l>', 'spawn --userscript qute-pass --username-only')
+config.bind('<z><p><l>', 'spawn --userscript qute-pass --password-only')
+config.bind('<z><o><l>', 'spawn --userscript qute-pass --otp-only')
 
 # Allow websites to read canvas elements. Note this is needed for some
 # websites to work properly.
@@ -1734,272 +1791,6 @@ c.scrolling.smooth = True
 # - progress: Progress bar for the current page loading.
 # - text:foo: Display the static text after the colon, `foo` in the example.
 # c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
-
-# Open new tabs (middleclick/ctrl+click) in the background.
-## Type: Bool
-# c.tabs.background = True
-
-# Mouse button with which to close tabs.
-## Type: String
-# Valid values:
-# - right: Close tabs on right-click.
-# - middle: Close tabs on middle-click.
-# - none: Don't close tabs using the mouse.
-# c.tabs.close_mouse_button = 'middle'
-
-# How to behave when the close mouse button is pressed on the tab bar.
-## Type: String
-# Valid values:
-# - new-tab: Open a new tab.
-# - close-current: Close the current tab.
-# - close-last: Close the last tab.
-# - ignore: Don't do anything.
-# c.tabs.close_mouse_button_on_bar = 'new-tab'
-
-# Scaling factor for favicons in the tab bar. The tab size is unchanged,
-# so big favicons also require extra `tabs.padding`.
-## Type: Float
-# c.tabs.favicons.scale = 1.0
-
-# When to show favicons in the tab bar. When switching this from never
-# to always/pinned, note that favicons might not be loaded yet, thus
-# tabs might require a reload to display them.
-## Type: String
-# Valid values:
-# - always: Always show favicons.
-# - never: Always hide favicons.
-# - pinned: Show favicons only on pinned tabs.
-# c.tabs.favicons.show = 'always'
-
-# Maximum stack size to remember for tab switches (-1 for no maximum).
-## Type: Int
-# c.tabs.focus_stack_size = 10
-
-# Padding (in pixels) for tab indicators.
-## Type: Padding
-# c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
-
-# Width (in pixels) of the progress indicator (0 to disable).
-## Type: Int
-# c.tabs.indicator.width = 3
-
-# How to behave when the last tab is closed. If the
-# `tabs.tabs_are_windows` setting is set, this is ignored and the
-# behavior is always identical to the `close` value.
-## Type: String
-# Valid values:
-# - ignore: Don't do anything.
-# - blank: Load a blank page.
-# - startpage: Load the start page.
-# - default-page: Load the default page.
-# - close: Close the window.
-# c.tabs.last_close = 'ignore'
-
-# Maximum width (in pixels) of tabs (-1 for no maximum). This setting
-# only applies when tabs are horizontal. This setting does not apply to
-# pinned tabs, unless `tabs.pinned.shrink` is False. This setting may
-# not apply properly if max_width is smaller than the minimum size of
-# tab contents, or smaller than tabs.min_width.
-## Type: Int
-# c.tabs.max_width = -1
-
-# Minimum width (in pixels) of tabs (-1 for the default minimum size
-# behavior). This setting only applies when tabs are horizontal. This
-# setting does not apply to pinned tabs, unless `tabs.pinned.shrink` is
-# False.
-## Type: Int
-# c.tabs.min_width = -1
-
-# When switching tabs, what input mode is applied.
-## Type: String
-# Valid values:
-# - persist: Retain the current mode.
-# - restore: Restore previously saved mode.
-# - normal: Always revert to normal mode.
-# c.tabs.mode_on_change = 'normal'
-
-# Switch between tabs using the mouse wheel.
-## Type: Bool
-# c.tabs.mousewheel_switching = True
-
-# Position of new tabs opened from another tab. See
-# `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: NewTabPosition
-# Valid values:
-# - prev: Before the current tab.
-# - next: After the current tab.
-# - first: At the beginning.
-# - last: At the end.
-# c.tabs.new_position.related = 'next'
-
-# Stack related tabs on top of each other when opened consecutively.
-# Only applies for `next` and `prev` values of
-# `tabs.new_position.related` and `tabs.new_position.unrelated`.
-## Type: Bool
-# c.tabs.new_position.stacking = True
-
-# Position of new tabs which are not opened from another tab. See
-# `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: NewTabPosition
-# Valid values:
-# - prev: Before the current tab.
-# - next: After the current tab.
-# - first: At the beginning.
-# - last: At the end.
-# c.tabs.new_position.unrelated = 'last'
-
-# Padding (in pixels) around text for tabs.
-## Type: Padding
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
-
-# Force pinned tabs to stay at fixed URL.
-## Type: Bool
-# c.tabs.pinned.frozen = True
-
-# Shrink pinned tabs down to their contents.
-## Type: Bool
-# c.tabs.pinned.shrink = True
-
-# Position of the tab bar.
-## Type: Position
-# Valid values:
-##   - top
-##   - bottom
-##   - left
-##   - right
-# c.tabs.position = 'top'
-
-# Which tab to select when the focused tab is removed.
-## Type: SelectOnRemove
-# Valid values:
-# - prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
-# - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
-# - last-used: Select the previously selected tab.
-# c.tabs.select_on_remove = 'next'
-
-# When to show the tab bar.
-## Type: String
-# Valid values:
-# - always: Always show the tab bar.
-# - never: Always hide the tab bar.
-# - multiple: Hide the tab bar if only one tab is open.
-# - switching: Show the tab bar when switching tabs.
-# c.tabs.show = 'always'
-
-# Duration (in milliseconds) to show the tab bar before hiding it when
-# tabs.show is set to 'switching'.
-## Type: Int
-# c.tabs.show_switching_delay = 800
-
-# Open a new window for every tab.
-## Type: Bool
-# c.tabs.tabs_are_windows = False
-
-# Alignment of the text inside of tabs.
-## Type: TextAlignment
-# Valid values:
-##   - left
-##   - right
-##   - center
-# c.tabs.title.alignment = 'left'
-
-# Format to use for the tab title. The following placeholders are
-# defined:  * `{perc}`: Percentage as a string like `[10%]`. *
-# `{perc_raw}`: Raw percentage, e.g. `10`. * `{current_title}`: Title of
-# the current web page. * `{title_sep}`: The string `" - "` if a title
-# is set, empty otherwise. * `{index}`: Index of this tab. *
-# `{aligned_index}`: Index of this tab padded with spaces to have the
-# same   width. * `{id}`: Internal tab ID of this tab. * `{scroll_pos}`:
-# Page scroll position. * `{host}`: Host of the current web page. *
-# `{backend}`: Either `webkit` or `webengine` * `{private}`: Indicates
-# when private mode is enabled. * `{current_url}`: URL of the current
-# web page. * `{protocol}`: Protocol (http/https/...) of the current web
-# page. * `{audio}`: Indicator for audio/mute status.
-## Type: FormatString
-# c.tabs.title.format = '{audio}{index}: {current_title}'
-
-# Format to use for the tab title for pinned tabs. The same placeholders
-# like for `tabs.title.format` are defined.
-## Type: FormatString
-# c.tabs.title.format_pinned = '{index}'
-
-# Show tooltips on tabs. Note this setting only affects windows opened
-# after it has been set.
-## Type: Bool
-# c.tabs.tooltips = True
-
-# Number of closed tabs (per window) and closed windows to remember for
-# :undo (-1 for no maximum).
-## Type: Int
-# c.tabs.undo_stack_size = 100
-
-# Width (in pixels or as percentage of the window) of the tab bar if
-# it's vertical.
-## Type: PercOrInt
-# c.tabs.width = '15%'
-
-# Wrap when changing tabs.
-## Type: Bool
-# c.tabs.wrap = True
-
-# What search to start when something else than a URL is entered.
-## Type: String
-# Valid values:
-# - naive: Use simple/naive check.
-# - dns: Use DNS requests (might be slow!).
-# - never: Never search automatically.
-# - schemeless: Always search automatically unless URL explicitly contains a scheme.
-# c.url.auto_search = 'naive'
-
-# Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
-# for a blank page.
-## Type: FuzzyUrl
-# c.url.default_page = 'https://start.duckduckgo.com/'
-
-# URL segments where `:navigate increment/decrement` will search for a
-# number.
-## Type: FlagList
-# Valid values:
-##   - host
-##   - port
-##   - path
-##   - query
-##   - anchor
-# c.url.incdec_segments = ['path', 'query']
-
-# Open base URL of the searchengine if a searchengine shortcut is
-# invoked without parameters.
-## Type: Bool
-# c.url.open_base_url = False
-
-# Search engines which can be used via the address bar.  Maps a search
-# engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
-# placeholder. The placeholder will be replaced by the search term, use
-# `{{` and `}}` for literal `{`/`}` braces.  The following further
-# placeholds are defined to configure how special characters in the
-# search terms are replaced by safe characters (called 'quoting'):  *
-# `{}` and `{semiquoted}` quote everything except slashes; this is the
-# most   sensible choice for almost all search engines (for the search
-# term   `slash/and&amp` this placeholder expands to `slash/and%26amp`).
-# * `{quoted}` quotes all characters (for `slash/and&amp` this
-# placeholder   expands to `slash%2Fand%26amp`). * `{unquoted}` quotes
-# nothing (for `slash/and&amp` this placeholder   expands to
-# `slash/and&amp`). * `{0}` means the same as `{}`, but can be used
-# multiple times.  The search engine named `DEFAULT` is used when
-# `url.auto_search` is turned on and something else than a URL was
-# entered to be opened. Other search engines can be used by prepending
-# the search engine name to the search term, e.g. `:open google
-# qutebrowser`.
-## Type: Dict
-c.url.searchengines = {"DEFAULT": "https://search.brave.com/search?q={}"}
-
-# Page(s) to open at the start.
-# Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = ["https://search.brave.com"]
-
-# URL parameters to strip with `:yank url`.
-# Type: List of String
-# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
 # Hide the window decoration.  This setting requires a restart on
 # Wayland.
