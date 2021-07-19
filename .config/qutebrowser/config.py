@@ -598,6 +598,8 @@ c.colors.webpage.preferred_color_scheme = "dark"
 
 config.load_autoconfig(True)
 
+c.messages.timeout = 0
+
 # Backend to use to display websites. qutebrowser supports two different
 # web rendering engines / backends, QtWebEngine and QtWebKit (not
 # recommended). QtWebEngine is Qt's official successor to QtWebKit, and
@@ -845,11 +847,11 @@ c.tabs.wrap = True
 # - multiple-tabs: Show a confirmation if multiple tabs are opened.
 # - downloads: Show a confirmation if downloads are running
 # - never: Never show a confirmation.
-# c.confirm_quit = ['never']
+c.confirm_quit = ['downloads']
 
 # Automatically start playing `<video>` elements.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 # Default encoding to use for websites. The encoding must be a string
 # describing an encoding such as _utf-8_, _iso-8859-1_, etc.
@@ -891,6 +893,58 @@ c.content.dns_prefetch = True
 ## Type: File
 # c.content.netrc_file = None
 
+c.new_instance_open_target = 'tab'
+
+c.new_instance_open_target_window = 'last-focused'
+
+# Directory to save downloads to. If unset, a sensible OS-specific
+# default is used.
+## Type: Directory
+c.downloads.location.directory = None
+
+# Prompt the user for the download location. If set to false,
+# `downloads.location.directory` will be used.
+## Type: Bool
+c.downloads.location.prompt = True
+
+# Remember the last used download directory.
+## Type: Bool
+c.downloads.location.remember = True
+
+# What to display in the download filename input.
+## Type: String
+# Valid values:
+# - path: Show only the download path.
+# - filename: Show only download filename.
+# - both: Show download path and filename.
+c.downloads.location.suggestion = 'both'
+
+# Default program used to open downloads. If null, the default internal
+# handler is used. Any `{}` in the string will be expanded to the
+# filename, else the filename will be appended.
+## Type: String
+# c.downloads.open_dispatcher = None
+
+# Where to show the downloaded files.
+## Type: VerticalPosition
+# Valid values:
+##   - top
+##   - bottom
+c.downloads.position = 'bottom'
+
+# Duration (in milliseconds) to wait before removing finished downloads.
+# If set to -1, downloads are never removed.
+## Type: Int
+c.downloads.remove_finished = -1
+
+# Show a filebrowser in download prompts.
+## Type: Bool
+c.prompt.filebrowser = True
+
+# Rounding radius (in pixels) for the edges of prompts.
+## Type: Int
+c.prompt.radius = 0
+
 c.url.auto_search = 'naive'
 
 c.url.default_page = 'https://search.brave.com/'
@@ -908,6 +962,7 @@ c.url.searchengines = {
     "Odysee": "https://odysee.com/$/search?q={}",
     "GoogleDrive": "https://drive.google.com/drive/search?q={}",
     "GoogleMaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "GoogleImages": "https://www.google.com/search?q={}",
     "Google": "https://www.google.com/search?q={}",
     "AmazonUK": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "AmazonCOM": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
@@ -942,6 +997,12 @@ config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --password-only', mode='
 config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --otp-only', mode='insert')
 
 config.bind('I', 'open --private')
+
+config.unbind(';d')
+config.bind(';di', 'hint images download')
+config.bind(';dl', 'hint links download')
+
+config.bind('<Alt-x>', 'set-cmd-text :')
 
 # config.bind("'", 'mode-enter jump_mark')
 # config.bind('+', 'zoom-in')
@@ -1488,7 +1549,42 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.content.notifications.show_origin = True
 
+c.spellcheck.languages = [
+    "en-US",
+    "ru-RU",
+]
 
+# Padding (in pixels) for the statusbar.
+## Type: Padding
+# c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
+
+# Position of the status bar.
+## Type: VerticalPosition
+# Valid values:
+##   - top
+##   - bottom
+# c.statusbar.position = 'bottom'
+
+# When to show the statusbar.
+## Type: String
+# Valid values:
+# - always: Always show the statusbar.
+# - never: Always hide the statusbar.
+# - in-mode: Show the statusbar when in modes other than normal mode.
+# c.statusbar.show = 'always'
+
+# List of widgets displayed in the statusbar.
+# Type: List of StatusbarWidget
+# Valid values:
+# - url: Current page URL.
+# - scroll: Percentage of the current page position like `10%`.
+# - scroll_raw: Raw percentage of the current page position like `10`.
+# - history: Display an arrow when possible to go back/forward in history.
+# - tabs: Current active tab, e.g. `2`.
+# - keypress: Display pressed keys when composing a vi command.
+# - progress: Progress bar for the current page loading.
+# - text:foo: Display the static text after the colon, `foo` in the example.
+# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
 
 # Allow pdf.js to view PDF files in the browser. Note that the files can
 # still be downloaded by clicking the download button in the pdf.js
@@ -1605,46 +1701,6 @@ c.content.persistent_storage = 'ask'
 # https://www.chromium.org/developers/design-documents/xss-auditor
 ## Type: Bool
 # c.content.xss_auditing = False
-
-# Directory to save downloads to. If unset, a sensible OS-specific
-# default is used.
-## Type: Directory
-# c.downloads.location.directory = None
-
-# Prompt the user for the download location. If set to false,
-# `downloads.location.directory` will be used.
-## Type: Bool
-# c.downloads.location.prompt = True
-
-# Remember the last used download directory.
-## Type: Bool
-# c.downloads.location.remember = True
-
-# What to display in the download filename input.
-## Type: String
-# Valid values:
-# - path: Show only the download path.
-# - filename: Show only download filename.
-# - both: Show download path and filename.
-# c.downloads.location.suggestion = 'path'
-
-# Default program used to open downloads. If null, the default internal
-# handler is used. Any `{}` in the string will be expanded to the
-# filename, else the filename will be appended.
-## Type: String
-# c.downloads.open_dispatcher = None
-
-# Where to show the downloaded files.
-## Type: VerticalPosition
-# Valid values:
-##   - top
-##   - bottom
-# c.downloads.position = 'top'
-
-# Duration (in milliseconds) to wait before removing finished downloads.
-# If set to -1, downloads are never removed.
-## Type: Int
-# c.downloads.remove_finished = -1
 
 # Editor (and arguments) to use for the `edit-*` commands. The following
 # placeholders are defined:  * `{file}`: Filename of the file to be
@@ -1777,13 +1833,6 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.hints.uppercase = False
 
-# Maximum time (in minutes) between two history items for them to be
-# considered being from the same browsing session. Items with less time
-# between them are grouped when being displayed in `:history`. Use -1 to
-# disable separation.
-## Type: Int
-# c.history_gap_interval = 30
-
 # Allow Escape to quit the crash reporter.
 ## Type: Bool
 # c.input.escape_quits_reporter = True
@@ -1868,6 +1917,13 @@ c.content.persistent_storage = 'ask'
 ## Type: Int
 # c.keyhint.radius = 6
 
+# Maximum time (in minutes) between two history items for them to be
+# considered being from the same browsing session. Items with less time
+# between them are grouped when being displayed in `:history`. Use -1 to
+# disable separation.
+## Type: Int
+# c.history_gap_interval = 30
+
 # Level for console (stdout/stderr) logs. Ignored if the `--loglevel` or
 # `--debug` CLI flags are used.
 ## Type: LogLevel
@@ -1890,43 +1946,6 @@ c.content.persistent_storage = 'ask'
 ##   - error
 ##   - critical
 # c.logging.level.ram = 'debug'
-
-# Duration (in milliseconds) to show messages in the statusbar for. Set
-# to 0 to never clear messages.
-## Type: Int
-# c.messages.timeout = 3000
-
-# How to open links in an existing instance if a new one is launched.
-# This happens when e.g. opening a link from a terminal. See
-# `new_instance_open_target_window` to customize in which window the
-# link is opened in.
-## Type: String
-# Valid values:
-# - tab: Open a new tab in the existing window and activate the window.
-# - tab-bg: Open a new background tab in the existing window and activate the window.
-# - tab-silent: Open a new tab in the existing window without activating the window.
-# - tab-bg-silent: Open a new background tab in the existing window without activating the window.
-# - window: Open in a new window.
-# - private-window: Open in a new private window.
-c.new_instance_open_target = 'tab'
-
-# Which window to choose when opening links as new tabs. When
-# `new_instance_open_target` is set to `window`, this is ignored.
-## Type: String
-# Valid values:
-# - first-opened: Open new tabs in the first (oldest) opened window.
-# - last-opened: Open new tabs in the last (newest) opened window.
-# - last-focused: Open new tabs in the most recently focused window.
-# - last-visible: Open new tabs in the most recently visible window.
-# c.new_instance_open_target_window = 'last-focused'
-
-# Show a filebrowser in download prompts.
-## Type: Bool
-# c.prompt.filebrowser = True
-
-# Rounding radius (in pixels) for the edges of prompts.
-## Type: Int
-# c.prompt.radius = 8
 
 # Additional arguments to pass to Qt, without leading `--`. With
 # QtWebEngine, some Chromium arguments (see
@@ -2052,85 +2071,3 @@ c.scrolling.smooth = True
 # Load a restored tab as soon as it takes focus.
 ## Type: Bool
 # c.session.lazy_restore = False
-
-# Languages to use for spell checking. You can check for available
-# languages and install dictionaries using scripts/dictcli.py. Run the
-# script with -h/--help for instructions.
-# Type: List of String
-# Valid values:
-# - af-ZA: Afrikaans (South Africa)
-# - bg-BG: Bulgarian (Bulgaria)
-# - ca-ES: Catalan (Spain)
-# - cs-CZ: Czech (Czech Republic)
-# - da-DK: Danish (Denmark)
-# - de-DE: German (Germany)
-# - el-GR: Greek (Greece)
-# - en-AU: English (Australia)
-# - en-CA: English (Canada)
-# - en-GB: English (United Kingdom)
-# - en-US: English (United States)
-# - es-ES: Spanish (Spain)
-# - et-EE: Estonian (Estonia)
-# - fa-IR: Farsi (Iran)
-# - fo-FO: Faroese (Faroe Islands)
-# - fr-FR: French (France)
-# - he-IL: Hebrew (Israel)
-# - hi-IN: Hindi (India)
-# - hr-HR: Croatian (Croatia)
-# - hu-HU: Hungarian (Hungary)
-# - id-ID: Indonesian (Indonesia)
-# - it-IT: Italian (Italy)
-# - ko: Korean
-# - lt-LT: Lithuanian (Lithuania)
-# - lv-LV: Latvian (Latvia)
-# - nb-NO: Norwegian (Norway)
-# - nl-NL: Dutch (Netherlands)
-# - pl-PL: Polish (Poland)
-# - pt-BR: Portuguese (Brazil)
-# - pt-PT: Portuguese (Portugal)
-# - ro-RO: Romanian (Romania)
-# - ru-RU: Russian (Russia)
-# - sh: Serbo-Croatian
-# - sk-SK: Slovak (Slovakia)
-# - sl-SI: Slovenian (Slovenia)
-# - sq: Albanian
-# - sr: Serbian
-# - sv-SE: Swedish (Sweden)
-# - ta-IN: Tamil (India)
-# - tg-TG: Tajik (Tajikistan)
-# - tr-TR: Turkish (Turkey)
-# - uk-UA: Ukrainian (Ukraine)
-# - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = []
-
-# Padding (in pixels) for the statusbar.
-## Type: Padding
-# c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
-
-# Position of the status bar.
-## Type: VerticalPosition
-# Valid values:
-##   - top
-##   - bottom
-# c.statusbar.position = 'bottom'
-
-# When to show the statusbar.
-## Type: String
-# Valid values:
-# - always: Always show the statusbar.
-# - never: Always hide the statusbar.
-# - in-mode: Show the statusbar when in modes other than normal mode.
-# c.statusbar.show = 'always'
-
-# List of widgets displayed in the statusbar.
-# Type: List of StatusbarWidget
-# Valid values:
-# - url: Current page URL.
-# - scroll: Percentage of the current page position like `10%`.
-# - scroll_raw: Raw percentage of the current page position like `10`.
-# - history: Display an arrow when possible to go back/forward in history.
-# - tabs: Current active tab, e.g. `2`.
-# - keypress: Display pressed keys when composing a vi command.
-# - progress: Progress bar for the current page loading.
-# - text:foo: Display the static text after the colon, `foo` in the example.
-# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']

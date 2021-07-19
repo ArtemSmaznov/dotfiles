@@ -703,11 +703,17 @@ c.colors.webpage.preferred_color_scheme = "dark"
 #+end_src
 
 * Behavior
-This is here so configs done via the GUI are still loaded.
-Remove it to not load settings done via the GUI.
+This is here so configs done via the GUI are still loaded. Remove it to not load settings done via the GUI.
 
 #+begin_src python
 config.load_autoconfig(True)
+#+end_src
+
+Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to never clear messages.
+- Type: Int
+
+#+begin_src python
+c.messages.timeout = 0
 #+end_src
 
 ** Backend
@@ -749,8 +755,6 @@ config.load_autoconfig(True)
 # - patch: Show changelog for major, minor and patch upgrades (e.g. v2.0.0 -> v2.0.1).
 # - never: Never show changelog after upgrades.
 c.changelog_after_upgrade = "major"
-
-
 #+end_src
 
 ** Autocompletion
@@ -1237,11 +1241,11 @@ c.tabs.wrap = True
 # - multiple-tabs: Show a confirmation if multiple tabs are opened.
 # - downloads: Show a confirmation if downloads are running
 # - never: Never show a confirmation.
-# c.confirm_quit = ['never']
+c.confirm_quit = ['downloads']
 
 # Automatically start playing `<video>` elements.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 # Default encoding to use for websites. The encoding must be a string
 # describing an encoding such as _utf-8_, _iso-8859-1_, etc.
@@ -1283,6 +1287,90 @@ c.content.dns_prefetch = True
 ## Type: File
 # c.content.netrc_file = None
 
+#+end_src
+
+** New Instance
+How to open links in an existing instance if a new one is launched. This happens when e.g. opening a link from a terminal. See `new_instance_open_target_window` to customize in which window the link is opened in.
+- Type: String
+Valid values:
+- tab: Open a new tab in the existing window and activate the window.
+- tab-bg: Open a new background tab in the existing window and activate the window.
+- tab-silent: Open a new tab in the existing window without activating the window.
+- tab-bg-silent: Open a new background tab in the existing window without activating the window.
+- window: Open in a new window.
+- private-window: Open in a new private window.
+
+#+begin_src python
+c.new_instance_open_target = 'tab'
+#+end_src
+
+Which window to choose when opening links as new tabs. When
+`new_instance_open_target` is set to `window`, this is ignored.
+- Type: String
+Valid values:
+- first-opened: Open new tabs in the first (oldest) opened window.
+- last-opened: Open new tabs in the last (newest) opened window.
+- last-focused: Open new tabs in the most recently focused window.
+- last-visible: Open new tabs in the most recently visible window.
+
+#+begin_src python
+c.new_instance_open_target_window = 'last-focused'
+#+end_src
+
+** Downloads
+
+#+begin_src python
+# Directory to save downloads to. If unset, a sensible OS-specific
+# default is used.
+## Type: Directory
+c.downloads.location.directory = None
+
+# Prompt the user for the download location. If set to false,
+# `downloads.location.directory` will be used.
+## Type: Bool
+c.downloads.location.prompt = True
+
+# Remember the last used download directory.
+## Type: Bool
+c.downloads.location.remember = True
+
+# What to display in the download filename input.
+## Type: String
+# Valid values:
+# - path: Show only the download path.
+# - filename: Show only download filename.
+# - both: Show download path and filename.
+c.downloads.location.suggestion = 'both'
+
+# Default program used to open downloads. If null, the default internal
+# handler is used. Any `{}` in the string will be expanded to the
+# filename, else the filename will be appended.
+## Type: String
+# c.downloads.open_dispatcher = None
+
+# Where to show the downloaded files.
+## Type: VerticalPosition
+# Valid values:
+##   - top
+##   - bottom
+c.downloads.position = 'bottom'
+
+# Duration (in milliseconds) to wait before removing finished downloads.
+# If set to -1, downloads are never removed.
+## Type: Int
+c.downloads.remove_finished = -1
+#+end_src
+
+*** Prompt
+
+#+begin_src python
+# Show a filebrowser in download prompts.
+## Type: Bool
+c.prompt.filebrowser = True
+
+# Rounding radius (in pixels) for the edges of prompts.
+## Type: Int
+c.prompt.radius = 0
 #+end_src
 
 * Search Engines
@@ -1346,14 +1434,13 @@ c.url.searchengines = {
     "Odysee": "https://odysee.com/$/search?q={}",
     "GoogleDrive": "https://drive.google.com/drive/search?q={}",
     "GoogleMaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "GoogleImages": "https://www.google.com/search?q={}",
     "Google": "https://www.google.com/search?q={}",
     "AmazonUK": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "AmazonCOM": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "AmazonCA": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
 }
 #+end_src
-
-#+RESULTS:
 
 Page(s) to open at the start.
 - Type: List of FuzzyUrl, or FuzzyUrl
@@ -1454,6 +1541,20 @@ config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --otp-only', mode='inser
 
 #+begin_src python
 config.bind('I', 'open --private')
+#+end_src
+
+*** Downloads
+
+#+begin_src python
+config.unbind(';d')
+config.bind(';di', 'hint images download')
+config.bind(';dl', 'hint links download')
+#+end_src
+
+*** Interactions
+
+#+begin_src python
+config.bind('<Alt-x>', 'set-cmd-text :')
 #+end_src
 
 *** Defaults
@@ -1868,8 +1969,6 @@ c.content.blocking.method = "auto"
 # pattern instead.
 # Type: List of UrlPattern
 # c.content.blocking.whitelist = []
-
-
 #+end_src
 
 ** Cache
@@ -2053,7 +2152,7 @@ c.content.persistent_storage = 'ask'
 
 #+end_src
 
-* Notifications
+* TODO Notifications
 
 #+begin_src python
 # What notification presenter to use for web notifications. Note that
@@ -2086,13 +2185,101 @@ c.content.persistent_storage = 'ask'
 
 #+end_src
 
-* Placeholder
+* Spell Checking
+Languages to use for spell checking. You can check for available
+languages and install dictionaries using scripts/dictcli.py. Run the
+script with -h/--help for instructions.
+Type: List of String
 
 #+begin_src python
-
+c.spellcheck.languages = [
+    "en-US",
+    "ru-RU",
+]
 #+end_src
 
-* TODO Default Config
+** Valid values:
+- af-ZA: Afrikaans (South Africa)
+- bg-BG: Bulgarian (Bulgaria)
+- ca-ES: Catalan (Spain)
+- cs-CZ: Czech (Czech Republic)
+- da-DK: Danish (Denmark)
+- de-DE: German (Germany)
+- el-GR: Greek (Greece)
+- en-AU: English (Australia)
+- en-CA: English (Canada)
+- en-GB: English (United Kingdom)
+- en-US: English (United States)
+- es-ES: Spanish (Spain)
+- et-EE: Estonian (Estonia)
+- fa-IR: Farsi (Iran)
+- fo-FO: Faroese (Faroe Islands)
+- fr-FR: French (France)
+- he-IL: Hebrew (Israel)
+- hi-IN: Hindi (India)
+- hr-HR: Croatian (Croatia)
+- hu-HU: Hungarian (Hungary)
+- id-ID: Indonesian (Indonesia)
+- it-IT: Italian (Italy)
+- ko: Korean
+- lt-LT: Lithuanian (Lithuania)
+- lv-LV: Latvian (Latvia)
+- nb-NO: Norwegian (Norway)
+- nl-NL: Dutch (Netherlands)
+- pl-PL: Polish (Poland)
+- pt-BR: Portuguese (Brazil)
+- pt-PT: Portuguese (Portugal)
+- ro-RO: Romanian (Romania)
+- ru-RU: Russian (Russia)
+- sh: Serbo-Croatian
+- sk-SK: Slovak (Slovakia)
+- sl-SI: Slovenian (Slovenia)
+- sq: Albanian
+- sr: Serbian
+- sv-SE: Swedish (Sweden)
+- ta-IN: Tamil (India)
+- tg-TG: Tajik (Tajikistan)
+- tr-TR: Turkish (Turkey)
+- uk-UA: Ukrainian (Ukraine)
+- vi-VN: Vietnamese (Viet Nam)
+
+* TODO Status Bar
+
+#+begin_src python
+# Padding (in pixels) for the statusbar.
+## Type: Padding
+# c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
+
+# Position of the status bar.
+## Type: VerticalPosition
+# Valid values:
+##   - top
+##   - bottom
+# c.statusbar.position = 'bottom'
+
+# When to show the statusbar.
+## Type: String
+# Valid values:
+# - always: Always show the statusbar.
+# - never: Always hide the statusbar.
+# - in-mode: Show the statusbar when in modes other than normal mode.
+# c.statusbar.show = 'always'
+
+# List of widgets displayed in the statusbar.
+# Type: List of StatusbarWidget
+# Valid values:
+# - url: Current page URL.
+# - scroll: Percentage of the current page position like `10%`.
+# - scroll_raw: Raw percentage of the current page position like `10`.
+# - history: Display an arrow when possible to go back/forward in history.
+# - tabs: Current active tab, e.g. `2`.
+# - keypress: Display pressed keys when composing a vi command.
+# - progress: Progress bar for the current page loading.
+# - text:foo: Display the static text after the colon, `foo` in the example.
+# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
+#+end_src
+
+* TODO Content
 
 #+begin_src python
 # Allow pdf.js to view PDF files in the browser. Note that the files can
@@ -2211,46 +2398,11 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.content.xss_auditing = False
 
-# Directory to save downloads to. If unset, a sensible OS-specific
-# default is used.
-## Type: Directory
-# c.downloads.location.directory = None
+#+end_src
 
-# Prompt the user for the download location. If set to false,
-# `downloads.location.directory` will be used.
-## Type: Bool
-# c.downloads.location.prompt = True
+* TODO Editor
 
-# Remember the last used download directory.
-## Type: Bool
-# c.downloads.location.remember = True
-
-# What to display in the download filename input.
-## Type: String
-# Valid values:
-# - path: Show only the download path.
-# - filename: Show only download filename.
-# - both: Show download path and filename.
-# c.downloads.location.suggestion = 'path'
-
-# Default program used to open downloads. If null, the default internal
-# handler is used. Any `{}` in the string will be expanded to the
-# filename, else the filename will be appended.
-## Type: String
-# c.downloads.open_dispatcher = None
-
-# Where to show the downloaded files.
-## Type: VerticalPosition
-# Valid values:
-##   - top
-##   - bottom
-# c.downloads.position = 'top'
-
-# Duration (in milliseconds) to wait before removing finished downloads.
-# If set to -1, downloads are never removed.
-## Type: Int
-# c.downloads.remove_finished = -1
-
+#+begin_src python
 # Editor (and arguments) to use for the `edit-*` commands. The following
 # placeholders are defined:  * `{file}`: Filename of the file to be
 # edited. * `{line}`: Line in which the caret is found in the text. *
@@ -2263,7 +2415,11 @@ c.content.persistent_storage = 'ask'
 # Encoding to use for the editor.
 ## Type: Encoding
 # c.editor.encoding = 'utf-8'
+#+end_src
 
+* TODO File Select
+
+#+begin_src python
 # Command (and arguments) to use for selecting a single folder in forms.
 # The command should write the selected folder path to the specified
 # file or stdout. The following placeholders are defined: * `{}`:
@@ -2299,6 +2455,11 @@ c.content.persistent_storage = 'ask'
 ## Type: ShellCommand
 # c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
 
+#+end_src
+
+* TODO Hints
+
+#+begin_src python
 # When a hint can be automatically followed without pressing Enter.
 ## Type: String
 # Valid values:
@@ -2382,13 +2543,11 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.hints.uppercase = False
 
-# Maximum time (in minutes) between two history items for them to be
-# considered being from the same browsing session. Items with less time
-# between them are grouped when being displayed in `:history`. Use -1 to
-# disable separation.
-## Type: Int
-# c.history_gap_interval = 30
+#+end_src
 
+* TODO Input
+
+#+begin_src python
 # Allow Escape to quit the crash reporter.
 ## Type: Bool
 # c.input.escape_quits_reporter = True
@@ -2458,6 +2617,11 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.input.spatial_navigation = False
 
+#+end_src
+
+* TODO Keyhints
+
+#+begin_src python
 # Keychains that shouldn't be shown in the keyhint dialog. Globs are
 # supported, so `;*` will blacklist all keychains starting with `;`. Use
 # `*` to disable keyhints.
@@ -2473,6 +2637,23 @@ c.content.persistent_storage = 'ask'
 ## Type: Int
 # c.keyhint.radius = 6
 
+#+end_src
+
+* TODO History
+
+#+begin_src python
+# Maximum time (in minutes) between two history items for them to be
+# considered being from the same browsing session. Items with less time
+# between them are grouped when being displayed in `:history`. Use -1 to
+# disable separation.
+## Type: Int
+# c.history_gap_interval = 30
+
+#+end_src
+
+* TODO Logging
+
+#+begin_src python
 # Level for console (stdout/stderr) logs. Ignored if the `--loglevel` or
 # `--debug` CLI flags are used.
 ## Type: LogLevel
@@ -2496,43 +2677,12 @@ c.content.persistent_storage = 'ask'
 ##   - critical
 # c.logging.level.ram = 'debug'
 
-# Duration (in milliseconds) to show messages in the statusbar for. Set
-# to 0 to never clear messages.
-## Type: Int
-# c.messages.timeout = 3000
 
-# How to open links in an existing instance if a new one is launched.
-# This happens when e.g. opening a link from a terminal. See
-# `new_instance_open_target_window` to customize in which window the
-# link is opened in.
-## Type: String
-# Valid values:
-# - tab: Open a new tab in the existing window and activate the window.
-# - tab-bg: Open a new background tab in the existing window and activate the window.
-# - tab-silent: Open a new tab in the existing window without activating the window.
-# - tab-bg-silent: Open a new background tab in the existing window without activating the window.
-# - window: Open in a new window.
-# - private-window: Open in a new private window.
-c.new_instance_open_target = 'tab'
+#+end_src
 
-# Which window to choose when opening links as new tabs. When
-# `new_instance_open_target` is set to `window`, this is ignored.
-## Type: String
-# Valid values:
-# - first-opened: Open new tabs in the first (oldest) opened window.
-# - last-opened: Open new tabs in the last (newest) opened window.
-# - last-focused: Open new tabs in the most recently focused window.
-# - last-visible: Open new tabs in the most recently visible window.
-# c.new_instance_open_target_window = 'last-focused'
+* TODO Qt
 
-# Show a filebrowser in download prompts.
-## Type: Bool
-# c.prompt.filebrowser = True
-
-# Rounding radius (in pixels) for the edges of prompts.
-## Type: Int
-# c.prompt.radius = 8
-
+#+begin_src python
 # Additional arguments to pass to Qt, without leading `--`. With
 # QtWebEngine, some Chromium arguments (see
 # https://peter.sh/experiments/chromium-command-line-switches/ for a
@@ -2617,6 +2767,11 @@ c.new_instance_open_target = 'tab'
 ## Type: Bool
 # c.qt.workarounds.remove_service_workers = False
 
+#+end_src
+
+* TODO Scrolling
+
+#+begin_src python
 # When/how to show the scrollbar.
 ## Type: String
 # Valid values:
@@ -2631,6 +2786,11 @@ c.new_instance_open_target = 'tab'
 ## Type: Bool
 c.scrolling.smooth = True
 
+#+end_src
+
+* TODO Search
+
+#+begin_src python
 # When to find text on a page case-insensitively.
 ## Type: IgnoreCase
 # Valid values:
@@ -2649,6 +2809,11 @@ c.scrolling.smooth = True
 ## Type: Bool
 # c.search.wrap = True
 
+#+end_src
+
+* TODO Sessions
+
+#+begin_src python
 # Name of the session to save by default. If this is set to null, the
 # session which was last loaded is saved.
 ## Type: SessionName
@@ -2657,86 +2822,5 @@ c.scrolling.smooth = True
 # Load a restored tab as soon as it takes focus.
 ## Type: Bool
 # c.session.lazy_restore = False
-
-# Languages to use for spell checking. You can check for available
-# languages and install dictionaries using scripts/dictcli.py. Run the
-# script with -h/--help for instructions.
-# Type: List of String
-# Valid values:
-# - af-ZA: Afrikaans (South Africa)
-# - bg-BG: Bulgarian (Bulgaria)
-# - ca-ES: Catalan (Spain)
-# - cs-CZ: Czech (Czech Republic)
-# - da-DK: Danish (Denmark)
-# - de-DE: German (Germany)
-# - el-GR: Greek (Greece)
-# - en-AU: English (Australia)
-# - en-CA: English (Canada)
-# - en-GB: English (United Kingdom)
-# - en-US: English (United States)
-# - es-ES: Spanish (Spain)
-# - et-EE: Estonian (Estonia)
-# - fa-IR: Farsi (Iran)
-# - fo-FO: Faroese (Faroe Islands)
-# - fr-FR: French (France)
-# - he-IL: Hebrew (Israel)
-# - hi-IN: Hindi (India)
-# - hr-HR: Croatian (Croatia)
-# - hu-HU: Hungarian (Hungary)
-# - id-ID: Indonesian (Indonesia)
-# - it-IT: Italian (Italy)
-# - ko: Korean
-# - lt-LT: Lithuanian (Lithuania)
-# - lv-LV: Latvian (Latvia)
-# - nb-NO: Norwegian (Norway)
-# - nl-NL: Dutch (Netherlands)
-# - pl-PL: Polish (Poland)
-# - pt-BR: Portuguese (Brazil)
-# - pt-PT: Portuguese (Portugal)
-# - ro-RO: Romanian (Romania)
-# - ru-RU: Russian (Russia)
-# - sh: Serbo-Croatian
-# - sk-SK: Slovak (Slovakia)
-# - sl-SI: Slovenian (Slovenia)
-# - sq: Albanian
-# - sr: Serbian
-# - sv-SE: Swedish (Sweden)
-# - ta-IN: Tamil (India)
-# - tg-TG: Tajik (Tajikistan)
-# - tr-TR: Turkish (Turkey)
-# - uk-UA: Ukrainian (Ukraine)
-# - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = []
-
-# Padding (in pixels) for the statusbar.
-## Type: Padding
-# c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
-
-# Position of the status bar.
-## Type: VerticalPosition
-# Valid values:
-##   - top
-##   - bottom
-# c.statusbar.position = 'bottom'
-
-# When to show the statusbar.
-## Type: String
-# Valid values:
-# - always: Always show the statusbar.
-# - never: Always hide the statusbar.
-# - in-mode: Show the statusbar when in modes other than normal mode.
-# c.statusbar.show = 'always'
-
-# List of widgets displayed in the statusbar.
-# Type: List of StatusbarWidget
-# Valid values:
-# - url: Current page URL.
-# - scroll: Percentage of the current page position like `10%`.
-# - scroll_raw: Raw percentage of the current page position like `10`.
-# - history: Display an arrow when possible to go back/forward in history.
-# - tabs: Current active tab, e.g. `2`.
-# - keypress: Display pressed keys when composing a vi command.
-# - progress: Progress bar for the current page loading.
-# - text:foo: Display the static text after the colon, `foo` in the example.
-# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
 #+end_src
+
