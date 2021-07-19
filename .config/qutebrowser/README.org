@@ -1340,7 +1340,7 @@ c.downloads.location.remember = True
 # - path: Show only the download path.
 # - filename: Show only download filename.
 # - both: Show download path and filename.
-c.downloads.location.suggestion = 'both'
+c.downloads.location.suggestion = 'path'
 
 # Default program used to open downloads. If null, the default internal
 # handler is used. Any `{}` in the string will be expanded to the
