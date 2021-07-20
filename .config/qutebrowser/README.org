@@ -1849,7 +1849,7 @@ config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 #+end_src
 
-** Passthrough Mode
+** Pass-through Mode
 *** Defaults
 
 #+begin_src python
@@ -1893,7 +1893,7 @@ config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 # config.bind('<Escape>', 'mode-leave', mode='register')
 #+end_src
 
-** YesNo Mode
+** Yes-No Mode
 *** Defaults
 
 #+begin_src python
@@ -2619,7 +2619,7 @@ c.spellcheck.languages = [
 
 #+end_src
 
-* TODO Keyhints
+* TODO Key-hints
 
 #+begin_src python
 # Keychains that shouldn't be shown in the keyhint dialog. Globs are

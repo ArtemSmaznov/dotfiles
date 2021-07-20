@@ -8,7 +8,7 @@
 - [[#options][Options]]
 - [[#history][History]]
 - [[#exports][Exports]]
-- [[#autocomplete][Autocomplete]]
+- [[#auto-complete][Auto-complete]]
 - [[#sources][Sources]]
 - [[#end][End]]
 
@@ -96,7 +96,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 #+end_src
 
-* Autocomplete
+* Auto-complete
 
 #+begin_src shell
 # ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀

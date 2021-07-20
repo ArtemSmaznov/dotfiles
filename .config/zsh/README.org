@@ -7,7 +7,7 @@
 - [[#options][Options]]
 - [[#history][History]]
 - [[#exports][Exports]]
-- [[#autocomplete][Autocomplete]]
+- [[#auto-complete][Auto-complete]]
 - [[#keys][Keys]]
 - [[#sources][Sources]]
 - [[#end][End]]
@@ -71,7 +71,7 @@ export VISUAL=vim
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 #+end_src
 
-* Autocomplete
+* Auto-complete
 
 #+begin_src shell
 # ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
