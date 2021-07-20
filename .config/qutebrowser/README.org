@@ -711,9 +711,10 @@ config.load_autoconfig(True)
 
 Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to never clear messages.
 - Type: Int
+- Default: 3000
 
 #+begin_src python
-c.messages.timeout = 0
+# c.messages.timeout = 0
 #+end_src
 
 ** Backend
