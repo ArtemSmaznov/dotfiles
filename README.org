@@ -299,9 +299,9 @@ ex() {
 * Compositor
 Dependencies:
 
-| Package      | Description                                                                             |
-|--------------+-----------------------------------------------------------------------------------------|
-| [[https://github.com/tryone144/picom/tree/feature/dual_kawase][tryone-picom]] | I am using =tryone144's picom= fork for the nice =dual_kawase= blur for transparent windows |
+| Package   | Description                                                                             |
+|-----------+-----------------------------------------------------------------------------------------|
+| [[https://aur.archlinux.org/packages/picom-git/][picom-git]] | I am using =picom-git= from the AUR for the nice =dual_kawase= blur for transparent windows |
 
 ** Shadows
 Enabled client-side shadows on windows. Note desktop windows (windows with =_NET_WM_WINDOW_TYPE_DESKTOP=) never get shadow, unless explicitly requested using the =wintypes= option.
