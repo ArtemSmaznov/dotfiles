@@ -5,32 +5,55 @@
 
 * Table of Content :toc:
 - [[#intro][Intro]]
-- [[#shells][Shells]]
+  - [[#doom-emacs][Doom-emacs]]
+  - [[#vim][Vim]]
+  - [[#qtile][qTile]]
+  - [[#awesomewm][AwesomeWM]]
+  - [[#wallpapers][Wallpapers]]
+  - [[#dmscripts][DMScripts]]
+- [[#shell][Shell]]
   - [[#aliases][Aliases]]
+  - [[#bash][Bash]]
+  - [[#zsh][ZSH]]
+  - [[#fish][Fish]]
+  - [[#starship-prompt][Starship Prompt]]
+- [[#terminal][Terminal]]
+  - [[#alacritty][Alacritty]]
+  - [[#terminator][Terminator]]
+- [[#text-editor][Text Editor]]
+  - [[#doom-emacs-1][Doom-emacs]]
+  - [[#vim-1][Vim]]
+  - [[#nano][Nano]]
+- [[#web-browser][Web Browser]]
+  - [[#qutebrowser][QuteBrowser]]
+  - [[#nyxt][Nyxt]]
+  - [[#idea-vimb][IDEA Vimb]]
+- [[#tools][Tools]]
+  - [[#tmux][=tmux=]]
+  - [[#cava][=cava=]]
+  - [[#dunst][=dunst=]]
+  - [[#gh][=gh=]]
+  - [[#neofetch][=neofetch=]]
+  - [[#htop][=htop=]]
+  - [[#bashtop][=bashtop=]]
+  - [[#redshift][=redshift=]]
+  - [[#rofi][=rofi=]]
+  - [[#vifm][=vifm=]]
 - [[#compositor][Compositor]]
-  - [[#shadows][Shadows]]
-  - [[#fading][Fading]]
-  - [[#transparency][Transparency]]
-  - [[#corners][Corners]]
-  - [[#blur][Blur]]
-  - [[#general-settings][General Settings]]
-  - [[#window-type-settings][Window type settings]]
-  - [[#logs][Logs]]
+  - [[#picom][=picom=]]
 
 * Intro
 This is a set of my dotfiles for smaller configs.
 
 Larger configurations such as WMs, VIM, etc are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs/blob/master/config.org][Doom-emacs]]
-- [[https://github.com/ArtemSmaznov/Vim][Vim]]
-- [[https://github.com/ArtemSmaznov/qTile][qTile]]
-- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
-- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
-- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
+** [[https://github.com/ArtemSmaznov/Doom-emacs/blob/master/config.org][Doom-emacs]]
+** [[https://github.com/ArtemSmaznov/Vim][Vim]]
+** [[https://github.com/ArtemSmaznov/qTile][qTile]]
+** [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
+** [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
+** [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
 
-* Shells
-- [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
-- [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
+* Shell
 ** Aliases
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
@@ -295,15 +318,43 @@ ex() {
     done
 }
 #+end_src
+** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
+** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
+** TODO [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/fish][Fish]]
+** TODO Starship Prompt
+* Terminal
+** TODO Alacritty
+** TODO Terminator
+* Text Editor
+** [[https://github.com/ArtemSmaznov/Doom-emacs/blob/master/config.org][Doom-emacs]]
+** [[https://github.com/ArtemSmaznov/Vim][Vim]]
+** TODO Nano
 
+* Web Browser
+** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/qutebrowser][QuteBrowser]]
+** TODO Nyxt
+** IDEA Vimb
+
+* Tools
+** TODO =tmux=
+** TODO =cava=
+** TODO =dunst=
+** TODO =gh=
+** TODO =neofetch=
+** TODO =htop=
+** TODO =bashtop=
+** TODO =redshift=
+** TODO =rofi=
+** TODO =vifm=
 * Compositor
+** =picom=
 Dependencies:
 
 | Package   | Description                                                                             |
 |-----------+-----------------------------------------------------------------------------------------|
 | [[https://aur.archlinux.org/packages/picom-git/][picom-git]] | I am using =picom-git= from the AUR for the nice =dual_kawase= blur for transparent windows |
 
-** Shadows
+*** Shadows
 Enabled client-side shadows on windows. Note desktop windows (windows with =_NET_WM_WINDOW_TYPE_DESKTOP=) never get shadow, unless explicitly requested using the =wintypes= option.
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
@@ -341,7 +392,7 @@ shadow-exclude = [
 
 #+end_src
 
-** Fading
+*** Fading
 Fade windows in/out when opening/closing and when opacity changes, unless =no-fading-openclose= is used.
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
@@ -365,7 +416,7 @@ no-fading-destroyed-argb = true;
 
 #+end_src
 
-** Transparency
+*** Transparency
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
 # Default opacity for active and inactive windows as well as window title bars and borders
@@ -391,7 +442,7 @@ opacity-rule = [
 ];
 #+end_src
 
-*** Dimming
+**** Dimming
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
 # Dim inactive windows.
@@ -413,7 +464,7 @@ focus-exclude = [
 # max-brightness = 1.0
 #+end_src
 
-** Corners
+*** Corners
 Sets the radius of rounded window corners. When > 0, the compositor will round the corners of windows. Does not interact well with =transparent-clipping=.
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
@@ -426,7 +477,7 @@ rounded-corners-exclude = [
 ];
 #+end_src
 
-** Blur
+*** Blur
 Parameters for background blurring, see the *BLUR* section for more information.
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
@@ -464,7 +515,7 @@ blur-background-exclude = [
 
 #+end_src
 
-** General Settings
+*** General Settings
 
 #+begin_src conf :tangle ~/.config/picom/picom.conf
 # sw-opti = true;
@@ -579,7 +630,7 @@ xrender-sync-fence = true; # testing enabling
 # no-ewmh-fullscreen = false
 #+end_src
 
-** Window type settings
+*** Window type settings
 'WINDOW_TYPE' is one of the 15 window types defined in EWMH standard:
   - =unknown=
   - =desktop=
@@ -631,7 +682,7 @@ wintypes:
 };
 #+end_src
 
-** Logs
+*** Logs
 Set the log level and file
 Possible values in increasing level of importance are (case doesn't matter):
  - "trace"
