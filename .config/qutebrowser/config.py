@@ -598,7 +598,7 @@ c.colors.webpage.preferred_color_scheme = "dark"
 
 config.load_autoconfig(True)
 
-# c.messages.timeout = 0
+c.messages.timeout = 9000
 
 # Backend to use to display websites. qutebrowser supports two different
 # web rendering engines / backends, QtWebEngine and QtWebKit (not

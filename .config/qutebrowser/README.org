@@ -714,7 +714,7 @@ Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to ne
 - Default: 3000
 
 #+begin_src python
-# c.messages.timeout = 0
+c.messages.timeout = 9000
 #+end_src
 
 ** Backend
