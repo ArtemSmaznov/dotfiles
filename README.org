@@ -677,7 +677,32 @@ ex() {
     done
 }
 #+end_src
-** TODO Starship Prompt
+
+** Starship Prompt
+
+Inserts a blank line between shell prompts
+#+begin_src toml :tangle ~/.config/starship.toml
+add_newline = true
+#+end_src
+
+Replace the =❯= symbol in the prompt with =➜=
+#+begin_src toml :tangle ~/.config/starship.toml
+[character]
+success_symbol = "[➜](bold green)"
+#+end_src
+
+#+begin_src toml :tangle ~/.config/starship.toml
+# [hostname]
+# ssh_only = false
+
+# [username]
+# show_always = true
+
+# [directory]
+# truncation_length = 3
+# truncate_to_repo = true
+#+end_src
+
 * Terminal
 ** TODO Alacritty
 ** TODO Terminator
