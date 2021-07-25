@@ -6,7 +6,7 @@
 This is a set of my dotfiles for smaller configs.
 
 Larger configurations such as Window Managers, VIM, etc are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs/blob/master/config.org][Doom-emacs]]
+- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
 - [[https://github.com/ArtemSmaznov/Vim][Vim]]
 - [[https://github.com/ArtemSmaznov/qTile][qTile]]
 - [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
