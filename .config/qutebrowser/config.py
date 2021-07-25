@@ -477,7 +477,7 @@ c.colors.tabs.bar.bg = grey_0
 
 # Color gradient for the tab indicator.
 c.colors.tabs.indicator.start = blue
-c.colors.tabs.indicator.stop = cyan
+c.colors.tabs.indicator.stop = brown
 
 # Color for the tab indicator on errors.
 c.colors.tabs.indicator.error = red
@@ -774,9 +774,9 @@ c.tabs.favicons.show = 'always'
 
 # c.tabs.focus_stack_size = 10
 
-# c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 
-# c.tabs.indicator.width = 3
+c.tabs.indicator.width = 3
 
 c.tabs.last_close = 'startpage'
 

@@ -570,7 +570,7 @@ c.colors.tabs.bar.bg = grey_0
 #+begin_src python
 # Color gradient for the tab indicator.
 c.colors.tabs.indicator.start = blue
-c.colors.tabs.indicator.stop = cyan
+c.colors.tabs.indicator.stop = brown
 
 # Color for the tab indicator on errors.
 c.colors.tabs.indicator.error = red
@@ -970,14 +970,14 @@ Padding (in pixels) for tab indicators.
 - Type: Padding
 
 #+begin_src python
-# c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 #+end_src
 
 Width (in pixels) of the progress indicator (0 to disable).
 - Type: Int
 
 #+begin_src python
-# c.tabs.indicator.width = 3
+c.tabs.indicator.width = 3
 #+end_src
 
 How to behave when the last tab is closed. If the
