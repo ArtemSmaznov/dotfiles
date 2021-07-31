@@ -1055,6 +1055,10 @@ config.unbind('Sb')
 config.unbind(';r')
 config.unbind(';R')
 config.unbind(';d')
+config.unbind(';I')
+config.unbind(';t')
+config.unbind(';y')
+config.unbind(';Y')
 config.unbind('gi')
 
 config.bind('Ss', 'set')
@@ -1289,13 +1293,10 @@ config.bind('Bd', 'bookmark-del')
 config.bind('f', 'hint')
 config.bind('F', 'hint all tab')
 
-config.bind(';t', 'hint inputs')
+config.bind(';i', 'hint inputs')
 
-config.bind(';i', 'hint images')
-config.bind(';I', 'hint images tab')
-
-config.bind(';y', 'hint links yank')
-config.bind(';Y', 'hint links yank-primary')
+config.bind(';p', 'hint images')
+config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
@@ -1316,32 +1317,35 @@ config.bind('<Return>', 'hint-follow', mode='hint')
 config.bind('cm', 'clear-messages')
 
 config.bind('yy', 'yank')
-config.bind('yY', 'yank -s')
+config.bind('Yy', 'yank -s')
 
 config.bind('yp', 'yank pretty-url')
-config.bind('yP', 'yank pretty-url -s')
+config.bind('Yp', 'yank pretty-url -s')
 
 config.bind('yd', 'yank domain')
-config.bind('yD', 'yank domain -s')
+config.bind('Yd', 'yank domain -s')
 
 config.bind('yt', 'yank title')
-config.bind('yT', 'yank title -s')
+config.bind('Yt', 'yank title -s')
 
 config.bind('ym', 'yank inline [{title}]({url})')
-config.bind('yM', 'yank inline [{title}]({url}) -s')
+config.bind('Ym', 'yank inline [{title}]({url}) -s')
 
 config.bind('yo', 'yank inline [[{url}][{title}]]')
-config.bind('yO', 'yank inline [[{url}][{title}]] -s')
+config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass')
-config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-only')
-config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --password-only')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --otp-only')
+config.bind('yl', 'hint links yank')
+config.bind('Yl', 'hint links yank-primary')
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass', mode='insert')
-config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-only', mode='insert')
-config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --password-only', mode='insert')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --otp-only', mode='insert')
+config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"')
+config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only')
+
+config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"', mode='insert')
+config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only', mode='insert')
 
 config.bind('I', 'open --private')
 config.bind('<Ctrl-Shift-N>', 'open -p')
