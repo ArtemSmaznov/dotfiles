@@ -614,7 +614,6 @@ alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 #+end_src
 
 *** Git
-
 #+begin_src shell :tangle ~/.config/aliasrc
 alias gs="git fetch && git status"
 alias gc="git commit"
@@ -624,7 +623,6 @@ alias gd="git diff"
 #+end_src
 
 **** Bare Repositories
-
 #+begin_src shell :tangle ~/.config/aliasrc
 bare_repos=(
     "dot"
@@ -648,6 +646,13 @@ for repo in "${bare_repos[@]}"; do
     alias gf$repo="g$repo pull"
     alias gd$repo="g$repo diff"
 done
+#+end_src
+
+**** Pass
+#+begin_src shell :tangle ~/.config/aliasrc
+alias pgs="pass git status"
+alias pgp="pass git push"
+alias pgf="pass git pull"
 #+end_src
 
 *** Archives

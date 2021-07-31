@@ -177,6 +177,10 @@ for repo in "${bare_repos[@]}"; do
     alias gd$repo="g$repo diff"
 done
 
+alias pgs="pass git status"
+alias pgp="pass git push"
+alias pgf="pass git pull"
+
 ex() {
     for archive in $*; do
         if [ -f $archive ]; then
