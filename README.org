@@ -551,6 +551,9 @@ alias startpicom='picom -b --experimental-backends --dbus'
 
 # Update Proton
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
+
+# Setup extra password store
+alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 #+end_src
 
 *** System
