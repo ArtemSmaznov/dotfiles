@@ -36,6 +36,7 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
   - [[#nyxt][Nyxt]]
   - [[#idea-vimb][IDEA Vimb]]
 - [[#tools][Tools]]
+  - [[#mpv][MPV]]
   - [[#tmux][=tmux=]]
   - [[#cava][=cava=]]
   - [[#dunst][=dunst=]]
@@ -48,8 +49,8 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
   - [[#vifm][=vifm=]]
 
 * Window Manager
-** [[https://github.com/ArtemSmaznov/qTile][qTile]]
-** [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
+** [[file:.config/qtile/README.org][qTile]]
+** [[file:.config/awesome/README.org][AwesomeWM]]
 ** Compositor
 Dependencies:
 
@@ -410,9 +411,9 @@ log-level = "error";
 # write-pid-path = "~/.cache/picom_pid.log"
 #+end_src
 * Shell
-** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/bash][Bash]]
-** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/zsh][ZSH]]
-** TODO [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/fish][Fish]]
+** [[file:.config/bash/README.org][Bash]]
+** [[file:.config/zsh/README.org][ZSH]]
+** TODO [[file:.config/fish/][Fish]]
 ** Aliases
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
@@ -715,16 +716,16 @@ success_symbol = "[➜](bold green)"
 ** TODO Alacritty
 ** TODO Terminator
 * Text Editor
-** [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
-** [[https://github.com/ArtemSmaznov/Vim][Vim]]
+** [[file:.config/doom/README.org][Doom-emacs]]
+** [[file:.vim][Vim]]
 ** TODO Nano
 
 * Web Browser
-** [[https://github.com/ArtemSmaznov/Dotfiles/tree/master/.config/qutebrowser][QuteBrowser]]
+** [[file:.config/qutebrowser/README.org][QuteBrowser]]
 ** TODO Nyxt
 ** IDEA Vimb
-
 * Tools
+** [[file:.config/mpv/README.org][MPV]]
 ** TODO =tmux=
 ** TODO =cava=
 ** TODO =dunst=
