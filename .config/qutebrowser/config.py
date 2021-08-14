@@ -1300,6 +1300,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
+config.bind(';v', 'hint links spawn mpv {hint-url}')
+
 config.bind(';ri', 'hint --rapid images tab-bg')
 config.bind(';Ri', 'hint --rapid images window')
 
@@ -1467,6 +1469,8 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 
 # config.bind('<Ctrl-E>', 'edit-text', mode='insert')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+
+config.bind('gv', 'spawn mpv {url}')
 
 # c.content.canvas_reading = True
 
