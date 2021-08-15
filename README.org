@@ -56,6 +56,7 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 - [[file:.config/mpv/README.org][MPV]]
 * File Managers
 - [[file:.config/vifm/][vifm]]
+- [[file:.config/ranger/][ranger]]
 * System Utilities
 - [[file:.config/rofi/README.org][rofi]]
 - [[file:.config/dunst/README.org][dunst]]
