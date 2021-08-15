@@ -1,3 +1,10 @@
+#+TITLE: Tmux
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: a terminal multiplexer: it enables a number of terminals (or windows), each running a separate program, to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.tmux.conf
+
+#+begin_src conf
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
@@ -59,3 +66,4 @@ if-shell "test -f ~/.tmux/airline.conf" "source ~/.tmux/airline.conf"
 
 # Initialize TMUX plugin manager
 run '~/.tmux/plugins/tpm/tpm'
+#+end_src

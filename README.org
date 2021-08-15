@@ -367,13 +367,13 @@ success_symbol = "[➜](bold green)"
 ** IDEA Vimb
 * Tools
 ** [[file:.config/mpv/README.org][MPV]]
-** TODO tmux
+** [[file:.tmux/README.org][tmux]]
 ** [[file:.config/cava/README.org][cava]]
 ** [[file:.config/dunst/README.org][dunst]]
-** TODO gh
+** [[file:.config/gh/][gh]]
 ** [[file:.config/neofetch/README.org][neofetch]]
 ** [[file:.config/htop/][htop]]
 ** [[file:.config/bashtop/][bashtop]]
 ** [[file:.config/redshift/README.org][redshift]]
-** TODO rofi
-** TODO vifm
+** [[file:.config/rofi/README.org][rofi]]
+** [[file:.config/vifm/][vifm]]
