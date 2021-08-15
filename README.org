@@ -14,48 +14,53 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 - [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
 
 * Table of Content :toc:
-- [[#window-manager][Window Manager]]
+- [[#window-managers][Window Managers]]
   - [[#qtile-repo][qTile (repo)]]
   - [[#awesomewm-repo][AwesomeWM (repo)]]
   - [[#picom][Picom]]
-- [[#shell][Shell]]
-  - [[#bash][Bash]]
-  - [[#zsh][ZSH]]
-  - [[#fish][Fish]]
-  - [[#aliases][Aliases]]
+- [[#shells][Shells]]
   - [[#starship-prompt][Starship Prompt]]
-- [[#terminal][Terminal]]
-  - [[#alacritty][Alacritty]]
-  - [[#terminator][Terminator]]
-- [[#text-editor][Text Editor]]
-  - [[#doom-emacs-repo][Doom-emacs (repo)]]
-  - [[#vim-repo][Vim (repo)]]
-  - [[#nano][Nano]]
-- [[#web-browser][Web Browser]]
-  - [[#qutebrowser][QuteBrowser]]
-  - [[#nyxt][Nyxt]]
-  - [[#idea-vimb][IDEA Vimb]]
-- [[#tools][Tools]]
-  - [[#mpv][MPV]]
-  - [[#tmux][tmux]]
-  - [[#cava][cava]]
-  - [[#dunst][dunst]]
-  - [[#gh][gh]]
-  - [[#neofetch][neofetch]]
-  - [[#htop][htop]]
-  - [[#bashtop][bashtop]]
-  - [[#redshift][redshift]]
-  - [[#rofi][rofi]]
-  - [[#vifm][vifm]]
+  - [[#aliases][Aliases]]
+- [[#terminal-emulators][Terminal Emulators]]
+- [[#terminal-tools][Terminal Tools]]
+- [[#text-editors][Text Editors]]
+- [[#web-browsers][Web Browsers]]
+- [[#media-players][Media Players]]
+- [[#file-managers][File Managers]]
+- [[#system-utilities][System Utilities]]
 
-* Window Manager
+* Window Managers
 ** [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 ** [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
 ** [[file:.config/picom/README.org][Picom]]
-* Shell
-** [[file:.config/bash/README.org][Bash]]
-** [[file:.config/zsh/README.org][ZSH]]
-** TODO [[file:.config/fish/][Fish]]
+* Shells
+- [[file:.config/bash/README.org][Bash]]
+- [[file:.config/zsh/README.org][ZSH]]
+- [[file:.config/fish/README.org][Fish]]
+** Starship Prompt
+Inserts a blank line between shell prompts
+#+begin_src toml :tangle ~/.config/starship.toml
+add_newline = true
+#+end_src
+
+Replace the =❯= symbol in the prompt with =➜=
+#+begin_src toml :tangle ~/.config/starship.toml
+[character]
+success_symbol = "[➜](bold green)"
+#+end_src
+
+#+begin_src toml :tangle ~/.config/starship.toml
+# [hostname]
+# ssh_only = false
+
+# [username]
+# show_always = true
+
+# [directory]
+# truncation_length = 3
+# truncate_to_repo = true
+#+end_src
+
 ** Aliases
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
@@ -329,51 +334,29 @@ ex() {
 }
 #+end_src
 
-** Starship Prompt
-
-Inserts a blank line between shell prompts
-#+begin_src toml :tangle ~/.config/starship.toml
-add_newline = true
-#+end_src
-
-Replace the =❯= symbol in the prompt with =➜=
-#+begin_src toml :tangle ~/.config/starship.toml
-[character]
-success_symbol = "[➜](bold green)"
-#+end_src
-
-#+begin_src toml :tangle ~/.config/starship.toml
-# [hostname]
-# ssh_only = false
-
-# [username]
-# show_always = true
-
-# [directory]
-# truncation_length = 3
-# truncate_to_repo = true
-#+end_src
-
-* Terminal
-** [[file:.config/alacritty/README.org][Alacritty]]
-** [[file:.config/terminator/README.org][Terminator]]
-* Text Editor
-** [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
-** [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
-** [[file:.config/nano/README.org][Nano]]
-* Web Browser
-** [[file:.config/qutebrowser/README.org][QuteBrowser]]
-** TODO Nyxt
-** IDEA Vimb
-* Tools
-** [[file:.config/mpv/README.org][MPV]]
-** [[file:.tmux/README.org][tmux]]
-** [[file:.config/cava/README.org][cava]]
-** [[file:.config/dunst/README.org][dunst]]
-** [[file:.config/gh/][gh]]
-** [[file:.config/neofetch/README.org][neofetch]]
-** [[file:.config/htop/][htop]]
-** [[file:.config/bashtop/][bashtop]]
-** [[file:.config/redshift/README.org][redshift]]
-** [[file:.config/rofi/README.org][rofi]]
-** [[file:.config/vifm/][vifm]]
+* Terminal Emulators
+- [[file:.config/alacritty/README.org][Alacritty]]
+- [[file:.config/terminator/README.org][Terminator]]
+* Terminal Tools
+- [[file:.tmux/README.org][tmux]]
+- [[file:.config/cava/README.org][cava]]
+- [[file:.config/gh/][gh]]
+- [[file:.config/neofetch/README.org][neofetch]]
+- [[file:.config/htop/][htop]]
+- [[file:.config/bashtop/][bashtop]]
+* Text Editors
+- [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
+- [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
+- [[file:.config/nano/README.org][Nano]]
+* Web Browsers
+- [[file:.config/qutebrowser/README.org][QuteBrowser]]
+- [[file:.config/nyxt/README.org][Nyxt]]
+- Vimb
+* Media Players
+- [[file:.config/mpv/README.org][MPV]]
+* File Managers
+- [[file:.config/vifm/][vifm]]
+* System Utilities
+- [[file:.config/rofi/README.org][rofi]]
+- [[file:.config/dunst/README.org][dunst]]
+- [[file:.config/redshift/README.org][redshift]]

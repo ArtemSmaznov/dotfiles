@@ -1,0 +1,9 @@
+#+TITLE: FiSH
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.config/fish/config.fish
+
+* End Section
+#+begin_src conf
+starship init fish | source
+#+end_src
