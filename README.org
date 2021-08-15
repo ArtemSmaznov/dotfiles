@@ -15,8 +15,8 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 
 * Table of Content :toc:
 - [[#window-manager][Window Manager]]
-  - [[#qtile][qTile]]
-  - [[#awesomewm][AwesomeWM]]
+  - [[#qtile-repo][qTile (repo)]]
+  - [[#awesomewm-repo][AwesomeWM (repo)]]
   - [[#compositor][Compositor]]
 - [[#shell][Shell]]
   - [[#bash][Bash]]
@@ -28,8 +28,8 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
   - [[#alacritty][Alacritty]]
   - [[#terminator][Terminator]]
 - [[#text-editor][Text Editor]]
-  - [[#doom-emacs][Doom-emacs]]
-  - [[#vim][Vim]]
+  - [[#doom-emacs-repo][Doom-emacs (repo)]]
+  - [[#vim-repo][Vim (repo)]]
   - [[#nano][Nano]]
 - [[#web-browser][Web Browser]]
   - [[#qutebrowser][QuteBrowser]]
@@ -49,8 +49,8 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
   - [[#vifm][=vifm=]]
 
 * Window Manager
-** [[file:.config/qtile/README.org][qTile]]
-** [[file:.config/awesome/README.org][AwesomeWM]]
+** [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
+** [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
 ** Compositor
 Dependencies:
 
@@ -716,8 +716,8 @@ success_symbol = "[➜](bold green)"
 ** TODO Alacritty
 ** TODO Terminator
 * Text Editor
-** [[file:.config/doom/README.org][Doom-emacs]]
-** [[file:.vim][Vim]]
+** [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
+** [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
 ** TODO Nano
 
 * Web Browser
