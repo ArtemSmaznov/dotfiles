@@ -5,10 +5,6 @@
 
 iatest=$(expr index "$-" i)
 
-# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
-# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
-# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
-
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 set -o vi
 
@@ -18,10 +14,6 @@ if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 shopt -s globstar     # ** to mean reclusive
 shopt -s autocd       # auto cd when entering just the path
 shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-
-# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
-# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
-# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
 
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
@@ -37,10 +29,6 @@ export HISTFILE=$HOME/.cache/shell_history
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 export HISTCONTROL=erasedups:ignoreboth
-
-# ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
-# ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
-# ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
@@ -65,10 +53,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
-# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
-# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
-
 # Enable history completion with up and down arrow keys
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -79,10 +63,6 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 
 # Show auto-completion list automatically, without double tab
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
-
-# ░█▀▀░█▀█░█░█░█▀▄░█▀▀░█▀▀░█▀▀
-# ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
-# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 
 source_config() {
   [ -f $1 ] && source $1
@@ -97,10 +77,6 @@ source_config $HOME/.config/bash/bashrc
 # FZF configs
 source_config /usr/share/fzf/key-bindings.bash
 source_config /usr/share/fzf/completion.bash
-
-# ░█▀▀░█▀█░█▀▄
-# ░█▀▀░█░█░█░█
-# ░▀▀▀░▀░▀░▀▀░
 
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then

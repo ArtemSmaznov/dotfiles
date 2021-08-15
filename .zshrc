@@ -1,17 +1,9 @@
-# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
-# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
-# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
-
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 bindkey -v
 
 unsetopt beep # Disable the bell
 
 setopt autocd # auto cd when entering just the path
-
-# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
-# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
-# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
 
 # History
 SAVEHIST=10000
@@ -24,10 +16,6 @@ setopt INC_APPEND_HISTORY
 # Don't put duplicate lines in the history and do not add lines that start with a space
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
-
-# ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
-# ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
-# ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 # Make local bin files usable
 path+=($HOME/.local/bin)
@@ -45,10 +33,6 @@ export VISUAL=vim
 ### SET MANPAGER
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
-# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
-# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
-# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
-
 fpath=($HOME/.config/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
@@ -65,10 +49,6 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
-# ░█░█░█▀▀░█░█░█▀▀
-# ░█▀▄░█▀▀░░█░░▀▀█
-# ░▀░▀░▀▀▀░░▀░░▀▀▀
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -120,10 +100,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
   add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-# ░█▀▀░█▀█░█░█░█▀▄░█▀▀░█▀▀░█▀▀
-# ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
-# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
-
 source_config() {
   [ -f $1 ] && source $1
 }
@@ -140,10 +116,6 @@ source_config /usr/share/fzf/completion.zsh
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# ░█▀▀░█▀█░█▀▄
-# ░█▀▀░█░█░█░█
-# ░▀▀▀░▀░▀░▀▀░
 
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then

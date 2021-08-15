@@ -49,10 +49,6 @@ iatest=$(expr index "$-" i)
 ** Options
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
-# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
-# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
-
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 set -o vi
 
@@ -68,10 +64,6 @@ shopt -s checkwinsize # Check the window size after each command and, if necessa
 ** History
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
-# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
-# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
-
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
 
@@ -91,10 +83,6 @@ export HISTCONTROL=erasedups:ignoreboth
 ** Exports
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
-# ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
-# ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
-
 # Make local bin files usable
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
 
@@ -122,10 +110,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 ** Auto-complete
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
-# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
-# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
-
 # Enable history completion with up and down arrow keys
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -141,10 +125,6 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 ** Sources
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█▀▀░█▀█░█░█░█▀▄░█▀▀░█▀▀░█▀▀
-# ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
-# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
-
 source_config() {
   [ -f $1 ] && source $1
 }
@@ -163,10 +143,6 @@ source_config /usr/share/fzf/completion.bash
 ** End Section
 
 #+begin_src shell :tangle ~/.bashrc
-# ░█▀▀░█▀█░█▀▄
-# ░█▀▀░█░█░█░█
-# ░▀▀▀░▀░▀░▀▀░
-
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then
   eval "$(starship init bash)"
@@ -182,10 +158,6 @@ fi
 ** Options
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
-# ░█░█░█▀▀░░█░░░█░░█░█░█░█░▀▀█
-# ░▀▀▀░▀░░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
-
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 bindkey -v
 
@@ -197,10 +169,6 @@ setopt autocd # auto cd when entering just the path
 ** History
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█░█░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█
-# ░█▀█░░█░░▀▀█░░█░░█░█░█▀▄░░█░
-# ░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░░▀░
-
 # History
 SAVEHIST=10000
 HISTSIZE=10000
@@ -217,10 +185,6 @@ setopt HIST_IGNORE_SPACE
 ** Exports
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█▀▀░█░█░█▀█░█▀█░█▀▄░▀█▀░█▀▀
-# ░█▀▀░▄▀▄░█▀▀░█░█░█▀▄░░█░░▀▀█
-# ░▀▀▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
-
 # Make local bin files usable
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dmscripts)
@@ -241,10 +205,6 @@ export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=
 ** Auto-complete
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█▀█░█░█░▀█▀░█▀█░█▀▀░█▀█░█▄█░█▀█░█░░░█▀▀░▀█▀░█▀▀
-# ░█▀█░█░█░░█░░█░█░█░░░█░█░█░█░█▀▀░█░░░█▀▀░░█░░█▀▀
-# ░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
-
 fpath=($HOME/.config/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
@@ -266,10 +226,6 @@ zle -N down-line-or-beginning-search
 ** Keys
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█░█░█▀▀░█░█░█▀▀
-# ░█▀▄░█▀▀░░█░░▀▀█
-# ░▀░▀░▀▀▀░░▀░░▀▀▀
-
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
@@ -324,10 +280,6 @@ fi
 ** Sources
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█▀▀░█▀█░█░█░█▀▄░█▀▀░█▀▀░█▀▀
-# ░▀▀█░█░█░█░█░█▀▄░█░░░█▀▀░▀▀█
-# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
-
 source_config() {
   [ -f $1 ] && source $1
 }
@@ -349,10 +301,6 @@ source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ** End Section
 
 #+begin_src shell :tangle ~/.zshrc
-# ░█▀▀░█▀█░█▀▄
-# ░█▀▀░█░█░█░█
-# ░▀▀▀░▀░▀░▀▀░
-
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then
   eval "$(starship init zsh)"
