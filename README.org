@@ -15,9 +15,6 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 
 * Table of Content :toc:
 - [[#window-managers][Window Managers]]
-  - [[#qtile-repo][qTile (repo)]]
-  - [[#awesomewm-repo][AwesomeWM (repo)]]
-  - [[#picom][Picom]]
 - [[#shells][Shells]]
   - [[#starship-prompt][Starship Prompt]]
   - [[#aliases][Aliases]]
@@ -30,9 +27,9 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 - [[#system-utilities][System Utilities]]
 
 * Window Managers
-** [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
-** [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
-** [[file:.config/picom/README.org][Picom]]
+- [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
+- [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
+- [[file:.config/picom/README.org][Picom]]
 * Shells
 - [[file:.config/bash/README.org][Bash]]
 - [[file:.config/zsh/README.org][ZSH]]
