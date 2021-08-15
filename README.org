@@ -360,7 +360,7 @@ success_symbol = "[➜](bold green)"
 * Text Editor
 ** [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
 ** [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
-** TODO [[file:.config/nano/README.org][Nano]]
+** [[file:.config/nano/README.org][Nano]]
 * Web Browser
 ** [[file:.config/qutebrowser/README.org][QuteBrowser]]
 ** TODO Nyxt

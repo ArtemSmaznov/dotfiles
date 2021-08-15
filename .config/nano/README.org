@@ -1,3 +1,20 @@
+#+TITLE: Nano
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: GNU nano (or nano) is a text editor which aims to introduce a simple interface and intuitive command options to console based text editing. nano supports features including colorized syntax highlighting, DOS/Mac file type conversions, spellchecking and UTF-8 encoding. nano opened with an empty buffer typically occupies under 4 MB of resident memory.
+#+PROPERTY: header-args :tangle ~/.config/nano/nanorc
+
+Sample initialization file for GNU nano.
+
+For the options that take parameters, the default value is shown.
+Other options are unset by default.  To make sure that an option
+is disabled, you can use "unset <option>".
+
+Characters that are special in a shell should not be escaped here.
+Inside string parameters, quotes should not be escaped -- the last
+double quote on the line will be seen as the closing quote.
+
+* General
+#+begin_src conf
 ## Make 'nextword' (Ctrl+Right) and 'chopwordright' (Ctrl+Delete)
 ## stop at word ends instead of at beginnings.
 # set afterends
@@ -205,7 +222,11 @@ set functioncolor green
 # set numbercolor magenta
 # set keycolor lightmagenta
 # set functioncolor magenta
+#+end_src
 
+* Syntax coloring
+For all details, see =man nanorc=, section SYNTAX HIGHLIGHTING.
+#+begin_src conf
 ## To include all existing syntax definitions, you can do:
 include "/usr/share/nano/*.nanorc"
 
@@ -223,7 +244,11 @@ include "/usr/share/nano/*.nanorc"
 
 ## If <Tab> should always produce an actual TAB when editing a Makefile:
 # extendsyntax makefile tabgives "	"
-
+#+end_src
+              
+* Key bindings
+For all details, see =man nanorc=, section REBINDING KEYS.
+#+begin_src conf
 ## The <Ctrl+Delete> keystroke deletes the word to the right of the cursor.
 ## On some terminals the <Ctrl+Backspace> keystroke produces ^H, which is
 ## the ASCII character for backspace, so it is bound by default to the
@@ -267,3 +292,4 @@ include "/usr/share/nano/*.nanorc"
 #bind ^U undo main
 #bind ^E redo main
 #set multibuffer
+#+end_src
