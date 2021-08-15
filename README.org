@@ -37,16 +37,16 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
   - [[#idea-vimb][IDEA Vimb]]
 - [[#tools][Tools]]
   - [[#mpv][MPV]]
-  - [[#tmux][=tmux=]]
-  - [[#cava][=cava=]]
-  - [[#dunst][=dunst=]]
-  - [[#gh][=gh=]]
-  - [[#neofetch][=neofetch=]]
-  - [[#htop][=htop=]]
-  - [[#bashtop][=bashtop=]]
-  - [[#redshift][=redshift=]]
-  - [[#rofi][=rofi=]]
-  - [[#vifm][=vifm=]]
+  - [[#tmux][tmux]]
+  - [[#cava][cava]]
+  - [[#dunst][dunst]]
+  - [[#gh][gh]]
+  - [[#neofetch][neofetch]]
+  - [[#htop][htop]]
+  - [[#bashtop][bashtop]]
+  - [[#redshift][redshift]]
+  - [[#rofi][rofi]]
+  - [[#vifm][vifm]]
 
 * Window Manager
 ** [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
@@ -367,13 +367,13 @@ success_symbol = "[➜](bold green)"
 ** IDEA Vimb
 * Tools
 ** [[file:.config/mpv/README.org][MPV]]
-** TODO =tmux=
-** TODO =cava=
-** TODO =dunst=
-** TODO =gh=
-** TODO =neofetch=
-** TODO =htop=
-** TODO =bashtop=
-** TODO =redshift=
-** TODO =rofi=
-** TODO =vifm=
+** TODO tmux
+** [[file:.config/cava/README.org][cava]]
+** TODO dunst
+** TODO gh
+** TODO neofetch
+** TODO htop
+** TODO bashtop
+** TODO redshift
+** TODO rofi
+** TODO vifm

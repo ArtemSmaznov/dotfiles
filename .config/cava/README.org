@@ -1,3 +1,12 @@
+#+TITLE: Cava
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.config/cava/config
+
+Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
+
+* General
+#+begin_src conf
 [general]
 # Accepts only non-negative values.
 ; framerate = 60
@@ -33,7 +42,10 @@ bar_width = 3
 # but will also make it slower and increase CPU usage
 # anything below 10 and above 13 is considered experimental.
 ; FFTbufferSize = 12;
+#+end_src
 
+* Input
+#+begin_src conf
 [input]
 # Audio capturing method. Possible methods are: 'pulse', 'alsa', 'fifo', 'sndio' or 'shmem'
 # Defaults to 'pulse', 'alsa' or 'fifo', in that order, dependent on what support cava was built with.
@@ -63,7 +75,10 @@ bar_width = 3
 
 ; method = portaudio
 ; source = auto
+#+end_src
 
+* Output
+#+begin_src conf
 [output]
 # Output method. Can be 'ncurses', 'noncurses' or 'raw'.
 # 'noncurses' uses a custom framebuffer technique and draws only changes
@@ -97,7 +112,10 @@ bar_width = 3
 # Use decimal value in ascii table (i.e. 59 = ';' and 10 = '\n' (line feed)).
 ; bar_delimiter = 59
 ; frame_delimiter = 10
+#+end_src
 
+* Color
+#+begin_src conf
 [color]
 # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
 # Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires
@@ -119,7 +137,10 @@ foreground = cyan
 ; gradient_color_6 = '#cc8033'
 ; gradient_color_7 = '#cc5933'
 ; gradient_color_8 = '#cc3333'
+#+end_src
 
+* Smoothing
+#+begin_src conf
 [smoothing]
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
@@ -136,7 +157,10 @@ foreground = cyan
 
 # In bar height, bars that would have been lower that this will not be drawn.
 ; ignore = 0
+#+end_src
 
+* EQ
+#+begin_src conf
 [eq]
 # This one is tricky. You can have as much keys as you want.
 # Remember to uncomment more then one key! More keys = more precision.
@@ -146,3 +170,4 @@ foreground = cyan
 ; 3 = 1 # midtone
 ; 4 = 1
 ; 5 = 1 # treble
+#+end_src
