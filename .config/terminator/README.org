@@ -1,3 +1,10 @@
+#+TITLE: Terminator
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Terminator is a terminal emulator which supports tabs and multiple resizable terminal panels in one window. It is based on GNOME Terminal.
+#+PROPERTY: header-args :tangle ~/.config/terminator/config
+
+* Global Config
+#+begin_src conf
 [global_config]
   sticky = True
   title_transmit_fg_color = "#000000"
@@ -5,14 +12,20 @@
   title_receive_bg_color = "#be7656"
   title_inactive_bg_color = "#624634"
   suppress_multiple_term_dialog = True
+#+end_src
 
+* Keybindings
+#+begin_src conf
 [keybindings]
   go_up = None
   go_down = None
   go_left = None
   go_right = None
   layout_launcher = None
+#+end_src
 
+* Profiles
+#+begin_src conf
 [profiles]
   [[default]]
     audible_bell = True
@@ -23,7 +36,10 @@
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_infinite = True
+#+end_src
 
+* Layouts
+#+begin_src conf
 [layouts]
   [[default]]
     [[[child1]]]
@@ -33,5 +49,9 @@
     [[[window0]]]
       parent = ""
       type = Window
+#+end_src
 
+* Plugins
+#+begin_src conf
 [plugins]
+#+end_src
