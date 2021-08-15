@@ -1,3 +1,10 @@
+#+TITLE: Alacritty
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Alacritty is a simple, GPU-accelerated terminal emulator written in Rust. It supports scrollback, truecolor, copy/paste, clicking on URLS, and custom key bindings.
+#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml
+
+* Window
+#+begin_src yaml
 window:
   # Window padding (changes require restart)
   #
@@ -9,7 +16,11 @@ window:
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
+#+end_src
 
+* Font configuration
+The =style= can be specified to pick a specific face.
+#+begin_src yaml
 font:
   normal:
     family: 'Hack Nerd Font Mono'
@@ -24,7 +35,11 @@ font:
     family: 'Hack Nerd Font Mono'
     style: Bold Italic
   size: 12.0
+#+end_src
 
+* Colors
+=Gruvbox= dark
+#+begin_src yaml
 colors:
   # Default colors
   primary:
@@ -62,9 +77,17 @@ colors:
   cursor:
     text: CellBackground
     cursor: CellForeground
+#+end_src
 
+* Background opacity
+Window opacity as a floating point number from =0.0= to =1.0=.
+The value =0.0= is completely transparent and =1.0= is opaque.
+#+begin_src yaml
 background_opacity: 0.7
+#+end_src
 
+* Cursor
+#+begin_src yaml
 cursor:
   # Cursor style
   style:
@@ -84,9 +107,16 @@ cursor:
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
+#+end_src
 
+* Live config reload
+- changes require restart
+#+begin_src yaml
 live_config_reload: true
+#+end_src
 
+* TODO Other
+#+begin_src yaml
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -899,3 +929,5 @@ live_config_reload: true
 
 # Print all received window events.
 #print_events: false
+
+#+end_src
