@@ -372,8 +372,8 @@ success_symbol = "[➜](bold green)"
 ** [[file:.config/dunst/README.org][dunst]]
 ** TODO gh
 ** [[file:.config/neofetch/README.org][neofetch]]
-** TODO htop
-** TODO bashtop
-** TODO redshift
+** [[file:.config/htop/][htop]]
+** [[file:.config/bashtop/][bashtop]]
+** [[file:.config/redshift/README.org][redshift]]
 ** TODO rofi
 ** TODO vifm

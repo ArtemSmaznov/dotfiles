@@ -1,3 +1,9 @@
+#+TITLE: RedShift
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.config/redshift/redshift.conf
+
+#+begin_src conf
 [redshift]
 ; Set the day and night screen temperatures
 temp-day=6500
@@ -53,3 +59,4 @@ lon=-4.473885
 ; to adjust _all_ screens.
 ; [randr]
 ; screen=1
+#+end_src
