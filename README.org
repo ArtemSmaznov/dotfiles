@@ -3,17 +3,8 @@
 #+DESCRIPTION: A collection of personal dotfiles
 #+STARTUP: overview
 
-This is a set of my dotfiles for smaller configs.
-
-Larger configurations such as Window Managers, VIM, etc are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
-- [[https://github.com/ArtemSmaznov/Vim][Vim]]
-- [[https://github.com/ArtemSmaznov/qTile][qTile]]
-- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
-- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
-- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
-
 * Table of Content :toc:
+- [[#separate-repositories][Separate Repositories]]
 - [[#window-managers][Window Managers]]
 - [[#shells][Shells]]
 - [[#terminal-emulators][Terminal Emulators]]
@@ -24,16 +15,25 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 - [[#file-managers][File Managers]]
 - [[#system-utilities][System Utilities]]
 
+* Separate Repositories
+Larger configurations such as Window Managers, VIM, etc are hosted on their own separate repositories:
+- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
+- [[https://github.com/ArtemSmaznov/Vim][Vim]]
+- [[https://github.com/ArtemSmaznov/qTile][qTile]]
+- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
+- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
+- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
+
 * Window Managers
 - [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 - [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
 - [[file:.config/picom/README.org][Picom]]
 * Shells
-- [[file:.config/README.org::*Bash][Bash]]
-- [[file:.config/README.org::*ZSH][ZSH]]
-- [[file:.config/README.org::*Fish][Fish]]
-- [[file:.config/README.org::*Aliases][Aliases]]
-- [[file:.config/README.org::*Starship Prompt][Starship Prompt]]
+- [[file:.config/SHELLS.org::*Bash][Bash]]
+- [[file:.config/SHELLS.org::*ZSH][ZSH]]
+- [[file:.config/SHELLS.org::*Fish][Fish]]
+- [[file:.config/SHELLS.org::*Aliases][Aliases]]
+- [[file:.config/SHELLS.org::*Starship Prompt][Starship Prompt]]
 * Terminal Emulators
 - [[file:.config/alacritty/README.org][Alacritty]]
 - [[file:.config/terminator/README.org][Terminator]]
