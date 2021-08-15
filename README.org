@@ -369,9 +369,9 @@ success_symbol = "[➜](bold green)"
 ** [[file:.config/mpv/README.org][MPV]]
 ** TODO tmux
 ** [[file:.config/cava/README.org][cava]]
-** TODO dunst
+** [[file:.config/dunst/README.org][dunst]]
 ** TODO gh
-** TODO neofetch
+** [[file:.config/neofetch/README.org][neofetch]]
 ** TODO htop
 ** TODO bashtop
 ** TODO redshift

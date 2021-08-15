@@ -1,3 +1,10 @@
+#+TITLE: Neofetch
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.config/neofetch/config.conf
+
+* Print Info
+#+begin_src conf
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
@@ -36,7 +43,10 @@ print_info() {
 
     info cols
 }
+#+end_src
 
+* Kernel
+#+begin_src conf
 # Shorten the output of the kernel function.
 #
 # Default:  'on'
@@ -48,7 +58,10 @@ print_info() {
 # on:  '4.8.9-1-ARCH'
 # off: 'Linux 4.8.9-1-ARCH'
 kernel_shorthand="off"
+#+end_src
 
+* Distro
+#+begin_src conf
 # Shorten the output of the distro function
 #
 # Default:  'off'
@@ -68,7 +81,10 @@ distro_shorthand="off"
 # on:  'Arch Linux x86_64'
 # off: 'Arch Linux'
 os_arch="on"
+#+end_src
 
+* Uptime
+#+begin_src conf
 # Shorten the output of the uptime function
 #
 # Default: 'on'
@@ -80,7 +96,10 @@ os_arch="on"
 # tiny: '2d 10h 3m'
 # off:  '2 days, 10 hours, 3 minutes'
 uptime_shorthand="on"
+#+end_src
 
+* Memory
+#+begin_src conf
 # Show memory pecentage in output.
 #
 # Default: 'off'
@@ -91,7 +110,10 @@ uptime_shorthand="on"
 # on:   '1801MiB / 7881MiB (22%)'
 # off:  '1801MiB / 7881MiB'
 memory_percent="off"
+#+end_src
 
+* Packages
+#+begin_src conf
 # Show/Hide Package Manager names.
 #
 # Default: 'tiny'
@@ -103,7 +125,10 @@ memory_percent="off"
 # tiny: '908 (pacman, flatpak, snap)'
 # off:  '908'
 package_managers="on"
+#+end_src
 
+* Shell
+#+begin_src conf
 # Show the path to $SHELL
 #
 # Default: 'off'
@@ -125,7 +150,10 @@ shell_path="off"
 # on:  'bash 4.4.5'
 # off: 'bash'
 shell_version="on"
+#+end_src
 
+* CPU
+#+begin_src conf
 # CPU speed type
 #
 # Default: 'bios_limit'
@@ -200,7 +228,10 @@ cpu_cores="logical"
 # F:   'Intel i7-6500U (4) @ 3.1GHz [82.0°F]'
 # off: 'Intel i7-6500U (4) @ 3.1GHz'
 cpu_temp="C"
+#+end_src
 
+* GPU
+#+begin_src conf
 # Enable/Disable GPU Brand
 #
 # Default: 'on'
@@ -230,7 +261,10 @@ gpu_brand="on"
 # integrated:
 #   GPU1: Intel Integrated Graphics
 gpu_type="all"
+#+end_src
 
+* Resolution
+#+begin_src conf
 # Display refresh rate next to each monitor
 # Default: 'off'
 # Values:  'on', 'off'
@@ -241,7 +275,10 @@ gpu_type="all"
 # on:  '1920x1080 @ 60Hz'
 # off: '1920x1080'
 refresh_rate="on"
+#+end_src
 
+* GTK Theme
+#+begin_src conf
 # Shorten output of GTK Theme / Icons / Font
 #
 # Default: 'off'
@@ -275,7 +312,10 @@ gtk2="on"
 # on:  'Numix [GTK2], Adwaita [GTK3]'
 # off: 'Numix [GTK2]'
 gtk3="on"
+#+end_src
 
+* IP Address
+#+begin_src conf
 # Website to ping for the public IP
 #
 # Default: 'http://ident.me'
@@ -289,7 +329,10 @@ public_ip_host="http://ident.me"
 # Values:  'int'
 # Flag:    --ip_timeout
 public_ip_timeout=2
+#+end_src
 
+* Disk
+#+begin_src conf
 # Which disks to display.
 # The values can be any /dev/sdXX, mount point or directory.
 # NOTE: By default we only show the disk info for '/'.
@@ -327,7 +370,10 @@ disk_show=('/')
 #         'Disk (Local Disk): 74G / 118G (66%)'
 #         'Disk (Videos): 74G / 118G (66%)'
 disk_subtitle="mount"
+#+end_src
 
+* Song
+#+begin_src conf
 # Manually specify a music player.
 #
 # Default: 'auto'
@@ -403,7 +449,10 @@ song_shorthand="off"
 # Default:  ''
 # Example: mpc_args=(-h HOST -P PASSWORD)
 mpc_args=()
+#+end_src
 
+* Text Colors
+#+begin_src conf
 # Default:  'distro'
 # Values:   'distro', 'num' 'num' 'num' 'num' 'num' 'num'
 # Flag:     --colors
@@ -415,7 +464,10 @@ mpc_args=()
 # colors=(distro)      - Text is colored based on Distro colors.
 # colors=(4 6 1 8 8 6) - Text is colored in the order above.
 colors=(distro)
+#+end_src
 
+* Text Options
+#+begin_src conf
 # Toggle bold text
 #
 # Default:  'on'
@@ -448,7 +500,10 @@ underline_char="-"
 # separator="->":   'Shell-> bash'
 # separator=" =":   'WM = dwm'
 separator=":"
+#+end_src
 
+* Color Blocks
+#+begin_src conf
 # Color block range
 # The range of colors to print.
 #
@@ -485,7 +540,10 @@ block_width=3
 # Values:   'num'
 # Flag:     --block_height
 block_height=1
+#+end_src
 
+* Progress Bars
+#+begin_src conf
 # Bar characters
 #
 # Default:  '-', '='
@@ -546,7 +604,10 @@ cpu_display="off"
 memory_display="off"
 battery_display="off"
 disk_display="off"
+#+end_src
 
+* Backend Settings
+#+begin_src conf
 # Image backend.
 #
 # Default:  'ascii'
@@ -568,7 +629,10 @@ image_backend="ascii"
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
 image_source="auto"
+#+end_src
 
+* ASCII Options
+#+begin_src conf
 # Ascii distro
 # Which distro's ascii art to display.
 #
@@ -602,7 +666,10 @@ ascii_colors=(distro)
 # Values:  'on', 'off'
 # Flag:    --ascii_bold
 ascii_bold="on"
+#+end_src
 
+* Image Options
+#+begin_src conf
 # Image loop
 # Setting this to on will make neofetch redraw the image constantly until
 # Ctrl+C is pressed. This fixes display issues in some terminal emulators.
@@ -670,10 +737,14 @@ xoffset=0
 # Values:  'color', 'blue'
 # Flag:    --bg_color
 background_color=
+#+end_src
 
+* Misc Options
+#+begin_src conf
 # Stdout mode
 # Turn off all colors and disables image backend (ASCII/Image).
 # Useful for piping into another command.
 # Default: 'off'
 # Values: 'on', 'off'
 stdout="off"
+#+end_src
