@@ -509,91 +509,24 @@ c.colors.tabs.pinned.selected.odd.bg = cyan
 c.colors.tabs.pinned.selected.even.fg = grey_0
 c.colors.tabs.pinned.selected.even.bg = cyan
 
-# Which algorithm to use for modifying how colors are rendered with
-# darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14
-# and is treated like `lightness-hsl` with older QtWebEngine versions.
-## Type: String
-# Valid values:
-# - lightness-cielab: Modify colors by converting them to CIELAB color space and inverting the L value. Not available with Qt < 5.14.
-# - lightness-hsl: Modify colors by converting them to the HSL color space and inverting the lightness (i.e. the "L" in HSL).
-# - brightness-rgb: Modify colors by subtracting each of r, g, and b from their maximum value.
 # c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
-# Contrast for dark mode. This only has an effect when
-# `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
-# `brightness-rgb`.
-## Type: Float
 # c.colors.webpage.darkmode.contrast = 0.0
 
-# Render all web contents using a dark theme. Example configurations
-# from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
-# inversion": Set   `colors.webpage.darkmode.algorithm` accordingly.  -
-# "With selective image inversion": Set
-# `colors.webpage.darkmode.policy.images` to `smart`.  - "With selective
-# inversion of non-image elements": Set
-# `colors.webpage.darkmode.threshold.text` to 150 and
-# `colors.webpage.darkmode.threshold.background` to 205.  - "With
-# selective inversion of everything": Combines the two variants   above.
-# ## Type: Bool
-# c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
-# Render all colors as grayscale. This only has an effect when
-# `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
-# `brightness-rgb`.
-## Type: Bool
 # c.colors.webpage.darkmode.grayscale.all = False
 
-# Desaturation factor for images in dark mode. If set to 0, images are
-# left as-is. If set to 1, images are completely grayscale. Values
-# between 0 and 1 desaturate the colors accordingly.
-## Type: Float
 # c.colors.webpage.darkmode.grayscale.images = 0.0
 
-# Which images to apply dark mode to. With QtWebEngine 5.15.0, this
-# setting can cause frequent renderer process crashes due to a
-# https://codereview.qt-project.org/c/qt/qtwebengine-
-# chromium/+/304211[bug in Qt].
-## Type: String
-# Valid values:
-# - always: Apply dark mode filter to all images.
-# - never: Never apply dark mode filter to any images.
-# - smart: Apply dark mode based on image content. Not available with Qt 5.15.0.
-# c.colors.webpage.darkmode.policy.images = 'smart'
+c.colors.webpage.darkmode.policy.images = 'never'
 
-# Which pages to apply dark mode to. The underlying Chromium setting has
-# been removed in QtWebEngine 5.15.3, thus this setting is ignored
-# there. Instead, every element is now classified individually.
-## Type: String
-# Valid values:
-# - always: Apply dark mode filter to all frames, regardless of content.
-# - smart: Apply dark mode filter to frames based on background color.
 c.colors.webpage.darkmode.policy.page = 'smart'
 
-# Threshold for inverting background elements with dark mode. Background
-# elements with brightness above this threshold will be inverted, and
-# below it will be left as in the original, non-dark-mode page. Set to
-# 256 to never invert the color or to 0 to always invert it. Note: This
-# behavior is the opposite of `colors.webpage.darkmode.threshold.text`!
-## Type: Int
 c.colors.webpage.darkmode.threshold.background = 205
 
-# Threshold for inverting text with dark mode. Text colors with
-# brightness below this threshold will be inverted, and above it will be
-# left as in the original, non-dark-mode page. Set to 256 to always
-# invert text color or to 0 to never invert text color.
-## Type: Int
 c.colors.webpage.darkmode.threshold.text = 150
 
-# Value to use for `prefers-color-scheme:` for websites. The "light"
-# value is only available with QtWebEngine 5.15.2+. On older versions,
-# it is the same as "auto". The "auto" value is broken on QtWebEngine
-# 5.15.2 due to a Qt bug. There, it will fall back to "light"
-# unconditionally.
-## Type: String
-# Valid values:
-# - auto: Use the system-wide color scheme setting.
-# - light: Force a light theme.
-# - dark: Force a dark theme.
 c.colors.webpage.preferred_color_scheme = "dark"
 
 config.load_autoconfig(True)
@@ -955,18 +888,18 @@ c.url.open_base_url = True
 
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
-    "ArchWiki": "https://wiki.archlinux.org/index.php?search={}",
-    "QtileDocs": "http://docs.qtile.org/en/latest/search.html?q{}&check_keywords=yes&area=default",
-    "GitHub": "https://github.com/search?q={}&ref=opensearch",
-    "YouTube": "https://www.youtube.com/results?search_query={}",
-    "Odysee": "https://odysee.com/$/search?q={}",
-    "GoogleDrive": "https://drive.google.com/drive/search?q={}",
-    "GoogleMaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "GoogleImages": "https://www.google.com/search?q={}",
-    "Google": "https://www.google.com/search?q={}",
-    "AmazonUK": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "AmazonCOM": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "AmazonCA": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "archwiki": "https://wiki.archlinux.org/index.php?search={}",
+    "qtiledocs": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "github": "https://github.com/search?q={}&ref=opensearch",
+    "youtube": "https://www.youtube.com/results?search_query={}",
+    "odysee": "https://odysee.com/$/search?q={}",
+    "googledrive": "https://drive.google.com/drive/search?q={}",
+    "googlemaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "googleimages": "https://www.google.com/search?q={}",
+    "google": "https://www.google.com/search?q={}",
+    "amazonuk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "amazoncom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "amazonca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
 }
 
 c.url.start_pages = ["https://search.brave.com"]
@@ -2116,18 +2049,8 @@ c.spellcheck.languages = [
 ## Type: Bool
 # c.qt.workarounds.remove_service_workers = False
 
-# When/how to show the scrollbar.
-## Type: String
-# Valid values:
-# - always: Always show the scrollbar.
-# - never: Never show the scrollbar.
-# - when-searching: Show the scrollbar when searching for text in the webpage. With the QtWebKit backend, this is equal to `never`.
-# - overlay: Show an overlay scrollbar. On macOS, this is unavailable and equal to `when-searching`; with the QtWebKit backend, this is equal to `never`. Enabling/disabling overlay scrollbars requires a restart.
-# c.scrolling.bar = 'overlay'
+c.scrolling.bar = 'overlay'
 
-# Enable smooth scrolling for web pages. Note smooth scrolling does not
-# work with the `:scroll-px` command.
-## Type: Bool
 c.scrolling.smooth = True
 
 # When to find text on a page case-insensitively.
