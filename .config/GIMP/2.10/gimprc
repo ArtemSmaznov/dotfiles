@@ -94,6 +94,7 @@
 (toolbox-foo-area yes)
 (color-profile-policy keep)
 (image-resize-layer-set all)
+(layer-new-name "s")
 (fill-options
     (style solid)
     (antialias yes)

@@ -345,52 +345,6 @@ c.colors.keyhint.fg = grey_70
 c.colors.keyhint.suffix.fg = grey_70
 c.colors.keyhint.bg = grey_0
 
-c.colors.messages.error.fg = grey_0
-c.colors.messages.error.bg = red
-c.colors.messages.error.border = red
-c.colors.messages.warning.fg = grey_0
-c.colors.messages.warning.bg = magenta
-c.colors.messages.warning.border = magenta
-c.colors.messages.info.fg = grey_70
-c.colors.messages.info.bg = grey_0
-c.colors.messages.info.border = grey_0
-
-# Background color of an error message.
-## Type: QssColor
-# c.colors.messages.error.bg = 'red'
-
-# Border color of an error message.
-## Type: QssColor
-# c.colors.messages.error.border = '#bb0000'
-
-# Foreground color of an error message.
-## Type: QssColor
-# c.colors.messages.error.fg = 'white'
-
-# Background color of an info message.
-## Type: QssColor
-# c.colors.messages.info.bg = 'black'
-
-# Border color of an info message.
-## Type: QssColor
-# c.colors.messages.info.border = '#333333'
-
-# Foreground color of an info message.
-## Type: QssColor
-# c.colors.messages.info.fg = 'white'
-
-# Background color of a warning message.
-## Type: QssColor
-# c.colors.messages.warning.bg = 'darkorange'
-
-# Border color of a warning message.
-## Type: QssColor
-# c.colors.messages.warning.border = '#d47300'
-
-# Foreground color of a warning message.
-## Type: QssColor
-# c.colors.messages.warning.fg = 'black'
-
 c.colors.prompts.fg = grey_70
 c.colors.prompts.border = grey_0
 c.colors.prompts.bg = grey_0
@@ -530,8 +484,6 @@ c.colors.webpage.darkmode.threshold.text = 150
 c.colors.webpage.preferred_color_scheme = "dark"
 
 config.load_autoconfig(True)
-
-c.messages.timeout = 9000
 
 # Backend to use to display websites. qutebrowser supports two different
 # web rendering engines / backends, QtWebEngine and QtWebKit (not
@@ -1405,6 +1357,20 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 
 config.bind('gv', 'spawn mpv {url}')
 
+c.colors.messages.info.fg = grey_70
+c.colors.messages.info.bg = grey_0
+c.colors.messages.info.border = grey_0
+
+c.colors.messages.warning.fg = grey_0
+c.colors.messages.warning.bg = magenta
+c.colors.messages.warning.border = magenta
+
+c.colors.messages.error.fg = grey_0
+c.colors.messages.error.bg = red
+c.colors.messages.error.border = red
+
+c.messages.timeout = 3000
+
 # c.content.canvas_reading = True
 
 c.content.blocking.enabled = True
@@ -1540,69 +1506,22 @@ c.content.persistent_storage = 'ask'
 ## Type: Bool
 # c.content.javascript.prompt = True
 
-# What notification presenter to use for web notifications. Note that
-# not all implementations support all features of notifications: - With
-# PyQt 5.14, any setting other than `qt` does not support  the `click`
-# and   `close` events, as well as the `tag` option to replace existing
-# notifications. - The `qt` and `systray` options only support showing
-# one notification at the time   and ignore the `tag` option to replace
-# existing notifications. - The `herbe` option only supports showing one
-# notification at the time and doesn't   show icons. - The `messages`
-# option doesn't show icons and doesn't support the `click` and
-# `close` events.
-## Type: String
-# Valid values:
-# - auto: Tries `libnotify`, `systray` and `messages`, uses the first one available without showing error messages.
-# - qt: Use Qt's native notification presenter, based on a system tray icon. Switching from or to this value requires a restart of qutebrowser. Recommended over `systray` on PyQt 5.14.
-# - libnotify: Shows messages via DBus in a libnotify-compatible way. If DBus isn't available, falls back to `systray` or `messages`, but shows an error message.
-# - systray: Use a notification presenter based on a systray icon. Falls back to `libnotify` or `messages` if not systray is available. This is a reimplementation of the `qt` setting value, but with the possibility to switch to it at runtime.
-# - messages: Show notifications as qutebrowser messages. Most notification features aren't available.
-# - herbe: (experimental!) Show notifications using herbe (github.com/dudik/herbe). Most notification features aren't available.
-# c.content.notifications.presenter = 'auto'
+c.content.notifications.presenter = 'auto'
 
-# Whether to show the origin URL for notifications. Note that URL
-# patterns with this setting only get matched against the origin part of
-# the URL, so e.g. paths in patterns will never match. Note that with
-# the `qt` presenter, origins are never shown.
-## Type: Bool
-# c.content.notifications.show_origin = True
+c.content.notifications.show_origin = True
 
 c.spellcheck.languages = [
     "en-US",
     "ru-RU",
 ]
 
-# Padding (in pixels) for the statusbar.
-## Type: Padding
-# c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
+c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
 
-# Position of the status bar.
-## Type: VerticalPosition
-# Valid values:
-##   - top
-##   - bottom
-# c.statusbar.position = 'bottom'
+c.statusbar.position = 'bottom'
 
-# When to show the statusbar.
-## Type: String
-# Valid values:
-# - always: Always show the statusbar.
-# - never: Always hide the statusbar.
-# - in-mode: Show the statusbar when in modes other than normal mode.
-# c.statusbar.show = 'always'
+c.statusbar.show = 'always'
 
-# List of widgets displayed in the statusbar.
-# Type: List of StatusbarWidget
-# Valid values:
-# - url: Current page URL.
-# - scroll: Percentage of the current page position like `10%`.
-# - scroll_raw: Raw percentage of the current page position like `10`.
-# - history: Display an arrow when possible to go back/forward in history.
-# - tabs: Current active tab, e.g. `2`.
-# - keypress: Display pressed keys when composing a vi command.
-# - progress: Progress bar for the current page loading.
-# - text:foo: Display the static text after the colon, `foo` in the example.
-# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
+c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
 
 # Allow pdf.js to view PDF files in the browser. Note that the files can
 # still be downloaded by clicking the download button in the pdf.js
@@ -1733,123 +1652,55 @@ c.spellcheck.languages = [
 ## Type: Encoding
 # c.editor.encoding = 'utf-8'
 
-# Command (and arguments) to use for selecting a single folder in forms.
-# The command should write the selected folder path to the specified
-# file or stdout. The following placeholders are defined: * `{}`:
-# Filename of the file to be written to. If not contained in any
-# argument, the   standard output of the command is read instead.
-## Type: ShellCommand
 # c.fileselect.folder.command = ['xterm', '-e', 'ranger', '--choosedir={}']
 
-# Handler for selecting file(s) in forms. If `external`, then the
-# commands specified by `fileselect.single_file.command` and
-# `fileselect.multiple_files.command` are used to select one or multiple
-# files respectively.
-## Type: String
-# Valid values:
-# - default: Use the default file selector.
-# - external: Use an external command.
 # c.fileselect.handler = 'default'
 
-# Command (and arguments) to use for selecting multiple files in forms.
-# The command should write the selected file paths to the specified file
-# or to stdout, separated by newlines. The following placeholders are
-# defined: * `{}`: Filename of the file to be written to. If not
-# contained in any argument, the   standard output of the command is
-# read instead.
-## Type: ShellCommand
 # c.fileselect.multiple_files.command = ['xterm', '-e', 'ranger', '--choosefiles={}']
 
-# Command (and arguments) to use for selecting a single file in forms.
-# The command should write the selected file path to the specified file
-# or stdout. The following placeholders are defined: * `{}`: Filename of
-# the file to be written to. If not contained in any argument, the
-# standard output of the command is read instead.
-## Type: ShellCommand
 # c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
 
-# When a hint can be automatically followed without pressing Enter.
-## Type: String
-# Valid values:
-# - always: Auto-follow whenever there is only a single hint on a page.
-# - unique-match: Auto-follow whenever there is a unique non-empty match in either the hint string (word mode) or filter (number mode).
-# - full-match: Follow the hint when the user typed the whole hint (letter, word or number mode) or the element's text (only in number mode).
-# - never: The user will always need to press Enter to follow a hint.
-# c.hints.auto_follow = 'unique-match'
+c.hints.auto_follow = 'unique-match'
 
-# Duration (in milliseconds) to ignore normal-mode key bindings after a
-# successful auto-follow.
-## Type: Int
-# c.hints.auto_follow_timeout = 0
+c.hints.auto_follow_timeout = 0
 
-# CSS border value for hints.
-## Type: String
 # c.hints.border = '1px solid #E3BE23'
 
-# Characters used for hint strings.
-## Type: UniqueCharString
 # c.hints.chars = 'asdfghjkl'
+c.hints.chars = 'qwertyuiopasdfghjkl;zxcvbnm'
 
-# Dictionary file to be used by the word hints.
-## Type: File
-# c.hints.dictionary = '/usr/share/dict/words'
+c.hints.dictionary = '/usr/share/dict/words'
 
-# Which implementation to use to find elements to hint.
-## Type: String
-# Valid values:
-# - javascript: Better but slower
-# - python: Slightly worse but faster
-# c.hints.find_implementation = 'python'
+c.hints.find_implementation = 'python'
 
-# Hide unmatched hints in rapid mode.
-## Type: Bool
-# c.hints.hide_unmatched_rapid_hints = True
+c.hints.hide_unmatched_rapid_hints = True
 
-# Leave hint mode when starting a new page load.
-## Type: Bool
-# c.hints.leave_on_load = False
+c.hints.leave_on_load = False
 
-# Minimum number of characters used for hint strings.
-## Type: Int
-# c.hints.min_chars = 1
+c.hints.min_chars = 1
 
-# Mode to use for hints.
-## Type: String
-# Valid values:
-# - number: Use numeric hints. (In this mode you can also type letters from the hinted element to filter and reduce the number of elements that are hinted.)
-# - letter: Use the characters in the `hints.chars` setting.
-# - word: Use hints words based on the html elements and the extra words.
-# c.hints.mode = 'letter'
+c.hints.mode = 'number'
 
-# Comma-separated list of regular expressions to use for 'next' links.
-# Type: List of Regex
-# c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b', '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
+c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b', '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
 
-# Padding (in pixels) for hints.
-## Type: Padding
-# c.hints.padding = {'top': 0, 'bottom': 0, 'left': 3, 'right': 3}
+c.hints.prev_regexes = ['\\bprev(ious)?\\b', '\\bback\\b', '\\bolder\\b', '\\b[<←≪]\\b', '\\b(<<|«)\\b']
 
-# Comma-separated list of regular expressions to use for 'prev' links.
-# Type: List of Regex
-# c.hints.prev_regexes = ['\\bprev(ious)?\\b', '\\bback\\b', '\\bolder\\b', '\\b[<←≪]\\b', '\\b(<<|«)\\b']
+c.hints.padding = {'top': 0, 'bottom': 0, 'left': 3, 'right': 3}
 
-# Rounding radius (in pixels) for the edges of hints.
-## Type: Int
-# c.hints.radius = 3
+c.hints.radius = 3
 
-# Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
-# number hints.
-## Type: Bool
-# c.hints.scatter = True
+c.hints.scatter = True
 
-# CSS selectors used to determine which elements on a page should have
-# hints.
-## Type: Dict
-# c.hints.selectors = {'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[contenteditable]:not([contenteditable="false"])', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]'], 'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'], 'images': ['img'], 'media': ['audio', 'img', 'video'], 'url': ['[src]', '[href]'], 'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea']}
+c.hints.selectors = {
+    'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[contenteditable]:not([contenteditable="false"])', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]'],
+    'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'],
+    'images': ['img'],
+    'media': ['audio', 'img', 'video'],
+    'url': ['[src]', '[href]'],
+    'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea']
+}
 
-# Make characters in hint strings uppercase.
-## Type: Bool
-# c.hints.uppercase = False
+c.hints.uppercase = False
 
 # Allow Escape to quit the crash reporter.
 ## Type: Bool
