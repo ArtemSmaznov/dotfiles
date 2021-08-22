@@ -1,134 +1,62 @@
-# Hide the window decoration.  This setting requires a restart on
-# Wayland.
-## Type: Bool
 # c.window.hide_decoration = False
 
-# Format to use for the window title. The same placeholders like for
-# `tabs.title.format` are defined.
-## Type: FormatString
 # c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
 
-# Set the main window background to transparent.  This allows having a
-# transparent tab- or statusbar (might require a compositor such as
-# picom). However, it breaks some functionality such as dmenu embedding
-# via its `-w` option. On some systems, it was additionally reported
-# that main window transparency negatively affects performance.  Note
-# this setting only affects windows opened after setting it.
-## Type: Bool
-# c.window.transparent = False
+c.window.transparent = False
 
-# Default font size to use. Whenever "default_size" is used in a font
-# setting, it's replaced with the size listed here. Valid values are
-# either a float value with a "pt" suffix, or an integer value with a
-# "px" suffix.
-## Type: String
 c.fonts.default_size = '14pt'
 
-# Default font families to use. Whenever "default_family" is used in a
-# font setting, it's replaced with the fonts listed here. If set to an
-# empty value, a system-specific monospace default is used.
-# Type: List of Font, or Font
+#+begin_src python
 # c.fonts.default_family = []
 
-# Font used in the completion categories.
-## Type: Font
+#+begin_src python
 # c.fonts.completion.category = 'bold default_size default_family'
 
-# Font used in the completion widget.
-## Type: Font
 # c.fonts.completion.entry = 'default_size default_family'
 
-# Font used for the context menu. If set to null, the Qt default is
-# used.
-## Type: Font
 # c.fonts.contextmenu = None
 
-# Font used for the debugging console.
-## Type: Font
 # c.fonts.debug_console = 'default_size default_family'
 
-# Font used for the downloadbar.
-## Type: Font
 # c.fonts.downloads = 'default_size default_family'
 
-# Font used for the hints.
-## Type: Font
 # c.fonts.hints = 'bold default_size default_family'
 
-# Font used in the keyhint widget.
-## Type: Font
 # c.fonts.keyhint = 'default_size default_family'
 
-# Font used for error messages.
-## Type: Font
 # c.fonts.messages.error = 'default_size default_family'
 
-# Font used for info messages.
-## Type: Font
 # c.fonts.messages.info = 'default_size default_family'
 
-# Font used for warning messages.
-## Type: Font
 # c.fonts.messages.warning = 'default_size default_family'
 
-# Font used for prompts.
-## Type: Font
 # c.fonts.prompts = 'default_size sans-serif'
 
-# Font used in the statusbar.
-## Type: Font
 # c.fonts.statusbar = 'default_size default_family'
 
-# Font used for selected tabs.
-## Type: Font
 # c.fonts.tabs.selected = 'default_size default_family'
 
-# Font used for unselected tabs.
-## Type: Font
 # c.fonts.tabs.unselected = 'default_size default_family'
 
-# Font family for cursive fonts.
-## Type: FontFamily
 # c.fonts.web.family.cursive = ''
 
-# Font family for fantasy fonts.
-## Type: FontFamily
 # c.fonts.web.family.fantasy = ''
 
-# Font family for fixed fonts.
-## Type: FontFamily
 # c.fonts.web.family.fixed = ''
 
-# Font family for sans-serif fonts.
-## Type: FontFamily
 # c.fonts.web.family.sans_serif = ''
 
-# Font family for serif fonts.
-## Type: FontFamily
 # c.fonts.web.family.serif = ''
 
-# Font family for standard fonts.
-## Type: FontFamily
 # c.fonts.web.family.standard = ''
 
-# Default font size (in pixels) for regular text.
-## Type: Int
 # c.fonts.web.size.default = 16
 
-# Default font size (in pixels) for fixed-pitch text.
-## Type: Int
 # c.fonts.web.size.default_fixed = 13
 
-# Hard minimum font size (in pixels).
-## Type: Int
 # c.fonts.web.size.minimum = 0
 
-# Minimum logical font size (in pixels) that is applied when zooming
-# out.
-## Type: Int
 # c.fonts.web.size.minimum_logical = 6
-
-# Gruvbox dark, soft scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
 grey_0 = "#32302f"
 grey_10 = "#3c3836"
@@ -183,9 +111,6 @@ color14 = "#585c49"
 color7 = "#c0b18b"
 color15 = "#978965"
 
-# --- End of import section ---
-
-# Rassigning variable names
 black_0 = color0
 black_dark_8 = color8
 red_1 = color1
@@ -223,156 +148,59 @@ c.colors.completion.item.selected.match.fg = green
 c.colors.completion.scrollbar.fg = grey_70
 c.colors.completion.scrollbar.bg = grey_0
 
-c.colors.contextmenu.disabled.bg = grey_10
-c.colors.contextmenu.disabled.fg = grey_55
+c.colors.keyhint.fg = grey_70
+c.colors.keyhint.bg = grey_0
+c.colors.keyhint.suffix.fg = green
+
+c.keyhint.radius = 6
+
 c.colors.contextmenu.menu.bg = grey_0
 c.colors.contextmenu.menu.fg =  grey_70
+
 c.colors.contextmenu.selected.bg = grey_25
 c.colors.contextmenu.selected.fg = grey_70
 
-# Background color of disabled items in the context menu. If set to
-# null, the Qt default is used.
-## Type: QssColor
-# c.colors.contextmenu.disabled.bg = None
-
-# Foreground color of disabled items in the context menu. If set to
-# null, the Qt default is used.
-## Type: QssColor
-# c.colors.contextmenu.disabled.fg = None
-
-# Background color of the context menu. If set to null, the Qt default
-# is used.
-## Type: QssColor
-# c.colors.contextmenu.menu.bg = None
-
-# Foreground color of the context menu. If set to null, the Qt default
-# is used.
-## Type: QssColor
-# c.colors.contextmenu.menu.fg = None
-
-# Background color of the context menu's selected item. If set to null,
-# the Qt default is used.
-## Type: QssColor
-# c.colors.contextmenu.selected.bg = None
-
-# Foreground color of the context menu's selected item. If set to null,
-# the Qt default is used.
-## Type: QssColor
-# c.colors.contextmenu.selected.fg = None
+c.colors.contextmenu.disabled.bg = grey_10
+c.colors.contextmenu.disabled.fg = grey_55
 
 c.colors.downloads.bar.bg = grey_0
+
 c.colors.downloads.start.fg = grey_0
 c.colors.downloads.start.bg = blue
+
 c.colors.downloads.stop.fg = grey_0
 c.colors.downloads.stop.bg = cyan
+
 c.colors.downloads.error.fg = red
 
-# Background color for the download bar.
-## Type: QssColor
-# c.colors.downloads.bar.bg = 'black'
+c.colors.downloads.system.bg = 'rgb'
 
-# Background color for downloads with errors.
-## Type: QtColor
-# c.colors.downloads.error.bg = 'red'
+c.colors.downloads.system.fg = 'rgb'
 
-# Foreground color for downloads with errors.
-## Type: QtColor
-# c.colors.downloads.error.fg = 'white'
-
-# Color gradient start for download backgrounds.
-## Type: QtColor
-# c.colors.downloads.start.bg = '#0000aa'
-
-# Color gradient start for download text.
-## Type: QtColor
-# c.colors.downloads.start.fg = 'white'
-
-# Color gradient stop for download backgrounds.
-## Type: QtColor
-# c.colors.downloads.stop.bg = '#00aa00'
-
-# Color gradient end for download text.
-## Type: QtColor
-# c.colors.downloads.stop.fg = 'white'
-
-# Color gradient interpolation system for download backgrounds.
-## Type: ColorSystem
-# Valid values:
-# - rgb: Interpolate in the RGB color system.
-# - hsv: Interpolate in the HSV color system.
-# - hsl: Interpolate in the HSL color system.
-# - none: Don't show a gradient.
-# c.colors.downloads.system.bg = 'rgb'
-
-# Color gradient interpolation system for download text.
-## Type: ColorSystem
-# Valid values:
-# - rgb: Interpolate in the RGB color system.
-# - hsv: Interpolate in the HSV color system.
-# - hsl: Interpolate in the HSL color system.
-# - none: Don't show a gradient.
-# c.colors.downloads.system.fg = 'rgb'
-
-# Background color for hints. Note that you can use a `rgba(...)` value
-# for transparency.
-## Type: QssColor
 # c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 
-# Font color for hints.
-## Type: QssColor
-# c.colors.hints.fg = 'black'
-
-# Font color for the matched part of hints.
-## Type: QtColor
-# c.colors.hints.match.fg = 'green'
-
-# Background color of the keyhint widget.
-## Type: QssColor
-# c.colors.keyhint.bg = 'rgba(0, 0, 0, 80%)'
-
-# Text color for the keyhint widget.
-## Type: QssColor
-# c.colors.keyhint.fg = '#FFFFFF'
-
-# Highlight color for keys to complete the current keychain.
-## Type: QssColor
-# c.colors.keyhint.suffix.fg = '#FFFF00'
 c.colors.hints.fg = grey_0
 c.colors.hints.bg = yellow
 c.colors.hints.match.fg = grey_70
 
-c.colors.keyhint.fg = grey_70
-c.colors.keyhint.suffix.fg = grey_70
-c.colors.keyhint.bg = grey_0
-
 c.colors.prompts.fg = grey_70
-c.colors.prompts.border = grey_0
 c.colors.prompts.bg = grey_0
+
 c.colors.prompts.selected.bg = grey_25
 c.colors.prompts.selected.fg = grey_70
 
-# Background color for prompts.
-## Type: QssColor
-# c.colors.prompts.bg = '#444444'
+c.colors.prompts.border = grey_0
 
-# Border used around UI elements in prompts.
-## Type: String
-# c.colors.prompts.border = '1px solid gray'
+c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
 
-# Foreground color for prompts.
-## Type: QssColor
-# c.colors.prompts.fg = 'white'
+c.statusbar.position = 'bottom'
 
-# Background color for the selected item in filename prompts.
-## Type: QssColor
-# c.colors.prompts.selected.bg = 'grey'
+c.statusbar.show = 'always'
 
-# Foreground color for the selected item in filename prompts.
-## Type: QssColor
-# c.colors.prompts.selected.fg = 'white'
+c.statusbar.widgets = ['keypress', 'progress', 'history', 'url', 'text: -- ', 'scroll']
 
 # Color of the statusbar.
-c.colors.statusbar.normal.fg = green
+c.colors.statusbar.normal.fg = grey_70
 c.colors.statusbar.normal.bg = grey_0
 
 # Color of the statusbar in insert mode.
@@ -404,7 +232,7 @@ c.colors.statusbar.caret.selection.fg = grey_0
 c.colors.statusbar.caret.selection.bg = blue
 
 # Color of the progress bar.
-c.colors.statusbar.progress.bg = blue
+c.colors.statusbar.progress.bg = orange
 
 # Default foreground color of the URL in the statusbar.
 c.colors.statusbar.url.fg = grey_70
@@ -421,11 +249,6 @@ c.colors.statusbar.url.success.https.fg = green
 
 # Foreground color of the URL in the statusbar when there's a warning.
 c.colors.statusbar.url.warn.fg = magenta
-
-# Background color for webpages if unset (or empty to use the theme's
-# color).
-## Type: QtColor
-# c.colors.webpage.bg = grey_0
 
 c.colors.tabs.bar.bg = grey_0
 
@@ -462,6 +285,8 @@ c.colors.tabs.pinned.selected.odd.fg = grey_0
 c.colors.tabs.pinned.selected.odd.bg = cyan
 c.colors.tabs.pinned.selected.even.fg = grey_0
 c.colors.tabs.pinned.selected.even.bg = cyan
+
+# c.colors.webpage.bg = grey_0
 
 # c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
@@ -864,9 +689,6 @@ c.auto_save.session = True
 
 c.auto_save.interval = 15000
 
-# Number of commands to save in the command history. 0: no history / -1:
-# unlimited
-## Type: Int
 # c.completion.cmd_history_max_items = 100
 
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
@@ -1371,7 +1193,7 @@ c.colors.messages.error.border = red
 
 c.messages.timeout = 3000
 
-# c.content.canvas_reading = True
+c.content.canvas_reading = True
 
 c.content.blocking.enabled = True
 
@@ -1402,68 +1224,27 @@ c.content.cache.appcache = True
 # c.content.cache.size = None
 
 # Allow websites to share screen content.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.desktop_capture = "ask"
 
 # Allow websites to request geolocations.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.geolocation = "ask"
 
 # Allow websites to record audio.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.media.audio_capture = "ask"
 
-# Allow websites to record audio and video.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
-c.content.media.audio_video_capture = "ask"
-
 # Allow websites to record video.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.media.video_capture = "ask"
 
+# Allow websites to record audio and video.
+c.content.media.audio_video_capture = "ask"
+
 # Allow websites to lock your mouse pointer.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.mouse_lock = "ask"
 
 # Allow websites to show notifications.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
 c.content.notifications.enabled = "ask"
 
-# Allow websites to request persistent storage quota via
-# `navigator.webkitPersistentStorage.requestQuota`.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
+# Allow websites to request persistent storage quota via `navigator.webkitPersistentStorage.requestQuota`.
 c.content.persistent_storage = 'ask'
 
 # Show javascript alerts.
@@ -1515,151 +1296,6 @@ c.spellcheck.languages = [
     "ru-RU",
 ]
 
-c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
-
-c.statusbar.position = 'bottom'
-
-c.statusbar.show = 'always'
-
-c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
-
-# Allow pdf.js to view PDF files in the browser. Note that the files can
-# still be downloaded by clicking the download button in the pdf.js
-# viewer.
-## Type: Bool
-# c.content.pdfjs = False
-
-# Enable plugins in Web pages.
-## Type: Bool
-# c.content.plugins = False
-
-# Request websites to minimize non-essentials animations and motion.
-# This results in the `prefers-reduced-motion` CSS media query to
-# evaluate to `reduce` (rather than `no-preference`). On Windows, if
-# this setting is set to False, the system-wide animation setting is
-# considered.
-## Type: Bool
-# c.content.prefers_reduced_motion = False
-
-# Draw the background color and images also when the page is printed.
-## Type: Bool
-# c.content.print_element_backgrounds = True
-
-# Open new windows in private browsing mode which does not record
-# visited pages.
-## Type: Bool
-# c.content.private_browsing = False
-
-# Proxy to use. In addition to the listed values, you can use a
-# `socks://...` or `http://...` URL. Note that with QtWebEngine, it will
-# take a couple of seconds until the change is applied, if this value is
-# changed at runtime.
-## Type: Proxy
-# Valid values:
-# - system: Use the system wide proxy.
-# - none: Don't use any proxy
-# c.content.proxy = 'system'
-
-# Send DNS requests over the configured proxy.
-## Type: Bool
-# c.content.proxy_dns_requests = True
-
-# Allow websites to register protocol handlers via
-# `navigator.registerProtocolHandler`.
-## Type: BoolAsk
-# Valid values:
-##   - true
-##   - false
-##   - ask
-# c.content.register_protocol_handler = 'ask'
-
-# Enable quirks (such as faked user agent headers) needed to get
-# specific sites to work properly.
-## Type: Bool
-# c.content.site_specific_quirks.enabled = True
-
-# Disable a list of named quirks. The js-string-replaceall quirk is
-# needed for Nextcloud Calendar < 2.2.0 with QtWebEngine < 5.15.3.
-# However, the workaround is not fully compliant to the ECMAScript spec
-# and might cause issues on other websites, so it's disabled by default.
-## Type: FlagList
-# Valid values:
-##   - ua-whatsapp
-##   - ua-google
-##   - ua-slack
-##   - ua-googledocs
-##   - js-whatsapp-web
-##   - js-discord
-##   - js-string-replaceall
-##   - js-globalthis
-##   - js-object-fromentries
-##   - misc-krunker
-##   - misc-mathml-darkmode
-# c.content.site_specific_quirks.skip = ['js-string-replaceall']
-
-# How to proceed on TLS certificate errors.
-## Type: String
-# Valid values:
-# - ask: Ask how to proceed for every certificate error (unless non-overridable due to HSTS).
-# - ask-block-thirdparty: Ask how to proceed for normal page loads, but silently block resource loads.
-# - block: Automatically block loading on certificate errors.
-# - load-insecurely: Force loading pages despite certificate errors. This is *insecure* and should be avoided. Instead of using this, consider fixing the underlying issue or importing a self-signed certificate via `certutil` (or Chromium) instead.
-# c.content.tls.certificate_errors = 'ask'
-
-# How navigation requests to URLs with unknown schemes are handled.
-## Type: String
-# Valid values:
-# - disallow: Disallows all navigation requests to URLs with unknown schemes.
-# - allow-from-user-interaction: Allows navigation requests to URLs with unknown schemes that are issued from user-interaction (like a mouse-click), whereas other navigation requests (for example from JavaScript) are suppressed.
-# - allow-all: Allows all navigation requests to URLs with unknown schemes.
-# c.content.unknown_url_scheme_policy = 'allow-from-user-interaction'
-
-# List of user stylesheet filenames to use.
-# Type: List of File, or File
-# c.content.user_stylesheets = []
-
-# Enable WebGL.
-## Type: Bool
-# c.content.webgl = True
-
-# Which interfaces to expose via WebRTC.
-## Type: String
-# Valid values:
-# - all-interfaces: WebRTC has the right to enumerate all interfaces and bind them to discover public interfaces.
-# - default-public-and-private-interfaces: WebRTC should only use the default route used by http. This also exposes the associated default private address. Default route is the route chosen by the OS on a multi-homed endpoint.
-# - default-public-interface-only: WebRTC should only use the default route used by http. This doesn't expose any local addresses.
-# - disable-non-proxied-udp: WebRTC should only use TCP to contact peers or servers unless the proxy server supports UDP. This doesn't expose any local addresses either.
-# c.content.webrtc_ip_handling_policy = 'all-interfaces'
-
-# Monitor load requests for cross-site scripting attempts. Suspicious
-# scripts will be blocked and reported in the devtools JavaScript
-# console. Note that bypasses for the XSS auditor are widely known and
-# it can be abused for cross-site info leaks in some scenarios, see:
-# https://www.chromium.org/developers/design-documents/xss-auditor
-## Type: Bool
-# c.content.xss_auditing = False
-
-# Editor (and arguments) to use for the `edit-*` commands. The following
-# placeholders are defined:  * `{file}`: Filename of the file to be
-# edited. * `{line}`: Line in which the caret is found in the text. *
-# `{column}`: Column in which the caret is found in the text. *
-# `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
-# Same as `{column}`, but starting from index 0.
-## Type: ShellCommand
-# c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
-
-# Encoding to use for the editor.
-## Type: Encoding
-# c.editor.encoding = 'utf-8'
-
-# c.fileselect.folder.command = ['xterm', '-e', 'ranger', '--choosedir={}']
-
-# c.fileselect.handler = 'default'
-
-# c.fileselect.multiple_files.command = ['xterm', '-e', 'ranger', '--choosefiles={}']
-
-# c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
-
 c.hints.auto_follow = 'unique-match'
 
 c.hints.auto_follow_timeout = 0
@@ -1679,7 +1315,7 @@ c.hints.leave_on_load = False
 
 c.hints.min_chars = 1
 
-c.hints.mode = 'number'
+c.hints.mode = 'letter'
 
 c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b', '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
 
@@ -1702,231 +1338,116 @@ c.hints.selectors = {
 
 c.hints.uppercase = False
 
-# Allow Escape to quit the crash reporter.
-## Type: Bool
-# c.input.escape_quits_reporter = True
+c.keyhint.blacklist = []
 
-# Which unbound keys to forward to the webview in normal mode.
-## Type: String
-# Valid values:
-# - all: Forward all unbound keys.
-# - auto: Forward unbound non-alphanumeric keys.
-# - none: Don't forward any keys.
-# c.input.forward_unbound_keys = 'auto'
+c.keyhint.delay = 500
 
-# Enter insert mode if an editable element is clicked.
-## Type: Bool
-# c.input.insert_mode.auto_enter = True
+# c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 
-# Leave insert mode if a non-editable element is clicked.
-## Type: Bool
-# c.input.insert_mode.auto_leave = True
+c.editor.encoding = 'utf-8'
 
-# Automatically enter insert mode if an editable element is focused
-# after loading the page.
-## Type: Bool
-# c.input.insert_mode.auto_load = False
+# c.content.pdfjs = False
 
-# Leave insert mode when starting a new page load. Patterns may be
-# unreliable on this setting, and they may match the url you are
-# navigating to, or the URL you are navigating from.
-## Type: Bool
-# c.input.insert_mode.leave_on_load = True
+# c.content.plugins = False
 
-# Switch to insert mode when clicking flash and other plugins.
-## Type: Bool
-# c.input.insert_mode.plugins = False
+# c.content.prefers_reduced_motion = False
 
-# Include hyperlinks in the keyboard focus chain when tabbing.
-## Type: Bool
-# c.input.links_included_in_focus_chain = True
+# c.content.print_element_backgrounds = True
 
-# Whether the underlying Chromium should handle media keys. On Linux,
-# disabling this also disables Chromium's MPRIS integration.
-## Type: Bool
-# c.input.media_keys = True
+c.content.private_browsing = False
 
-# Enable back and forward buttons on the mouse.
-## Type: Bool
-# c.input.mouse.back_forward_buttons = True
+# c.content.proxy = 'system'
 
-# Enable Opera-like mouse rocker gestures. This disables the context
-# menu.
-## Type: Bool
-# c.input.mouse.rocker_gestures = False
+# c.content.proxy_dns_requests = True
 
-# Timeout (in milliseconds) for partially typed key bindings. If the
-# current input forms only partial matches, the keystring will be
-# cleared after this time. If set to 0, partially typed bindings are
-# never cleared.
-## Type: Int
-# c.input.partial_timeout = 0
+# c.content.register_protocol_handler = 'ask'
 
-# Enable spatial navigation. Spatial navigation consists in the ability
-# to navigate between focusable elements in a Web page, such as
-# hyperlinks and form controls, by using Left, Right, Up and Down arrow
-# keys. For example, if the user presses the Right key, heuristics
-# determine whether there is an element he might be trying to reach
-# towards the right and which element he probably wants.
-## Type: Bool
-# c.input.spatial_navigation = False
+# c.content.site_specific_quirks.enabled = True
 
-# Keychains that shouldn't be shown in the keyhint dialog. Globs are
-# supported, so `;*` will blacklist all keychains starting with `;`. Use
-# `*` to disable keyhints.
-# Type: List of String
-# c.keyhint.blacklist = []
+# c.content.site_specific_quirks.skip = ['js-string-replaceall']
 
-# Time (in milliseconds) from pressing a key to seeing the keyhint
-# dialog.
-## Type: Int
-# c.keyhint.delay = 500
+# c.content.tls.certificate_errors = 'ask'
 
-# Rounding radius (in pixels) for the edges of the keyhint dialog.
-## Type: Int
-# c.keyhint.radius = 6
+# c.content.unknown_url_scheme_policy = 'allow-from-user-interaction'
 
-# Maximum time (in minutes) between two history items for them to be
-# considered being from the same browsing session. Items with less time
-# between them are grouped when being displayed in `:history`. Use -1 to
-# disable separation.
-## Type: Int
-# c.history_gap_interval = 30
+# c.content.user_stylesheets = []
 
-# Level for console (stdout/stderr) logs. Ignored if the `--loglevel` or
-# `--debug` CLI flags are used.
-## Type: LogLevel
-# Valid values:
-##   - vdebug
-##   - debug
-##   - info
-##   - warning
-##   - error
-##   - critical
-# c.logging.level.console = 'info'
+# c.content.webgl = True
 
-# Level for in-memory logs.
-## Type: LogLevel
-# Valid values:
-##   - vdebug
-##   - debug
-##   - info
-##   - warning
-##   - error
-##   - critical
-# c.logging.level.ram = 'debug'
+# c.content.webrtc_ip_handling_policy = 'all-interfaces'
 
-# Additional arguments to pass to Qt, without leading `--`. With
-# QtWebEngine, some Chromium arguments (see
-# https://peter.sh/experiments/chromium-command-line-switches/ for a
-# list) will work.
-# Type: List of String
-# c.qt.args = []
+# c.content.xss_auditing = False
 
-# Additional environment variables to set. Setting an environment
-# variable to null/None will unset it.
-## Type: Dict
-# c.qt.environ = {}
+c.history_gap_interval = 30
 
-# Force a Qt platform to use. This sets the `QT_QPA_PLATFORM`
-# environment variable and is useful to force using the XCB plugin when
-# running QtWebEngine on Wayland.
-## Type: String
-# c.qt.force_platform = None
+# c.fileselect.folder.command = ['xterm', '-e', 'ranger', '--choosedir={}']
 
-# Force a Qt platformtheme to use. This sets the `QT_QPA_PLATFORMTHEME`
-# environment variable which controls dialogs like the filepicker. By
-# default, Qt determines the platform theme based on the desktop
-# environment.
-## Type: String
-# c.qt.force_platformtheme = None
+c.fileselect.handler = 'default'
 
-# Force software rendering for QtWebEngine. This is needed for
-# QtWebEngine to work with Nouveau drivers and can be useful in other
-# scenarios related to graphic issues.
-## Type: String
-# Valid values:
-# - software-opengl: Tell LibGL to use a software implementation of GL (`LIBGL_ALWAYS_SOFTWARE` / `QT_XCB_FORCE_SOFTWARE_OPENGL`)
-# - qt-quick: Tell Qt Quick to use a software renderer instead of OpenGL. (`QT_QUICK_BACKEND=software`)
-# - chromium: Tell Chromium to disable GPU support and use Skia software rendering instead. (`--disable-gpu`)
-# - none: Don't force software rendering.
-# c.qt.force_software_rendering = 'none'
+# c.fileselect.multiple_files.command = ['xterm', '-e', 'ranger', '--choosefiles={}']
 
-# Turn on Qt HighDPI scaling. This is equivalent to setting
-# QT_AUTO_SCREEN_SCALE_FACTOR=1 or QT_ENABLE_HIGHDPI_SCALING=1 (Qt >=
-# 5.14) in the environment. It's off by default as it can cause issues
-# with some bitmap fonts. As an alternative to this, it's possible to
-# set font sizes and the `zoom.default` setting.
-## Type: Bool
-# c.qt.highdpi = False
+# c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
 
-# When to use Chromium's low-end device mode. This improves the RAM
-# usage of renderer processes, at the expense of performance.
-## Type: String
-# Valid values:
-# - always: Always use low-end device mode.
-# - auto: Decide automatically (uses low-end mode with < 1 GB available RAM).
-# - never: Never use low-end device mode.
-# c.qt.low_end_device_mode = 'auto'
+c.input.escape_quits_reporter = True
 
-# Which Chromium process model to use. Alternative process models use
-# less resources, but decrease security and robustness. See the
-# following pages for more details:    -
-# https://www.chromium.org/developers/design-documents/process-models
-# - https://doc.qt.io/qt-5/qtwebengine-features.html#process-models
-## Type: String
-# Valid values:
-# - process-per-site-instance: Pages from separate sites are put into separate processes and separate visits to the same site are also isolated.
-# - process-per-site: Pages from separate sites are put into separate processes. Unlike Process per Site Instance, all visits to the same site will share an OS process. The benefit of this model is reduced memory consumption, because more web pages will share processes. The drawbacks include reduced security, robustness, and responsiveness.
-# - single-process: Run all tabs in a single process. This should be used for debugging purposes only, and it disables `:open --private`.
-# c.qt.process_model = 'process-per-site-instance'
+c.input.forward_unbound_keys = 'auto'
 
-# Work around locale parsing issues in QtWebEngine 5.15.3. With some
-# locales, QtWebEngine 5.15.3 is unusable without this workaround. In
-# affected scenarios, QtWebEngine will log "Network service crashed,
-# restarting service." and only display a blank page. However, It is
-# expected that distributions shipping QtWebEngine 5.15.3 follow up with
-# a proper fix soon, so it is disabled by default.
-## Type: Bool
-# c.qt.workarounds.locale = False
+c.input.insert_mode.auto_enter = True
 
-# Delete the QtWebEngine Service Worker directory on every start. This
-# workaround can help with certain crashes caused by an unknown
-# QtWebEngine bug related to Service Workers. Those crashes happen
-# seemingly immediately on Windows; after one hour of operation on other
-# systems. Note however that enabling this option *can lead to data
-# loss* on some pages (as Service Worker data isn't persisted) and will
-# negatively impact start-up time.
-## Type: Bool
-# c.qt.workarounds.remove_service_workers = False
+c.input.insert_mode.auto_leave = True
+
+c.input.insert_mode.auto_load = True
+
+c.input.insert_mode.leave_on_load = True
+
+c.input.insert_mode.plugins = False
+
+c.input.links_included_in_focus_chain = False
+
+c.input.media_keys = True
+
+c.input.mouse.back_forward_buttons = True
+
+c.input.mouse.rocker_gestures = False
+
+c.input.partial_timeout = 0
+
+c.input.spatial_navigation = False
 
 c.scrolling.bar = 'overlay'
 
 c.scrolling.smooth = True
 
-# When to find text on a page case-insensitively.
-## Type: IgnoreCase
-# Valid values:
-# - always: Search case-insensitively.
-# - never: Search case-sensitively.
-# - smart: Search case-sensitively if there are capital characters.
-# c.search.ignore_case = 'smart'
+c.search.ignore_case = 'smart'
 
-# Find text on a page incrementally, renewing the search for each typed
-# character.
-## Type: Bool
-# c.search.incremental = True
+c.search.incremental = True
 
-# Wrap around at the top and bottom of the page when advancing through
-# text matches using `:search-next` and `:search-prev`.
-## Type: Bool
-# c.search.wrap = True
+c.search.wrap = True
 
-# Name of the session to save by default. If this is set to null, the
-# session which was last loaded is saved.
-## Type: SessionName
 # c.session.default_name = None
 
-# Load a restored tab as soon as it takes focus.
-## Type: Bool
-# c.session.lazy_restore = False
+c.session.lazy_restore = True
+
+# c.qt.args = []
+
+# c.qt.environ = {}
+
+# c.qt.force_platform = None
+
+# c.qt.force_platformtheme = None
+
+# c.qt.force_software_rendering = 'none'
+
+# c.qt.highdpi = False
+
+c.qt.low_end_device_mode = 'auto'
+
+c.qt.process_model = 'process-per-site-instance'
+
+# c.qt.workarounds.locale = False
+
+# c.qt.workarounds.remove_service_workers = False
+
+# c.logging.level.console = 'info'
+
+# c.logging.level.ram = 'debug'
