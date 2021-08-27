@@ -3,6 +3,80 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle config.py
 
+* Table of Contents :toc:
+- [[#intro][Intro]]
+  - [[#documentation][Documentation]]
+  - [[#dependencies][Dependencies]]
+- [[#ui][UI]]
+  - [[#window][Window]]
+  - [[#fonts][Fonts]]
+  - [[#color-scheme][Color scheme]]
+  - [[#completion-widget][Completion Widget]]
+  - [[#which-key][Which Key]]
+  - [[#context-menu][Context Menu]]
+  - [[#downloads][Downloads]]
+  - [[#hints][Hints]]
+  - [[#prompts][Prompts]]
+  - [[#status-bar][Status Bar]]
+  - [[#tabs][Tabs]]
+  - [[#web-pages][Web Pages]]
+  - [[#dark-mode][Dark Mode]]
+- [[#behavior][Behavior]]
+  - [[#backend][Backend]]
+  - [[#changelog][Changelog]]
+  - [[#autocompletion][Autocompletion]]
+  - [[#full-screen][Full Screen]]
+  - [[#headers][Headers]]
+  - [[#tabs-1][Tabs]]
+  - [[#zooming][Zooming]]
+  - [[#other][Other]]
+  - [[#new-instance][New Instance]]
+  - [[#downloads-1][Downloads]]
+- [[#search-engines][Search Engines]]
+- [[#aliases][Aliases]]
+- [[#sessions][Sessions]]
+  - [[#history][History]]
+- [[#key-bindings][Key Bindings]]
+  - [[#info][Info]]
+  - [[#unbind][Unbind]]
+  - [[#qutebrowser][QuteBrowser]]
+  - [[#leader-key][Leader Key]]
+  - [[#navigation][Navigation]]
+  - [[#interactions][Interactions]]
+  - [[#windows][Windows]]
+  - [[#tabs-2][Tabs]]
+  - [[#downloads-2][Downloads]]
+  - [[#history-1][History]]
+  - [[#bookmarks--quick-marks][Bookmarks / Quick-marks]]
+  - [[#hints-1][Hints]]
+  - [[#messages][Messages]]
+  - [[#yanking][Yanking]]
+  - [[#pass][Pass]]
+  - [[#modes][Modes]]
+  - [[#videos][Videos]]
+- [[#messages-1][Messages]]
+- [[#privacy][Privacy]]
+  - [[#ad-blocking][Ad-blocking]]
+  - [[#cookies][Cookies]]
+  - [[#cache][Cache]]
+- [[#permissions][Permissions]]
+- [[#javascript][JavaScript]]
+- [[#notifications][Notifications]]
+- [[#spell-checking][Spell Checking]]
+  - [[#valid-values][Valid values]]
+- [[#hints-2][Hints]]
+- [[#which-key-1][Which Key]]
+- [[#editor][Editor]]
+- [[#content][Content]]
+- [[#history-2][History]]
+- [[#file-select][File Select]]
+- [[#input][Input]]
+- [[#scrolling][Scrolling]]
+- [[#search][Search]]
+- [[#sessions-1][Sessions]]
+- [[#qt][Qt]]
+- [[#logging][Logging]]
+
 * Intro
 NOTE: =config.py= is intended for advanced users who are comfortable with manually migrating the config file on qutebrowser upgrades. If you prefer, you can also configure qutebrowser using the =:set/:bind/:config-*= commands without having to write a =config.py= file.
 
@@ -640,48 +714,28 @@ config.load_autoconfig(True)
 #+end_src
 
 ** Backend
-
-#+begin_src python
-# Backend to use to display websites. qutebrowser supports two different
-# web rendering engines / backends, QtWebEngine and QtWebKit (not
-# recommended). QtWebEngine is Qt's official successor to QtWebKit, and
-# both the default/recommended backend. It's based on a stripped-down
-# Chromium and regularly updated with security fixes and new features by
-# the Qt project: https://wiki.qt.io/QtWebEngine QtWebKit was
-# qutebrowser's original backend when the project was started. However,
-# support for QtWebKit was discontinued by the Qt project with Qt 5.6 in
-# 2016. The development of QtWebKit was picked up in an official fork:
-# https://github.com/qtwebkit/qtwebkit - however, the project seems to
-# have stalled again. The latest release (5.212.0 Alpha 4) from March
-# 2020 is based on a WebKit version from 2016, with many known security
-# vulnerabilities. Additionally, there is no process isolation and
-# sandboxing. Due to all those issues, while support for QtWebKit is
-# still available in qutebrowser for now, using it is strongly
-# discouraged.
+Backend to use to display websites. qutebrowser supports two different web rendering engines / backends, =QtWebEngine= and =QtWebKit= (not recommended). =QtWebEngine= is =Qt's= official successor to =QtWebKit=, and both the default/recommended backend. It's based on a stripped-down Chromium and regularly updated with security fixes and new features by the Qt project: https://wiki.qt.io/QtWebEngine =QtWebKit= was =qutebrowser's= original backend when the project was started. However, support for =QtWebKit= was discontinued by the Qt project with Qt 5.6 in 2016. The development of =QtWebKit= was picked up in an official fork: https://github.com/qtwebkit/qtwebkit - however, the project seems to have stalled again. The latest release (5.212.0 Alpha 4) from March 2020 is based on a =WebKit= version from 2016, with many known security vulnerabilities. Additionally, there is no process isolation and sand-boxing. Due to all those issues, while support for =QtWebKit= is still available in qutebrowser for now, using it is strongly discouraged.
 ## Type: String
-# Valid values:
-# - webengine: Use QtWebEngine (based on Chromium - recommended).
-# - webkit: Use QtWebKit (based on WebKit, similar to Safari - many known security issues!).
-# c.backend = 'webengine'
-
-
+Valid values:
+- =webengine=: Use =QtWebEngine= (based on Chromium - recommended).
+- =webkit=: Use =QtWebKit= (based on =WebKit=, similar to Safari - many known security issues!).
+#+begin_src python
+c.backend = 'webengine'
 #+end_src
 
 ** Changelog
-
-#+begin_src python
-# When to show a changelog after qutebrowser was upgraded.
+When to show a changelog after qutebrowser was upgraded.
 ## Type: String
-# Valid values:
-# - major: Show changelog for major upgrades (e.g. v2.0.0 -> v3.0.0).
-# - minor: Show changelog for major and minor upgrades (e.g. v2.0.0 -> v2.1.0).
-# - patch: Show changelog for major, minor and patch upgrades (e.g. v2.0.0 -> v2.0.1).
-# - never: Never show changelog after upgrades.
+Valid values:
+- major: Show changelog for major upgrades (e.g. v2.0.0 -> v3.0.0).
+- minor: Show changelog for major and minor upgrades (e.g. v2.0.0 -> v2.1.0).
+- patch: Show changelog for major, minor and patch upgrades (e.g. v2.0.0 -> v2.0.1).
+- never: Never show changelog after upgrades.
+#+begin_src python
 c.changelog_after_upgrade = "major"
 #+end_src
 
-** Autocompletion
-
+** TODO Autocompletion
 #+begin_src python
 # Delay (in milliseconds) before updating completions after typing a
 # character.
@@ -767,103 +821,84 @@ c.changelog_after_upgrade = "major"
 #+end_src
 
 ** Full Screen
-
+Set full-screen notification overlay timeout in milliseconds. If set to 0, no overlay will be displayed.
+## Type: =Int=
 #+begin_src python
-# Set fullscreen notification overlay timeout in milliseconds. If set to
-# 0, no overlay will be displayed.
-## Type: Int
 # c.content.fullscreen.overlay_timeout = 3000
+#+end_src
 
-# Limit fullscreen to the browser window (does not expand to fill the
-# screen).
-## Type: Bool
-# c.content.fullscreen.window = False
-
-
+Limit full-screen to the browser window (does not expand to fill the screen).
+## Type: =Bool=
+#+begin_src python
+c.content.fullscreen.window = False
 #+end_src
 
 ** Headers
-
+Value to send in the `Accept-Language` header. Note that the value read from JavaScript is always the global value.
+## Type: =String=
 #+begin_src python
-# Value to send in the `Accept-Language` header. Note that the value
-# read from JavaScript is always the global value.
-## Type: String
 # c.content.headers.accept_language = 'en-US,en;q=0.9'
+#+end_src
 
-# Custom headers for qutebrowser HTTP requests.
-## Type: Dict
+Custom headers for qutebrowser HTTP requests.
+## Type: =Dict=
+#+begin_src python
 # c.content.headers.custom = {}
+#+end_src
 
-# Value to send in the `DNT` header. When this is set to true,
-# qutebrowser asks websites to not track your identity. If set to null,
-# the DNT header is not sent at all.
-## Type: Bool
-# c.content.headers.do_not_track = True
+Value to send in the =DNT= header. When this is set to true, qutebrowser asks websites to not track your identity. If set to null, the DNT header is not sent at all.
+## Type: =Bool=
+#+begin_src python
+c.content.headers.do_not_track = True
+#+end_src
 
-# When to send the Referer header. The Referer header tells websites
-# from which website you were coming from when visiting them. No restart
-# is needed with QtWebKit.
-## Type: String
-# Valid values:
-# - always: Always send the Referer.
-# - never: Never send the Referer. This is not recommended, as some sites may break.
-# - same-domain: Only send the Referer for the same domain. This will still protect your privacy, but shouldn't break any sites. With QtWebEngine, the referer will still be sent for other domains, but with stripped path information.
-# c.content.headers.referer = 'same-domain'
+When to send the =Referer= header. The =Referer= header tells websites from which website you were coming from when visiting them. No restart is needed with =QtWebKit=.
+## Type: =String=
+Valid values:
+- always: Always send the =Referer=.
+- never: Never send the =Referer=. This is not recommended, as some sites may break.
+- same-domain: Only send the =Referer= for the same domain. This will still protect your privacy, but shouldn't break any sites. With =QtWebEngine=, the =referer= will still be sent for other domains, but with stripped path information.
+#+begin_src python
+c.content.headers.referer = 'same-domain'
+#+end_src
 
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-## Type: FormatString
+User agent to send.  The following placeholders are defined:  * ={os_info}=: Something like =X11; Linux x86_64=. * ={webkit_version}=: The underlying =WebKit= version (set to a fixed value   with =QtWebEngine=). * ={qt_key}=: =Qt= for =QtWebKit=, =QtWebEngine= for =QtWebEngine=. * ={qt_version}=: The underlying Qt version. * ={upstream_browser_key}=: =Version= for =QtWebKit=, =Chrome= for =QtWebEngine=. * ={upstream_browser_version}=: The corresponding Safari/Chrome version. * ={qutebrowser_version}=: The currently running qutebrowser version.  The default value is equal to the unchanged user agent of =QtWebKit/QtWebEngine=. Note that the value read from JavaScript is always the global value. With =QtWebEngine= between 5.12 and 5.14 (inclusive), changing the value exposed to JavaScript requires a restart.
+## Type: =FormatString=
+#+begin_src python
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
-
-
 #+end_src
 
 ** Tabs
-Open new tabs (middleclick/ctrl+click) in the background.
-## Type: Bool
-
+Open new tabs (middle-click/ctrl+click) in the background.
+## Type: =Bool=
 #+begin_src python
 c.tabs.background = True
 #+end_src
 
 Mouse button with which to close tabs.
-## Type: String
+## Type: =String=
 Valid values:
 - right: Close tabs on right-click.
 - middle: Close tabs on middle-click.
 - none: Don't close tabs using the mouse.
-
 #+begin_src python
 c.tabs.close_mouse_button = 'middle'
 #+end_src
 
 How to behave when the close mouse button is pressed on the tab bar.
-## Type: String
+## Type: =String=
 Valid values:
 - new-tab: Open a new tab.
 - close-current: Close the current tab.
 - close-last: Close the last tab.
 - ignore: Don't do anything.
-
 #+begin_src python
 c.tabs.close_mouse_button_on_bar = 'new-tab'
 #+end_src
 
 Scaling factor for favicons in the tab bar. The tab size is unchanged,
 so big favicons also require extra `tabs.padding`.
-## Type: Float
-
+## Type: =Float=
 #+begin_src python
 # c.tabs.favicons.scale = 1.0
 #+end_src
@@ -871,33 +906,29 @@ so big favicons also require extra `tabs.padding`.
 When to show favicons in the tab bar. When switching this from never
 to always/pinned, note that favicons might not be loaded yet, thus
 tabs might require a reload to display them.
-## Type: String
+## Type: =String=
 Valid values:
 - always: Always show favicons.
 - never: Always hide favicons.
 - pinned: Show favicons only on pinned tabs.
-
 #+begin_src python
 c.tabs.favicons.show = 'always'
 #+end_src
 
 Maximum stack size to remember for tab switches (-1 for no maximum).
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 # c.tabs.focus_stack_size = 10
 #+end_src
 
 Padding (in pixels) for tab indicators.
-## Type: Padding
-
+## Type: =Padding=
 #+begin_src python
 c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 #+end_src
 
 Width (in pixels) of the progress indicator (0 to disable).
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 c.tabs.indicator.width = 3
 #+end_src
@@ -905,14 +936,13 @@ c.tabs.indicator.width = 3
 How to behave when the last tab is closed. If the
 `tabs.tabs_are_windows` setting is set, this is ignored and the
 behavior is always identical to the `close` value.
-## Type: String
+## Type: =String=
 Valid values:
 - ignore: Don't do anything.
 - blank: Load a blank page.
 - startpage: Load the start page.
 - default-page: Load the default page.
 - close: Close the window.
-
 #+begin_src python
 c.tabs.last_close = 'startpage'
 #+end_src
@@ -922,8 +952,7 @@ only applies when tabs are horizontal. This setting does not apply to
 pinned tabs, unless `tabs.pinned.shrink` is False. This setting may
 not apply properly if max_width is smaller than the minimum size of
 tab contents, or smaller than tabs.min_width.
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 c.tabs.max_width = 200
 #+end_src
@@ -932,39 +961,35 @@ Minimum width (in pixels) of tabs (-1 for the default minimum size
 behavior). This setting only applies when tabs are horizontal. This
 setting does not apply to pinned tabs, unless `tabs.pinned.shrink` is
 False.
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 # c.tabs.min_width = -1
 #+end_src
 
 When switching tabs, what input mode is applied.
-## Type: String
+## Type: =String=
 Valid values:
 - persist: Retain the current mode.
 - restore: Restore previously saved mode.
 - normal: Always revert to normal mode.
-
 #+begin_src python
 c.tabs.mode_on_change = 'normal'
 #+end_src
 
 Switch between tabs using the mouse wheel.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 c.tabs.mousewheel_switching = True
 #+end_src
 
 Position of new tabs opened from another tab. See
 `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: NewTabPosition
+## Type: =NewTabPosition=
 Valid values:
 - prev: Before the current tab.
 - next: After the current tab.
 - first: At the beginning.
 - last: At the end.
-
 #+begin_src python
 c.tabs.new_position.related = 'next'
 #+end_src
@@ -972,109 +997,98 @@ c.tabs.new_position.related = 'next'
 Stack related tabs on top of each other when opened consecutively.
 Only applies for `next` and `prev` values of
 `tabs.new_position.related` and `tabs.new_position.unrelated`.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 # c.tabs.new_position.stacking = True
 #+end_src
 
 Position of new tabs which are not opened from another tab. See
 `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: NewTabPosition
+## Type: =NewTabPosition=
 Valid values:
 - prev: Before the current tab.
 - next: After the current tab.
 - first: At the beginning.
 - last: At the end.
-
 #+begin_src python
 c.tabs.new_position.unrelated = 'last'
 #+end_src
 
 Padding (in pixels) around text for tabs.
-## Type: Padding
-
+## Type: =Padding=
 #+begin_src python
 # c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
 #+end_src
 
 Force pinned tabs to stay at fixed URL.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 c.tabs.pinned.frozen = True
 #+end_src
 
 Shrink pinned tabs down to their contents.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 c.tabs.pinned.shrink = True
 #+end_src
 
 Position of the tab bar.
-## Type: Position
+## Type: =Position=
 Valid values:
 - top
 - bottom
 - left
 - right
-
 #+begin_src python
 c.tabs.position = 'top'
 #+end_src
 
 Which tab to select when the focused tab is removed.
-## Type: SelectOnRemove
+## Type: =SelectOnRemove=
 Valid values:
 - prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
 - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
 - last-used: Select the previously selected tab.
-
 #+begin_src python
 c.tabs.select_on_remove = 'next'
 #+end_src
 
 When to show the tab bar.
-## Type: String
+## Type: =String=
 Valid values:
 - always: Always show the tab bar.
 - never: Always hide the tab bar.
 - multiple: Hide the tab bar if only one tab is open.
 - switching: Show the tab bar when switching tabs.
-
 #+begin_src python
 c.tabs.show = 'multiple'
 #+end_src
 
 Duration (in milliseconds) to show the tab bar before hiding it when
 tabs.show is set to 'switching'.
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 # c.tabs.show_switching_delay = 800
 #+end_src
 
 Open a new window for every tab.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 c.tabs.tabs_are_windows = False
 #+end_src
 
 Alignment of the text inside of tabs.
-## Type: TextAlignment
+## Type: =TextAlignment=
 Valid values:
 - left
 - right
 - center
-
 #+begin_src python
 c.tabs.title.alignment = 'left'
 #+end_src
 
 Format to use for the tab title.
-## Type: FormatString
+## Type: =FormatString=
 The following placeholders are defined:
 | `{perc}`          | Percentage as a string like `[0%]`                           |
 | `{perc_raw}`      | Raw percentage, e.g. `10`                                    |
@@ -1090,72 +1104,64 @@ The following placeholders are defined:
 | `{current_url}`   | URL of the current web page                                  |
 | `{protocol}`      | Protocol (http/https/...) of the current web page            |
 | `{audio}`         | Indicator for audio/mute status                              |
-
 #+begin_src python
 c.tabs.title.format = '{audio}{private} {current_title}'
 #+end_src
 
 Format to use for the tab title for pinned tabs. The same placeholders
 like for `tabs.title.format` are defined.
-## Type: FormatString
-
+## Type: =FormatString=
 #+begin_src python
 c.tabs.title.format_pinned = '{audio}{private}'
 #+end_src
 
 Show tooltips on tabs. Note this setting only affects windows opened
 after it has been set.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
-# c.tabs.tooltips = True
+c.tabs.tooltips = True
 #+end_src
 
 Number of closed tabs (per window) and closed windows to remember for
 :undo (-1 for no maximum).
-## Type: Int
-
+## Type: =Int=
 #+begin_src python
 # c.tabs.undo_stack_size = 100
 #+end_src
 
 Width (in pixels or as percentage of the window) of the tab bar if
 it's vertical.
-## Type: PercOrInt
-
+## Type: =PercOrInt=
 #+begin_src python
 # c.tabs.width = '15%'
 #+end_src
 
 Wrap when changing tabs.
-## Type: Bool
-
+## Type: =Bool=
 #+begin_src python
 c.tabs.wrap = True
 #+end_src
 
 ** Zooming
-
 #+begin_src python
 # Default zoom level.
 ## Type: Perc
-# c.zoom.default = '100%'
+c.zoom.default = '100%'
 
 # Available zoom levels.
 # Type: List of Perc
-# c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
+c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
 
 # Number of zoom increments to divide the mouse wheel movements to.
 ## Type: Int
-# c.zoom.mouse_divider = 512
+c.zoom.mouse_divider = 512
 
 # Apply the zoom factor on a frame only to the text or to all content.
 ## Type: Bool
-# c.zoom.text_only = False
+c.zoom.text_only = False
 #+end_src
 
-** Other
-
+** TODO Other
 #+begin_src python
 # Require a confirmation before quitting the application.
 ## Type: ConfirmQuit
@@ -1222,7 +1228,6 @@ Valid values:
 - tab-bg-silent: Open a new background tab in the existing window without activating the window.
 - window: Open in a new window.
 - private-window: Open in a new private window.
-
 #+begin_src python
 c.new_instance_open_target = 'tab'
 #+end_src
@@ -1235,13 +1240,11 @@ Valid values:
 - last-opened: Open new tabs in the last (newest) opened window.
 - last-focused: Open new tabs in the most recently focused window.
 - last-visible: Open new tabs in the most recently visible window.
-
 #+begin_src python
 c.new_instance_open_target_window = 'last-focused'
 #+end_src
 
-** Downloads
-
+** TODO Downloads
 #+begin_src python
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
@@ -1345,18 +1348,18 @@ The following further placeholds are defined to configure how special characters
 #+begin_src python
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
-    "archwiki": "https://wiki.archlinux.org/index.php?search={}",
-    "qtiledocs": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
-    "github": "https://github.com/search?q={}&ref=opensearch",
-    "youtube": "https://www.youtube.com/results?search_query={}",
-    "odysee": "https://odysee.com/$/search?q={}",
-    "googledrive": "https://drive.google.com/drive/search?q={}",
-    "googlemaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "googleimages": "https://www.google.com/search?q={}",
-    "google": "https://www.google.com/search?q={}",
-    "amazonuk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazoncom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazonca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aw": "https://wiki.archlinux.org/index.php?search={}",
+    "q": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "gh": "https://github.com/search?q={}&ref=opensearch",
+    "yt": "https://www.youtube.com/results?search_query={}",
+    "yth": "https://www.youtube.com/feed/history?query={}",
+    "od": "https://odysee.com/$/search?q={}",
+    "gd": "https://drive.google.com/drive/search?q={}",
+    "gm": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "g": "https://www.google.com/search?q={}",
+    "auk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "acom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
 }
 #+end_src
 
@@ -1550,7 +1553,6 @@ config.unbind('gi')
 #+end_src
 
 ** QuteBrowser
-
 #+begin_src python
 config.bind('Ss', 'set')
 config.bind('ss', 'set-cmd-text -s :set')
@@ -1568,7 +1570,6 @@ config.bind('sf', 'save')
 #+end_src
 
 *** Development Tools
-
 #+begin_src python
 config.bind('ws', 'view-source')
 
@@ -1583,7 +1584,6 @@ config.bind('wIw', 'devtools window')
 #+end_src
 
 *** Config-cycle
-
 #+begin_src python
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
@@ -1609,6 +1609,27 @@ config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
 config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
+#+end_src
+
+** Leader Key
+Toggle UI elements
+#+begin_src python
+config.bind('<Space>ts', 'config-cycle statusbar.show always never')
+config.bind('<Space>tt', 'config-cycle tabs.show always never')
+config.bind('<Space>tz', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+#+end_src
+
+Help
+#+begin_src python
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help')
+config.bind('<Space>hs', 'set-cmd-text :help :')
+#+end_src
+
+Quit
+#+begin_src python
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
 #+end_src
 
 ** Navigation
@@ -1715,8 +1736,8 @@ config.bind('<forward>', 'forward')
 config.bind('H', 'back')
 config.bind('L', 'forward')
 
-config.bind('tH', 'back -t')
-config.bind('tL', 'forward -t')
+config.bind('<Ctrl-Shift-h>', 'back -b')
+config.bind('<Ctrl-Shift-l>', 'forward -b')
 #+end_src
 
 Go home
@@ -1796,7 +1817,6 @@ config.bind('gt', 'set-cmd-text -sr :tab-focus')
 #+end_src
 
 *** Closing Tabs
-
 #+begin_src python
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
@@ -1812,7 +1832,6 @@ config.bind('X', 'undo')
 #+end_src
 
 *** Moving Tabs
-
 #+begin_src python
 config.bind('tm', 'tab-move')
 config.bind('tJ', 'tab-move +')
@@ -1822,7 +1841,6 @@ config.bind('<', 'tab-move -')
 #+end_src
 
 *** Tab Actions
-
 #+begin_src python
 config.bind('<Ctrl-c>', 'stop')
 config.bind('<Ctrl-m>', 'tab-mute')
@@ -1834,12 +1852,13 @@ config.bind('<Ctrl-Alt-p>', 'print')
 #+end_src
 
 ** Downloads
-
 #+begin_src python
 config.bind('D', 'set-cmd-text -s :download')
 
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
+config.bind('dv', 'hint links spawn alacritty -e youtube-dl {hint-url}')
+config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
@@ -1851,6 +1870,8 @@ config.bind('dc', 'download-clear')
 config.bind('do', 'download-open')
 config.bind('dX', 'download-delete')
 #+end_src
+
+#+RESULTS:
 
 Prompt Mode
 #+begin_src python
@@ -1888,7 +1909,7 @@ Adding bookmarks
 #+begin_src python
 config.bind('bs', 'quickmark-save')
 config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'quickmark-add')
+config.bind('ba', 'set-cmd-text -s :quickmark-add {url}')
 config.bind('Ba', 'bookmark-add')
 #+end_src
 
@@ -1911,6 +1932,7 @@ config.bind(';P', 'hint images tab')
 config.bind(';h', 'hint all hover')
 
 config.bind(';v', 'hint links spawn mpv {hint-url}')
+config.bind(';a', 'hint links spawn mpv {hint-url} --no-video')
 #+end_src
 
 Rapid - Open in background and remain in hint mode
@@ -2148,6 +2170,7 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 
 #+begin_src python
 config.bind('gv', 'spawn mpv {url}')
+config.bind('ga', 'spawn mpv {url} --no-video')
 #+end_src
 
 You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv

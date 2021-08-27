@@ -310,35 +310,8 @@ c.colors.webpage.preferred_color_scheme = "dark"
 
 config.load_autoconfig(True)
 
-# Backend to use to display websites. qutebrowser supports two different
-# web rendering engines / backends, QtWebEngine and QtWebKit (not
-# recommended). QtWebEngine is Qt's official successor to QtWebKit, and
-# both the default/recommended backend. It's based on a stripped-down
-# Chromium and regularly updated with security fixes and new features by
-# the Qt project: https://wiki.qt.io/QtWebEngine QtWebKit was
-# qutebrowser's original backend when the project was started. However,
-# support for QtWebKit was discontinued by the Qt project with Qt 5.6 in
-# 2016. The development of QtWebKit was picked up in an official fork:
-# https://github.com/qtwebkit/qtwebkit - however, the project seems to
-# have stalled again. The latest release (5.212.0 Alpha 4) from March
-# 2020 is based on a WebKit version from 2016, with many known security
-# vulnerabilities. Additionally, there is no process isolation and
-# sandboxing. Due to all those issues, while support for QtWebKit is
-# still available in qutebrowser for now, using it is strongly
-# discouraged.
-## Type: String
-# Valid values:
-# - webengine: Use QtWebEngine (based on Chromium - recommended).
-# - webkit: Use QtWebKit (based on WebKit, similar to Safari - many known security issues!).
-# c.backend = 'webengine'
+c.backend = 'webengine'
 
-# When to show a changelog after qutebrowser was upgraded.
-## Type: String
-# Valid values:
-# - major: Show changelog for major upgrades (e.g. v2.0.0 -> v3.0.0).
-# - minor: Show changelog for major and minor upgrades (e.g. v2.0.0 -> v2.1.0).
-# - patch: Show changelog for major, minor and patch upgrades (e.g. v2.0.0 -> v2.0.1).
-# - never: Never show changelog after upgrades.
 c.changelog_after_upgrade = "major"
 
 # Delay (in milliseconds) before updating completions after typing a
@@ -421,55 +394,18 @@ c.changelog_after_upgrade = "major"
 ## Type: Int
 # c.completion.web_history.max_items = -1
 
-# Set fullscreen notification overlay timeout in milliseconds. If set to
-# 0, no overlay will be displayed.
-## Type: Int
 # c.content.fullscreen.overlay_timeout = 3000
 
-# Limit fullscreen to the browser window (does not expand to fill the
-# screen).
-## Type: Bool
-# c.content.fullscreen.window = False
+c.content.fullscreen.window = False
 
-# Value to send in the `Accept-Language` header. Note that the value
-# read from JavaScript is always the global value.
-## Type: String
 # c.content.headers.accept_language = 'en-US,en;q=0.9'
 
-# Custom headers for qutebrowser HTTP requests.
-## Type: Dict
 # c.content.headers.custom = {}
 
-# Value to send in the `DNT` header. When this is set to true,
-# qutebrowser asks websites to not track your identity. If set to null,
-# the DNT header is not sent at all.
-## Type: Bool
-# c.content.headers.do_not_track = True
+c.content.headers.do_not_track = True
 
-# When to send the Referer header. The Referer header tells websites
-# from which website you were coming from when visiting them. No restart
-# is needed with QtWebKit.
-## Type: String
-# Valid values:
-# - always: Always send the Referer.
-# - never: Never send the Referer. This is not recommended, as some sites may break.
-# - same-domain: Only send the Referer for the same domain. This will still protect your privacy, but shouldn't break any sites. With QtWebEngine, the referer will still be sent for other domains, but with stripped path information.
-# c.content.headers.referer = 'same-domain'
+c.content.headers.referer = 'same-domain'
 
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 
 c.tabs.background = True
@@ -526,7 +462,7 @@ c.tabs.title.format = '{audio}{private} {current_title}'
 
 c.tabs.title.format_pinned = '{audio}{private}'
 
-# c.tabs.tooltips = True
+c.tabs.tooltips = True
 
 # c.tabs.undo_stack_size = 100
 
@@ -536,19 +472,19 @@ c.tabs.wrap = True
 
 # Default zoom level.
 ## Type: Perc
-# c.zoom.default = '100%'
+c.zoom.default = '100%'
 
 # Available zoom levels.
 # Type: List of Perc
-# c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
+c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
 
 # Number of zoom increments to divide the mouse wheel movements to.
 ## Type: Int
-# c.zoom.mouse_divider = 512
+c.zoom.mouse_divider = 512
 
 # Apply the zoom factor on a frame only to the text or to all content.
 ## Type: Bool
-# c.zoom.text_only = False
+c.zoom.text_only = False
 
 # Require a confirmation before quitting the application.
 ## Type: ConfirmQuit
@@ -665,18 +601,18 @@ c.url.open_base_url = True
 
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
-    "archwiki": "https://wiki.archlinux.org/index.php?search={}",
-    "qtiledocs": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
-    "github": "https://github.com/search?q={}&ref=opensearch",
-    "youtube": "https://www.youtube.com/results?search_query={}",
-    "odysee": "https://odysee.com/$/search?q={}",
-    "googledrive": "https://drive.google.com/drive/search?q={}",
-    "googlemaps": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "googleimages": "https://www.google.com/search?q={}",
-    "google": "https://www.google.com/search?q={}",
-    "amazonuk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazoncom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazonca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aw": "https://wiki.archlinux.org/index.php?search={}",
+    "q": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "gh": "https://github.com/search?q={}&ref=opensearch",
+    "yt": "https://www.youtube.com/results?search_query={}",
+    "yth": "https://www.youtube.com/feed/history?query={}",
+    "od": "https://odysee.com/$/search?q={}",
+    "gd": "https://drive.google.com/drive/search?q={}",
+    "gm": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "g": "https://www.google.com/search?q={}",
+    "auk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "acom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
 }
 
 c.url.start_pages = ["https://search.brave.com"]
@@ -815,6 +751,17 @@ config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.
 config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 
+config.bind('<Space>ts', 'config-cycle statusbar.show always never')
+config.bind('<Space>tt', 'config-cycle tabs.show always never')
+config.bind('<Space>tz', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help')
+config.bind('<Space>hs', 'set-cmd-text :help :')
+
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
+
 config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
@@ -885,8 +832,8 @@ config.bind('<forward>', 'forward')
 config.bind('H', 'back')
 config.bind('L', 'forward')
 
-config.bind('tH', 'back -t')
-config.bind('tL', 'forward -t')
+config.bind('<Ctrl-Shift-h>', 'back -b')
+config.bind('<Ctrl-Shift-l>', 'forward -b')
 
 config.bind('<Ctrl-h>', 'home')
 
@@ -963,6 +910,8 @@ config.bind('D', 'set-cmd-text -s :download')
 
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
+config.bind('dv', 'hint links spawn alacritty -e youtube-dl {hint-url}')
+config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
@@ -991,7 +940,7 @@ config.bind('BO', 'set-cmd-text -s :bookmark-load -t')
 
 config.bind('bs', 'quickmark-save')
 config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'quickmark-add')
+config.bind('ba', 'set-cmd-text -s :quickmark-add {url}')
 config.bind('Ba', 'bookmark-add')
 
 config.bind('bd', 'quickmark-del')
@@ -1008,6 +957,7 @@ config.bind(';P', 'hint images tab')
 config.bind(';h', 'hint all hover')
 
 config.bind(';v', 'hint links spawn mpv {hint-url}')
+config.bind(';a', 'hint links spawn mpv {hint-url} --no-video')
 
 config.bind(';ri', 'hint --rapid images tab-bg')
 config.bind(';Ri', 'hint --rapid images window')
@@ -1178,6 +1128,7 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
 config.bind('gv', 'spawn mpv {url}')
+config.bind('ga', 'spawn mpv {url} --no-video')
 
 c.colors.messages.info.fg = grey_70
 c.colors.messages.info.bg = grey_0
