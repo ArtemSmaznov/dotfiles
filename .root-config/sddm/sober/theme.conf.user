@@ -1,5 +1,4 @@
 [General]
 type=image
-color=#1d1e19
 background.blur.intensity=30
-background="components/artwork/leigh-kendell-581.jpg"
+background="components/artwork/coffee-cup.jpg"
