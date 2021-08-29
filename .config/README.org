@@ -1,0 +1,54 @@
+#+TITLE: Configs
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+
+* Table of Contents :toc:
+- [[#auto-start][Auto-start]]
+  - [[#startup-sound][Startup Sound]]
+  - [[#wallpaper][Wallpaper]]
+  - [[#screen-locker][Screen Locker]]
+  - [[#system-utilities][System Utilities]]
+  - [[#background-apps][Background Apps]]
+  - [[#launch-apps][Launch Apps]]
+
+* Auto-start
+** Startup Sound
+#+begin_src shell :tangle autostart-scripts/autostart.sh :shebang #!/bin/sh
+paplay "$HOME/Music/windows95-startup.wav" &
+#+end_src
+
+** Wallpaper
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+# nitrogen --restore &
+~/.local/bin/dmscripts/dmwallpaper gruvbox &
+#+end_src
+
+** Screen Locker
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+# xscreensaver -no-splash &
+# xautolock -time 60 -locker "$HOME/.local/bin/dmscripts/dmlock" &
+xss-lock "$HOME/.local/bin/dmscripts/dmlock" &
+#+end_src
+
+** System Utilities
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+picom -b --experimental-backends --dbus &
+nm-applet &
+dunst &
+#+end_src
+
+** Background Apps
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+redshift-gtk &
+solaar -w hide &
+/opt/piavpn/bin/pia-client --quiet &
+#+end_src
+
+** Launch Apps
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+# brave &
+# brave --disable-features=SendMouseLeaveEvents &
+qutebrowser &
+/usr/bin/steam-runtime %U &
+#+end_src
+
