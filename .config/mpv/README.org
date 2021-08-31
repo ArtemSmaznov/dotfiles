@@ -166,6 +166,12 @@ The following profile can be enabled on the command line with: --profile=eye-can
 #sharpen=5
 #+end_src
 
+** Screenshot
+#+begin_src conf :tangle mpv.conf
+screenshot-directory="~/Pictures/Screenshots/"
+screenshot-template="mpv-%F-%wH-%wM-%wS-%wT"
+#+end_src
+
 ** Other
 Save playback position in between sessions
 #+begin_src conf :tangle mpv.conf
@@ -254,23 +260,6 @@ f cycle fullscreen                     # toggle fullscreen
 #Alt+2 set window-scale 2.0
 #+end_src
 
-** Mouse Bindings
-#+begin_src conf :tangle input.conf
-MBTN_LEFT     cycle pause
-MBTN_LEFT_DBL cycle fullscreen    # toggle fullscreen on/off
-MBTN_RIGHT    ignore              # don't do anything
-MBTN_BACK     playlist-prev
-MBTN_FORWARD  playlist-next
-#+end_src
-
-Mouse wheels, touch-pad or other input devices that have axes if the input devices supports precise scrolling it will also scale the numeric value accordingly
-#+begin_src conf :tangle input.conf
-WHEEL_UP      add volume 2
-WHEEL_DOWN    add volume -2
-WHEEL_LEFT    seek -5
-WHEEL_RIGHT   seek 5
-#+end_src
-
 ** Navigation & Volume
 Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf :tangle input.conf
@@ -302,6 +291,9 @@ Frame-by-frame navigation
 #+end_src
 
 #+begin_src conf :tangle input.conf
+HOME seek 0 absolute-percent
+END set pause yes ; seek 100 absolute-percent
+
 0 seek 0 absolute-percent
 1 seek 10 absolute-percent
 2 seek 20 absolute-percent
@@ -326,26 +318,6 @@ Frame-by-frame navigation
 SPACE cycle pause
 #+end_src
 
-Media Keys
-#+begin_src conf :tangle input.conf
-#POWER quit
-PLAY cycle pause
-PAUSE cycle pause
-PLAYPAUSE cycle pause
-PLAYONLY set pause no
-PAUSEONLY set pause yes
-STOP set pause no
-FORWARD seek 60
-REWIND seek -60
-NEXT playlist-next
-PREV playlist-prev
-VOLUME_UP add volume 2
-VOLUME_DOWN add volume -2
-MUTE cycle mute
-CLOSE_WIN quit
-CLOSE_WIN {encode} quit 4
-#+end_src
-
 Scale playback speed
 #+begin_src conf :tangle input.conf
 [ multiply speed 1/1.1
@@ -363,6 +335,16 @@ A-B Loop
 #+begin_src conf :tangle input.conf
 ctrl+l ab-loop                              # Set/clear A-B loop points
 #L cycle-values loop-file "inf" "no"    # toggle infinite looping
+#+end_src
+
+** Playlists
+#+begin_src conf :tangle input.conf
+p show_text ${playlist} # show playlist
+# ENTER playlist-next     # skip to next file
+Shift+n playlist-next   # skip to next file
+Shift+p playlist-prev   # skip to previous file
+> playlist-next   # skip to next file
+< playlist-prev   # skip to previous file
 #+end_src
 
 ** Audio
@@ -386,17 +368,10 @@ Ctrl+o script-binding osc/visibility      # cycle OSC display
 
 Info
 #+begin_src conf :tangle input.conf
-#i script-binding stats/display-stats
-#I script-binding stats/display-stats-toggle
-#` script-binding console/enable
-#+end_src
-
-** Playlists
-#+begin_src conf :tangle input.conf
-p show_text ${playlist}               # show playlist
-#> playlist-next                        # skip to next file
-#ENTER playlist-next                    # skip to next file
-#< playlist-prev                        # skip to previous file
+i script-binding stats/display-stats
+I script-binding stats/display-stats-toggle
+` script-binding console/enable
+Alt+x script-binding console/enable
 #+end_src
 
 ** Subtitles
@@ -407,16 +382,16 @@ Ctrl+RIGHT  no-osd sub-seek  1
 #+end_src
 
 #+begin_src conf :tangle input.conf
-#v cycle sub-visibility
+v cycle sub-visibility
 
 # stretch SSA/ASS subtitles with anamorphic videos to match historical
-#V cycle sub-ass-vsfilter-aspect-compat
+V cycle sub-ass-vsfilter-aspect-compat
 
 # switch between applying no style overrides to SSA/ASS subtitles, and
 # overriding them almost completely with the normal subtitle style
 #u cycle-values sub-ass-override "force" "no"
-#j cycle sub                            # cycle through subtitles
-#J cycle sub down                       # ...backwards
+c cycle sub                            # cycle through subtitles
+C cycle sub down                       # ...backwards
 
 #Shift+g add sub-scale +0.1                  # increase subtitle font size
 #Shift+f add sub-scale -0.1                  # decrease subtitle font size
@@ -438,48 +413,91 @@ Ctrl+RIGHT  no-osd sub-seek  1
 Take screenshot without subtitles
 #+begin_src conf :tangle input.conf
 Ctrl+PRINT screenshot video
-#Alt+s screenshot each-frame            # automatically screenshot every frame
+F12 screenshot video
+Alt+s screenshot video
+Alt+S screenshot each-frame            # automatically screenshot every frame
 #+end_src
 
 ** Image Adjustment
 #+begin_src conf :tangle input.conf
-#1 add contrast -1
-#2 add contrast 1
-#3 add brightness -1
-#4 add brightness 1
-#5 add gamma -1
-#6 add gamma 1
-#7 add saturation -1
-#8 add saturation 1
+Alt+1 add contrast -1
+Alt+2 add contrast 1
+Alt+3 add brightness -1
+Alt+4 add brightness 1
+Alt+5 add gamma -1
+Alt+6 add gamma 1
+Alt+7 add saturation -1
+Alt+8 add saturation 1
 
 # toggle deinterlacer (automatically inserts or removes required filter)
-#d cycle deinterlace
+Alt+d cycle deinterlace
 
 #w add panscan -0.1                     # zoom out with -panscan 0 -fs
 #W add panscan +0.1                     #      in
 #e add panscan +0.1                     # same as previous binding (discouraged)
 
 # Move video rectangle
-#Alt+left  add video-pan-x  0.1
-#Alt+right add video-pan-x -0.1
-#Alt+up    add video-pan-y  0.1
-#Alt+down  add video-pan-y -0.1
+Alt+left  add video-pan-x  0.1
+Alt+right add video-pan-x -0.1
+Alt+up    add video-pan-y  0.1
+Alt+down  add video-pan-y -0.1
 
 # Zoom/unzoom video
-#Alt++     add video-zoom   0.1
-#Alt+-     add video-zoom  -0.1
+Ctrl+0           set video-zoom 0
+Ctrl+-           add video-zoom -0.25
+Ctrl+=           add video-zoom 0.25
 
 # Reset video zoom/pan settings
-#Alt+BS set video-zoom 0 ; set video-pan-x 0 ; set video-pan-y 0
+Ctrl+BS set video-zoom 0 ; set video-pan-x 0 ; set video-pan-y 0
 
 # cycle video aspect ratios; "-1" is the container aspect
-#A cycle-values video-aspect-override "16:9" "4:3" "2.35:1" "-1"
+Alt+a cycle-values video-aspect-override "16:9" "4:3" "2.35:1" "-1"
 #+end_src
 
 ** Chapters
 #+begin_src conf :tangle input.conf
-PGUP add chapter 1                     # skip to next chapter
 PGDWN add chapter -1                   # skip to previous chapter
+PGUP add chapter 1                     # skip to next chapter
+
+Alt+h add chapter -1                   # skip to previous chapter
+Alt+l add chapter 1                     # skip to next chapter
+#+end_src
+
+** Media Keys
+#+begin_src conf :tangle input.conf
+#POWER quit
+PLAY cycle pause
+PAUSE cycle pause
+PLAYPAUSE cycle pause
+PLAYONLY set pause no
+PAUSEONLY set pause yes
+STOP set pause no
+FORWARD seek 60
+REWIND seek -60
+NEXT playlist-next
+PREV playlist-prev
+VOLUME_UP add volume 2
+VOLUME_DOWN add volume -2
+MUTE cycle mute
+CLOSE_WIN quit
+CLOSE_WIN {encode} quit 4
+#+end_src
+
+** Mouse Bindings
+#+begin_src conf :tangle input.conf
+MBTN_LEFT     cycle pause
+MBTN_LEFT_DBL cycle fullscreen    # toggle fullscreen on/off
+MBTN_RIGHT    ignore              # don't do anything
+MBTN_BACK     playlist-prev
+MBTN_FORWARD  playlist-next
+#+end_src
+
+Mouse wheels, touch-pad or other input devices that have axes if the input devices supports precise scrolling it will also scale the numeric value accordingly
+#+begin_src conf :tangle input.conf
+WHEEL_UP      add volume 2
+WHEEL_DOWN    add volume -2
+WHEEL_LEFT    seek -5
+WHEEL_RIGHT   seek 5
 #+end_src
 
 ** Misc
