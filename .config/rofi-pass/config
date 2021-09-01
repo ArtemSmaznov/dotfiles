@@ -50,6 +50,7 @@ edit_new_pass="true"
 #password_length=12
 
 next_root="Control+Tab"
+previous_root="Control+ISO_Left_Tab"
 autotype="Alt+1"
 type_user="Alt+2"
 type_pass="Alt+3"

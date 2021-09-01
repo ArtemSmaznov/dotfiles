@@ -89,6 +89,7 @@ configuration {
 #+end_src
 
 * Keybindings
+=Shift+Tab= is set with =ISO_Left_Tab=
 ** Typing
 #+begin_src conf
 /*	kb-clear-line:              "Control+w";*/
@@ -111,7 +112,7 @@ kb-remove-to-sol:               "Control+u";
 /*	kb-move-char-forward:       "Right,Control+f";*/
 kb-row-left:                    "Control+Page_Up,Control+h";
 kb-row-right:                   "Control+Page_Down,Control+l";
-kb-row-up:                      "Up,Control+k,Control+p,Shift+Tab,Shift+ISO_Left_Tab";
+kb-row-up:                      "Up,Control+k,Control+p,ISO_Left_Tab";
 kb-row-down:                    "Down,Control+j,Control+n";
 /*	kb-row-tab:                 "Tab";*/
 /*	kb-page-prev:               "Page_Up";*/
@@ -131,7 +132,7 @@ kb-accept-entry:                "Control+m,Return,KP_Enter";
 kb-primary-paste:               "Control+V,Shift+Insert";
 kb-secondary-paste:             "Control+v,Insert";
 kb-mode-next:                   "Shift+Right,Control+Tab";
-kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
+kb-mode-previous:               "Shift+Left,Control+ISO_Left_Tab";
 /*	kb-screenshot:              "Alt+S";*/
 /*	kb-ellipsize:               "Alt+period";*/
 /*	kb-toggle-case-sensitivity: "grave,dead_grave";*/
@@ -195,7 +196,7 @@ kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
 
 * Rofi-Pass
 ** Main
-Permanently set alternative root dir. Use ":" to separate multiple roots which can be switched at runtime with =Control+Tab=
+Permanently set alternative root dir. Use ":" to separate multiple roots which can be switched at runtime with =Control+Tab= and =Control+Shift+Tab=
 #+begin_src conf :tangle ~/.config/rofi-pass/config
 root=~/.password-store:~/.payment-store
 #+end_src
@@ -304,6 +305,7 @@ default_user is also used for password files that have no user field.
 ** Keybindings
 #+begin_src conf :tangle ~/.config/rofi-pass/config
 next_root="Control+Tab"
+previous_root="Control+ISO_Left_Tab"
 autotype="Alt+1"
 type_user="Alt+2"
 type_pass="Alt+3"
