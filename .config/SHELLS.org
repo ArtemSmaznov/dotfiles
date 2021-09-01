@@ -32,7 +32,7 @@
   - [[#system][System]]
   - [[#git][Git]]
   - [[#archives][Archives]]
-- [[#starship-prompt][Starship Prompt]]
+- [[#starship][Starship]]
 
 * Bash
 ** Start Section
@@ -591,7 +591,7 @@ ex() {
 }
 #+end_src
 
-* Starship Prompt
+* Starship
 Inserts a blank line between shell prompts
 #+begin_src toml :tangle ~/.config/starship.toml
 add_newline = true

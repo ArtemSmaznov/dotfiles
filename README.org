@@ -41,7 +41,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/SHELLS.org::*ZSH][ZSH]]
 - [[file:.config/SHELLS.org::*Fish][Fish]]
 - [[file:.config/SHELLS.org::*Aliases][Aliases]]
-- [[file:.config/SHELLS.org::*Starship Prompt][Starship]] Prompt
+- [[file:.config/SHELLS.org::*Starship][Starship Prompt]]
 * Terminal Emulator
 - [[file:.config/alacritty/README.org][Alacritty]]
 - [[file:.config/terminator/README.org][Terminator]]
