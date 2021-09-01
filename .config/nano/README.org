@@ -13,6 +13,11 @@ Characters that are special in a shell should not be escaped here.
 Inside string parameters, quotes should not be escaped -- the last
 double quote on the line will be seen as the closing quote.
 
+* Table of Contents :toc:
+- [[#general][General]]
+- [[#syntax-coloring][Syntax coloring]]
+- [[#key-bindings][Key bindings]]
+
 * General
 #+begin_src conf
 ## Make 'nextword' (Ctrl+Right) and 'chopwordright' (Ctrl+Delete)

@@ -3,6 +3,13 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/dunst/dunstrc
 
+* Table of Contents :toc:
+- [[#global][Global]]
+- [[#experimental][Experimental]]
+- [[#shortcuts][Shortcuts]]
+- [[#urgent][Urgent]]
+- [[#other][Other]]
+
 * Global
 #+begin_src conf
 [global]

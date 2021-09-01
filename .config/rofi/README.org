@@ -3,6 +3,24 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/rofi/config.rasi
 
+* Table of Contents :toc:
+- [[#begin-config][Begin Config]]
+- [[#all-configs][All Configs]]
+- [[#keybindings][Keybindings]]
+  - [[#typing][Typing]]
+  - [[#navigation][Navigation]]
+  - [[#misc][Misc]]
+  - [[#custom][Custom]]
+  - [[#mouse-bindings][Mouse Bindings]]
+- [[#end-config][End Config]]
+- [[#imports][Imports]]
+- [[#rofi-pass][Rofi-Pass]]
+  - [[#main][Main]]
+  - [[#programs-to-be-used][Programs to be used]]
+  - [[#misc-settings][Misc settings]]
+  - [[#options-for-generating-new-password-entries][Options for generating new password entries]]
+  - [[#keybindings-1][Keybindings]]
+
 * Begin Config
 #+begin_src conf
 configuration {

@@ -3,6 +3,15 @@
 #+DESCRIPTION: Alacritty is a simple, GPU-accelerated terminal emulator written in Rust. It supports scrollback, truecolor, copy/paste, clicking on URLS, and custom key bindings.
 #+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml
 
+* Table of Contents :toc:
+- [[#window][Window]]
+- [[#font-configuration][Font configuration]]
+- [[#colors][Colors]]
+- [[#background-opacity][Background opacity]]
+- [[#cursor][Cursor]]
+- [[#live-config-reload][Live config reload]]
+- [[#other][Other]]
+
 * Window
 #+begin_src yaml
 window:

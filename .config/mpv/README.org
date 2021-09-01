@@ -2,6 +2,35 @@
 #+AUTHOR: Artem Smaznov
 #+STARTUP: overview
 
+* Table of Contents :toc:
+- [[#config][Config]]
+  - [[#warning][Warning]]
+  - [[#window][Window]]
+  - [[#playback][Playback]]
+  - [[#video][Video]]
+  - [[#audio][Audio]]
+  - [[#osd][OSD]]
+  - [[#cache][Cache]]
+  - [[#profiles][Profiles]]
+  - [[#screenshot][Screenshot]]
+  - [[#other][Other]]
+- [[#keybindings][Keybindings]]
+  - [[#info][Info]]
+  - [[#initialization][Initialization]]
+  - [[#window-1][Window]]
+  - [[#navigation--volume][Navigation & Volume]]
+  - [[#playback-1][Playback]]
+  - [[#playlists][Playlists]]
+  - [[#audio-1][Audio]]
+  - [[#osd-1][OSD]]
+  - [[#subtitles][Subtitles]]
+  - [[#screenshot-1][Screenshot]]
+  - [[#image-adjustment][Image Adjustment]]
+  - [[#chapters][Chapters]]
+  - [[#media-keys][Media Keys]]
+  - [[#mouse-bindings][Mouse Bindings]]
+  - [[#misc][Misc]]
+
 * Config
 ** Warning
 The commented example options usually do _not_ set the default values. Call mpv with --list-options to see the default values for most options. There is no builtin or example mpv.conf with all the defaults.

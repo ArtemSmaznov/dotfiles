@@ -5,6 +5,14 @@
 
 Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 
+* Table of Contents :toc:
+- [[#general][General]]
+- [[#input][Input]]
+- [[#output][Output]]
+- [[#color][Color]]
+- [[#smoothing][Smoothing]]
+- [[#eq][EQ]]
+
 * General
 #+begin_src conf
 [general]

@@ -4,6 +4,18 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/picom/picom.conf
 
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#shadows][Shadows]]
+- [[#fading][Fading]]
+- [[#transparency][Transparency]]
+  - [[#dimming][Dimming]]
+- [[#corners][Corners]]
+- [[#blur][Blur]]
+- [[#general-settings][General Settings]]
+- [[#window-type-settings][Window type settings]]
+- [[#logs][Logs]]
+
 * Dependencies
 |-----------+---------------------------------------------|
 | Package   | Description                                 |

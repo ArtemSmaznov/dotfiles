@@ -3,6 +3,30 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/neofetch/config.conf
 
+* Table of Contents :toc:
+- [[#print-info][Print Info]]
+- [[#kernel][Kernel]]
+- [[#distro][Distro]]
+- [[#uptime][Uptime]]
+- [[#memory][Memory]]
+- [[#packages][Packages]]
+- [[#shell][Shell]]
+- [[#cpu][CPU]]
+- [[#gpu][GPU]]
+- [[#resolution][Resolution]]
+- [[#gtk-theme][GTK Theme]]
+- [[#ip-address][IP Address]]
+- [[#disk][Disk]]
+- [[#song][Song]]
+- [[#text-colors][Text Colors]]
+- [[#text-options][Text Options]]
+- [[#color-blocks][Color Blocks]]
+- [[#progress-bars][Progress Bars]]
+- [[#backend-settings][Backend Settings]]
+- [[#ascii-options][ASCII Options]]
+- [[#image-options][Image Options]]
+- [[#misc-options][Misc Options]]
+
 * Print Info
 #+begin_src conf
 # See this wiki page for more info:

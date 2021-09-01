@@ -3,6 +3,12 @@
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle init.lisp
 
+* Table of Contents :toc:
+- [[#theme][Theme]]
+- [[#behavior][Behavior]]
+  - [[#vim-mode][Vim mode]]
+  - [[#search-engines][Search Engines]]
+
 * Theme
 #+begin_src lisp
 (in-package #:nyxt-user)

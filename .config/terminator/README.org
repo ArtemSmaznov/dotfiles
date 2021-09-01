@@ -3,6 +3,13 @@
 #+DESCRIPTION: Terminator is a terminal emulator which supports tabs and multiple resizable terminal panels in one window. It is based on GNOME Terminal.
 #+PROPERTY: header-args :tangle ~/.config/terminator/config
 
+* Table of Contents :toc:
+- [[#global-config][Global Config]]
+- [[#keybindings][Keybindings]]
+- [[#profiles][Profiles]]
+- [[#layouts][Layouts]]
+- [[#plugins][Plugins]]
+
 * Global Config
 #+begin_src conf
 [global_config]
