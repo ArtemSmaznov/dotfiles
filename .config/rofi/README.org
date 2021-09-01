@@ -119,7 +119,7 @@ kb-row-down:                    "Down,Control+j,Control+n";
 /*	kb-row-first:               "Home,KP_Home";*/
 /*	kb-row-last:                "End,KP_End";*/
 /*	kb-row-select:              "Control+space";*/
-    
+
 kb-accept-entry:                "Control+m,Return,KP_Enter";
 /*	kb-accept-custom:           "Control+Return";*/
 /*	kb-accept-alt:              "Shift+Return";*/
@@ -193,3 +193,131 @@ kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
 @import "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
 #+end_src
 
+* Rofi-Pass
+** Main
+Permanently set alternative root dir. Use ":" to separate multiple roots which can be switched at runtime with =Control+Tab=
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+root=~/.password-store:~/.payment-store
+#+end_src
+
+rofi command. Make sure to have "$@" as last argument
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+_rofi () {
+    rofi -i -no-auto-select "$@"
+}
+#+end_src
+
+default command to generate passwords
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+_pwgen () {
+	pwgen -y "$@"
+}
+#+end_src
+
+image viewer to display qrcode of selected entry qrencode is needed to generate the image and a viewer that can read from pipes. Known viewers to work are feh and display
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+_image_viewer () {
+    feh -
+#    display
+}
+#+end_src
+
+xdotool needs the keyboard layout to be set using setxkbmap
+You can do this in your autostart scripts (e.g. xinitrc)
+If for some reason, you cannot do this, you can set the command here.
+and set fix_layout to true
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+fix_layout=false
+
+layout_cmd () {
+  setxkbmap us
+}
+#+end_src
+
+fields to be used
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+URL_field='url'
+USERNAME_field='user'
+AUTOTYPE_field='autotype'
+#+end_src
+
+delay to be used for :delay keyword
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+delay=2
+#+end_src
+
+rofi-pass needs to close itself before it can type passwords. Set delay here.
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+wait=0.2
+#+end_src
+
+delay between keypresses when typing (in ms)
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+xdotool_delay=12
+#+end_src
+
+** Programs to be used
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+EDITOR='vim'
+BROWSER='xdg-open'
+#+end_src
+
+** Misc settings
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
+auto_enter='false'
+notify='false'
+default_autotype='user :tab pass'
+#+end_src
+
+color of the help messages
+leave empty for autodetection
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+help_color="#4872FF"
+#+end_src
+
+Clipboard settings
+
+Possible options: primary, clipboard, both
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+clip=primary
+#+end_src
+
+Seconds before clearing pass from clipboard
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+clip_clear=45
+#+end_src
+
+** Options for generating new password entries
+open new password entries in editor
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+edit_new_pass="true"
+#+end_src
+
+default_user is also used for password files that have no user field.
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+#default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
+#default_user2=mary_ann
+#password_length=12
+#+end_src
+
+** Keybindings
+#+begin_src conf :tangle ~/.config/rofi-pass/config
+next_root="Control+Tab"
+autotype="Alt+1"
+type_user="Alt+2"
+type_pass="Alt+3"
+open_url="Alt+4"
+copy_name="Alt+u"
+copy_url="Alt+l"
+copy_pass="Alt+p"
+show="Alt+o"
+copy_entry="Alt+2"
+type_entry="Alt+1"
+copy_menu="Alt+c"
+action_menu="Alt+a"
+type_menu="Alt+t"
+help="Alt+h"
+switch="Alt+x"
+insert_pass="Alt+n"
+#+end_src

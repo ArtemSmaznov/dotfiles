@@ -1,0 +1,68 @@
+root=~/.password-store:~/.payment-store
+
+_rofi () {
+    rofi -i -no-auto-select "$@"
+}
+
+_pwgen () {
+	pwgen -y "$@"
+}
+
+_image_viewer () {
+    feh -
+#    display
+}
+
+fix_layout=false
+
+layout_cmd () {
+  setxkbmap us
+}
+
+URL_field='url'
+USERNAME_field='user'
+AUTOTYPE_field='autotype'
+
+delay=2
+
+wait=0.2
+
+xdotool_delay=12
+
+EDITOR='vim'
+BROWSER='xdg-open'
+
+default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
+auto_enter='false'
+notify='false'
+default_autotype='user :tab pass'
+
+help_color="#4872FF"
+
+clip=primary
+
+clip_clear=45
+
+edit_new_pass="true"
+
+#default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
+#default_user2=mary_ann
+#password_length=12
+
+next_root="Control+Tab"
+autotype="Alt+1"
+type_user="Alt+2"
+type_pass="Alt+3"
+open_url="Alt+4"
+copy_name="Alt+u"
+copy_url="Alt+l"
+copy_pass="Alt+p"
+show="Alt+o"
+copy_entry="Alt+2"
+type_entry="Alt+1"
+copy_menu="Alt+c"
+action_menu="Alt+a"
+type_menu="Alt+t"
+help="Alt+h"
+switch="Alt+x"
+insert_pass="Alt+n"

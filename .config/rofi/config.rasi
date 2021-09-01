@@ -102,7 +102,7 @@ kb-row-down:                    "Down,Control+j,Control+n";
 /*	kb-row-first:               "Home,KP_Home";*/
 /*	kb-row-last:                "End,KP_End";*/
 /*	kb-row-select:              "Control+space";*/
-    
+
 kb-accept-entry:                "Control+m,Return,KP_Enter";
 /*	kb-accept-custom:           "Control+Return";*/
 /*	kb-accept-alt:              "Shift+Return";*/
