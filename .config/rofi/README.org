@@ -1,5 +1,15 @@
-configuration {
+#+TITLE: Rofi
+#+AUTHOR: Artem Smaznov
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle ~/.config/rofi/config.rasi
 
+* Begin Config
+#+begin_src conf
+configuration {
+#+end_src
+
+* All Configs
+#+begin_src conf
   monitor:                        "primary";
   modi: "window,run,drun,ssh,keys";
 /*	width: 50;*/
@@ -76,7 +86,11 @@ configuration {
 /*	display-drun: ;*/
 /*	display-combi: ;*/
 /*	display-keys: ;*/
+#+end_src
 
+* Keybindings
+** Typing
+#+begin_src conf
 /*	kb-clear-line:              "Control+w";*/
 /*	kb-remove-word-back:        "Control+Alt+h,Control+BackSpace";*/
 /*	kb-remove-word-forward:     "Control+Alt+d";*/
@@ -85,7 +99,10 @@ configuration {
 kb-remove-char-back:            "BackSpace";
 kb-remove-to-eol:               "Control+Shift+e";
 kb-remove-to-sol:               "Control+u";
+#+end_src
 
+** Navigation
+#+begin_src conf
 /*	kb-move-front:              "Control+a";*/
 /*	kb-move-end:                "Control+e";*/
 /*	kb-move-word-back:          "Alt+b,Control+Left";*/
@@ -107,7 +124,10 @@ kb-accept-entry:                "Control+m,Return,KP_Enter";
 /*	kb-accept-custom:           "Control+Return";*/
 /*	kb-accept-alt:              "Shift+Return";*/
 /*	kb-delete-entry:            "Shift+Delete";*/
+#+end_src
 
+** Misc
+#+begin_src conf
 kb-primary-paste:               "Control+V,Shift+Insert";
 kb-secondary-paste:             "Control+v,Insert";
 kb-mode-next:                   "Shift+Right,Control+Tab";
@@ -117,7 +137,10 @@ kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
 /*	kb-toggle-case-sensitivity: "grave,dead_grave";*/
 /*	kb-toggle-sort:             "Alt+grave";*/
 /*	kb-cancel:                  "Escape,Control+g,Control+bracketleft";*/
+#+end_src
 
+** Custom
+#+begin_src conf
 /*	kb-custom-1:                "Alt+1";*/
 /*	kb-custom-2:                "Alt+2";*/
 /*	kb-custom-3:                "Alt+3";*/
@@ -147,7 +170,10 @@ kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
 /*	kb-select-8:                "Super+8";*/
 /*	kb-select-9:                "Super+9";*/
 /*	kb-select-10:               "Super+0";*/
+#+end_src
 
+** Mouse Bindings
+#+begin_src conf
 /*	ml-row-left:                "ScrollLeft";*/
 /*	ml-row-right:               "ScrollRight";*/
 /*	ml-row-up:                  "ScrollUp";*/
@@ -155,7 +181,15 @@ kb-mode-previous:               "Shift+Left,Control+Shift+Tab";
 /*	me-select-entry:            "MousePrimary";*/
 /*	me-accept-entry:            "MouseDPrimary";*/
 /*	me-accept-custom:           "Control+MouseDPrimary";*/
+#+end_src
 
+* End Config
+#+begin_src conf
 }
+#+end_src
 
+* Imports
+#+begin_src conf
 @import "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+#+end_src
+
