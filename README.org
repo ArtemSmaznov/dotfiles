@@ -3,8 +3,17 @@
 #+DESCRIPTION: A collection of personal dotfiles
 #+STARTUP: overview
 
+Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
+- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
+- [[https://github.com/ArtemSmaznov/Vim][Vim]]
+- [[https://github.com/ArtemSmaznov/qTile][qTile]]
+- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
+- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
+- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
+- [[https://github.com/ArtemSmaznov/GRUB-themes][GRUB-themes]]
+- [[https://github.com/ArtemSmaznov/SDDM-themes][SDDM-themes]]
+
 * Table of Content :toc:
-- [[#separate-repositories][Separate Repositories]]
 - [[#boot-loader][Boot Loader]]
 - [[#display-manager-dm][Display Manager (DM)]]
 - [[#window-manager-wm][Window Manager (WM)]]
@@ -16,17 +25,6 @@
 - [[#media-player][Media Player]]
 - [[#file-manager][File Manager]]
 - [[#system-utilities][System Utilities]]
-
-* Separate Repositories
-Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
-- [[https://github.com/ArtemSmaznov/Vim][Vim]]
-- [[https://github.com/ArtemSmaznov/qTile][qTile]]
-- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
-- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
-- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
-- [[https://github.com/ArtemSmaznov/GRUB-themes][GRUB-themes]]
-- [[https://github.com/ArtemSmaznov/SDDM-themes][SDDM-themes]]
 
 * Boot Loader
 - [[file:projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
