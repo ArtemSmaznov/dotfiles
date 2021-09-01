@@ -5,36 +5,46 @@
 
 * Table of Content :toc:
 - [[#separate-repositories][Separate Repositories]]
-- [[#window-managers][Window Managers]]
-- [[#shells][Shells]]
-- [[#terminal-emulators][Terminal Emulators]]
+- [[#boot-loader][Boot Loader]]
+- [[#display-manager-dm][Display Manager (DM)]]
+- [[#window-manager-wm][Window Manager (WM)]]
+- [[#shell][Shell]]
+- [[#terminal-emulator][Terminal Emulator]]
 - [[#terminal-tools][Terminal Tools]]
-- [[#text-editors][Text Editors]]
-- [[#web-browsers][Web Browsers]]
-- [[#media-players][Media Players]]
-- [[#file-managers][File Managers]]
+- [[#text-editor][Text Editor]]
+- [[#web-browser][Web Browser]]
+- [[#media-player][Media Player]]
+- [[#file-manager][File Manager]]
 - [[#system-utilities][System Utilities]]
 
 * Separate Repositories
-Larger configurations such as Window Managers, VIM, etc are hosted on their own separate repositories:
+Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
 - [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
 - [[https://github.com/ArtemSmaznov/Vim][Vim]]
 - [[https://github.com/ArtemSmaznov/qTile][qTile]]
 - [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
 - [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
 - [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
+- [[https://github.com/ArtemSmaznov/GRUB-themes][GRUB-themes]]
+- [[https://github.com/ArtemSmaznov/SDDM-themes][SDDM-themes]]
 
-* Window Managers
+* Boot Loader
+- [[file:projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
+* Display Manager (DM)
+=Display Manager= or =DM= is also known as =Login Manager= and is the login screen you see before booting into your =WM/DE=.
+- [[file:projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
+* Window Manager (WM)
+=Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to user a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
 - [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 - [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
 - [[file:.config/picom/README.org][Picom]]
-* Shells
+* Shell
 - [[file:.config/SHELLS.org::*Bash][Bash]]
 - [[file:.config/SHELLS.org::*ZSH][ZSH]]
 - [[file:.config/SHELLS.org::*Fish][Fish]]
 - [[file:.config/SHELLS.org::*Aliases][Aliases]]
 - [[file:.config/SHELLS.org::*Starship Prompt][Starship Prompt]]
-* Terminal Emulators
+* Terminal Emulator
 - [[file:.config/alacritty/README.org][Alacritty]]
 - [[file:.config/terminator/README.org][Terminator]]
 * Terminal Tools
@@ -44,17 +54,17 @@ Larger configurations such as Window Managers, VIM, etc are hosted on their own 
 - [[file:.config/neofetch/README.org][neofetch]]
 - [[file:.config/htop/][htop]]
 - [[file:.config/bashtop/][bashtop]]
-* Text Editors
+* Text Editor
 - [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
 - [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
 - [[file:.config/nano/README.org][Nano]]
-* Web Browsers
+* Web Browser
 - [[file:.config/qutebrowser/README.org][QuteBrowser]]
 - [[file:.config/nyxt/README.org][Nyxt]]
 - Vimb
-* Media Players
+* Media Player
 - [[file:.config/mpv/README.org][MPV]]
-* File Managers
+* File Manager
 - [[file:.config/vifm/][vifm]]
 - [[file:.config/ranger/][ranger]]
 * System Utilities
