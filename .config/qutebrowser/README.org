@@ -1626,6 +1626,11 @@ config.bind('<Space>hh', 'help')
 config.bind('<Space>hs', 'set-cmd-text :help :')
 #+end_src
 
+Processes
+#+begin_src python
+config.bind('<Space>p', 'set-cmd-text :process :')
+#+end_src
+
 Quit
 #+begin_src python
 config.bind('<Space>qq', 'quit')
@@ -2487,7 +2492,7 @@ Characters used for hint strings.
 ## Type: =UniqueCharString=
 #+begin_src python
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuiopasdfghjkl;zxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjklzxcvbnm'
 #+end_src
 
 Dictionary file to be used by the word hints.

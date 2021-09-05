@@ -759,6 +759,8 @@ config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help')
 config.bind('<Space>hs', 'set-cmd-text :help :')
 
+config.bind('<Space>p', 'set-cmd-text :process :')
+
 config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 
@@ -1254,7 +1256,7 @@ c.hints.auto_follow_timeout = 0
 # c.hints.border = '1px solid #E3BE23'
 
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuiopasdfghjkl;zxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjklzxcvbnm'
 
 c.hints.dictionary = '/usr/share/dict/words'
 
