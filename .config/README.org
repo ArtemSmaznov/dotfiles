@@ -10,6 +10,9 @@
   - [[#system-utilities][System Utilities]]
   - [[#background-apps][Background Apps]]
   - [[#launch-apps][Launch Apps]]
+- [[#mbsync][mbsync]]
+  - [[#gmail-main][Gmail Main]]
+  - [[#gmail-artem][Gmail Artem]]
 
 * Auto-start
 ** Startup Sound
@@ -20,7 +23,7 @@ paplay "$HOME/Music/windows95-startup.wav" &
 ** Wallpaper
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # nitrogen --restore &
-~/.local/bin/dmscripts/dmwallpaper gruvbox &
+~/.local/bin/dmscripts/dmwallpaper faded &
 #+end_src
 
 ** Screen Locker
@@ -52,3 +55,127 @@ qutebrowser &
 /usr/bin/steam-runtime %U &
 #+end_src
 
+* mbsync
+based on http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
+
+** Gmail Main
+Account information
+#+begin_src conf :tangle ~/.mbsyncrc
+IMAPAccount gmail-main
+Host imap.gmail.com
+UserCmd "emacsclient -e \"my/email/main\" | cut -d '\"' -f2"
+PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/main)\" | cut -d '\"' -f2"
+# Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+PipelineDepth 50
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#+end_src
+
+Then we specify the local and remote storage
+- the remote storage is where we get the mail from (e.g., the
+  specification of an imap account)
+- the local storage is where we store the email on our computer
+
+Remote storage (use the imap account specified above)
+#+begin_src conf :tangle ~/.mbsyncrc
+IMAPStore gmail-remote
+Account gmail-main
+#+end_src
+
+Local storage (create directories with mkdir -p maildir/gmail)
+#+begin_src conf :tangle ~/.mbsyncrc
+MaildirStore gmail-local
+Path ~/Maildir/
+Inbox ~/Maildir/Inbox
+Subfolders Verbatim
+#+end_src
+
+Connections specify links between remote and local folders
+
+Connections are specified using patterns, which match remote mail
+folders. some commonly used patters include:
+
+1. =*= to match everything
+2. =!dir= to exclude dir
+3. =dir= to match dir
+
+Gmail mailboxes:
+- =All Mail=
+- =Drafts=
+- =Important=
+- =Sent Mail=
+- =Spam=
+- =Starred=
+- =Trash=
+
+#+begin_src conf :tangle ~/.mbsyncrc
+Channel gmail-main
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+Create Both
+Expunge Both
+SyncState *
+#+end_src
+
+** Gmail Artem
+Account information
+#+begin_src conf :tangle ~/.mbsyncrc
+# IMAPAccount gmail-artem
+# Host imap.gmail.com
+# UserCmd "emacsclient -e \"my/email/artem\" | cut -d '\"' -f2"
+# PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/artem)\" | cut -d '\"' -f2"
+# # Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+# PipelineDepth 50
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+#+end_src
+
+Then we specify the local and remote storage
+- the remote storage is where we get the mail from (e.g., the
+  specification of an imap account)
+- the local storage is where we store the email on our computer
+
+Remote storage (use the imap account specified above)
+#+begin_src conf :tangle ~/.mbsyncrc
+# IMAPStore gmail-artem-remote
+# Account gmail-artem
+#+end_src
+
+Local storage (create directories with mkdir -p maildir/gmail)
+#+begin_src conf :tangle ~/.mbsyncrc
+# MaildirStore gmail-artem-local
+# Path ~/Maildir/Artem/
+# Inbox ~/Maildir/Artem/Inbox
+# Subfolders Verbatim
+#+end_src
+
+Connections specify links between remote and local folders
+
+Connections are specified using patterns, which match remote mail
+folders. some commonly used patters include:
+
+1. =*= to match everything
+2. =!dir= to exclude dir
+3. =dir= to match dir
+
+Gmail mailboxes:
+- =All Mail=
+- =Drafts=
+- =Important=
+- =Sent Mail=
+- =Spam=
+- =Starred=
+- =Trash=
+
+#+begin_src conf :tangle ~/.mbsyncrc
+# Channel gmail-artem
+# Far :gmail-artem-remote:
+# Near :gmail-artem-local:
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+# Create Both
+# # Expunge Both
+# SyncState *
+#+end_src

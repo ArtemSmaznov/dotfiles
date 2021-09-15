@@ -1,0 +1,51 @@
+IMAPAccount gmail-main
+Host imap.gmail.com
+UserCmd "emacsclient -e \"my/email/main\" | cut -d '\"' -f2"
+PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/main)\" | cut -d '\"' -f2"
+# Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+PipelineDepth 50
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail-main
+
+MaildirStore gmail-local
+Path ~/Maildir/
+Inbox ~/Maildir/Inbox
+Subfolders Verbatim
+
+Channel gmail-main
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+Create Both
+Expunge Both
+SyncState *
+
+# IMAPAccount gmail-artem
+# Host imap.gmail.com
+# UserCmd "emacsclient -e \"my/email/artem\" | cut -d '\"' -f2"
+# PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/artem)\" | cut -d '\"' -f2"
+# # Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+# PipelineDepth 50
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# IMAPStore gmail-artem-remote
+# Account gmail-artem
+
+# MaildirStore gmail-artem-local
+# Path ~/Maildir/Artem/
+# Inbox ~/Maildir/Artem/Inbox
+# Subfolders Verbatim
+
+# Channel gmail-artem
+# Far :gmail-artem-remote:
+# Near :gmail-artem-local:
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+# Create Both
+# # Expunge Both
+# SyncState *
