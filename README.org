@@ -4,7 +4,7 @@
 #+STARTUP: overview
 
 Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs/][Doom-emacs]]
+- [[https://github.com/ArtemSmaznov/Doom-emacs][Doom-emacs]]
 - [[https://github.com/ArtemSmaznov/Vim][Vim]]
 - [[https://github.com/ArtemSmaznov/qTile][qTile]]
 - [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
@@ -23,6 +23,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#text-editor][Text Editor]]
 - [[#web-browser][Web Browser]]
 - [[#media-player][Media Player]]
+- [[#image-viewer][Image Viewer]]
 - [[#file-manager][File Manager]]
 - [[#system-utilities][System Utilities]]
 
@@ -61,7 +62,9 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/nyxt/README.org][Nyxt]]
 - Vimb
 * Media Player
-- [[file:.config/mpv/README.org][MPV]]
+- [[file:.config/mpv/README.org][mpv]]
+* Image Viewer
+- [[file:.config/vimiv/README.org][vimiv]]
 * File Manager
 - [[file:.config/vifm/][vifm]]
 - [[file:.config/ranger/][ranger]]
