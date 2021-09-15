@@ -465,10 +465,10 @@ alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 *** Pacman
 
 #+begin_src shell :tangle ~/.config/aliasrc
-alias pacman-upgrade='sudo pacman -syu'
+alias pacman-upgrade='sudo pacman -Syu'
 alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
-alias pacman-orphans-clean='sudo pacman -rs $(pacman -qtdq)'
-alias pacman-orphans-fullclean='sudo pacman -rns $(pacman -qtdq)'
+alias pacman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'
+alias pacman-orphans-fullclean='sudo pacman -Rns $(pacman -Qtdq)'
 # fzf
 alias pacman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
