@@ -1,5 +1,6 @@
-#+TITLE: Configs
+#+TITLE: .config
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Miscalenious dotfiles
 #+STARTUP: overview
 
 * Table of Contents :toc:

@@ -1,5 +1,6 @@
 #+TITLE: Vimiv
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A vim-like minimalist image viewer
 #+STARTUP: overview
 
 * Table of Contents :toc:
@@ -224,6 +225,7 @@ u:          move_up
 o:          library
 q:          library
 ^q:         q
+Shift+r:    reload_lib
 
 less:       rotate 1
 greater:    rotate 3
@@ -294,14 +296,22 @@ Shift+l:    slider +10
 ** Command
 #+begin_src conf :tangle keys.conf
 [COMMAND]
-Tab:        complete
-Shift+Tab:  complete_inverse
-Escape:     discard_command
-^n:         history_down
-Down:       history_down
-^p:         history_up
-Up:         history_up
-^q:         q
+Tab:       complete
+Shift+Tab: complete_inverse
+^j:        complete
+^k:        complete_inverse
 
-# vim:ft=dosini
+Escape:    discard_command
+
+Down:      history_down
+Up:        history_up
+
+^n:        history_down
+^p:        history_up
+Alt+j:        history_down
+Alt+k:        history_up
+
+^q:        q
+
+# vim:    ft=dosini
 #+end_src

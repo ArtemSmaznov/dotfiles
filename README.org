@@ -4,14 +4,6 @@
 #+STARTUP: overview
 
 Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
-- [[https://github.com/ArtemSmaznov/Doom-emacs][Doom-emacs]]
-- [[https://github.com/ArtemSmaznov/Vim][Vim]]
-- [[https://github.com/ArtemSmaznov/qTile][qTile]]
-- [[https://github.com/ArtemSmaznov/AwesomeWM][AwesomeWM]]
-- [[https://github.com/ArtemSmaznov/Wallpapers][Wallpapers]]
-- [[https://github.com/ArtemSmaznov/dmscripts][DMScripts]]
-- [[https://github.com/ArtemSmaznov/GRUB-themes][GRUB-themes]]
-- [[https://github.com/ArtemSmaznov/SDDM-themes][SDDM-themes]]
 
 * Table of Content :toc:
 - [[#boot-loader][Boot Loader]]
@@ -21,11 +13,13 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#terminal-emulator][Terminal Emulator]]
 - [[#terminal-tools][Terminal Tools]]
 - [[#text-editor][Text Editor]]
-- [[#web-browser][Web Browser]]
 - [[#media-player][Media Player]]
 - [[#image-viewer][Image Viewer]]
 - [[#file-manager][File Manager]]
+- [[#web-browser][Web Browser]]
+- [[#email][Email]]
 - [[#system-utilities][System Utilities]]
+- [[#other][Other]]
 
 * Boot Loader
 - [[file:projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
@@ -55,12 +49,8 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/bashtop/][bashtop]]
 * Text Editor
 - [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
-- [[file:.vim][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
+- [[file:.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
 - [[file:.config/nano/README.org][Nano]]
-* Web Browser
-- [[file:.config/qutebrowser/README.org][QuteBrowser]]
-- [[file:.config/nyxt/README.org][Nyxt]]
-- Vimb
 * Media Player
 - [[file:.config/mpv/README.org][mpv]]
 * Image Viewer
@@ -68,7 +58,17 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 * File Manager
 - [[file:.config/vifm/][vifm]]
 - [[file:.config/ranger/][ranger]]
+* Web Browser
+- [[file:.config/qutebrowser/README.org][QuteBrowser]]
+- [[file:.config/nyxt/README.org][Nyxt]]
+- Vimb
+* Email
+- [[file:.config/README.org::*mbsync][mbsync]]
 * System Utilities
 - [[file:.config/rofi/README.org][rofi]]
 - [[file:.config/dunst/README.org][dunst]]
 - [[file:.config/redshift/README.org][redshift]]
+* Other
+- [[file:Pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
+- [[file:.local/bin/dmscripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/dmscripts][repo]])
+- [[file:.config/README.org::*Auto-start][Auto-start]]

@@ -1,5 +1,6 @@
 #+TITLE: Cava
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Console-based audio visualizer
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/cava/config
 

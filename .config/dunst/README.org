@@ -1,5 +1,6 @@
 #+TITLE: Dunst
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A lightweight replacement for the notification-daemons provided by most desktop environments
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/dunst/dunstrc
 

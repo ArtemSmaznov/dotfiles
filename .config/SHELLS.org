@@ -1,5 +1,6 @@
 #+TITLE: Shells
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Dotfiles for Shells and Shell accecorries
 #+STARTUP: overview
 
 * Table of Contents :toc:

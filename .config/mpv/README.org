@@ -1,5 +1,6 @@
 #+TITLE: MPV
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A vim-like minimalist media player
 #+STARTUP: overview
 
 * Table of Contents :toc:

@@ -1,5 +1,6 @@
 #+TITLE: NYXT Browser
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A vim-like minimalist web browser
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle init.lisp
 

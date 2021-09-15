@@ -1,5 +1,6 @@
 #+TITLE: RedShift
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Redshift adjusts the color temperature of your screen according to your surroundings
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/redshift/redshift.conf
 

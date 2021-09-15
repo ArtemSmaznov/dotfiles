@@ -1,5 +1,6 @@
 #+TITLE: Rofi
 #+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Window switcher, run dialog, ssh-launcher and dmenu replacement
 #+STARTUP: overview
 #+PROPERTY: header-args :tangle ~/.config/rofi/config.rasi
 
