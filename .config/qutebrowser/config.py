@@ -715,17 +715,6 @@ config.bind('<Ctrl-Shift-Tab>', 'nop')
 
 config.bind('sf', 'save')
 
-config.bind('ws', 'view-source')
-
-config.bind('wi', 'devtools')
-config.bind('wIf', 'devtools-focus')
-
-config.bind('wIh', 'devtools left')
-config.bind('wIl', 'devtools right')
-config.bind('wIj', 'devtools bottom')
-config.bind('wIk', 'devtools top')
-config.bind('wIw', 'devtools window')
-
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
@@ -997,6 +986,8 @@ config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
 
 config.bind('yl', 'hint links yank')
 config.bind('Yl', 'hint links yank-primary')
+config.bind('yi', 'hint images yank')
+config.bind('Yi', 'hint images yank-primary')
 
 config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"')
 config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
@@ -1131,6 +1122,18 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 
 config.bind('gv', 'spawn mpv {url}')
 config.bind('ga', 'spawn mpv {url} --no-video')
+
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dh', 'devtools left')
+config.bind('<Space>dl', 'devtools right')
+config.bind('<Space>dj', 'devtools bottom')
+config.bind('<Space>dk', 'devtools top')
+config.bind('<Space>dw', 'devtools window')
 
 c.colors.messages.info.fg = grey_70
 c.colors.messages.info.bg = grey_0

@@ -54,6 +54,7 @@
   - [[#pass][Pass]]
   - [[#modes][Modes]]
   - [[#videos][Videos]]
+  - [[#development-tools][Development Tools]]
 - [[#messages-1][Messages]]
 - [[#privacy][Privacy]]
   - [[#ad-blocking][Ad-blocking]]
@@ -1569,20 +1570,6 @@ Save session
 config.bind('sf', 'save')
 #+end_src
 
-*** Development Tools
-#+begin_src python
-config.bind('ws', 'view-source')
-
-config.bind('wi', 'devtools')
-config.bind('wIf', 'devtools-focus')
-
-config.bind('wIh', 'devtools left')
-config.bind('wIl', 'devtools right')
-config.bind('wIj', 'devtools bottom')
-config.bind('wIk', 'devtools top')
-config.bind('wIw', 'devtools window')
-#+end_src
-
 *** Config-cycle
 #+begin_src python
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
@@ -1711,7 +1698,6 @@ config.bind('@', 'macro-run')
 #+end_src
 
 ** Windows
-
 #+begin_src python
 config.bind('wh', 'back -w')
 config.bind('wl', 'forward -w')
@@ -1965,7 +1951,6 @@ config.bind('<Return>', 'hint-follow', mode='hint')
 #+end_src
 
 ** Messages
-
 #+begin_src python
 config.bind('cm', 'clear-messages')
 #+end_src
@@ -2002,6 +1987,8 @@ config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
 #+begin_src python
 config.bind('yl', 'hint links yank')
 config.bind('Yl', 'hint links yank-primary')
+config.bind('yi', 'hint images yank')
+config.bind('Yi', 'hint images yank-primary')
 #+end_src
 
 ** Pass
@@ -2172,7 +2159,6 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 #+end_src
 
 ** Videos
-
 #+begin_src python
 config.bind('gv', 'spawn mpv {url}')
 config.bind('ga', 'spawn mpv {url} --no-video')
@@ -2185,6 +2171,21 @@ It also works nicely with rapid hints:
 :bind ,m spawn umpv {url}
 :bind ,M hint links spawn umpv {hint-url}
 :bind ;M hint --rapid links spawn umpv {hint-url}
+
+** Development Tools
+#+begin_src python
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dh', 'devtools left')
+config.bind('<Space>dl', 'devtools right')
+config.bind('<Space>dj', 'devtools bottom')
+config.bind('<Space>dk', 'devtools top')
+config.bind('<Space>dw', 'devtools window')
+#+end_src
 
 * Messages
 Color of messages
