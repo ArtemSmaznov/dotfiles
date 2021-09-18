@@ -7,6 +7,7 @@
 - [[#dependencies][Dependencies]]
 - [[#theme][Theme]]
   - [[#color-scheme][Color Scheme]]
+  - [[#fonts][Fonts]]
   - [[#image][Image]]
   - [[#library][Library]]
   - [[#statusbar][Statusbar]]
@@ -69,26 +70,15 @@ base0c = #8ec07c
 base0d = #83a598
 base0e = #d3869b
 base0f = #d65d0e
+#+end_src
 
-; grey_0   = base00
-; grey_10  = base01
-; grey_25  = base02
-; grey_40  = base03
-; grey_55  = base04
-; grey_70  = base05
-; grey_85  = base06
-; grey_100 = base07
-; red      = base08
-; orange   = base09
-; yellow   = base0a
-; green    = base0b
-; cyan     = base0c
-; blue     = base0d
-; magenta  = base0e
-; brown    = base0f
-
+** Fonts
+#+begin_src conf :tangle styles/gruvbox-dark
 ; Additional custom overrides, e.g.
 font = 12pt Hack
+; library.font = 10pt Monospace
+; thumbnail.font = 10pt Monospace
+; prompt.font = 10pt Monospace
 #+end_src
 
 ** Image
@@ -103,7 +93,6 @@ image.scrollbar.fg = {base05}
 
 ** Library
 #+begin_src conf :tangle styles/gruvbox-dark
-; library.font = 10pt Monospace
 library.fg = {base05}
 ; library.padding = 2px
 library.directory.fg = {base05}
@@ -134,7 +123,6 @@ statusbar.info = {base0a}
 
 ** Thumbnail
 #+begin_src conf :tangle styles/gruvbox-dark
-; thumbnail.font = 10pt Monospace
 thumbnail.fg = {base05}
 thumbnail.bg = {base00}
 ; thumbnail.padding = 20
@@ -148,7 +136,7 @@ thumbnail.selected.bg.unfocus = #8881a2be
 
 ** Completion
 #+begin_src conf :tangle styles/gruvbox-dark
-# completion.height = 16em
+; completion.height = 16em
 completion.fg = {base05}
 completion.even.bg = {base00}
 completion.odd.bg = {base01}
@@ -158,21 +146,21 @@ completion.selected.bg = {base02}
 
 ** Key Hints
 #+begin_src conf :tangle styles/gruvbox-dark
-# keyhint.padding = 2px
+; keyhint.padding = 2px
 keyhint.border_radius = 10px
 keyhint.suffix_color = {base0b}
 #+end_src
 
 ** Manipulate
 #+begin_src conf :tangle styles/gruvbox-dark
-# manipulate.fg = #e0e0e0
-# manipulate.focused.fg = #8abeb7
-# manipulate.bg = #1d1f21
-# manipulate.slider.left = #81a2be
-# manipulate.slider.handle = #b4b7b4
-# manipulate.slider.right = #373b41
-# manipulate.image.border = 2px solid
-# manipulate.image.border.color = #8abeb7
+; manipulate.fg = #e0e0e0
+; manipulate.focused.fg = #8abeb7
+; manipulate.bg = #1d1f21
+; manipulate.slider.left = #81a2be
+; manipulate.slider.handle = #b4b7b4
+; manipulate.slider.right = #373b41
+; manipulate.image.border = 2px solid
+; manipulate.image.border.color = #8abeb7
 #+end_src
 
 ** Mark
@@ -188,19 +176,18 @@ keybindings.highlight.color = {base0b}
 
 ** Metadata
 #+begin_src conf :tangle styles/gruvbox-dark
-# metadata.padding = 2px
-# metadata.border_radius = 10px
-# metadata.bg = #AA373b41
+; metadata.padding = 2px
+; metadata.border_radius = 10px
+; metadata.bg = #AA373b41
 #+end_src
 
 ** Prompt
 #+begin_src conf :tangle styles/gruvbox-dark
-# prompt.font = 10pt Monospace
-prompt.fg = {base05}
+; prompt.fg = {base05}
 prompt.bg = {base00}
-# prompt.padding = 2px
-# prompt.border_radius = 10px
-# prompt.border = 2px solid
+; prompt.padding = 2px
+; prompt.border_radius = 10px
+; prompt.border = 2px solid
 prompt.border.color = {base00}
 #+end_src
 

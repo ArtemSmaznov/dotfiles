@@ -16,25 +16,11 @@ base0d = #83a598
 base0e = #d3869b
 base0f = #d65d0e
 
-; grey_0   = base00
-; grey_10  = base01
-; grey_25  = base02
-; grey_40  = base03
-; grey_55  = base04
-; grey_70  = base05
-; grey_85  = base06
-; grey_100 = base07
-; red      = base08
-; orange   = base09
-; yellow   = base0a
-; green    = base0b
-; cyan     = base0c
-; blue     = base0d
-; magenta  = base0e
-; brown    = base0f
-
 ; Additional custom overrides, e.g.
 font = 12pt Hack
+; library.font = 10pt Monospace
+; thumbnail.font = 10pt Monospace
+; prompt.font = 10pt Monospace
 
 image.bg = {base00}
 image.scrollbar.width = 8px
@@ -43,7 +29,6 @@ image.scrollbar.bg = {base00}
 image.scrollbar.fg = {base05}
 ; image.straighten.color = #f0c674
 
-; library.font = 10pt Monospace
 library.fg = {base05}
 ; library.padding = 2px
 library.directory.fg = {base05}
@@ -68,7 +53,6 @@ statusbar.info = {base0a}
 ; statusbar.message_border = 2px solid
 ; statusbar.padding = 4
 
-; thumbnail.font = 10pt Monospace
 thumbnail.fg = {base05}
 thumbnail.bg = {base00}
 ; thumbnail.padding = 20
@@ -79,39 +63,38 @@ thumbnail.search.highlighted.bg = {base03}
 ; thumbnail.frame.fg = #e0e0e0
 thumbnail.selected.bg.unfocus = #8881a2be
 
-# completion.height = 16em
+; completion.height = 16em
 completion.fg = {base05}
 completion.even.bg = {base00}
 completion.odd.bg = {base01}
 completion.selected.fg = {base05}
 completion.selected.bg = {base02}
 
-# keyhint.padding = 2px
+; keyhint.padding = 2px
 keyhint.border_radius = 10px
 keyhint.suffix_color = {base0b}
 
-# manipulate.fg = #e0e0e0
-# manipulate.focused.fg = #8abeb7
-# manipulate.bg = #1d1f21
-# manipulate.slider.left = #81a2be
-# manipulate.slider.handle = #b4b7b4
-# manipulate.slider.right = #373b41
-# manipulate.image.border = 2px solid
-# manipulate.image.border.color = #8abeb7
+; manipulate.fg = #e0e0e0
+; manipulate.focused.fg = #8abeb7
+; manipulate.bg = #1d1f21
+; manipulate.slider.left = #81a2be
+; manipulate.slider.handle = #b4b7b4
+; manipulate.slider.right = #373b41
+; manipulate.image.border = 2px solid
+; manipulate.image.border.color = #8abeb7
 
 mark.color = {base0e}
 
 keybindings.bindings.color = {base0c}
 keybindings.highlight.color = {base0b}
 
-# metadata.padding = 2px
-# metadata.border_radius = 10px
-# metadata.bg = #AA373b41
+; metadata.padding = 2px
+; metadata.border_radius = 10px
+; metadata.bg = #AA373b41
 
-# prompt.font = 10pt Monospace
-prompt.fg = {base05}
+; prompt.fg = {base05}
 prompt.bg = {base00}
-# prompt.padding = 2px
-# prompt.border_radius = 10px
-# prompt.border = 2px solid
+; prompt.padding = 2px
+; prompt.border_radius = 10px
+; prompt.border = 2px solid
 prompt.border.color = {base00}
