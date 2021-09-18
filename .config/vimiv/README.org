@@ -4,314 +4,445 @@
 #+STARTUP: overview
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#theme][Theme]]
+  - [[#color-scheme][Color Scheme]]
+  - [[#image][Image]]
+  - [[#library][Library]]
+  - [[#statusbar][Statusbar]]
+  - [[#thumbnail][Thumbnail]]
+  - [[#completion][Completion]]
+  - [[#key-hints][Key Hints]]
+  - [[#manipulate][Manipulate]]
+  - [[#mark][Mark]]
+  - [[#keybindings][Keybindings]]
+  - [[#metadata][Metadata]]
+  - [[#prompt][Prompt]]
 - [[#config][Config]]
   - [[#general][General]]
-  - [[#library][Library]]
-  - [[#edit][Edit]]
-  - [[#aliases][Aliases]]
-- [[#keybindings][Keybindings]]
-  - [[#image][Image]]
-  - [[#thumbnail][Thumbnail]]
-  - [[#library-1][Library]]
-  - [[#manipulate][Manipulate]]
   - [[#command][Command]]
+  - [[#completion-1][Completion]]
+  - [[#search][Search]]
+  - [[#image-1][Image]]
+  - [[#library-1][Library]]
+  - [[#thumbnail-1][Thumbnail]]
+  - [[#slideshow][Slideshow]]
+  - [[#statusbar-1][Statusbar]]
+  - [[#key-hints-1][Key Hints]]
+  - [[#title][Title]]
+  - [[#metadata-1][Metadata]]
+  - [[#plugins][Plugins]]
+  - [[#aliases][Aliases]]
+- [[#keybindings-1][Keybindings]]
+  - [[#global][Global]]
+  - [[#image-2][Image]]
+  - [[#library-2][Library]]
+  - [[#thumbnail-2][Thumbnail]]
+  - [[#command-1][Command]]
+  - [[#manipulate-1][Manipulate]]
 
-* Config
-Configuration file for the vimiv image viewer
-Please refer to vimivrc(5) for further information
+* Dependencies
+- [[https://github.com/karlch/vimiv-qt][vimiv-qt]]
 
-** General
-#+begin_src conf :tangle vimivrc
-[GENERAL]
-start_fullscreen: no
-start_slideshow: no
-slideshow_delay: 2
-shuffle: no
-display_bar: yes
-default_thumbsize: (128, 128)
-geometry: 800x600
-recursive: no
-rescale_svg: yes
-overzoom: 1
-search_case_sensitive: no
-incsearch: yes
-copy_to_primary: no
-commandline_padding: 6
-thumb_padding: 10
-completion_height: 200
-play_animations: yes
+* Theme
+** Color Scheme
+base16-gruvbox-dark-medium
+base16: (https://github.com/chriskempson/base16)
+
+Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+Template: Christian Karl <karlch at protonmail dot com>
+#+begin_src conf :tangle styles/gruvbox-dark
+[STYLE]
+base00 = #282828
+base01 = #3c3836
+base02 = #504945
+base03 = #665c54
+base04 = #bdae93
+base05 = #d5c4a1
+base06 = #ebdbb2
+base07 = #fbf1c7
+base08 = #fb4934
+base09 = #fe8019
+base0a = #fabd2f
+base0b = #b8bb26
+base0c = #8ec07c
+base0d = #83a598
+base0e = #d3869b
+base0f = #d65d0e
+
+; grey_0   = base00
+; grey_10  = base01
+; grey_25  = base02
+; grey_40  = base03
+; grey_55  = base04
+; grey_70  = base05
+; grey_85  = base06
+; grey_100 = base07
+; red      = base08
+; orange   = base09
+; yellow   = base0a
+; green    = base0b
+; cyan     = base0c
+; blue     = base0d
+; magenta  = base0e
+; brown    = base0f
+
+; Additional custom overrides, e.g.
+font = 12pt Hack
+#+end_src
+
+** Image
+#+begin_src conf :tangle styles/gruvbox-dark
+image.bg = {base00}
+image.scrollbar.width = 8px
+image.scrollbar.padding = 2px
+image.scrollbar.bg = {base00}
+image.scrollbar.fg = {base05}
+; image.straighten.color = #f0c674
 #+end_src
 
 ** Library
-#+begin_src conf :tangle vimivrc
-[LIBRARY]
-start_show_library: no
-library_width: 300
-expand_lib: yes
-border_width: 0
-markup: <span foreground="#875FFF">
-show_hidden: no
-desktop_start_dir: ~/Pictures
-file_check_amount: 30
-tilde_in_statusbar: yes
+#+begin_src conf :tangle styles/gruvbox-dark
+; library.font = 10pt Monospace
+library.fg = {base05}
+; library.padding = 2px
+library.directory.fg = {base05}
+library.even.bg = {base00}
+library.odd.bg = {base01}
+library.selected.bg = {base0f}
+library.selected.fg = {base01}
+library.search.highlighted.fg = {base0b}
+library.search.highlighted.bg = {base03}
+library.scrollbar.width = 8px
+library.scrollbar.padding = 2px
+library.scrollbar.bg = {base00}
+library.scrollbar.fg = {base05}
+; library.border = 2px solid {base00}
+library.selected.bg.unfocus = #8881a2be
 #+end_src
 
-** Edit
-#+begin_src conf :tangle vimivrc
-[EDIT]
-autosave_images: no
+** Statusbar
+#+begin_src conf :tangle styles/gruvbox-dark
+statusbar.bg = {base00}
+statusbar.fg = {base05}
+statusbar.error = {base08}
+statusbar.warning = {base09}
+statusbar.info = {base0a}
+; statusbar.message_border = 2px solid
+; statusbar.padding = 4
+#+end_src
+
+** Thumbnail
+#+begin_src conf :tangle styles/gruvbox-dark
+; thumbnail.font = 10pt Monospace
+thumbnail.fg = {base05}
+thumbnail.bg = {base00}
+; thumbnail.padding = 20
+thumbnail.selected.bg = {base09}
+thumbnail.search.highlighted.bg = {base03}
+; thumbnail.default.bg = #8abeb7
+; thumbnail.error.bg = #cc6666
+; thumbnail.frame.fg = #e0e0e0
+thumbnail.selected.bg.unfocus = #8881a2be
+#+end_src
+
+** Completion
+#+begin_src conf :tangle styles/gruvbox-dark
+# completion.height = 16em
+completion.fg = {base05}
+completion.even.bg = {base00}
+completion.odd.bg = {base01}
+completion.selected.fg = {base05}
+completion.selected.bg = {base02}
+#+end_src
+
+** Key Hints
+#+begin_src conf :tangle styles/gruvbox-dark
+# keyhint.padding = 2px
+keyhint.border_radius = 10px
+keyhint.suffix_color = {base0b}
+#+end_src
+
+** Manipulate
+#+begin_src conf :tangle styles/gruvbox-dark
+# manipulate.fg = #e0e0e0
+# manipulate.focused.fg = #8abeb7
+# manipulate.bg = #1d1f21
+# manipulate.slider.left = #81a2be
+# manipulate.slider.handle = #b4b7b4
+# manipulate.slider.right = #373b41
+# manipulate.image.border = 2px solid
+# manipulate.image.border.color = #8abeb7
+#+end_src
+
+** Mark
+#+begin_src conf :tangle styles/gruvbox-dark
+mark.color = {base0e}
+#+end_src
+
+** Keybindings
+#+begin_src conf :tangle styles/gruvbox-dark
+keybindings.bindings.color = {base0c}
+keybindings.highlight.color = {base0b}
+#+end_src
+
+** Metadata
+#+begin_src conf :tangle styles/gruvbox-dark
+# metadata.padding = 2px
+# metadata.border_radius = 10px
+# metadata.bg = #AA373b41
+#+end_src
+
+** Prompt
+#+begin_src conf :tangle styles/gruvbox-dark
+# prompt.font = 10pt Monospace
+prompt.fg = {base05}
+prompt.bg = {base00}
+# prompt.padding = 2px
+# prompt.border_radius = 10px
+# prompt.border = 2px solid
+prompt.border.color = {base00}
+#+end_src
+
+* Config
+** General
+#+begin_src conf :tangle vimiv.conf
+[GENERAL]
+monitor_filesystem = True
+shuffle = False
+startup_library = True
+style = gruvbox-dark
+#+end_src
+
+** Command
+#+begin_src conf :tangle vimiv.conf
+[COMMAND]
+history_limit = 100
+#+end_src
+
+** Completion
+#+begin_src conf :tangle vimiv.conf
+[COMPLETION]
+fuzzy = True
+#+end_src
+
+** Search
+#+begin_src conf :tangle vimiv.conf
+[SEARCH]
+ignore_case = True
+incremental = True
+#+end_src
+
+** Image
+#+begin_src conf :tangle vimiv.conf
+[IMAGE]
+autoplay = True
+autowrite = ask
+overzoom = 1.0
+#+end_src
+
+** Library
+#+begin_src conf :tangle vimiv.conf
+[LIBRARY]
+width = 0.3
+show_hidden = False
+#+end_src
+
+** Thumbnail
+#+begin_src conf :tangle vimiv.conf
+[THUMBNAIL]
+size = 128
+#+end_src
+
+** Slideshow
+#+begin_src conf :tangle vimiv.conf
+[SLIDESHOW]
+delay = 2.0
+indicator = slideshow:
+#+end_src
+
+** Statusbar
+#+begin_src conf :tangle vimiv.conf
+[STATUSBAR]
+collapse_home = True
+show = True
+message_timeout = 60000
+mark_indicator = <b>*</b>
+left = {pwd}
+left_image = {index}/{total} {basename} [{zoomlevel}]
+left_thumbnail = {thumbnail-index}/{thumbnail-total} {thumbnail-name}
+left_manipulate = {basename}   {image-size}   Modified: {modified}   {processing}
+center_thumbnail = {thumbnail-size}
+center = {slideshow-indicator} {slideshow-delay} {transformation-info}
+right = {keys}  {mark-count}  {mode}
+right_image = {keys}  {mark-indicator} {mark-count}  {mode}
+#+end_src
+
+** Key Hints
+#+begin_src conf :tangle vimiv.conf
+[KEYHINT]
+delay = 200
+timeout = 50000
+#+end_src
+
+** Title
+#+begin_src conf :tangle vimiv.conf
+[TITLE]
+fallback = Vimiv
+image = {basename}
+#+end_src
+
+** Metadata
+#+begin_src conf :tangle vimiv.conf
+[METADATA]
+keys1 = Exif.Image.Make, Exif.Image.Model, Exif.Image.DateTime, Exif.Photo.ExposureTime, Exif.Photo.FNumber, Exif.Photo.IsoSpeedRatings, Exif.Photo.FocalLength, Exif.Photo.LensMake, Exif.Photo.LensModel, Exif.Photo.ExposureBiasValue
+keys2 = Exif.Photo.ExposureTime, Exif.Photo.FNumber, Exif.Photo.IsoSpeedRatings, Exif.Photo.FocalLength
+keys3 = Exif.Image.Artist, Exif.Image.Copyright
+#+end_src
+
+** Plugins
+#+begin_src conf :tangle vimiv.conf
+[PLUGINS]
+print = default
 #+end_src
 
 ** Aliases
-#+begin_src conf :tangle vimivrc
+#+begin_src conf :tangle vimiv.conf
 [ALIASES]
-# vim:ft=config
+
 #+end_src
 
 * Keybindings
-Keybinding file for the vimiv image viewer
-Modifiers: Shift (through Shift+), Ctrl (through ^), Alt (through Alt+)
-Please refer to vimivrc(5) for further information
+** Global
+#+begin_src conf :tangle keys.conf
+[GLOBAL]
+<colon>: command
+<alt>x:  command
+o:       command --text='open '
+yy:      copy-name
+ya:      copy-name --abspath
+yA:      copy-name --abspath --primary
+yY:      copy-name --primary
+x:       delete %%
+X:       undelete
+gi:      enter image
+gl:      enter library
+gm:      enter manipulate
+gt:      enter thumbnail
+f:       fullscreen
+G:       goto -1
+gg:      goto 1
+m:       mark %%
+q:       quit
+.:       repeat-command
+j:       scroll down
+h:       scroll left
+l:       scroll right
+k:       scroll up
+/:       search
+?:       search --reverse
+n:       search-next
+N:       search-prev
+ts:      set statusbar.show!
+tl:      toggle library
+tm:      toggle manipulate
+tt:      toggle thumbnail
+#+end_src
 
 ** Image
 #+begin_src conf :tangle keys.conf
 [IMAGE]
-a:          autorotate
-Shift+w:    center
-Escape:     clear_status
-colon:      command
-Alt+x:      command
-Shift+y:    copy_abspath
-y:          copy_basename
-Shift+x:    delete
+M:                    center
+|:                    flip
+_:                    flip --vertical
+<end>:                goto -1
+<home>:               goto 1
+<page-down>:          next
+<ctrl>n:              next --keep-zoom
+<space>:              play-or-pause
+<p>:                  play-or-pause
+<page-up>:            prev
+<ctrl>p:              prev --keep-zoom
+>:                    rotate
+<:                    rotate --counter-clockwise
+W:                    scale --level=1
+w:                    scale --level=fit
+E:                    scale --level=fit-height
+e:                    scale --level=fit-width
+<ctrl>j:              scroll down
+<ctrl>h:              scroll left
+<ctrl>l:              scroll right
+<ctrl>k:              scroll up
+J:                    scroll-edge down
+H:                    scroll-edge left
+L:                    scroll-edge right
+K:                    scroll-edge up
+]:                    set slideshow.delay +0.5
+[:                    set slideshow.delay -0.5
+ss:                   slideshow
 
-f:          fullscreen
-q:          q
-^q:         q
-s:          slideshow
-t:          thumbnail
-o:          library
-Shift+o:    focus_library
+j:                    next
+h:                    prev
+l:                    next
+k:                    prev
 
-g:          first
-Shift+g:    last
-h:          prev
-j:          next
-k:          prev
-l:          next
-Left:       pref
-Down:       next
-Up:         pref
-Right:      next
-^h:         scroll h
-^j:         scroll j
-^k:         scroll k
-^l:         scroll l
-^Left:      scroll h
-^Down:      scroll j
-^Up:        scroll k
-^Right:     scroll l
-Shift+h:    scroll H
-Shift+j:    scroll J
-Shift+k:    scroll K
-Shift+l:    scroll L
+<ctrl>0:              scale --level=fit
+<equal>:              scale --level=fit
+<ctrl><equal>:        zoom in
+<ctrl>-:              zoom out
+-:                    unbind
++:                    unbind
 
-slash:      search
-n:          search_next
-Shift+n:    search_prev
+<double-button-left>: fullscreen
+<button-forward>:     next
+<button-back>:        prev
+<scroll-up>:          prev
+#+end_src
 
-space:      set play_animations!
-r:          set rescale_svg!
-b:          set display_bar!
-comma:      set slideshow_delay -0.2
-period:     set slideshow_delay +0.2
-e:          fit_horiz
-Shift+e:    fit_vert
-underscore: flip 0
-bar:        flip 1
-c:          manipulate
-m:          mark
-Shift+m:    mark_toggle
-u:          move_up
-less:       rotate 1
-greater:    rotate 3
-
-^equal:     zoom_in
-^minus:     zoom_out
-^0:         zoom_to
-equal:      zoom_to
-
-Button1:    next
-Button2:    library
-Button3:    prev
+** Library
+#+begin_src conf :tangle keys.conf
+[LIBRARY]
+go:            goto 1 --open-selected
+q:             toggle library
+<ctrl>j:       scroll down --open-selected
+<ctrl>k:       scroll up --open-selected
+L:             set library.width +0.05
+H:             set library.width -0.05
+<ctrl><equal>: set library.width +0.05
+<ctrl>-:       set library.width -0.05
+<ctrl>0:       set library.width
+<equal>:       set library.width
 #+end_src
 
 ** Thumbnail
 #+begin_src conf :tangle keys.conf
 [THUMBNAIL]
-a:          autorotate
-Escape:     clear_status
-colon:      command
-Alt+x:      command
-Shift+y:    copy_abspath
-y:          copy_basename
-Shift+x:    delete
-g:          first
-underscore: flip 0
-bar:        flip 1
-Shift+o:    focus_library
-f:          fullscreen
-Shift+g:    last
-o:          library
-m:          mark
-Shift+m:    mark_toggle
-u:          move_up
-^q:         q
-q:          q
-less:       rotate 1
-greater:    rotate 3
-
-h:          scroll h
-j:          scroll j
-k:          scroll k
-l:          scroll l
-Left:       scroll h
-Down:       scroll j
-Up:         scroll k
-Right:      scroll l
-
-^h:         scroll H
-^j:         scroll J
-^k:         scroll K
-^l:         scroll L
-
-slash:      search
-n:          search_next
-Shift+n:    search_prev
-
-r:          set rescale_svg!
-b:          set display_bar!
-comma:      set slideshow_delay -0.2
-period:     set slideshow_delay +0.2
-t:          thumbnail
-
-^equal:     zoom_in
-^minus:     zoom_out
-#+end_src
-
-** Library
-#+begin_src conf :tangle keys.conf
-[LIBRARY]
-a:          autorotate
-Shift+w:    center
-Escape:     clear_status
-colon:      command
-Alt+x:      command
-Shift+y:    copy_abspath
-y:          copy_basename
-Shift+x:    delete
-g:          first_lib
-e:          fit_horiz
-Shift+e:    fit_vert
-underscore: flip 0
-bar:        flip 1
-f:          fullscreen
-Shift+g:    last_lib
-m:          mark
-Shift+m:    mark_toggle
-u:          move_up
-^j:         next
-^k:         prev
-o:          library
-q:          library
-^q:         q
-Shift+r:    reload_lib
-
-less:       rotate 1
-greater:    rotate 3
-
-h:          scroll_lib h
-j:          scroll_lib j
-k:          scroll_lib k
-l:          scroll_lib l
-Left:       scroll_lib h
-Down:       scroll_lib j
-Up:         scroll_lib k
-Right:      scroll_lib l
-
-slash:      search
-n:          search_next
-Shift+n:    search_prev
-
-r:          set rescale_svg!
-^h:         set show_hidden!
-b:          set display_bar!
-Shift+l:    set library_width +20
-Shift+h:    set library_width -20
-comma:      set slideshow_delay -0.2
-period:     set slideshow_delay +0.2
-t:          thumbnail
-Shift+o:    unfocus_library
-
-^equal:     zoom_in
-^minus:     zoom_out
-^0:         zoom_to
-equal:      zoom_to
-
-Button3:    move_up
-#+end_src
-
-** Manipulate
-#+begin_src conf :tangle keys.conf
-[MANIPULATE]
-Space:      accept_changes
-Return:     accept_changes
-a:          autorotate
-Shift+w:    center
-colon:      command
-Alt+x:      command
-Shift+y:    copy_abspath
-y:          copy_basename
-Escape:     discard_changes
-^0:         zoom_to
-equal:      zoom_to
-e:          fit_horiz
-Shift+e:    fit_vert
-underscore: flip 0
-bar:        flip 1
-b:          focus_slider bri
-c:          focus_slider con
-s:          focus_slider sat
-f:          fullscreen
-m:          mark
-Shift+m:    mark_toggle
-less:       rotate 1
-greater:    rotate 3
-h:          slider -1
-l:          slider +1
-Shift+h:    slider -10
-Shift+l:    slider +10
+<ctrl><equal>: zoom in
+<ctrl>-:       zoom out
+-:             unbind
++:             unbind
 #+end_src
 
 ** Command
 #+begin_src conf :tangle keys.conf
 [COMMAND]
-Tab:       complete
-Shift+Tab: complete_inverse
-^j:        complete
-^k:        complete_inverse
+<tab>:        complete
+<shift><tab>: complete --inverse
+<ctrl>j:      complete
+<ctrl>k:      complete --inverse
+<ctrl>n:      history-substr-search next
+<ctrl>p:      history-substr-search prev
+<alt>j:       history-substr-search next
+<alt>k:       history-substr-search prev
+<up>:         history-substr-search next
+<down>:       history-substr-search prev
+<escape>:     leave-commandline
+#+end_src
 
-Escape:    discard_command
-
-Down:      history_down
-Up:        history_up
-
-^n:        history_down
-^p:        history_up
-Alt+j:        history_down
-Alt+k:        history_up
-
-^q:        q
-
-# vim:    ft=dosini
+** Manipulate
+#+begin_src conf :tangle keys.conf
+[MANIPULATE]
+<colon>: command
+f:       fullscreen
+b:       set statusbar.show!
 #+end_src
