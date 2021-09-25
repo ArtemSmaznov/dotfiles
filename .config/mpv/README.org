@@ -19,8 +19,8 @@
   - [[#info][Info]]
   - [[#initialization][Initialization]]
   - [[#window-1][Window]]
-  - [[#navigation--volume][Navigation & Volume]]
   - [[#playback-1][Playback]]
+  - [[#navigation--volume][Navigation & Volume]]
   - [[#playlists][Playlists]]
   - [[#audio-1][Audio]]
   - [[#osd-1][OSD]]
@@ -290,28 +290,46 @@ f cycle fullscreen                     # toggle fullscreen
 #Alt+2 set window-scale 2.0
 #+end_src
 
+** Playback
+#+begin_src conf :tangle input.conf
+k     cycle pause
+SPACE cycle pause
+#+end_src
+
+Scale playback speed
+#+begin_src conf :tangle input.conf
+[ multiply speed 1/1.1
+] multiply speed 1.1
+{ multiply speed 0.5
+} multiply speed 2.0
+#+end_src
+
+Reset speed to normal
+#+begin_src conf :tangle input.conf
+BS set speed 1.0
+#+end_src
+
+A-B Loop
+#+begin_src conf :tangle input.conf
+\ ab-loop                              # Set/clear A-B loop points
+#L cycle-values loop-file "inf" "no"    # toggle infinite looping
+#+end_src
+
 ** Navigation & Volume
 Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf :tangle input.conf
-h seek -5
-l seek 5
-k add volume 2
-j add volume -2
+j           seek -10
+l           seek  10
+J           seek -30
+L           seek  30
 
-H seek -30
-L seek 30
-K seek 60
-J seek -60
-
-LEFT  seek -5
-RIGHT seek  5
-UP    add volume 2
-DOWN  add volume -2
+LEFT        seek -5
+RIGHT       seek  5
 
 Shift+LEFT  seek -30
-Shift+RIGHT seek 30
-Shift+UP    seek 60
+Shift+RIGHT seek  30
 Shift+DOWN  seek -60
+Shift+UP    seek  60
 #+end_src
 
 Frame-by-frame navigation
@@ -322,7 +340,7 @@ Frame-by-frame navigation
 
 #+begin_src conf :tangle input.conf
 HOME seek 0 absolute-percent
-END set pause yes ; seek 100 absolute-percent
+END  set pause yes ; seek 100 absolute-percent
 
 0 seek 0 absolute-percent
 1 seek 10 absolute-percent
@@ -343,43 +361,21 @@ END set pause yes ; seek 100 absolute-percent
 #Shift+Ctrl+BS revert-seek mark         # mark position for revert-seek
 #+end_src
 
-** Playback
-#+begin_src conf :tangle input.conf
-SPACE cycle pause
-#+end_src
-
-Scale playback speed
-#+begin_src conf :tangle input.conf
-[ multiply speed 1/1.1
-] multiply speed 1.1
-{ multiply speed 0.5
-} multiply speed 2.0
-#+end_src
-
-Reset speed to normal
-#+begin_src conf :tangle input.conf
-BS set speed 1.0
-#+end_src
-
-A-B Loop
-#+begin_src conf :tangle input.conf
-ctrl+l ab-loop                              # Set/clear A-B loop points
-#L cycle-values loop-file "inf" "no"    # toggle infinite looping
-#+end_src
-
 ** Playlists
 #+begin_src conf :tangle input.conf
 p show_text ${playlist} # show playlist
-# ENTER playlist-next     # skip to next file
+# ENTER playlist-next   # skip to next file
 Shift+n playlist-next   # skip to next file
 Shift+p playlist-prev   # skip to previous file
-> playlist-next   # skip to next file
-< playlist-prev   # skip to previous file
+>       playlist-next   # skip to next file
+<       playlist-prev   # skip to previous file
 #+end_src
 
 ** Audio
 #+begin_src conf :tangle input.conf
-m cycle mute
+UP    add volume 1
+DOWN  add volume -1
+m     cycle mute
 
 #ctrl++ add audio-delay 0.100           # this changes audio/video sync
 #ctrl+- add audio-delay -0.100
@@ -398,41 +394,44 @@ Ctrl+o script-binding osc/visibility      # cycle OSC display
 
 Info
 #+begin_src conf :tangle input.conf
-i script-binding stats/display-stats
-I script-binding stats/display-stats-toggle
-` script-binding console/enable
+i     script-binding stats/display-stats
+I     script-binding stats/display-stats-toggle
+`     script-binding console/enable
+:     script-binding console/enable
 Alt+x script-binding console/enable
 #+end_src
 
 ** Subtitles
 Skip to previous/next subtitle (subject to some restrictions; see manpage)
 #+begin_src conf :tangle input.conf
-Ctrl+LEFT   no-osd sub-seek -1
-Ctrl+RIGHT  no-osd sub-seek  1
+Alt+LEFT   no-osd sub-seek -1
+Alt+RIGHT  no-osd sub-seek  1
 #+end_src
 
 #+begin_src conf :tangle input.conf
 v cycle sub-visibility
+c cycle sub-visibility
 
 # stretch SSA/ASS subtitles with anamorphic videos to match historical
 V cycle sub-ass-vsfilter-aspect-compat
+C cycle sub-ass-vsfilter-aspect-compat
 
 # switch between applying no style overrides to SSA/ASS subtitles, and
 # overriding them almost completely with the normal subtitle style
 #u cycle-values sub-ass-override "force" "no"
-c cycle sub                            # cycle through subtitles
-C cycle sub down                       # ...backwards
+s cycle sub                            # cycle through subtitles
+S cycle sub down                       # ...backwards
 
-#Shift+g add sub-scale +0.1                  # increase subtitle font size
-#Shift+f add sub-scale -0.1                  # decrease subtitle font size
+#Shift+g add sub-scale +0.1            # increase subtitle font size
+#Shift+f add sub-scale -0.1            # decrease subtitle font size
 
-#z add sub-delay -0.1                   # subtract 100 ms delay from subs
-#Z add sub-delay +0.1                   # add
-#x add sub-delay +0.1                   # same as previous binding (discouraged)
+#z add sub-delay -0.1                  # subtract 100 ms delay from subs
+#Z add sub-delay +0.1                  # add
+#x add sub-delay +0.1                  # same as previous binding (discouraged)
 
-#r add sub-pos -1                       # move subtitles up
-#R add sub-pos +1                       #                down
-#t add sub-pos +1                       # same as previous binding (discouraged)
+#r add sub-pos -1                      # move subtitles up
+#R add sub-pos +1                      #                down
+#t add sub-pos +1                      # same as previous binding (discouraged)
 
 # Adjust timing to previous/next subtitle
 #Ctrl+Shift+LEFT sub-step -1
@@ -443,9 +442,9 @@ C cycle sub down                       # ...backwards
 Take screenshot without subtitles
 #+begin_src conf :tangle input.conf
 Ctrl+PRINT screenshot video
-F12 screenshot video
-Alt+s screenshot video
-Alt+S screenshot each-frame            # automatically screenshot every frame
+F12        screenshot video
+Alt+s      screenshot video
+Alt+S      screenshot each-frame            # automatically screenshot every frame
 #+end_src
 
 ** Image Adjustment
@@ -467,15 +466,19 @@ Alt+d cycle deinterlace
 #e add panscan +0.1                     # same as previous binding (discouraged)
 
 # Move video rectangle
-Alt+left  add video-pan-x  0.1
-Alt+right add video-pan-x -0.1
-Alt+up    add video-pan-y  0.1
-Alt+down  add video-pan-y -0.1
+Ctrl+left  add video-pan-x  0.1
+Ctrl+right add video-pan-x -0.1
+Ctrl+up    add video-pan-y  0.1
+Ctrl+down  add video-pan-y -0.1
+Alt+h      add video-pan-x  0.1
+Alt+l      add video-pan-x -0.1
+Alt+k      add video-pan-y  0.1
+Alt+j      add video-pan-y -0.1
 
 # Zoom/unzoom video
-Ctrl+0           set video-zoom 0
-Ctrl+-           add video-zoom -0.25
-Ctrl+=           add video-zoom 0.25
+Ctrl+0     set video-zoom 0
+Ctrl+-     add video-zoom -0.25
+Ctrl+=     add video-zoom 0.25
 
 # Reset video zoom/pan settings
 Ctrl+BS set video-zoom 0 ; set video-pan-x 0 ; set video-pan-y 0
@@ -485,49 +488,50 @@ Alt+a cycle-values video-aspect-override "16:9" "4:3" "2.35:1" "-1"
 #+end_src
 
 ** Chapters
+Jump between chapters
 #+begin_src conf :tangle input.conf
-PGDWN add chapter -1                   # skip to previous chapter
-PGUP add chapter 1                     # skip to next chapter
-
-Alt+h add chapter -1                   # skip to previous chapter
-Alt+l add chapter 1                     # skip to next chapter
+PGDWN  add chapter -1
+PGUP   add chapter 1
+Ctrl+j add chapter -1
+Ctrl+l add chapter 1
 #+end_src
 
 ** Media Keys
 #+begin_src conf :tangle input.conf
-#POWER quit
-PLAY cycle pause
-PAUSE cycle pause
-PLAYPAUSE cycle pause
-PLAYONLY set pause no
-PAUSEONLY set pause yes
-STOP set pause no
-FORWARD seek 60
-REWIND seek -60
-NEXT playlist-next
-PREV playlist-prev
-VOLUME_UP add volume 2
+#POWER      quit
+PLAY        cycle pause
+PAUSE       cycle pause
+PLAYPAUSE   cycle pause
+PLAYONLY    set pause no
+PAUSEONLY   set pause yes
+STOP        set pause no
+FORWARD     seek 60
+REWIND      seek -60
+NEXT        playlist-next
+PREV        playlist-prev
+VOLUME_UP   add volume 2
 VOLUME_DOWN add volume -2
-MUTE cycle mute
-CLOSE_WIN quit
-CLOSE_WIN {encode} quit 4
+MUTE        cycle mute
+CLOSE_WIN   quit
+CLOSE_WIN   {encode} quit 4
 #+end_src
 
 ** Mouse Bindings
 #+begin_src conf :tangle input.conf
-MBTN_LEFT     cycle pause
-MBTN_LEFT_DBL cycle fullscreen    # toggle fullscreen on/off
-MBTN_RIGHT    ignore              # don't do anything
-MBTN_BACK     playlist-prev
-MBTN_FORWARD  playlist-next
+MBTN_RIGHT_DBL quit
+MBTN_LEFT      cycle pause
+MBTN_LEFT_DBL  cycle fullscreen    # toggle fullscreen on/off
+MBTN_RIGHT     ignore              # don't do anything
+MBTN_BACK      playlist-prev
+MBTN_FORWARD   playlist-next
 #+end_src
 
 Mouse wheels, touch-pad or other input devices that have axes if the input devices supports precise scrolling it will also scale the numeric value accordingly
 #+begin_src conf :tangle input.conf
 WHEEL_UP      add volume 2
 WHEEL_DOWN    add volume -2
-WHEEL_LEFT    seek -5
-WHEEL_RIGHT   seek 5
+WHEEL_LEFT    seek -1
+WHEEL_RIGHT   seek 1
 #+end_src
 
 ** Misc
