@@ -17,14 +17,14 @@
 
 * Auto-start
 ** Startup Sound
-#+begin_src shell :tangle autostart-scripts/autostart.sh :shebang #!/bin/sh
+#+begin_src shell :tangle autostart-scripts/autostart.sh :shebang #!/usr/bin/env bash
 paplay "$HOME/Music/windows95-startup.wav" &
 #+end_src
 
 ** Wallpaper
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # nitrogen --restore &
-~/.local/bin/dmscripts/dmwallpaper faded &
+~/.local/bin/dmscripts/dm-wallpaper fall &
 #+end_src
 
 ** Screen Locker
@@ -39,6 +39,7 @@ xss-lock "$HOME/.local/bin/dmscripts/dmlock" &
 picom -b --experimental-backends --dbus &
 nm-applet &
 dunst &
+unclutter -jitter 5 &
 #+end_src
 
 ** Background Apps
@@ -65,7 +66,7 @@ Account information
 IMAPAccount gmail-main
 Host imap.gmail.com
 UserCmd "emacsclient -e \"my/email/main\" | cut -d '\"' -f2"
-PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/main)\" | cut -d '\"' -f2"
+PassCmd "emacsclient -e \"(my/lookup-password :host \\\"smtp.gmail.com\\\" :user my/email/main)\" | cut -d '\"' -f2"
 # Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
 PipelineDepth 50
 AuthMechs LOGIN
@@ -126,7 +127,7 @@ Account information
 # IMAPAccount gmail-artem
 # Host imap.gmail.com
 # UserCmd "emacsclient -e \"my/email/artem\" | cut -d '\"' -f2"
-# PassCmd "emacsclient -e \"(my/lookup-password :host \\\"gmail.com\\\" :user my/email/artem)\" | cut -d '\"' -f2"
+# PassCmd "emacsclient -e \"(my/lookup-password :host \\\"smtp.gmail.com\\\" :user my/email/artem)\" | cut -d '\"' -f2"
 # # Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
 # PipelineDepth 50
 # AuthMechs LOGIN
