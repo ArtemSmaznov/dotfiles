@@ -1,263 +1,161 @@
-# c.window.hide_decoration = False
-
-# c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
-
-c.window.transparent = False
+import colors.gruvbox as theme
 
 c.fonts.default_size = '14pt'
-
-#+begin_src python
 # c.fonts.default_family = []
-
-#+begin_src python
 # c.fonts.completion.category = 'bold default_size default_family'
-
 # c.fonts.completion.entry = 'default_size default_family'
-
 # c.fonts.contextmenu = None
-
 # c.fonts.debug_console = 'default_size default_family'
-
 # c.fonts.downloads = 'default_size default_family'
-
 # c.fonts.hints = 'bold default_size default_family'
-
 # c.fonts.keyhint = 'default_size default_family'
-
 # c.fonts.messages.error = 'default_size default_family'
-
 # c.fonts.messages.info = 'default_size default_family'
-
 # c.fonts.messages.warning = 'default_size default_family'
-
 # c.fonts.prompts = 'default_size sans-serif'
-
 # c.fonts.statusbar = 'default_size default_family'
-
 # c.fonts.tabs.selected = 'default_size default_family'
-
 # c.fonts.tabs.unselected = 'default_size default_family'
-
 # c.fonts.web.family.cursive = ''
-
 # c.fonts.web.family.fantasy = ''
-
 # c.fonts.web.family.fixed = ''
-
 # c.fonts.web.family.sans_serif = ''
-
 # c.fonts.web.family.serif = ''
-
 # c.fonts.web.family.standard = ''
-
 # c.fonts.web.size.default = 16
-
 # c.fonts.web.size.default_fixed = 13
-
 # c.fonts.web.size.minimum = 0
-
 # c.fonts.web.size.minimum_logical = 6
 
-grey_0 = "#32302f"
-grey_10 = "#3c3836"
-grey_25 = "#504945"
-grey_40 = "#665c54"
-grey_55 = "#bdae93"
-grey_70 = "#d5c4a1"
-grey_85 = "#ebdbb2"
-grey_100 = "#fbf1c7"
-red = "#fb4934"
-orange = "#fe8019"
-yellow = "#fabd2f"
-green = "#b8bb26"
-cyan = "#8ec07c"
-blue = "#83a598"
-magenta = "#d3869b"
-brown = "#d65d0e"
+# c.window.hide_decoration = False
+# c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
+c.window.transparent = False
 
-# special
-foreground = "#c0b18b"
-background = "#1f1f1f"
-
-# black
-color0 = "#4a3637"
-color8 = "#402e2e"
-
-# red
-color1 = "#d17b49"
-color9 = "#ac5d2f"
-
-# green
-color2 = "#7b8748"
-color10 = "#647035"
-
-# yellow
-color3 = "#af865a"
-color11 = "#8f6840"
-
-# blue
-color4 = "#535c5c"
-color12 = "#444b4b"
-
-# magenta
-color5 = "#775759"
-color13 = "#614445"
-
-# cyan
-color6 = "#6d715e"
-color14 = "#585c49"
-
-# white
-color7 = "#c0b18b"
-color15 = "#978965"
-
-black_0 = color0
-black_dark_8 = color8
-red_1 = color1
-red_dark_9 = color9
-green_2 = color2
-green_dark_10 = color10
-yellow_3 = color3
-yellow_dark_11 = color11
-blue_4 = color4
-blue_dark_12 = color12
-magenta_5 = color5
-magenta_dark_13 = color13
-cyan_6 = color6
-cyan_dark_14 = color14
-white_7 = color7
-white_dark_15 = color15
-
-c.colors.completion.category.fg = yellow
-c.colors.completion.category.bg = grey_0
-c.colors.completion.category.border.top = grey_0
-c.colors.completion.category.border.bottom = grey_0
+c.colors.completion.category.fg = theme.yellow11
+c.colors.completion.category.bg = theme.bg0
+c.colors.completion.category.border.top = theme.bg0
+c.colors.completion.category.border.bottom = theme.bg0
 
 # c.colors.completion.fg = ['white', 'white', 'white']
-c.colors.completion.fg = grey_70
-c.colors.completion.match.fg = green
-c.colors.completion.odd.bg = grey_10
-c.colors.completion.even.bg = grey_0
+c.colors.completion.fg = theme.fg2
+c.colors.completion.match.fg = theme.green10
+c.colors.completion.odd.bg = theme.bg1
+c.colors.completion.even.bg = theme.bg0
 
-c.colors.completion.item.selected.fg = grey_70
-c.colors.completion.item.selected.bg = grey_25
-c.colors.completion.item.selected.border.top = grey_25
-c.colors.completion.item.selected.border.bottom = grey_25
-c.colors.completion.item.selected.match.fg = green
+c.colors.completion.item.selected.fg = theme.fg2
+c.colors.completion.item.selected.bg = theme.bg2
+c.colors.completion.item.selected.border.top = theme.bg2
+c.colors.completion.item.selected.border.bottom = theme.bg2
+c.colors.completion.item.selected.match.fg = theme.green10
 
-c.colors.completion.scrollbar.fg = grey_70
-c.colors.completion.scrollbar.bg = grey_0
+c.colors.completion.scrollbar.fg = theme.fg2
+c.colors.completion.scrollbar.bg = theme.bg0
 
-c.colors.keyhint.fg = grey_70
-c.colors.keyhint.bg = grey_0
-c.colors.keyhint.suffix.fg = green
+c.colors.keyhint.fg = theme.fg2
+c.colors.keyhint.bg = theme.bg0
+c.colors.keyhint.suffix.fg = theme.green10
+c.keyhint.radius = 10
 
-c.keyhint.radius = 6
+c.colors.contextmenu.menu.bg = theme.bg0
+c.colors.contextmenu.menu.fg =  theme.fg2
 
-c.colors.contextmenu.menu.bg = grey_0
-c.colors.contextmenu.menu.fg =  grey_70
+c.colors.contextmenu.selected.bg = theme.bg2
+c.colors.contextmenu.selected.fg = theme.fg2
 
-c.colors.contextmenu.selected.bg = grey_25
-c.colors.contextmenu.selected.fg = grey_70
+c.colors.contextmenu.disabled.bg = theme.bg1
+c.colors.contextmenu.disabled.fg = theme.fg3
 
-c.colors.contextmenu.disabled.bg = grey_10
-c.colors.contextmenu.disabled.fg = grey_55
+c.colors.downloads.bar.bg = theme.bg0
 
-c.colors.downloads.bar.bg = grey_0
+c.colors.downloads.start.fg = theme.bg0
+c.colors.downloads.start.bg = theme.blue12
 
-c.colors.downloads.start.fg = grey_0
-c.colors.downloads.start.bg = blue
+c.colors.downloads.stop.fg = theme.bg0
+c.colors.downloads.stop.bg = theme.cyan14
 
-c.colors.downloads.stop.fg = grey_0
-c.colors.downloads.stop.bg = cyan
-
-c.colors.downloads.error.fg = red
-
-c.colors.downloads.system.bg = 'rgb'
+c.colors.downloads.error.fg = theme.red9
 
 c.colors.downloads.system.fg = 'rgb'
+c.colors.downloads.system.bg = 'rgb'
 
 # c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 
-c.colors.hints.fg = grey_0
-c.colors.hints.bg = yellow
-c.colors.hints.match.fg = grey_70
+c.colors.hints.fg = theme.bg0
+c.colors.hints.bg = theme.yellow11
+c.colors.hints.match.fg = theme.fg2
 
-c.colors.prompts.fg = grey_70
-c.colors.prompts.bg = grey_0
+c.colors.prompts.fg = theme.fg2
+c.colors.prompts.bg = theme.bg0
 
-c.colors.prompts.selected.bg = grey_25
-c.colors.prompts.selected.fg = grey_70
+c.colors.prompts.selected.bg = theme.bg2
+c.colors.prompts.selected.fg = theme.fg2
 
-c.colors.prompts.border = grey_0
+c.colors.prompts.border = theme.bg0
 
 c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
-
 c.statusbar.position = 'bottom'
-
 c.statusbar.show = 'always'
-
 c.statusbar.widgets = ['keypress', 'progress', 'history', 'url', 'text: -- ', 'scroll']
 
 # Color of the statusbar.
-c.colors.statusbar.normal.fg = grey_70
-c.colors.statusbar.normal.bg = grey_0
+c.colors.statusbar.normal.fg = theme.fg2
+c.colors.statusbar.normal.bg = theme.bg0
 
 # Color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = grey_0
-c.colors.statusbar.insert.bg = blue
+c.colors.statusbar.insert.fg = theme.bg0
+c.colors.statusbar.insert.bg = theme.blue12
 
 # Color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = grey_0
-c.colors.statusbar.passthrough.bg = cyan
+c.colors.statusbar.passthrough.fg = theme.bg0
+c.colors.statusbar.passthrough.bg = theme.cyan14
 
 # Color of the statusbar in private browsing mode.
-c.colors.statusbar.private.fg = grey_0
-c.colors.statusbar.private.bg = grey_10
+c.colors.statusbar.private.fg = theme.bg0
+c.colors.statusbar.private.bg = theme.bg1
 
 # Color of the statusbar in command mode.
-c.colors.statusbar.command.fg = grey_70
-c.colors.statusbar.command.bg = grey_0
+c.colors.statusbar.command.fg = theme.fg2
+c.colors.statusbar.command.bg = theme.bg0
 
 # Color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.fg = grey_70
-c.colors.statusbar.command.private.bg = grey_0
+c.colors.statusbar.command.private.fg = theme.fg2
+c.colors.statusbar.command.private.bg = theme.bg0
 
 # Color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = grey_0
-c.colors.statusbar.caret.bg = magenta
+c.colors.statusbar.caret.fg = theme.bg0
+c.colors.statusbar.caret.bg = theme.magenta13
 
 # Color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = grey_0
-c.colors.statusbar.caret.selection.bg = blue
+c.colors.statusbar.caret.selection.fg = theme.bg0
+c.colors.statusbar.caret.selection.bg = theme.blue12
 
 # Color of the progress bar.
-c.colors.statusbar.progress.bg = orange
+c.colors.statusbar.progress.bg = theme.orange2
 
 # Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = grey_70
+c.colors.statusbar.url.fg = theme.fg2
 
 # Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = red
+c.colors.statusbar.url.error.fg = theme.red9
 
 # Foreground color of the URL in the statusbar for hovered links.
-c.colors.statusbar.url.hover.fg = grey_70
+c.colors.statusbar.url.hover.fg = theme.fg2
 
 # Foreground color of the URL in the statusbar on successful load
-c.colors.statusbar.url.success.http.fg = cyan
-c.colors.statusbar.url.success.https.fg = green
+c.colors.statusbar.url.success.http.fg = theme.cyan14
+c.colors.statusbar.url.success.https.fg = theme.green10
 
 # Foreground color of the URL in the statusbar when there's a warning.
-c.colors.statusbar.url.warn.fg = magenta
+c.colors.statusbar.url.warn.fg = theme.magenta13
 
-c.colors.tabs.bar.bg = grey_0
+c.colors.tabs.bar.bg = theme.bg0
 
 # Color gradient for the tab indicator.
-c.colors.tabs.indicator.start = blue
-c.colors.tabs.indicator.stop = brown
+c.colors.tabs.indicator.start = theme.blue12
+c.colors.tabs.indicator.stop = theme.orange1
 
 # Color for the tab indicator on errors.
-c.colors.tabs.indicator.error = red
+c.colors.tabs.indicator.error = theme.red9
 
 # Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -268,25 +166,25 @@ c.colors.tabs.indicator.error = red
 # - none: Do not show a gradient.
 # c.colors.tabs.indicator.system = 'rgb'
 
-c.colors.tabs.odd.fg = grey_70
-c.colors.tabs.odd.bg = grey_10
-c.colors.tabs.even.fg = grey_70
-c.colors.tabs.even.bg = grey_0
-c.colors.tabs.pinned.odd.fg = grey_70
-c.colors.tabs.pinned.odd.bg = grey_25
-c.colors.tabs.pinned.even.fg = grey_70
-c.colors.tabs.pinned.even.bg = grey_25
+c.colors.tabs.odd.fg = theme.fg2
+c.colors.tabs.odd.bg = theme.bg1
+c.colors.tabs.even.fg = theme.fg2
+c.colors.tabs.even.bg = theme.bg0
+c.colors.tabs.pinned.odd.fg = theme.fg2
+c.colors.tabs.pinned.odd.bg = theme.bg2
+c.colors.tabs.pinned.even.fg = theme.fg2
+c.colors.tabs.pinned.even.bg = theme.bg2
 
-c.colors.tabs.selected.odd.fg = grey_0
-c.colors.tabs.selected.odd.bg = cyan
-c.colors.tabs.selected.even.fg = grey_0
-c.colors.tabs.selected.even.bg = cyan
-c.colors.tabs.pinned.selected.odd.fg = grey_0
-c.colors.tabs.pinned.selected.odd.bg = cyan
-c.colors.tabs.pinned.selected.even.fg = grey_0
-c.colors.tabs.pinned.selected.even.bg = cyan
+c.colors.tabs.selected.odd.fg = theme.bg0
+c.colors.tabs.selected.odd.bg = theme.cyan14
+c.colors.tabs.selected.even.fg = theme.bg0
+c.colors.tabs.selected.even.bg = theme.cyan14
+c.colors.tabs.pinned.selected.odd.fg = theme.bg0
+c.colors.tabs.pinned.selected.odd.bg = theme.cyan14
+c.colors.tabs.pinned.selected.even.fg = theme.bg0
+c.colors.tabs.pinned.selected.even.bg = theme.cyan14
 
-# c.colors.webpage.bg = grey_0
+# c.colors.webpage.bg = theme.bg0
 
 # c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
@@ -483,8 +381,9 @@ c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%
 c.zoom.mouse_divider = 512
 
 # Apply the zoom factor on a frame only to the text or to all content.
+# Not available with the QtWebEngine backend
 ## Type: Bool
-c.zoom.text_only = False
+# c.zoom.text_only = False
 
 # Require a confirmation before quitting the application.
 ## Type: ConfirmQuit
@@ -604,6 +503,9 @@ c.url.searchengines = {
     "aw": "https://wiki.archlinux.org/index.php?search={}",
     "q": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
     "gh": "https://github.com/search?q={}&ref=opensearch",
+    "gt": "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
+    "gtj": "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
+    "gtr": "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
     "yt": "https://www.youtube.com/results?search_query={}",
     "yth": "https://www.youtube.com/feed/history?query={}",
     "od": "https://odysee.com/$/search?q={}",
@@ -740,9 +642,9 @@ config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.
 config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 
-config.bind('<Space>ts', 'config-cycle statusbar.show always never')
-config.bind('<Space>tt', 'config-cycle tabs.show always never')
-config.bind('<Space>tz', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
+config.bind('<Space>tb', 'config-cycle statusbar.show always never')
+config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
 
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help')
@@ -950,6 +852,8 @@ config.bind(';h', 'hint all hover')
 config.bind(';v', 'hint links spawn mpv {hint-url}')
 config.bind(';a', 'hint links spawn mpv {hint-url} --no-video')
 
+config.bind('<Ctrl-f>', 'hint --rapid')
+
 config.bind(';ri', 'hint --rapid images tab-bg')
 config.bind(';Ri', 'hint --rapid images window')
 
@@ -965,6 +869,9 @@ config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
 config.bind('<Return>', 'hint-follow', mode='hint')
 
 config.bind('cm', 'clear-messages')
+
+config.bind('ys', 'yank selection', mode='normal')
+config.bind('<Ctrl-c>', 'yank selection', mode='normal')
 
 config.bind('yy', 'yank')
 config.bind('Yy', 'yank -s')
@@ -1021,14 +928,16 @@ config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 
 # config.bind('<Alt-B>', 'rl-backward-word', mode='command')
-# config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
+config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
+config.bind('<Ctrl-W>', 'rl-backward-kill-word', mode='command')
+config.bind('<Ctrl-Shift-W>', 'rl-unix-word-rubout', mode='command')
 # config.bind('<Alt-D>', 'rl-kill-word', mode='command')
 # config.bind('<Alt-F>', 'rl-forward-word', mode='command')
 # config.bind('<Ctrl-?>', 'rl-delete-char', mode='command')
 # config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='command')
 # config.bind('<Ctrl-B>', 'rl-backward-char', mode='command')
-# config.bind('<Ctrl-C>', 'completion-item-yank', mode='command')
-# config.bind('<Ctrl-D>', 'completion-item-del', mode='command')
+config.bind('<Ctrl-C>', 'completion-item-yank', mode='command')
+config.bind('<Ctrl-D>', 'completion-item-del', mode='command')
 # config.bind('<Ctrl-E>', 'rl-end-of-line', mode='command')
 # config.bind('<Ctrl-F>', 'rl-forward-char', mode='command')
 # config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='command')
@@ -1040,7 +949,6 @@ config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 # config.bind('<Ctrl-Shift-Tab>', 'completion-item-focus prev-category', mode='command')
 # config.bind('<Ctrl-Tab>', 'completion-item-focus next-category', mode='command')
 # config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='command')
-# config.bind('<Ctrl-W>', 'rl-unix-word-rubout', mode='command')
 # config.bind('<Ctrl-Y>', 'rl-yank', mode='command')
 # config.bind('<Down>', 'completion-item-focus --history next', mode='command')
 # config.bind('<PgDown>', 'completion-item-focus next-page', mode='command')
@@ -1135,17 +1043,17 @@ config.bind('<Space>dj', 'devtools bottom')
 config.bind('<Space>dk', 'devtools top')
 config.bind('<Space>dw', 'devtools window')
 
-c.colors.messages.info.fg = grey_70
-c.colors.messages.info.bg = grey_0
-c.colors.messages.info.border = grey_0
+c.colors.messages.info.fg = theme.fg2
+c.colors.messages.info.bg = theme.bg0
+c.colors.messages.info.border = theme.bg0
 
-c.colors.messages.warning.fg = grey_0
-c.colors.messages.warning.bg = magenta
-c.colors.messages.warning.border = magenta
+c.colors.messages.warning.fg = theme.bg0
+c.colors.messages.warning.bg = theme.magenta13
+c.colors.messages.warning.border = theme.magenta13
 
-c.colors.messages.error.fg = grey_0
-c.colors.messages.error.bg = red
-c.colors.messages.error.border = red
+c.colors.messages.error.fg = theme.bg0
+c.colors.messages.error.bg = theme.red9
+c.colors.messages.error.border = theme.red9
 
 c.messages.timeout = 3000
 
@@ -1173,7 +1081,7 @@ c.content.cookies.store = True
 
 c.content.local_storage = True
 
-c.content.cache.appcache = True
+# c.content.cache.appcache = True
 
 # c.content.cache.maximum_pages = 0
 
@@ -1263,7 +1171,7 @@ c.hints.chars = 'qwertyuopasdfghjklzxcvbnm'
 
 c.hints.dictionary = '/usr/share/dict/words'
 
-c.hints.find_implementation = 'python'
+# c.hints.find_implementation = 'python'
 
 c.hints.hide_unmatched_rapid_hints = True
 

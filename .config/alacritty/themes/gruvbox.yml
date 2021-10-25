@@ -1,0 +1,106 @@
+# Colors (Gruvbox dark)
+color00: &color00 "#282828"
+color08: &color08 "#928374"
+color01: &color01 "#cc241d"
+color09: &color09 "#fb4934"
+color02: &color02 "#98971a"
+color10: &color10 "#b8bb26"
+color03: &color03 "#d79921"
+color11: &color11 "#fabd2f"
+color04: &color04 "#458588"
+color12: &color12 "#83a598"
+color05: &color05 "#b16286"
+color13: &color13 "#d3869b"
+color06: &color06 "#689d6a"
+color14: &color14 "#8ec07c"
+color07: &color07 "#a89984"
+color15: &color15 "#ebdbb2"
+
+bg0_h: &bg0_h "#1d2021"
+bg0: &bg0 "#282828"
+bg0_s: &bg0_s "#32302f"
+bg1: &bg1 "#3c3836"
+bg2: &bg2 "#504945"
+bg3: &bg3 "#665c54"
+bg4: &bg4 "#7c6f64"
+fg4: &fg4 "#a89984"
+fg3: &fg3 "#bdae93"
+fg2: &fg2 "#d5c4a1"
+fg1: &fg1 "#ebdbb2"
+fg0: &fg0 "#fbf1c7"
+orange1: &orange1 "#d65d0e"
+orange2: &orange2 "#fe8019"
+
+colors:
+  # Default colors
+  primary:
+    background: *bg0
+    foreground: *fg1
+    bright_foreground: *fg0
+    dim_foreground: *fg4
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
+
+  selection:
+    text: CellBackground
+    background: CellForeground
+
+  # search:
+  #   matches:
+  #     foreground: '#000000'
+  #     background: '#ffffff'
+  #   focused_match:
+  #    foreground: CellBackground
+  #    background: CellForeground
+  #   bar:
+  #     background: ''
+  #     foreground: ''
+  # line_indicator:
+  #   foreground: None
+  #   background: None
+
+  # Normal colors
+  normal:
+    black: *color00
+    red: *color01
+    green: *color02
+    yellow: *color03
+    blue: *color04
+    magenta: *color05
+    cyan: *color06
+    white: *color07
+
+  # Bright colors
+  bright:
+    black: *color08
+    red: *color09
+    green: *color10
+    yellow: *color11
+    blue: *color12
+    magenta: *color13
+    cyan: *color14
+    white: *color15
+
+  # Dim colors
+  dim:
+    black: *bg0_s
+    red: "#9d0006"
+    green: "#79740e"
+    yellow: "#b57614"
+    blue: "#076678"
+    magenta: "#8f3f71"
+    cyan: "#427b58"
+    white: *color08
+
+  indexed_colors:
+    - { index: 16, color: "#fe8019" }
+    - { index: 17, color: "#d65d0e" }
+    - { index: 18, color: "#3c3836" }
+    - { index: 19, color: "#504945" }
+    - { index: 20, color: "#bdae93" }
+    - { index: 21, color: "#ebdbb2" }
