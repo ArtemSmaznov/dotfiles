@@ -1665,8 +1665,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';v', 'hint links spawn mpv {hint-url}')
-config.bind(';a', 'hint links spawn mpv {hint-url} --no-video')
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
 #+end_src
 
 Rapid - Open in background and remain in hint mode
@@ -1912,8 +1912,8 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 
 ** Videos
 #+begin_src python
-config.bind('gv', 'spawn mpv {url}')
-config.bind('ga', 'spawn mpv {url} --no-video')
+config.bind('gv', 'spawn mpv --ytdl-format=best {url}')
+config.bind('ga', 'spawn mpv --ytdl-format=best {url} --no-video')
 #+end_src
 
 You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv

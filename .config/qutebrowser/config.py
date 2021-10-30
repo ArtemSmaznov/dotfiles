@@ -849,8 +849,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';v', 'hint links spawn mpv {hint-url}')
-config.bind(';a', 'hint links spawn mpv {hint-url} --no-video')
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
 
 config.bind('<Ctrl-f>', 'hint --rapid')
 
@@ -1028,8 +1028,8 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 # config.bind('<Ctrl-E>', 'edit-text', mode='insert')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
-config.bind('gv', 'spawn mpv {url}')
-config.bind('ga', 'spawn mpv {url} --no-video')
+config.bind('gv', 'spawn mpv --ytdl-format=best {url}')
+config.bind('ga', 'spawn mpv --ytdl-format=best {url} --no-video')
 
 config.bind('<Space>ds', 'view-source')
 
