@@ -205,6 +205,29 @@ screenshot-template="mpv-%F-%wH-%wM-%wS-%wT"
 #+end_src
 
 ** Other
+(X11 only) Control the use of NetWM protocol features.
+
+This may or may not help with broken window managers. This provides some
+functionality that was implemented by the now removed =--fstype= option. Actually,
+it is not known to the developers to which degree this option was needed, so
+feedback is welcome.
+
+Specifically, yes will force use of NetWM fullscreen support, even if not
+advertised by the WM. This can be useful for WMs that are broken on purpose,
+like XMonad. (XMonad supposedly doesn't advertise fullscreen support, because
+Flash uses it. Apparently, applications which want to use fullscreen anyway are
+supposed to either ignore the NetWM support hints, or provide a workaround.
+Shame on XMonad for deliberately breaking X protocols (as if X isn't bad enough
+already).
+
+By default, NetWM support is autodetected (auto).
+
+This option might be removed in the future.
+Values: =yes|no|auto=
+#+begin_src conf :tangle mpv.conf
+x11-netwm=yes
+#+end_src
+
 Save playback position in between sessions
 #+begin_src conf :tangle mpv.conf
 save-position-on-quit=yes
