@@ -56,6 +56,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 * Image Viewer
 - [[file:.config/vimiv/README.org][vimiv]]
 * File Manager
+- PCManFM
 - [[file:.config/vifm/][vifm]]
 - [[file:.config/ranger/][ranger]]
 * Web Browser
@@ -72,3 +73,4 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:Pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
 - [[file:.local/bin/dmscripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/dmscripts][repo]])
 - [[file:.config/README.org::*Auto-start][Auto-start]]
+- [[file:.config/README.org::*Conky][Conky]]

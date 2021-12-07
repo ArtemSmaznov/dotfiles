@@ -344,6 +344,7 @@ alias makepkg='makepkg -si'
 alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
+alias emacs='emacsclient -c -a "emacs"'
 #+end_src
 
 ** Listing directories
