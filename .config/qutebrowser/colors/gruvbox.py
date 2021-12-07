@@ -29,26 +29,5 @@ fg0 = "#fbf1c7"
 orange1 = "#d65d0e"
 orange2 = "#fe8019"
 
-# --- End of import section ---
-
-# Reassigning variable names
-bg = color00
-fg = color15
-black0 = bg0_h
-red1 = color01
-green2 = color02
-yellow3 = color03
-blue4 = color04
-magenta5 = color05
-cyan6 = color06
-white7 = color07
-gray8 = color08
-red9 = color09
-green10 = color10
-yellow11 = color11
-blue12 = color12
-magenta13 = color13
-cyan14 = color14
-white15 = fg0
-orange16 = orange1
-orange17 = orange2
+foreground = color15
+background = color00

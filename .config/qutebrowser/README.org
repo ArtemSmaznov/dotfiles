@@ -9,7 +9,7 @@
   - [[#documentation][Documentation]]
   - [[#dependencies][Dependencies]]
 - [[#ui][UI]]
-  - [[#color-scheme][Color scheme]]
+  - [[#theme][Theme]]
   - [[#fonts][Fonts]]
   - [[#window][Window]]
   - [[#completion-widget][Completion Widget]]
@@ -20,6 +20,7 @@
   - [[#prompts][Prompts]]
   - [[#status-bar][Status Bar]]
   - [[#tabs][Tabs]]
+  - [[#messages][Messages]]
   - [[#web-pages][Web Pages]]
   - [[#dark-mode][Dark Mode]]
 - [[#behavior][Behavior]]
@@ -50,13 +51,12 @@
   - [[#history-1][History]]
   - [[#bookmarks--quick-marks][Bookmarks / Quick-marks]]
   - [[#hints-1][Hints]]
-  - [[#messages][Messages]]
+  - [[#messages-1][Messages]]
   - [[#yanking][Yanking]]
   - [[#pass][Pass]]
   - [[#modes][Modes]]
   - [[#videos][Videos]]
   - [[#development-tools][Development Tools]]
-- [[#messages-1][Messages]]
 - [[#privacy][Privacy]]
   - [[#ad-blocking][Ad-blocking]]
   - [[#cookies][Cookies]]
@@ -93,10 +93,10 @@ NOTE: =config.py= is intended for advanced users who are comfortable with manual
 |------------+----------------------------|
 
 * UI
-** Color scheme
-Import color scheme
+** Theme
+Import theme
 #+begin_src python
-import colors.gruvbox as theme
+import themes.default as theme
 #+end_src
 
 ** Fonts
@@ -142,64 +142,64 @@ Mini-buffer for completing commands
 
 Color of the completion widget category headers.
 #+begin_src python
-c.colors.completion.category.fg = theme.yellow11
-c.colors.completion.category.bg = theme.bg0
-c.colors.completion.category.border.top = theme.bg0
-c.colors.completion.category.border.bottom = theme.bg0
+c.colors.completion.category.fg = theme.title
+c.colors.completion.category.bg = theme.background
+c.colors.completion.category.border.top = theme.background
+c.colors.completion.category.border.bottom = theme.background
 #+end_src
 
 Colors of the main body of the completion widget.
 #+begin_src python
 # c.colors.completion.fg = ['white', 'white', 'white']
-c.colors.completion.fg = theme.fg2
-c.colors.completion.match.fg = theme.green10
-c.colors.completion.odd.bg = theme.bg1
-c.colors.completion.even.bg = theme.bg0
+c.colors.completion.fg = theme.foreground
+c.colors.completion.match.fg = theme.completion_match
+c.colors.completion.odd.bg = theme.completion_odd
+c.colors.completion.even.bg = theme.completion_even
 
-c.colors.completion.item.selected.fg = theme.fg2
-c.colors.completion.item.selected.bg = theme.bg2
-c.colors.completion.item.selected.border.top = theme.bg2
-c.colors.completion.item.selected.border.bottom = theme.bg2
-c.colors.completion.item.selected.match.fg = theme.green10
+c.colors.completion.item.selected.fg = theme.foreground
+c.colors.completion.item.selected.bg = theme.completion_selected
+c.colors.completion.item.selected.border.top = theme.completion_borders
+c.colors.completion.item.selected.border.bottom = theme.completion_borders
+c.colors.completion.item.selected.match.fg = theme.match
 #+end_src
 
 Color of the scroll-bar in the completion view.
 #+begin_src python
-c.colors.completion.scrollbar.fg = theme.fg2
-c.colors.completion.scrollbar.bg = theme.bg0
+c.colors.completion.scrollbar.fg = theme.foreground
+c.colors.completion.scrollbar.bg = theme.background
 #+end_src
 
 ** Which Key
 #+begin_src python
-c.colors.keyhint.fg = theme.fg2
-c.colors.keyhint.bg = theme.bg0
-c.colors.keyhint.suffix.fg = theme.green10
-c.keyhint.radius = 10
+c.colors.keyhint.fg = theme.foreground
+c.colors.keyhint.bg = theme.background
+c.colors.keyhint.suffix.fg = theme.match
+c.keyhint.radius = theme.whichkey_radius
 #+end_src
 
 ** Context Menu
 #+begin_src python
-c.colors.contextmenu.menu.bg = theme.bg0
-c.colors.contextmenu.menu.fg =  theme.fg2
+c.colors.contextmenu.menu.fg = theme.foreground
+c.colors.contextmenu.menu.bg = theme.background
 
-c.colors.contextmenu.selected.bg = theme.bg2
-c.colors.contextmenu.selected.fg = theme.fg2
+c.colors.contextmenu.selected.fg = theme.foreground
+c.colors.contextmenu.selected.bg = theme.contextmenu_selected_bg
 
-c.colors.contextmenu.disabled.bg = theme.bg1
-c.colors.contextmenu.disabled.fg = theme.fg3
+c.colors.contextmenu.disabled.fg = theme.contextmenu_disabled_fg
+c.colors.contextmenu.disabled.bg = theme.contextmenu_disabled_bg
 #+end_src
 
 ** Downloads
 #+begin_src python
-c.colors.downloads.bar.bg = theme.bg0
+c.colors.downloads.bar.bg = theme.background
 
-c.colors.downloads.start.fg = theme.bg0
-c.colors.downloads.start.bg = theme.blue12
+c.colors.downloads.start.fg = theme.background
+c.colors.downloads.start.bg = theme.loading
 
-c.colors.downloads.stop.fg = theme.bg0
-c.colors.downloads.stop.bg = theme.cyan14
+c.colors.downloads.stop.fg = theme.background
+c.colors.downloads.stop.bg = theme.success
 
-c.colors.downloads.error.fg = theme.red9
+c.colors.downloads.error.fg = theme.error
 #+end_src
 
 Color gradient interpolation system for downloads
@@ -217,20 +217,20 @@ c.colors.downloads.system.bg = 'rgb'
 #+begin_src python
 # c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 
-c.colors.hints.fg = theme.bg0
-c.colors.hints.bg = theme.yellow11
-c.colors.hints.match.fg = theme.fg2
+c.colors.hints.fg = theme.background
+c.colors.hints.bg = theme.hint_bg
+c.colors.hints.match.fg = theme.foreground
 #+end_src
 
 ** Prompts
 #+begin_src python
-c.colors.prompts.fg = theme.fg2
-c.colors.prompts.bg = theme.bg0
+c.colors.prompts.fg = theme.foreground
+c.colors.prompts.bg = theme.background
 
-c.colors.prompts.selected.bg = theme.bg2
-c.colors.prompts.selected.fg = theme.fg2
+c.colors.prompts.selected.fg = theme.foreground
+c.colors.prompts.selected.bg = theme.prompt_selected_bg
 
-c.colors.prompts.border = theme.bg0
+c.colors.prompts.border = theme.background
 #+end_src
 
 ** Status Bar
@@ -254,83 +254,84 @@ Valid values for widgets:
 - =text:foo=: Display the static text after the colon, `foo` in the example.
 
 #+begin_src python
-c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
+c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 5, 'right': 5}
 c.statusbar.position = 'bottom'
 c.statusbar.show = 'always'
-c.statusbar.widgets = ['keypress', 'progress', 'history', 'url', 'text: -- ', 'scroll']
+c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
 #+end_src
 
 *** Colors
 #+begin_src python
 # Color of the statusbar.
-c.colors.statusbar.normal.fg = theme.fg2
-c.colors.statusbar.normal.bg = theme.bg0
+c.colors.statusbar.normal.fg = theme.status_normal_fg
+c.colors.statusbar.normal.bg = theme.status_normal_bg
 
 # Color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = theme.bg0
-c.colors.statusbar.insert.bg = theme.blue12
+c.colors.statusbar.insert.fg = theme.status_insert_fg
+c.colors.statusbar.insert.bg = theme.status_insert_bg
 
 # Color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = theme.bg0
-c.colors.statusbar.passthrough.bg = theme.cyan14
+c.colors.statusbar.passthrough.fg = theme.status_passthrough_fg
+c.colors.statusbar.passthrough.bg = theme.status_passthrough_bg
 
 # Color of the statusbar in private browsing mode.
-c.colors.statusbar.private.fg = theme.bg0
-c.colors.statusbar.private.bg = theme.bg1
+c.colors.statusbar.private.fg = theme.status_private_fg
+c.colors.statusbar.private.bg = theme.status_private_bg
 
 # Color of the statusbar in command mode.
-c.colors.statusbar.command.fg = theme.fg2
-c.colors.statusbar.command.bg = theme.bg0
+c.colors.statusbar.command.fg = theme.status_command_fg
+c.colors.statusbar.command.bg = theme.status_command_bg
 
 # Color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.fg = theme.fg2
-c.colors.statusbar.command.private.bg = theme.bg0
+c.colors.statusbar.command.private.fg = theme.status_command_private_fg
+c.colors.statusbar.command.private.bg = theme.status_command_private_bg
 
 # Color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = theme.bg0
-c.colors.statusbar.caret.bg = theme.magenta13
+c.colors.statusbar.caret.fg = theme.status_caret_fg
+c.colors.statusbar.caret.bg = theme.status_caret_bg
 
 # Color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = theme.bg0
-c.colors.statusbar.caret.selection.bg = theme.blue12
+c.colors.statusbar.caret.selection.fg = theme.status_caret_selection_fg
+c.colors.statusbar.caret.selection.bg = theme.status_caret_selection_bg
 
 # Color of the progress bar.
-c.colors.statusbar.progress.bg = theme.orange2
+c.colors.statusbar.progress.bg = theme.loading
+#+end_src
 
-# Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = theme.fg2
+URL
+Default foreground colors of the URL in the statusbar.
+- loading
+- successful load (=http= vs =https=)
+- hovered links
+- warning
+- error
 
-# Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = theme.red9
-
-# Foreground color of the URL in the statusbar for hovered links.
-c.colors.statusbar.url.hover.fg = theme.fg2
-
-# Foreground color of the URL in the statusbar on successful load
-c.colors.statusbar.url.success.http.fg = theme.cyan14
-c.colors.statusbar.url.success.https.fg = theme.green10
-
-# Foreground color of the URL in the statusbar when there's a warning.
-c.colors.statusbar.url.warn.fg = theme.magenta13
+#+begin_src python
+c.colors.statusbar.url.fg = theme.loading
+c.colors.statusbar.url.success.http.fg = theme.error
+c.colors.statusbar.url.success.https.fg = theme.success
+c.colors.statusbar.url.hover.fg = theme.foreground
+c.colors.statusbar.url.warn.fg = theme.warning
+c.colors.statusbar.url.error.fg = theme.fail
 #+end_src
 
 ** Tabs
 Tab Bar
 #+begin_src python
-c.colors.tabs.bar.bg = theme.bg0
+c.colors.tabs.bar.bg = theme.background
 #+end_src
 
 Tab Indicator
 #+begin_src python
 # Color gradient for the tab indicator.
-c.colors.tabs.indicator.start = theme.blue12
-c.colors.tabs.indicator.stop = theme.orange1
+c.colors.tabs.indicator.start = theme.loading
+c.colors.tabs.indicator.stop = theme.success
 
 # Color for the tab indicator on errors.
-c.colors.tabs.indicator.error = theme.red9
+c.colors.tabs.indicator.error = theme.error
 
 # Color gradient interpolation system for the tab indicator.
-## Type: ColorSystem
+# Type: ColorSystem
 # Valid values:
 # - rgb: Interpolate in the RGB color system.
 # - hsv: Interpolate in the HSV color system.
@@ -341,71 +342,95 @@ c.colors.tabs.indicator.error = theme.red9
 
 Unselected Tabs
 #+begin_src python
-c.colors.tabs.odd.fg = theme.fg2
-c.colors.tabs.odd.bg = theme.bg1
-c.colors.tabs.even.fg = theme.fg2
-c.colors.tabs.even.bg = theme.bg0
-c.colors.tabs.pinned.odd.fg = theme.fg2
-c.colors.tabs.pinned.odd.bg = theme.bg2
-c.colors.tabs.pinned.even.fg = theme.fg2
-c.colors.tabs.pinned.even.bg = theme.bg2
+c.colors.tabs.odd.fg = theme.foreground
+c.colors.tabs.odd.bg = theme.tab_odd
+c.colors.tabs.even.fg = theme.foreground
+c.colors.tabs.even.bg = theme.tab_even
+c.colors.tabs.pinned.odd.fg = theme.foreground
+c.colors.tabs.pinned.odd.bg = theme.tab_odd
+c.colors.tabs.pinned.even.fg = theme.foreground
+c.colors.tabs.pinned.even.bg = theme.tab_even
 #+end_src
 
 Selected Tabs
 #+begin_src python
-c.colors.tabs.selected.odd.fg = theme.bg0
-c.colors.tabs.selected.odd.bg = theme.cyan14
-c.colors.tabs.selected.even.fg = theme.bg0
-c.colors.tabs.selected.even.bg = theme.cyan14
-c.colors.tabs.pinned.selected.odd.fg = theme.bg0
-c.colors.tabs.pinned.selected.odd.bg = theme.cyan14
-c.colors.tabs.pinned.selected.even.fg = theme.bg0
-c.colors.tabs.pinned.selected.even.bg = theme.cyan14
+c.colors.tabs.selected.odd.fg = theme.background
+c.colors.tabs.selected.odd.bg = theme.tab_selected
+c.colors.tabs.selected.even.fg = theme.background
+c.colors.tabs.selected.even.bg = theme.tab_selected
+c.colors.tabs.pinned.selected.odd.fg = theme.background
+c.colors.tabs.pinned.selected.odd.bg = theme.tab_selected
+c.colors.tabs.pinned.selected.even.fg = theme.background
+c.colors.tabs.pinned.selected.even.bg = theme.tab_selected
+#+end_src
+
+** Messages
+Color of messages
+Type: =QssColor=
+#+begin_src python
+c.colors.messages.info.fg = theme.foreground
+c.colors.messages.info.bg = theme.background
+c.colors.messages.info.border = theme.background
+
+c.colors.messages.warning.fg = theme.background
+c.colors.messages.warning.bg = theme.warning
+c.colors.messages.warning.border = theme.warning
+
+c.colors.messages.error.fg = theme.background
+c.colors.messages.error.bg = theme.error
+c.colors.messages.error.border = theme.error
+#+end_src
+
+Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to never clear messages.
+Type: Int
+- Default: 3000
+#+begin_src python
+c.messages.timeout = 3000
 #+end_src
 
 ** Web Pages
 Background color for web pages if unset (or empty to use the theme's color).
 #+begin_src python
-# c.colors.webpage.bg = theme.bg0
+# c.colors.webpage.bg = theme.background
 #+end_src
 
 ** Dark Mode
 Which algorithm to use for modifying how colors are rendered with darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14 and is treated like `lightness-hsl` with older QtWebEngine versions.
-## Type: String
+# Type: String
 Valid values:
 - lightness-cielab: Modify colors by converting them to CIELAB color space and inverting the L value. Not available with Qt < 5.14.
 - lightness-hsl: Modify colors by converting them to the HSL color space and inverting the lightness (i.e. the "L" in HSL).
 - brightness-rgb: Modify colors by subtracting each of r, g, and b from their maximum value.
 #+begin_src python
-# c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 #+end_src
 
 Contrast for dark mode. This only has an effect when `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or `brightness-rgb`.
-## Type: Float
+# Type: Float
 #+begin_src python
 # c.colors.webpage.darkmode.contrast = 0.0
 #+end_src
 
 Render all web contents using a dark theme. Example configurations from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based inversion": Set   `colors.webpage.darkmode.algorithm` accordingly.  - "With selective image inversion": Set `colors.webpage.darkmode.policy.images` to `smart`.  - "With selective inversion of non-image elements": Set `colors.webpage.darkmode.threshold.text` to 150 and `colors.webpage.darkmode.threshold.background` to 205.  - "With selective inversion of everything": Combines the two variants   above.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.colors.webpage.darkmode.enabled = False
 #+end_src
 
 Render all colors as grayscale. This only has an effect when `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or `brightness-rgb`.
-## Type: Bool
+# Type: Bool
 #+begin_src python
-# c.colors.webpage.darkmode.grayscale.all = False
+c.colors.webpage.darkmode.grayscale.all = False
 #+end_src
 
 Desaturation factor for images in dark mode. If set to 0, images are left as-is. If set to 1, images are completely grayscale. Values between 0 and 1 desaturate the colors accordingly.
-## Type: Float
+# Type: Float
 #+begin_src python
-# c.colors.webpage.darkmode.grayscale.images = 0.0
+c.colors.webpage.darkmode.grayscale.images = 0.0
 #+end_src
 
 Which images to apply dark mode to. With QtWebEngine 5.15.0, this setting can cause frequent renderer process crashes due to a https://codereview.qt-project.org/c/qt/qtwebengine- chromium/+/304211[bug in Qt].
-## Type: String
+# Type: String
 Valid values:
 - always: Apply dark mode filter to all images.
 - never: Never apply dark mode filter to any images.
@@ -417,7 +442,7 @@ c.colors.webpage.darkmode.policy.images = 'never'
 Which pages to apply dark mode to. The underlying Chromium setting has
 been removed in QtWebEngine 5.15.3, thus this setting is ignored
 there. Instead, every element is now classified individually.
-## Type: String
+# Type: String
 Valid values:
 - always: Apply dark mode filter to all frames, regardless of content.
 - smart: Apply dark mode filter to frames based on background color.
@@ -426,19 +451,19 @@ c.colors.webpage.darkmode.policy.page = 'smart'
 #+end_src
 
 Threshold for inverting background elements with dark mode. Background elements with brightness above this threshold will be inverted, and below it will be left as in the original, non-dark-mode page. Set to 256 to never invert the color or to 0 to always invert it. Note: This behavior is the opposite of `colors.webpage.darkmode.threshold.text`!
-## Type: Int
+# Type: Int
 #+begin_src python
 c.colors.webpage.darkmode.threshold.background = 205
 #+end_src
 
 Threshold for inverting text with dark mode. Text colors with brightness below this threshold will be inverted, and above it will be left as in the original, non-dark-mode page. Set to 256 to always invert text color or to 0 to never invert text color.
-## Type: Int
+# Type: Int
 #+begin_src python
 c.colors.webpage.darkmode.threshold.text = 150
 #+end_src
 
 Value to use for `prefers-color-scheme:` for websites. The "light" value is only available with QtWebEngine 5.15.2+. On older versions, it is the same as "auto". The "auto" value is broken on QtWebEngine 5.15.2 due to a Qt bug. There, it will fall back to "light" unconditionally.
-## Type: String
+# Type: String
 Valid values:
 - auto: Use the system-wide color scheme setting.
 - light: Force a light theme.
@@ -455,7 +480,7 @@ config.load_autoconfig(True)
 
 ** Backend
 Backend to use to display websites. qutebrowser supports two different web rendering engines / backends, =QtWebEngine= and =QtWebKit= (not recommended). =QtWebEngine= is =Qt's= official successor to =QtWebKit=, and both the default/recommended backend. It's based on a stripped-down Chromium and regularly updated with security fixes and new features by the Qt project: https://wiki.qt.io/QtWebEngine =QtWebKit= was =qutebrowser's= original backend when the project was started. However, support for =QtWebKit= was discontinued by the Qt project with Qt 5.6 in 2016. The development of =QtWebKit= was picked up in an official fork: https://github.com/qtwebkit/qtwebkit - however, the project seems to have stalled again. The latest release (5.212.0 Alpha 4) from March 2020 is based on a =WebKit= version from 2016, with many known security vulnerabilities. Additionally, there is no process isolation and sand-boxing. Due to all those issues, while support for =QtWebKit= is still available in qutebrowser for now, using it is strongly discouraged.
-## Type: String
+# Type: String
 Valid values:
 - =webengine=: Use =QtWebEngine= (based on Chromium - recommended).
 - =webkit=: Use =QtWebKit= (based on =WebKit=, similar to Safari - many known security issues!).
@@ -465,7 +490,7 @@ c.backend = 'webengine'
 
 ** Changelog
 When to show a changelog after qutebrowser was upgraded.
-## Type: String
+# Type: String
 Valid values:
 - major: Show changelog for major upgrades (e.g. v2.0.0 -> v3.0.0).
 - minor: Show changelog for major and minor upgrades (e.g. v2.0.0 -> v2.1.0).
@@ -479,7 +504,7 @@ c.changelog_after_upgrade = "major"
 #+begin_src python
 # Delay (in milliseconds) before updating completions after typing a
 # character.
-## Type: Int
+# Type: Int
 # c.completion.delay = 0
 
 # Default filesystem autocomplete suggestions for :open. The elements of
@@ -489,38 +514,38 @@ c.changelog_after_upgrade = "major"
 # c.completion.favorite_paths = []
 
 # Height (in pixels or as percentage of the window) of the completion.
-## Type: PercOrInt
+# Type: PercOrInt
 # c.completion.height = '50%'
 
 # Minimum amount of characters needed to update completions.
-## Type: Int
+# Type: Int
 # c.completion.min_chars = 1
 
 # Which categories to show (in which order) in the :open completion.
-## Type: FlagList
+# Type: FlagList
 # Valid values:
-##   - searchengines
-##   - quickmarks
-##   - bookmarks
-##   - history
-##   - filesystem
+# - searchengines
+# - quickmarks
+# - bookmarks
+# - history
+# - filesystem
 # c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
 
 # Move on to the next part when there's only one possible completion
 # left.
-## Type: Bool
+# Type: Bool
 # c.completion.quick = True
 
 # Padding (in pixels) of the scrollbar handle in the completion window.
-## Type: Int
+# Type: Int
 # c.completion.scrollbar.padding = 2
 
 # Width (in pixels) of the scrollbar in the completion window.
-## Type: Int
+# Type: Int
 # c.completion.scrollbar.width = 12
 
 # When to show the autocompletion window.
-## Type: String
+# Type: String
 # Valid values:
 # - always: Whenever a completion is available.
 # - auto: Whenever a completion is requested.
@@ -529,7 +554,7 @@ c.changelog_after_upgrade = "major"
 
 # Shrink the completion to be smaller than the configured size if there
 # are no scrollbars.
-## Type: Bool
+# Type: Bool
 # c.completion.shrink = False
 
 # Format of timestamps (e.g. for the history completion). See
@@ -537,11 +562,11 @@ c.changelog_after_upgrade = "major"
 # https://docs.python.org/3/library/datetime.html#strftime-strptime-
 # behavior for allowed substitutions, qutebrowser uses both sqlite and
 # Python to format its timestamps.
-## Type: String
+# Type: String
 # c.completion.timestamp_format = '%Y-%m-%d %H:%M'
 
 # Execute the best-matching command on a partial match.
-## Type: Bool
+# Type: Bool
 # c.completion.use_best_match = False
 
 # A list of patterns which should not be shown in the history. This only
@@ -554,7 +579,7 @@ c.changelog_after_upgrade = "major"
 
 # Number of URLs to show in the web history. 0: no history / -1:
 # unlimited
-## Type: Int
+# Type: Int
 # c.completion.web_history.max_items = -1
 
 
@@ -562,38 +587,38 @@ c.changelog_after_upgrade = "major"
 
 ** Full Screen
 Set full-screen notification overlay timeout in milliseconds. If set to 0, no overlay will be displayed.
-## Type: =Int=
+Type: =Int=
 #+begin_src python
-# c.content.fullscreen.overlay_timeout = 3000
+c.content.fullscreen.overlay_timeout = 3000
 #+end_src
 
 Limit full-screen to the browser window (does not expand to fill the screen).
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.content.fullscreen.window = False
 #+end_src
 
 ** Headers
 Value to send in the `Accept-Language` header. Note that the value read from JavaScript is always the global value.
-## Type: =String=
+# Type: =String=
 #+begin_src python
 # c.content.headers.accept_language = 'en-US,en;q=0.9'
 #+end_src
 
 Custom headers for qutebrowser HTTP requests.
-## Type: =Dict=
+# Type: =Dict=
 #+begin_src python
 # c.content.headers.custom = {}
 #+end_src
 
 Value to send in the =DNT= header. When this is set to true, qutebrowser asks websites to not track your identity. If set to null, the DNT header is not sent at all.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.content.headers.do_not_track = True
 #+end_src
 
 When to send the =Referer= header. The =Referer= header tells websites from which website you were coming from when visiting them. No restart is needed with =QtWebKit=.
-## Type: =String=
+# Type: =String=
 Valid values:
 - always: Always send the =Referer=.
 - never: Never send the =Referer=. This is not recommended, as some sites may break.
@@ -603,20 +628,20 @@ c.content.headers.referer = 'same-domain'
 #+end_src
 
 User agent to send.  The following placeholders are defined:  * ={os_info}=: Something like =X11; Linux x86_64=. * ={webkit_version}=: The underlying =WebKit= version (set to a fixed value   with =QtWebEngine=). * ={qt_key}=: =Qt= for =QtWebKit=, =QtWebEngine= for =QtWebEngine=. * ={qt_version}=: The underlying Qt version. * ={upstream_browser_key}=: =Version= for =QtWebKit=, =Chrome= for =QtWebEngine=. * ={upstream_browser_version}=: The corresponding Safari/Chrome version. * ={qutebrowser_version}=: The currently running qutebrowser version.  The default value is equal to the unchanged user agent of =QtWebKit/QtWebEngine=. Note that the value read from JavaScript is always the global value. With =QtWebEngine= between 5.12 and 5.14 (inclusive), changing the value exposed to JavaScript requires a restart.
-## Type: =FormatString=
+# Type: =FormatString=
 #+begin_src python
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 #+end_src
 
 ** Tabs
 Open new tabs (middle-click/ctrl+click) in the background.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.background = True
 #+end_src
 
 Mouse button with which to close tabs.
-## Type: =String=
+# Type: =String=
 Valid values:
 - right: Close tabs on right-click.
 - middle: Close tabs on middle-click.
@@ -626,7 +651,7 @@ c.tabs.close_mouse_button = 'middle'
 #+end_src
 
 How to behave when the close mouse button is pressed on the tab bar.
-## Type: =String=
+# Type: =String=
 Valid values:
 - new-tab: Open a new tab.
 - close-current: Close the current tab.
@@ -638,7 +663,7 @@ c.tabs.close_mouse_button_on_bar = 'new-tab'
 
 Scaling factor for favicons in the tab bar. The tab size is unchanged,
 so big favicons also require extra `tabs.padding`.
-## Type: =Float=
+# Type: =Float=
 #+begin_src python
 # c.tabs.favicons.scale = 1.0
 #+end_src
@@ -646,7 +671,7 @@ so big favicons also require extra `tabs.padding`.
 When to show favicons in the tab bar. When switching this from never
 to always/pinned, note that favicons might not be loaded yet, thus
 tabs might require a reload to display them.
-## Type: =String=
+# Type: =String=
 Valid values:
 - always: Always show favicons.
 - never: Always hide favicons.
@@ -656,19 +681,19 @@ c.tabs.favicons.show = 'always'
 #+end_src
 
 Maximum stack size to remember for tab switches (-1 for no maximum).
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 # c.tabs.focus_stack_size = 10
 #+end_src
 
 Padding (in pixels) for tab indicators.
-## Type: =Padding=
+# Type: =Padding=
 #+begin_src python
 c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 #+end_src
 
 Width (in pixels) of the progress indicator (0 to disable).
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 c.tabs.indicator.width = 3
 #+end_src
@@ -676,7 +701,7 @@ c.tabs.indicator.width = 3
 How to behave when the last tab is closed. If the
 `tabs.tabs_are_windows` setting is set, this is ignored and the
 behavior is always identical to the `close` value.
-## Type: =String=
+# Type: =String=
 Valid values:
 - ignore: Don't do anything.
 - blank: Load a blank page.
@@ -692,7 +717,7 @@ only applies when tabs are horizontal. This setting does not apply to
 pinned tabs, unless `tabs.pinned.shrink` is False. This setting may
 not apply properly if max_width is smaller than the minimum size of
 tab contents, or smaller than tabs.min_width.
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 c.tabs.max_width = 200
 #+end_src
@@ -701,13 +726,13 @@ Minimum width (in pixels) of tabs (-1 for the default minimum size
 behavior). This setting only applies when tabs are horizontal. This
 setting does not apply to pinned tabs, unless `tabs.pinned.shrink` is
 False.
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 # c.tabs.min_width = -1
 #+end_src
 
 When switching tabs, what input mode is applied.
-## Type: =String=
+# Type: =String=
 Valid values:
 - persist: Retain the current mode.
 - restore: Restore previously saved mode.
@@ -717,14 +742,14 @@ c.tabs.mode_on_change = 'normal'
 #+end_src
 
 Switch between tabs using the mouse wheel.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.mousewheel_switching = True
 #+end_src
 
 Position of new tabs opened from another tab. See
 `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: =NewTabPosition=
+# Type: =NewTabPosition=
 Valid values:
 - prev: Before the current tab.
 - next: After the current tab.
@@ -737,14 +762,14 @@ c.tabs.new_position.related = 'next'
 Stack related tabs on top of each other when opened consecutively.
 Only applies for `next` and `prev` values of
 `tabs.new_position.related` and `tabs.new_position.unrelated`.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 # c.tabs.new_position.stacking = True
 #+end_src
 
 Position of new tabs which are not opened from another tab. See
 `tabs.new_position.stacking` for controlling stacking behavior.
-## Type: =NewTabPosition=
+# Type: =NewTabPosition=
 Valid values:
 - prev: Before the current tab.
 - next: After the current tab.
@@ -755,25 +780,25 @@ c.tabs.new_position.unrelated = 'last'
 #+end_src
 
 Padding (in pixels) around text for tabs.
-## Type: =Padding=
+# Type: =Padding=
 #+begin_src python
 # c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
 #+end_src
 
 Force pinned tabs to stay at fixed URL.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.pinned.frozen = True
 #+end_src
 
 Shrink pinned tabs down to their contents.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.pinned.shrink = True
 #+end_src
 
 Position of the tab bar.
-## Type: =Position=
+# Type: =Position=
 Valid values:
 - top
 - bottom
@@ -784,7 +809,7 @@ c.tabs.position = 'top'
 #+end_src
 
 Which tab to select when the focused tab is removed.
-## Type: =SelectOnRemove=
+# Type: =SelectOnRemove=
 Valid values:
 - prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
 - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
@@ -794,7 +819,7 @@ c.tabs.select_on_remove = 'next'
 #+end_src
 
 When to show the tab bar.
-## Type: =String=
+# Type: =String=
 Valid values:
 - always: Always show the tab bar.
 - never: Always hide the tab bar.
@@ -806,19 +831,19 @@ c.tabs.show = 'multiple'
 
 Duration (in milliseconds) to show the tab bar before hiding it when
 tabs.show is set to 'switching'.
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 # c.tabs.show_switching_delay = 800
 #+end_src
 
 Open a new window for every tab.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.tabs_are_windows = False
 #+end_src
 
 Alignment of the text inside of tabs.
-## Type: =TextAlignment=
+# Type: =TextAlignment=
 Valid values:
 - left
 - right
@@ -828,7 +853,7 @@ c.tabs.title.alignment = 'left'
 #+end_src
 
 Format to use for the tab title.
-## Type: =FormatString=
+# Type: =FormatString=
 The following placeholders are defined:
 | `{perc}`          | Percentage as a string like `[0%]`                           |
 | `{perc_raw}`      | Raw percentage, e.g. `10`                                    |
@@ -850,34 +875,34 @@ c.tabs.title.format = '{audio}{private} {current_title}'
 
 Format to use for the tab title for pinned tabs. The same placeholders
 like for `tabs.title.format` are defined.
-## Type: =FormatString=
+# Type: =FormatString=
 #+begin_src python
 c.tabs.title.format_pinned = '{audio}{private}'
 #+end_src
 
 Show tooltips on tabs. Note this setting only affects windows opened
 after it has been set.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.tooltips = True
 #+end_src
 
 Number of closed tabs (per window) and closed windows to remember for
 :undo (-1 for no maximum).
-## Type: =Int=
+# Type: =Int=
 #+begin_src python
 # c.tabs.undo_stack_size = 100
 #+end_src
 
 Width (in pixels or as percentage of the window) of the tab bar if
 it's vertical.
-## Type: =PercOrInt=
+# Type: =PercOrInt=
 #+begin_src python
 # c.tabs.width = '15%'
 #+end_src
 
 Wrap when changing tabs.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.tabs.wrap = True
 #+end_src
@@ -885,7 +910,7 @@ c.tabs.wrap = True
 ** Zooming
 #+begin_src python
 # Default zoom level.
-## Type: Perc
+# Type: Perc
 c.zoom.default = '100%'
 
 # Available zoom levels.
@@ -893,19 +918,19 @@ c.zoom.default = '100%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
 
 # Number of zoom increments to divide the mouse wheel movements to.
-## Type: Int
+# Type: Int
 c.zoom.mouse_divider = 512
 
 # Apply the zoom factor on a frame only to the text or to all content.
 # Not available with the QtWebEngine backend
-## Type: Bool
+# Type: Bool
 # c.zoom.text_only = False
 #+end_src
 
 ** TODO Other
 #+begin_src python
 # Require a confirmation before quitting the application.
-## Type: ConfirmQuit
+# Type: ConfirmQuit
 # Valid values:
 # - always: Always show a confirmation.
 # - multiple-tabs: Show a confirmation if multiple tabs are opened.
@@ -914,54 +939,54 @@ c.zoom.mouse_divider = 512
 c.confirm_quit = ['downloads']
 
 # Automatically start playing `<video>` elements.
-## Type: Bool
+# Type: Bool
 c.content.autoplay = False
 
 # Default encoding to use for websites. The encoding must be a string
 # describing an encoding such as _utf-8_, _iso-8859-1_, etc.
-## Type: String
+# Type: String
 # c.content.default_encoding = 'iso-8859-1'
 
 # Try to pre-fetch DNS entries to speed up browsing.
-## Type: Bool
+# Type: Bool
 c.content.dns_prefetch = True
 
 # Expand each subframe to its contents. This will flatten all the frames
 # to become one scrollable page.
-## Type: Bool
+# Type: Bool
 # c.content.frame_flattening = False
 
 # Enable hyperlink auditing (`<a ping>`).
-## Type: Bool
-# c.content.hyperlink_auditing = False
+# Type: Bool
+c.content.hyperlink_auditing = False
 
 # Load images automatically in web pages.
-## Type: Bool
-# c.content.images = True
+# Type: Bool
+c.content.images = True
 
 # Allow locally loaded documents to access other local URLs.
-## Type: Bool
+# Type: Bool
 # c.content.local_content_can_access_file_urls = True
 
 # Allow locally loaded documents to access remote URLs.
-## Type: Bool
+# Type: Bool
 # c.content.local_content_can_access_remote_urls = False
 
 # Automatically mute tabs. Note that if the `:tab-mute` command is used,
 # the mute status for the affected tab is now controlled manually, and
 # this setting doesn't have any effect.
-## Type: Bool
+# Type: Bool
 # c.content.mute = False
 
 # Netrc-file for HTTP authentication. If unset, `~/.netrc` is used.
-## Type: File
+# Type: File
 # c.content.netrc_file = None
 
 #+end_src
 
 ** New Instance
 How to open links in an existing instance if a new one is launched. This happens when e.g. opening a link from a terminal. See `new_instance_open_target_window` to customize in which window the link is opened in.
-## Type: String
+# Type: String
 Valid values:
 - tab: Open a new tab in the existing window and activate the window.
 - tab-bg: Open a new background tab in the existing window and activate the window.
@@ -975,7 +1000,7 @@ c.new_instance_open_target = 'tab'
 
 Which window to choose when opening links as new tabs. When
 `new_instance_open_target` is set to `window`, this is ignored.
-## Type: String
+# Type: String
 Valid values:
 - first-opened: Open new tabs in the first (oldest) opened window.
 - last-opened: Open new tabs in the last (newest) opened window.
@@ -987,22 +1012,21 @@ c.new_instance_open_target_window = 'last-focused'
 
 ** TODO Downloads
 #+begin_src python
-# Directory to save downloads to. If unset, a sensible OS-specific
-# default is used.
-## Type: Directory
+# Directory to save downloads to. If unset, a sensible OS-specific default is used.
+# Type: Directory
 c.downloads.location.directory = None
 
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
-## Type: Bool
+# Type: Bool
 c.downloads.location.prompt = True
 
 # Remember the last used download directory.
-## Type: Bool
+# Type: Bool
 c.downloads.location.remember = True
 
 # What to display in the download filename input.
-## Type: String
+# Type: String
 # Valid values:
 # - path: Show only the download path.
 # - filename: Show only download filename.
@@ -1012,37 +1036,36 @@ c.downloads.location.suggestion = 'path'
 # Default program used to open downloads. If null, the default internal
 # handler is used. Any `{}` in the string will be expanded to the
 # filename, else the filename will be appended.
-## Type: String
+# Type: String
 # c.downloads.open_dispatcher = None
 
 # Where to show the downloaded files.
-## Type: VerticalPosition
+# Type: VerticalPosition
 # Valid values:
-##   - top
-##   - bottom
+# - top
+# - bottom
 c.downloads.position = 'bottom'
 
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
-## Type: Int
-c.downloads.remove_finished = -1
+# Type: Int
+c.downloads.remove_finished = 30000
 #+end_src
 
-*** Prompt
+Show a file browser in download prompts.
+Type: =Bool=
+
+Rounding radius (in pixels) for the edges of prompts.
+Type: =Int=
 
 #+begin_src python
-# Show a filebrowser in download prompts.
-## Type: Bool
 c.prompt.filebrowser = True
-
-# Rounding radius (in pixels) for the edges of prompts.
-## Type: Int
 c.prompt.radius = 0
 #+end_src
 
 * Search Engines
 What search to start when something else than a URL is entered.
-## Type: String
+# Type: String
 Valid values:
 - naive: Use simple/naive check.
 - dns: Use DNS requests (might be slow!).
@@ -1054,14 +1077,14 @@ c.url.auto_search = 'naive'
 
 Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 for a blank page.
-## Type: FuzzyUrl
+# Type: FuzzyUrl
 #+begin_src python
 c.url.default_page = 'https://search.brave.com/'
 #+end_src
 
 URL segments where `:navigate increment/decrement` will search for a
 number.
-## Type: FlagList
+# Type: FlagList
 Valid values:
 - host
 - port
@@ -1074,13 +1097,13 @@ Valid values:
 
 Open base URL of the searchengine if a searchengine shortcut is
 invoked without parameters.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.url.open_base_url = True
 #+end_src
 
 Search engines which can be used via the address bar. Maps a search engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}` placeholder. The placeholder will be replaced by the search term, use `{{` and `}}` for literal `{`/`}` braces.
-## Type: Dict
+# Type: Dict
 The following further placeholds are defined to configure how special characters in the search terms are replaced by safe characters (called 'quoting'):
 - `{}` and `{semiquoted}` quote everything except slashes; this is the most sensible choice for almost all search engines (for the search term `slash/and&amp` this placeholder expands to `slash/and%26amp`).
 - `{quoted}` quotes all characters (for `slash/and&amp` this placeholder expands to `slash%2Fand%26amp`).
@@ -1089,32 +1112,33 @@ The following further placeholds are defined to configure how special characters
 #+begin_src python
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
-    "aw": "https://wiki.archlinux.org/index.php?search={}",
-    "q": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
-    "gh": "https://github.com/search?q={}&ref=opensearch",
-    "gt": "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
-    "gtj": "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
-    "gtr": "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
-    "yt": "https://www.youtube.com/results?search_query={}",
-    "yth": "https://www.youtube.com/feed/history?query={}",
-    "od": "https://odysee.com/$/search?q={}",
-    "gd": "https://drive.google.com/drive/search?q={}",
-    "gm": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "g": "https://www.google.com/search?q={}",
-    "auk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "acom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "aca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aw"     : "https://wiki.archlinux.org/index.php?search={}",
+    "q"      : "https://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "gh"     : "https://github.com/search?q={}&ref=opensearch",
+    "gt"     : "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
+    "gtj"    : "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
+    "gtr"    : "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
+    "yt"     : "https://www.youtube.com/results?search_query={}",
+    "yth"    : "https://www.youtube.com/feed/history?query={}",
+    "od"     : "https://odysee.com/$/search?q={}",
+    "gd"     : "https://drive.google.com/drive/search?q={}",
+    "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "g"      : "https://www.google.com/search?q={}",
+    "auk"    : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aca"    : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
 }
 #+end_src
 
 Page(s) to open at the start.
-## Type: List of FuzzyUrl, or FuzzyUrl
+# Type: List of FuzzyUrl, or FuzzyUrl
 #+begin_src python
 c.url.start_pages = ["https://search.brave.com"]
 #+end_src
 
 URL parameters to strip with `:yank url`.
-## Type: List of String
+# Type: List of String
 #+begin_src python
 # c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 #+end_src
@@ -1122,7 +1146,7 @@ URL parameters to strip with `:yank url`.
 * Aliases
 Aliases for commands. The keys of the given dictionary are the
 aliases, while the values are the commands they map to.
-## Type: Dict
+# Type: Dict
 #+begin_src python
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 #+end_src
@@ -1134,21 +1158,21 @@ option set, `:wq` (`:quit --save`) needs to be used to save open tabs
 not save/restore the session. By default, this will save to the
 session which was last loaded. This behavior can be customized via the
 `session.default_name` setting.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.auto_save.session = True
 #+end_src
 
 Time interval (in milliseconds) between auto-saves of
 config/cookies/etc.
-## Type: Int
+# Type: Int
 #+begin_src python
 c.auto_save.interval = 15000
 #+end_src
 
 ** History
 Number of commands to save in the command history. 0: no history / -1: unlimited
-## Type: Int
+# Type: Int
 #+begin_src python
 # c.completion.cmd_history_max_items = 100
 #+end_src
@@ -1167,7 +1191,7 @@ of using this setting, consider finding the command a key is bound to
 (e.g. via `:bind gg`) and then binding the same command to the desired
 key. Note that when a key is bound (via `bindings.default` or
 `bindings.commands`), the mapping is ignored.
-## Type: Dict
+# Type: Dict
 
 #+begin_src python
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
@@ -1939,34 +1963,10 @@ config.bind('<Space>dk', 'devtools top')
 config.bind('<Space>dw', 'devtools window')
 #+end_src
 
-* Messages
-Color of messages
-## Type: =QssColor=
-#+begin_src python
-c.colors.messages.info.fg = theme.fg2
-c.colors.messages.info.bg = theme.bg0
-c.colors.messages.info.border = theme.bg0
-
-c.colors.messages.warning.fg = theme.bg0
-c.colors.messages.warning.bg = theme.magenta13
-c.colors.messages.warning.border = theme.magenta13
-
-c.colors.messages.error.fg = theme.bg0
-c.colors.messages.error.bg = theme.red9
-c.colors.messages.error.border = theme.red9
-#+end_src
-
-Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to never clear messages.
-## Type: Int
-- Default: 3000
-#+begin_src python
-c.messages.timeout = 3000
-#+end_src
-
 * Privacy
 Allow websites to read canvas elements. Note this is needed for some
 websites to work properly.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.content.canvas_reading = True
 #+end_src
@@ -1979,7 +1979,7 @@ c.content.blocking.enabled = True
 #+end_src
 
 Which method of blocking ads should be used.  Support for Adblock Plus (ABP) syntax blocklists using Brave's Rust library requires the =adblock= Python package to be installed, which is an optional dependency of qutebrowser. It is required when either =adblock= or =both= are selected.
-## Type: String
+# Type: String
 Valid values:
 - auto: Use Brave's ABP-style adblocker if available, host blocking otherwise
 - adblock: Use Brave's ABP-style adblocker
@@ -1991,7 +1991,7 @@ c.content.blocking.method = "auto"
 
 List of URLs to ABP-style adblocking rulesets. Only used when Brave's ABP-style adblocker is used (see =content.blocking.method=). You can find an overview of available lists here:
 https://adblockplus.org/en/subscriptions - note that the special =subscribe.adblockplus.org= links aren't handled by qutebrowser, you will instead need to find the link to the raw =.txt= file (e.g. by extracting it from the =location= parameter of the subscribe URL and URL-decoding it).
-## Type: List of Url
+# Type: List of Url
 Some handy lists available here https://easylist.to/
 #+begin_src python
 c.content.blocking.adblock.lists = [
@@ -2004,13 +2004,13 @@ c.content.blocking.adblock.lists = [
 #+end_src
 
 List of URLs to host blocklists for the host blocker.  Only used when the simple host-blocker is used (see =content.blocking.method=).  The file can be in one of the following formats:  - An =/etc/hosts=-like file - One host per line - A zip-file of any of the above, with either only one file, or a file   named =hosts= (with any extension).  It's also possible to add a local file or directory via a file:// URL. In case of a directory, all files in the directory are read as adblock lists.  The file =~/.config/qutebrowser/blocked-hosts= is always read if it exists.
-## Type: List of Url
+# Type: List of Url
 #+begin_src python
 # c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 #+end_src
 
 A list of patterns that should always be loaded, despite being blocked by the ad-/host-blocker. Local domains are always exempt from adblocking. Note this whitelists otherwise blocked requests, not first-party URLs. As an example, if =example.org= loads an ad from =ads.example.org=, the whitelist entry could be =https://ads.example.org/*=. If you want to disable the adblocker on a given page, use the =content.blocking.enabled= setting with a URL pattern instead.
-## Type: List of =UrlPattern=
+# Type: List of =UrlPattern=
 #+begin_src python
 c.content.blocking.whitelist = []
 #+end_src
@@ -2040,13 +2040,13 @@ c.content.cookies.accept = "no-3rdparty"
 #+end_src
 
 Store cookies.
-- Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.content.cookies.store = True
 #+end_src
 
 Enable support for HTML 5 local storage and Web SQL.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 c.content.local_storage = True
 #+end_src
@@ -2054,78 +2054,72 @@ c.content.local_storage = True
 ** Cache
 Enable support for the HTML 5 web application cache feature. An application cache acts like an HTTP cache in some sense. For documents that use the application cache via JavaScript, the loader engine will first ask the application cache for the contents, before hitting the network.
 Not available with the =QtWebEngine= backend
-## Type: Bool
+# Type: Bool
 #+begin_src python
 # c.content.cache.appcache = True
 #+end_src
 
 Maximum number of pages to hold in the global memory page cache. The page cache allows for a nicer user experience when navigating forth or back to pages in the forward/back history, by pausing and resuming up to _n_ pages. For more information about the feature, please refer to:
 https://webkit.org/blog/427/webkit-page-cache-i-the-basics/
-## Type: Int
+# Type: Int
 #+begin_src python
 # c.content.cache.maximum_pages = 0
 #+end_src
 
 Size (in bytes) of the HTTP network cache. Null to use the default value. With QtWebEngine, the maximum supported value is 2147483647 (~2 GB).
-## Type: Int
+# Type: Int
 #+begin_src python
 # c.content.cache.size = None
 #+end_src
 
 * Permissions
-## Type: =BoolAsk=
+Type: =BoolAsk=
 Valid values:
 - true
 - false
 - ask
+=desktop_capture=: Allow websites to share screen content.
+=geolocation=: Allow websites to request geolocations.
+=media.audio_capture=: Allow websites to record audio.
+=media.video_capture=: Allow websites to record video.
+=media.audio_video_capture=: Allow websites to record audio and video.
+=mouse_lock=: Allow websites to lock your mouse pointer.
+=notifications.enabled=: Allow websites to show notifications.
+=persistent_storage=: Allow websites to request persistent storage quota via `navigator.webkitPersistentStorage.requestQuota`.
+
 #+begin_src python
-# Allow websites to share screen content.
 c.content.desktop_capture = "ask"
-
-# Allow websites to request geolocations.
 c.content.geolocation = "ask"
-
-# Allow websites to record audio.
 c.content.media.audio_capture = "ask"
-
-# Allow websites to record video.
 c.content.media.video_capture = "ask"
-
-# Allow websites to record audio and video.
 c.content.media.audio_video_capture = "ask"
-
-# Allow websites to lock your mouse pointer.
 c.content.mouse_lock = "ask"
-
-# Allow websites to show notifications.
 c.content.notifications.enabled = "ask"
-
-# Allow websites to request persistent storage quota via `navigator.webkitPersistentStorage.requestQuota`.
 c.content.persistent_storage = 'ask'
 #+end_src
 
 * JavaScript
 #+begin_src python
 # Show javascript alerts.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.alert = True
 
 # Allow JavaScript to read from or write to the clipboard. With
 # QtWebEngine, writing the clipboard as response to a user interaction
 # is always allowed.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_access_clipboard = False
 
 # Allow JavaScript to close tabs.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_close_tabs = False
 
 # Allow JavaScript to open new tabs without user interaction.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_open_tabs_automatically = False
 
 # Enable JavaScript.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.enabled = True
 
 # Log levels to use for JavaScript console logging messages. When a
@@ -2134,16 +2128,16 @@ c.content.persistent_storage = 'ask'
 # logger to use. On QtWebKit, the "unknown" setting is always used. The
 # following levels are valid: `none`, `debug`, `info`, `warning`,
 # `error`.
-## Type: Dict
+# Type: Dict
 # c.content.javascript.log = {'unknown': 'debug', 'info': 'debug', 'warning': 'debug', 'error': 'debug'}
 
 # Use the standard JavaScript modal dialog for `alert()` and
 # `confirm()`.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.modal_dialog = False
 
 # Show javascript prompts.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.prompt = True
 
 
@@ -2151,7 +2145,7 @@ c.content.persistent_storage = 'ask'
 
 * Notifications
 What notification presenter to use for web notifications. Note that not all implementations support all features of notifications: - With =PyQt= 5.14, any setting other than =qt= does not support  the =click= and   =close= events, as well as the =tag= option to replace existing notifications. - The =qt= and =systray= options only support showing one notification at the time   and ignore the =tag= option to replace existing notifications. - The =herbe= option only supports showing one notification at the time and doesn't   show icons. - The =messages= option doesn't show icons and doesn't support the =click= and =close= events.
-## Type: String
+# Type: String
 Valid values:
 - =auto=: Tries =libnotify=, =systray= and =messages=, uses the first one available without showing error messages.
 - =qt=: Use =Qt's= native notification presenter, based on a system tray icon. Switching from or to this value requires a restart of qutebrowser. Recommended over =systray= on =PyQt= 5.14.
@@ -2164,7 +2158,7 @@ c.content.notifications.presenter = 'auto'
 #+end_src
 
 Whether to show the origin URL for notifications. Note that URL patterns with this setting only get matched against the origin part of the URL, so e.g. paths in patterns will never match. Note that with the `qt` presenter, origins are never shown.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.content.notifications.show_origin = True
 #+end_src
@@ -2231,7 +2225,7 @@ c.spellcheck.languages = [
 
 * Hints
 When a hint can be automatically followed without pressing Enter.
-## Type: String
+# Type: String
 Valid values:
 - always: Auto-follow whenever there is only a single hint on a page.
 - unique-match: Auto-follow whenever there is a unique non-empty match in either the hint string (word mode) or filter (number mode).
@@ -2243,33 +2237,33 @@ c.hints.auto_follow = 'unique-match'
 
 Duration (in milliseconds) to ignore normal-mode key bindings after a
 successful auto-follow.
-## Type: Int
+# Type: Int
 #+begin_src python
 c.hints.auto_follow_timeout = 0
 #+end_src
 
 CSS border value for hints.
-## Type: String
+# Type: String
 #+begin_src python
 # c.hints.border = '1px solid #E3BE23'
 #+end_src
 
 Characters used for hint strings.
-## Type: =UniqueCharString=
+# Type: =UniqueCharString=
 #+begin_src python
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuopasdfghjklzxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjkzxcvbnm'
 #+end_src
 
 Dictionary file to be used by the word hints.
-## Type: File
+# Type: File
 #+begin_src python
 c.hints.dictionary = '/usr/share/dict/words'
 #+end_src
 
 Which implementation to use to find elements to hint.
 Not available with the =QtWebEngine= backend
-## Type: String
+# Type: String
 Valid values:
 - javascript: Better but slower
 - python: Slightly worse but faster
@@ -2278,25 +2272,25 @@ Valid values:
 #+end_src
 
 Hide unmatched hints in rapid mode.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.hints.hide_unmatched_rapid_hints = True
 #+end_src
 
 Leave hint mode when starting a new page load.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.hints.leave_on_load = False
 #+end_src
 
 Minimum number of characters used for hint strings.
-## Type: Int
+# Type: Int
 #+begin_src python
 c.hints.min_chars = 1
 #+end_src
 
 Mode to use for hints.
-## Type: String
+# Type: String
 Valid values:
 - number: Use numeric hints. (In this mode you can also type letters from the hinted element to filter and reduce the number of elements that are hinted.)
 - letter: Use the characters in the `hints.chars` setting.
@@ -2306,39 +2300,39 @@ c.hints.mode = 'letter'
 #+end_src
 
 Comma-separated list of regular expressions to use for 'next' links.
-## Type: List of Regex
+# Type: List of Regex
 #+begin_src python
 c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b', '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
 #+end_src
 
 Comma-separated list of regular expressions to use for 'prev' links.
-## Type: List of Regex
+# Type: List of Regex
 #+begin_src python
 c.hints.prev_regexes = ['\\bprev(ious)?\\b', '\\bback\\b', '\\bolder\\b', '\\b[<←≪]\\b', '\\b(<<|«)\\b']
 #+end_src
 
 Padding (in pixels) for hints.
-## Type: Padding
+# Type: Padding
 #+begin_src python
 c.hints.padding = {'top': 0, 'bottom': 0, 'left': 3, 'right': 3}
 #+end_src
 
 Rounding radius (in pixels) for the edges of hints.
-## Type: Int
+# Type: Int
 #+begin_src python
 c.hints.radius = 3
 #+end_src
 
 Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
 number hints.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.hints.scatter = True
 #+end_src
 
 CSS selectors used to determine which elements on a page should have
 hints.
-## Type: Dict
+# Type: Dict
 #+begin_src python
 c.hints.selectors = {
     'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[contenteditable]:not([contenteditable="false"])', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]'],
@@ -2351,85 +2345,67 @@ c.hints.selectors = {
 #+end_src
 
 Make characters in hint strings uppercase.
-## Type: Bool
+# Type: Bool
 #+begin_src python
 c.hints.uppercase = False
 #+end_src
 
 * Which Key
-Key-chains that shouldn't be shown in the key-hint dialog. Globs are supported, so `;*` will blacklist all key-chains starting with `;`. Use `*` to disable key-hints.
-## Type: List of String
-#+begin_src python
-c.keyhint.blacklist = []
-#+end_src
+=delay=: Time (in milliseconds) from pressing a key to seeing the key-hint dialog.
+Type: Int
 
-Time (in milliseconds) from pressing a key to seeing the key-hint dialog.
-## Type: Int
+=blacklist=: Key-chains that shouldn't be shown in the key-hint dialog. Globs are supported, so `;*` will blacklist all key-chains starting with `;`. Use `*` to disable key-hints.
+Type: List of String
+
 #+begin_src python
 c.keyhint.delay = 500
+c.keyhint.blacklist = []
 #+end_src
 
 * Editor
 Editor (and arguments) to use for the =edit-*= commands. The following placeholders are defined:  * ={file}=: Filename of the file to be edited. * ={line}=: Line in which the caret is found in the text. * ={column}=: Column in which the caret is found in the text. * ={line0}=: Same as ={line}=, but starting from index 0. * ={column0}=: Same as ={column}=, but starting from index 0.
-## Type: =ShellCommand=
+Type: =ShellCommand=
 #+begin_src python
 # c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 #+end_src
 
 Encoding to use for the editor.
-## Type: Encoding
+Type: Encoding
 #+begin_src python
 c.editor.encoding = 'utf-8'
 #+end_src
 
 * Content
-Allow =pdf.js= to view PDF files in the browser. Note that the files can still be downloaded by clicking the download button in the =pdf.js= viewer.
-## Type: =Bool=
-#+begin_src python
-# c.content.pdfjs = False
-#+end_src
+=pdfjs=: Allow =pdf.js= to view PDF files in the browser. Note that the files can still be downloaded by clicking the download button in the =pdf.js= viewer.
+=plugins=: Enable plugins in Web pages.
+=prefers_reduced_motion=: Request websites to minimize non-essentials animations and motion. This results in the `prefers-reduced-motion` CSS media query to evaluate to `reduce` (rather than `no-preference`). On Windows, if this setting is set to False, the system-wide animation setting is considered.
+=print_element_backgrounds=: Draw the background color and images also when the page is printed.
+=private_browsing=: Open new windows in private browsing mode which does not record visited pages.
+=proxy_dns_requests=: Send DNS requests over the configured proxy.
+=site_specific_quirks=: Enable quirks (such as faked user agent headers) needed to get specific sites to work properly.
+=webgl=: Enable WebGL.
+Type: =Bool=
 
-Enable plugins in Web pages.
-## Type: =Bool=
-#+begin_src python
-# c.content.plugins = False
-#+end_src
-
-Request websites to minimize non-essentials animations and motion. This results in the `prefers-reduced-motion` CSS media query to evaluate to `reduce` (rather than `no-preference`). On Windows, if this setting is set to False, the system-wide animation setting is considered.
-## Type: =Bool=
-#+begin_src python
-# c.content.prefers_reduced_motion = False
-#+end_src
-
-Draw the background color and images also when the page is printed.
-## Type: =Bool=
-#+begin_src python
-# c.content.print_element_backgrounds = True
-#+end_src
-
-Open new windows in private browsing mode which does not record visited pages.
-## Type: =Bool=
-#+begin_src python
-c.content.private_browsing = False
-#+end_src
-
-Proxy to use. In addition to the listed values, you can use a `socks://...` or `http://...` URL. Note that with QtWebEngine, it will take a couple of seconds until the change is applied, if this value is changed at runtime.
-## Type: Proxy
+=proxy=: Proxy to use. In addition to the listed values, you can use a `socks://...` or `http://...` URL. Note that with QtWebEngine, it will take a couple of seconds until the change is applied, if this value is changed at runtime.
 Valid values:
 - system: Use the system wide proxy.
 - none: Don't use any proxy
+
 #+begin_src python
+# c.content.pdfjs = False
+# c.content.plugins = False
+# c.content.prefers_reduced_motion = False
+# c.content.print_element_backgrounds = True
+c.content.private_browsing = False
+# c.content.proxy_dns_requests = True
+# c.content.site_specific_quirks.enabled = True
+# c.content.webgl = True
+
 # c.content.proxy = 'system'
 #+end_src
 
-Send DNS requests over the configured proxy.
-## Type: =Bool=
-#+begin_src python
-# c.content.proxy_dns_requests = True
-#+end_src
-
 Allow websites to register protocol handlers via `navigator.registerProtocolHandler`.
-## Type: =Bool=Ask
+Type: =Bool=
 Valid values:
 - true
 - false
@@ -2438,14 +2414,8 @@ Valid values:
 # c.content.register_protocol_handler = 'ask'
 #+end_src
 
-Enable quirks (such as faked user agent headers) needed to get specific sites to work properly.
-## Type: =Bool=
-#+begin_src python
-# c.content.site_specific_quirks.enabled = True
-#+end_src
-
 Disable a list of named quirks. The js-string-replaceall quirk is needed for Nextcloud Calendar < 2.2.0 with QtWebEngine < 5.15.3. However, the workaround is not fully compliant to the ECMAScript spec and might cause issues on other websites, so it's disabled by default.
-## Type: FlagList
+# Type: FlagList
 Valid values:
 - ua-whatsapp
 - ua-google
@@ -2463,7 +2433,7 @@ Valid values:
 #+end_src
 
 How to proceed on TLS certificate errors.
-## Type: String
+# Type: String
 Valid values:
 - ask: Ask how to proceed for every certificate error (unless non-overridable due to HSTS).
 - ask-block-thirdparty: Ask how to proceed for normal page loads, but silently block resource loads.
@@ -2474,7 +2444,7 @@ Valid values:
 #+end_src
 
 How navigation requests to URLs with unknown schemes are handled.
-## Type: String
+# Type: String
 Valid values:
 - disallow: Disallows all navigation requests to URLs with unknown schemes.
 - allow-from-user-interaction: Allows navigation requests to URLs with unknown schemes that are issued from user-interaction (like a mouse-click), whereas other navigation requests (for example from JavaScript) are suppressed.
@@ -2484,19 +2454,13 @@ Valid values:
 #+end_src
 
 List of user stylesheet filenames to use.
-## Type: List of File, or File
+# Type: List of File, or File
 #+begin_src python
 # c.content.user_stylesheets = []
 #+end_src
 
-Enable WebGL.
-## Type: =Bool=
-#+begin_src python
-# c.content.webgl = True
-#+end_src
-
 Which interfaces to expose via WebRTC.
-## Type: String
+# Type: String
 Valid values:
 - all-interfaces: WebRTC has the right to enumerate all interfaces and bind them to discover public interfaces.
 - default-public-and-private-interfaces: WebRTC should only use the default route used by http. This also exposes the associated default private address. Default route is the route chosen by the OS on a multi-homed endpoint.
@@ -2508,55 +2472,47 @@ Valid values:
 
 Monitor load requests for cross-site scripting attempts. Suspicious scripts will be blocked and reported in the devtools JavaScript console. Note that bypasses for the XSS auditor are widely known and it can be abused for cross-site info leaks in some scenarios, see:
 https://www.chromium.org/developers/design-documents/xss-auditor
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 # c.content.xss_auditing = False
 #+end_src
 
 * History
 Maximum time (in minutes) between two history items for them to be considered being from the same browsing session. Items with less time between them are grouped when being displayed in `:history`. Use -1 to disable separation.
-## Type: Int
+Type: =Int=
 #+begin_src python
 c.history_gap_interval = 30
 #+end_src
 
 * File Select
-Command (and arguments) to use for selecting a single folder in forms. The command should write the selected folder path to the specified file or =stdout=. The following placeholders are defined: * ={}=: Filename of the file to be written to. If not contained in any argument, the   standard output of the command is read instead.
-## Type: =ShellCommand=
-#+begin_src python
-# c.fileselect.folder.command = ['xterm', '-e', 'ranger', '--choosedir={}']
-#+end_src
-
-Handler for selecting file(s) in forms. If =external=, then the commands specified by =fileselect.single_file.command= and =fileselect.multiple_files.command= are used to select one or multiple files respectively.
-## Type: String
+=handler=: Handler for selecting file(s) in forms. If =external=, then the commands specified by =fileselect.single_file.command= and =fileselect.multiple_files.command= are used to select one or multiple files respectively.
+Type: =String=
 Valid values:
-- default: Use the default file selector.
-- external: Use an external command.
-#+begin_src python
-c.fileselect.handler = 'default'
-#+end_src
+- =default=: Use the default file selector.
+- =external=: Use an external command.
 
-Command (and arguments) to use for selecting multiple files in forms. The command should write the selected file paths to the specified file or to =stdout=, separated by newlines. The following placeholders are defined: * ={}=: Filename of the file to be written to. If not contained in any argument, the   standard output of the command is read instead.
-## Type: =ShellCommand=
-#+begin_src python
-# c.fileselect.multiple_files.command = ['xterm', '-e', 'ranger', '--choosefiles={}']
-#+end_src
+=command=: Command (and arguments) to use for selecting a =single folder=, =single/multiple files= in forms.
+The command should write the selected path to the specified file or =stdout=.
+The following placeholders are defined: * ={}=: Filename of the file to be written to. If not contained in any argument, the standard output of the command is read instead.
+Type: =ShellCommand=
 
-Command (and arguments) to use for selecting a single file in forms. The command should write the selected file path to the specified file or =stdout=. The following placeholders are defined: * ={}=: Filename of the file to be written to. If not contained in any argument, the standard output of the command is read instead.
-## Type: =ShellCommand=
 #+begin_src python
-# c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
+c.fileselect.handler = 'external'
+
+# c.fileselect.folder.command = ['alacritty', '-e', 'ranger', '--choosedir={}']
+c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefile={}']
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefiles={}']
 #+end_src
 
 * Input
 Allow Escape to quit the crash reporter.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.escape_quits_reporter = True
 #+end_src
 
 Which unbound keys to forward to the =webview= in normal mode.
-## Type: =String=
+Type: =String=
 Valid values:
 - all: Forward all unbound keys.
 - auto: Forward unbound non-alphanumeric keys.
@@ -2566,74 +2522,74 @@ c.input.forward_unbound_keys = 'auto'
 #+end_src
 
 Enter insert mode if an editable element is clicked.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.insert_mode.auto_enter = True
 #+end_src
 
 Leave insert mode if a non-editable element is clicked.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
-c.input.insert_mode.auto_leave = True
+c.input.insert_mode.auto_leave = False
 #+end_src
 
 Automatically enter insert mode if an editable element is focused after loading the page.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.insert_mode.auto_load = False
 #+end_src
 
 Leave insert mode when starting a new page load. Patterns may be unreliable on this setting, and they may match the url you are navigating to, or the URL you are navigating from.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.insert_mode.leave_on_load = True
 #+end_src
 
 Switch to insert mode when clicking flash and other plugins.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.insert_mode.plugins = False
 #+end_src
 
 Include hyperlinks in the keyboard focus chain when tabbing.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.links_included_in_focus_chain = False
 #+end_src
 
 Whether the underlying Chromium should handle media keys. On Linux, disabling this also disables Chromium's MPRIS integration.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.media_keys = True
 #+end_src
 
 Enable back and forward buttons on the mouse.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.mouse.back_forward_buttons = True
 #+end_src
 
 Enable Opera-like mouse rocker gestures. This disables the context menu.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.mouse.rocker_gestures = False
 #+end_src
 
 Timeout (in milliseconds) for partially typed key bindings. If the current input forms only partial matches, the =keystring= will be cleared after this time. If set to 0, partially typed bindings are never cleared.
-## Type: Int
+Type: Int
 #+begin_src python
-c.input.partial_timeout = 0
+c.input.partial_timeout = 3000
 #+end_src
 
 Enable spatial navigation. Spatial navigation consists in the ability to navigate between focusable elements in a Web page, such as hyperlinks and form controls, by using Left, Right, Up and Down arrow keys. For example, if the user presses the Right key, heuristics determine whether there is an element he might be trying to reach towards the right and which element he probably wants.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.input.spatial_navigation = False
 #+end_src
 
 * Scrolling
 When/how to show the scroll-bar.
-## Type: String
+Type: String
 Valid values:
 - always: Always show the scroll-bar.
 - never: Never show the scroll-bar.
@@ -2644,14 +2600,14 @@ c.scrolling.bar = 'overlay'
 #+end_src
 
 Enable smooth scrolling for web pages. Note smooth scrolling does not work with the =:scroll-px= command.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.scrolling.smooth = True
 #+end_src
 
 * Search
 When to find text on a page case-insensitively.
-## Type: =IgnoreCase=
+Type: =IgnoreCase=
 Valid values:
 - always: Search case-insensitively.
 - never: Search case-sensitively.
@@ -2661,57 +2617,57 @@ c.search.ignore_case = 'smart'
 #+end_src
 
 Find text on a page incrementally, renewing the search for each typed character.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.search.incremental = True
 #+end_src
 
 Wrap around at the top and bottom of the page when advancing through text matches using `:search-next` and `:search-prev`.
-## Type: =Bool=
+Type: =Bool=
 #+begin_src python
 c.search.wrap = True
 #+end_src
 
 * Sessions
 Name of the session to save by default. If this is set to null, the session which was last loaded is saved.
-## Type: SessionName
+Type: SessionName
 #+begin_src python
 # c.session.default_name = None
 #+end_src
 
 Load a restored tab as soon as it takes focus.
-## Type: Bool
+Type: Bool
 #+begin_src python
 c.session.lazy_restore = True
 #+end_src
 
 * Qt
 Additional arguments to pass to Qt, without leading --. With ==QtWebEngine==,some Chromium arguments (see https://peter.sh/experiments/chromium-command-line-switches/ for a list) will work.
-## Type: List of String
+# Type: List of String
 #+begin_src python
 # c.qt.args = []
 #+end_src
 
 Additional environment variables to set. Setting an environment variable to null/None will unset it.
-## Type: Dict
+# Type: Dict
 #+begin_src python
 # c.qt.environ = {}
 #+end_src
 
 Force a Qt platform to use. This sets the =QT_QPA_PLATFORM= environment variable and is useful to force using the XCB plugin when running =QtWebEngine= on =Wayland=.
-## Type: String
+# Type: String
 #+begin_src python
 # c.qt.force_platform = None
 #+end_src
 
 Force a Qt =platformtheme= to use. This sets the =QT_QPA_PLATFORMTHEME= environment variable which controls dialogs like the file-picker. By default, Qt determines the platform theme based on the desktop environment.
-## Type: String
+# Type: String
 #+begin_src python
 # c.qt.force_platformtheme = None
 #+end_src
 
 Force software rendering for =QtWebEngine=. This is needed for =QtWebEngine= to work with =Nouveau= drivers and can be useful in other scenarios related to graphic issues.
-## Type: String
+# Type: String
 Valid values:
 - =software-opengl=: Tell =LibGL= to use a software implementation of GL (=LIBGL_ALWAYS_SOFTWARE= / =QT_XCB_FORCE_SOFTWARE_OPENGL=)
 - =qt-quick=: Tell Qt Quick to use a software renderer instead of =OpenGL=. (=QT_QUICK_BACKEND=software=)
@@ -2722,13 +2678,13 @@ Valid values:
 #+end_src
 
 Turn on Qt =HighDPI= scaling. This is equivalent to setting QT_AUTO_SCREEN_SCALE_FACTOR=1 or QT_ENABLE_HIGHDPI_SCALING=1 (Qt >= 5.14) in the environment. It's off by default as it can cause issues with some bitmap fonts. As an alternative to this, it's possible to set font sizes and the =zoom.default= setting.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 # c.qt.highdpi = False
 #+end_src
 
 When to use Chromium's low-end device mode. This improves the RAM usage of renderer processes, at the expense of performance.
-## Type: String
+# Type: String
 Valid values:
 - always: Always use low-end device mode.
 - auto: Decide automatically (uses low-end mode with < 1 GB available RAM).
@@ -2740,7 +2696,7 @@ c.qt.low_end_device_mode = 'auto'
 Which Chromium process model to use. Alternative process models use less resources, but decrease security and robustness. See the following pages for more details:
 - https://www.chromium.org/developers/design-documents/process-models
 - https://doc.qt.io/qt-5/qtwebengine-features.html#process-models
-## Type: String
+# Type: String
 Valid values:
 - process-per-site-instance: Pages from separate sites are put into separate processes and separate visits to the same site are also isolated.
 - process-per-site: Pages from separate sites are put into separate processes. Unlike Process per Site Instance, all visits to the same site will share an OS process. The benefit of this model is reduced memory consumption, because more web pages will share processes. The drawbacks include reduced security, robustness, and responsiveness.
@@ -2750,20 +2706,20 @@ c.qt.process_model = 'process-per-site-instance'
 #+end_src
 
 Work around locale parsing issues in =QtWebEngine= 5.15.3. With some locales, =QtWebEngine= 5.15.3 is unusable without this workaround. In affected scenarios, =QtWebEngine= will log "Network service crashed, restarting service." and only display a blank page. However, It is expected that distributions shipping =QtWebEngine= 5.15.3 follow up with a proper fix soon, so it is disabled by default.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 # c.qt.workarounds.locale = False
 #+end_src
 
 Delete the =QtWebEngine= Service Worker directory on every start. This workaround can help with certain crashes caused by an unknown =QtWebEngine= bug related to Service Workers. Those crashes happen seemingly immediately on Windows; after one hour of operation on other systems. Note however that enabling this option *can lead to data loss* on some pages (as Service Worker data isn't persisted) and will negatively impact start-up time.
-## Type: =Bool=
+# Type: =Bool=
 #+begin_src python
 # c.qt.workarounds.remove_service_workers = False
 #+end_src
 
 * Logging
 Level for console (stdout/stderr) logs. Ignored if the `--loglevel` or `--debug` CLI flags are used.
-## Type: LogLevel
+Type: LogLevel
 Valid values:
 - vdebug
 - debug
@@ -2776,7 +2732,7 @@ Valid values:
 #+end_src
 
 Level for in-memory logs.
-## Type: LogLevel
+Type: LogLevel
 Valid values:
 - vdebug
 - debug

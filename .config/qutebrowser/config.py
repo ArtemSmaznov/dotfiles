@@ -1,4 +1,4 @@
-import colors.gruvbox as theme
+import themes.default as theme
 
 c.fonts.default_size = '14pt'
 # c.fonts.default_family = []
@@ -31,134 +31,125 @@ c.fonts.default_size = '14pt'
 # c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
 c.window.transparent = False
 
-c.colors.completion.category.fg = theme.yellow11
-c.colors.completion.category.bg = theme.bg0
-c.colors.completion.category.border.top = theme.bg0
-c.colors.completion.category.border.bottom = theme.bg0
+c.colors.completion.category.fg = theme.title
+c.colors.completion.category.bg = theme.background
+c.colors.completion.category.border.top = theme.background
+c.colors.completion.category.border.bottom = theme.background
 
 # c.colors.completion.fg = ['white', 'white', 'white']
-c.colors.completion.fg = theme.fg2
-c.colors.completion.match.fg = theme.green10
-c.colors.completion.odd.bg = theme.bg1
-c.colors.completion.even.bg = theme.bg0
+c.colors.completion.fg = theme.foreground
+c.colors.completion.match.fg = theme.completion_match
+c.colors.completion.odd.bg = theme.completion_odd
+c.colors.completion.even.bg = theme.completion_even
 
-c.colors.completion.item.selected.fg = theme.fg2
-c.colors.completion.item.selected.bg = theme.bg2
-c.colors.completion.item.selected.border.top = theme.bg2
-c.colors.completion.item.selected.border.bottom = theme.bg2
-c.colors.completion.item.selected.match.fg = theme.green10
+c.colors.completion.item.selected.fg = theme.foreground
+c.colors.completion.item.selected.bg = theme.completion_selected
+c.colors.completion.item.selected.border.top = theme.completion_borders
+c.colors.completion.item.selected.border.bottom = theme.completion_borders
+c.colors.completion.item.selected.match.fg = theme.match
 
-c.colors.completion.scrollbar.fg = theme.fg2
-c.colors.completion.scrollbar.bg = theme.bg0
+c.colors.completion.scrollbar.fg = theme.foreground
+c.colors.completion.scrollbar.bg = theme.background
 
-c.colors.keyhint.fg = theme.fg2
-c.colors.keyhint.bg = theme.bg0
-c.colors.keyhint.suffix.fg = theme.green10
-c.keyhint.radius = 10
+c.colors.keyhint.fg = theme.foreground
+c.colors.keyhint.bg = theme.background
+c.colors.keyhint.suffix.fg = theme.match
+c.keyhint.radius = theme.whichkey_radius
 
-c.colors.contextmenu.menu.bg = theme.bg0
-c.colors.contextmenu.menu.fg =  theme.fg2
+c.colors.contextmenu.menu.fg = theme.foreground
+c.colors.contextmenu.menu.bg = theme.background
 
-c.colors.contextmenu.selected.bg = theme.bg2
-c.colors.contextmenu.selected.fg = theme.fg2
+c.colors.contextmenu.selected.fg = theme.foreground
+c.colors.contextmenu.selected.bg = theme.contextmenu_selected_bg
 
-c.colors.contextmenu.disabled.bg = theme.bg1
-c.colors.contextmenu.disabled.fg = theme.fg3
+c.colors.contextmenu.disabled.fg = theme.contextmenu_disabled_fg
+c.colors.contextmenu.disabled.bg = theme.contextmenu_disabled_bg
 
-c.colors.downloads.bar.bg = theme.bg0
+c.colors.downloads.bar.bg = theme.background
 
-c.colors.downloads.start.fg = theme.bg0
-c.colors.downloads.start.bg = theme.blue12
+c.colors.downloads.start.fg = theme.background
+c.colors.downloads.start.bg = theme.loading
 
-c.colors.downloads.stop.fg = theme.bg0
-c.colors.downloads.stop.bg = theme.cyan14
+c.colors.downloads.stop.fg = theme.background
+c.colors.downloads.stop.bg = theme.success
 
-c.colors.downloads.error.fg = theme.red9
+c.colors.downloads.error.fg = theme.error
 
 c.colors.downloads.system.fg = 'rgb'
 c.colors.downloads.system.bg = 'rgb'
 
 # c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 
-c.colors.hints.fg = theme.bg0
-c.colors.hints.bg = theme.yellow11
-c.colors.hints.match.fg = theme.fg2
+c.colors.hints.fg = theme.background
+c.colors.hints.bg = theme.hint_bg
+c.colors.hints.match.fg = theme.foreground
 
-c.colors.prompts.fg = theme.fg2
-c.colors.prompts.bg = theme.bg0
+c.colors.prompts.fg = theme.foreground
+c.colors.prompts.bg = theme.background
 
-c.colors.prompts.selected.bg = theme.bg2
-c.colors.prompts.selected.fg = theme.fg2
+c.colors.prompts.selected.fg = theme.foreground
+c.colors.prompts.selected.bg = theme.prompt_selected_bg
 
-c.colors.prompts.border = theme.bg0
+c.colors.prompts.border = theme.background
 
-c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
+c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 5, 'right': 5}
 c.statusbar.position = 'bottom'
 c.statusbar.show = 'always'
-c.statusbar.widgets = ['keypress', 'progress', 'history', 'url', 'text: -- ', 'scroll']
+c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
 
 # Color of the statusbar.
-c.colors.statusbar.normal.fg = theme.fg2
-c.colors.statusbar.normal.bg = theme.bg0
+c.colors.statusbar.normal.fg = theme.status_normal_fg
+c.colors.statusbar.normal.bg = theme.status_normal_bg
 
 # Color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = theme.bg0
-c.colors.statusbar.insert.bg = theme.blue12
+c.colors.statusbar.insert.fg = theme.status_insert_fg
+c.colors.statusbar.insert.bg = theme.status_insert_bg
 
 # Color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = theme.bg0
-c.colors.statusbar.passthrough.bg = theme.cyan14
+c.colors.statusbar.passthrough.fg = theme.status_passthrough_fg
+c.colors.statusbar.passthrough.bg = theme.status_passthrough_bg
 
 # Color of the statusbar in private browsing mode.
-c.colors.statusbar.private.fg = theme.bg0
-c.colors.statusbar.private.bg = theme.bg1
+c.colors.statusbar.private.fg = theme.status_private_fg
+c.colors.statusbar.private.bg = theme.status_private_bg
 
 # Color of the statusbar in command mode.
-c.colors.statusbar.command.fg = theme.fg2
-c.colors.statusbar.command.bg = theme.bg0
+c.colors.statusbar.command.fg = theme.status_command_fg
+c.colors.statusbar.command.bg = theme.status_command_bg
 
 # Color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.fg = theme.fg2
-c.colors.statusbar.command.private.bg = theme.bg0
+c.colors.statusbar.command.private.fg = theme.status_command_private_fg
+c.colors.statusbar.command.private.bg = theme.status_command_private_bg
 
 # Color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = theme.bg0
-c.colors.statusbar.caret.bg = theme.magenta13
+c.colors.statusbar.caret.fg = theme.status_caret_fg
+c.colors.statusbar.caret.bg = theme.status_caret_bg
 
 # Color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = theme.bg0
-c.colors.statusbar.caret.selection.bg = theme.blue12
+c.colors.statusbar.caret.selection.fg = theme.status_caret_selection_fg
+c.colors.statusbar.caret.selection.bg = theme.status_caret_selection_bg
 
 # Color of the progress bar.
-c.colors.statusbar.progress.bg = theme.orange2
+c.colors.statusbar.progress.bg = theme.loading
 
-# Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = theme.fg2
+c.colors.statusbar.url.fg = theme.loading
+c.colors.statusbar.url.success.http.fg = theme.error
+c.colors.statusbar.url.success.https.fg = theme.success
+c.colors.statusbar.url.hover.fg = theme.foreground
+c.colors.statusbar.url.warn.fg = theme.warning
+c.colors.statusbar.url.error.fg = theme.fail
 
-# Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = theme.red9
-
-# Foreground color of the URL in the statusbar for hovered links.
-c.colors.statusbar.url.hover.fg = theme.fg2
-
-# Foreground color of the URL in the statusbar on successful load
-c.colors.statusbar.url.success.http.fg = theme.cyan14
-c.colors.statusbar.url.success.https.fg = theme.green10
-
-# Foreground color of the URL in the statusbar when there's a warning.
-c.colors.statusbar.url.warn.fg = theme.magenta13
-
-c.colors.tabs.bar.bg = theme.bg0
+c.colors.tabs.bar.bg = theme.background
 
 # Color gradient for the tab indicator.
-c.colors.tabs.indicator.start = theme.blue12
-c.colors.tabs.indicator.stop = theme.orange1
+c.colors.tabs.indicator.start = theme.loading
+c.colors.tabs.indicator.stop = theme.success
 
 # Color for the tab indicator on errors.
-c.colors.tabs.indicator.error = theme.red9
+c.colors.tabs.indicator.error = theme.error
 
 # Color gradient interpolation system for the tab indicator.
-## Type: ColorSystem
+# Type: ColorSystem
 # Valid values:
 # - rgb: Interpolate in the RGB color system.
 # - hsv: Interpolate in the HSV color system.
@@ -166,35 +157,49 @@ c.colors.tabs.indicator.error = theme.red9
 # - none: Do not show a gradient.
 # c.colors.tabs.indicator.system = 'rgb'
 
-c.colors.tabs.odd.fg = theme.fg2
-c.colors.tabs.odd.bg = theme.bg1
-c.colors.tabs.even.fg = theme.fg2
-c.colors.tabs.even.bg = theme.bg0
-c.colors.tabs.pinned.odd.fg = theme.fg2
-c.colors.tabs.pinned.odd.bg = theme.bg2
-c.colors.tabs.pinned.even.fg = theme.fg2
-c.colors.tabs.pinned.even.bg = theme.bg2
+c.colors.tabs.odd.fg = theme.foreground
+c.colors.tabs.odd.bg = theme.tab_odd
+c.colors.tabs.even.fg = theme.foreground
+c.colors.tabs.even.bg = theme.tab_even
+c.colors.tabs.pinned.odd.fg = theme.foreground
+c.colors.tabs.pinned.odd.bg = theme.tab_odd
+c.colors.tabs.pinned.even.fg = theme.foreground
+c.colors.tabs.pinned.even.bg = theme.tab_even
 
-c.colors.tabs.selected.odd.fg = theme.bg0
-c.colors.tabs.selected.odd.bg = theme.cyan14
-c.colors.tabs.selected.even.fg = theme.bg0
-c.colors.tabs.selected.even.bg = theme.cyan14
-c.colors.tabs.pinned.selected.odd.fg = theme.bg0
-c.colors.tabs.pinned.selected.odd.bg = theme.cyan14
-c.colors.tabs.pinned.selected.even.fg = theme.bg0
-c.colors.tabs.pinned.selected.even.bg = theme.cyan14
+c.colors.tabs.selected.odd.fg = theme.background
+c.colors.tabs.selected.odd.bg = theme.tab_selected
+c.colors.tabs.selected.even.fg = theme.background
+c.colors.tabs.selected.even.bg = theme.tab_selected
+c.colors.tabs.pinned.selected.odd.fg = theme.background
+c.colors.tabs.pinned.selected.odd.bg = theme.tab_selected
+c.colors.tabs.pinned.selected.even.fg = theme.background
+c.colors.tabs.pinned.selected.even.bg = theme.tab_selected
 
-# c.colors.webpage.bg = theme.bg0
+c.colors.messages.info.fg = theme.foreground
+c.colors.messages.info.bg = theme.background
+c.colors.messages.info.border = theme.background
 
-# c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.messages.warning.fg = theme.background
+c.colors.messages.warning.bg = theme.warning
+c.colors.messages.warning.border = theme.warning
+
+c.colors.messages.error.fg = theme.background
+c.colors.messages.error.bg = theme.error
+c.colors.messages.error.border = theme.error
+
+c.messages.timeout = 3000
+
+# c.colors.webpage.bg = theme.background
+
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
 # c.colors.webpage.darkmode.contrast = 0.0
 
 c.colors.webpage.darkmode.enabled = False
 
-# c.colors.webpage.darkmode.grayscale.all = False
+c.colors.webpage.darkmode.grayscale.all = False
 
-# c.colors.webpage.darkmode.grayscale.images = 0.0
+c.colors.webpage.darkmode.grayscale.images = 0.0
 
 c.colors.webpage.darkmode.policy.images = 'never'
 
@@ -214,7 +219,7 @@ c.changelog_after_upgrade = "major"
 
 # Delay (in milliseconds) before updating completions after typing a
 # character.
-## Type: Int
+# Type: Int
 # c.completion.delay = 0
 
 # Default filesystem autocomplete suggestions for :open. The elements of
@@ -224,38 +229,38 @@ c.changelog_after_upgrade = "major"
 # c.completion.favorite_paths = []
 
 # Height (in pixels or as percentage of the window) of the completion.
-## Type: PercOrInt
+# Type: PercOrInt
 # c.completion.height = '50%'
 
 # Minimum amount of characters needed to update completions.
-## Type: Int
+# Type: Int
 # c.completion.min_chars = 1
 
 # Which categories to show (in which order) in the :open completion.
-## Type: FlagList
+# Type: FlagList
 # Valid values:
-##   - searchengines
-##   - quickmarks
-##   - bookmarks
-##   - history
-##   - filesystem
+# - searchengines
+# - quickmarks
+# - bookmarks
+# - history
+# - filesystem
 # c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
 
 # Move on to the next part when there's only one possible completion
 # left.
-## Type: Bool
+# Type: Bool
 # c.completion.quick = True
 
 # Padding (in pixels) of the scrollbar handle in the completion window.
-## Type: Int
+# Type: Int
 # c.completion.scrollbar.padding = 2
 
 # Width (in pixels) of the scrollbar in the completion window.
-## Type: Int
+# Type: Int
 # c.completion.scrollbar.width = 12
 
 # When to show the autocompletion window.
-## Type: String
+# Type: String
 # Valid values:
 # - always: Whenever a completion is available.
 # - auto: Whenever a completion is requested.
@@ -264,7 +269,7 @@ c.changelog_after_upgrade = "major"
 
 # Shrink the completion to be smaller than the configured size if there
 # are no scrollbars.
-## Type: Bool
+# Type: Bool
 # c.completion.shrink = False
 
 # Format of timestamps (e.g. for the history completion). See
@@ -272,11 +277,11 @@ c.changelog_after_upgrade = "major"
 # https://docs.python.org/3/library/datetime.html#strftime-strptime-
 # behavior for allowed substitutions, qutebrowser uses both sqlite and
 # Python to format its timestamps.
-## Type: String
+# Type: String
 # c.completion.timestamp_format = '%Y-%m-%d %H:%M'
 
 # Execute the best-matching command on a partial match.
-## Type: Bool
+# Type: Bool
 # c.completion.use_best_match = False
 
 # A list of patterns which should not be shown in the history. This only
@@ -289,10 +294,10 @@ c.changelog_after_upgrade = "major"
 
 # Number of URLs to show in the web history. 0: no history / -1:
 # unlimited
-## Type: Int
+# Type: Int
 # c.completion.web_history.max_items = -1
 
-# c.content.fullscreen.overlay_timeout = 3000
+c.content.fullscreen.overlay_timeout = 3000
 
 c.content.fullscreen.window = False
 
@@ -369,7 +374,7 @@ c.tabs.tooltips = True
 c.tabs.wrap = True
 
 # Default zoom level.
-## Type: Perc
+# Type: Perc
 c.zoom.default = '100%'
 
 # Available zoom levels.
@@ -377,16 +382,16 @@ c.zoom.default = '100%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
 
 # Number of zoom increments to divide the mouse wheel movements to.
-## Type: Int
+# Type: Int
 c.zoom.mouse_divider = 512
 
 # Apply the zoom factor on a frame only to the text or to all content.
 # Not available with the QtWebEngine backend
-## Type: Bool
+# Type: Bool
 # c.zoom.text_only = False
 
 # Require a confirmation before quitting the application.
-## Type: ConfirmQuit
+# Type: ConfirmQuit
 # Valid values:
 # - always: Always show a confirmation.
 # - multiple-tabs: Show a confirmation if multiple tabs are opened.
@@ -395,69 +400,68 @@ c.zoom.mouse_divider = 512
 c.confirm_quit = ['downloads']
 
 # Automatically start playing `<video>` elements.
-## Type: Bool
+# Type: Bool
 c.content.autoplay = False
 
 # Default encoding to use for websites. The encoding must be a string
 # describing an encoding such as _utf-8_, _iso-8859-1_, etc.
-## Type: String
+# Type: String
 # c.content.default_encoding = 'iso-8859-1'
 
 # Try to pre-fetch DNS entries to speed up browsing.
-## Type: Bool
+# Type: Bool
 c.content.dns_prefetch = True
 
 # Expand each subframe to its contents. This will flatten all the frames
 # to become one scrollable page.
-## Type: Bool
+# Type: Bool
 # c.content.frame_flattening = False
 
 # Enable hyperlink auditing (`<a ping>`).
-## Type: Bool
-# c.content.hyperlink_auditing = False
+# Type: Bool
+c.content.hyperlink_auditing = False
 
 # Load images automatically in web pages.
-## Type: Bool
-# c.content.images = True
+# Type: Bool
+c.content.images = True
 
 # Allow locally loaded documents to access other local URLs.
-## Type: Bool
+# Type: Bool
 # c.content.local_content_can_access_file_urls = True
 
 # Allow locally loaded documents to access remote URLs.
-## Type: Bool
+# Type: Bool
 # c.content.local_content_can_access_remote_urls = False
 
 # Automatically mute tabs. Note that if the `:tab-mute` command is used,
 # the mute status for the affected tab is now controlled manually, and
 # this setting doesn't have any effect.
-## Type: Bool
+# Type: Bool
 # c.content.mute = False
 
 # Netrc-file for HTTP authentication. If unset, `~/.netrc` is used.
-## Type: File
+# Type: File
 # c.content.netrc_file = None
 
 c.new_instance_open_target = 'tab'
 
 c.new_instance_open_target_window = 'last-focused'
 
-# Directory to save downloads to. If unset, a sensible OS-specific
-# default is used.
-## Type: Directory
+# Directory to save downloads to. If unset, a sensible OS-specific default is used.
+# Type: Directory
 c.downloads.location.directory = None
 
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
-## Type: Bool
+# Type: Bool
 c.downloads.location.prompt = True
 
 # Remember the last used download directory.
-## Type: Bool
+# Type: Bool
 c.downloads.location.remember = True
 
 # What to display in the download filename input.
-## Type: String
+# Type: String
 # Valid values:
 # - path: Show only the download path.
 # - filename: Show only download filename.
@@ -467,27 +471,22 @@ c.downloads.location.suggestion = 'path'
 # Default program used to open downloads. If null, the default internal
 # handler is used. Any `{}` in the string will be expanded to the
 # filename, else the filename will be appended.
-## Type: String
+# Type: String
 # c.downloads.open_dispatcher = None
 
 # Where to show the downloaded files.
-## Type: VerticalPosition
+# Type: VerticalPosition
 # Valid values:
-##   - top
-##   - bottom
+# - top
+# - bottom
 c.downloads.position = 'bottom'
 
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
-## Type: Int
-c.downloads.remove_finished = -1
+# Type: Int
+c.downloads.remove_finished = 30000
 
-# Show a filebrowser in download prompts.
-## Type: Bool
 c.prompt.filebrowser = True
-
-# Rounding radius (in pixels) for the edges of prompts.
-## Type: Int
 c.prompt.radius = 0
 
 c.url.auto_search = 'naive'
@@ -500,21 +499,22 @@ c.url.open_base_url = True
 
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
-    "aw": "https://wiki.archlinux.org/index.php?search={}",
-    "q": "http://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
-    "gh": "https://github.com/search?q={}&ref=opensearch",
-    "gt": "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
-    "gtj": "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
-    "gtr": "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
-    "yt": "https://www.youtube.com/results?search_query={}",
-    "yth": "https://www.youtube.com/feed/history?query={}",
-    "od": "https://odysee.com/$/search?q={}",
-    "gd": "https://drive.google.com/drive/search?q={}",
-    "gm": "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "g": "https://www.google.com/search?q={}",
-    "auk": "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "acom": "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "aca": "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aw"     : "https://wiki.archlinux.org/index.php?search={}",
+    "q"      : "https://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "gh"     : "https://github.com/search?q={}&ref=opensearch",
+    "gt"     : "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
+    "gtj"    : "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
+    "gtr"    : "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
+    "yt"     : "https://www.youtube.com/results?search_query={}",
+    "yth"    : "https://www.youtube.com/feed/history?query={}",
+    "od"     : "https://odysee.com/$/search?q={}",
+    "gd"     : "https://drive.google.com/drive/search?q={}",
+    "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "g"      : "https://www.google.com/search?q={}",
+    "auk"    : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "aca"    : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
+    "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
 }
 
 c.url.start_pages = ["https://search.brave.com"]
@@ -1043,20 +1043,6 @@ config.bind('<Space>dj', 'devtools bottom')
 config.bind('<Space>dk', 'devtools top')
 config.bind('<Space>dw', 'devtools window')
 
-c.colors.messages.info.fg = theme.fg2
-c.colors.messages.info.bg = theme.bg0
-c.colors.messages.info.border = theme.bg0
-
-c.colors.messages.warning.fg = theme.bg0
-c.colors.messages.warning.bg = theme.magenta13
-c.colors.messages.warning.border = theme.magenta13
-
-c.colors.messages.error.fg = theme.bg0
-c.colors.messages.error.bg = theme.red9
-c.colors.messages.error.border = theme.red9
-
-c.messages.timeout = 3000
-
 c.content.canvas_reading = True
 
 c.content.blocking.enabled = True
@@ -1087,50 +1073,35 @@ c.content.local_storage = True
 
 # c.content.cache.size = None
 
-# Allow websites to share screen content.
 c.content.desktop_capture = "ask"
-
-# Allow websites to request geolocations.
 c.content.geolocation = "ask"
-
-# Allow websites to record audio.
 c.content.media.audio_capture = "ask"
-
-# Allow websites to record video.
 c.content.media.video_capture = "ask"
-
-# Allow websites to record audio and video.
 c.content.media.audio_video_capture = "ask"
-
-# Allow websites to lock your mouse pointer.
 c.content.mouse_lock = "ask"
-
-# Allow websites to show notifications.
 c.content.notifications.enabled = "ask"
-
-# Allow websites to request persistent storage quota via `navigator.webkitPersistentStorage.requestQuota`.
 c.content.persistent_storage = 'ask'
 
 # Show javascript alerts.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.alert = True
 
 # Allow JavaScript to read from or write to the clipboard. With
 # QtWebEngine, writing the clipboard as response to a user interaction
 # is always allowed.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_access_clipboard = False
 
 # Allow JavaScript to close tabs.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_close_tabs = False
 
 # Allow JavaScript to open new tabs without user interaction.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.can_open_tabs_automatically = False
 
 # Enable JavaScript.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.enabled = True
 
 # Log levels to use for JavaScript console logging messages. When a
@@ -1139,16 +1110,16 @@ c.content.persistent_storage = 'ask'
 # logger to use. On QtWebKit, the "unknown" setting is always used. The
 # following levels are valid: `none`, `debug`, `info`, `warning`,
 # `error`.
-## Type: Dict
+# Type: Dict
 # c.content.javascript.log = {'unknown': 'debug', 'info': 'debug', 'warning': 'debug', 'error': 'debug'}
 
 # Use the standard JavaScript modal dialog for `alert()` and
 # `confirm()`.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.modal_dialog = False
 
 # Show javascript prompts.
-## Type: Bool
+# Type: Bool
 # c.content.javascript.prompt = True
 
 c.content.notifications.presenter = 'auto'
@@ -1167,7 +1138,7 @@ c.hints.auto_follow_timeout = 0
 # c.hints.border = '1px solid #E3BE23'
 
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuopasdfghjklzxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjkzxcvbnm'
 
 c.hints.dictionary = '/usr/share/dict/words'
 
@@ -1202,31 +1173,25 @@ c.hints.selectors = {
 
 c.hints.uppercase = False
 
-c.keyhint.blacklist = []
-
 c.keyhint.delay = 500
+c.keyhint.blacklist = []
 
 # c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 
 c.editor.encoding = 'utf-8'
 
 # c.content.pdfjs = False
-
 # c.content.plugins = False
-
 # c.content.prefers_reduced_motion = False
-
 # c.content.print_element_backgrounds = True
-
 c.content.private_browsing = False
+# c.content.proxy_dns_requests = True
+# c.content.site_specific_quirks.enabled = True
+# c.content.webgl = True
 
 # c.content.proxy = 'system'
 
-# c.content.proxy_dns_requests = True
-
 # c.content.register_protocol_handler = 'ask'
-
-# c.content.site_specific_quirks.enabled = True
 
 # c.content.site_specific_quirks.skip = ['js-string-replaceall']
 
@@ -1236,21 +1201,17 @@ c.content.private_browsing = False
 
 # c.content.user_stylesheets = []
 
-# c.content.webgl = True
-
 # c.content.webrtc_ip_handling_policy = 'all-interfaces'
 
 # c.content.xss_auditing = False
 
 c.history_gap_interval = 30
 
-# c.fileselect.folder.command = ['xterm', '-e', 'ranger', '--choosedir={}']
+c.fileselect.handler = 'external'
 
-c.fileselect.handler = 'default'
-
-# c.fileselect.multiple_files.command = ['xterm', '-e', 'ranger', '--choosefiles={}']
-
-# c.fileselect.single_file.command = ['xterm', '-e', 'ranger', '--choosefile={}']
+# c.fileselect.folder.command = ['alacritty', '-e', 'ranger', '--choosedir={}']
+c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefile={}']
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefiles={}']
 
 c.input.escape_quits_reporter = True
 
@@ -1258,7 +1219,7 @@ c.input.forward_unbound_keys = 'auto'
 
 c.input.insert_mode.auto_enter = True
 
-c.input.insert_mode.auto_leave = True
+c.input.insert_mode.auto_leave = False
 
 c.input.insert_mode.auto_load = False
 
@@ -1274,7 +1235,7 @@ c.input.mouse.back_forward_buttons = True
 
 c.input.mouse.rocker_gestures = False
 
-c.input.partial_timeout = 0
+c.input.partial_timeout = 3000
 
 c.input.spatial_navigation = False
 
