@@ -661,6 +661,8 @@ config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
 config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
 config.bind('<Space>vf', 'hint media spawn mpv --ytdl-format=best {hint-url}')
 config.bind('<Space>af', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind('<Space>vd', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
@@ -810,7 +812,7 @@ config.bind('D', 'set-cmd-text -s :download')
 
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
-config.bind('dv', 'hint links spawn alacritty -e youtube-dl {hint-url}')
+config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
 config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('ds', 'download-cancel')
@@ -1053,6 +1055,12 @@ config.bind('<Ctrl-W>'       , 'fake-key <Ctrl-Backspace>'   , mode='insert')
 
 config.bind('<Ctrl-Shift-V>', 'insert-text -- {primary}', mode='insert')
 config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+
+config.bind(',a' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind(',d' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind(',g' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 
 config.bind('<Space>ds', 'view-source')
 
