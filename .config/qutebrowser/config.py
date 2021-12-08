@@ -1,3 +1,5 @@
+from qutebrowser.api import interceptor
+
 import themes.default as theme
 
 c.fonts.default_size = '14pt'
@@ -187,7 +189,7 @@ c.colors.messages.error.fg = theme.background
 c.colors.messages.error.bg = theme.error
 c.colors.messages.error.border = theme.error
 
-c.messages.timeout = 3000
+c.messages.timeout = 5000
 
 # c.colors.webpage.bg = theme.background
 
@@ -309,7 +311,7 @@ c.content.headers.do_not_track = True
 
 c.content.headers.referer = 'same-domain'
 
-# c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 
 c.tabs.background = True
 
@@ -655,6 +657,11 @@ config.bind('<Space>p', 'set-cmd-text :process :')
 config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
+config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
+config.bind('<Space>vf', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind('<Space>af', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
+
 config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
@@ -844,13 +851,14 @@ config.bind('F', 'hint all tab')
 
 config.bind(';i', 'hint inputs')
 
+config.bind(';m', 'hint media')
 config.bind(';p', 'hint images')
 config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}')
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
 
 config.bind('<Ctrl-f>', 'hint --rapid')
 
@@ -923,6 +931,8 @@ config.bind('<Escape>', 'mode-leave', mode='prompt')
 config.bind('<Escape>', 'mode-leave', mode='register')
 config.bind('<Escape>', 'mode-leave', mode='yesno')
 config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
+
+config.bind('<Ctrl-E>', 'edit-command', mode='command')
 
 config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
@@ -1025,11 +1035,24 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 # config.bind('{', 'move-to-end-of-prev-block', mode='caret')
 # config.bind('}', 'move-to-end-of-next-block', mode='caret')
 
-# config.bind('<Ctrl-E>', 'edit-text', mode='insert')
-# config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+config.bind('<Ctrl-E>'       , 'edit-text'                   , mode='insert')
 
-config.bind('gv', 'spawn mpv --ytdl-format=best {url}')
-config.bind('ga', 'spawn mpv --ytdl-format=best {url} --no-video')
+config.bind('<Mod1-H>'       , 'fake-key <Left>'             , mode='insert')
+config.bind('<Mod1-J>'       , 'fake-key <Down>'             , mode='insert')
+config.bind('<Mod1-K>'       , 'fake-key <Up>'               , mode='insert')
+config.bind('<Mod1-L>'       , 'fake-key <Right>'            , mode='insert')
+config.bind('<Mod1-Shift-H>' , 'fake-key <Shift-Left>'       , mode='insert')
+config.bind('<Mod1-Shift-L>' , 'fake-key <Shift-Right>'      , mode='insert')
+config.bind('<Ctrl-H>'       , 'fake-key <Ctrl-Left>'        , mode='insert')
+config.bind('<Ctrl-J>'       , 'fake-key <End>'              , mode='insert')
+config.bind('<Ctrl-K>'       , 'fake-key <Home>'             , mode='insert')
+config.bind('<Ctrl-L>'       , 'fake-key <Ctrl-Right>'       , mode='insert')
+config.bind('<Ctrl-Shift-H>' , 'fake-key <Ctrl-Shift-Left>'  , mode='insert')
+config.bind('<Ctrl-Shift-L>' , 'fake-key <Ctrl-Shift-Right>' , mode='insert')
+config.bind('<Ctrl-W>'       , 'fake-key <Ctrl-Backspace>'   , mode='insert')
+
+config.bind('<Ctrl-Shift-V>', 'insert-text -- {primary}', mode='insert')
+config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
 config.bind('<Space>ds', 'view-source')
 
@@ -1045,9 +1068,22 @@ config.bind('<Space>dw', 'devtools window')
 
 c.content.canvas_reading = True
 
+def filter_yt(info: interceptor.Request):
+    """Block the given request if necessary."""
+    url = info.request_url
+    if (
+        url.host() == "www.youtube.com"
+        and url.path() == "/get_video_info"
+        and "&adformat=" in url.query()
+    ):
+        info.block()
+
+
+interceptor.register(filter_yt)
+
 c.content.blocking.enabled = True
 
-c.content.blocking.method = "auto"
+c.content.blocking.method = "both"
 
 c.content.blocking.adblock.lists = [
     'https://easylist.to/easylist/easylist.txt',
@@ -1167,6 +1203,7 @@ c.hints.selectors = {
     'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'],
     'images': ['img'],
     'media': ['audio', 'img', 'video'],
+    'video': ['audio', 'video'],
     'url': ['[src]', '[href]'],
     'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea']
 }
@@ -1176,7 +1213,7 @@ c.hints.uppercase = False
 c.keyhint.delay = 500
 c.keyhint.blacklist = []
 
-# c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['alacritty', '-e', 'vim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 
 c.editor.encoding = 'utf-8'
 
@@ -1235,7 +1272,7 @@ c.input.mouse.back_forward_buttons = True
 
 c.input.mouse.rocker_gestures = False
 
-c.input.partial_timeout = 3000
+c.input.partial_timeout = 10000
 
 c.input.spatial_navigation = False
 

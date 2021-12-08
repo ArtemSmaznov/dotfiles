@@ -92,13 +92,17 @@ NOTE: =config.py= is intended for advanced users who are comfortable with manual
 | =youtube-dl= | View YouTube videos in =mpv= |
 |------------+----------------------------|
 
-* UI
-** Theme
+* Imports
+#+begin_src python
+from qutebrowser.api import interceptor
+#+end_src
+
 Import theme
 #+begin_src python
 import themes.default as theme
 #+end_src
 
+* UI
 ** Fonts
 #+begin_src python
 c.fonts.default_size = '14pt'
@@ -385,7 +389,7 @@ Duration (in milliseconds) to show messages in the statusbar for. Set to 0 to ne
 Type: Int
 - Default: 3000
 #+begin_src python
-c.messages.timeout = 3000
+c.messages.timeout = 5000
 #+end_src
 
 ** Web Pages
@@ -628,9 +632,9 @@ c.content.headers.referer = 'same-domain'
 #+end_src
 
 User agent to send.  The following placeholders are defined:  * ={os_info}=: Something like =X11; Linux x86_64=. * ={webkit_version}=: The underlying =WebKit= version (set to a fixed value   with =QtWebEngine=). * ={qt_key}=: =Qt= for =QtWebKit=, =QtWebEngine= for =QtWebEngine=. * ={qt_version}=: The underlying Qt version. * ={upstream_browser_key}=: =Version= for =QtWebKit=, =Chrome= for =QtWebEngine=. * ={upstream_browser_version}=: The corresponding Safari/Chrome version. * ={qutebrowser_version}=: The currently running qutebrowser version.  The default value is equal to the unchanged user agent of =QtWebKit/QtWebEngine=. Note that the value read from JavaScript is always the global value. With =QtWebEngine= between 5.12 and 5.14 (inclusive), changing the value exposed to JavaScript requires a restart.
-# Type: =FormatString=
+Type: =FormatString=
 #+begin_src python
-# c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 #+end_src
 
 ** Tabs
@@ -1391,6 +1395,22 @@ config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 #+end_src
 
+** Videos
+#+begin_src python
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
+config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
+config.bind('<Space>vf', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind('<Space>af', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
+#+end_src
+
+You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+
+It also works nicely with rapid hints:
+
+:bind ,m spawn umpv {url}
+:bind ,M hint links spawn umpv {hint-url}
+:bind ;M hint --rapid links spawn umpv {hint-url}
+
 ** Navigation
 Scrolling
 #+begin_src python
@@ -1684,13 +1704,14 @@ config.bind('F', 'hint all tab')
 
 config.bind(';i', 'hint inputs')
 
+config.bind(';m', 'hint media')
 config.bind(';p', 'hint images')
 config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}')
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
 #+end_src
 
 Rapid - Open in background and remain in hint mode
@@ -1731,7 +1752,7 @@ config.bind('ys', 'yank selection', mode='normal')
 config.bind('<Ctrl-c>', 'yank selection', mode='normal')
 #+end_src
 
-*** Yank Page
+Yank Page
 #+begin_src python
 config.bind('yy', 'yank')
 config.bind('Yy', 'yank -s')
@@ -1758,7 +1779,7 @@ config.bind('yo', 'yank inline [[{url}][{title}]]')
 config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
 #+end_src
 
-*** Yank Link
+Yank Link
 #+begin_src python
 config.bind('yl', 'hint links yank')
 config.bind('Yl', 'hint links yank-primary')
@@ -1807,12 +1828,18 @@ config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
 #+end_src
 
 *** Command Mode
+Edit in external editor
+#+begin_src python
+config.bind('<Ctrl-E>', 'edit-command', mode='command')
+#+end_src
 
+Navigation
 #+begin_src python
 config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 #+end_src
 
+Other
 #+begin_src python
 # config.bind('<Alt-B>', 'rl-backward-word', mode='command')
 config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
@@ -1928,25 +1955,33 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 #+end_src
 
 *** Insert Mode
-
+Edit in external editor
 #+begin_src python
-# config.bind('<Ctrl-E>', 'edit-text', mode='insert')
-# config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+config.bind('<Ctrl-E>'       , 'edit-text'                   , mode='insert')
 #+end_src
 
-** Videos
+Vim-like text navigation
 #+begin_src python
-config.bind('gv', 'spawn mpv --ytdl-format=best {url}')
-config.bind('ga', 'spawn mpv --ytdl-format=best {url} --no-video')
+config.bind('<Mod1-H>'       , 'fake-key <Left>'             , mode='insert')
+config.bind('<Mod1-J>'       , 'fake-key <Down>'             , mode='insert')
+config.bind('<Mod1-K>'       , 'fake-key <Up>'               , mode='insert')
+config.bind('<Mod1-L>'       , 'fake-key <Right>'            , mode='insert')
+config.bind('<Mod1-Shift-H>' , 'fake-key <Shift-Left>'       , mode='insert')
+config.bind('<Mod1-Shift-L>' , 'fake-key <Shift-Right>'      , mode='insert')
+config.bind('<Ctrl-H>'       , 'fake-key <Ctrl-Left>'        , mode='insert')
+config.bind('<Ctrl-J>'       , 'fake-key <End>'              , mode='insert')
+config.bind('<Ctrl-K>'       , 'fake-key <Home>'             , mode='insert')
+config.bind('<Ctrl-L>'       , 'fake-key <Ctrl-Right>'       , mode='insert')
+config.bind('<Ctrl-Shift-H>' , 'fake-key <Ctrl-Shift-Left>'  , mode='insert')
+config.bind('<Ctrl-Shift-L>' , 'fake-key <Ctrl-Shift-Right>' , mode='insert')
+config.bind('<Ctrl-W>'       , 'fake-key <Ctrl-Backspace>'   , mode='insert')
 #+end_src
 
-You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
-
-It also works nicely with rapid hints:
-
-:bind ,m spawn umpv {url}
-:bind ,M hint links spawn umpv {hint-url}
-:bind ;M hint --rapid links spawn umpv {hint-url}
+Paste text
+#+begin_src python
+config.bind('<Ctrl-Shift-V>', 'insert-text -- {primary}', mode='insert')
+config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+#+end_src
 
 ** Development Tools
 #+begin_src python
@@ -1971,7 +2006,23 @@ websites to work properly.
 c.content.canvas_reading = True
 #+end_src
 
-** Ad-blocking
+** YouTube Add Blocking
+#+begin_src python
+def filter_yt(info: interceptor.Request):
+    """Block the given request if necessary."""
+    url = info.request_url
+    if (
+        url.host() == "www.youtube.com"
+        and url.path() == "/get_video_info"
+        and "&adformat=" in url.query()
+    ):
+        info.block()
+
+
+interceptor.register(filter_yt)
+#+end_src
+
+** Ad Blocking
 Enable the ad/host blocker
 Type: =Bool=
 #+begin_src python
@@ -1986,7 +2037,7 @@ Valid values:
 - hosts: Use hosts blocking
 - both: Use both hosts blocking and Brave's ABP-style adblocker
 #+begin_src python
-c.content.blocking.method = "auto"
+c.content.blocking.method = "both"
 #+end_src
 
 List of URLs to ABP-style adblocking rulesets. Only used when Brave's ABP-style adblocker is used (see =content.blocking.method=). You can find an overview of available lists here:
@@ -2339,6 +2390,7 @@ c.hints.selectors = {
     'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'],
     'images': ['img'],
     'media': ['audio', 'img', 'video'],
+    'video': ['audio', 'video'],
     'url': ['[src]', '[href]'],
     'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea']
 }
@@ -2366,7 +2418,7 @@ c.keyhint.blacklist = []
 Editor (and arguments) to use for the =edit-*= commands. The following placeholders are defined:  * ={file}=: Filename of the file to be edited. * ={line}=: Line in which the caret is found in the text. * ={column}=: Column in which the caret is found in the text. * ={line0}=: Same as ={line}=, but starting from index 0. * ={column0}=: Same as ={column}=, but starting from index 0.
 Type: =ShellCommand=
 #+begin_src python
-# c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['alacritty', '-e', 'vim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 #+end_src
 
 Encoding to use for the editor.
@@ -2578,7 +2630,7 @@ c.input.mouse.rocker_gestures = False
 Timeout (in milliseconds) for partially typed key bindings. If the current input forms only partial matches, the =keystring= will be cleared after this time. If set to 0, partially typed bindings are never cleared.
 Type: Int
 #+begin_src python
-c.input.partial_timeout = 3000
+c.input.partial_timeout = 10000
 #+end_src
 
 Enable spatial navigation. Spatial navigation consists in the ability to navigate between focusable elements in a Web page, such as hyperlinks and form controls, by using Left, Right, Up and Down arrow keys. For example, if the user presses the Right key, heuristics determine whether there is an element he might be trying to reach towards the right and which element he probably wants.
