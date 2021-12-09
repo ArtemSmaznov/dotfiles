@@ -8,8 +8,8 @@
 - [[#intro][Intro]]
   - [[#documentation][Documentation]]
   - [[#dependencies][Dependencies]]
+- [[#imports][Imports]]
 - [[#ui][UI]]
-  - [[#theme][Theme]]
   - [[#fonts][Fonts]]
   - [[#window][Window]]
   - [[#completion-widget][Completion Widget]]
@@ -43,6 +43,7 @@
   - [[#unbind][Unbind]]
   - [[#qutebrowser][QuteBrowser]]
   - [[#leader-key][Leader Key]]
+  - [[#videos][Videos]]
   - [[#navigation][Navigation]]
   - [[#interactions][Interactions]]
   - [[#windows][Windows]]
@@ -55,10 +56,11 @@
   - [[#yanking][Yanking]]
   - [[#pass][Pass]]
   - [[#modes][Modes]]
-  - [[#videos][Videos]]
+  - [[#themes][Themes]]
   - [[#development-tools][Development Tools]]
 - [[#privacy][Privacy]]
-  - [[#ad-blocking][Ad-blocking]]
+  - [[#youtube-add-blocking][YouTube Add Blocking]]
+  - [[#ad-blocking][Ad Blocking]]
   - [[#cookies][Cookies]]
   - [[#cache][Cache]]
 - [[#permissions][Permissions]]
@@ -1986,11 +1988,11 @@ config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
 ** Themes
 #+begin_src python
-config.bind(',a' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind(',d' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind(',g' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+config.bind('<Space>tca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>tcd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>tcg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>tcsd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>tcsl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 #+end_src
 
 ** Development Tools
@@ -2518,7 +2520,7 @@ Valid values:
 List of user stylesheet filenames to use.
 # Type: List of File, or File
 #+begin_src python
-# c.content.user_stylesheets = []
+# c.content.user_stylesheets = ["~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css"]
 #+end_src
 
 Which interfaces to expose via WebRTC.

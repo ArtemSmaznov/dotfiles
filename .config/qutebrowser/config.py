@@ -1056,11 +1056,12 @@ config.bind('<Ctrl-W>'       , 'fake-key <Ctrl-Backspace>'   , mode='insert')
 config.bind('<Ctrl-Shift-V>', 'insert-text -- {primary}', mode='insert')
 config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
-config.bind(',a' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind(',d' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind(',g' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+config.bind('<Space>tca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>tcd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>tcg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>tcsd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>tcsl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+config.bind('<Space>t3'  , 'config-cycle content.cookies.accept no-3rdparty ""')
 
 config.bind('<Space>ds', 'view-source')
 
@@ -1244,7 +1245,7 @@ c.content.private_browsing = False
 
 # c.content.unknown_url_scheme_policy = 'allow-from-user-interaction'
 
-# c.content.user_stylesheets = []
+# c.content.user_stylesheets = ["~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css"]
 
 # c.content.webrtc_ip_handling_policy = 'all-interfaces'
 
