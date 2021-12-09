@@ -179,9 +179,9 @@ blur-background-fixed = true;
 blur-background-exclude = [
 	"window_type = 'desktop'",
 	"window_type = 'utility'",
+	"name        = 'slop'", # for not blurring maim area screenshots
 	"_GTK_FRAME_EXTENTS@:c"
 ];
-
 #+end_src
 
 * General Settings
