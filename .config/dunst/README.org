@@ -5,11 +5,23 @@
 #+PROPERTY: header-args :tangle ~/.config/dunst/dunstrc
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#global][Global]]
 - [[#experimental][Experimental]]
 - [[#shortcuts][Shortcuts]]
 - [[#urgent][Urgent]]
 - [[#other][Other]]
+
+* Dependencies
+|-------+---------------------|
+| Name  | Description         |
+|-------+---------------------|
+| [[https://archlinux.org/packages/?name=dunst][dunst]] | Notification daemon |
+|-------+---------------------|
+
+#+begin_example shell
+sudo pacman -S dunst
+#+end_example
 
 * Global
 #+begin_src conf

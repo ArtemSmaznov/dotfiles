@@ -29,11 +29,15 @@
   - [[#manipulate][Manipulate]]
 
 * Dependencies
-|----------+------------------------------------|
-| App      | Description                        |
-|----------+------------------------------------|
-| [[https://github.com/karlch/vimiv-qt][vimiv-qt]] | A vim-like minimalist image viewer |
-|----------+------------------------------------|
+|--------------+------------------------------------|
+| Name         | Description                        |
+|--------------+------------------------------------|
+| [[https://aur.archlinux.org/packages/vimiv-qt-git][vimiv-qt-git]] | A vim-like minimalist image viewer |
+|--------------+------------------------------------|
+
+#+begin_example shell
+paru -S vimiv-qt-git
+#+end_example
 
 * Config
 ** General

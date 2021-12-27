@@ -4,6 +4,7 @@
 #+STARTUP: overview
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#config][Config]]
   - [[#warning][Warning]]
   - [[#window][Window]]
@@ -33,6 +34,18 @@
   - [[#media-keys][Media Keys]]
   - [[#mouse-bindings][Mouse Bindings]]
   - [[#misc][Misc]]
+
+* Dependencies
+|---------------------+-------------------------------------|
+| Name                | Description                         |
+|---------------------+-------------------------------------|
+| [[https://archlinux.org/packages/?name=mpv][mpv]]                 | A vim-like minimalist media player  |
+| [[https://github.com/torque/mpv-progressbar][Torgue Progress-bar]] | Script for a different progress bar |
+|---------------------+-------------------------------------|
+
+#+begin_example shell
+sudo pacman -S mpv
+#+end_example
 
 * Config
 ** Warning
@@ -272,7 +285,6 @@ You can also include other configuration files.
 
 * Scripts
 ** Torque Progress-bar
-[[https://github.com/torque/mpv-progressbar][repo]]
 *** Colors
 Here are some useful ASS override tags (omit square brackets)
 \fn[Font Name] : sets the font to the named font.

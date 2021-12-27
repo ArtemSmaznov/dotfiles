@@ -7,12 +7,24 @@
 Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#general][General]]
 - [[#input][Input]]
 - [[#output][Output]]
 - [[#color][Color]]
 - [[#smoothing][Smoothing]]
 - [[#eq][EQ]]
+
+* Dependencies
+|------+--------------------------------|
+| Name | Description                    |
+|------+--------------------------------|
+| [[https://aur.archlinux.org/packages/cava/][cava]] | Console-based audio visualizer |
+|------+--------------------------------|
+
+#+begin_example shell
+paru -S cava
+#+end_example
 
 * General
 #+begin_src conf

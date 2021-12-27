@@ -5,11 +5,23 @@
 #+PROPERTY: header-args :tangle ~/.config/terminator/config
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#global-config][Global Config]]
 - [[#keybindings][Keybindings]]
 - [[#profiles][Profiles]]
 - [[#layouts][Layouts]]
 - [[#plugins][Plugins]]
+
+* Dependencies
+|------------+------------------------------|
+| Name       | Description                  |
+|------------+------------------------------|
+| [[https://archlinux.org/packages/?name=terminator][terminator]] | A powerful terminal emulator |
+|------------+------------------------------|
+
+#+begin_example shell
+sudo pacman -S terminator
+#+end_example
 
 * Global Config
 #+begin_src conf

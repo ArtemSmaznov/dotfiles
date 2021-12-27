@@ -5,6 +5,7 @@
 #+PROPERTY: header-args :tangle ~/.config/rofi/config.rasi
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#begin-config][Begin Config]]
 - [[#all-configs][All Configs]]
 - [[#keybindings][Keybindings]]
@@ -21,6 +22,17 @@
   - [[#misc-settings][Misc settings]]
   - [[#options-for-generating-new-password-entries][Options for generating new password entries]]
   - [[#keybindings-1][Keybindings]]
+
+* Dependencies
+|------+-------------|
+| Name | Description |
+|------+-------------|
+| [[https://archlinux.org/packages/?name=rofi][rofi]] | Run dialog  |
+|------+-------------|
+
+#+begin_example shell
+sudo pacman -S rofi
+#+end_example
 
 * Begin Config
 #+begin_src conf

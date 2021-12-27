@@ -5,9 +5,8 @@
 #+PROPERTY: header-args :tangle config.py
 
 * Table of Contents :toc:
-- [[#intro][Intro]]
-  - [[#documentation][Documentation]]
-  - [[#dependencies][Dependencies]]
+- [[#documentation][Documentation]]
+- [[#dependencies][Dependencies]]
 - [[#imports][Imports]]
 - [[#ui][UI]]
   - [[#fonts][Fonts]]
@@ -86,9 +85,6 @@
 =qute://help/settings.html=
 
 * Dependencies
-:PROPERTIES:
-:ID:       02910148-6774-4130-b2f9-415f572a0814
-:END:
 |-----------------------+------------------------------------|
 | Name                  | Description                        |
 |-----------------------+------------------------------------|

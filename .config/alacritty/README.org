@@ -5,12 +5,24 @@
 #+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#window][Window]]
 - [[#font-configuration][Font configuration]]
 - [[#colors][Colors]]
 - [[#cursor][Cursor]]
 - [[#live-config-reload][Live config reload]]
 - [[#other][Other]]
+
+* Dependencies
+|-----------+--------------------------|
+| Name      | Description              |
+|-----------+--------------------------|
+| [[https://archlinux.org/packages/?name=alacritty][Alacritty]] | A fast terminal emulator |
+|-----------+--------------------------|
+
+#+begin_example shell
+sudo pacman -S alacritty
+#+end_example
 
 * Window
 #+begin_src yaml

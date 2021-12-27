@@ -5,10 +5,22 @@
 #+PROPERTY: header-args :tangle init.lisp
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#theme][Theme]]
 - [[#behavior][Behavior]]
   - [[#vim-mode][Vim mode]]
   - [[#search-engines][Search Engines]]
+
+* Dependencies
+|------+-----------------------------------|
+| Name | Description                       |
+|------+-----------------------------------|
+| [[https://aur.archlinux.org/packages/nyxt/][nyxt]] | A vim-like minimalist web browser |
+|------+-----------------------------------|
+
+#+begin_example shell
+paru -S nyxt
+#+end_example
 
 * Theme
 #+begin_src lisp
