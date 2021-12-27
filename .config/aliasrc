@@ -41,12 +41,20 @@ alias bd='cd "$OLDPWD"'
 alias mkdir='mkdir -p'
 
 # Create and go to the directory
-mkdirg() {
+function mkdirg() {
     mkdir -p $1
     cd $1
 }
 
-cpp() {
+function cpr() {
+  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
+} 
+
+function mvr() {
+  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
+}
+
+function cpp() {
     set -e
     strace -q -ewrite cp -- "${1}" "${2}" 2>&1 |
         awk '{
@@ -84,7 +92,7 @@ alias fd='find . -type d -name'
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
 
 # Searches for text in all files in the current folder
-ftext() {
+function ftext() {
     # -i case-insensitive
     # -I ignore binary files
     # -H causes filename to be printed
@@ -185,7 +193,7 @@ alias pgs="pass git status"
 alias pgp="pass git push"
 alias pgf="pass git pull"
 
-ex() {
+function ex() {
     for archive in $*; do
         if [ -f $archive ]; then
             case $archive in

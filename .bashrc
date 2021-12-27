@@ -64,7 +64,7 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # Show auto-completion list automatically, without double tab
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
-source_config() {
+function source_config() {
   [ -f $1 ] && source $1
 }
 

@@ -100,7 +100,7 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
   add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-source_config() {
+function source_config() {
   [ -f $1 ] && source $1
 }
 
