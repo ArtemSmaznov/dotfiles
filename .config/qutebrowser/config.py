@@ -333,11 +333,11 @@ c.tabs.last_close = 'startpage'
 
 c.tabs.max_width = 200
 
-# c.tabs.min_width = -1
+c.tabs.min_width = -1
 
 c.tabs.mode_on_change = 'normal'
 
-c.tabs.mousewheel_switching = True
+c.tabs.mousewheel_switching = False
 
 c.tabs.new_position.related = 'next'
 
@@ -363,13 +363,13 @@ c.tabs.tabs_are_windows = False
 
 c.tabs.title.alignment = 'left'
 
-c.tabs.title.format = '{audio}{private} {current_title}'
+c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
 
-c.tabs.title.format_pinned = '{audio}{private}'
+c.tabs.title.format_pinned = '{perc}{audio}{private}'
 
 c.tabs.tooltips = True
 
-# c.tabs.undo_stack_size = 100
+c.tabs.undo_stack_size = -1
 
 # c.tabs.width = '15%'
 
@@ -474,7 +474,7 @@ c.downloads.location.suggestion = 'path'
 # handler is used. Any `{}` in the string will be expanded to the
 # filename, else the filename will be appended.
 # Type: String
-# c.downloads.open_dispatcher = None
+c.downloads.open_dispatcher = None
 
 # Where to show the downloaded files.
 # Type: VerticalPosition
@@ -649,8 +649,8 @@ config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
 
 config.bind('<Space>hr', 'config-source')
-config.bind('<Space>hh', 'help')
-config.bind('<Space>hs', 'set-cmd-text :help :')
+config.bind('<Space>hh', 'help -t')
+config.bind('<Space>hs', 'set-cmd-text :help -t :')
 
 config.bind('<Space>p', 'set-cmd-text :process :')
 
@@ -659,9 +659,9 @@ config.bind('<Space>qr', 'restart')
 
 config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
 config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
-config.bind('<Space>vf', 'hint media spawn mpv --ytdl-format=best {hint-url}')
-config.bind('<Space>af', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
-config.bind('<Space>vd', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')
+config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')
 config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('h', 'scroll left')
@@ -1061,7 +1061,6 @@ config.bind('<Space>tcd' , 'config-cycle content.user_stylesheets ~/.config/qute
 config.bind('<Space>tcg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
 config.bind('<Space>tcsd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
 config.bind('<Space>tcsl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-config.bind('<Space>t3'  , 'config-cycle content.cookies.accept no-3rdparty ""')
 
 config.bind('<Space>ds', 'view-source')
 
