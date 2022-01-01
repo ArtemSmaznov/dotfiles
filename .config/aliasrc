@@ -4,8 +4,13 @@
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Enable aliases for Sudo commands
-alias sudo='sudo '
+if hash doas 2>/dev/null; then
+    # Use doas instead of sudo
+    alias sudo='doas'
+else
+    # Enable aliases for Sudo commands
+    alias sudo='sudo '
+fi
 
 alias makepkg='makepkg -si'
 
@@ -117,6 +122,7 @@ alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 # Setup extra password store
 alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 
+alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'
 alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
 alias pacman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'

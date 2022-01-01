@@ -37,7 +37,6 @@
 
 * Bash
 ** Start Section
-
 #+begin_src shell :tangle ~/.bashrc
 #!/bin/bash
 
@@ -48,7 +47,6 @@ iatest=$(expr index "$-" i)
 #+end_src
 
 ** Options
-
 #+begin_src shell :tangle ~/.bashrc
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 set -o vi
@@ -63,7 +61,6 @@ shopt -s checkwinsize # Check the window size after each command and, if necessa
 #+end_src
 
 ** History
-
 #+begin_src shell :tangle ~/.bashrc
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
@@ -82,7 +79,6 @@ export HISTCONTROL=erasedups:ignoreboth
 #+end_src
 
 ** Exports
-
 #+begin_src shell :tangle ~/.bashrc
 # Make local bin files usable
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
@@ -109,7 +105,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #+end_src
 
 ** Auto-complete
-
 #+begin_src shell :tangle ~/.bashrc
 # Enable history completion with up and down arrow keys
 bind '"\e[A": history-search-backward'
@@ -124,7 +119,6 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 #+end_src
 
 ** Sources
-
 #+begin_src shell :tangle ~/.bashrc
 function source_config() {
   [ -f $1 ] && source $1
@@ -142,7 +136,6 @@ source_config /usr/share/fzf/completion.bash
 #+end_src
 
 ** End Section
-
 #+begin_src shell :tangle ~/.bashrc
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then
@@ -157,7 +150,6 @@ fi
 
 * ZSH
 ** Options
-
 #+begin_src shell :tangle ~/.zshrc
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 bindkey -v
@@ -168,7 +160,6 @@ setopt autocd # auto cd when entering just the path
 #+end_src
 
 ** History
-
 #+begin_src shell :tangle ~/.zshrc
 # History
 SAVEHIST=10000
@@ -184,7 +175,6 @@ setopt HIST_IGNORE_SPACE
 #+end_src
 
 ** Exports
-
 #+begin_src shell :tangle ~/.zshrc
 # Make local bin files usable
 path+=($HOME/.local/bin)
@@ -204,7 +194,6 @@ export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=
 #+end_src
 
 ** Auto-complete
-
 #+begin_src shell :tangle ~/.zshrc
 fpath=($HOME/.config/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
@@ -225,7 +214,6 @@ zle -N down-line-or-beginning-search
 #+end_src
 
 ** Keys
-
 #+begin_src shell :tangle ~/.zshrc
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -279,7 +267,6 @@ fi
 #+end_src
 
 ** Sources
-
 #+begin_src shell :tangle ~/.zshrc
 function source_config() {
   [ -f $1 ] && source $1
@@ -300,7 +287,6 @@ source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #+end_src
 
 ** End Section
-
 #+begin_src shell :tangle ~/.zshrc
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then
@@ -324,7 +310,6 @@ To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
 
 ** Start
-
 #+begin_src shell :tangle ~/.config/aliasrc
 #!/usr/bin/env bash
 
@@ -332,14 +317,18 @@ e.g. the ls command is aliased, but to use the normal ls command you would type 
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Enable aliases for Sudo commands
-alias sudo='sudo '
+if hash doas 2>/dev/null; then
+    # Use doas instead of sudo
+    alias sudo='doas'
+else
+    # Enable aliases for Sudo commands
+    alias sudo='sudo '
+fi
 
 alias makepkg='makepkg -si'
 #+end_src
 
 ** Editors
-
 #+begin_src shell :tangle ~/.config/aliasrc
 alias nano='nano -c'
 alias snano='sudo nano'
@@ -348,7 +337,6 @@ alias emacs='emacsclient -c -a "emacs"'
 #+end_src
 
 ** Listing directories
-
 #+begin_src shell :tangle ~/.config/aliasrc
 if hash exa 2>/dev/null; then
     alias exa='exa --icons --group-directories-first'
@@ -365,7 +353,6 @@ alias lld="\ls -l | egrep '^d'"    # long list directories only
 #+end_src
 
 ** Changing directories
-
 #+begin_src shell :tangle ~/.config/aliasrc
 alias ~='cd ~'
 alias cd..='cd ..'
@@ -420,7 +407,6 @@ function cpp() {
 #+end_src
 
 ** Search
-
 #+begin_src shell :tangle ~/.config/aliasrc
 # Less
 alias less='less -iRNJ --use-color'
@@ -454,7 +440,6 @@ function ftext() {
 #+end_src
 
 ** Tools
-
 #+begin_src shell :tangle ~/.config/aliasrc
 # Start ArchiSteamFarm
 if [[ -d ~/ASF ]]; then
@@ -473,8 +458,8 @@ alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 
 ** System
 *** Pacman
-
 #+begin_src shell :tangle ~/.config/aliasrc
+alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'
 alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
 alias pacman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'
@@ -485,7 +470,6 @@ alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -
 #+end_src
 
 *** Power Control
-
 #+begin_src shell :tangle ~/.config/aliasrc
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
@@ -494,7 +478,6 @@ alias suspend='systemctl suspend'
 #+end_src
 
 *** System Tools
-
 #+begin_src shell :tangle ~/.config/aliasrc
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
@@ -516,7 +499,6 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 #+end_src
 
 *** Networking
-
 #+begin_src shell :tangle ~/.config/aliasrc
 # Show used DNS addresses
 alias dnsview='cat /etc/resolv.conf'
