@@ -533,80 +533,101 @@ c.auto_save.interval = 15000
 
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
 
-config.unbind('<Ctrl-Q>')
-config.unbind('ZQ')
-config.unbind('ZZ')
+config.unbind('<Ctrl-Q>') # quit ?
+config.unbind('ZQ')       # quit
+config.unbind('ZZ')       # quit --save
 
-config.unbind('gf')
+config.unbind('tCH') # config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tCh') # config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tCu') # config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tIH') # config-cycle -p -u *://*.{url:host}/* content.images ;; reload
+config.unbind('tIh') # config-cycle -p -u *://{url:host}/* content.images ;; reload
+config.unbind('tIu') # config-cycle -p -u {url} content.images ;; reload
+config.unbind('tPH') # config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload
+config.unbind('tPh') # config-cycle -p -u *://{url:host}/* content.plugins ;; reload
+config.unbind('tPu') # config-cycle -p -u {url} content.plugins ;; reload
+config.unbind('tSH') # config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tSh') # config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tSu') # config-cycle -p -u {url} content.javascript.enabled ;; reload
+config.unbind('tcH') # config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tch') # config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tcu') # config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tiH') # config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload
+config.unbind('tih') # config-cycle -p -t -u *://{url:host}/* content.images ;; reload
+config.unbind('tiu') # config-cycle -p -t -u {url} content.images ;; reload
+config.unbind('tpH') # config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload
+config.unbind('tph') # config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload
+config.unbind('tpu') # config-cycle -p -t -u {url} content.plugins ;; reload
+config.unbind('tsH') # config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tsh') # config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tsu') # config-cycle -p -t -u {url} content.javascript.enabled ;; reload
 
-config.unbind('tCH')
-config.unbind('tCh')
-config.unbind('tCu')
-config.unbind('tIH')
-config.unbind('tIh')
-config.unbind('tIu')
-config.unbind('tPH')
-config.unbind('tPh')
-config.unbind('tPu')
-config.unbind('tSH')
-config.unbind('tSh')
-config.unbind('tSu')
-config.unbind('tcH')
-config.unbind('tch')
-config.unbind('tcu')
-config.unbind('tiH')
-config.unbind('tih')
-config.unbind('tiu')
-config.unbind('tpH')
-config.unbind('tph')
-config.unbind('tpu')
-config.unbind('tsH')
-config.unbind('tsh')
-config.unbind('tsu')
+config.unbind('-') # zoom-out
+config.unbind('+') # zoom-in
+config.unbind('=') # zoom
 
-config.unbind('-')
-config.unbind('+')
-config.unbind('=')
+config.unbind('wo') # set-cmd-text -s :open -w
+config.unbind('wO') # set-cmd-text :open -w {url:pretty}
 
-config.unbind('ga')
+config.unbind('wh') # back -w
+config.unbind('wl') # forward -w
 
-config.unbind('d')
-config.unbind('D')
+config.unbind('wp') # open -w -- {clipboard}
+config.unbind('wP') # open -w -- {primary}
 
-config.unbind('T')
+config.unbind('ga') # open -t
 
-config.unbind('xo')
-config.unbind('xO')
+config.unbind('d') # tab-close
+config.unbind('D') # undo
 
-config.unbind('gm')
-config.unbind('g$')
-config.unbind('g0')
-config.unbind('g^')
-config.unbind('gC')
-config.unbind('gD')
-config.unbind('gJ')
-config.unbind('gK')
-config.unbind('co')
+config.unbind('T') # tab-focus
+config.unbind('th') # back -t
+config.unbind('tl') # forward -t
 
-config.unbind('ad')
-config.unbind('gd')
+config.unbind('xo') # set-cmd-text -s :open -b
+config.unbind('xO') # set-cmd-text :open -b -r {url:pretty}
 
-config.unbind('Sh')
+config.unbind('Pp') # open -t -- {clipboard}
+config.unbind('PP') # open -t -- {primary}
 
-config.unbind('b')
-config.unbind('B')
-config.unbind('M')
-config.unbind('Sq')
-config.unbind('Sb')
+config.unbind('gm') # tab-move
+config.unbind('g$') # tab-focus -1
+config.unbind('g0') # tab-focus 1
+config.unbind('g^') # tab-focus 1
+config.unbind('gC') # tab-clone
+config.unbind('gD') # tab-give
+config.unbind('gJ') # tab-move +
+config.unbind('gK') # tab-move -
+config.unbind('co') # tab-only
 
-config.unbind(';r')
-config.unbind(';R')
-config.unbind(';d')
-config.unbind(';I')
-config.unbind(';t')
-config.unbind(';y')
-config.unbind(';Y')
-config.unbind('gi')
+config.unbind('ad') # download-cancel
+config.unbind('gd') # download
+
+config.unbind('Sh') # history
+
+config.unbind('b')  # quickmark-load
+config.unbind('B')  # quickmark-load -t
+config.unbind('M')  # bookmark-add
+config.unbind('Sq') # bookmark-list
+config.unbind('Sb') # bookmark-list --jump
+
+config.unbind(';r') # hint --rapid links tab-bg
+config.unbind(';R') # hint --rapid links window
+config.unbind(';d') # hint links download
+config.unbind(';I') # hint images tab
+config.unbind(';t') # hint inputs
+config.unbind(';y') # hint links yank
+config.unbind(';Y') # hint links yank-primary
+config.unbind('gi') # hint inputs --first
+
+config.unbind('gf')  # view-source
+config.unbind('wi')  # devtools
+config.unbind('wIf') # devtools-focus
+config.unbind('wIh') # devtools left
+config.unbind('wIj') # devtools bottom
+config.unbind('wIk') # devtools top
+config.unbind('wIl') # devtools right
+config.unbind('wIw') # devtools window
 
 config.bind('Ss', 'set')
 config.bind('ss', 'set-cmd-text -s :set')
@@ -711,18 +732,18 @@ config.bind('<F11>', 'fullscreen')
 config.bind('q', 'macro-record')
 config.bind('@', 'macro-run')
 
-config.bind('wh', 'back -w')
-config.bind('wl', 'forward -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
 
 config.bind('wf', 'hint all window')
-config.bind('wo', 'set-cmd-text -s :open -w')
-config.bind('wO', 'set-cmd-text :open -w {url:pretty}')
+config.bind('<Space>wo', 'set-cmd-text -s :open -w')
+config.bind('<Space>wO', 'set-cmd-text :open -w {url:pretty}')
 
 config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
 config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
 
-config.bind('wp', 'open -w -- {clipboard}')
-config.bind('wP', 'open -w -- {primary}')
+config.bind('<Space>wp', 'open -w -- {clipboard}')
+config.bind('<Space>wP', 'open -w -- {primary}')
 
 config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
@@ -733,6 +754,8 @@ config.bind('<back>', 'back')
 config.bind('<forward>', 'forward')
 config.bind('H', 'back')
 config.bind('L', 'forward')
+config.bind('tH', 'back -t')
+config.bind('tL', 'forward -t')
 
 config.bind('<Ctrl-Shift-h>', 'back -b')
 config.bind('<Ctrl-Shift-l>', 'forward -b')
@@ -745,6 +768,8 @@ config.bind('tn', 'open -t')
 config.bind('o', 'set-cmd-text -s :open')
 
 config.bind('O', 'set-cmd-text -s :open -t')
+config.bind('<Space>to', 'set-cmd-text -s :open -t')
+config.bind('<Space>tO', 'set-cmd-text :open -t {url:pretty}')
 config.bind('gs', 'set-cmd-text -s :open -b')
 
 config.bind('go', 'set-cmd-text :open {url:pretty}')
@@ -755,8 +780,8 @@ config.bind('gS', 'set-cmd-text :open -b -r {url:pretty}')
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pP', 'open -- {primary}')
 
-config.bind('Pp', 'open -t -- {clipboard}')
-config.bind('PP', 'open -t -- {primary}')
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
 
 config.bind('<Return>', 'selection-follow')
 
@@ -788,7 +813,7 @@ config.bind('gt', 'set-cmd-text -sr :tab-focus')
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
 config.bind('tc', 'tab-close')
-config.bind('tO', 'tab-only')
+# config.bind('tO', 'tab-only')
 
 config.bind('<Ctrl-Shift-T>', 'undo')
 config.bind('u', 'undo')
@@ -806,6 +831,7 @@ config.bind('<Ctrl-p>', 'tab-pin')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
+config.bind('tt', 'set-cmd-text :tab-take ')
 config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('D', 'set-cmd-text -s :download')
@@ -1068,11 +1094,11 @@ config.bind('<Space>dt', 'devtools')
 config.bind('<Space>dd', 'devtools')
 config.bind('<Space>df', 'devtools-focus')
 
-config.bind('<Space>dh', 'devtools left')
-config.bind('<Space>dl', 'devtools right')
-config.bind('<Space>dj', 'devtools bottom')
-config.bind('<Space>dk', 'devtools top')
-config.bind('<Space>dw', 'devtools window')
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
 
 c.content.canvas_reading = True
 
@@ -1280,7 +1306,7 @@ c.input.mouse.back_forward_buttons = True
 
 c.input.mouse.rocker_gestures = False
 
-c.input.partial_timeout = 10000
+c.input.partial_timeout = 30000
 
 c.input.spatial_navigation = False
 

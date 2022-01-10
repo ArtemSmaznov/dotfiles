@@ -1208,125 +1208,146 @@ key. Note that when a key is bound (via `bindings.default` or
 
 ** Unbind
 *** QuteBrowser
-
 Termination
 #+begin_src python
-config.unbind('<Ctrl-Q>')
-config.unbind('ZQ')
-config.unbind('ZZ')
-#+end_src
-
-View source
-#+begin_src python
-config.unbind('gf')
+config.unbind('<Ctrl-Q>') # quit ?
+config.unbind('ZQ')       # quit
+config.unbind('ZZ')       # quit --save
 #+end_src
 
 Config-cycle commands
 #+begin_src python
-config.unbind('tCH')
-config.unbind('tCh')
-config.unbind('tCu')
-config.unbind('tIH')
-config.unbind('tIh')
-config.unbind('tIu')
-config.unbind('tPH')
-config.unbind('tPh')
-config.unbind('tPu')
-config.unbind('tSH')
-config.unbind('tSh')
-config.unbind('tSu')
-config.unbind('tcH')
-config.unbind('tch')
-config.unbind('tcu')
-config.unbind('tiH')
-config.unbind('tih')
-config.unbind('tiu')
-config.unbind('tpH')
-config.unbind('tph')
-config.unbind('tpu')
-config.unbind('tsH')
-config.unbind('tsh')
-config.unbind('tsu')
+config.unbind('tCH') # config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tCh') # config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tCu') # config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tIH') # config-cycle -p -u *://*.{url:host}/* content.images ;; reload
+config.unbind('tIh') # config-cycle -p -u *://{url:host}/* content.images ;; reload
+config.unbind('tIu') # config-cycle -p -u {url} content.images ;; reload
+config.unbind('tPH') # config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload
+config.unbind('tPh') # config-cycle -p -u *://{url:host}/* content.plugins ;; reload
+config.unbind('tPu') # config-cycle -p -u {url} content.plugins ;; reload
+config.unbind('tSH') # config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tSh') # config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tSu') # config-cycle -p -u {url} content.javascript.enabled ;; reload
+config.unbind('tcH') # config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tch') # config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tcu') # config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload
+config.unbind('tiH') # config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload
+config.unbind('tih') # config-cycle -p -t -u *://{url:host}/* content.images ;; reload
+config.unbind('tiu') # config-cycle -p -t -u {url} content.images ;; reload
+config.unbind('tpH') # config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload
+config.unbind('tph') # config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload
+config.unbind('tpu') # config-cycle -p -t -u {url} content.plugins ;; reload
+config.unbind('tsH') # config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tsh') # config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload
+config.unbind('tsu') # config-cycle -p -t -u {url} content.javascript.enabled ;; reload
 #+end_src
 
 *** Interactions
 Zooming pages
-
 #+begin_src python
-config.unbind('-')
-config.unbind('+')
-config.unbind('=')
+config.unbind('-') # zoom-out
+config.unbind('+') # zoom-in
+config.unbind('=') # zoom
+#+end_src
+
+*** Windows
+#+begin_src python
+config.unbind('wo') # set-cmd-text -s :open -w
+config.unbind('wO') # set-cmd-text :open -w {url:pretty}
+
+config.unbind('wh') # back -w
+config.unbind('wl') # forward -w
+
+config.unbind('wp') # open -w -- {clipboard}
+config.unbind('wP') # open -w -- {primary}
 #+end_src
 
 *** Tabs
 New tab
 #+begin_src python
-config.unbind('ga')
+config.unbind('ga') # open -t
 #+end_src
 
 Close tab
 #+begin_src python
-config.unbind('d')
-config.unbind('D')
+config.unbind('d') # tab-close
+config.unbind('D') # undo
 #+end_src
 
 Tab menu
 #+begin_src python
-config.unbind('T')
+config.unbind('T') # tab-focus
+config.unbind('th') # back -t
+config.unbind('tl') # forward -t
 #+end_src
 
 Silently open in another tab
 #+begin_src python
-config.unbind('xo')
-config.unbind('xO')
+config.unbind('xo') # set-cmd-text -s :open -b
+config.unbind('xO') # set-cmd-text :open -b -r {url:pretty}
+#+end_src
+
+Open from clipboard
+#+begin_src python
+config.unbind('Pp') # open -t -- {clipboard}
+config.unbind('PP') # open -t -- {primary}
 #+end_src
 
 #+begin_src python
-config.unbind('gm')
-config.unbind('g$')
-config.unbind('g0')
-config.unbind('g^')
-config.unbind('gC')
-config.unbind('gD')
-config.unbind('gJ')
-config.unbind('gK')
-config.unbind('co')
+config.unbind('gm') # tab-move
+config.unbind('g$') # tab-focus -1
+config.unbind('g0') # tab-focus 1
+config.unbind('g^') # tab-focus 1
+config.unbind('gC') # tab-clone
+config.unbind('gD') # tab-give
+config.unbind('gJ') # tab-move +
+config.unbind('gK') # tab-move -
+config.unbind('co') # tab-only
 #+end_src
 
 *** Downloads
-
 #+begin_src python
-config.unbind('ad')
-config.unbind('gd')
+config.unbind('ad') # download-cancel
+config.unbind('gd') # download
 #+end_src
 
 *** History
-
 #+begin_src python
-config.unbind('Sh')
+config.unbind('Sh') # history
 #+end_src
 
 *** Bookmarks / Quick-marks
-
 #+begin_src python
-config.unbind('b')
-config.unbind('B')
-config.unbind('M')
-config.unbind('Sq')
-config.unbind('Sb')
+config.unbind('b')  # quickmark-load
+config.unbind('B')  # quickmark-load -t
+config.unbind('M')  # bookmark-add
+config.unbind('Sq') # bookmark-list
+config.unbind('Sb') # bookmark-list --jump
 #+end_src
 
 *** Hints
-
 #+begin_src python
-config.unbind(';r')
-config.unbind(';R')
-config.unbind(';d')
-config.unbind(';I')
-config.unbind(';t')
-config.unbind(';y')
-config.unbind(';Y')
-config.unbind('gi')
+config.unbind(';r') # hint --rapid links tab-bg
+config.unbind(';R') # hint --rapid links window
+config.unbind(';d') # hint links download
+config.unbind(';I') # hint images tab
+config.unbind(';t') # hint inputs
+config.unbind(';y') # hint links yank
+config.unbind(';Y') # hint links yank-primary
+config.unbind('gi') # hint inputs --first
+#+end_src
+
+*** Development Tools
+#+begin_src python
+config.unbind('gf')  # view-source
+config.unbind('wi')  # devtools
+config.unbind('wIf') # devtools-focus
+config.unbind('wIh') # devtools left
+config.unbind('wIj') # devtools bottom
+config.unbind('wIk') # devtools top
+config.unbind('wIl') # devtools right
+config.unbind('wIw') # devtools window
 #+end_src
 
 ** QuteBrowser
@@ -1493,18 +1514,18 @@ config.bind('@', 'macro-run')
 
 ** Windows
 #+begin_src python
-config.bind('wh', 'back -w')
-config.bind('wl', 'forward -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
 
 config.bind('wf', 'hint all window')
-config.bind('wo', 'set-cmd-text -s :open -w')
-config.bind('wO', 'set-cmd-text :open -w {url:pretty}')
+config.bind('<Space>wo', 'set-cmd-text -s :open -w')
+config.bind('<Space>wO', 'set-cmd-text :open -w {url:pretty}')
 
 config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
 config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
 
-config.bind('wp', 'open -w -- {clipboard}')
-config.bind('wP', 'open -w -- {primary}')
+config.bind('<Space>wp', 'open -w -- {clipboard}')
+config.bind('<Space>wP', 'open -w -- {primary}')
 
 config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
@@ -1520,6 +1541,8 @@ config.bind('<back>', 'back')
 config.bind('<forward>', 'forward')
 config.bind('H', 'back')
 config.bind('L', 'forward')
+config.bind('tH', 'back -t')
+config.bind('tL', 'forward -t')
 
 config.bind('<Ctrl-Shift-h>', 'back -b')
 config.bind('<Ctrl-Shift-l>', 'forward -b')
@@ -1541,6 +1564,8 @@ Go to URL
 config.bind('o', 'set-cmd-text -s :open')
 
 config.bind('O', 'set-cmd-text -s :open -t')
+config.bind('<Space>to', 'set-cmd-text -s :open -t')
+config.bind('<Space>tO', 'set-cmd-text :open -t {url:pretty}')
 config.bind('gs', 'set-cmd-text -s :open -b')
 #+end_src
 
@@ -1557,8 +1582,8 @@ Open URL from clipboard
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pP', 'open -- {primary}')
 
-config.bind('Pp', 'open -t -- {clipboard}')
-config.bind('PP', 'open -t -- {primary}')
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
 #+end_src
 
 Following selections - unclear what this actually is
@@ -1606,7 +1631,7 @@ config.bind('gt', 'set-cmd-text -sr :tab-focus')
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
 config.bind('tc', 'tab-close')
-config.bind('tO', 'tab-only')
+# config.bind('tO', 'tab-only')
 #+end_src
 
 Reopening recently closed tabs
@@ -1633,6 +1658,7 @@ config.bind('<Ctrl-p>', 'tab-pin')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
+config.bind('tt', 'set-cmd-text :tab-take ')
 config.bind('<Ctrl-Alt-p>', 'print')
 #+end_src
 
@@ -1753,7 +1779,6 @@ config.bind('cm', 'clear-messages')
 #+end_src
 
 ** Yanking
-
 #+begin_src python
 config.bind('ys', 'yank selection', mode='normal')
 config.bind('<Ctrl-c>', 'yank selection', mode='normal')
@@ -2006,11 +2031,11 @@ config.bind('<Space>dt', 'devtools')
 config.bind('<Space>dd', 'devtools')
 config.bind('<Space>df', 'devtools-focus')
 
-config.bind('<Space>dh', 'devtools left')
-config.bind('<Space>dl', 'devtools right')
-config.bind('<Space>dj', 'devtools bottom')
-config.bind('<Space>dk', 'devtools top')
-config.bind('<Space>dw', 'devtools window')
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
 #+end_src
 
 * Privacy
@@ -2645,7 +2670,7 @@ c.input.mouse.rocker_gestures = False
 Timeout (in milliseconds) for partially typed key bindings. If the current input forms only partial matches, the =keystring= will be cleared after this time. If set to 0, partially typed bindings are never cleared.
 Type: Int
 #+begin_src python
-c.input.partial_timeout = 10000
+c.input.partial_timeout = 30000
 #+end_src
 
 Enable spatial navigation. Spatial navigation consists in the ability to navigate between focusable elements in a Web page, such as hyperlinks and form controls, by using Left, Right, Up and Down arrow keys. For example, if the user presses the Right key, heuristics determine whether there is an element he might be trying to reach towards the right and which element he probably wants.
