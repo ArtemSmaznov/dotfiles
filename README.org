@@ -28,6 +28,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
 * Window Manager (WM)
 =Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to user a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
+- [[file:.config/xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
 - [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 - [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
 - [[file:.config/picom/README.org][Picom]]
