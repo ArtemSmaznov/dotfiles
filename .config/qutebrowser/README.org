@@ -1407,12 +1407,12 @@ Help
 #+begin_src python
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'set-cmd-text :help -t :')
+config.bind('<Space>hs', 'set-cmd-text -s :help -t')
 #+end_src
 
 Processes
 #+begin_src python
-config.bind('<Space>p', 'set-cmd-text :process :')
+config.bind('<Space>p', 'set-cmd-text -s :process')
 #+end_src
 
 Quit
@@ -1658,7 +1658,7 @@ config.bind('<Ctrl-p>', 'tab-pin')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
-config.bind('tt', 'set-cmd-text :tab-take ')
+config.bind('tt', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
 #+end_src
 

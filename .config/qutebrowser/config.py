@@ -671,9 +671,9 @@ config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle 
 
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'set-cmd-text :help -t :')
+config.bind('<Space>hs', 'set-cmd-text -s :help -t')
 
-config.bind('<Space>p', 'set-cmd-text :process :')
+config.bind('<Space>p', 'set-cmd-text -s :process')
 
 config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
@@ -831,7 +831,7 @@ config.bind('<Ctrl-p>', 'tab-pin')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
-config.bind('tt', 'set-cmd-text :tab-take ')
+config.bind('tt', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('D', 'set-cmd-text -s :download')
