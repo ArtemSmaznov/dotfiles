@@ -634,56 +634,52 @@ config.bind('ss', 'set-cmd-text -s :set')
 config.bind('sl', 'set-cmd-text -s :set -t')
 
 config.bind('sk', 'set-cmd-text -s :bind')
-config.bind('<F1>', 'help -t')
 
 config.bind('<Ctrl-Shift-Tab>', 'nop')
 
 config.bind('sf', 'save')
 
-config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
-config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
-config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
-config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
-config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
-config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
-config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
-config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
+config.bind('<F11>', 'fullscreen')
 
 config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
 config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
 
-config.bind('<Space>hr', 'config-source')
-config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'set-cmd-text -s :help -t')
+config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+
+config.bind('R', 'reload')
+config.bind('<Ctrl-R>', 'reload -f')
+config.bind('<F5>', 'reload')
+config.bind('<Ctrl-F5>', 'reload -f')
 
 config.bind('<Space>p', 'set-cmd-text -s :process')
+
+config.bind('<Alt-x>', 'set-cmd-text :')
+config.bind(':', 'set-cmd-text :')
+config.bind('/', 'set-cmd-text /')
+config.bind('?', 'set-cmd-text ?')
+config.bind('.', 'repeat-command')
+
+config.bind('n', 'search-next')
+config.bind('N', 'search-prev')
+
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
+config.bind('cm', 'clear-messages')
+
+config.bind('q', 'macro-record')
+config.bind('@', 'macro-run')
 
 config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
-config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
-config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')
-config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
-config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')
-config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help -t')
+config.bind('<Space>hs', 'set-cmd-text -s :help -t')
+config.bind('<F1>'     , 'help -t')
 
 config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
@@ -698,6 +694,10 @@ config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 config.bind('gg', 'scroll-to-perc 0')
 config.bind('G', 'scroll-to-perc')
 
+config.bind('<Ctrl-0>', 'zoom')
+config.bind('<Ctrl-->', 'zoom-out')
+config.bind('<Ctrl-=>', 'zoom-in')
+
 config.bind('<Ctrl-A>', 'navigate increment')
 config.bind('<Ctrl-X>', 'navigate decrement')
 config.bind('gu', 'navigate up')
@@ -706,31 +706,6 @@ config.bind('[[', 'navigate prev')
 config.bind(']]', 'navigate next')
 config.bind('{{', 'navigate prev -t')
 config.bind('}}', 'navigate next -t')
-
-config.bind('<Ctrl-0>', 'zoom')
-config.bind('<Ctrl-->', 'zoom-out')
-config.bind('<Ctrl-=>', 'zoom-in')
-
-config.bind('<Alt-x>', 'set-cmd-text :')
-config.bind(':', 'set-cmd-text :')
-config.bind('/', 'set-cmd-text /')
-config.bind('?', 'set-cmd-text ?')
-config.bind('.', 'repeat-command')
-
-config.bind('n', 'search-next')
-config.bind('N', 'search-prev')
-
-config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
-
-config.bind('r', 'reload')
-config.bind('R', 'reload -f')
-config.bind('<F5>', 'reload')
-config.bind('<Ctrl-F5>', 'reload -f')
-
-config.bind('<F11>', 'fullscreen')
-
-config.bind('q', 'macro-record')
-config.bind('@', 'macro-run')
 
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
@@ -854,58 +829,6 @@ config.bind('dX', 'download-delete')
 config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
 config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
 
-config.bind('gh', 'history -t')
-
-config.bind('gq', 'bookmark-list')
-config.bind('gb', 'bookmark-list')
-config.bind('gB', 'bookmark-list --jump')
-
-config.bind('bo', 'set-cmd-text -s :quickmark-load')
-config.bind('Bo', 'set-cmd-text -s :bookmark-load')
-
-config.bind('bO', 'set-cmd-text -s :quickmark-load -t')
-config.bind('BO', 'set-cmd-text -s :bookmark-load -t')
-
-config.bind('bs', 'quickmark-save')
-config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'set-cmd-text -s :quickmark-add {url}')
-config.bind('Ba', 'bookmark-add')
-
-config.bind('bd', 'quickmark-del')
-config.bind('Bd', 'bookmark-del')
-
-config.bind('f', 'hint')
-config.bind('F', 'hint all tab')
-
-config.bind(';i', 'hint inputs')
-
-config.bind(';m', 'hint media')
-config.bind(';p', 'hint images')
-config.bind(';P', 'hint images tab')
-
-config.bind(';h', 'hint all hover')
-
-config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
-config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
-
-config.bind('<Ctrl-f>', 'hint --rapid')
-
-config.bind(';ri', 'hint --rapid images tab-bg')
-config.bind(';Ri', 'hint --rapid images window')
-
-config.bind(';rl', 'hint --rapid links tab-bg')
-config.bind(';Rl', 'hint --rapid links window')
-
-config.bind(';o', 'hint links fill :open {hint-url}')
-config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-
-config.bind('<Ctrl-B>', 'hint all tab-bg', mode='hint')
-config.bind('<Ctrl-F>', 'hint links', mode='hint')
-config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
-config.bind('<Return>', 'hint-follow', mode='hint')
-
-config.bind('cm', 'clear-messages')
-
 config.bind('ys', 'yank selection', mode='normal')
 config.bind('<Ctrl-c>', 'yank selection', mode='normal')
 
@@ -932,15 +855,104 @@ config.bind('Yl', 'hint links yank-primary')
 config.bind('yi', 'hint images yank')
 config.bind('Yi', 'hint images yank-primary')
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"')
+config.bind('gq', 'bookmark-list')
+config.bind('gb', 'bookmark-list')
+config.bind('gB', 'bookmark-list --jump')
+
+config.bind('bo', 'set-cmd-text -s :quickmark-load')
+config.bind('Bo', 'set-cmd-text -s :bookmark-load')
+
+config.bind('bO', 'set-cmd-text -s :quickmark-load -t')
+config.bind('BO', 'set-cmd-text -s :bookmark-load -t')
+
+config.bind('bs', 'quickmark-save')
+config.bind('Bs', 'bookmark-add')
+config.bind('ba', 'set-cmd-text -s :quickmark-add {url}')
+config.bind('Ba', 'bookmark-add')
+
+config.bind('bd', 'quickmark-del')
+config.bind('Bd', 'bookmark-del')
+
+config.bind('gh', 'history -t')
+
+config.bind('f', 'hint')
+config.bind('F', 'hint all tab')
+
+config.bind(';i', 'hint inputs')
+
+config.bind(';m', 'hint media')
+config.bind(';p', 'hint images')
+config.bind(';P', 'hint images tab')
+
+config.bind(';h', 'hint all hover')
+
+config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
+
+config.bind('<Ctrl-f>', 'hint --rapid')
+
+config.bind(';ri', 'hint --rapid images tab-bg')
+config.bind(';Ri', 'hint --rapid images window')
+
+config.bind(';rl', 'hint --rapid links tab-bg')
+config.bind(';Rl', 'hint --rapid links window')
+
+config.bind(';o', 'hint links fill :open {hint-url}')
+config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+
+config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
 config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
 config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only')
+config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"', mode='insert')
+config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
 config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
 config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only', mode='insert')
+config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
+config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
+config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')
+config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')
+config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')
+
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
+
+config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
+config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
+config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
+config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
+config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
+config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
+config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
+config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 
 config.bind('I', 'open --private')
 config.bind('<Ctrl-Shift-N>', 'open -p')
@@ -960,42 +972,49 @@ config.bind('<Escape>', 'mode-leave', mode='register')
 config.bind('<Escape>', 'mode-leave', mode='yesno')
 config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
 
-config.bind('<Ctrl-E>', 'edit-command', mode='command')
+config.bind('<Ctrl-E>'      , 'edit-command'           , mode='command')
+config.bind('<Return>'      , 'command-accept'         , mode='command')
+config.bind('<Ctrl-Return>' , 'command-accept --rapid' , mode='command')
 
-config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
-config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-k>' , 'completion-item-focus prev', mode='command')
+config.bind('<Ctrl-j>' , 'completion-item-focus next', mode='command')
 
-# config.bind('<Alt-B>', 'rl-backward-word', mode='command')
-config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
-config.bind('<Ctrl-W>', 'rl-backward-kill-word', mode='command')
-config.bind('<Ctrl-Shift-W>', 'rl-unix-word-rubout', mode='command')
-# config.bind('<Alt-D>', 'rl-kill-word', mode='command')
-# config.bind('<Alt-F>', 'rl-forward-word', mode='command')
-# config.bind('<Ctrl-?>', 'rl-delete-char', mode='command')
-# config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='command')
-# config.bind('<Ctrl-B>', 'rl-backward-char', mode='command')
-config.bind('<Ctrl-C>', 'completion-item-yank', mode='command')
-config.bind('<Ctrl-D>', 'completion-item-del', mode='command')
-# config.bind('<Ctrl-E>', 'rl-end-of-line', mode='command')
-# config.bind('<Ctrl-F>', 'rl-forward-char', mode='command')
-# config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='command')
-# config.bind('<Ctrl-K>', 'rl-kill-line', mode='command')
-# config.bind('<Ctrl-N>', 'command-history-next', mode='command')
-# config.bind('<Ctrl-P>', 'command-history-prev', mode='command')
-# config.bind('<Ctrl-Return>', 'command-accept --rapid', mode='command')
-# config.bind('<Ctrl-Shift-C>', 'completion-item-yank --sel', mode='command')
-# config.bind('<Ctrl-Shift-Tab>', 'completion-item-focus prev-category', mode='command')
-# config.bind('<Ctrl-Tab>', 'completion-item-focus next-category', mode='command')
-# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='command')
-# config.bind('<Ctrl-Y>', 'rl-yank', mode='command')
-# config.bind('<Down>', 'completion-item-focus --history next', mode='command')
-# config.bind('<PgDown>', 'completion-item-focus next-page', mode='command')
-# config.bind('<PgUp>', 'completion-item-focus prev-page', mode='command')
-# config.bind('<Return>', 'command-accept', mode='command')
-# config.bind('<Shift-Delete>', 'completion-item-del', mode='command')
-# config.bind('<Shift-Tab>', 'completion-item-focus prev', mode='command')
-# config.bind('<Tab>', 'completion-item-focus next', mode='command')
-# config.bind('<Up>', 'completion-item-focus --history prev', mode='command')
+config.bind('<Ctrl-C>' , 'completion-item-yank'      , mode='command')
+config.bind('<Ctrl-D>' , 'completion-item-del'       , mode='command')
+
+config.bind('<Alt-Backspace>' , 'rl-backward-kill-word' , mode='command')
+config.bind('<Ctrl-W>'        , 'rl-backward-kill-word' , mode='command')
+config.bind('<Ctrl-Shift-W>'  , 'rl-unix-word-rubout'   , mode='command')
+# config.bind('<Alt-D>'       , 'rl-kill-word'          , mode='command')
+# config.bind('<Ctrl-?>'      , 'rl-delete-char'        , mode='command')
+
+config.bind('<Ctrl-0>'       , 'rl-beginning-of-line' , mode='command')
+config.bind('<Ctrl-Shift-$>' , 'rl-end-of-line'       , mode='command')
+# config.bind('<Ctrl-A>'     , 'rl-beginning-of-line' , mode='command')
+
+config.bind('<Ctrl-H>'       , 'rl-backward-word'     , mode='command')
+config.bind('<Ctrl-L>'       , 'rl-forward-word'      , mode='command')
+# config.bind('<Alt-B>'      , 'rl-backward-word'     , mode='command')
+# config.bind('<Alt-F>'      , 'rl-forward-word'      , mode='command')
+
+config.bind('<Ctrl-B>'       , 'rl-backward-char'     , mode='command')
+config.bind('<Ctrl-F>'       , 'rl-forward-char'      , mode='command')
+
+# config.bind('<Ctrl-K>'        , 'rl-kill-line'                        , mode='command')
+# config.bind('<Ctrl-N>'        , 'command-history-next'                , mode='command')
+# config.bind('<Ctrl-P>'        , 'command-history-prev'                , mode='command')
+# config.bind('<Ctrl-Shift-C>'  , 'completion-item-yank --sel'          , mode='command')
+# config.bind('<Ctrl-Shift-Tab>', 'completion-item-focus prev-category' , mode='command')
+# config.bind('<Ctrl-Tab>'      , 'completion-item-focus next-category' , mode='command')
+# config.bind('<Ctrl-U>'        , 'rl-unix-line-discard'                , mode='command')
+# config.bind('<Ctrl-Y>'        , 'rl-yank'                             , mode='command')
+# config.bind('<Down>'          , 'completion-item-focus --history next', mode='command')
+# config.bind('<PgDown>'        , 'completion-item-focus next-page'     , mode='command')
+# config.bind('<PgUp>'          , 'completion-item-focus prev-page'     , mode='command')
+# config.bind('<Shift-Delete>'  , 'completion-item-del'                 , mode='command')
+# config.bind('<Shift-Tab>'     , 'completion-item-focus prev'          , mode='command')
+# config.bind('<Tab>'           , 'completion-item-focus next'          , mode='command')
+# config.bind('<Up>'            , 'completion-item-focus --history prev', mode='command')
 
 config.bind('<Tab>', 'prompt-item-focus next', mode='prompt')
 config.bind('<Shift-Tab>', 'prompt-item-focus prev', mode='prompt')
@@ -1027,13 +1046,13 @@ config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
 # config.bind('<Ctrl-W>', 'rl-unix-word-rubout', mode='prompt')
 # config.bind('<Ctrl-Y>', 'rl-yank', mode='prompt')
 
-# config.bind('<Alt-Shift-Y>', 'prompt-yank --sel', mode='yesno')
-# config.bind('<Alt-Y>', 'prompt-yank', mode='yesno')
-# config.bind('<Return>', 'prompt-accept', mode='yesno')
-# config.bind('N', 'prompt-accept --save no', mode='yesno')
-# config.bind('Y', 'prompt-accept --save yes', mode='yesno')
-# config.bind('n', 'prompt-accept no', mode='yesno')
-# config.bind('y', 'prompt-accept yes', mode='yesno')
+config.bind('<Alt-Shift-Y>', 'prompt-yank --sel'       , mode='yesno')
+config.bind('<Alt-Y>'      , 'prompt-yank'             , mode='yesno')
+config.bind('<Return>'     , 'prompt-accept'           , mode='yesno')
+config.bind('N'            , 'prompt-accept --save no' , mode='yesno')
+config.bind('Y'            , 'prompt-accept --save yes', mode='yesno')
+config.bind('n'            , 'prompt-accept no'        , mode='yesno')
+config.bind('y'            , 'prompt-accept yes'       , mode='yesno')
 
 # config.bind('$', 'move-to-end-of-line', mode='caret')
 # config.bind('0', 'move-to-start-of-line', mode='caret')
@@ -1080,25 +1099,12 @@ config.bind('<Ctrl-Shift-L>' , 'fake-key <Ctrl-Shift-Right>' , mode='insert')
 config.bind('<Ctrl-W>'       , 'fake-key <Ctrl-Backspace>'   , mode='insert')
 
 config.bind('<Ctrl-Shift-V>', 'insert-text -- {primary}', mode='insert')
-config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+config.bind('<Shift-Ins>'   , 'insert-text -- {primary}', mode='insert')
 
-config.bind('<Space>tca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind('<Space>tcd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind('<Space>tcg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind('<Space>tcsd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind('<Space>tcsl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-
-config.bind('<Space>ds', 'view-source')
-
-config.bind('<Space>dt', 'devtools')
-config.bind('<Space>dd', 'devtools')
-config.bind('<Space>df', 'devtools-focus')
-
-config.bind('<Space>dH', 'devtools left')
-config.bind('<Space>dL', 'devtools right')
-config.bind('<Space>dJ', 'devtools bottom')
-config.bind('<Space>dK', 'devtools top')
-config.bind('<Space>dW', 'devtools window')
+config.bind('<Ctrl-B>', 'hint all tab-bg'          , mode='hint')
+config.bind('<Ctrl-F>', 'hint links'               , mode='hint')
+config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
+config.bind('<Return>', 'hint-follow'              , mode='hint')
 
 c.content.canvas_reading = True
 
