@@ -9,27 +9,62 @@
 - [[#general][General]]
 - [[#history][History]]
 - [[#theme][Theme]]
-- [[#icons][Icons]]
 - [[#search][Search]]
-- [[#session-storage][Session Storage]]
+- [[#marks][Marks]]
+- [[#session][Session]]
 - [[#commands][Commands]]
 - [[#file-types][File-types]]
+  - [[#info][Info]]
+  - [[#pdf][Pdf]]
+  - [[#postscript][PostScript]]
+  - [[#djvu][Djvu]]
+  - [[#audio][Audio]]
+  - [[#video][Video]]
+  - [[#web][Web]]
+  - [[#object][Object]]
+  - [[#man-page][Man page]]
+  - [[#images][Images]]
+  - [[#openraster][OpenRaster]]
+  - [[#mindmap][Mindmap]]
+  - [[#md5][MD5]]
+  - [[#sha1][SHA1]]
+  - [[#sha256][SHA256]]
+  - [[#sha512][SHA512]]
+  - [[#gpg-signature][GPG signature]]
+  - [[#torrent][Torrent]]
+  - [[#fusezipmount][FuseZipMount]]
+  - [[#archivemount][ArchiveMount]]
+  - [[#rar2fsmount-and-rar-archives][Rar2FsMount and rar archives]]
+  - [[#isomount][IsoMount]]
+  - [[#sshmount][SshMount]]
+  - [[#ftpmount][FtpMount]]
+  - [[#fuse7z-and-7z-archives][Fuse7z and 7z archives]]
+  - [[#office-files][Office files]]
+  - [[#tudu-files][TuDu files]]
+  - [[#qt-projects][Qt projects]]
+  - [[#directories][Directories]]
 - [[#syntax-highlighting][Syntax Highlighting]]
-- [[#tmp][TMP]]
-- [[#tmp-1][TMP]]
-- [[#tmp-2][TMP]]
+- [[#panels][Panels]]
 - [[#key-bindings][Key Bindings]]
-- [[#other][Other]]
+  - [[#sample-bindings][Sample Bindings]]
+  - [[#panes][Panes]]
+  - [[#file-handling][File Handling]]
+  - [[#f-keys][F-keys]]
+  - [[#yanking][Yanking]]
+- [[#customization][Customization]]
 
 * Dependencies
-|------+----------------------------------|
-| Name | Description                      |
-|------+----------------------------------|
-| [[https://aur.archlinux.org/packages/vifm][vifm]] | A vim-like terminal file manager |
-|------+----------------------------------|
+|---------+----------------------------------|
+| Name    | Description                      |
+|---------+----------------------------------|
+| [[https://archlinux.org/packages/?name=vifm][vifm]]    | A vim-like terminal file manager |
+|---------+----------------------------------|
+| [[https://archlinux.org/packages/?name=libcaca][libcaca]] | ASCII image preview              |
+| [[https://archlinux.org/packages/?name=poppler][poppler]] | Text PDF preview                 |
+|---------+----------------------------------|
 
 #+begin_example shell
-sudo pacman -S vifm
+sudo pacman -S --needed vifm libcaca poppler
 #+end_example
 
 * General
@@ -191,66 +226,81 @@ command! reload :write | restart full
 #+end_src
 
 * File-types
+** Info
+The file type is for the default programs to be used with
+a file extension.
+:filetype pattern1,pattern2 defaultprogram,program2
+:fileviewer pattern1,pattern2 consoleviewer
+The other programs for the file type can be accessed with the :file command
+The command macros like %f, %F, %d, %D may be used in the commands.
+The %a macro is ignored.  To use a % you must put %%.
+
+For automated FUSE mounts, you must register an extension with :file[x]type
+in one of following formats:
+
+:filetype extensions FUSE_MOUNT|some_mount_command using %SOURCE_FILE and %DESTINATION_DIR variables
+%SOURCE_FILE and %DESTINATION_DIR are filled in by vifm at runtime.
+A sample line might look like this:
+:filetype *.zip,*.jar,*.war,*.ear FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
+
+:filetype extensions FUSE_MOUNT2|some_mount_command using %PARAM and %DESTINATION_DIR variables
+%PARAM and %DESTINATION_DIR are filled in by vifm at runtime.
+A sample line might look like this:
+:filetype *.ssh FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR
+%PARAM value is filled from the first line of file (whole line).
+Example first line for SshMount filetype: root@127.0.0.1:/
+
+You can also add %CLEAR if you want to clear screen before running FUSE
+program.
+
+** Pdf
 #+begin_src vimrc
-" The file type is for the default programs to be used with
-" a file extension.
-" :filetype pattern1,pattern2 defaultprogram,program2
-" :fileviewer pattern1,pattern2 consoleviewer
-" The other programs for the file type can be accessed with the :file command
-" The command macros like %f, %F, %d, %D may be used in the commands.
-" The %a macro is ignored.  To use a % you must put %%.
+filextype {*.pdf},<application/pdf>
+        \ zathura %c %i &, apvlv %c, xpdf %c
+fileviewer {*.pdf},<application/pdf>
+        \ pdftotext -nopgbrk %c -
+#+end_src
 
-" For automated FUSE mounts, you must register an extension with :file[x]type
-" in one of following formats:
-"
-" :filetype extensions FUSE_MOUNT|some_mount_command using %SOURCE_FILE and %DESTINATION_DIR variables
-" %SOURCE_FILE and %DESTINATION_DIR are filled in by vifm at runtime.
-" A sample line might look like this:
-" :filetype *.zip,*.jar,*.war,*.ear FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
-"
-" :filetype extensions FUSE_MOUNT2|some_mount_command using %PARAM and %DESTINATION_DIR variables
-" %PARAM and %DESTINATION_DIR are filled in by vifm at runtime.
-" A sample line might look like this:
-" :filetype *.ssh FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR
-" %PARAM value is filled from the first line of file (whole line).
-" Example first line for SshMount filetype: root@127.0.0.1:/
-"
-" You can also add %CLEAR if you want to clear screen before running FUSE
-" program.
-
-" Pdf
-filextype {*.pdf},<application/pdf> zathura %c %i &, apvlv %c, xpdf %c
-fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
-
-" PostScript
+** PostScript
+#+begin_src vimrc
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
         \ {View in zathura}
         \ zathura %f,
         \ {View in gv}
         \ gv %c %i &,
+#+end_src
 
-" Djvu
+** Djvu
+#+begin_src vimrc
 filextype {*.djvu},<image/vnd.djvu>
         \ {View in zathura}
         \ zathura %f,
         \ {View in apvlv}
         \ apvlv %f,
+#+end_src
 
-" Audio
+** Audio
+#+begin_src vimrc
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
         \<audio/*>
+       \ {Play using mpv}
+       \ mpv %c,
        \ {Play using ffplay}
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}
        \ mplayer %f,
 fileviewer {*.mp3},<audio/mpeg> mp3info
 fileviewer {*.flac},<audio/flac> soxi
+#+end_src
 
-" Video
+** Video
+#+begin_src vimrc
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
           \*.as[fx]},
          \<video/*>
+        \ {View using mpv}
+        \ mpv %f,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
         \ {View using Dragon}
@@ -262,8 +312,10 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.as[fx]},
           \<video/*>
          \ ffprobe -pretty %c 2>&1
+#+end_src
 
-" Web
+** Web
+#+begin_src vimrc
 filextype {*.html,*.htm},<text/html>
         \ {Open with dwb}
         \ dwb %f %i &,
@@ -272,16 +324,24 @@ filextype {*.html,*.htm},<text/html>
         \ {Open with uzbl}
         \ uzbl-browser %f %i &,
 filetype {*.html,*.htm},<text/html> links, lynx
+#+end_src
 
-" Object
+** Object
+#+begin_src vimrc
 filetype {*.o},<application/x-object> nm %f | less
+#+end_src
 
-" Man page
+** Man page
+#+begin_src vimrc
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
+#+end_src
 
-" Images
+** Images
+#+begin_src vimrc
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        \ {View in vimiv}
+        \ vimiv %f,
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
@@ -289,48 +349,67 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in shotwell}
         \ shotwell,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
+         \ img2txt %c
+         " \ identify %f
+#+end_src
 
-" OpenRaster
+** OpenRaster
+#+begin_src vimrc
 filextype *.ora
         \ {Edit in MyPaint}
         \ mypaint %f,
+#+end_src
 
-" Mindmap
+** Mindmap
+#+begin_src vimrc
 filextype *.vym
         \ {Open with VYM}
         \ vym %f &,
+#+end_src
 
-" MD5
+** MD5
+#+begin_src vimrc
 filetype *.md5
        \ {Check MD5 hash sum}
        \ md5sum -c %f %S,
+#+end_src
 
-" SHA1
+** SHA1
+#+begin_src vimrc
 filetype *.sha1
        \ {Check SHA1 hash sum}
        \ sha1sum -c %f %S,
+#+end_src
 
-" SHA256
+** SHA256
+#+begin_src vimrc
 filetype *.sha256
        \ {Check SHA256 hash sum}
        \ sha256sum -c %f %S,
+#+end_src
 
-" SHA512
+** SHA512
+#+begin_src vimrc
 filetype *.sha512
        \ {Check SHA512 hash sum}
        \ sha512sum -c %f %S,
+#+end_src
 
-" GPG signature
+** GPG signature
+#+begin_src vimrc
 filetype {*.asc},<application/pgp-signature>
        \ {Check signature}
        \ !!gpg --verify %c,
+#+end_src
 
-" Torrent
+** Torrent
+#+begin_src vimrc
 filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
 fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
+#+end_src
 
-" FuseZipMount
+** FuseZipMount
+#+begin_src vimrc
 filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
         \<application/zip,application/java-archive>
        \ {Mount with fuse-zip}
@@ -340,8 +419,10 @@ filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
        \ {Extract here}
        \ tar -xf %c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+#+end_src
 
-" ArchiveMount
+** ArchiveMount
+#+begin_src vimrc
 filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
         \<application/x-tar>
        \ {Mount with archivemount}
@@ -350,35 +431,47 @@ fileviewer *.tgz,*.tar.gz tar -tzf %c
 fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
 fileviewer *.tar.txz,*.txz xz --list %c
 fileviewer {*.tar},<application/x-tar> tar -tf %c
+#+end_src
 
-" Rar2FsMount and rar archives
+** Rar2FsMount and rar archives
+#+begin_src vimrc
 filetype {*.rar},<application/x-rar>
        \ {Mount with rar2fs}
        \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
 fileviewer {*.rar},<application/x-rar> unrar v %c
+#+end_src
 
-" IsoMount
+** IsoMount
+#+begin_src vimrc
 filetype {*.iso},<application/x-iso9660-image>
        \ {Mount with fuseiso}
        \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+#+end_src
 
-" SshMount
+** SshMount
+#+begin_src vimrc
 filetype *.ssh
        \ {Mount with sshfs}
        \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
+#+end_src
 
-" FtpMount
+** FtpMount
+#+begin_src vimrc
 filetype *.ftp
        \ {Mount with curlftpfs}
        \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
+#+end_src
 
-" Fuse7z and 7z archives
+** Fuse7z and 7z archives
+#+begin_src vimrc
 filetype {*.7z},<application/x-7z-compressed>
        \ {Mount with fuse-7z}
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
+#+end_src
 
-" Office files
+** Office files
+#+begin_src vimrc
 filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
          \<application/vnd.openxmlformats-officedocument.*,
           \application/msword,
@@ -389,14 +482,20 @@ fileviewer {*.docx},
           \<application/
            \vnd.openxmlformats-officedocument.wordprocessingml.document>
          \ docx2txt.pl %f -
+#+end_src
 
-" TuDu files
+** TuDu files
+#+begin_src vimrc
 filetype *.tudu tudu -f %c
+#+end_src
 
-" Qt projects
+** Qt projects
+#+begin_src vimrc
 filextype *.pro qtcreator %f &
+#+end_src
 
-" Directories
+** Directories
+#+begin_src vimrc
 filextype */
         \ {View in thunar}
         \ Thunar %f &,
@@ -462,6 +561,8 @@ nnoremap ,t :!alacritty &<cr>
 
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
+
+nnoremap <a-x> :
 #+end_src
 
 ** Panes
