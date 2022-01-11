@@ -58,7 +58,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/vimiv/README.org][vimiv]]
 * File Manager
 - PCManFM
-- [[file:.config/vifm/][vifm]]
+- [[file:.config/vifm/README.org][vifm]]
 - [[file:.config/ranger/][ranger]]
 * Web Browser
 - [[file:.config/qutebrowser/README.org][QuteBrowser]]

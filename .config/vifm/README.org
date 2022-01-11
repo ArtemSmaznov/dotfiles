@@ -1,3 +1,39 @@
+#+TITLE: ViFM
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A vim-like terminal file manager
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle vifmrc
+
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#general][General]]
+- [[#history][History]]
+- [[#theme][Theme]]
+- [[#icons][Icons]]
+- [[#search][Search]]
+- [[#session-storage][Session Storage]]
+- [[#commands][Commands]]
+- [[#file-types][File-types]]
+- [[#syntax-highlighting][Syntax Highlighting]]
+- [[#tmp][TMP]]
+- [[#tmp-1][TMP]]
+- [[#tmp-2][TMP]]
+- [[#key-bindings][Key Bindings]]
+- [[#other][Other]]
+
+* Dependencies
+|------+----------------------------------|
+| Name | Description                      |
+|------+----------------------------------|
+| [[https://aur.archlinux.org/packages/vifm][vifm]] | A vim-like terminal file manager |
+|------+----------------------------------|
+
+#+begin_example shell
+sudo pacman -S vifm
+#+end_example
+
+* General
+#+begin_src vimrc
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
@@ -44,17 +80,39 @@ set scrolloff=4
 if !has('win')
     set slowfs=curlftpfs
 endif
+#+end_src
 
+* History
+This is how many directories to store in the directory history.
+#+begin_src vimrc
 set history=100
+#+end_src
 
+Maximum number of changes that can be undone.
+#+begin_src vimrc
 set undolevels=100
+#+end_src
 
+* Theme
+List of color schemes to try (picks the first one supported by the terminal)
+#+begin_src vimrc
 colorscheme gruvbox Default
+#+end_src
 
+Format for displaying time in file list. For example:
+=TIME_STAMP_FORMAT=%m/%d-%H:%M=
+See man date or man strftime for details.
+#+begin_src vimrc
 set timefmt=%d-%b-%Y\ %H:%M
+#+end_src
 
+Set custom status line look
+#+begin_src vimrc
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+#+end_src
 
+Getting icons to display in vifm
+#+begin_src vimrc
 " file types
 set classify=' :dir:/, :exe:, :reg:, :link:'
 " various file names
@@ -69,7 +127,10 @@ set classify+=' ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a,,*.m
 set classify+=' ::*.avi,,*.ts,,*.axv,,*.divx,,*.m2v,,*.m4p,,*.m4v,,.mka,,*.mkv,,*.mov,,*.mp4,,*.flv,,*.mp4v,,*.mpeg,,*.mpg,,*.nuv,,*.ogv,,*.pbm,,*.pgm,,*.qt,,*.vob,,*.wmv,,*.xvid::'
 " office files
 set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.ppt::'
+#+end_src
 
+* Search
+#+begin_src vimrc
 " Show list of matches on tab completion in command-line mode
 set wildmenu
 
@@ -90,12 +151,23 @@ set nohlsearch
 
 " Use increment searching (search while typing)
 set incsearch
+#+end_src
 
+* Marks
+#+begin_src vimrc
 mark h ~/
+#+end_src
 
+* Session
+What should be saved automatically between vifm sessions.  Drop "savedirs"
+value if you don't want vifm to remember last visited directories for you.
+#+begin_src vimrc
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+#+end_src
 
+* Commands
+#+begin_src vimrc
 " :com[mand][!] command_name action
 " The following macros can be used in a command
 " %a is replaced with the user arguments.
@@ -116,7 +188,10 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart full
+#+end_src
 
+* File-types
+#+begin_src vimrc
 " The file type is for the default programs to be used with
 " a file extension.
 " :filetype pattern1,pattern2 defaultprogram,program2
@@ -325,7 +400,10 @@ filextype *.pro qtcreator %f &
 filextype */
         \ {View in thunar}
         \ Thunar %f &,
+#+end_src
 
+* Syntax Highlighting
+#+begin_src vimrc
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions
@@ -356,11 +434,23 @@ filextype */
 " filetype * open
 " For Windows:
 " filetype * start, explorer
+#+end_src
 
+* Panels
+Examples of configuring both panels
+Customize view columns a bit (enable ellipsis for truncated file names)
+#+begin_src vimrc
 set viewcolumns=-{name}..,6{}.
+#+end_src
 
+Filter-out build and temporary files
+#+begin_src vimrc
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
+#+end_src
 
+* Key Bindings
+** Sample Bindings
+#+begin_src vimrc
 " Display sorting dialog
 nnoremap S :sort<cr>
 
@@ -372,7 +462,10 @@ nnoremap ,t :!alacritty &<cr>
 
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
+#+end_src
 
+** Panes
+#+begin_src vimrc
 " Toggle visibility of preview window
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
@@ -384,7 +477,10 @@ nnoremap <a-i> :sync<cr>
 nnoremap <a-o> :sync %c<cr>
 " Swap panes
 nnoremap <c-u> <c-w>x
+#+end_src
 
+** File Handling
+#+begin_src vimrc
 " Open file in existing instance of gvim
 nnoremap o :!gvim --remote-tab-silent %f<cr>
 " Open file in new instance of gvim
@@ -397,14 +493,22 @@ nnoremap gb :file &<cr>l
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
+#+end_src
 
+** F-keys
+Example of standard two-panel file managers mappings
+#+begin_src vimrc
 nnoremap <f3> :!less %f<cr>
 nnoremap <f4> :edit<cr>
 nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
+#+end_src
 
+** Yanking
+Interaction with system clipboard
+#+begin_src vimrc
 if has('win')
     " Yank current directory path to Windows clipboard with forward slashes
     nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
@@ -423,7 +527,10 @@ elseif executable('xsel')
     nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
                 \ echo -n %c:p | xsel --clipboard --input %i<cr>
 endif
+#+end_src
 
+* Customization
+#+begin_src vimrc
 " Various customization examples
 
 " Use ag (the silver searcher) instead of grep
@@ -446,3 +553,4 @@ endif
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
+#+end_src
