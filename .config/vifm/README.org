@@ -563,23 +563,88 @@ nnoremap ,t :!alacritty &<cr>
 nnoremap ,w :set wrap!<cr>
 
 nnoremap <a-x> :
+nnoremap x t
+nnoremap <f2> cw
+vnoremap <f2> cw
+#+end_src
+
+** Leader
+#+begin_src vimrc
+nmap <space> <nop>
+#+end_src
+*** Toggle
+#+begin_src vimrc
+map <space>t<esc> <nop>
+nnoremap <space>th za
+#+end_src
+
+*** Help
+#+begin_src vimrc
+nmap <space>h<esc> <nop>
+nnoremap <space>hr :restart<cr> 
+#+end_src
+
+*** Quit
+#+begin_src vimrc
+nmap <space>q<esc> <nop>
+nnoremap <space>qq :q<cr> 
 #+end_src
 
 ** Panes
 #+begin_src vimrc
+nmap <space>w<esc> <nop>
+#+end_src
+*** Basic
+Navigation
+#+begin_src vimrc
+nnoremap <space>wh <c-w>h
+nnoremap <space>wj <c-w>j
+nnoremap <space>wk <c-w>k
+nnoremap <space>wl <c-w>l
+         
+nnoremap <space>wb <c-w>b
+nnoremap <space>wt <c-w>t
+nnoremap <space>wp <c-w>p
+#+end_src
+
+Moving
+#+begin_src vimrc
+nnoremap <space>wH <c-w>H
+nnoremap <space>wJ <c-w>J
+nnoremap <space>wK <c-w>K
+nnoremap <space>wL <c-w>L
+         
+nnoremap <space>wo <c-w>o
+nnoremap <space>ws <c-w>s
+nnoremap <space>wv <c-w>v
+#+end_src
+         
+Resizing
+#+begin_src vimrc
+nnoremap <space>w+ 5<c-w>+
+nnoremap <space>w- 5<c-w>-
+nnoremap <space>w_ <c-w>_
+nnoremap <space>w| <c-w>|
+nnoremap <space>w= <c-w>=
+#+end_src
+
+*** Previews
+#+begin_src vimrc
 " Toggle visibility of preview window
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
-
-" Midnight commander alike mappings
-" Open current directory in the other pane
-nnoremap <a-i> :sync<cr>
-" Open directory under cursor in the other pane
-nnoremap <a-o> :sync %c<cr>
-" Swap panes
-nnoremap <c-u> <c-w>x
+" Exit preview mode
+nnoremap <space>wz <c-w>z
 #+end_src
 
+*** Directories
+#+begin_src vimrc
+" Open current directory in the other pane
+nnoremap <space>ww :sync<cr>
+" Open directory under cursor in the other pane
+nnoremap <a-o> :sync %c<cr>
+#+end_src
+         
 ** File Handling
 #+begin_src vimrc
 " Open file in existing instance of gvim
