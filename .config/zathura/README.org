@@ -1,0 +1,43 @@
+#+TITLE: Zathura
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: A vim-like document viewer
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle zathurarc
+
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#clipboard][Clipboard]]
+
+* Dependencies
+|-----------------+------------------------------|
+| Name            | Description                  |
+|-----------------+------------------------------|
+| [[https://archlinux.org/packages/?name=zathura][zathura]]         | A vim-like document viewer   |
+|-----------------+------------------------------|
+| [[https://archlinux.org/packages/?name=zathura-cb][zathura-cb]]      | Comic book support           |
+| [[https://archlinux.org/packages/?name=zathura-djvu][zathura-djvu]]    | DjVu support                 |
+| [[https://archlinux.org/packages/?name=zathura-pdf-poppler][zathura-poppler]] | PDF support based on Poppler |
+| [[https://archlinux.org/packages/?name=zathura-ps][zathura-ps]]      | PostScript support           |
+|-----------------+------------------------------|
+
+#+begin_example shell
+sudo pacman -S --needed zathura zathura-cb zathura-djvu zathura-pdf-poppler zathura-ps
+#+end_example
+
+* Clipboard
+#+begin_src vimrc
+set selection-clipboard clipboard
+#+end_src
+
+* Key Bindings
+#+begin_src vimrc
+map <A-x> :
+map f toggle_fullscreen
+#+end_src
+
+** Zoom
+#+begin_src vimrc
+map <C-=> zoom in
+map <C--> zoom out
+map <C-0> zoom
+#+end_src

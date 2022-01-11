@@ -16,7 +16,6 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#media-player][Media Player]]
 - [[#image-viewer][Image Viewer]]
 - [[#pdf-viewer][PDF Viewer]]
-  - [[#new-ones-to-check][New ones to check]]
 - [[#file-manager][File Manager]]
 - [[#web-browser][Web Browser]]
 - [[#email][Email]]
@@ -59,11 +58,10 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 * Image Viewer
 - [[file:.config/vimiv/README.org][vimiv]]
 * PDF Viewer
+- [[file:.config/zathura/README.org][zathura]]
 - xviewer
 - sejda
 - okular
-** TODO New ones to check
-- zathura
 * File Manager
 - PCManFM
 - [[file:.config/vifm/README.org][vifm]]
