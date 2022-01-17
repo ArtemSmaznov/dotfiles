@@ -821,7 +821,7 @@ Valid values:
 - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
 - last-used: Select the previously selected tab.
 #+begin_src python
-c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 #+end_src
 
 When to show the tab bar.
@@ -1387,7 +1387,8 @@ config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/quteb
 
 *** Page refresh
 #+begin_src python
-config.bind('R', 'reload')
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
 config.bind('<Ctrl-R>', 'reload -f')
 config.bind('<F5>', 'reload')
 config.bind('<Ctrl-F5>', 'reload -f')

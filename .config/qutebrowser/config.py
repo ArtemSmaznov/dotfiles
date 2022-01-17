@@ -353,7 +353,7 @@ c.tabs.pinned.shrink = True
 
 c.tabs.position = 'top'
 
-c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 
 c.tabs.show = 'multiple'
 
@@ -651,7 +651,8 @@ config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/quteb
 config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
 config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 
-config.bind('R', 'reload')
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
 config.bind('<Ctrl-R>', 'reload -f')
 config.bind('<F5>', 'reload')
 config.bind('<Ctrl-F5>', 'reload -f')
