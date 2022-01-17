@@ -15,15 +15,19 @@
 - [[#commands][Commands]]
 - [[#file-types][File-types]]
   - [[#info][Info]]
+  - [[#directories][Directories]]
   - [[#pdf][Pdf]]
-  - [[#postscript][PostScript]]
-  - [[#djvu][Djvu]]
+  - [[#office-files][Office files]]
+  - [[#images][Images]]
   - [[#audio][Audio]]
   - [[#video][Video]]
   - [[#web][Web]]
-  - [[#object][Object]]
   - [[#man-page][Man page]]
-  - [[#images][Images]]
+  - [[#djvu][Djvu]]
+  - [[#epub][Epub]]
+  - [[#font][Font]]
+  - [[#postscript][PostScript]]
+  - [[#object][Object]]
   - [[#openraster][OpenRaster]]
   - [[#mindmap][Mindmap]]
   - [[#md5][MD5]]
@@ -39,14 +43,13 @@
   - [[#sshmount][SshMount]]
   - [[#ftpmount][FtpMount]]
   - [[#fuse7z-and-7z-archives][Fuse7z and 7z archives]]
-  - [[#office-files][Office files]]
   - [[#tudu-files][TuDu files]]
   - [[#qt-projects][Qt projects]]
-  - [[#directories][Directories]]
 - [[#syntax-highlighting][Syntax Highlighting]]
 - [[#panels][Panels]]
 - [[#key-bindings][Key Bindings]]
   - [[#sample-bindings][Sample Bindings]]
+  - [[#leader][Leader]]
   - [[#panes][Panes]]
   - [[#file-handling][File Handling]]
   - [[#f-keys][F-keys]]
@@ -54,18 +57,22 @@
 - [[#customization][Customization]]
 
 * Dependencies
-|---------+----------------------------------|
-| Name    | Description                      |
-|---------+----------------------------------|
-| [[https://archlinux.org/packages/?name=vifm][vifm]]    | A vim-like terminal file manager |
-|---------+----------------------------------|
-| [[https://archlinux.org/packages/?name=libcaca][libcaca]] | ASCII image preview              |
-| [[https://archlinux.org/packages/?name=poppler][poppler]] | Text PDF preview                 |
-|---------+----------------------------------|
+|----------+----------------------------------|
+| Name     | Description                      |
+|----------+----------------------------------|
+| [[https://archlinux.org/packages/?name=vifm][vifm]]     | A vim-like terminal file manager |
+|----------+----------------------------------|
+| [[https://github.com/cirala/vifmimg][vifmimg]]  | Graphical image preview          |
+| [[https://archlinux.org/packages/?name=ueberzug][ueberzug]] | Graphical image preview          |
+| [[https://archlinux.org/packages/?name=libcaca][libcaca]]  | ASCII image preview              |
+| [[https://archlinux.org/packages/?name=poppler][poppler]]  | Text PDF preview                 |
+|----------+----------------------------------|
 
 #+begin_example shell
-sudo pacman -S --needed vifm libcaca poppler
+sudo pacman -S --needed vifm libcaca poppler ueberzug
 #+end_example
+
+=vifmimg= requires manually cloning the repository and adding the executables to your =$PATH=
 
 * General
 #+begin_src vimrc
@@ -253,30 +260,32 @@ Example first line for SshMount filetype: root@127.0.0.1:/
 You can also add %CLEAR if you want to clear screen before running FUSE
 program.
 
-** Pdf
+** Directories
 #+begin_src vimrc
-filextype {*.pdf},<application/pdf>
-        \ zathura %c %i &, apvlv %c, xpdf %c
-fileviewer {*.pdf},<application/pdf>
-        \ pdftotext -nopgbrk %c -
+filextype */
+        \ {View in thunar}
+        \ Thunar %f &,
 #+end_src
 
-** PostScript
+** Images
 #+begin_src vimrc
-filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i &,
-#+end_src
-
-** Djvu
-#+begin_src vimrc
-filextype {*.djvu},<image/vnd.djvu>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        \ {View in vimiv}
+        \ vimiv %f,
+        \ {View in sxiv}
+        \ sxiv %f,
+        \ {View in gpicview}
+        \ gpicview %c,
+        \ {View in shotwell}
+        \ shotwell,
+fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+         \ vifmimg draw %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+         " \ {ASCII image preview}
+         " \ img2txt %c
+         " \ {File info}
+         " \ identify %f
 #+end_src
 
 ** Audio
@@ -326,31 +335,81 @@ filextype {*.html,*.htm},<text/html>
 filetype {*.html,*.htm},<text/html> links, lynx
 #+end_src
 
-** Object
-#+begin_src vimrc
-filetype {*.o},<application/x-object> nm %f | less
-#+end_src
-
 ** Man page
 #+begin_src vimrc
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 #+end_src
 
-** Images
+** Pdf
 #+begin_src vimrc
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in vimiv}
-        \ vimiv %f,
-        \ {View in sxiv}
-        \ sxiv %f,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ img2txt %c
-         " \ identify %f
+filextype {*.pdf},<application/pdf>
+        \ zathura %c %i &, apvlv %c, xpdf %c
+fileviewer {*.pdf},<application/pdf>
+         \ vifmimg pdf %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+        " \ pdftotext -nopgbrk %c -
+#+end_src
+
+** Office files
+#+begin_src vimrc
+filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
+         \<application/vnd.openxmlformats-officedocument.*,
+          \application/msword,
+          \application/vnd.ms-excel>
+        \ libreoffice %f &
+fileviewer {*.doc},<application/msword> catdoc %c
+fileviewer {*.docx},
+          \<application/
+           \vnd.openxmlformats-officedocument.wordprocessingml.document>
+         \ docx2txt.pl %f -
+#+end_src
+
+** Djvu
+#+begin_src vimrc
+filextype {*.djvu},<image/vnd.djvu>
+        \ {View in zathura}
+        \ zathura %f,
+        \ {View in apvlv}
+        \ apvlv %f,
+fileviewer *.djvu
+         \ {Proper preview}
+         \ vifmimg djvu %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+#+end_src
+
+** Epub
+#+begin_src vimrc
+fileviewer *.epub
+         \ {Proper preview}
+         \ vifmimg epub %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+#+end_src
+
+** Font
+#+begin_src vimrc
+fileviewer <font/*>
+         \ {Proper preview}
+         \ vifmimg font %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+#+end_src
+
+** PostScript
+#+begin_src vimrc
+filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
+        \ {View in zathura}
+        \ zathura %f,
+        \ {View in gv}
+        \ gv %c %i &,
+#+end_src
+
+** Object
+#+begin_src vimrc
+filetype {*.o},<application/x-object> nm %f | less
 #+end_src
 
 ** OpenRaster
@@ -470,20 +529,6 @@ filetype {*.7z},<application/x-7z-compressed>
 fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
 #+end_src
 
-** Office files
-#+begin_src vimrc
-filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
-         \<application/vnd.openxmlformats-officedocument.*,
-          \application/msword,
-          \application/vnd.ms-excel>
-        \ libreoffice %f &
-fileviewer {*.doc},<application/msword> catdoc %c
-fileviewer {*.docx},
-          \<application/
-           \vnd.openxmlformats-officedocument.wordprocessingml.document>
-         \ docx2txt.pl %f -
-#+end_src
-
 ** TuDu files
 #+begin_src vimrc
 filetype *.tudu tudu -f %c
@@ -492,13 +537,6 @@ filetype *.tudu tudu -f %c
 ** Qt projects
 #+begin_src vimrc
 filextype *.pro qtcreator %f &
-#+end_src
-
-** Directories
-#+begin_src vimrc
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
 #+end_src
 
 * Syntax Highlighting

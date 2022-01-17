@@ -334,6 +334,8 @@ alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
 alias emacs='emacsclient -c -a "emacs"'
+
+alias vfm='vifmrun'
 #+end_src
 
 ** Listing directories
@@ -461,7 +463,7 @@ alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 #+begin_src shell :tangle ~/.config/aliasrc
 alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'
-alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
+# alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
 alias pacman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'
 alias pacman-orphans-fullclean='sudo pacman -Rns $(pacman -Qtdq)'
 # fzf

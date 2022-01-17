@@ -117,22 +117,27 @@ command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart full
 
-filextype {*.pdf},<application/pdf>
-        \ zathura %c %i &, apvlv %c, xpdf %c
-fileviewer {*.pdf},<application/pdf>
-        \ pdftotext -nopgbrk %c -
+filextype */
+        \ {View in thunar}
+        \ Thunar %f &,
 
-filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i &,
-
-filextype {*.djvu},<image/vnd.djvu>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        \ {View in vimiv}
+        \ vimiv %f,
+        \ {View in sxiv}
+        \ sxiv %f,
+        \ {View in gpicview}
+        \ gpicview %c,
+        \ {View in shotwell}
+        \ shotwell,
+fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+         \ vifmimg draw %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+         " \ {ASCII image preview}
+         " \ img2txt %c
+         " \ {File info}
+         " \ identify %f
 
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
         \<audio/*>
@@ -172,23 +177,58 @@ filextype {*.html,*.htm},<text/html>
         \ uzbl-browser %f %i &,
 filetype {*.html,*.htm},<text/html> links, lynx
 
-filetype {*.o},<application/x-object> nm %f | less
-
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in vimiv}
-        \ vimiv %f,
-        \ {View in sxiv}
-        \ sxiv %f,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ img2txt %c
-         " \ identify %f
+filextype {*.pdf},<application/pdf>
+        \ zathura %c %i &, apvlv %c, xpdf %c
+fileviewer {*.pdf},<application/pdf>
+         \ vifmimg pdf %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+        " \ pdftotext -nopgbrk %c -
+
+filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
+         \<application/vnd.openxmlformats-officedocument.*,
+          \application/msword,
+          \application/vnd.ms-excel>
+        \ libreoffice %f &
+fileviewer {*.doc},<application/msword> catdoc %c
+fileviewer {*.docx},
+          \<application/
+           \vnd.openxmlformats-officedocument.wordprocessingml.document>
+         \ docx2txt.pl %f -
+
+filextype {*.djvu},<image/vnd.djvu>
+        \ {View in zathura}
+        \ zathura %f,
+        \ {View in apvlv}
+        \ apvlv %f,
+fileviewer *.djvu
+         \ {Proper preview}
+         \ vifmimg djvu %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+
+fileviewer *.epub
+         \ {Proper preview}
+         \ vifmimg epub %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+
+fileviewer <font/*>
+         \ {Proper preview}
+         \ vifmimg font %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+
+filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
+        \ {View in zathura}
+        \ zathura %f,
+        \ {View in gv}
+        \ gv %c %i &,
+
+filetype {*.o},<application/x-object> nm %f | less
 
 filextype *.ora
         \ {Edit in MyPaint}
@@ -262,24 +302,9 @@ filetype {*.7z},<application/x-7z-compressed>
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
 
-filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
-         \<application/vnd.openxmlformats-officedocument.*,
-          \application/msword,
-          \application/vnd.ms-excel>
-        \ libreoffice %f &
-fileviewer {*.doc},<application/msword> catdoc %c
-fileviewer {*.docx},
-          \<application/
-           \vnd.openxmlformats-officedocument.wordprocessingml.document>
-         \ docx2txt.pl %f -
-
 filetype *.tudu tudu -f %c
 
 filextype *.pro qtcreator %f &
-
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
 
 " Syntax highlighting in preview
 "
