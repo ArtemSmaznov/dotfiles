@@ -2591,10 +2591,19 @@ Type: =ShellCommand=
 
 #+begin_src python
 c.fileselect.handler = 'external'
+#+end_src
 
-# c.fileselect.folder.command = ['alacritty', '-e', 'ranger', '--choosedir={}']
-c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefile={}']
-c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefiles={}']
+Vifm
+#+begin_src python
+c.fileselect.folder.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-dir', '{}']
+c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
+#+end_src
+
+Ranger
+#+begin_src python
+# c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefile={}']
+# c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefiles={}']
 #+end_src
 
 * Input
