@@ -1,7 +1,11 @@
 set selection-clipboard clipboard
 
+set recolor-lightcolor \#282828
+set recolor-darkcolor \#ebdbb2
+set recolor-keephue
+set recolor
+
 map <A-x> :
-map f toggle_fullscreen
 
 map <C-=> zoom in
 map <C--> zoom out
