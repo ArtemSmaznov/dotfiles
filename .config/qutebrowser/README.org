@@ -2595,9 +2595,9 @@ c.fileselect.handler = 'external'
 
 Vifm
 #+begin_src python
-c.fileselect.folder.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-dir', '{}']
-c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
-c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
+c.fileselect.folder.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-dir', '{}']
+c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-files', '{}']
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-files', '{}']
 #+end_src
 
 Ranger

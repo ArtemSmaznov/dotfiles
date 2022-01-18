@@ -1287,9 +1287,9 @@ c.history_gap_interval = 30
 
 c.fileselect.handler = 'external'
 
-c.fileselect.folder.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-dir', '{}']
-c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
-c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifm', '--choose-files', '{}']
+c.fileselect.folder.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-dir', '{}']
+c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-files', '{}']
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'vifmrun', '--choose-files', '{}']
 
 # c.fileselect.single_file.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefile={}']
 # c.fileselect.multiple_files.command = ['alacritty', '--class', 'dialog,dialog', '-e', 'ranger', '--choosefiles={}']

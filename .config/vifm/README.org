@@ -16,13 +16,13 @@
 - [[#file-types][File-types]]
   - [[#info][Info]]
   - [[#directories][Directories]]
-  - [[#pdf][Pdf]]
-  - [[#office-files][Office files]]
   - [[#images][Images]]
   - [[#audio][Audio]]
   - [[#video][Video]]
   - [[#web][Web]]
   - [[#man-page][Man page]]
+  - [[#pdf][Pdf]]
+  - [[#office-files][Office files]]
   - [[#djvu][Djvu]]
   - [[#epub][Epub]]
   - [[#font][Font]]
@@ -57,22 +57,21 @@
 - [[#customization][Customization]]
 
 * Dependencies
-|----------+----------------------------------|
-| Name     | Description                      |
-|----------+----------------------------------|
-| [[https://archlinux.org/packages/?name=vifm][vifm]]     | A vim-like terminal file manager |
-|----------+----------------------------------|
-| [[https://github.com/cirala/vifmimg][vifmimg]]  | Graphical image preview          |
-| [[https://archlinux.org/packages/?name=ueberzug][ueberzug]] | Graphical image preview          |
-| [[https://archlinux.org/packages/?name=libcaca][libcaca]]  | ASCII image preview              |
-| [[https://archlinux.org/packages/?name=poppler][poppler]]  | Text PDF preview                 |
-|----------+----------------------------------|
+|-------------+----------------------------------|
+| Name        | Description                      |
+|-------------+----------------------------------|
+| [[https://archlinux.org/packages/?name=vifm][vifm]]        | A vim-like terminal file manager |
+|-------------+----------------------------------|
+| [[https://aur.archlinux.org/packages/vifmimg-git][vifmimg-git]] | Graphical image preview          |
+| [[https://archlinux.org/packages/?name=ueberzug][ueberzug]]    | Graphical image preview          |
+| [[https://archlinux.org/packages/?name=libcaca][libcaca]]     | ASCII image preview              |
+| [[https://archlinux.org/packages/?name=poppler][poppler]]     | Text PDF preview                 |
+|-------------+----------------------------------|
 
 #+begin_example shell
 sudo pacman -S --needed vifm libcaca poppler ueberzug
+paru -S vifmimg-git
 #+end_example
-
-=vifmimg= requires manually cloning the repository and adding the executables to your =$PATH=
 
 * General
 #+begin_src vimrc
