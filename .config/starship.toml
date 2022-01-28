@@ -1,14 +1,23 @@
+# Inserts a blank line between shell prompts
 add_newline = true
 
+# Timeout for commands executed by starship (in milliseconds).
+# command_timeout = 2000
+
 [character]
+# Replace the ❯ symbol in the prompt with ➜
 success_symbol = "[➜](bold green)"
 
-# [hostname]
-# ssh_only = false
+[hostname]
+ssh_only = true
 
-# [username]
-# show_always = true
+[username]
+show_always = false
 
-# [directory]
-# truncation_length = 3
-# truncate_to_repo = true
+[line_break]
+# Disables the line_break module, making the prompt a single line.
+disabled = false
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true

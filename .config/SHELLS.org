@@ -34,6 +34,12 @@
   - [[#git][Git]]
   - [[#archives][Archives]]
 - [[#starship][Starship]]
+  - [[#general][General]]
+  - [[#character][Character]]
+  - [[#hostname][Hostname]]
+  - [[#username][Username]]
+  - [[#line-break][Line Break]]
+  - [[#directory][Directory]]
 
 * Bash
 ** Start Section
@@ -574,25 +580,53 @@ function ex() {
 #+end_src
 
 * Starship
-Inserts a blank line between shell prompts
+** General
 #+begin_src toml :tangle ~/.config/starship.toml
+# Inserts a blank line between shell prompts
 add_newline = true
+
+# Timeout for commands executed by starship (in milliseconds).
+# command_timeout = 2000
 #+end_src
 
-Replace the =❯= symbol in the prompt with =➜=
+** Character
+The character module shows a character (usually an arrow) beside where the text is entered in your terminal.
 #+begin_src toml :tangle ~/.config/starship.toml
 [character]
+# Replace the ❯ symbol in the prompt with ➜
 success_symbol = "[➜](bold green)"
 #+end_src
 
+** Hostname
+The hostname module shows the system hostname.
 #+begin_src toml :tangle ~/.config/starship.toml
-# [hostname]
-# ssh_only = false
+[hostname]
+ssh_only = true
+#+end_src
 
-# [username]
-# show_always = true
+** Username
+The username module shows active user's username. The module will be shown if any of the following conditions are met:
+#+begin_src toml :tangle ~/.config/starship.toml
+[username]
+show_always = false
+#+end_src
 
-# [directory]
-# truncation_length = 3
-# truncate_to_repo = true
+** Line Break
+The line_break module separates the prompt into two lines.
+#+begin_src toml :tangle ~/.config/starship.toml
+[line_break]
+# Disables the line_break module, making the prompt a single line.
+disabled = false
+#+end_src
+
+** Directory
+The directory module shows the path to your current directory, truncated to three parent folders. Your directory will also be truncated to the root of the git repo that you're currently in.
+
+When using the fish style pwd option, instead of hiding the path that is truncated, you will see a shortened name of each directory based on the number you enable for the option.
+
+For example, given ~/Dev/Nix/nixpkgs/pkgs where nixpkgs is the repo root, and the option set to 1. You will now see ~/D/N/nixpkgs/pkgs, whereas before it would have been nixpkgs/pkgs.
+#+begin_src toml :tangle ~/.config/starship.toml
+[directory]
+truncation_length = 3
+truncate_to_repo = true
 #+end_src
