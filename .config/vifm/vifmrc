@@ -92,6 +92,13 @@ set nohlsearch
 set incsearch
 
 mark h ~/
+mark d ~/Downloads
+mark D ~/Documents
+mark m ~/Music
+mark v ~/Videos
+mark p ~/Pictures
+mark s ~/Pictures/screenshots
+mark w ~/Pictures/wallpapers
 
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
@@ -217,7 +224,6 @@ fileviewer *.epub
          \ vifmimg clear
 
 fileviewer <font/*>
-         \ {Proper preview}
          \ vifmimg font %px %py %pw %ph %c
          \ %pc
          \ vifmimg clear

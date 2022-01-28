@@ -63,6 +63,7 @@
 | [[https://archlinux.org/packages/?name=vifm][vifm]]        | A vim-like terminal file manager |
 |-------------+----------------------------------|
 | [[https://aur.archlinux.org/packages/vifmimg-git][vifmimg-git]] | Graphical image preview          |
+| [[https://aur.archlinux.org/packages/fontpreview][fontpreview]] | Fonts preview                    |
 | [[https://archlinux.org/packages/?name=ueberzug][ueberzug]]    | Graphical image preview          |
 | [[https://archlinux.org/packages/?name=libcaca][libcaca]]     | ASCII image preview              |
 | [[https://archlinux.org/packages/?name=poppler][poppler]]     | Text PDF preview                 |
@@ -70,7 +71,7 @@
 
 #+begin_example shell
 sudo pacman -S --needed vifm libcaca poppler ueberzug
-paru -S vifmimg-git
+paru -S vifmimg-git fontpreview
 #+end_example
 
 * General
@@ -197,6 +198,13 @@ set incsearch
 * Marks
 #+begin_src vimrc
 mark h ~/
+mark d ~/Downloads
+mark D ~/Documents
+mark m ~/Music
+mark v ~/Videos
+mark p ~/Pictures
+mark s ~/Pictures/screenshots
+mark w ~/Pictures/wallpapers
 #+end_src
 
 * Session
@@ -391,7 +399,6 @@ fileviewer *.epub
 ** Font
 #+begin_src vimrc
 fileviewer <font/*>
-         \ {Proper preview}
          \ vifmimg font %px %py %pw %ph %c
          \ %pc
          \ vifmimg clear

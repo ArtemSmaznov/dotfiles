@@ -68,8 +68,8 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/ranger/][ranger]]
 * Web Browser
 - [[file:.config/qutebrowser/README.org][QuteBrowser]]
-- [[file:.config/nyxt/README.org][Nyxt]]
-- Vimb
+- TODO [[file:.config/nyxt/README.org][Nyxt]]
+- TODO Vimb
 * Email
 - [[file:.config/README.org::*mbsync][mbsync]]
 * System Utilities
