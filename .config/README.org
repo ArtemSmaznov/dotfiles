@@ -45,6 +45,11 @@ dunst &
 unclutter -jitter 5 &
 #+end_src
 
+Japanese Language Input
+#+begin_src shell :tangle autostart-scripts/autostart.sh
+fcitx -d &
+#+end_src
+
 ** Background Apps
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 redshift-gtk &
