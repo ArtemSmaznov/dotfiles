@@ -48,7 +48,8 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/gh/][gh]]
 - [[file:.config/neofetch/README.org][neofetch]]
 - [[file:.config/htop/][htop]]
-- [[file:.config/bashtop/][bashtop]]
+- [[file:.config/btop/README.org][btop]]
+- [[file:.config/bashtop/README.org][bashtop]]
 * Text Editor
 - [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
 - [[file:.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
