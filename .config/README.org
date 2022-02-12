@@ -4,6 +4,9 @@
 #+STARTUP: overview
 
 * Table of Contents :toc:
+- [[#xdg-mime][XDG Mime]]
+  - [[#added-associations][Added Associations]]
+  - [[#default-applications][Default Applications]]
 - [[#auto-start][Auto-start]]
   - [[#startup-sound][Startup Sound]]
   - [[#wallpaper][Wallpaper]]
@@ -17,6 +20,182 @@
 - [[#mbsync][mbsync]]
   - [[#gmail-main][Gmail Main]]
   - [[#gmail-artem][Gmail Artem]]
+
+* XDG Mime
+:PROPERTIES:
+:header-args: :tangle mimeapps.list
+:END:
+** Added Associations
+#+begin_src conf
+[Added Associations]
+#+end_src
+
+*** IDE
+#+begin_src conf
+application/javascript=emacs.desktop;code-oss.desktop;
+application/x-httpd-php3=emacs.desktop;code-oss.desktop;
+application/x-httpd-php4=emacs.desktop;code-oss.desktop;
+application/x-httpd-php5=emacs.desktop;code-oss.desktop;
+application/x-m4=emacs.desktop;code-oss.desktop;
+application/x-php=emacs.desktop;code-oss.desktop;
+application/x-ruby=emacs.desktop;code-oss.desktop;
+application/x-shellscript=emacs.desktop;code-oss.desktop;
+application/xml=emacs.desktop;code-oss.desktop;
+text/css=emacs.desktop;code-oss.desktop;
+text/html=emacs.desktop;code-oss.desktop;
+text/plain=emacs.desktop;
+text/turtle=emacs.desktop;code-oss.desktop;
+text/x-c++hdr=emacs.desktop;code-oss.desktop;
+text/x-c++src=emacs.desktop;code-oss.desktop;
+text/x-chdr=emacs.desktop;code-oss.desktop;
+text/x-csharp=emacs.desktop;code-oss.desktop;
+text/x-csrc=emacs.desktop;code-oss.desktop;
+text/x-diff=emacs.desktop;code-oss.desktop;
+text/x-dsrc=emacs.desktop;code-oss.desktop;
+text/x-fortran=emacs.desktop;code-oss.desktop;
+text/x-java=emacs.desktop;code-oss.desktop;
+text/x-makefile=emacs.desktop;code-oss.desktop;
+text/x-pascal=emacs.desktop;code-oss.desktop;
+text/x-perl=emacs.desktop;code-oss.desktop;
+text/x-python=emacs.desktop;code-oss.desktop;
+text/x-sql=emacs.desktop;code-oss.desktop;
+text/x-vb=emacs.desktop;code-oss.desktop;
+text/yaml=emacs.desktop;code-oss.desktop;
+#+end_src
+
+*** PDF
+#+begin_src conf
+application/pdf=org.pwmt.zathura.desktop,sejda-desktop.desktop;brave-browser.desktop;xreader.desktop;
+#+end_src
+
+*** Browser
+#+begin_src conf
+application/xhtml+xml=brave-browser.desktop;emacs.desktop;code-oss.desktop;
+#+end_src
+
+*** Images
+#+begin_src conf
+image/jpeg=vimiv.desktop;
+image/png=vimiv.desktop;
+image/gif=mpv.desktop;vimiv.desktop;
+image/svg+xml=vimiv.desktop;
+image/tiff=vimiv.desktop;
+image/x-canon-cr2=vimiv.desktop;
+#+end_src
+
+*** Videos
+#+begin_src conf
+video/mp4=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/quicktime=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/webm=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/x-flv=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/x-matroska=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/x-ms-wmv=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
+application/x-partial-download=mpv.desktop;
+#+end_src
+
+*** Others
+#+begin_src conf
+application/vnd.sqlite3=userapp-digikam-P3EHI0.desktop;
+application/x-desktop=xed.desktop;
+inode/directory=pcmanfm.desktop;nemo.desktop;
+#+end_src
+
+** Default Applications
+#+begin_src conf
+[Default Applications]
+#+end_src
+*** IDE
+#+begin_src conf
+application/javascript=emacs.desktop
+application/x-desktop=emacs.desktop
+application/x-httpd-php3=emacs.desktop
+application/x-httpd-php4=emacs.desktop
+application/x-httpd-php5=emacs.desktop
+application/x-m4=emacs.desktop
+application/x-php=emacs.desktop
+application/x-ruby=emacs.desktop
+application/x-shellscript=emacs.desktop
+application/xml=emacs.desktop
+text/css=emacs.desktop
+text/plain=emacs.desktop
+text/turtle=emacs.desktop
+text/x-c++hdr=emacs.desktop
+text/x-c++src=emacs.desktop
+text/x-chdr=emacs.desktop
+text/x-csharp=emacs.desktop
+text/x-csrc=emacs.desktop
+text/x-diff=emacs.desktop
+text/x-dsrc=emacs.desktop
+text/x-fortran=emacs.desktop
+text/x-java=emacs.desktop
+text/x-makefile=emacs.desktop
+text/x-pascal=emacs.desktop
+text/x-perl=emacs.desktop
+text/x-python=emacs.desktop
+text/x-sql=emacs.desktop
+text/x-vb=emacs.desktop
+text/yaml=emacs.desktop
+#+end_src
+
+*** PDF
+#+begin_src conf
+application/pdf=org.pwmt.zathura.desktop
+#+end_src
+
+*** Browser
+#+begin_src conf
+application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
+text/html=org.qutebrowser.qutebrowser.desktop
+text/xml=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/mailto=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/webcal=org.qutebrowser.qutebrowser.desktop
+#+end_src
+
+*** Images
+#+begin_src conf
+image/bmp=vimiv.desktop
+image/jpeg=vimiv.desktop
+image/png=vimiv.desktop
+image/gif=mpv.desktop;
+image/svg+xml=vimiv.desktop
+image/tiff=vimiv.desktop
+image/x-canon-cr2=vimiv.desktop
+#+end_src
+
+*** Videos
+#+begin_src conf
+audio/mpeg=mpv.desktop
+audio/x-mpegurl=mpv.desktop
+audio/x-scpls=mpv.desktop
+audio/x-vorbis+ogg=mpv.desktop
+audio/x-wav=mpv.desktop
+video/mkv=mpv.desktop
+video/mov=mpv.desktop
+video/mp2t=mpv.desktop
+video/mp4=mpv.desktop
+video/mpeg=mpv.desktop
+video/msvideo=mpv.desktop
+video/quicktime=mpv.desktop
+video/webm=mpv.desktop
+video/x-avi=mpv.desktop
+video/x-flv=mpv.desktop
+video/x-matroska=mpv.desktop
+video/x-mpeg=mpv.desktop
+video/x-ms-wmv=mpv.desktop
+video/x-msvideo=mpv.desktop
+video/x-ogm+ogg=mpv.desktop
+#+end_src
+
+*** Others
+#+begin_src conf
+inode/directory=pcmanfm.desktop
+x-scheme-handler/slack=slack.desktop
+#+end_src
 
 * Auto-start
 ** Startup Sound
