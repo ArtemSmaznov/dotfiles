@@ -1,12 +1,165 @@
-set selection-clipboard clipboard
+set abort-clear-search true
 
-set recolor-lightcolor \#282828
-set recolor-darkcolor \#ebdbb2
-set recolor-keephue
+set adjust-open "best-fit"
+
+set advance-pages-per-row false
+
+set continuous-hist-save false
+
+set database "plain"
+
+set dbus-service true
+
+set dbus-raise-window true
+
+set filemonitor "glib"
+
+set incremental-search true
+
+set highlight-transparency 0.5
+
+set page-padding 3
+
+set page-cache-size 15
+
+set page-thumbnail-size 4194304
+
+set pages-per-row 1
+
+set first-page-column "1:2"
+
+set render-loading true
+
+set scroll-hstep -1
+
+set scroll-step 40
+
+set scroll-full-overlap 0
+
+set scroll-wrap false
+
+set show-directories true
+
+set show-hidden false
+
+set show-recent 10
+
+set scroll-page-aware false
+
+set link-zoom true
+
+set link-hadjust true
+
+set search-hadjust true
+
+set window-title-basename true
+
+set window-title-home-tilde false
+
+set window-title-page false
+
+set statusbar-basename false
+
+set statusbar-home-tilde true
+
+set zoom-center false
+
+set vertical-center false
+
+set zoom-max 1000
+
+set zoom-min 10
+
+set zoom-step 10
+
+set selection-clipboard "clipboard"
+
+set selection-notification true
+
+set synctex true
+
+set synctex-editor-command ""
+
+set sandbox "normal"
+
+set window-icon-document false
+
+set page-right-to-left false
+
+set font "hack normal 12"
+
+set n-completion-items 15
+
+set guioptions "shv"
+
+set completion-fg "#ebdbb2"
+set completion-bg "#1d2021"
+set completion-group-fg "#ebdbb2"
+set completion-group-bg "#282828"
+set completion-highlight-fg "#d5c4a1"
+set completion-highlight-bg "#504945"
+
+set default-fg "#ebdbb2"
+set default-bg "#282828"
+
+set inputbar-fg "#ebdbb2"
+set inputbar-bg "#1d2021"
+
+set statusbar-fg "#ebdbb2"
+set statusbar-bg "#3c3836"
+
+set notification-fg "#282828"
+set notification-bg "#ebdbb2"
+set notification-error-fg "#282828"
+set notification-error-bg "#fb4934"
+set notification-warning-fg "#282828"
+set notification-warning-bg "#fabd2f"
+
+set highlight-color "#fabd2f"
+
+set highlight-active-color "#fe8019"
+
+set highlight-fg "#fabd2f"
+
+set index-fg "#DDDDDD"
+set index-bg "#232323"
+
+set index-active-fg "#232323"
+set index-active-bg "#9FBC00"
+
+set render-loading-fg "#282828"
+set render-loading-bg "#ebdbb2"
+
 set recolor
+set recolor-keephue
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#ebdbb2"
+set recolor-reverse-video false
 
-map <A-x> :
+unmap <Space>
+unmap t
 
 map <C-=> zoom in
 map <C--> zoom out
 map <C-0> zoom
+
+map ZZ quit
+
+map <A-x> feedkeys :
+
+map tc recolor
+map td feedkeys d
+
+unmap [fullscreen] <Space>
+
+map [fullscreen] <C-=> zoom in
+map [fullscreen] <C--> zoom out
+map [fullscreen] <C-0> zoom
+
+map [fullscreen] ZZ quit
+
+map [fullscreen] <A-x> feedkeys :
+
+
+
+
