@@ -1,5 +1,4 @@
 [Added Associations]
-
 application/javascript=emacs.desktop;code-oss.desktop;
 application/x-httpd-php3=emacs.desktop;code-oss.desktop;
 application/x-httpd-php4=emacs.desktop;code-oss.desktop;
@@ -29,18 +28,14 @@ text/x-python=emacs.desktop;code-oss.desktop;
 text/x-sql=emacs.desktop;code-oss.desktop;
 text/x-vb=emacs.desktop;code-oss.desktop;
 text/yaml=emacs.desktop;code-oss.desktop;
-
-application/pdf=org.pwmt.zathura.desktop,sejda-desktop.desktop;brave-browser.desktop;xreader.desktop;
-
+application/pdf=org.pwmt.zathura.desktop;sejda-desktop.desktop;xreader.desktop;brave-browser.desktop;
 application/xhtml+xml=brave-browser.desktop;emacs.desktop;code-oss.desktop;
-
 image/jpeg=vimiv.desktop;
 image/png=vimiv.desktop;
 image/gif=mpv.desktop;vimiv.desktop;
 image/svg+xml=vimiv.desktop;
 image/tiff=vimiv.desktop;
 image/x-canon-cr2=vimiv.desktop;
-
 video/mp4=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/quicktime=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/webm=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
@@ -48,13 +43,11 @@ video/x-flv=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/x-matroska=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/x-ms-wmv=mpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 application/x-partial-download=mpv.desktop;
-
 application/vnd.sqlite3=userapp-digikam-P3EHI0.desktop;
 application/x-desktop=xed.desktop;
 inode/directory=pcmanfm.desktop;nemo.desktop;
 
 [Default Applications]
-
 application/javascript=emacs.desktop
 application/x-desktop=emacs.desktop
 application/x-httpd-php3=emacs.desktop
@@ -84,9 +77,7 @@ text/x-python=emacs.desktop
 text/x-sql=emacs.desktop
 text/x-vb=emacs.desktop
 text/yaml=emacs.desktop
-
 application/pdf=org.pwmt.zathura.desktop
-
 application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
 text/html=org.qutebrowser.qutebrowser.desktop
 text/xml=org.qutebrowser.qutebrowser.desktop
@@ -96,7 +87,6 @@ x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/mailto=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/webcal=org.qutebrowser.qutebrowser.desktop
-
 image/bmp=vimiv.desktop
 image/jpeg=vimiv.desktop
 image/png=vimiv.desktop
@@ -104,7 +94,6 @@ image/gif=mpv.desktop;
 image/svg+xml=vimiv.desktop
 image/tiff=vimiv.desktop
 image/x-canon-cr2=vimiv.desktop
-
 audio/mpeg=mpv.desktop
 audio/x-mpegurl=mpv.desktop
 audio/x-scpls=mpv.desktop
@@ -125,6 +114,5 @@ video/x-mpeg=mpv.desktop
 video/x-ms-wmv=mpv.desktop
 video/x-msvideo=mpv.desktop
 video/x-ogm+ogg=mpv.desktop
-
 inode/directory=pcmanfm.desktop
 x-scheme-handler/slack=slack.desktop
