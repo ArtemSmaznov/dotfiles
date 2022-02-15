@@ -7,7 +7,16 @@
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
 - [[#general][General]]
-- [[#theme][Theme]]
+- [[#ui][UI]]
+- [[#backend][Backend]]
+- [[#search][Search]]
+- [[#cache][Cache]]
+- [[#pages][Pages]]
+- [[#scrolling][Scrolling]]
+- [[#zooming][Zooming]]
+- [[#completion][Completion]]
+- [[#window-title][Window Title]]
+- [[#status-bar][Status Bar]]
 - [[#key-bindings][Key Bindings]]
   - [[#normal-mode][Normal Mode]]
   - [[#fullscreen-mode][Fullscreen Mode]]
@@ -31,30 +40,71 @@ sudo pacman -S --needed zathura zathura-cb zathura-djvu zathura-pdf-poppler zath
 #+end_example
 
 * General
-Defines if the search results should be cleared on abort.
-#+begin_src vimrc
-set abort-clear-search true
-#+end_src
-
-Defines which auto adjustment mode should be used if a document is loaded.  Possible options are "best-fit" and "width".
-#+begin_src vimrc
-set adjust-open "best-fit"
-#+end_src
-
-Defines if the number of pages per row should be honored when advancing a page.
-#+begin_src vimrc
-set advance-pages-per-row false
-#+end_src
-
 Tells zathura whether to save document history at each page change or only when closing a document.
 #+begin_src vimrc
 set continuous-hist-save false
 #+end_src
 
-Defines the database backend to use for bookmarks and input history. Possible values are "plain", "sqlite"  (ifbuilt  with
-sqlite support) and "null". If "null" is used, bookmarks and input history will not be stored.
+Defines the X clipboard into which mouse-selected data will be written.  When it
+is "clipboard", selected data will be  written to the CLIPBOARD clipboard, and
+can be pasted using the Ctrl+v key combination.  When it is "primary", selected
+data will be written to the PRIMARY clipboard, and can be pasted using the
+middle mouse button, or the Shift-Insert key combination.
 #+begin_src vimrc
-set database "plain"
+set selection-clipboard "clipboard"
+#+end_src
+
+Defines if a notification should be displayed after selecting text.
+#+begin_src vimrc
+set selection-notification true
+#+end_src
+
+Defines whether the window document should be updated based on the first page of a document.
+#+begin_src vimrc
+set window-icon-document false
+#+end_src
+
+* UI
+Set color scheme
+#+begin_src vimrc
+include colors/gruvbox
+#+end_src
+
+Set font
+#+begin_src vimrc
+set font "hack normal 12"
+#+end_src
+
+Defines the maximum number of displayed completion entries.
+#+begin_src vimrc
+set n-completion-items 15
+#+end_src
+
+Shows or hides GUI elements. If it contains:
+- 'c' the command line is displayed
+- 's' the statusbar is displayed
+- 'h' the horizontal scrollbar is displayed
+- 'v' the vertical scrollbar is displayed
+#+begin_src vimrc
+set guioptions "shv"
+#+end_src
+
+Dark Mode options
+#+begin_src vimrc
+set recolor
+set recolor-keephue
+set recolor-reverse-video false
+#+end_src
+
+The page padding defines the gap in pixels between each rendered page.
+#+begin_src vimrc
+set page-padding 3
+#+end_src
+
+* Backend
+Defines which auto adjustment mode should be used if a document is loaded.  Possible options are "best-fit" and "width".
+#+begin_src vimrc
+set adjust-open "best-fit"
 #+end_src
 
 En/Disables the D-Bus service. If the services is disabled, SyncTeX forward synchronization is not available.
@@ -67,12 +117,47 @@ Defines whether zathura's window should be raised when receiving certain command
 set dbus-raise-window true
 #+end_src
 
+Defines the database backend to use for bookmarks and input history. Possible values are "plain", "sqlite"  (ifbuilt  with
+sqlite support) and "null". If "null" is used, bookmarks and input history will not be stored.
+#+begin_src vimrc
+set database "plain"
+#+end_src
+
 Defines the file monitor backend used to check for changes in files. Possible values are "glib", "signal" (if signal handling
 is supported), and "noop". The "noop" file monitor does not trigger reloads.
 #+begin_src vimrc
 set filemonitor "glib"
 #+end_src
 
+En/Disables SyncTeX backward synchronization support.
+#+begin_src vimrc
+set synctex true
+#+end_src
+
+Defines the command executed for SyncTeX backward synchronization.
+#+begin_src vimrc
+set synctex-editor-command "vim --remote-silent +%{line} %{input}"
+#+end_src
+
+Defines the sandbox mode to use for the seccomp syscall filter. Possible values
+are "none", "normal" and "strict". If  "none" is  used, the  sandbox will be
+disabled. The use of "normal" will provide minimal protection and allow normal
+use of zathura with support for all features. The "strict" mode is a read only
+sandbox that is intended for viewing documents only.
+
+Some features are disabled when using strict sandbox mode:
+- saving/writing files
+- use of input methods like ibus
+- printing
+- bookmarks and history
+
+No feature regressions are expected when using normal sandbox mode.
+When running under WSL, the default is "none" since seccomp is not supported in that environment.
+#+begin_src vimrc
+set sandbox "normal"
+#+end_src
+
+* Search
 En/Disables incremental search (search while typing).
 #+begin_src vimrc
 set incremental-search true
@@ -80,14 +165,20 @@ set incremental-search true
 
 Defines the opacity of a highlighted element
 #+begin_src vimrc
-set highlight-transparency 0.5
+set highlight-transparency 0.8
 #+end_src
 
-The page padding defines the gap in pixels between each rendered page.
+En/Disables horizontally centered search results.
 #+begin_src vimrc
-set page-padding 3
+set search-hadjust true
 #+end_src
 
+Defines if the search results should be cleared on abort.
+#+begin_src vimrc
+set abort-clear-search true
+#+end_src
+
+* Cache
 Defines the maximum number of pages that could be kept in the page cache. When
 the cache is full and a new  page that  isn't cached becomes visible, the least
 recently viewed page in the cache will be evicted to make room for the new one.
@@ -107,6 +198,7 @@ system memory.
 set page-thumbnail-size 4194304
 #+end_src
 
+* Pages
 Defines the number of pages that are rendered next to each other in a row.
 #+begin_src vimrc
 set pages-per-row 1
@@ -130,6 +222,22 @@ Defines if the "Loading..." text should be displayed if a page is rendered.
 set render-loading true
 #+end_src
 
+Defines if the number of pages per row should be honored when advancing a page.
+#+begin_src vimrc
+set advance-pages-per-row false
+#+end_src
+
+En/Disables aligning to the left internal link targets, for example from the index.
+#+begin_src vimrc
+set link-hadjust true
+#+end_src
+
+Defines whether pages in multi-column view should start from the right side.
+#+begin_src vimrc
+set page-right-to-left false
+#+end_src
+
+* Scrolling
 Defines the horizontal step size of scrolling by calling the scroll command once
 #+begin_src vimrc
 set scroll-hstep -1
@@ -150,66 +258,15 @@ Defines if the last/first page should be wrapped
 set scroll-wrap false
 #+end_src
 
-Defines if the directories should be displayed in completion.
-#+begin_src vimrc
-set show-directories true
-#+end_src
-
-Defines if hidden files and directories should be displayed in completion.
-#+begin_src vimrc
-set show-hidden false
-#+end_src
-
-Defines the number of recent files that should be displayed in completion.  If
-the value is negative, no upper bounds are applied. If the value is 0, no recent
-files are shown.
-#+begin_src vimrc
-set show-recent 10
-#+end_src
-
 Defines if scrolling by half or full pages stops at page boundaries.
 #+begin_src vimrc
 set scroll-page-aware false
 #+end_src
 
+* Zooming
 En/Disables the ability of changing zoom when following links.
 #+begin_src vimrc
 set link-zoom true
-#+end_src
-
-En/Disables aligning to the left internal link targets, for example from the index.
-#+begin_src vimrc
-set link-hadjust true
-#+end_src
-
-En/Disables horizontally centered search results.
-#+begin_src vimrc
-set search-hadjust true
-#+end_src
-
-Use basename of the file in the window title.
-#+begin_src vimrc
-set window-title-basename true
-#+end_src
-
-Display a short version of the file path, which replaces $HOME with ~, in the window title.
-#+begin_src vimrc
-set window-title-home-tilde false
-#+end_src
-
-Display the page number in the window title.
-#+begin_src vimrc
-set window-title-page false
-#+end_src
-
-Use basename of the file in the statusbar.
-#+begin_src vimrc
-set statusbar-basename false
-#+end_src
-
-Display a short version of the file path, which replaces $HOME with ~, in the statusbar.
-#+begin_src vimrc
-set statusbar-home-tilde true
 #+end_src
 
 En/Disables horizontally centered zooming.
@@ -237,192 +294,163 @@ Defines the amount of percent that is zoomed in or out on each command.
 set zoom-step 10
 #+end_src
 
-Defines the X clipboard into which mouse-selected data will be written.  When it
-is "clipboard", selected data will be  written to the CLIPBOARD clipboard, and
-can be pasted using the Ctrl+v key combination.  When it is "primary", selected
-data will be written to the PRIMARY clipboard, and can be pasted using the
-middle mouse button, or the Shift-Insert key combination.
+* Completion
+Defines if the directories should be displayed in completion.
 #+begin_src vimrc
-set selection-clipboard "clipboard"
+set show-directories true
 #+end_src
 
-Defines if a notification should be displayed after selecting text.
+Defines if hidden files and directories should be displayed in completion.
 #+begin_src vimrc
-set selection-notification true
+set show-hidden false
 #+end_src
 
-En/Disables SyncTeX backward synchronization support.
+Defines the number of recent files that should be displayed in completion.  If
+the value is negative, no upper bounds are applied. If the value is 0, no recent
+files are shown.
 #+begin_src vimrc
-set synctex true
+set show-recent 10
 #+end_src
 
-Defines the command executed for SyncTeX backward synchronization.
+* Window Title
+Use basename of the file in the window title.
 #+begin_src vimrc
-set synctex-editor-command ""
+set window-title-basename true
 #+end_src
 
-Defines the sandbox mode to use for the seccomp syscall filter. Possible values
-are "none", "normal" and "strict". If  "none" is  used, the  sandbox will be
-disabled. The use of "normal" will provide minimal protection and allow normal
-use of zathura with support for all features. The "strict" mode is a read only
-sandbox that is intended for viewing documents only.
-
-Some features are disabled when using strict sandbox mode:
-- saving/writing files
-- use of input methods like ibus
-- printing
-- bookmarks and history
-  
-No feature regressions are expected when using normal sandbox mode.
-When running under WSL, the default is "none" since seccomp is not supported in that environment.
+Display a short version of the file path, which replaces $HOME with ~, in the window title.
 #+begin_src vimrc
-set sandbox "normal"
+set window-title-home-tilde false
 #+end_src
 
-Defines whether the window document should be updated based on the first page of a document.
+Display the page number in the window title.
 #+begin_src vimrc
-set window-icon-document false
+set window-title-page false
 #+end_src
 
-Defines whether pages in multi-column view should start from the right side.
+* Status Bar
+Use basename of the file in the statusbar.
 #+begin_src vimrc
-set page-right-to-left false
+set statusbar-basename false
 #+end_src
 
-* Theme
+Display a short version of the file path, which replaces $HOME with ~, in the statusbar.
 #+begin_src vimrc
-set font "hack normal 12"
-#+end_src
-
-Defines the maximum number of displayed completion entries.
-#+begin_src vimrc
-set n-completion-items 15
-#+end_src
-
-Shows or hides GUI elements. If it contains:
-- 'c' the command line is displayed
-- 's' the statusbar is displayed
-- 'h' the horizontal scrollbar is displayed
-- 'v' the vertical scrollbar is displayed
-#+begin_src vimrc
-set guioptions "shv"
-#+end_src
-
-Defines the colors that is used for command line completion entries
-#+begin_src vimrc
-set completion-fg "#ebdbb2"
-set completion-bg "#1d2021"
-set completion-group-fg "#ebdbb2"
-set completion-group-bg "#282828"
-set completion-highlight-fg "#d5c4a1"
-set completion-highlight-bg "#504945"
-#+end_src
-
-Defines the default background colors
-#+begin_src vimrc
-set default-fg "#ebdbb2"
-set default-bg "#282828"
-
-set inputbar-fg "#ebdbb2"
-set inputbar-bg "#1d2021"
-
-set statusbar-fg "#ebdbb2"
-set statusbar-bg "#3c3836"
-#+end_src
-
-Defines the background color for a notification
-#+begin_src vimrc
-set notification-fg "#282828"
-set notification-bg "#ebdbb2"
-set notification-error-fg "#282828"
-set notification-error-bg "#fb4934"
-set notification-warning-fg "#282828"
-set notification-warning-bg "#fabd2f"
-#+end_src
-
-Defines the color that is used for highlighting parts of the document (e.g.: show search results)
-#+begin_src vimrc
-set highlight-color "#fabd2f"
-#+end_src
-
-Defines the color that is used to show the current selected highlighted element (e.g: current search result)
-#+begin_src vimrc
-set highlight-active-color "#fe8019"
-#+end_src
-
-Defines the color that is used for text when highlighting parts of the document (e.g.: number for links).
-#+begin_src vimrc
-set highlight-fg "#fabd2f"
-#+end_src
-
-Defines the colors of the index mode.
-#+begin_src vimrc
-set index-fg "#DDDDDD"
-set index-bg "#232323"
-#+end_src
-
-Defines the colors of the selected element in index mode.
-#+begin_src vimrc
-set index-active-fg "#232323"
-set index-active-bg "#9FBC00"
-#+end_src
-
-Defines the colors used for the "Loading..." text.
-#+begin_src vimrc
-set render-loading-fg "#282828"
-set render-loading-bg "#ebdbb2"
-#+end_src
-
-Recoloring
-#+begin_src vimrc
-set recolor
-set recolor-keephue
-set recolor-lightcolor "#282828"
-set recolor-darkcolor "#ebdbb2"
-set recolor-reverse-video false
+set statusbar-home-tilde true
 #+end_src
 
 * Key Bindings
-** Normal Mode
-Un-mapping
+** Un-mapping
+Normal
 #+begin_src vimrc
-unmap <Space>
-unmap t
+unmap <Space> # Scroll a full page left, down, up or right
+unmap t       # scroll full page left
+unmap f       # follow
+unmap r       # rotate
+unmap R       # reload
+unmap a       # fit
+unmap s       # fit
+unmap d       # multipage toggle
+unmap zI      # Zooming
+unmap zO      # Zooming
+unmap z0      # Zooming
+unmap zi      # Zooming
+unmap zo      # Zooming
 #+end_src
 
+Fullscreen
+#+begin_src vimrc
+unmap [fullscreen] t # scroll full page left
+unmap [fullscreen] f # follow
+unmap [fullscreen] r # rotate
+unmap [fullscreen] R # reload
+unmap [fullscreen] a # fit
+unmap [fullscreen] s # fit
+unmap [fullscreen] d # multipage toggle
+unmap [fullscreen] zI # Zooming
+unmap [fullscreen] zO # Zooming
+unmap [fullscreen] z0 # Zooming
+unmap [fullscreen] zi # Zooming
+unmap [fullscreen] zo # Zooming
+#+end_src
+
+** General
+#+begin_src vimrc
+map ZZ quit
+map [fullscreen] ZZ quit
+
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+map i feedkeys :info<Return>
+map [fullscreen] i feedkeys :info<Return>
+#+end_src
+
+** Navigation
+#+begin_src vimrc
+map zt snap_to_page
+map [fullscreen] zt snap_to_page
+
+map bl feedkeys :blist<Return>
+map ba feedkeys :bmark<Space>
+map bd feedkeys :bdelete<Space>
+map [fullscreen] bl feedkeys :blist<Return>
+map [fullscreen] ba feedkeys :bmark<Space>
+map [fullscreen] bd feedkeys :bdelete<Space>
+#+end_src
+
+** View
+#+begin_src vimrc
+map tp adjust_window best-fit
+map tw adjust_window width
+map [fullscreen] tp adjust_window best-fit
+map [fullscreen] tw adjust_window width
+
+map r reload
+map [fullscreen] r reload
+
+map R rotate
+map [fullscreen] R rotate
+
+map tc recolor
+map [fullscreen] tc recolor
+
+map td toggle_page_mode
+map [fullscreen] td toggle_page_mode
+
+map ts toggle_statusbar
+map ti toggle_inputbar
+map [fullscreen] ts toggle_statusbar
+map [fullscreen] ti toggle_inputbar
+#+end_src
+
+** Zoom
 #+begin_src vimrc
 map <C-=> zoom in
 map <C--> zoom out
 map <C-0> zoom
-
-map ZZ quit
-
-map <A-x> feedkeys :
-
-map tc recolor
-map td feedkeys d
-#+end_src
-
-** Fullscreen Mode
-Un-mapping
-#+begin_src vimrc
-unmap [fullscreen] <Space>
-#+end_src
-
-#+begin_src vimrc
 map [fullscreen] <C-=> zoom in
 map [fullscreen] <C--> zoom out
 map [fullscreen] <C-0> zoom
+#+end_src
 
-map [fullscreen] ZZ quit
+** Hints
+#+begin_src vimrc
+map y feedkeys c
+map ;y feedkeys c
+map [fullscreen] y feedkeys c
+map [fullscreen] ;y feedkeys c
 
+map ;f follow
+map [fullscreen] ;f follow
+
+map ;F display_link
+map [fullscreen] ;F display_link
+#+end_src
+
+** Command
+#+begin_src vimrc
+map <A-x> feedkeys :
 map [fullscreen] <A-x> feedkeys :
 #+end_src
 
-** Presentation Mode
-#+begin_src vimrc
-#+end_src
-
-** Index Mode
-#+begin_src vimrc
-#+end_src

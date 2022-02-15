@@ -1,24 +1,48 @@
-set abort-clear-search true
-
-set adjust-open "best-fit"
-
-set advance-pages-per-row false
-
 set continuous-hist-save false
 
-set database "plain"
+set selection-clipboard "clipboard"
+
+set selection-notification true
+
+set window-icon-document false
+
+include colors/gruvbox
+
+set font "hack normal 12"
+
+set n-completion-items 15
+
+set guioptions "shv"
+
+set recolor
+set recolor-keephue
+set recolor-reverse-video false
+
+set page-padding 3
+
+set adjust-open "best-fit"
 
 set dbus-service true
 
 set dbus-raise-window true
 
+set database "plain"
+
 set filemonitor "glib"
+
+set synctex true
+
+set synctex-editor-command "vim --remote-silent +%{line} %{input}"
+
+set sandbox "normal"
 
 set incremental-search true
 
-set highlight-transparency 0.5
+set highlight-transparency 0.8
 
-set page-padding 3
+set search-hadjust true
+
+set abort-clear-search true
 
 set page-cache-size 15
 
@@ -30,6 +54,12 @@ set first-page-column "1:2"
 
 set render-loading true
 
+set advance-pages-per-row false
+
+set link-hadjust true
+
+set page-right-to-left false
+
 set scroll-hstep -1
 
 set scroll-step 40
@@ -38,29 +68,9 @@ set scroll-full-overlap 0
 
 set scroll-wrap false
 
-set show-directories true
-
-set show-hidden false
-
-set show-recent 10
-
 set scroll-page-aware false
 
 set link-zoom true
-
-set link-hadjust true
-
-set search-hadjust true
-
-set window-title-basename true
-
-set window-title-home-tilde false
-
-set window-title-page false
-
-set statusbar-basename false
-
-set statusbar-home-tilde true
 
 set zoom-center false
 
@@ -72,94 +82,107 @@ set zoom-min 10
 
 set zoom-step 10
 
-set selection-clipboard "clipboard"
+set show-directories true
 
-set selection-notification true
+set show-hidden false
 
-set synctex true
+set show-recent 10
 
-set synctex-editor-command ""
+set window-title-basename true
 
-set sandbox "normal"
+set window-title-home-tilde false
 
-set window-icon-document false
+set window-title-page false
 
-set page-right-to-left false
+set statusbar-basename false
 
-set font "hack normal 12"
+set statusbar-home-tilde true
 
-set n-completion-items 15
+unmap <Space> # Scroll a full page left, down, up or right
+unmap t       # scroll full page left
+unmap f       # follow
+unmap r       # rotate
+unmap R       # reload
+unmap a       # fit
+unmap s       # fit
+unmap d       # multipage toggle
+unmap zI      # Zooming
+unmap zO      # Zooming
+unmap z0      # Zooming
+unmap zi      # Zooming
+unmap zo      # Zooming
 
-set guioptions "shv"
+unmap [fullscreen] t # scroll full page left
+unmap [fullscreen] f # follow
+unmap [fullscreen] r # rotate
+unmap [fullscreen] R # reload
+unmap [fullscreen] a # fit
+unmap [fullscreen] s # fit
+unmap [fullscreen] d # multipage toggle
+unmap [fullscreen] zI # Zooming
+unmap [fullscreen] zO # Zooming
+unmap [fullscreen] z0 # Zooming
+unmap [fullscreen] zi # Zooming
+unmap [fullscreen] zo # Zooming
 
-set completion-fg "#ebdbb2"
-set completion-bg "#1d2021"
-set completion-group-fg "#ebdbb2"
-set completion-group-bg "#282828"
-set completion-highlight-fg "#d5c4a1"
-set completion-highlight-bg "#504945"
+map ZZ quit
+map [fullscreen] ZZ quit
 
-set default-fg "#ebdbb2"
-set default-bg "#282828"
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
 
-set inputbar-fg "#ebdbb2"
-set inputbar-bg "#1d2021"
+map i feedkeys :info<Return>
+map [fullscreen] i feedkeys :info<Return>
 
-set statusbar-fg "#ebdbb2"
-set statusbar-bg "#3c3836"
+map zt snap_to_page
+map [fullscreen] zt snap_to_page
 
-set notification-fg "#282828"
-set notification-bg "#ebdbb2"
-set notification-error-fg "#282828"
-set notification-error-bg "#fb4934"
-set notification-warning-fg "#282828"
-set notification-warning-bg "#fabd2f"
+map bl feedkeys :blist<Return>
+map ba feedkeys :bmark<Space>
+map bd feedkeys :bdelete<Space>
+map [fullscreen] bl feedkeys :blist<Return>
+map [fullscreen] ba feedkeys :bmark<Space>
+map [fullscreen] bd feedkeys :bdelete<Space>
 
-set highlight-color "#fabd2f"
+map tp adjust_window best-fit
+map tw adjust_window width
+map [fullscreen] tp adjust_window best-fit
+map [fullscreen] tw adjust_window width
 
-set highlight-active-color "#fe8019"
+map r reload
+map [fullscreen] r reload
 
-set highlight-fg "#fabd2f"
+map R rotate
+map [fullscreen] R rotate
 
-set index-fg "#DDDDDD"
-set index-bg "#232323"
+map tc recolor
+map [fullscreen] tc recolor
 
-set index-active-fg "#232323"
-set index-active-bg "#9FBC00"
+map td toggle_page_mode
+map [fullscreen] td toggle_page_mode
 
-set render-loading-fg "#282828"
-set render-loading-bg "#ebdbb2"
-
-set recolor
-set recolor-keephue
-set recolor-lightcolor "#282828"
-set recolor-darkcolor "#ebdbb2"
-set recolor-reverse-video false
-
-unmap <Space>
-unmap t
+map ts toggle_statusbar
+map ti toggle_inputbar
+map [fullscreen] ts toggle_statusbar
+map [fullscreen] ti toggle_inputbar
 
 map <C-=> zoom in
 map <C--> zoom out
 map <C-0> zoom
-
-map ZZ quit
-
-map <A-x> feedkeys :
-
-map tc recolor
-map td feedkeys d
-
-unmap [fullscreen] <Space>
-
 map [fullscreen] <C-=> zoom in
 map [fullscreen] <C--> zoom out
 map [fullscreen] <C-0> zoom
 
-map [fullscreen] ZZ quit
+map y feedkeys c
+map ;y feedkeys c
+map [fullscreen] y feedkeys c
+map [fullscreen] ;y feedkeys c
 
+map ;f follow
+map [fullscreen] ;f follow
+
+map ;F display_link
+map [fullscreen] ;F display_link
+
+map <A-x> feedkeys :
 map [fullscreen] <A-x> feedkeys :
-
-
-
-

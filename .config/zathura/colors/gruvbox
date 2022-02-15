@@ -1,0 +1,36 @@
+set default-fg              "#ebdbb2" # Foregroung
+set default-bg              "#1d2021" # BG 0
+
+set inputbar-fg             "#ebdbb2" # Foregroung
+set inputbar-bg             "#1d2021" # BG 0
+set statusbar-fg            "#ebdbb2" # Foregroung
+set statusbar-bg            "#3c3836" # BG 2
+
+set recolor-lightcolor      "#282828" # Background
+set recolor-darkcolor       "#ebdbb2" # Foregroung
+
+set render-loading-fg       "#282828" # Background
+set render-loading-bg       "#ebdbb2" # Foregroung
+
+set completion-fg           "#ebdbb2" # Foregroung
+set completion-bg           "#1d2021" # BG 0
+set completion-group-fg     "#ebdbb2" # Foregroung
+set completion-group-bg     "#282828" # Background
+set completion-highlight-fg "#d5c4a1" # FG 2
+set completion-highlight-bg "#504945" # Selection
+
+set notification-fg         "#282828" # Background
+set notification-bg         "#ebdbb2" # Foregroung
+set notification-error-fg   "#282828" # Background
+set notification-error-bg   "#fb4934" # Red
+set notification-warning-fg "#282828" # Background
+set notification-warning-bg "#fabd2f" # Yellow
+
+set highlight-fg            "#fabd2f" # Yellow
+set highlight-color         "#1d2021" # BG 0
+set highlight-active-color  "#fabd2f" # Yellow
+
+set index-fg                "#ebdbb2" # Foregroung
+set index-bg                "#282828" # Background
+set index-active-fg         "#d5c4a1" # FG 2
+set index-active-bg         "#504945" # Selection
