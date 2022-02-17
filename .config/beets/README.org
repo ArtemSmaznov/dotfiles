@@ -1,0 +1,61 @@
+#+TITLE: Beet
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Music tagger and library organizer
+#+STARTUP: overview
+
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#config][Config]]
+  - [[#paths][Paths]]
+  - [[#importing][Importing]]
+  - [[#library][Library]]
+  - [[#plugins][Plugins]]
+
+* Dependencies
+|-------------------+------------------------------------------|
+| Name              | Description                              |
+|-------------------+------------------------------------------|
+| [[https://archlinux.org/packages/?name=beets][beets]]             | Music tagger and library organizer       |
+|-------------------+------------------------------------------|
+| [[https://archlinux.org/packages/?name=python-requests][python-requests]]   | Python library for sending http requests |
+| [[https://archlinux.org/packages/?name=ffmpeg][ffmpeg]]            | Audio decoder                            |
+| [[https://archlinux.org/packages/?name=chromaprint][chromaprint]]       | Acoustic fingerprinting system           |
+| [[https://archlinux.org/packages/?name=python-pyacoustid][python-pyacoustid]] | Python library                           |
+|-------------------+------------------------------------------|
+
+#+begin_example shell
+sudo pacman -S --needed beets python-requests python-pyacoustid chromaprint ffmpeg
+#+end_example
+
+* Config
+:properties:
+:header-args: :tangle config.yaml
+:end:
+** Paths
+#+begin_src yaml
+directory: ~/Music
+library: ~/.config/beets/library.db
+#+end_src
+
+** Importing
+#+begin_src yaml
+import:
+  copy: yes
+  move: yes
+  write: yes
+  group_albums: yes
+  languages: en ru
+#+end_src
+
+** Library
+#+begin_src yaml
+paths:
+    default: $albumartist/$album%aunique{}/$track - $title
+    singleton: $artist/$title
+    comp: Compilations/$album%aunique{}/$track - $title
+#+end_src
+
+** Plugins
+#+begin_src yaml
+plugins: fetchart chroma
+#+end_src
