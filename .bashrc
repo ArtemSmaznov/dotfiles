@@ -78,6 +78,9 @@ source_config $HOME/.config/bash/bashrc
 source_config /usr/share/fzf/key-bindings.bash
 source_config /usr/share/fzf/completion.bash
 
+# MPC configs
+source_config $HOME/.config/mpc/mpcvars
+
 # Source the Starship Prompt
 if hash starship 2>/dev/null; then
   eval "$(starship init bash)"

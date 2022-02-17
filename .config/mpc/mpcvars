@@ -1,0 +1,2 @@
+export MPC_FORMAT="%artist% (%album%) - %track% %title%"
+

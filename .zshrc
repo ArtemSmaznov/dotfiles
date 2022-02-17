@@ -113,6 +113,9 @@ source_config $HOME/.config/zsh/zshrc
 source_config /usr/share/fzf/key-bindings.zsh
 source_config /usr/share/fzf/completion.zsh
 
+# MPC configs
+source_config $HOME/.config/mpc/mpcvars
+
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

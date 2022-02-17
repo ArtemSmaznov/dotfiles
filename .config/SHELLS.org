@@ -139,6 +139,9 @@ source_config $HOME/.config/bash/bashrc
 # FZF configs
 source_config /usr/share/fzf/key-bindings.bash
 source_config /usr/share/fzf/completion.bash
+
+# MPC configs
+source_config $HOME/.config/mpc/mpcvars
 #+end_src
 
 ** End Section
@@ -286,6 +289,9 @@ source_config $HOME/.config/zsh/zshrc
 # FZF configs
 source_config /usr/share/fzf/key-bindings.zsh
 source_config /usr/share/fzf/completion.zsh
+
+# MPC configs
+source_config $HOME/.config/mpc/mpcvars
 
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
