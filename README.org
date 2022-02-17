@@ -18,6 +18,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#pdf-viewer][PDF Viewer]]
 - [[#file-manager][File Manager]]
 - [[#web-browser][Web Browser]]
+- [[#cli-web-browser][CLI Web Browser]]
 - [[#email][Email]]
 - [[#system-utilities][System Utilities]]
 - [[#other][Other]]
@@ -71,6 +72,9 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/qutebrowser/README.org][QuteBrowser]]
 - TODO [[file:.config/nyxt/README.org][Nyxt]]
 - TODO Vimb
+* CLI Web Browser
+- TODO Lynx
+- TODO w3m
 * Email
 - [[file:.config/README.org::*mbsync][mbsync]]
 * System Utilities
