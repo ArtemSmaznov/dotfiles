@@ -64,6 +64,7 @@
 |-------------+----------------------------------|
 | [[https://aur.archlinux.org/packages/vifmimg-git][vifmimg-git]] | Graphical image preview          |
 | [[https://aur.archlinux.org/packages/fontpreview][fontpreview]] | Fonts preview                    |
+| [[https://aur.archlinux.org/packages/taffy][taffy]]       | Audio file info preview          |
 | [[https://archlinux.org/packages/?name=ueberzug][ueberzug]]    | Graphical image preview          |
 | [[https://archlinux.org/packages/?name=libcaca][libcaca]]     | ASCII image preview              |
 | [[https://archlinux.org/packages/?name=poppler][poppler]]     | Text PDF preview                 |
@@ -71,7 +72,7 @@
 
 #+begin_example shell
 sudo pacman -S --needed vifm libcaca poppler ueberzug
-paru -S vifmimg-git fontpreview
+paru -S vifmimg-git fontpreview taffy
 #+end_example
 
 * General
@@ -205,6 +206,7 @@ mark v ~/Videos
 mark p ~/Pictures
 mark s ~/Pictures/screenshots
 mark w ~/Pictures/wallpapers
+mark c ~/.config
 #+end_src
 
 * Session
@@ -305,8 +307,11 @@ filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}
        \ mplayer %f,
-fileviewer {*.mp3},<audio/mpeg> mp3info
-fileviewer {*.flac},<audio/flac> soxi
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
+        \<audio/mpeg>
+        \ taffy
+" fileviewer {*.mp3},<audio/mpeg> mp3info
+" fileviewer {*.flac},<audio/flac> soxi
 #+end_src
 
 ** Video
