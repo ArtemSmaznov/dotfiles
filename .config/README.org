@@ -21,7 +21,7 @@
 * Auto-start
 ** Startup Sound
 #+begin_src shell :tangle autostart-scripts/autostart.sh :shebang #!/usr/bin/env bash
-paplay "$HOME/Music/windows95-startup.wav" &
+paplay "$HOME/Audio/windows95-startup.wav" &
 #+end_src
 
 ** Wallpaper
