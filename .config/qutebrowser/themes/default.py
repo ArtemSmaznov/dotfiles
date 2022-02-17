@@ -5,7 +5,7 @@ background = color.background
 
 title = color.color11
 
-loading = color.color14
+loading = color.orange2
 success = color.color10
 warning = color.color11
 error = color.color09

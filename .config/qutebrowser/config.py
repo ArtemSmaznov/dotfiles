@@ -517,6 +517,7 @@ c.url.searchengines = {
     "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "aca"    : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
+    "pd"     : "https://www.protondb.com/search?q={}",
 }
 
 c.url.start_pages = ["https://search.brave.com"]
