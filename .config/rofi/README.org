@@ -6,16 +6,17 @@
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
-- [[#begin-config][Begin Config]]
-- [[#all-configs][All Configs]]
+- [[#configuration][Configuration]]
+- [[#list-view][List View]]
+- [[#imports][Imports]]
 - [[#keybindings][Keybindings]]
+  - [[#begin-config][Begin Config]]
   - [[#typing][Typing]]
   - [[#navigation][Navigation]]
   - [[#misc][Misc]]
   - [[#custom][Custom]]
   - [[#mouse-bindings][Mouse Bindings]]
-- [[#end-config][End Config]]
-- [[#imports][Imports]]
+  - [[#end-config][End Config]]
 - [[#rofi-pass][Rofi-Pass]]
   - [[#main][Main]]
   - [[#programs-to-be-used][Programs to be used]]
@@ -34,20 +35,12 @@
 sudo pacman -S rofi
 #+end_example
 
-* Begin Config
+* Configuration
 #+begin_src conf
 configuration {
-#+end_src
-
-* All Configs
-#+begin_src conf
   monitor:                        "primary";
   modi: "window,run,drun,ssh,keys";
-/*	width: 50;*/
-  lines: 16;
-  columns: 2;
-/*	font: "mono 12";*/
-/*	bw: 1;*/
+	font: "Hack Nerd Font 12";
 /*	location: 0;*/
 /*	padding: 5;*/
 /*	yoffset: 0;*/
@@ -117,10 +110,30 @@ configuration {
 /*	display-drun: ;*/
 /*	display-combi: ;*/
 /*	display-keys: ;*/
+}
+#+end_src
+
+* List View
+#+begin_src conf
+listview {
+  columns: 2;
+}
+#+end_src
+
+* Imports
+#+begin_src conf
+@import "keys.rasi"
+@import "themes/gruvbox.rasi"
 #+end_src
 
 * Keybindings
+:properties:
+:header-args: :tangle keys.rasi
+:end:
 =Shift+Tab= is set with =ISO_Left_Tab=
+#+begin_src conf
+configuration {
+#+end_src
 ** Typing
 #+begin_src conf
 /*	kb-clear-line:              "Control+w";*/
@@ -160,6 +173,7 @@ kb-accept-entry:                "Control+m,Return,KP_Enter";
 
 ** Misc
 #+begin_src conf
+kb-mode-complete:               "Control+L";
 kb-primary-paste:               "Control+V,Shift+Insert";
 kb-secondary-paste:             "Control+v,Insert";
 kb-mode-next:                   "Shift+Right,Control+Tab";
@@ -213,16 +227,7 @@ kb-mode-previous:               "Shift+Left,Control+ISO_Left_Tab";
 /*	me-select-entry:            "MousePrimary";*/
 /*	me-accept-entry:            "MouseDPrimary";*/
 /*	me-accept-custom:           "Control+MouseDPrimary";*/
-#+end_src
-
-* End Config
-#+begin_src conf
 }
-#+end_src
-
-* Imports
-#+begin_src conf
-@import "themes/gruvbox.rasi"
 #+end_src
 
 * Rofi-Pass
