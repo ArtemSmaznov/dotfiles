@@ -1,0 +1,47 @@
+#+TITLE: MPD
+#+AUTHOR: Artem Smaznov
+#+DESCRIPTION: Music Player Daemon
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle mpd.conf
+
+Example configuration file for MPD: [[file:/usr/share/doc/mpd/mpdconf.example]]
+Read the user manual for documentation: http://www.musicpd.org/doc/user/
+
+* Table of Contents :toc:
+- [[#directories][Directories]]
+- [[#inputs][Inputs]]
+- [[#outputs][Outputs]]
+
+* Directories
+#+begin_src conf
+music_directory     "~/Music"
+playlist_directory  "~/.config/mpd/playlists"
+db_file             "~/.config/mpd/database"
+log_file            "syslog"
+# pid_file            "~/.config/mpd/pid"
+state_file          "~/.config/mpd/state"
+sticker_file        "~/.config/mpd/sticker.sql"
+#+end_src
+
+* Inputs
+#+begin_src conf
+input {
+    plugin "curl"
+}
+#+end_src
+
+* Outputs
+#+begin_src conf
+audio_output {
+    type    "pulse"
+    name    "Pulse Audio"
+}
+
+audio_output {
+    type    "fifo"
+    name    "my_fifo"
+    path    "/tmp/mpd.fifo"
+    format  "44100:16:2"
+}
+#+end_src
+

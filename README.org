@@ -57,8 +57,9 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/nano/README.org][Nano]]
 * Media Player
 - [[file:.config/mpv/README.org][mpv]]
-- [[file:.config/mpd/][mpd]]
+- [[file:.config/mpd/README.org][mpd]]
 - [[file:.config/mpc/][mpc]]
+- [[file:.config/ncmpcpp/README.org][ncmpcpp]]
 - [[file:.config/beets/README.org][beets]]
 * Image Viewer
 - [[file:.config/vimiv/README.org][vimiv]]
