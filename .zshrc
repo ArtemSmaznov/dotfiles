@@ -19,7 +19,7 @@ setopt HIST_IGNORE_SPACE
 
 # Make local bin files usable
 path+=($HOME/.local/bin)
-path+=($HOME/.local/bin/dmscripts)
+path+=($HOME/.local/bin/dm-scripts)
 path+=($HOME/.config/emacs/bin)
 
 # Set user folder paths

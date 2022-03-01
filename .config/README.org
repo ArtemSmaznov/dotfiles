@@ -27,14 +27,14 @@ paplay "$HOME/Audio/windows95-startup.wav" &
 ** Wallpaper
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # nitrogen --restore &
-~/.local/bin/dmscripts/dm-wallpaper landscape &
+~/.local/bin/dm-scripts/dm-wallpaper landscape &
 #+end_src
 
 ** Screen Locker
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # xscreensaver -no-splash &
-# xautolock -time 60 -locker "$HOME/.local/bin/dmscripts/dm-lock" &
-xss-lock -- "$HOME/.local/bin/dmscripts/dm-lock" &
+# xautolock -time 60 -locker "$HOME/.local/bin/dm-scripts/dm-lock" &
+xss-lock -- "$HOME/.local/bin/dm-scripts/dm-lock" &
 #+end_src
 
 ** System Utilities

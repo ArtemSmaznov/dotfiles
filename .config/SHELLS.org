@@ -87,7 +87,7 @@ export HISTCONTROL=erasedups:ignoreboth
 ** Exports
 #+begin_src shell :tangle ~/.bashrc
 # Make local bin files usable
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dmscripts:$HOME/.config/emacs/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dm-scripts:$HOME/.config/emacs/bin
 
 # Set user folder paths
 export GIT_DIRECTORY="$HOME/projects"
@@ -187,7 +187,7 @@ setopt HIST_IGNORE_SPACE
 #+begin_src shell :tangle ~/.zshrc
 # Make local bin files usable
 path+=($HOME/.local/bin)
-path+=($HOME/.local/bin/dmscripts)
+path+=($HOME/.local/bin/dm-scripts)
 path+=($HOME/.config/emacs/bin)
 
 # Set user folder paths
