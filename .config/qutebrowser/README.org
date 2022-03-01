@@ -76,6 +76,7 @@
 - [[#sessions-1][Sessions]]
 - [[#qt][Qt]]
 - [[#logging][Logging]]
+- [[#overwrites][Overwrites]]
 
 * Documentation
 =qute://help/configuring.html=
@@ -96,6 +97,7 @@ sudo pacman -S qutebrowser mpv youtube-dl
 
 * Imports
 #+begin_src python
+import os
 from qutebrowser.api import interceptor
 #+end_src
 
@@ -107,8 +109,8 @@ import themes.default as theme
 * UI
 ** Fonts
 #+begin_src python
-c.fonts.default_size = '14pt'
-# c.fonts.default_family = []
+c.fonts.default_size = '12pt'
+c.fonts.default_family = ['Lato']
 # c.fonts.completion.category = 'bold default_size default_family'
 # c.fonts.completion.entry = 'default_size default_family'
 # c.fonts.contextmenu = None
@@ -1395,9 +1397,10 @@ config.bind('<F5>', 'reload')
 config.bind('<Ctrl-F5>', 'reload -f')
 #+end_src
 
-*** Processes
+*** Info
 #+begin_src python
 config.bind('<Space>p', 'set-cmd-text -s :process')
+config.bind('<Space>m', ':messages -t')
 #+end_src
 
 *** Search and Command mode
@@ -2843,4 +2846,9 @@ Valid values:
 - critical
 #+begin_src python
 # c.logging.level.ram = 'debug'
+#+end_src
+
+* Overwrites
+#+begin_src python
+if os.path.isfile('.config/qutebrowser/local.py'): config.source('local.py')
 #+end_src

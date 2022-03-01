@@ -1,9 +1,10 @@
+import os
 from qutebrowser.api import interceptor
 
 import themes.default as theme
 
-c.fonts.default_size = '14pt'
-# c.fonts.default_family = []
+c.fonts.default_size = '12pt'
+c.fonts.default_family = ['Lato']
 # c.fonts.completion.category = 'bold default_size default_family'
 # c.fonts.completion.entry = 'default_size default_family'
 # c.fonts.contextmenu = None
@@ -659,6 +660,7 @@ config.bind('<F5>', 'reload')
 config.bind('<Ctrl-F5>', 'reload -f')
 
 config.bind('<Space>p', 'set-cmd-text -s :process')
+config.bind('<Space>m', ':messages -t')
 
 config.bind('<Alt-x>', 'set-cmd-text :')
 config.bind(':', 'set-cmd-text :')
@@ -1358,3 +1360,5 @@ c.qt.process_model = 'process-per-site-instance'
 # c.logging.level.console = 'info'
 
 # c.logging.level.ram = 'debug'
+
+if os.path.isfile('.config/qutebrowser/local.py'): config.source('local.py')
