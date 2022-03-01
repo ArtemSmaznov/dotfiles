@@ -43,11 +43,27 @@ def_key "ctrl-c"
 def_key "D"
   delete_stored_playlist
 
+def_key "escape"
+  require_screen "sort_playlist_dialog"
+  previous_screen
+
+def_key "q"
+  require_screen "sort_playlist_dialog"
+  previous_screen
+
 def_key "y"
   save_tag_changes
 
 def_key "space"
   toggle_visualization_type
+
+def_key "escape"
+  require_screen "visualizer"
+  previous_screen
+
+def_key "q"
+  require_screen "visualizer"
+  previous_screen
 
 def_key "space"
   require_screen "lyrics"
@@ -61,8 +77,52 @@ def_key "`"
   require_screen "lyrics"
   refetch_lyrics
 
+def_key "escape"
+  require_screen "lyrics"
+  previous_screen
+
+def_key "q"
+  require_screen "lyrics"
+  previous_screen
+
+def_key "escape"
+  require_screen "clock"
+  previous_screen
+
+def_key "q"
+  require_screen "clock"
+  previous_screen
+
+def_key "escape"
+  require_screen "song_info"
+  previous_screen
+
+def_key "q"
+  require_screen "song_info"
+  previous_screen
+
+def_key "escape"
+  require_screen "server_info"
+  previous_screen
+
+def_key "q"
+  require_screen "server_info"
+  previous_screen
+
+def_key "escape"
+  require_screen "help"
+  previous_screen
+
 def_key "q"
   require_screen "help"
+  previous_screen
+
+def_key "escape"
+  require_screen "last_fm"
+  previous_screen
+
+def_key "q"
+  require_screen "last_fm"
   previous_screen
 
 def_key "k"

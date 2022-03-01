@@ -342,7 +342,7 @@ startup_screen = playlist
 ## Note: You can define startup slave screen by choosing screen from the list
 ## above or an empty value for no slave screen.
 ##
-startup_slave_screen = "visualizer"
+#startup_slave_screen = "visualizer"
 startup_slave_screen_focus = no
 #
 ##
@@ -563,6 +563,14 @@ def_key "ctrl-c"
 
 def_key "D"
   delete_stored_playlist
+
+def_key "escape"
+  require_screen "sort_playlist_dialog"
+  previous_screen
+
+def_key "q"
+  require_screen "sort_playlist_dialog"
+  previous_screen
 #+end_src
 
 *** Tag Editor
@@ -575,6 +583,14 @@ def_key "y"
 #+begin_src conf
 def_key "space"
   toggle_visualization_type
+
+def_key "escape"
+  require_screen "visualizer"
+  previous_screen
+
+def_key "q"
+  require_screen "visualizer"
+  previous_screen
 #+end_src
 
 *** Lyrics
@@ -590,12 +606,68 @@ def_key "e"
 def_key "`"
   require_screen "lyrics"
   refetch_lyrics
+
+def_key "escape"
+  require_screen "lyrics"
+  previous_screen
+
+def_key "q"
+  require_screen "lyrics"
+  previous_screen
+#+end_src
+
+*** Clock
+#+begin_src conf
+def_key "escape"
+  require_screen "clock"
+  previous_screen
+
+def_key "q"
+  require_screen "clock"
+  previous_screen
+#+end_src
+
+*** Song Info
+#+begin_src conf
+def_key "escape"
+  require_screen "song_info"
+  previous_screen
+
+def_key "q"
+  require_screen "song_info"
+  previous_screen
+#+end_src
+
+*** Server Info
+#+begin_src conf
+def_key "escape"
+  require_screen "server_info"
+  previous_screen
+
+def_key "q"
+  require_screen "server_info"
+  previous_screen
 #+end_src
 
 *** Help
 #+begin_src conf
+def_key "escape"
+  require_screen "help"
+  previous_screen
+
 def_key "q"
   require_screen "help"
+  previous_screen
+#+end_src
+
+*** Last FM
+#+begin_src conf
+def_key "escape"
+  require_screen "last_fm"
+  previous_screen
+
+def_key "q"
+  require_screen "last_fm"
   previous_screen
 #+end_src
 
