@@ -1349,9 +1349,9 @@ c.session.lazy_restore = True
 
 # c.qt.highdpi = False
 
-c.qt.low_end_device_mode = 'auto'
+c.qt.chromium.low_end_device_mode = 'auto'
 
-c.qt.process_model = 'process-per-site-instance'
+c.qt.chromium.process_model = 'process-per-site-instance'
 
 # c.qt.workarounds.locale = False
 
