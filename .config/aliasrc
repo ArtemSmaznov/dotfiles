@@ -188,6 +188,10 @@ alias pgs="pass git status"
 alias pgp="pass git push"
 alias pgf="pass git pull"
 
+function yta() {
+    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
+
 function ex() {
     for archive in $*; do
         if [ -f $archive ]; then

@@ -30,6 +30,7 @@
   - [[#copy][Copy]]
   - [[#search][Search]]
   - [[#tools][Tools]]
+  - [[#media][Media]]
   - [[#system][System]]
   - [[#git][Git]]
   - [[#archives][Archives]]
@@ -40,6 +41,7 @@
   - [[#username][Username]]
   - [[#line-break][Line Break]]
   - [[#directory][Directory]]
+  - [[#nerd-font-icons][Nerd Font Icons]]
 
 * Bash
 ** Start Section
@@ -555,6 +557,14 @@ alias gdprivate="gprivate diff"
 alias pgs="pass git status"
 alias pgp="pass git push"
 alias pgf="pass git pull"
+#+end_src
+
+** Media
+Search and play YouTube audio
+#+begin_src shell :tangle ~/.config/aliasrc
+function yta() {
+    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
 #+end_src
 
 ** Archives
