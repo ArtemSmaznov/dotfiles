@@ -30,9 +30,9 @@
   - [[#copy][Copy]]
   - [[#search][Search]]
   - [[#tools][Tools]]
-  - [[#media][Media]]
   - [[#system][System]]
   - [[#git][Git]]
+  - [[#media][Media]]
   - [[#archives][Archives]]
 - [[#starship][Starship]]
   - [[#general][General]]
@@ -564,6 +564,10 @@ Search and play YouTube audio
 #+begin_src shell :tangle ~/.config/aliasrc
 function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
+
+function ytv() {
+    mpv ytdl://ytsearch:"$*"
 }
 #+end_src
 

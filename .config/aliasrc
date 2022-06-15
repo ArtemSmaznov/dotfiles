@@ -192,6 +192,10 @@ function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
 
+function ytv() {
+    mpv ytdl://ytsearch:"$*"
+}
+
 function ex() {
     for archive in $*; do
         if [ -f $archive ]; then
