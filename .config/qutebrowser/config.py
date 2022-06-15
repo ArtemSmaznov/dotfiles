@@ -354,7 +354,7 @@ c.tabs.pinned.shrink = True
 
 c.tabs.position = 'top'
 
-c.tabs.select_on_remove = 'last-used'
+c.tabs.select_on_remove = 'next'
 
 c.tabs.show = 'multiple'
 
@@ -601,6 +601,7 @@ config.unbind('gD') # tab-give
 config.unbind('gJ') # tab-move +
 config.unbind('gK') # tab-move -
 config.unbind('co') # tab-only
+config.unbind('<Ctrl-p>') # Pin Tab
 
 config.unbind('ad') # download-cancel
 config.unbind('gd') # download
@@ -763,8 +764,7 @@ config.bind('<Space>tp', 'open -t -- {clipboard}')
 config.bind('<Space>tP', 'open -t -- {primary}')
 
 config.bind('<Return>', 'selection-follow')
-
-config.bind('<Ctrl-Return>', 'selection-follow -t')
+config.bind('<Shift-Return>', 'selection-follow -t')
 
 config.bind('t0', 'tab-focus 1')
 config.bind('t^', 'tab-focus 1')
@@ -782,10 +782,12 @@ config.bind('t$', 'tab-focus -1')
 config.bind('<Ctrl-Tab>', 'tab-focus last')
 config.bind('<Ctrl-^>', 'tab-focus last')
 
-config.bind('<Ctrl-PgDown>', 'tab-next')
-config.bind('<Ctrl-PgUp>', 'tab-prev')
-config.bind('J', 'tab-next')
-config.bind('K', 'tab-prev')
+config.bind('<Alt-PgDown>', 'tab-next')
+config.bind('<Alt-PgUp>', 'tab-prev')
+config.bind('<Alt-l>', 'tab-next')
+config.bind('<Alt-h>', 'tab-prev')
+config.bind('<Alt-Shift-l>', 'tab-focus -1')
+config.bind('<Alt-Shift-h>', 'tab-focus 1')
 
 config.bind('gt', 'set-cmd-text -sr :tab-focus')
 
@@ -799,18 +801,26 @@ config.bind('u', 'undo')
 config.bind('X', 'undo')
 
 config.bind('tm', 'tab-move')
-config.bind('tJ', 'tab-move +')
-config.bind('tK', 'tab-move -')
+config.bind('tj', 'tab-move +')
+config.bind('tk', 'tab-move -')
+config.bind('tJ', 'tab-move end')
+config.bind('tK', 'tab-move start')
 config.bind('>', 'tab-move +')
 config.bind('<', 'tab-move -')
+config.bind('<Alt-j>', 'tab-move +')
+config.bind('<Alt-k>', 'tab-move -')
+config.bind('<Alt-Shift-j>', 'tab-move end')
+config.bind('<Alt-Shift-k>', 'tab-move start')
 
 config.bind('<Ctrl-c>', 'stop')
-config.bind('<Ctrl-m>', 'tab-mute')
-config.bind('<Ctrl-p>', 'tab-pin')
+config.bind('<Alt-m>', 'tab-mute')
+config.bind('<Alt-p>', 'tab-pin')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
 config.bind('tt', 'set-cmd-text -s :tab-take')
+config.bind('J', 'tab-give')
+config.bind('K', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('D', 'set-cmd-text -s :download')
@@ -904,15 +914,15 @@ config.bind(';Rl', 'hint --rapid links window')
 config.bind(';o', 'hint links fill :open {hint-url}')
 config.bind(';O', 'hint links fill :open -t -r {hint-url}')
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
-config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
-config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
+config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
 
-config.bind('<Alt-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
-config.bind('<Alt-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
-config.bind('<Alt-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Alt-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
+config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 
 config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
 config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
