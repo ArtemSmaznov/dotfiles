@@ -120,12 +120,13 @@ source_config $HOME/.config/mpc/mpcvars
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+function has_command() {
+    hash "$1" 2>/dev/null
+    return $?
+}
+
 # Source the Starship Prompt
-if hash starship 2>/dev/null; then
-  eval "$(starship init zsh)"
-fi
+if has_command starship; then eval "$(starship init zsh)"; fi
 
 # Script to run on terminal launch
-if hash neofetch 2>/dev/null; then
-  neofetch
-fi
+if has_command neofetch; then neofetch; fi

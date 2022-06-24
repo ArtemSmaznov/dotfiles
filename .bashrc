@@ -81,12 +81,13 @@ source_config /usr/share/fzf/completion.bash
 # MPC configs
 source_config $HOME/.config/mpc/mpcvars
 
+function has_command() {
+    hash "$1" 2>/dev/null
+    return $?
+}
+
 # Source the Starship Prompt
-if hash starship 2>/dev/null; then
-  eval "$(starship init bash)"
-fi
+if has_command starship; then eval "$(starship init bash)"; fi
 
 # Script to run on terminal launch
-if hash neofetch 2>/dev/null; then
-  neofetch
-fi
+if has_command neofetch; then neofetch; fi
