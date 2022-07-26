@@ -503,22 +503,23 @@ c.url.open_base_url = True
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
     "aw"     : "https://wiki.archlinux.org/index.php?search={}",
-    "q"      : "https://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "r"      : "https://www.reddit.com/search/?q={}",
     "gh"     : "https://github.com/search?q={}&ref=opensearch",
-    "gt"     : "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
-    "gtj"    : "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
-    "gtr"    : "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
+    "od"     : "https://odysee.com/$/search?q={}",
     "yt"     : "https://www.youtube.com/results?search_query={}",
     "yth"    : "https://www.youtube.com/feed/history?query={}",
-    "od"     : "https://odysee.com/$/search?q={}",
-    "gd"     : "https://drive.google.com/drive/search?q={}",
-    "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "g"      : "https://www.google.com/search?q={}",
+    "q"      : "https://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
+    "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
+    "pd"     : "https://www.protondb.com/search?q={}",
     "auk"    : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "aca"    : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
-    "pd"     : "https://www.protondb.com/search?q={}",
+    "gt"     : "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
+    "gtj"    : "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
+    "gtr"    : "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
+    "gd"     : "https://drive.google.com/drive/search?q={}",
+    "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
+    "g"      : "https://www.google.com/search?q={}",
 }
 
 c.url.start_pages = ["https://search.brave.com"]
@@ -690,6 +691,8 @@ config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
 config.bind('l', 'scroll right')
+config.bind('J', 'run-with-count 5 scroll down')
+config.bind('K', 'run-with-count 5 scroll up')
 
 config.bind('<Ctrl-B>', 'scroll-page 0 -1')
 config.bind('<Ctrl-F>', 'scroll-page 0 1')
@@ -781,6 +784,7 @@ config.bind('<Alt-0>', 'tab-focus -1')
 config.bind('t$', 'tab-focus -1')
 config.bind('<Ctrl-Tab>', 'tab-focus last')
 config.bind('<Ctrl-^>', 'tab-focus last')
+config.bind('<Space>`', 'tab-focus last')
 
 config.bind('<Alt-PgDown>', 'tab-next')
 config.bind('<Alt-PgUp>', 'tab-prev')
@@ -790,6 +794,7 @@ config.bind('<Alt-Shift-l>', 'tab-focus -1')
 config.bind('<Alt-Shift-h>', 'tab-focus 1')
 
 config.bind('gt', 'set-cmd-text -sr :tab-focus')
+config.bind('<Space>,', 'set-cmd-text -sr :tab-focus')
 
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
@@ -815,12 +820,13 @@ config.bind('<Alt-Shift-k>', 'tab-move start')
 config.bind('<Ctrl-c>', 'stop')
 config.bind('<Alt-m>', 'tab-mute')
 config.bind('<Alt-p>', 'tab-pin')
+config.bind('<Alt-p>', 'tab-pin', mode='insert')
 config.bind('tp', 'tab-pin')
 config.bind('tC', 'tab-clone')
 config.bind('tP', 'tab-give')
 config.bind('tt', 'set-cmd-text -s :tab-take')
-config.bind('J', 'tab-give')
-config.bind('K', 'set-cmd-text -s :tab-take')
+# config.bind('J', 'tab-give')
+# config.bind('K', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('D', 'set-cmd-text -s :download')
