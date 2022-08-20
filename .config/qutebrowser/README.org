@@ -1588,6 +1588,8 @@ config.bind('<Alt-PgDown>', 'tab-next')
 config.bind('<Alt-PgUp>', 'tab-prev')
 config.bind('<Alt-l>', 'tab-next')
 config.bind('<Alt-h>', 'tab-prev')
+config.bind('<Alt-Ctrl-l>', 'tab-focus stack-next')
+config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
 config.bind('<Alt-Shift-l>', 'tab-focus -1')
 config.bind('<Alt-Shift-h>', 'tab-focus 1')
 #+end_src
