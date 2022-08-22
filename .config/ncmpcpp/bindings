@@ -25,6 +25,9 @@ def_key "l"
 def_key "y"
   start_searching
 
+def_key "escape"
+  reset_search_engine
+
 def_key "`"
   toggle_library_tag_type
 
@@ -61,10 +64,6 @@ def_key "escape"
   require_screen "visualizer"
   previous_screen
 
-def_key "q"
-  require_screen "visualizer"
-  previous_screen
-
 def_key "space"
   require_screen "lyrics"
   toggle_lyrics_update_on_song_change
@@ -86,10 +85,6 @@ def_key "q"
   previous_screen
 
 def_key "escape"
-  require_screen "clock"
-  previous_screen
-
-def_key "q"
   require_screen "clock"
   previous_screen
 
@@ -220,7 +215,6 @@ def_key "0"
 
 def_key "m"
   select_item
-  scroll_down
 
 def_key "ctrl-m"
   select_range
@@ -239,6 +233,14 @@ def_key "M"
 
 def_key "insert"
   move_selected_items_to
+
+def_key "K"
+  select_item
+  scroll_up
+
+def_key "J"
+  select_item
+  scroll_down
 
 def_key "shift-up"
   select_item

@@ -7,13 +7,13 @@
 Example configuration file: [[file:/usr/share/doc/ncmpcpp/config]]
 
 * Table of Contents :toc:
-- [[#directories][Directories]]
 - [[#connection-settings][Connection Settings]]
 - [[#visualizer][Visualizer]]
 - [[#song-format][Song Format]]
 - [[#browser-sorting][Browser Sorting]]
 - [[#columns-settings][Columns Settings]]
 - [[#various-settings][Various Settings]]
+- [[#lyrics][Lyrics]]
 - [[#colors][Colors]]
 - [[#keybindings][Keybindings]]
   - [[#page-specific-keys][Page Specific Keys]]
@@ -21,7 +21,7 @@ Example configuration file: [[file:/usr/share/doc/ncmpcpp/config]]
   - [[#jump-navigation][Jump Navigation]]
   - [[#playback][Playback]]
   - [[#playlists][Playlists]]
-  - [[#lyrics][Lyrics]]
+  - [[#lyrics-1][Lyrics]]
   - [[#search][Search]]
   - [[#info][Info]]
   - [[#ui][UI]]
@@ -30,13 +30,6 @@ Example configuration file: [[file:/usr/share/doc/ncmpcpp/config]]
   - [[#editing-e][Editing (e)]]
   - [[#commands][Commands]]
   - [[#mouse][Mouse]]
-
-* Directories
-Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
-MPD clients (eg. ncmpc) also use that location.
-#+begin_src conf
-lyrics_directory = ~/.config/mpd/lyrics
-#+end_src
 
 * Connection Settings
 #+begin_src conf
@@ -222,7 +215,7 @@ You can also:
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 #+end_src
 
-* Various Settings 
+* Various Settings
 #+begin_src conf
 #
 ##
@@ -301,11 +294,6 @@ connected_message_on_startup = yes
 titles_visibility = yes
 header_text_scrolling = yes
 #cyclic_scrolling = no
-#
-lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
-#follow_now_playing_lyrics = no
-#fetch_lyrics_for_current_song_in_background = no
-store_lyrics_in_song_dir = no
 #
 #generate_win32_compatible_filenames = yes
 #
@@ -412,6 +400,21 @@ external_editor = vim
 #
 ## Note: set to yes if external editor is a console application.
 use_console_editor = yes
+#+end_src
+
+* Lyrics
+Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
+MPD clients (eg. ncmpc) also use that location.
+#+begin_src conf
+lyrics_directory = ~/Music/.lyrics
+#+end_src
+
+#+begin_src conf
+lyrics_fetchers = azlyrics, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+# lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+#follow_now_playing_lyrics = no
+#fetch_lyrics_for_current_song_in_background = no
+store_lyrics_in_song_dir = no
 #+end_src
 
 * Colors
@@ -539,6 +542,9 @@ def_key "l"
 
 def_key "y"
   start_searching
+
+def_key "escape"
+  reset_search_engine
 #+end_src
 
 *** Media Library
@@ -587,10 +593,6 @@ def_key "space"
 def_key "escape"
   require_screen "visualizer"
   previous_screen
-
-def_key "q"
-  require_screen "visualizer"
-  previous_screen
 #+end_src
 
 *** Lyrics
@@ -619,10 +621,6 @@ def_key "q"
 *** Clock
 #+begin_src conf
 def_key "escape"
-  require_screen "clock"
-  previous_screen
-
-def_key "q"
   require_screen "clock"
   previous_screen
 #+end_src
@@ -781,7 +779,6 @@ def_key "0"
 #+begin_src conf
 def_key "m"
   select_item
-  scroll_down
 
 def_key "ctrl-m"
   select_range
@@ -803,6 +800,14 @@ def_key "insert"
 #+end_src
 
 #+begin_src conf
+def_key "K"
+  select_item
+  scroll_up
+
+def_key "J"
+  select_item
+  scroll_down
+
 def_key "shift-up"
   select_item
   scroll_up

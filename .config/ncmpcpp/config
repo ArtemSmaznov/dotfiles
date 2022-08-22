@@ -1,5 +1,3 @@
-lyrics_directory = ~/.config/mpd/lyrics
-
 mpd_host = localhost
 mpd_port = 6600
 mpd_connection_timeout = 5
@@ -141,11 +139,6 @@ titles_visibility = yes
 header_text_scrolling = yes
 #cyclic_scrolling = no
 #
-lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
-#follow_now_playing_lyrics = no
-#fetch_lyrics_for_current_song_in_background = no
-store_lyrics_in_song_dir = no
-#
 #generate_win32_compatible_filenames = yes
 #
 allow_for_physical_item_deletion = no
@@ -251,6 +244,14 @@ external_editor = vim
 #
 ## Note: set to yes if external editor is a console application.
 use_console_editor = yes
+
+lyrics_directory = ~/Music/.lyrics
+
+lyrics_fetchers = azlyrics, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+# lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+#follow_now_playing_lyrics = no
+#fetch_lyrics_for_current_song_in_background = no
+store_lyrics_in_song_dir = no
 
 ## It is possible to set a background color by setting a color value
 ## "<foreground>_<background>", e.g. red_black will set foregound color to red
