@@ -45,7 +45,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/alacritty/README.org][Alacritty]]
 - [[file:.config/terminator/README.org][Terminator]]
 * Terminal Tools
-- [[file:.tmux/README.org][tmux]]
+- [[file:.config/tmux/README.org][tmux]]
 - [[file:.config/cava/README.org][cava]]
 - [[file:.config/gh/][gh]]
 - [[file:.config/neofetch/README.org][neofetch]]
