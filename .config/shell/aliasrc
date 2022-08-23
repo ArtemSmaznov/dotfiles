@@ -122,7 +122,7 @@ alias startpicom='picom -b --experimental-backends --dbus'
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 
 # Setup extra password store
-alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
+alias pay='PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass'
 
 alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'

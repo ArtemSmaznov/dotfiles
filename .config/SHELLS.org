@@ -310,7 +310,6 @@ starship init fish | source
 :PROPERTIES:
 :header-args: :tangle ~/.config/shell/exportrc
 :END:
-
 Set user folder paths
 #+begin_src shell
 export GIT_DIRECTORY="$HOME/projects"
@@ -323,9 +322,18 @@ export EDITOR=vim
 export VISUAL=vim
 #+end_src
 
-XDG-Ninja suggestions
+History
 #+begin_src shell
 export HISTFILE="$XDG_STATE_HOME/shell/history"
+#+end_src
+
+Pass
+#+begin_src shell
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+#+end_src
+
+XDG-Ninja suggestions
+#+begin_src shell
 export ANDROID_HOME="$XDG_DATA_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
@@ -483,7 +491,7 @@ alias startpicom='picom -b --experimental-backends --dbus'
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 
 # Setup extra password store
-alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
+alias pay='PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass'
 #+end_src
 
 ** System

@@ -1,4 +1,4 @@
-root=~/.password-store:~/.payment-store
+root=$XDG_DATA_HOME/pass:$XDG_DATA_HOME/pass-pay
 
 _rofi () {
     rofi -i -no-auto-select "$@"
