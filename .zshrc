@@ -6,9 +6,8 @@ unsetopt beep # Disable the bell
 setopt autocd # auto cd when entering just the path
 
 # History
-SAVEHIST=10000
-HISTSIZE=10000
-HISTFILE=$HOME/.cache/shell_history
+export SAVEHIST=10000
+export HISTSIZE=10000
 
 # Causes zsh to append to history instead of overwriting it so if you start a new terminal, you have old session history
 setopt INC_APPEND_HISTORY
@@ -21,14 +20,6 @@ setopt HIST_IGNORE_SPACE
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dm-scripts)
 path+=($HOME/.config/emacs/bin)
-
-# Set user folder paths
-export GIT_DIRECTORY="$HOME/projects"
-export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
-
-# Set the default editor
-export EDITOR=vim
-export VISUAL=vim
 
 ### SET MANPAGER
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
@@ -105,8 +96,9 @@ function source_config() {
 }
 
 # Primary imports
-source_config $HOME/.config/aliasrc
-source_config $HOME/.config/bash/wol
+source_config $HOME/.config/shell/exportrc
+source_config $HOME/.config/shell/aliasrc
+source_config $HOME/.config/shell/wol
 source_config $HOME/.config/zsh/zshrc
 
 # FZF configs

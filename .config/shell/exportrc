@@ -1,0 +1,10 @@
+export GIT_DIRECTORY="$HOME/projects"
+export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
+
+export EDITOR=vim
+export VISUAL=vim
+
+export HISTFILE="$XDG_STATE_HOME/shell/history"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"

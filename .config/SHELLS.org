@@ -22,7 +22,8 @@
   - [[#end-section-1][End Section]]
 - [[#fish][Fish]]
   - [[#end-section-2][End Section]]
-- [[#aliases][Aliases]]
+- [[#exportrc][Exportrc]]
+- [[#aliasrc][Aliasrc]]
   - [[#start][Start]]
   - [[#editors][Editors]]
   - [[#listing-directories][Listing directories]]
@@ -44,8 +45,11 @@
   - [[#nerd-font-icons][Nerd Font Icons]]
 
 * Bash
+:PROPERTIES:
+:header-args: :tangle ~/.bashrc
+:END:
 ** Start Section
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 #!/bin/bash
 
 # If not running interactively, don't do anything
@@ -55,7 +59,7 @@ iatest=$(expr index "$-" i)
 #+end_src
 
 ** Options
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 set -o vi
 
@@ -69,7 +73,7 @@ shopt -s checkwinsize # Check the window size after each command and, if necessa
 #+end_src
 
 ** History
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
 
@@ -80,40 +84,22 @@ PROMPT_COMMAND='history -a'
 # Expand the history size
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export HISTFILE=$HOME/.cache/shell_history
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 export HISTCONTROL=erasedups:ignoreboth
 #+end_src
 
 ** Exports
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 # Make local bin files usable
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dm-scripts:$HOME/.config/emacs/bin
 
-# Set user folder paths
-export GIT_DIRECTORY="$HOME/projects"
-export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
-
-# Set the default editor
-export EDITOR=vim
-export VISUAL=vim
-
 ### SET MANPAGER
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
-
-# Color for manpages in less makes manpages a little easier to read
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
 #+end_src
 
 ** Auto-complete
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 # Enable history completion with up and down arrow keys
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -127,14 +113,15 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 #+end_src
 
 ** Sources
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 function source_config() {
   [ -f $1 ] && source $1
 }
 
 # Primary imports
-source_config $HOME/.config/aliasrc
-source_config $HOME/.config/bash/wol
+source_config $HOME/.config/shell/exportrc
+source_config $HOME/.config/shell/aliasrc
+source_config $HOME/.config/shell/wol
 source_config $HOME/.config/bash/prompt
 source_config $HOME/.config/bash/bashrc
 
@@ -147,7 +134,7 @@ source_config $HOME/.config/mpc/mpcvars
 #+end_src
 
 ** End Section
-#+begin_src shell :tangle ~/.bashrc
+#+begin_src shell
 function has_command() {
     hash "$1" 2>/dev/null
     return $?
@@ -161,8 +148,11 @@ if has_command neofetch; then neofetch; fi
 #+end_src
 
 * ZSH
+:PROPERTIES:
+:header-args: :tangle ~/.zshrc
+:END:
 ** Options
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 # VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
 bindkey -v
 
@@ -172,11 +162,10 @@ setopt autocd # auto cd when entering just the path
 #+end_src
 
 ** History
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 # History
-SAVEHIST=10000
-HISTSIZE=10000
-HISTFILE=$HOME/.cache/shell_history
+export SAVEHIST=10000
+export HISTSIZE=10000
 
 # Causes zsh to append to history instead of overwriting it so if you start a new terminal, you have old session history
 setopt INC_APPEND_HISTORY
@@ -187,26 +176,18 @@ setopt HIST_IGNORE_SPACE
 #+end_src
 
 ** Exports
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 # Make local bin files usable
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dm-scripts)
 path+=($HOME/.config/emacs/bin)
-
-# Set user folder paths
-export GIT_DIRECTORY="$HOME/projects"
-export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
-
-# Set the default editor
-export EDITOR=vim
-export VISUAL=vim
 
 ### SET MANPAGER
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 #+end_src
 
 ** Auto-complete
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 fpath=($HOME/.config/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
@@ -226,7 +207,7 @@ zle -N down-line-or-beginning-search
 #+end_src
 
 ** Keys
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
@@ -279,14 +260,15 @@ fi
 #+end_src
 
 ** Sources
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 function source_config() {
   [ -f $1 ] && source $1
 }
 
 # Primary imports
-source_config $HOME/.config/aliasrc
-source_config $HOME/.config/bash/wol
+source_config $HOME/.config/shell/exportrc
+source_config $HOME/.config/shell/aliasrc
+source_config $HOME/.config/shell/wol
 source_config $HOME/.config/zsh/zshrc
 
 # FZF configs
@@ -302,7 +284,7 @@ source_config /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #+end_src
 
 ** End Section
-#+begin_src shell :tangle ~/.zshrc
+#+begin_src shell
 function has_command() {
     hash "$1" 2>/dev/null
     return $?
@@ -316,17 +298,48 @@ if has_command neofetch; then neofetch; fi
 #+end_src
 
 * Fish
+:PROPERTIES:
+:header-args: :tangle ~/.config/fish/config.fish
+:END:
 ** End Section
-#+begin_src conf :tangle ~/.config/fish/config.fish
+#+begin_src conf
 starship init fish | source
 #+end_src
 
-* Aliases
+* Exportrc
+:PROPERTIES:
+:header-args: :tangle ~/.config/shell/exportrc
+:END:
+
+Set user folder paths
+#+begin_src shell
+export GIT_DIRECTORY="$HOME/projects"
+export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
+#+end_src
+
+Set the default editor
+#+begin_src shell
+export EDITOR=vim
+export VISUAL=vim
+#+end_src
+
+XDG-Ninja suggestions
+#+begin_src shell
+export HISTFILE="$XDG_STATE_HOME/shell/history"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+#+end_src
+
+* Aliasrc
+:PROPERTIES:
+:header-args: :tangle ~/.config/shell/aliasrc
+:END:
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
 
 ** Start
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 #!/usr/bin/env bash
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -345,7 +358,7 @@ alias makepkg='makepkg -si'
 #+end_src
 
 ** Editors
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
@@ -355,7 +368,7 @@ alias vfm='vifmrun'
 #+end_src
 
 ** Listing directories
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 if hash exa 2>/dev/null; then
     alias exa='exa --icons --group-directories-first'
     alias ls='exa -Fh'                # add file type extensions
@@ -371,7 +384,7 @@ alias lld="\ls -l | egrep '^d'"    # long list directories only
 #+end_src
 
 ** Changing directories
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias ~='cd ~'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -394,11 +407,10 @@ function mkdirg() {
 
 ** Copy
 Copy file with a progress bar
-
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 function cpr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
-} 
+}
 
 function mvr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
@@ -425,7 +437,7 @@ function cpp() {
 #+end_src
 
 ** Search
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 # Less
 alias less='less -iRNJ --use-color'
 
@@ -458,7 +470,7 @@ function ftext() {
 #+end_src
 
 ** Tools
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 # Start ArchiSteamFarm
 if [[ -d ~/ASF ]]; then
     alias asf='~/ASF/ArchiSteamFarm'
@@ -476,7 +488,7 @@ alias pay='PASSWORD_STORE_DIR=~/.payment-store pass'
 
 ** System
 *** Pacman
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'
 # alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
@@ -488,7 +500,7 @@ alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -
 #+end_src
 
 *** Power Control
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
 alias shutdown='sudo shutdown -P'
@@ -496,7 +508,7 @@ alias suspend='systemctl suspend'
 #+end_src
 
 *** System Tools
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
@@ -517,7 +529,7 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 #+end_src
 
 *** Networking
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 # Show used DNS addresses
 alias dnsview='cat /etc/resolv.conf'
 
@@ -533,7 +545,7 @@ alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
 
 ** Git
 *** General
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias gs="git fetch && git status"
 alias gc="git commit"
 alias gp="git push"
@@ -542,10 +554,10 @@ alias gd="git diff"
 #+end_src
 
 *** Bare Repositories
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 bare_git_dir="$GIT_DIRECTORY/private-Dotfiles/"
 bare_work_tree="$HOME"
-    
+
 alias gprivate="git --git-dir=$bare_git_dir --work-tree=$bare_work_tree"
 alias gsprivate="gprivate fetch && gprivate status"
 alias gcprivate="gprivate commit"
@@ -555,7 +567,7 @@ alias gdprivate="gprivate diff"
 #+end_src
 
 *** Pass
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 alias pgs="pass git status"
 alias pgp="pass git push"
 alias pgf="pass git pull"
@@ -563,7 +575,7 @@ alias pgf="pass git pull"
 
 ** Media
 Search and play YouTube audio
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
@@ -576,7 +588,7 @@ function ytv() {
 ** Archives
 Extracts any archive(s) (if unp isn't installed)
 
-#+begin_src shell :tangle ~/.config/aliasrc
+#+begin_src shell
 function ex() {
     for archive in $*; do
         if [ -f $archive ]; then
@@ -602,8 +614,11 @@ function ex() {
 #+end_src
 
 * Starship
+:PROPERTIES:
+:header-args: :tangle ~/.config/starship.toml
+:END:
 ** General
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 # Inserts a blank line between shell prompts
 add_newline = true
 
@@ -613,7 +628,7 @@ add_newline = true
 
 ** Character
 The character module shows a character (usually an arrow) beside where the text is entered in your terminal.
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [character]
 # Replace the ❯ symbol in the prompt with ➜
 success_symbol = "[➜](bold green)"
@@ -622,21 +637,21 @@ error_symbol = "[➜](bold red)"
 
 ** Hostname
 The hostname module shows the system hostname.
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [hostname]
 ssh_only = true
 #+end_src
 
 ** Username
 The username module shows active user's username. The module will be shown if any of the following conditions are met:
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [username]
 show_always = false
 #+end_src
 
 ** Line Break
 The line_break module separates the prompt into two lines.
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [line_break]
 # Disables the line_break module, making the prompt a single line.
 disabled = false
@@ -648,7 +663,7 @@ The directory module shows the path to your current directory, truncated to thre
 When using the fish style pwd option, instead of hiding the path that is truncated, you will see a shortened name of each directory based on the number you enable for the option.
 
 For example, given ~/Dev/Nix/nixpkgs/pkgs where nixpkgs is the repo root, and the option set to 1. You will now see ~/D/N/nixpkgs/pkgs, whereas before it would have been nixpkgs/pkgs.
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [directory]
 truncation_length = 3
 truncate_to_repo = true
@@ -656,7 +671,7 @@ read_only = " "
 #+end_src
 
 ** Nerd Font Icons
-#+begin_src toml :tangle ~/.config/starship.toml
+#+begin_src toml
 [aws]
 symbol = "  "
 

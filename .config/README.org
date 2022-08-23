@@ -27,7 +27,7 @@ paplay "$HOME/Audio/windows95-startup.wav" &
 ** Wallpaper
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # nitrogen --restore &
-~/.local/bin/dm-scripts/dm-wallpaper landscape &
+~/.local/bin/dm-scripts/dm-wallpaper faded &
 #+end_src
 
 ** Screen Locker

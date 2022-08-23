@@ -55,7 +55,7 @@ function mkdirg() {
 
 function cpr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
-} 
+}
 
 function mvr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
@@ -176,7 +176,7 @@ alias gd="git diff"
 
 bare_git_dir="$GIT_DIRECTORY/private-Dotfiles/"
 bare_work_tree="$HOME"
-    
+
 alias gprivate="git --git-dir=$bare_git_dir --work-tree=$bare_work_tree"
 alias gsprivate="gprivate fetch && gprivate status"
 alias gcprivate="gprivate commit"
