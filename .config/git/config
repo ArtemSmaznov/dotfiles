@@ -1,0 +1,20 @@
+[include]
+  path = user
+  path = alias
+
+[core]
+  editor = vim
+  autocrlf = input
+  excludesFile = ~/.config/git/ignore
+
+[init]
+  defaultBranch = master
+
+[pull]
+  rebase = true
+
+# [push]
+#   default = current
+
+# [commit]
+#   template = ~/.stCommitMsg
