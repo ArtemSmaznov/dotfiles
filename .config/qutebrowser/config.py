@@ -569,14 +569,14 @@ config.unbind('-') # zoom-out
 config.unbind('+') # zoom-in
 config.unbind('=') # zoom
 
-config.unbind('wo') # set-cmd-text -s :open -w
-config.unbind('wO') # set-cmd-text :open -w {url:pretty}
+# config.unbind('wo') # set-cmd-text -s :open -w
+# config.unbind('wO') # set-cmd-text :open -w {url:pretty}
 
 config.unbind('wh') # back -w
 config.unbind('wl') # forward -w
 
-config.unbind('wp') # open -w -- {clipboard}
-config.unbind('wP') # open -w -- {primary}
+# config.unbind('wp') # open -w -- {clipboard}
+# config.unbind('wP') # open -w -- {primary}
 
 config.unbind('ga') # open -t
 
@@ -932,12 +932,17 @@ config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secre
 config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
 config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')
-config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')
-config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')
-config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
-config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')
-config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')                               # play current video
+config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')                    # play current audio
+
+config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')               # play target video
+config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')    # play target audio
+
+config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')              # download target video
+config.bind('<Space>ad', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}') # download target audio
+
+config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')                              # download current video
+config.bind('<Space>aD', 'spawn alacritty -e youtube-dl -f bestaudio {url}')                 # download current audio
 
 config.bind('<Space>ds', 'view-source')
 
