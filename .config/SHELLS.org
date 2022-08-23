@@ -325,11 +325,13 @@ export VISUAL=vim
 History
 #+begin_src shell
 export HISTFILE="$XDG_STATE_HOME/shell/history"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 #+end_src
 
 Pass
 #+begin_src shell
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+# export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 #+end_src
 
 XDG-Ninja suggestions
@@ -337,6 +339,12 @@ XDG-Ninja suggestions
 export ANDROID_HOME="$XDG_DATA_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export KDEHOME="$XDG_CONFIG_HOME/kde"
+export KODI_DATA="$XDG_DATA_HOME/kodi"
+export MEDNAFEN_HOME="$XDG_CONFIG_HOME/mednafen"
+export MYPY_CACHE_DIR="$XDG_CACHE_HOME/mypy"
 #+end_src
 
 * Aliasrc
