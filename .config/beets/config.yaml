@@ -26,5 +26,8 @@ replace:
 
 plugins: fetchart chroma lastgenre mpdstats mpdupdate
 
+# chroma:
+#   auto: no
+
 musicbrainz:
   searchlimit: 10

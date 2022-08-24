@@ -72,6 +72,13 @@ lyrics
 plugins: fetchart chroma lastgenre mpdstats mpdupdate
 #+end_src
 
+*** Chromaprint/Acoustid
+Disable the plugin
+#+begin_src yaml
+# chroma:
+#   auto: no
+#+end_src
+
 ** MusicBrainz
 #+begin_src yaml
 musicbrainz:
