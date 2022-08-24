@@ -8,9 +8,30 @@ Example configuration file for MPD: [[file:/usr/share/doc/mpd/mpdconf.example]]
 Read the user manual for documentation: http://www.musicpd.org/doc/user/
 
 * Table of Contents :toc:
+- [[#dependencies][Dependencies]]
 - [[#directories][Directories]]
 - [[#inputs][Inputs]]
 - [[#outputs][Outputs]]
+- [[#mpd-notification][MPD Notification]]
+
+* Dependencies
+|------------------+----------------------|
+| Name             | Description          |
+|------------------+----------------------|
+| [[https://archlinux.org/packages/?name=mpd][mpd]]              | Music Player Daemon  |
+|------------------+----------------------|
+| [[https://aur.archlinux.org/packages/mpd-notification/][mpd-notification]] | Notification service |
+|------------------+----------------------|
+
+#+begin_example shell
+sudo pacman -S --needed mpd
+paru -S mpd-notification
+#+end_example
+
+Enabling the service
+#+begin_example shell
+systemctl --user enable mpd.socket --now
+#+end_example
 
 * Directories
 #+begin_src conf
@@ -46,3 +67,20 @@ audio_output {
 }
 #+end_src
 
+* MPD Notification
+:PROPERTIES:
+:header-args: :tangle ~/.config/mpd-notification.conf
+:END:
+Enabling the service
+#+begin_example shell
+systemctl --user enable mpd-notification.service --now
+#+end_example
+
+#+begin_src conf
+host = localhost
+port = 6600
+music-dir = /home/artem/Music
+oneline = true
+scale = 200
+timeout = 5
+#+end_src
