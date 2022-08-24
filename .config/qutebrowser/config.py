@@ -503,6 +503,7 @@ c.url.open_base_url = True
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
     "aw"     : "https://wiki.archlinux.org/index.php?search={}",
+    "aur"    : "https://aur.archlinux.org/packages?O=0&K={}",
     "r"      : "https://www.reddit.com/search/?q={}",
     "gh"     : "https://github.com/search?q={}&ref=opensearch",
     "od"     : "https://odysee.com/$/search?q={}",
