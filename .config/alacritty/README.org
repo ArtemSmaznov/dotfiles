@@ -68,6 +68,7 @@ font:
 #+begin_src yaml
 import:
   - ~/.config/alacritty/themes/gruvbox.yml
+  - ~/.config/alacritty/local.yml
 
 custom_cursor_colors: false
 #+end_src
@@ -917,3 +918,4 @@ live_config_reload: true
 #print_events: false
 
 #+end_src
+

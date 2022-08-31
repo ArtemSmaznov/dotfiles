@@ -33,6 +33,7 @@ font:
 
 import:
   - ~/.config/alacritty/themes/gruvbox.yml
+  - ~/.config/alacritty/local.yml
 
 custom_cursor_colors: false
 
