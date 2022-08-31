@@ -1385,4 +1385,5 @@ c.qt.chromium.process_model = 'process-per-site-instance'
 
 # c.logging.level.ram = 'debug'
 
-if os.path.isfile('.config/qutebrowser/local.py'): config.source('local.py')
+if os.path.isfile(os.path.expanduser('~/.config/qutebrowser/local.py')):
+    config.source('local.py')
