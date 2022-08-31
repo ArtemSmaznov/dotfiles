@@ -47,7 +47,7 @@ unclutter -jitter 5 &
 
 Japanese Language Input
 #+begin_src shell :tangle autostart-scripts/autostart.sh
-fcitx -d &
+fcitx5 -d &
 #+end_src
 
 ** Background Apps
