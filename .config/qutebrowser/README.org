@@ -1444,6 +1444,17 @@ config.bind('<Space>hs', 'set-cmd-text -s :help -t')
 config.bind('<F1>'     , 'help -t')
 #+end_src
 
+** Sessions
+#+begin_src python
+config.bind('<Space><Tab>d', 'set-cmd-text -s :session-delete')
+config.bind('<Space><Tab>l', 'set-cmd-text -s :session-load')
+config.bind('<Space><Tab>R', 'session-load default')
+config.bind('<Space><Tab>s', 'set-cmd-text -s :session-save --only-active-window')
+config.bind('<Space><Tab>S', 'set-cmd-text -s :session-save')
+config.bind('<Space><Tab>t', 'set-cmd-text -s :session-load -temp')
+config.bind('<Space><Tab>x', 'set-cmd-text -s :session-delete')
+#+end_src
+
 ** Navigation
 *** Scrolling
 #+begin_src python
