@@ -51,7 +51,7 @@
   - [[#tabs-2][Tabs]]
   - [[#downloads-2][Downloads]]
   - [[#yanking][Yanking]]
-  - [[#bookmarks--quick-marks][Bookmarks / Quick-marks]]
+  - [[#bookmarks--quickmarks][Bookmarks / Quickmarks]]
   - [[#history-1][History]]
   - [[#key-hints][Key Hints]]
   - [[#pass][Pass]]
@@ -917,7 +917,7 @@ aliases, while the values are the commands they map to.
 Name of the session to save by default. If this is set to null, the session which was last loaded is saved.
 Type: SessionName
 #+begin_src python
-# c.session.default_name = None
+c.session.default_name = "autosave"
 #+end_src
 
 Always restore open sites when qutebrowser is reopened. Without this
@@ -1456,12 +1456,14 @@ config.bind('<F1>'     , 'help -t')
 
 ** Sessions
 #+begin_src python
+config.bind('<Space><Tab>c', 'session-save -c ;; set-cmd-text -s :session-load --clear')
 config.bind('<Space><Tab>d', 'set-cmd-text -s :session-delete')
 config.bind('<Space><Tab>l', 'set-cmd-text -s :session-load')
-config.bind('<Space><Tab>R', 'session-load default')
+config.bind('<Space><Tab>R', 'session-load -f autosave')
 config.bind('<Space><Tab>s', 'set-cmd-text -s :session-save --only-active-window')
 config.bind('<Space><Tab>S', 'set-cmd-text -s :session-save')
 config.bind('<Space><Tab>t', 'set-cmd-text -s :session-load -temp')
+config.bind('<Space><Tab>u', 'session-save')
 config.bind('<Space><Tab>x', 'set-cmd-text -s :session-delete')
 #+end_src
 
@@ -1505,23 +1507,22 @@ config.bind('}}', 'navigate next -t')
 
 ** Windows
 #+begin_src python
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
 
 config.bind('wf', 'hint all window')
-config.bind('<Space>wo', 'set-cmd-text -s :open -w')
-config.bind('<Space>wO', 'set-cmd-text :open -w {url:pretty}')
 
 config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
 config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
-
-config.bind('<Space>wp', 'open -w -- {clipboard}')
-config.bind('<Space>wP', 'open -w -- {primary}')
 
 config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
 
 config.bind('U', 'undo -w')
+config.bind('<Space>wu', 'undo -w')
 #+end_src
 
 ** Tabs
@@ -1734,7 +1735,7 @@ config.bind('yi', 'hint images yank')
 config.bind('Yi', 'hint images yank-primary')
 #+end_src
 
-** Bookmarks / Quick-marks
+** Bookmarks / Quickmarks
 Bookmark list
 #+begin_src python
 config.bind('gq', 'bookmark-list')
@@ -1922,11 +1923,15 @@ config.bind('<Ctrl-Return>' , 'command-accept --rapid' , mode='command')
 
 Completion
 #+begin_src python
-config.bind('<Ctrl-k>' , 'completion-item-focus prev', mode='command')
-config.bind('<Ctrl-j>' , 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-k>'       , 'completion-item-focus prev'         , mode='command')
+config.bind('<Ctrl-j>'       , 'completion-item-focus next'         , mode='command')
+config.bind('<Ctrl-Shift-k>' , 'completion-item-focus prev-page'    , mode='command')
+config.bind('<Ctrl-Shift-j>' , 'completion-item-focus next-page'    , mode='command')
+config.bind('<Ctrl-Shift-h>' , 'completion-item-focus prev-category', mode='command')
+config.bind('<Ctrl-Shift-l>' , 'completion-item-focus next-category', mode='command')
 
-config.bind('<Ctrl-C>' , 'completion-item-yank'      , mode='command')
-config.bind('<Ctrl-D>' , 'completion-item-del'       , mode='command')
+config.bind('<Ctrl-C>'       , 'completion-item-yank'               , mode='command')
+config.bind('<Ctrl-D>'       , 'completion-item-del'                , mode='command')
 #+end_src
 
 Deletion

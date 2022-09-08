@@ -472,7 +472,7 @@ c.url.start_pages = ["https://search.brave.com"]
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
-# c.session.default_name = None
+c.session.default_name = "autosave"
 
 c.auto_save.session = True
 
@@ -688,12 +688,14 @@ config.bind('<Space>hh', 'help -t')
 config.bind('<Space>hs', 'set-cmd-text -s :help -t')
 config.bind('<F1>'     , 'help -t')
 
+config.bind('<Space><Tab>c', 'session-save -c ;; set-cmd-text -s :session-load --clear')
 config.bind('<Space><Tab>d', 'set-cmd-text -s :session-delete')
 config.bind('<Space><Tab>l', 'set-cmd-text -s :session-load')
-config.bind('<Space><Tab>R', 'session-load default')
+config.bind('<Space><Tab>R', 'session-load -f autosave')
 config.bind('<Space><Tab>s', 'set-cmd-text -s :session-save --only-active-window')
 config.bind('<Space><Tab>S', 'set-cmd-text -s :session-save')
 config.bind('<Space><Tab>t', 'set-cmd-text -s :session-load -temp')
+config.bind('<Space><Tab>u', 'session-save')
 config.bind('<Space><Tab>x', 'set-cmd-text -s :session-delete')
 
 config.bind('h', 'scroll left')
@@ -724,23 +726,22 @@ config.bind(']]', 'navigate next')
 config.bind('{{', 'navigate prev -t')
 config.bind('}}', 'navigate next -t')
 
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
 
 config.bind('wf', 'hint all window')
-config.bind('<Space>wo', 'set-cmd-text -s :open -w')
-config.bind('<Space>wO', 'set-cmd-text :open -w {url:pretty}')
 
 config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
 config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
-
-config.bind('<Space>wp', 'open -w -- {clipboard}')
-config.bind('<Space>wP', 'open -w -- {primary}')
 
 config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
 
 config.bind('U', 'undo -w')
+config.bind('<Space>wu', 'undo -w')
 
 config.bind('<back>', 'back')
 config.bind('<forward>', 'forward')
@@ -1012,11 +1013,15 @@ config.bind('<Ctrl-E>'      , 'edit-command'           , mode='command')
 config.bind('<Return>'      , 'command-accept'         , mode='command')
 config.bind('<Ctrl-Return>' , 'command-accept --rapid' , mode='command')
 
-config.bind('<Ctrl-k>' , 'completion-item-focus prev', mode='command')
-config.bind('<Ctrl-j>' , 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-k>'       , 'completion-item-focus prev'         , mode='command')
+config.bind('<Ctrl-j>'       , 'completion-item-focus next'         , mode='command')
+config.bind('<Ctrl-Shift-k>' , 'completion-item-focus prev-page'    , mode='command')
+config.bind('<Ctrl-Shift-j>' , 'completion-item-focus next-page'    , mode='command')
+config.bind('<Ctrl-Shift-h>' , 'completion-item-focus prev-category', mode='command')
+config.bind('<Ctrl-Shift-l>' , 'completion-item-focus next-category', mode='command')
 
-config.bind('<Ctrl-C>' , 'completion-item-yank'      , mode='command')
-config.bind('<Ctrl-D>' , 'completion-item-del'       , mode='command')
+config.bind('<Ctrl-C>'       , 'completion-item-yank'               , mode='command')
+config.bind('<Ctrl-D>'       , 'completion-item-del'                , mode='command')
 
 config.bind('<Alt-Backspace>' , 'rl-backward-kill-word' , mode='command')
 config.bind('<Ctrl-W>'        , 'rl-backward-kill-word' , mode='command')
