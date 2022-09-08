@@ -8,7 +8,7 @@
 - [[#documentation][Documentation]]
 - [[#dependencies][Dependencies]]
 - [[#imports][Imports]]
-- [[#ui][UI]]
+- [[#theme][Theme]]
   - [[#fonts][Fonts]]
   - [[#window][Window]]
   - [[#completion-widget][Completion Widget]]
@@ -28,7 +28,7 @@
   - [[#autocompletion][Autocompletion]]
   - [[#full-screen][Full Screen]]
   - [[#headers][Headers]]
-  - [[#tabs-1][Tabs]]
+  - [[#scrolling][Scrolling]]
   - [[#zooming][Zooming]]
   - [[#other][Other]]
   - [[#new-instance][New Instance]]
@@ -36,11 +36,16 @@
 - [[#search-engines][Search Engines]]
 - [[#aliases][Aliases]]
 - [[#sessions][Sessions]]
+  - [[#auto-save][Auto Save]]
   - [[#history][History]]
+- [[#tabs-1][Tabs]]
+  - [[#visuals][Visuals]]
+  - [[#behavior-1][Behavior]]
 - [[#key-bindings][Key Bindings]]
   - [[#info][Info]]
   - [[#unbind][Unbind]]
   - [[#qutebrowser][QuteBrowser]]
+  - [[#sessions-1][Sessions]]
   - [[#navigation][Navigation]]
   - [[#windows][Windows]]
   - [[#tabs-2][Tabs]]
@@ -71,9 +76,9 @@
 - [[#history-2][History]]
 - [[#file-select][File Select]]
 - [[#input][Input]]
-- [[#scrolling][Scrolling]]
 - [[#search][Search]]
-- [[#sessions-1][Sessions]]
+- [[#mouse][Mouse]]
+  - [[#tabs-3][Tabs]]
 - [[#qt][Qt]]
 - [[#logging][Logging]]
 - [[#overwrites][Overwrites]]
@@ -98,6 +103,7 @@ sudo pacman -S qutebrowser mpv youtube-dl
 * Imports
 #+begin_src python
 import os
+
 from qutebrowser.api import interceptor
 #+end_src
 
@@ -106,7 +112,7 @@ Import theme
 import themes.default as theme
 #+end_src
 
-* UI
+* Theme
 ** Fonts
 #+begin_src python
 c.fonts.default_size = '12pt'
@@ -641,278 +647,22 @@ Type: =FormatString=
 c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 #+end_src
 
-** Tabs
-Open new tabs (middle-click/ctrl+click) in the background.
+** Scrolling
+When/how to show the scroll-bar.
+Type: String
+Valid values:
+- always: Always show the scroll-bar.
+- never: Never show the scroll-bar.
+- when-searching: Show the scroll-bar when searching for text in the web page. With the =QtWebKit= backend, this is equal to =never=.
+- overlay: Show an overlay scroll-bar. On =macOS=, this is unavailable and equal to =when-searching=; with the =QtWebKit= backend, this is equal to =never=. Enabling/disabling overlay scroll-bars requires a restart.
+#+begin_src python
+c.scrolling.bar = 'overlay'
+#+end_src
+
+Enable smooth scrolling for web pages. Note smooth scrolling does not work with the =:scroll-px= command.
 Type: =Bool=
 #+begin_src python
-c.tabs.background = True
-#+end_src
-
-Mouse button with which to close tabs.
-Type: =String=
-Valid values:
-- right: Close tabs on right-click.
-- middle: Close tabs on middle-click.
-- none: Don't close tabs using the mouse.
-#+begin_src python
-c.tabs.close_mouse_button = 'middle'
-#+end_src
-
-How to behave when the close mouse button is pressed on the tab bar.
-Type: =String=
-Valid values:
-- new-tab: Open a new tab.
-- close-current: Close the current tab.
-- close-last: Close the last tab.
-- ignore: Don't do anything.
-#+begin_src python
-c.tabs.close_mouse_button_on_bar = 'new-tab'
-#+end_src
-
-Scaling factor for favicons in the tab bar. The tab size is unchanged,
-so big favicons also require extra `tabs.padding`.
-Type: =Float=
-#+begin_src python
-# c.tabs.favicons.scale = 1.0
-#+end_src
-
-When to show favicons in the tab bar. When switching this from never
-to always/pinned, note that favicons might not be loaded yet, thus
-tabs might require a reload to display them.
-Type: =String=
-Valid values:
-- always: Always show favicons.
-- never: Always hide favicons.
-- pinned: Show favicons only on pinned tabs.
-#+begin_src python
-c.tabs.favicons.show = 'always'
-#+end_src
-
-Maximum stack size to remember for tab switches (-1 for no maximum).
-Type: =Int=
-#+begin_src python
-# c.tabs.focus_stack_size = 10
-#+end_src
-
-Padding (in pixels) for tab indicators.
-Type: =Padding=
-#+begin_src python
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
-#+end_src
-
-Width (in pixels) of the progress indicator (0 to disable).
-Type: =Int=
-#+begin_src python
-c.tabs.indicator.width = 3
-#+end_src
-
-How to behave when the last tab is closed. If the
-`tabs.tabs_are_windows` setting is set, this is ignored and the
-behavior is always identical to the `close` value.
-Type: =String=
-Valid values:
-- ignore: Don't do anything.
-- blank: Load a blank page.
-- startpage: Load the start page.
-- default-page: Load the default page.
-- close: Close the window.
-#+begin_src python
-c.tabs.last_close = 'startpage'
-#+end_src
-
-Maximum width (in pixels) of tabs (-1 for no maximum). This setting
-only applies when tabs are horizontal. This setting does not apply to
-pinned tabs, unless `tabs.pinned.shrink` is False. This setting may
-not apply properly if max_width is smaller than the minimum size of
-tab contents, or smaller than tabs.min_width.
-Type: =Int=
-#+begin_src python
-c.tabs.max_width = 200
-#+end_src
-
-Minimum width (in pixels) of tabs (-1 for the default minimum size
-behavior). This setting only applies when tabs are horizontal. This
-setting does not apply to pinned tabs, unless `tabs.pinned.shrink` is
-False.
-Type: =Int=
-#+begin_src python
-c.tabs.min_width = -1
-#+end_src
-
-When switching tabs, what input mode is applied.
-Type: =String=
-Valid values:
-- persist: Retain the current mode.
-- restore: Restore previously saved mode.
-- normal: Always revert to normal mode.
-#+begin_src python
-c.tabs.mode_on_change = 'normal'
-#+end_src
-
-Switch between tabs using the mouse wheel.
-Type: =Bool=
-#+begin_src python
-c.tabs.mousewheel_switching = False
-#+end_src
-
-Position of new tabs opened from another tab. See
-=tabs.new_position.stacking= for controlling stacking behavior.
-Type: =NewTabPosition=
-Valid values:
-- prev: Before the current tab.
-- next: After the current tab.
-- first: At the beginning.
-- last: At the end.
-#+begin_src python
-c.tabs.new_position.related = 'next'
-#+end_src
-
-Stack related tabs on top of each other when opened consecutively.
-Only applies for `next` and `prev` values of
-`tabs.new_position.related` and `tabs.new_position.unrelated`.
-Type: =Bool=
-#+begin_src python
-# c.tabs.new_position.stacking = True
-#+end_src
-
-Position of new tabs which are not opened from another tab. See
-`tabs.new_position.stacking` for controlling stacking behavior.
-Type: =NewTabPosition=
-Valid values:
-- prev: Before the current tab.
-- next: After the current tab.
-- first: At the beginning.
-- last: At the end.
-#+begin_src python
-c.tabs.new_position.unrelated = 'last'
-#+end_src
-
-Padding (in pixels) around text for tabs.
-Type: =Padding=
-#+begin_src python
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
-#+end_src
-
-Force pinned tabs to stay at fixed URL.
-Type: =Bool=
-#+begin_src python
-c.tabs.pinned.frozen = True
-#+end_src
-
-Shrink pinned tabs down to their contents.
-Type: =Bool=
-#+begin_src python
-c.tabs.pinned.shrink = True
-#+end_src
-
-Position of the tab bar.
-Type: =Position=
-Valid values:
-- top
-- bottom
-- left
-- right
-#+begin_src python
-c.tabs.position = 'top'
-#+end_src
-
-Which tab to select when the focused tab is removed.
-Type: =SelectOnRemove=
-Valid values:
-- prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
-- next: Select the tab which came after the closed one (right in horizontal, below in vertical).
-- last-used: Select the previously selected tab.
-#+begin_src python
-c.tabs.select_on_remove = 'next'
-#+end_src
-
-When to show the tab bar.
-Type: =String=
-Valid values:
-- always: Always show the tab bar.
-- never: Always hide the tab bar.
-- multiple: Hide the tab bar if only one tab is open.
-- switching: Show the tab bar when switching tabs.
-#+begin_src python
-c.tabs.show = 'multiple'
-#+end_src
-
-Duration (in milliseconds) to show the tab bar before hiding it when
-tabs.show is set to 'switching'.
-Type: =Int=
-#+begin_src python
-# c.tabs.show_switching_delay = 800
-#+end_src
-
-Open a new window for every tab.
-Type: =Bool=
-#+begin_src python
-c.tabs.tabs_are_windows = False
-#+end_src
-
-Alignment of the text inside of tabs.
-Type: =TextAlignment=
-Valid values:
-- left
-- right
-- center
-#+begin_src python
-c.tabs.title.alignment = 'left'
-#+end_src
-
-Format to use for the tab title.
-Type: =FormatString=
-The following placeholders are defined:
-| ={perc}=          | Percentage as a string like =[0%]=                             |
-| ={perc_raw}=      | Raw percentage, e.g. =10=                                      |
-| ={current_title}= | Title of the current web page                                |
-| ={title_sep}=     | The string =" - "= if a title is set, empty otherwise          |
-| ={index}=         | Index of this tab                                            |
-| ={aligned_index}= | Index of this tab padded with spaces to have the same width. |
-| ={id}=            | Internal tab ID of this tab                                  |
-| ={scroll_pos}=    | Page scroll position                                         |
-| ={host}=          | Host of the current web page                                 |
-| ={backend}=       | Either =webkit= or =webengine=                                   |
-| ={private}=       | Indicates when private mode is enabled                       |
-| ={current_url}=   | URL of the current web page                                  |
-| ={protocol}=      | Protocol (http/https/...) of the current web page            |
-| ={audio}=         | Indicator for audio/mute status                              |
-#+begin_src python
-c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
-#+end_src
-
-Format to use for the tab title for pinned tabs. The same placeholders
-like for `tabs.title.format` are defined.
-Type: =FormatString=
-#+begin_src python
-c.tabs.title.format_pinned = '{perc}{audio}{private}'
-#+end_src
-
-Show tooltips on tabs. Note this setting only affects windows opened
-after it has been set.
-Type: =Bool=
-#+begin_src python
-c.tabs.tooltips = True
-#+end_src
-
-Number of closed tabs (per window) and closed windows to remember for
-:undo (-1 for no maximum).
-Type: =Int=
-#+begin_src python
-c.tabs.undo_stack_size = -1
-#+end_src
-
-Width (in pixels or as percentage of the window) of the tab bar if
-it's vertical.
-Type: =PercOrInt=
-#+begin_src python
-# c.tabs.width = '15%'
-#+end_src
-
-Wrap when changing tabs.
-Type: =Bool=
-#+begin_src python
-c.tabs.wrap = True
+c.scrolling.smooth = True
 #+end_src
 
 ** Zooming
@@ -1163,6 +913,13 @@ aliases, while the values are the commands they map to.
 #+end_src
 
 * Sessions
+** Auto Save
+Name of the session to save by default. If this is set to null, the session which was last loaded is saved.
+Type: SessionName
+#+begin_src python
+# c.session.default_name = None
+#+end_src
+
 Always restore open sites when qutebrowser is reopened. Without this
 option set, `:wq` (`:quit --save`) needs to be used to save open tabs
 (and restore them), while quitting qutebrowser in any other way will
@@ -1186,6 +943,260 @@ Number of commands to save in the command history. 0: no history / -1: unlimited
 # Type: Int
 #+begin_src python
 # c.completion.cmd_history_max_items = 100
+#+end_src
+
+* Tabs
+** Visuals
+*** General
+Min and Max width (in pixels) of tabs (-1 for the default size behavior). This
+setting only applies when tabs are horizontal. This setting does not apply to
+pinned tabs, unless =tabs.pinned.shrink= is False.
+Max width setting may not apply properly if =max_width= is smaller than the
+minimum size of tab contents, or smaller than =tabs.min_width=.
+Type: =Int=
+#+begin_src python
+c.tabs.min_width = -1
+c.tabs.max_width = 200
+#+end_src
+
+*** Tab Bar
+Position of the tab bar.
+Type: =Position=
+Valid values:
+- top
+- bottom
+- left
+- right
+#+begin_src python
+c.tabs.position = 'top'
+#+end_src
+
+When to show the tab bar.
+Type: =String=
+Valid values:
+- always: Always show the tab bar.
+- never: Always hide the tab bar.
+- multiple: Hide the tab bar if only one tab is open.
+- switching: Show the tab bar when switching tabs.
+#+begin_src python
+c.tabs.show = 'multiple'
+#+end_src
+
+Duration (in milliseconds) to show the tab bar before hiding it when
+tabs.show is set to 'switching'.
+Type: =Int=
+#+begin_src python
+# c.tabs.show_switching_delay = 800
+#+end_src
+
+Width (in pixels or as percentage of the window) of the tab bar if
+it's vertical.
+Type: =PercOrInt=
+#+begin_src python
+# c.tabs.width = '15%'
+#+end_src
+
+*** Indicators
+Padding (in pixels) for tab indicators.
+Type: =Padding=
+#+begin_src python
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+#+end_src
+
+Width (in pixels) of the progress indicator (0 to disable).
+Type: =Int=
+#+begin_src python
+c.tabs.indicator.width = 3
+#+end_src
+
+*** Favicons
+Scaling factor for favicons in the tab bar. The tab size is unchanged,
+so big favicons also require extra `tabs.padding`.
+Type: =Float=
+#+begin_src python
+# c.tabs.favicons.scale = 1.0
+#+end_src
+
+When to show favicons in the tab bar. When switching this from never
+to always/pinned, note that favicons might not be loaded yet, thus
+tabs might require a reload to display them.
+Type: =String=
+Valid values:
+- always: Always show favicons.
+- never: Always hide favicons.
+- pinned: Show favicons only on pinned tabs.
+#+begin_src python
+c.tabs.favicons.show = 'always'
+#+end_src
+
+*** Titles
+Padding (in pixels) around text for tabs.
+Type: =Padding=
+#+begin_src python
+# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+#+end_src
+
+Alignment of the text inside of tabs.
+Type: =TextAlignment=
+Valid values:
+- left
+- right
+- center
+#+begin_src python
+c.tabs.title.alignment = 'left'
+#+end_src
+
+Format to use for the tab title.
+Type: =FormatString=
+The following placeholders are defined:
+| ={perc}=          | Percentage as a string like =[0%]=                             |
+| ={perc_raw}=      | Raw percentage, e.g. =10=                                      |
+| ={current_title}= | Title of the current web page                                |
+| ={title_sep}=     | The string =" - "= if a title is set, empty otherwise          |
+| ={index}=         | Index of this tab                                            |
+| ={aligned_index}= | Index of this tab padded with spaces to have the same width. |
+| ={id}=            | Internal tab ID of this tab                                  |
+| ={scroll_pos}=    | Page scroll position                                         |
+| ={host}=          | Host of the current web page                                 |
+| ={backend}=       | Either =webkit= or =webengine=                                   |
+| ={private}=       | Indicates when private mode is enabled                       |
+| ={current_url}=   | URL of the current web page                                  |
+| ={protocol}=      | Protocol (http/https/...) of the current web page            |
+| ={audio}=         | Indicator for audio/mute status                              |
+#+begin_src python
+c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
+#+end_src
+
+*** Pinned Tabs
+Format to use for the tab title for pinned tabs. The same placeholders
+like for `tabs.title.format` are defined.
+Type: =FormatString=
+#+begin_src python
+c.tabs.title.format_pinned = '{perc}{audio}{private}'
+#+end_src
+
+** Behavior
+*** General
+Show tooltips on tabs. Note this setting only affects windows opened
+after it has been set.
+Type: =Bool=
+#+begin_src python
+c.tabs.tooltips = True
+#+end_src
+
+*** Opening
+Position of new tabs opened from another tab. See
+=tabs.new_position.stacking= for controlling stacking behavior.
+Type: =NewTabPosition=
+Valid values:
+- prev: Before the current tab.
+- next: After the current tab.
+- first: At the beginning.
+- last: At the end.
+#+begin_src python
+c.tabs.new_position.related = 'next'
+#+end_src
+
+Position of new tabs which are not opened from another tab. See
+=tabs.new_position.stacking= for controlling stacking behavior.
+Type: =NewTabPosition=
+Valid values:
+- prev: Before the current tab.
+- next: After the current tab.
+- first: At the beginning.
+- last: At the end.
+#+begin_src python
+c.tabs.new_position.unrelated = 'last'
+#+end_src
+
+Open a new window for every tab.
+Type: =Bool=
+#+begin_src python
+c.tabs.tabs_are_windows = False
+#+end_src
+
+*** Switching
+When switching tabs, what input mode is applied.
+Type: =String=
+Valid values:
+- persist: Retain the current mode.
+- restore: Restore previously saved mode.
+- normal: Always revert to normal mode.
+#+begin_src python
+c.tabs.mode_on_change = 'normal'
+#+end_src
+
+Wrap when changing tabs.
+Type: =Bool=
+#+begin_src python
+c.tabs.wrap = True
+#+end_src
+
+*** Closing
+Which tab to select when the focused tab is removed.
+Type: =SelectOnRemove=
+Valid values:
+- prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
+- next: Select the tab which came after the closed one (right in horizontal, below in vertical).
+- last-used: Select the previously selected tab.
+#+begin_src python
+c.tabs.select_on_remove = 'next'
+#+end_src
+
+How to behave when the last tab is closed. If the
+`tabs.tabs_are_windows` setting is set, this is ignored and the
+behavior is always identical to the `close` value.
+Type: =String=
+Valid values:
+- ignore: Don't do anything.
+- blank: Load a blank page.
+- startpage: Load the start page.
+- default-page: Load the default page.
+- close: Close the window.
+#+begin_src python
+c.tabs.last_close = 'startpage'
+#+end_src
+
+Number of closed tabs (per window) and closed windows to remember for
+:undo (-1 for no maximum).
+Type: =Int=
+#+begin_src python
+c.tabs.undo_stack_size = -1
+#+end_src
+
+*** Restoring
+Load a restored tab as soon as it takes focus.
+Type: Bool
+#+begin_src python
+c.session.lazy_restore = True
+#+end_src
+
+*** Pinned Tabs
+Force pinned tabs to stay at fixed URL.
+Type: =Bool=
+#+begin_src python
+c.tabs.pinned.frozen = True
+#+end_src
+
+Shrink pinned tabs down to their contents.
+Type: =Bool=
+#+begin_src python
+c.tabs.pinned.shrink = True
+#+end_src
+
+*** Stacks
+Stack related tabs on top of each other when opened consecutively.
+Only applies for `next` and `prev` values of
+`tabs.new_position.related` and `tabs.new_position.unrelated`.
+Type: =Bool=
+#+begin_src python
+# c.tabs.new_position.stacking = True
+#+end_src
+
+Maximum stack size to remember for tab switches (-1 for no maximum).
+Type: =Int=
+#+begin_src python
+# c.tabs.focus_stack_size = 10
 #+end_src
 
 * Key Bindings
@@ -1365,7 +1376,6 @@ config.bind('sk', 'set-cmd-text -s :bind')
 config.bind('<Ctrl-Shift-Tab>', 'nop')
 #+end_src
 
-*** Session
 #+begin_src python
 config.bind('sf', 'save')
 #+end_src
@@ -2726,24 +2736,6 @@ Type: =Bool=
 c.input.spatial_navigation = False
 #+end_src
 
-* Scrolling
-When/how to show the scroll-bar.
-Type: String
-Valid values:
-- always: Always show the scroll-bar.
-- never: Never show the scroll-bar.
-- when-searching: Show the scroll-bar when searching for text in the web page. With the =QtWebKit= backend, this is equal to =never=.
-- overlay: Show an overlay scroll-bar. On =macOS=, this is unavailable and equal to =when-searching=; with the =QtWebKit= backend, this is equal to =never=. Enabling/disabling overlay scroll-bars requires a restart.
-#+begin_src python
-c.scrolling.bar = 'overlay'
-#+end_src
-
-Enable smooth scrolling for web pages. Note smooth scrolling does not work with the =:scroll-px= command.
-Type: =Bool=
-#+begin_src python
-c.scrolling.smooth = True
-#+end_src
-
 * Search
 When to find text on a page case-insensitively.
 Type: =IgnoreCase=
@@ -2767,17 +2759,39 @@ Type: =Bool=
 c.search.wrap = True
 #+end_src
 
-* Sessions
-Name of the session to save by default. If this is set to null, the session which was last loaded is saved.
-Type: SessionName
+* Mouse
+** Tabs
+Open new tabs (middle-click/ctrl+click) in the background.
+Type: =Bool=
 #+begin_src python
-# c.session.default_name = None
+c.tabs.background = True
 #+end_src
 
-Load a restored tab as soon as it takes focus.
-Type: Bool
+Mouse button with which to close tabs.
+Type: =String=
+Valid values:
+- right: Close tabs on right-click.
+- middle: Close tabs on middle-click.
+- none: Don't close tabs using the mouse.
 #+begin_src python
-c.session.lazy_restore = True
+c.tabs.close_mouse_button = 'middle'
+#+end_src
+
+How to behave when the close mouse button is pressed on the tab bar.
+Type: =String=
+Valid values:
+- new-tab: Open a new tab.
+- close-current: Close the current tab.
+- close-last: Close the last tab.
+- ignore: Don't do anything.
+#+begin_src python
+c.tabs.close_mouse_button_on_bar = 'new-tab'
+#+end_src
+
+Switch between tabs using the mouse wheel.
+Type: =Bool=
+#+begin_src python
+c.tabs.mousewheel_switching = False
 #+end_src
 
 * Qt

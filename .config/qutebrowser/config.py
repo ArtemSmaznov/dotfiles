@@ -1,4 +1,5 @@
 import os
+
 from qutebrowser.api import interceptor
 
 import themes.default as theme
@@ -314,67 +315,9 @@ c.content.headers.referer = 'same-domain'
 
 c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 
-c.tabs.background = True
+c.scrolling.bar = 'overlay'
 
-c.tabs.close_mouse_button = 'middle'
-
-c.tabs.close_mouse_button_on_bar = 'new-tab'
-
-# c.tabs.favicons.scale = 1.0
-
-c.tabs.favicons.show = 'always'
-
-# c.tabs.focus_stack_size = 10
-
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
-
-c.tabs.indicator.width = 3
-
-c.tabs.last_close = 'startpage'
-
-c.tabs.max_width = 200
-
-c.tabs.min_width = -1
-
-c.tabs.mode_on_change = 'normal'
-
-c.tabs.mousewheel_switching = False
-
-c.tabs.new_position.related = 'next'
-
-# c.tabs.new_position.stacking = True
-
-c.tabs.new_position.unrelated = 'last'
-
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
-
-c.tabs.pinned.frozen = True
-
-c.tabs.pinned.shrink = True
-
-c.tabs.position = 'top'
-
-c.tabs.select_on_remove = 'next'
-
-c.tabs.show = 'multiple'
-
-# c.tabs.show_switching_delay = 800
-
-c.tabs.tabs_are_windows = False
-
-c.tabs.title.alignment = 'left'
-
-c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
-
-c.tabs.title.format_pinned = '{perc}{audio}{private}'
-
-c.tabs.tooltips = True
-
-c.tabs.undo_stack_size = -1
-
-# c.tabs.width = '15%'
-
-c.tabs.wrap = True
+c.scrolling.smooth = True
 
 # Default zoom level.
 # Type: Perc
@@ -529,11 +472,68 @@ c.url.start_pages = ["https://search.brave.com"]
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
+# c.session.default_name = None
+
 c.auto_save.session = True
 
 c.auto_save.interval = 15000
 
 # c.completion.cmd_history_max_items = 100
+
+c.tabs.min_width = -1
+c.tabs.max_width = 200
+
+c.tabs.position = 'top'
+
+c.tabs.show = 'multiple'
+
+# c.tabs.show_switching_delay = 800
+
+# c.tabs.width = '15%'
+
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+
+c.tabs.indicator.width = 3
+
+# c.tabs.favicons.scale = 1.0
+
+c.tabs.favicons.show = 'always'
+
+# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+
+c.tabs.title.alignment = 'left'
+
+c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
+
+c.tabs.title.format_pinned = '{perc}{audio}{private}'
+
+c.tabs.tooltips = True
+
+c.tabs.new_position.related = 'next'
+
+c.tabs.new_position.unrelated = 'last'
+
+c.tabs.tabs_are_windows = False
+
+c.tabs.mode_on_change = 'normal'
+
+c.tabs.wrap = True
+
+c.tabs.select_on_remove = 'next'
+
+c.tabs.last_close = 'startpage'
+
+c.tabs.undo_stack_size = -1
+
+c.session.lazy_restore = True
+
+c.tabs.pinned.frozen = True
+
+c.tabs.pinned.shrink = True
+
+# c.tabs.new_position.stacking = True
+
+# c.tabs.focus_stack_size = 10
 
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
 
@@ -1355,19 +1355,19 @@ c.input.partial_timeout = 30000
 
 c.input.spatial_navigation = False
 
-c.scrolling.bar = 'overlay'
-
-c.scrolling.smooth = True
-
 c.search.ignore_case = 'smart'
 
 c.search.incremental = True
 
 c.search.wrap = True
 
-# c.session.default_name = None
+c.tabs.background = True
 
-c.session.lazy_restore = True
+c.tabs.close_mouse_button = 'middle'
+
+c.tabs.close_mouse_button_on_bar = 'new-tab'
+
+c.tabs.mousewheel_switching = False
 
 # c.qt.args = []
 
