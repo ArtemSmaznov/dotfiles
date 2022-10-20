@@ -23,7 +23,7 @@
   - [[#initialization][Initialization]]
   - [[#window-1][Window]]
   - [[#playback-1][Playback]]
-  - [[#navigation--volume][Navigation & Volume]]
+  - [[#navigation][Navigation]]
   - [[#playlists][Playlists]]
   - [[#audio-1][Audio]]
   - [[#osd-1][OSD]]
@@ -64,7 +64,7 @@ Profiles should be placed at the bottom of the configuration file to ensure that
 ** Window
 Disabling fixed aspect ratio for mpv window stops it from being launched in floating layout in qtile WM. In theory, this should make it play nicer with other tiling window managers as well.
 #+begin_src conf :tangle mpv.conf
-no-keepaspect-window
+# no-keepaspect-window
 #+end_src
 
 Start in fullscreen mode by default.
@@ -75,12 +75,12 @@ Start in fullscreen mode by default.
 
 Force starting with centered window
 #+begin_src conf :tangle mpv.conf
-# geometry=50%:50%
+geometry=50%:50%
 #+end_src
 
 Don't allow a new window to have a size larger than 90% of the screen size
 #+begin_src conf :tangle mpv.conf
-# autofit-larger=90%x90%
+autofit-larger=90%x90%
 #+end_src
 
 Keep the player window on top of all other windows.
@@ -628,6 +628,11 @@ animation-duration=0.25
 
 #+end_src
 
+** yt-dlp
+#+begin_src conf :tangle script-opts/yt-dlp/main.conf
+ytdl_hook-ytdl_path=/usr/bin/yt-dlp
+#+end_src
+
 * Keybindings
 ** Info
 List of commands and further details: DOCS/man/input.rst
@@ -681,10 +686,17 @@ SPACE cycle pause
 
 Scale playback speed
 #+begin_src conf :tangle input.conf
-[ multiply speed 1/1.1
-] multiply speed 1.1
-{ multiply speed 0.5
-} multiply speed 2.0
+# [ multiply speed 1/1.1
+# ] multiply speed 1.1
+# { multiply speed 0.5
+# } multiply speed 2.0
+#+end_src
+
+#+begin_src conf :tangle input.conf
+[ add speed -0.25
+] add speed 0.25
+{ multiply speed 1/1.1
+} multiply speed 1.1
 #+end_src
 
 Reset speed to normal
@@ -698,16 +710,16 @@ A-B Loop
 #L cycle-values loop-file "inf" "no"    # toggle infinite looping
 #+end_src
 
-** Navigation & Volume
+** Navigation
 Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf :tangle input.conf
-j           seek -10
-l           seek  10
-J           seek -30
-L           seek  30
+j           seek -5
+l           seek  5
+J           seek -15
+L           seek  15
 
-LEFT        seek -5
-RIGHT       seek  5
+LEFT        seek -10
+RIGHT       seek  10
 
 Shift+LEFT  seek -30
 Shift+RIGHT seek  30
@@ -735,6 +747,7 @@ END  set pause yes ; seek 100 absolute-percent
 7 seek 70 absolute-percent
 8 seek 80 absolute-percent
 9 seek 90 absolute-percent
+$ set pause yes ; seek 100 absolute-percent
 #+end_src
 
 #+begin_src conf :tangle input.conf
