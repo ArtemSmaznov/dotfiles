@@ -54,7 +54,7 @@ fcitx5 -d &
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 redshift-gtk &
 # solaar -w hide &
-/opt/piavpn/bin/pia-client --quiet &
+# /opt/piavpn/bin/pia-client --quiet &
 emacs --daemon &
 #+end_src
 
@@ -62,8 +62,10 @@ emacs --daemon &
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 # brave &
 # brave --disable-features=SendMouseLeaveEvents &
+alacritty -t btop -e btop &
 qutebrowser &
 /usr/bin/steam-runtime %U &
+nextcloud &
 #+end_src
 
 * Conky
