@@ -452,8 +452,8 @@ c.url.searchengines = {
     "od"     : "https://odysee.com/$/search?q={}",
     "yt"     : "https://www.youtube.com/results?search_query={}",
     "yth"    : "https://www.youtube.com/feed/history?query={}",
-    "q"      : "https://docs.qtile.org/en/latest/search.html?q={}&check_keywords=yes&area=default",
-    "fa"     : "https://fontawesome.com/v5.15/icons?d=gallery&p=2&q={}",
+    "mx"     : "https://www.musixmatch.com/search/{}",
+    "fa"     : "https://fontawesome.com/search?q={}&o=r",
     "pd"     : "https://www.protondb.com/search?q={}",
     "auk"    : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
@@ -918,7 +918,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+# config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';v', 'hint media spawn mpv {hint-url}')
 config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
 
 config.bind('<Ctrl-f>', 'hint --rapid')
