@@ -887,9 +887,8 @@ config.bind('Yl', 'hint links yank-primary')
 config.bind('yi', 'hint images yank')
 config.bind('Yi', 'hint images yank-primary')
 
-config.bind('gq', 'bookmark-list')
-config.bind('gb', 'bookmark-list')
-config.bind('gB', 'bookmark-list --jump')
+config.bind('gq', 'bookmark-list --tab')
+config.bind('gb', 'bookmark-list --tab --jump')
 
 config.bind('bo', 'set-cmd-text -s :quickmark-load')
 config.bind('Bo', 'set-cmd-text -s :bookmark-load')
@@ -899,10 +898,12 @@ config.bind('BO', 'set-cmd-text -s :bookmark-load -t')
 
 config.bind('bs', 'quickmark-save')
 config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'set-cmd-text -s :quickmark-add {url}')
-config.bind('Ba', 'bookmark-add')
+config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
+config.bind('bA', 'set-cmd-text -s :quickmark-add {url}')
+config.bind('Ba', 'bookmark-add {url} "{title}"')
+config.bind('BA', 'set-cmd-text -s :bookmark-add {url}')
 
-config.bind('bd', 'quickmark-del')
+config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
 config.bind('Bd', 'bookmark-del')
 
 config.bind('gh', 'history -t')
