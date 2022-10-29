@@ -238,7 +238,7 @@ By default, NetWM support is autodetected (auto).
 This option might be removed in the future.
 Values: =yes|no|auto=
 #+begin_src conf :tangle mpv.conf
-x11-netwm=yes
+# x11-netwm=yes
 #+end_src
 
 Save playback position in between sessions
