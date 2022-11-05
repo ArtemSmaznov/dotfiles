@@ -115,9 +115,6 @@ if [[ -d ~/ASF ]]; then
     alias asf='~/ASF/ArchiSteamFarm'
 fi
 
-# Start Picom
-alias startpicom='picom -b --experimental-backends --dbus'
-
 # Update Proton
 alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
 
