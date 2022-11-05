@@ -36,6 +36,7 @@
   - [[#search][Search]]
   - [[#tools][Tools]]
   - [[#system][System]]
+  - [[#server][Server]]
   - [[#git][Git]]
   - [[#media][Media]]
   - [[#archives][Archives]]
@@ -576,9 +577,15 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 
 # Show open ports
 alias openports='netstat -nape --inet'
+#+end_src
 
-# SSH
+** Server
+#+begin_src shell
+# Extend screen
 alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
+
+# occ for nextcloud container
+alias occ='ssh laptop-arch "docker exec -i --user www-data nextcloud-app php occ"'
 #+end_src
 
 ** Git
@@ -614,6 +621,8 @@ alias pgf="pass git pull"
 ** Media
 Search and play YouTube audio
 #+begin_src shell
+alias shazam='songrec recognize'
+
 function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
