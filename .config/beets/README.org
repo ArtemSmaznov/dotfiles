@@ -10,6 +10,7 @@
   - [[#importing][Importing]]
   - [[#library][Library]]
   - [[#plugins][Plugins]]
+  - [[#musicbrainz][MusicBrainz]]
 
 * Dependencies
 |-------------------+------------------------------------------|
@@ -52,7 +53,7 @@ import:
 paths:
   default: $albumartist/$album%aunique{}/$track - $title
   singleton: $artist/$title
-  comp: Compilations/$album%aunique{}/$track - $title
+  comp: compilations/$album%aunique{}/$track - $title
 
 replace:
     '[\\/]': ''
