@@ -37,7 +37,7 @@ systemctl --user enable mpd.socket --now
 * Directories
 #+begin_src conf
 music_directory     "~/Music"
-playlist_directory  "~/Music/.playlists"
+playlist_directory  "~/.config/mpd/playlists"
 # db_file             "~/.config/mpd/database"
 log_file            "syslog"
 # pid_file            "~/.config/mpd/pid"
