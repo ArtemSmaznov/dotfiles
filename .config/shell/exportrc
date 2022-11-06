@@ -1,5 +1,5 @@
 export GIT_DIRECTORY="$HOME/projects"
-export WALL_DIRECTORY="$HOME/Pictures/wallpapers"
+export WALL_DIRECTORY="$(xdg-user-dir PICTURES)/wallpapers"
 
 export EDITOR=vim
 export VISUAL=vim

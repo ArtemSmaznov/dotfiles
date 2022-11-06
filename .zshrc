@@ -19,12 +19,12 @@ setopt HIST_IGNORE_SPACE
 # Make local bin files usable
 path+=($HOME/.local/bin)
 path+=($HOME/.local/bin/dm-scripts)
-path+=($HOME/.config/emacs/bin)
+path+=($XDG_CONFIG_HOME/emacs/bin)
 
 ### SET MANPAGER
 export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
-fpath=($HOME/.config/zsh/completion $fpath)
+fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
 # Autocompletion
@@ -99,17 +99,17 @@ function source_config() {
 }
 
 # Primary imports
-source_config $HOME/.config/shell/exportrc
-source_config $HOME/.config/shell/aliasrc
-source_config $HOME/.config/shell/wol
-source_config $HOME/.config/zsh/zshrc
+source_config $XDG_CONFIG_HOME/shell/exportrc
+source_config $XDG_CONFIG_HOME/shell/aliasrc
+source_config $XDG_CONFIG_HOME/shell/wol
+source_config $XDG_CONFIG_HOME/zsh/zshrc
 
 # FZF configs
 source_config /usr/share/fzf/key-bindings.zsh
 source_config /usr/share/fzf/completion.zsh
 
 # MPC configs
-source_config $HOME/.config/mpc/mpcvars
+source_config $XDG_CONFIG_HOME/mpc/mpcvars
 
 # Plugins - need to be loaded at the very end
 source_config /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

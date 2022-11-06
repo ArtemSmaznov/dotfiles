@@ -111,15 +111,15 @@ function ftext() {
 }
 
 # Start ArchiSteamFarm
-if [[ -d ~/ASF ]]; then
-    alias asf='~/ASF/ArchiSteamFarm'
+if [[ -d "$HOME/.local/bin/asf" ]]; then
+    alias asf="$HOME/.local/bin/asf/ArchiSteamFarm"
 fi
 
 # Update Proton
-alias update-proton='$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh'
+alias update-proton="$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh"
 
 # Setup extra password store
-alias pay='PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass'
+alias pay="PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass"
 
 alias pman='sudo pacman'
 alias pacman-upgrade='sudo pacman -Syu'
@@ -215,8 +215,7 @@ function ex() {
                 *.7z) 7z x $archive ;;
                 *) echo "don't know how to extract '$archive'..." ;;
             esac
-        else
-            echo "'$archive' is not a valid file!"
+        else echo "'$archive' is not a valid file!"
         fi
     done
 }

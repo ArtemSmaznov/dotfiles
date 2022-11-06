@@ -30,7 +30,9 @@ export HISTSIZE=10000
 export HISTCONTROL=erasedups:ignoreboth
 
 # Make local bin files usable
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/dm-scripts:$HOME/.config/emacs/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin/dm-scripts
+export PATH=$PATH:$XDG_CONFIG_HOME/emacs/bin
 
 ### SET MANPAGER
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
@@ -51,18 +53,18 @@ function source_config() {
 }
 
 # Primary imports
-source_config $HOME/.config/shell/exportrc
-source_config $HOME/.config/shell/aliasrc
-source_config $HOME/.config/shell/wol
-source_config $HOME/.config/bash/prompt
-source_config $HOME/.config/bash/bashrc
+source_config $XDG_CONFIG_HOME/shell/exportrc
+source_config $XDG_CONFIG_HOME/shell/aliasrc
+source_config $XDG_CONFIG_HOME/shell/wol
+source_config $XDG_CONFIG_HOME/bash/prompt
+source_config $XDG_CONFIG_HOME/bash/bashrc
 
 # FZF configs
 source_config /usr/share/fzf/key-bindings.bash
 source_config /usr/share/fzf/completion.bash
 
 # MPC configs
-source_config $HOME/.config/mpc/mpcvars
+source_config $XDG_CONFIG_HOME/mpc/mpcvars
 
 function has_command() {
     hash "$1" 2>/dev/null
