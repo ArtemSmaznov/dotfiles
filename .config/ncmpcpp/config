@@ -2,7 +2,7 @@ mpd_host = localhost
 mpd_port = 6600
 mpd_connection_timeout = 5
 
-mpd_music_dir = ~/Music
+mpd_music_dir = ~/music
 mpd_crossfade_time = 5
 
 visualizer_data_source = "/tmp/mpd.fifo"
@@ -245,7 +245,7 @@ external_editor = vim
 ## Note: set to yes if external editor is a console application.
 use_console_editor = yes
 
-lyrics_directory = ~/Music/.lyrics
+lyrics_directory = ~/music/.lyrics
 
 lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 # lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet

@@ -1,4 +1,4 @@
-directory: ~/Music
+directory: ~/music
 library: ~/.config/beets/library.db
 
 import:

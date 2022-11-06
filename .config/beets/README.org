@@ -34,7 +34,7 @@ sudo pacman -S --needed beets python-requests python-pyacoustid chromaprint ffmp
 :end:
 ** Paths
 #+begin_src yaml
-directory: ~/Music
+directory: ~/music
 library: ~/.config/beets/library.db
 #+end_src
 

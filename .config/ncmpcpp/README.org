@@ -40,7 +40,7 @@ mpd_connection_timeout = 5
 
 Needed for tag editor and file operations to work.
 #+begin_src conf
-mpd_music_dir = ~/Music
+mpd_music_dir = ~/music
 mpd_crossfade_time = 5
 #+end_src
 
@@ -406,7 +406,7 @@ use_console_editor = yes
 Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
 MPD clients (eg. ncmpc) also use that location.
 #+begin_src conf
-lyrics_directory = ~/Music/.lyrics
+lyrics_directory = ~/music/.lyrics
 #+end_src
 
 #+begin_src conf

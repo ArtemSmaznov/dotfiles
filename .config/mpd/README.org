@@ -36,7 +36,7 @@ systemctl --user enable mpd.socket --now
 
 * Directories
 #+begin_src conf
-music_directory     "~/Music"
+music_directory     "~/music"
 playlist_directory  "~/.config/mpd/playlists"
 # db_file             "~/.config/mpd/database"
 log_file            "syslog"
@@ -114,7 +114,7 @@ systemctl --user enable mpd-notification.service --now
 #+begin_src conf
 host = localhost
 port = 6600
-music-dir = /home/artem/Music
+music-dir = /home/artem/music
 oneline = true
 scale = 200
 timeout = 5
