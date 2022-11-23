@@ -37,22 +37,8 @@ def_key "ctrl-s"
 def_key "e"
   edit_playlist_name
 
-def_key "C"
-  clear_playlist
-
-def_key "ctrl-c"
-  crop_playlist
-
 def_key "D"
   delete_stored_playlist
-
-def_key "escape"
-  require_screen "sort_playlist_dialog"
-  previous_screen
-
-def_key "q"
-  require_screen "sort_playlist_dialog"
-  previous_screen
 
 def_key "y"
   save_tag_changes
