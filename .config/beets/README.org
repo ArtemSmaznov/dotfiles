@@ -50,6 +50,8 @@ import:
 
 ** Library
 #+begin_src yaml
+asciify_paths: yes
+
 paths:
   default: $albumartist/$album%aunique{}/$track - $title
   singleton: $artist/$title
@@ -64,13 +66,20 @@ replace:
     '\.$': ''
     '\s+$': ''
     '^\s+': ''
-    '^-': ''
+    '^[-!]': ''
+    '~': ''
 #+end_src
 
 ** Plugins
 lyrics
 #+begin_src yaml
 plugins: fetchart chroma lastgenre mpdstats mpdupdate
+#+end_src
+
+*** MPD
+#+begin_src yaml
+# mpd:
+#   password: ""
 #+end_src
 
 *** Chromaprint/Acoustid
@@ -80,7 +89,7 @@ Disable the plugin
 #   auto: no
 #+end_src
 
-** MusicBrainz
+*** MusicBrainz
 #+begin_src yaml
 musicbrainz:
   searchlimit: 10

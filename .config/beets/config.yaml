@@ -8,6 +8,8 @@ import:
   group_albums: no
   languages: en ru
 
+asciify_paths: yes
+
 paths:
   default: $albumartist/$album%aunique{}/$track - $title
   singleton: $artist/$title
@@ -22,9 +24,13 @@ replace:
     '\.$': ''
     '\s+$': ''
     '^\s+': ''
-    '^-': ''
+    '^[-!]': ''
+    '~': ''
 
 plugins: fetchart chroma lastgenre mpdstats mpdupdate
+
+# mpd:
+#   password: ""
 
 # chroma:
 #   auto: no
