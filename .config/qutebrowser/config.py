@@ -455,6 +455,7 @@ c.url.searchengines = {
     "mx"     : "https://www.musixmatch.com/search/{}",
     "fa"     : "https://fontawesome.com/search?q={}&o=r",
     "pd"     : "https://www.protondb.com/search?q={}",
+    "ne"     : "https://www.newegg.ca/p/pl?d={}",
     "auk"    : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "acom"   : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "aca"    : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
