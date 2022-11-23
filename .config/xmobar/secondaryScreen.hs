@@ -1,18 +1,12 @@
 Config {
    -- appearance
      font            = "xft:SF Pro Text Regular:size=9:bold:antialias=true"
-   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=16"            -- 1
-                       , "xft:Font Awesome 6 Brands:pixelsize=16"                -- 2
-                       , "xft:Font Awesome 6 Free Solid:pixelsize=14"            -- 3
-                       , "xft:Mononoki:pixelsize=11:antialias=true:hinting=true" -- 4
-                       , "xft:MaterialIcons:size=10"                             -- 5
-                       , "xft:Font Awesome 6 Free:style=Regular"                 -- 6
-                       , "xft:Font Awesome 6 Brands"                             -- 7
-                       , "xft:Font Awesome 6 Free:style=Solid"                   -- 8
-                       , "xft:Source Han Sans JP"                                -- 9
-                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=22"    -- 10
-                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=28"    -- 11
-                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=32"    -- 12
+   , additionalFonts = [ "xft:Hack Nerd Font Mono:style=Regular:pixelsize=22"    -- 1
+                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=28"    -- 2
+                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=32"    -- 3
+                       , "xft:Source Han Sans JP"                                -- 4
+                       , "xft:Font Awesome 6 Free Solid:pixelsize=16"            -- 5 used for workspaces in xmonad
+                       , "xft:Font Awesome 6 Free Solid:pixelsize=14"            -- 6 used for network arrows
                        ]
    , bgColor         = "#282828"
    , fgColor         = "#ebdbb2"
@@ -28,7 +22,7 @@ Config {
    , iconRoot = ".config/xmobar/xpm/"
    , commands =
         [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "separator" 36000
-        , Run Com "echo" ["<action=`rofi -show drun`> <fn=12><fc=#1793d1>\xf303</fc></fn></action>"] "logo" 36000
+        , Run Com "echo" ["<action=`rofi -show drun`> <fn=3><fc=#1793d1>\xf303</fc></fn></action>"] "logo" 36000
         , Run Date
           "%l:%M %p "
           "time" 10
@@ -36,29 +30,28 @@ Config {
         , Run MPD
           ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
                , "--"
-               -- , "-P", "<fn=3></fn>" -- play icon
-               , "-P", "<fn=10></fn>" -- play icon
-               , "-Z", "<fn=10></fn>" -- pause icon
-               , "-S", "<fn=10></fn>" -- stop icon
+               , "-P", "<fn=1></fn>" -- play icon
+               , "-Z", "<fn=1></fn>" -- pause icon
+               , "-S", "<fn=1></fn>" -- stop icon
                ] 10
         , Run Com "echo" ["<action=`.local/bin/dm-scripts/dm-lang`> "] "_ks" 3600
         , Run Kbd
           [ ("us" , "<fc=#fabd2f>US</fc>")
           , ("ru" , "<fc=#458588>RU</fc>")
-          , ("jp" , "<fn=9><fc=#fbf1c7>日本</fc></fn>")
+          , ("jp" , "<fn=4><fc=#fbf1c7>日本</fc></fn>")
           ]
         , Run Com "echo" [" </action>"] "_ke" 3600
-        , Run Com "echo" ["<box type=Bottom width=2 mb=2 color=#fb4934><action=`alacritty -e sudo pacman -Syu`>  <fn=10>\xf0f3</fn>  "] "_us" 3600
+        , Run Com "echo" ["<box type=Bottom width=2 mb=2 color=#fb4934><action=`alacritty -e sudo pacman -Syu`>  <fn=1>\xf0f3</fn>  "] "_us" 3600
         , Run Com ".local/bin/dm-scripts/helpers/updates" [] "updates" 3600
         , Run Com "echo" ["  </action></box>"] "_ue" 3600
         , Run DynNetwork
-          ["-t", "<box type=Bottom width=2 mb=2 color=#8ec07c>  <fn=10>\xf484</fn>  <rx> <fn=3>\xf309\xf30c</fn> <tx> </box>"
+          ["-t", "<box type=Bottom width=2 mb=2 color=#8ec07c>  <fn=1>\xf484</fn>  <rx> <fn=6>\xf309\xf30c</fn> <tx> </box>"
                , "-S", "True"
                , "--"
                , "--devices", "eno1,wlan0,enp2s0f0"
                ] 20
         , Run CoreTemp
-          ["-t", "<box type=Bottom width=2 mb=2 color=#d3869b><action=`alacritty -e htop`>  <fn=10>\xf85a</fn>  <core0>° "
+          ["-t", "<box type=Bottom width=2 mb=2 color=#d3869b><action=`alacritty -e htop`>  <fn=1>\xf85a</fn>  <core0>° "
                -- High CPU Temp
                , "-H", "70"
                , "-h", "#fb4934"
@@ -76,23 +69,23 @@ Config {
                , "-l", "#b8bb26"
                ] 20
         , Run Memory
-          ["-t", "<box type=Bottom width=2 mb=2 color=#83a598><action=`alacritty -e htop`>  <fn=10>\xf2db</fn>  <used> M (<usedratio>%)  </action></box>"
+          ["-t", "<box type=Bottom width=2 mb=2 color=#83a598><action=`alacritty -e htop`>  <fn=1>\xf2db</fn>  <used> M (<usedratio>%)  </action></box>"
                ] 20
         , Run Volume "default" "Master"
           ["-t", "<box type=Bottom width=2 mb=2 color=#b8bb26><action=`alacritty -e alsamixer`>  <status>  <volume>%</action>  </box>"
                , "--"
                -- ON Icon
-               , "-O", "<fn=11>\xfa7d</fn>"
+               , "-O", "<fn=2>\xfa7d</fn>"
                , "-C", "#b8bb26"
                -- OFF Icon
-               , "-o", "<fn=11>\xfa80</fn>"
+               , "-o", "<fn=2>\xfa80</fn>"
                , "-c", "#fb4934"
                ] 10
         , Run Date
-          "<box type=Bottom width=2 mb=2 color=#fb4934><action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=10>\xf5f5</fn>  %a, %d %b %Y  </action></box>"
+          "<box type=Bottom width=2 mb=2 color=#fb4934><action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=1>\xf5f5</fn>  %a, %d %b %Y  </action></box>"
           "date" 3600
         , Run Uptime
-          ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f>  <fn=3>\xf0aa</fn>  <days>d <hours>h  </box>"
+          ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f>  <fn=2>\xf0aa</fn>  <days>d <hours>h  </box>"
                ] 3600
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 ]
