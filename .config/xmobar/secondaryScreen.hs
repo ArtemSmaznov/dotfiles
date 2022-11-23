@@ -1,15 +1,16 @@
 Config {
    -- appearance
      font            = "xft:SF Pro Text Regular:size=9:bold:antialias=true"
-   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=16"
-                       , "xft:Font Awesome 6 Brands:pixelsize=16"
-                       , "xft:Font Awesome 6 Free Solid:pixelsize=14"
-                       , "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
-                       , "xft:MaterialIcons:size=10"
-                       , "xft:Font Awesome 6 Free:style=Regular"
-                       , "xft:Font Awesome 6 Brands"
-                       , "xft:Font Awesome 6 Free:style=Solid"
-                       , "xft:Source Han Sans JP"
+   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=16"            -- 1
+                       , "xft:Font Awesome 6 Brands:pixelsize=16"                -- 2
+                       , "xft:Font Awesome 6 Free Solid:pixelsize=14"            -- 3
+                       , "xft:Mononoki:pixelsize=11:antialias=true:hinting=true" -- 4
+                       , "xft:MaterialIcons:size=10"                             -- 5
+                       , "xft:Font Awesome 6 Free:style=Regular"                 -- 6
+                       , "xft:Font Awesome 6 Brands"                             -- 7
+                       , "xft:Font Awesome 6 Free:style=Solid"                   -- 8
+                       , "xft:Source Han Sans JP"                                -- 9
+                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=32"    -- 10
                        ]
    , bgColor         = "#282828"
    , fgColor         = "#ebdbb2"
@@ -24,9 +25,10 @@ Config {
    , alignSep = "}{"  -- separator between left-right alignment
    , iconRoot = ".config/xmobar/xpm/"
    , commands =
-        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "separator" 3600
+        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "separator" 36000
+        , Run Com "echo" ["<action=`rofi -show drun`> <fn=10>\xf303</fn></action>"] "logo" 36000
         , Run Date
-          " %l:%M %p"
+          "%l:%M %p "
           "time" 10
         , Run UnsafeStdinReader
         , Run MPD
@@ -92,5 +94,5 @@ Config {
                ] 3600
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 ]
-   , template = "%time% %separator% %UnsafeStdinReader% }{ %kbd% %default:Master% %date% %uptime% "
+   , template = "%logo% %time% %separator% %UnsafeStdinReader% }{ %kbd% %default:Master% %date% %uptime% "
    }
