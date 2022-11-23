@@ -92,14 +92,18 @@ set nohlsearch
 set incsearch
 
 mark h ~/
-mark d ~/Downloads
-mark D ~/Documents
-mark m ~/Music
-mark v ~/Videos
-mark p ~/Pictures
-mark s ~/Pictures/screenshots
-mark w ~/Pictures/wallpapers
+mark d ~/downloads
+mark D ~/documents
+mark f ~/documents/finance
+mark m ~/music
+mark v ~/videos
+mark p ~/pictures
+mark P ~/pictures/photos
+mark s ~/pictures/screenshots
+mark w ~/pictures/wallpapers
 mark c ~/.config
+mark b ~/.local/bin
+mark S /home/Steam/steamapps/compatdata
 
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
