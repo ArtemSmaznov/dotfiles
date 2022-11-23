@@ -64,7 +64,7 @@ wintypes:
 {
     tooltip = { fade = true; shadow = true; focus = false; };
     normal = { shadow = true; };
-    dock = { shadow = true; };
+    dock = { shadow = false; };
     dnd = { shadow = false; };
     popup_menu = { shadow = true; focus = false; opacity = 0.90; };
     dropdown_menu = { shadow = false; focus = false; };
