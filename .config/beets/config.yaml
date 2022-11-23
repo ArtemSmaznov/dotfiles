@@ -1,19 +1,8 @@
-directory: ~/music
 library: ~/.config/beets/library.db
-
-import:
-  copy: yes
-  move: yes
-  write: yes
-  group_albums: no
-  languages: en ru
+directory: ~/music
 
 asciify_paths: yes
-
-paths:
-  default: $albumartist/$album%aunique{}/$track - $title
-  singleton: $artist/$title
-  comp: compilations/$album%aunique{}/$track - $title
+per_disc_numbering: yes
 
 replace:
     '[\\/]': ''
@@ -27,13 +16,67 @@ replace:
     '^[-!]': ''
     '~': ''
 
-plugins: fetchart chroma lastgenre mpdstats mpdupdate
-
-# mpd:
-#   password: ""
-
-# chroma:
-#   auto: no
+import:
+    write: yes       # -w -W
+    copy: yes        # -c -C
+    move: yes
+    resume: ask      # -p -P
+    timid: no        # -t
+    group_albums: no # -g
+    autotag: yes     # -a
+    duplicate_action: ask
+    bell: yes
+    languages: en ru
 
 musicbrainz:
-  searchlimit: 10
+    searchlimit: 15
+
+paths:
+    default: $albumartist/$album%aunique{}/$track - $title
+    singleton: $artist/$title
+    comp: compilations/$album%aunique{}/$track - $title
+
+plugins: lastgenre mpdupdate mpdstats chroma fetchart
+
+lastgenre:
+    auto: yes
+    canonical: no
+    count: 5
+    fallback:
+    force: yes
+    min_weight: 10
+    prefer_specific: no
+    source: album
+    whitelist: yes
+    title_case: yes
+
+mpd:
+    rating: yes
+    rating_mix: 0.75
+
+chroma:
+    auto: yes
+
+fetchart:
+    auto: yes
+    minwidth: 0
+    maxwidth: 0
+    quality: 0
+    max_filesize: 0
+    enforce_ratio: no
+    cautious: no
+    cover_names:
+    - cover
+    - front
+    - art
+    - album
+    - folder
+    sources:
+    - filesystem
+    - coverart
+    - itunes
+    - amazon
+    - albumart
+    store_source: no
+    high_resolution: no
+    deinterlace: no

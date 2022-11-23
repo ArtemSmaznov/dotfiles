@@ -2,60 +2,53 @@
 #+AUTHOR: Artem Smaznov
 #+DESCRIPTION: Music tagger and library organizer
 #+STARTUP: overview
+#+PROPERTY: header-args :tangle config.yaml
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
-- [[#config][Config]]
-  - [[#paths][Paths]]
-  - [[#importing][Importing]]
-  - [[#library][Library]]
-  - [[#plugins][Plugins]]
-  - [[#musicbrainz][MusicBrainz]]
+- [[#global-options][Global Options]]
+- [[#ui][UI]]
+- [[#importer-options][Importer Options]]
+- [[#musicbrainz][MusicBrainz]]
+- [[#path-format-configuration][Path Format Configuration]]
+- [[#plugins][Plugins]]
+  - [[#lastgenre][LastGenre]]
+  - [[#mpdupdate][MPDUpdate]]
+  - [[#mpdstats][MPDStats]]
+  - [[#chroma][Chroma]]
+  - [[#fetchart][FetchArt]]
 
 * Dependencies
-|-------------------+------------------------------------------|
-| Name              | Description                              |
-|-------------------+------------------------------------------|
-| [[https://archlinux.org/packages/?name=beets][beets]]             | Music tagger and library organizer       |
-|-------------------+------------------------------------------|
-| [[https://archlinux.org/packages/?name=python-requests][python-requests]]   | Python library for sending http requests |
-| [[https://archlinux.org/packages/?name=ffmpeg][ffmpeg]]            | Audio decoder                            |
-| [[https://archlinux.org/packages/?name=chromaprint][chromaprint]]       | Acoustic fingerprinting system           |
-| [[https://archlinux.org/packages/?name=python-pyacoustid][python-pyacoustid]] | Python library                           |
-|-------------------+------------------------------------------|
+|-------------------+------------------------------------|
+| Name              | Description                        |
+|-------------------+------------------------------------|
+| [[https://archlinux.org/packages/?name=beets][beets]]             | Music tagger and library organizer |
+|-------------------+------------------------------------|
+| [[https://archlinux.org/packages/?name=ffmpeg][ffmpeg]]            | Audio decoder                      |
+| [[https://archlinux.org/packages/?name=python-pylast][python-pylast]]     | Required for LastGenre plugin      |
+| [[https://archlinux.org/packages/?name=python-mpd2][python-mpd2]]       | Required for MPDStats plugin       |
+| [[https://archlinux.org/packages/?name=python-pyacoustid][python-pyacoustid]] | Required for Chroma plugin         |
+| [[https://archlinux.org/packages/?name=chromaprint][chromaprint]]       | Required for Chroma plugin         |
+| [[https://archlinux.org/packages/?name=python-requests][python-requests]]   | Required for FetchArt plugin       |
+|-------------------+------------------------------------|
 
 #+begin_example shell
-sudo pacman -S --needed beets python-requests python-pyacoustid chromaprint ffmpeg
+sudo pacman -S --needed beets \
+                        ffmpeg \
+                        python-pylast \
+                        pythong-mpd2 \
+                        python-pyacoustid \
+                        chromaprint \
+                        python-requests
 #+end_example
 
-* Config
-:properties:
-:header-args: :tangle config.yaml
-:end:
-** Paths
+* Global Options
 #+begin_src yaml
-directory: ~/music
 library: ~/.config/beets/library.db
-#+end_src
+directory: ~/music
 
-** Importing
-#+begin_src yaml
-import:
-  copy: yes
-  move: yes
-  write: yes
-  group_albums: no
-  languages: en ru
-#+end_src
-
-** Library
-#+begin_src yaml
 asciify_paths: yes
-
-paths:
-  default: $albumartist/$album%aunique{}/$track - $title
-  singleton: $artist/$title
-  comp: compilations/$album%aunique{}/$track - $title
+per_disc_numbering: yes
 
 replace:
     '[\\/]': ''
@@ -70,27 +63,128 @@ replace:
     '~': ''
 #+end_src
 
-** Plugins
-lyrics
-#+begin_src yaml
-plugins: fetchart chroma lastgenre mpdstats mpdupdate
+* UI
+Available colors: ~black~, ~darkred~, ~darkgreen~, ~brown~ (~darkyellow~), ~darkblue~, ~purple~ (~darkmagenta~), ~teal~ (~darkcyan~), ~lightgray~, ~darkgray~, ~red~, ~green~, ~yellow~, ~blue~, ~fuchsia~ (~magenta~), ~turquoise~ (~cyan~), ~white~
+
+#+begin_src yaml :tangle no
+ui:
+    color: yes
+    colors:
+        text_success: green
+        text_warning: yellow
+        text_error: red
+        text_highlight: red
+        text_highlight_minor: lightgray
+        action_default: turquoise
+        action: blue
 #+end_src
 
-*** MPD
+* Importer Options
 #+begin_src yaml
-# mpd:
-#   password: ""
+import:
+    write: yes       # -w -W
+    copy: yes        # -c -C
+    move: yes
+    resume: ask      # -p -P
+    timid: no        # -t
+    group_albums: no # -g
+    autotag: yes     # -a
+    duplicate_action: ask
+    bell: yes
+    languages: en ru
 #+end_src
 
-*** Chromaprint/Acoustid
-Disable the plugin
-#+begin_src yaml
-# chroma:
-#   auto: no
-#+end_src
-
-*** MusicBrainz
+* MusicBrainz
 #+begin_src yaml
 musicbrainz:
-  searchlimit: 10
+    searchlimit: 15
+#+end_src
+
+* Path Format Configuration
+#+begin_src yaml
+paths:
+    default: $albumartist/$album%aunique{}/$track - $title
+    singleton: $artist/$title
+    comp: compilations/$album%aunique{}/$track - $title
+#+end_src
+
+* Plugins
+#+begin_src yaml
+plugins: lastgenre mpdupdate mpdstats chroma fetchart
+#+end_src
+** LastGenre
+The [[https://beets.readthedocs.io/en/stable/plugins/lastgenre.html][lastgenre]] plugin fetches tags from [[https://last.fm/][Last.fm]] and assigns them as genres to your albums and items.
+
+#+begin_src yaml
+lastgenre:
+    auto: yes
+    canonical: no
+    count: 5
+    fallback:
+    force: yes
+    min_weight: 10
+    prefer_specific: no
+    source: album
+    whitelist: yes
+    title_case: yes
+#+end_src
+
+fetch genres for albums or items matching a certain query.
+#+begin_example shell
+beet lastgenre [QUERY]
+#+end_example
+
+By default, beet lastgenre matches albums. 
+Match individual tracks or singletons.
+#+begin_example shell
+beet lastgenre -A [QUERY]
+#+end_example
+
+** MPDUpdate
+[[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
+
+** MPDStats
+[[https://beets.readthedocs.io/en/stable/plugins/mpdstats.html][mpdstats]] is a plugin for beets that collects statistics about your listening habits from [[https://www.musicpd.org/][MPD]].
+
+#+begin_src yaml
+mpd:
+    rating: yes
+    rating_mix: 0.75
+#+end_src
+
+** Chroma
+[[https://beets.readthedocs.io/en/stable/plugins/chroma.html][Acoustic fingerprinting]] is a technique for identifying songs from the way they “sound” rather from their existing metadata. That means that beets’ auto-tagger can theoretically use fingerprinting to tag files that don’t have any ID3 information at all (or have completely incorrect data). This plugin uses an open-source fingerprinting technology called [[https://acoustid.org/chromaprint][Chromaprint]] and its associated Web service, called [[https://acoustid.org/][Acoustid]].
+
+#+begin_src yaml
+chroma:
+    auto: yes
+#+end_src
+
+** FetchArt
+The [[https://beets.readthedocs.io/en/stable/plugins/fetchart.html][fetchart]] plugin retrieves album art images from various sources on the Web and stores them as image files.
+
+#+begin_src yaml
+fetchart:
+    auto: yes
+    minwidth: 0
+    maxwidth: 0
+    quality: 0
+    max_filesize: 0
+    enforce_ratio: no
+    cautious: no
+    cover_names:
+    - cover
+    - front
+    - art
+    - album
+    - folder
+    sources:
+    - filesystem
+    - coverart
+    - itunes
+    - amazon
+    - albumart
+    store_source: no
+    high_resolution: no
+    deinterlace: no
 #+end_src
