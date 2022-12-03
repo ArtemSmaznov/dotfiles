@@ -23,6 +23,7 @@
 - [[#fish][Fish]]
   - [[#end-section-2][End Section]]
 - [[#exportrc][Exportrc]]
+  - [[#xprofile][xprofile]]
   - [[#user-directories][User Directories]]
   - [[#editor][Editor]]
   - [[#history-2][History]]
@@ -320,7 +321,11 @@ starship init fish | source
 :PROPERTIES:
 :header-args: :tangle ~/.config/shell/exportrc
 :END:
-** XDG
+** xprofile
+:PROPERTIES:
+:header-args: :tangle ~/.xprofile
+:END:
+*** XDG
 #+begin_src shell
 export XDG_DESKTOP_DIR="$HOME/desktop"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
@@ -330,6 +335,13 @@ export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
+#+end_src
+
+*** Japanese Input
+#+begin_src shell
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 #+end_src
 
 ** User Directories
