@@ -1811,6 +1811,14 @@ config.bind(';o', 'hint links fill :open {hint-url}')
 config.bind(';O', 'hint links fill :open -t -r {hint-url}')
 #+end_src
 
+Delete element
+#+begin_src python
+config.bind(';da', 'hint all delete')
+config.bind(';dl', 'hint links delete')
+config.bind(';di', 'hint images delete')
+config.bind(';dm', 'hint media delete')
+#+end_src
+
 ** Pass
 Command Mode
 #+begin_src python
@@ -1864,8 +1872,6 @@ config.bind('<Space>dL', 'devtools right')
 config.bind('<Space>dJ', 'devtools bottom')
 config.bind('<Space>dK', 'devtools top')
 config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
 #+end_src
 
 ** Config-cycle

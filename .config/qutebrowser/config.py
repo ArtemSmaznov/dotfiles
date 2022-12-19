@@ -935,6 +935,11 @@ config.bind(';Rl', 'hint --rapid links window')
 config.bind(';o', 'hint links fill :open {hint-url}')
 config.bind(';O', 'hint links fill :open -t -r {hint-url}')
 
+config.bind(';da', 'hint all delete')
+config.bind(';dl', 'hint links delete')
+config.bind(';di', 'hint images delete')
+config.bind(';dm', 'hint media delete')
+
 config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
 config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
 config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
@@ -968,8 +973,6 @@ config.bind('<Space>dL', 'devtools right')
 config.bind('<Space>dJ', 'devtools bottom')
 config.bind('<Space>dK', 'devtools top')
 config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
 
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
