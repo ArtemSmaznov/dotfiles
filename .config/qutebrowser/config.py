@@ -969,6 +969,8 @@ config.bind('<Space>dJ', 'devtools bottom')
 config.bind('<Space>dK', 'devtools top')
 config.bind('<Space>dW', 'devtools window')
 
+config.bind('<Space>dD', 'hint all delete')
+
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')

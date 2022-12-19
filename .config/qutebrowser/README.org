@@ -1864,6 +1864,8 @@ config.bind('<Space>dL', 'devtools right')
 config.bind('<Space>dJ', 'devtools bottom')
 config.bind('<Space>dK', 'devtools top')
 config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
 #+end_src
 
 ** Config-cycle
