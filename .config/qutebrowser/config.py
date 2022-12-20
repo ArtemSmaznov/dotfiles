@@ -844,12 +844,6 @@ config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('D', 'set-cmd-text -s :download')
 
-config.bind('di', 'hint images download')
-config.bind('dl', 'hint links download')
-config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
-config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
-config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
 
@@ -859,6 +853,15 @@ config.bind('dc', 'download-clear')
 
 config.bind('do', 'download-open')
 config.bind('dX', 'download-delete')
+
+config.bind('di', 'hint images download')
+config.bind('dl', 'hint links download')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}')
+config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+
+config.bind('dA', 'spawn alacritty -e youtube-dl -f bestaudio {url}')
+config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
 
 config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
 config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
@@ -956,12 +959,6 @@ config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')       
 
 config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')               # play target video
 config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')    # play target audio
-
-config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')              # download target video
-config.bind('<Space>ad', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}') # download target audio
-
-config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')                              # download current video
-config.bind('<Space>aD', 'spawn alacritty -e youtube-dl -f bestaudio {url}')                 # download current audio
 
 config.bind('<Space>ds', 'view-source')
 

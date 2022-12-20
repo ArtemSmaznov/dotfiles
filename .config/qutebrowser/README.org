@@ -1673,12 +1673,6 @@ config.bind('<Ctrl-Alt-p>', 'print')
 #+begin_src python
 config.bind('D', 'set-cmd-text -s :download')
 
-config.bind('di', 'hint images download')
-config.bind('dl', 'hint links download')
-config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
-config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
-config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
 
@@ -1688,6 +1682,21 @@ config.bind('dc', 'download-clear')
 
 config.bind('do', 'download-open')
 config.bind('dX', 'download-delete')
+#+end_src
+
+Hints
+#+begin_src python
+config.bind('di', 'hint images download')
+config.bind('dl', 'hint links download')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}')
+config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+#+end_src
+
+Download Current
+#+begin_src python
+config.bind('dA', 'spawn alacritty -e youtube-dl -f bestaudio {url}')
+config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
 #+end_src
 
 Prompt Mode
@@ -1844,12 +1853,6 @@ config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')       
 
 config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')               # play target video
 config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')    # play target audio
-
-config.bind('<Space>vd', 'hint links spawn alacritty -e youtube-dl {hint-url}')              # download target video
-config.bind('<Space>ad', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}') # download target audio
-
-config.bind('<Space>vD', 'spawn alacritty -e youtube-dl {url}')                              # download current video
-config.bind('<Space>aD', 'spawn alacritty -e youtube-dl -f bestaudio {url}')                 # download current audio
 #+end_src
 
 You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
