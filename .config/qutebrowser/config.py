@@ -848,6 +848,7 @@ config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
 config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
 config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
 
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
@@ -973,6 +974,8 @@ config.bind('<Space>dL', 'devtools right')
 config.bind('<Space>dJ', 'devtools bottom')
 config.bind('<Space>dK', 'devtools top')
 config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
 
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
