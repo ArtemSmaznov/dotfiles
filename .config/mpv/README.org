@@ -694,10 +694,10 @@ Scale playback speed
 #+end_src
 
 #+begin_src conf :tangle input.conf
-[ add speed -0.25
-] add speed 0.25
-{ multiply speed 1/1.1
-} multiply speed 1.1
+[ multiply speed 1/1.1
+] multiply speed 1.1
+{ add speed -0.25
+} add speed 0.25
 #+end_src
 
 Reset speed to normal
