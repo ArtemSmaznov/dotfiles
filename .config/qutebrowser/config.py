@@ -924,9 +924,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-# config.bind(';v', 'hint media spawn mpv --ytdl-format=best {hint-url}')
-config.bind(';v', 'hint media spawn mpv {hint-url}')
-config.bind(';a', 'hint media spawn mpv --ytdl-format=best {hint-url} --no-video')
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}')
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')
 
 config.bind('<Ctrl-f>', 'hint --rapid')
 
@@ -956,9 +955,6 @@ config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secre
 
 config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}')                               # play current video
 config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video')                    # play current audio
-
-config.bind('<Space>vf', 'hint links spawn mpv --ytdl-format=best {hint-url}')               # play target video
-config.bind('<Space>af', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video')    # play target audio
 
 config.bind('<Space>ds', 'view-source')
 
