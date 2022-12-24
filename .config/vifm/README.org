@@ -203,6 +203,7 @@ mark d ~/downloads
 mark D ~/documents
 mark f ~/documents/finance
 mark m ~/music
+mark M /run/mount
 mark v ~/videos
 mark p ~/pictures
 mark P ~/pictures/photos
