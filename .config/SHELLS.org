@@ -41,6 +41,7 @@
   - [[#git][Git]]
   - [[#media][Media]]
   - [[#archives][Archives]]
+  - [[#change-config-file][Change Config File]]
 - [[#starship][Starship]]
   - [[#general][General]]
   - [[#character][Character]]
@@ -680,6 +681,11 @@ function ex() {
         fi
     done
 }
+#+end_src
+
+** TODO Change Config File
+#+begin_src shell
+# alias ledger="ledger --init-file $XDG_CONFIG_HOME/ledger/ledgerrc"
 #+end_src
 
 * Starship

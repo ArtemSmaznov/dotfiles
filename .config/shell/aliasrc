@@ -219,3 +219,5 @@ function ex() {
         fi
     done
 }
+
+# alias ledger="ledger --init-file $XDG_CONFIG_HOME/ledger/ledgerrc"
