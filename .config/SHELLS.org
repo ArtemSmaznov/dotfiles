@@ -382,6 +382,7 @@ export MYPY_CACHE_DIR=$XDG_CACHE_HOME/mypy
 export PYLINTHOME=$XDG_CACHE_HOME/pylint
 
 # Config
+export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
 export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
 export KDEHOME=$XDG_CONFIG_HOME/kde
