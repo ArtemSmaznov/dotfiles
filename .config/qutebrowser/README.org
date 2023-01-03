@@ -1622,6 +1622,7 @@ Tabs menu
 #+begin_src python
 config.bind('gt', 'set-cmd-text -sr :tab-focus')
 config.bind('<Space>,', 'set-cmd-text -sr :tab-focus')
+config.bind('<Space><', 'set-cmd-text -sr :tab-select')
 #+end_src
 
 *** Closing Tabs

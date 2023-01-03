@@ -808,6 +808,7 @@ config.bind('<Alt-Shift-h>', 'tab-focus 1')
 
 config.bind('gt', 'set-cmd-text -sr :tab-focus')
 config.bind('<Space>,', 'set-cmd-text -sr :tab-focus')
+config.bind('<Space><', 'set-cmd-text -sr :tab-select')
 
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
