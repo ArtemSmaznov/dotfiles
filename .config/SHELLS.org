@@ -395,8 +395,9 @@ export ANDROID_HOME=$XDG_DATA_HOME/android
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export KODI_DATA=$XDG_DATA_HOME/kodi
+export MAILDIR=$XDG_DATA_HOME/mail
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
- #+end_example
+#+end_example
 
 * Aliasrc
 :PROPERTIES:

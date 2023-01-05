@@ -12,8 +12,8 @@ IMAPStore gmail-remote
 Account gmail-main
 
 MaildirStore gmail-local
-Path ~/Maildir/
-Inbox ~/Maildir/Inbox
+Path ~/.local/share/mail/
+Inbox ~/.local/share/mail/Inbox
 Subfolders Verbatim
 
 Channel gmail-main

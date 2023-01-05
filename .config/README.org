@@ -220,8 +220,8 @@ Account gmail-main
 Local storage (create directories with mkdir -p maildir/gmail)
 #+begin_src conf :tangle ~/.mbsyncrc
 MaildirStore gmail-local
-Path ~/Maildir/
-Inbox ~/Maildir/Inbox
+Path ~/.local/share/mail/
+Inbox ~/.local/share/mail/Inbox
 Subfolders Verbatim
 #+end_src
 
