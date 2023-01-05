@@ -1782,9 +1782,9 @@ Adding bookmarks
 config.bind('bs', 'quickmark-save')
 config.bind('Bs', 'bookmark-add')
 config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
-config.bind('bA', 'set-cmd-text -s :quickmark-add {url}')
+config.bind('bA', 'set-cmd-text :quickmark-add {url} "{title}"')
 config.bind('Ba', 'bookmark-add {url} "{title}"')
-config.bind('BA', 'set-cmd-text -s :bookmark-add {url}')
+config.bind('BA', 'set-cmd-text :bookmark-add {url} "{title}"')
 #+end_src
 
 Deleting bookmarks
