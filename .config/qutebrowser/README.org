@@ -1629,7 +1629,6 @@ config.bind('<Space><', 'set-cmd-text -sr :tab-select')
 #+begin_src python
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
-config.bind('tc', 'tab-close')
 # config.bind('tO', 'tab-only')
 #+end_src
 
@@ -1656,18 +1655,30 @@ config.bind('<Alt-Shift-k>', 'tab-move start')
 #+end_src
 
 *** Tab Actions
+General
 #+begin_src python
 config.bind('<Ctrl-c>', 'stop')
 config.bind('<Alt-m>', 'tab-mute')
 config.bind('<Alt-p>', 'tab-pin')
 config.bind('<Alt-p>', 'tab-pin', mode='insert')
-config.bind('tC', 'tab-clone')
-config.bind('tp', 'tab-give --private')
-config.bind('tP', 'tab-give --keep --private')
-config.bind('tg', 'set-cmd-text -s :tab-give')
-config.bind('tG', 'tab-give')
-config.bind('tt', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
+#+end_src
+
+Give and Take
+#+begin_src python
+config.bind('tG', 'tab-give')
+config.bind('tP', 'tab-give --private')
+config.bind('tg', 'set-cmd-text -s :tab-give')
+config.bind('tt', 'set-cmd-text -s :tab-take')
+#+end_src
+
+Clone
+#+begin_src python
+config.bind('tcc', 'tab-clone')
+config.bind('tcG', 'tab-give --keep')
+config.bind('tcP', 'tab-give --keep --private')
+config.bind('tcg', 'set-cmd-text -s :tab-give --keep')
+config.bind('tct', 'set-cmd-text -s :tab-take --keep')
 #+end_src
 
 ** Downloads

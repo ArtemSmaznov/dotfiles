@@ -812,7 +812,6 @@ config.bind('<Space><', 'set-cmd-text -sr :tab-select')
 
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
-config.bind('tc', 'tab-close')
 # config.bind('tO', 'tab-only')
 
 config.bind('<Ctrl-Shift-T>', 'undo')
@@ -835,13 +834,18 @@ config.bind('<Ctrl-c>', 'stop')
 config.bind('<Alt-m>', 'tab-mute')
 config.bind('<Alt-p>', 'tab-pin')
 config.bind('<Alt-p>', 'tab-pin', mode='insert')
-config.bind('tC', 'tab-clone')
-config.bind('tp', 'tab-give --private')
-config.bind('tP', 'tab-give --keep --private')
-config.bind('tg', 'set-cmd-text -s :tab-give')
-config.bind('tG', 'tab-give')
-config.bind('tt', 'set-cmd-text -s :tab-take')
 config.bind('<Ctrl-Alt-p>', 'print')
+
+config.bind('tG', 'tab-give')
+config.bind('tP', 'tab-give --private')
+config.bind('tg', 'set-cmd-text -s :tab-give')
+config.bind('tt', 'set-cmd-text -s :tab-take')
+
+config.bind('tcc', 'tab-clone')
+config.bind('tcG', 'tab-give --keep')
+config.bind('tcP', 'tab-give --keep --private')
+config.bind('tcg', 'set-cmd-text -s :tab-give --keep')
+config.bind('tct', 'set-cmd-text -s :tab-take --keep')
 
 config.bind('D', 'set-cmd-text -s :download')
 
