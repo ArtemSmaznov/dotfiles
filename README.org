@@ -1,7 +1,7 @@
-#+TITLE: Dotfiles
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A collection of personal dotfiles
-#+STARTUP: overview
+#+title:       Dotfiles
+#+author:      Artem Smaznov
+#+description: A collection of personal dotfiles
+#+startup:     overview
 
 Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
 

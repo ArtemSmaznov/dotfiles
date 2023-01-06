@@ -1,7 +1,7 @@
-#+TITLE: .config
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Miscalenious dotfiles
-#+STARTUP: overview
+#+title:       .config
+#+author:      Artem Smaznov
+#+description: Miscalenious dotfiles
+#+startup:     overview
 
 * Table of Contents :toc:
 - [[#auto-start][Auto-start]]

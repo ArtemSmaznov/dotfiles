@@ -1,7 +1,7 @@
-#+TITLE: Shells
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Dotfiles for Shells and Shell accecorries
-#+STARTUP: overview
+#+title:       Shells
+#+author:      Artem Smaznov
+#+description: Dotfiles for Shells and Shell accecorries
+#+startup:     overview
 
 * Table of Contents :toc:
 - [[#bash][Bash]]
