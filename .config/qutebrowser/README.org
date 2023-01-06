@@ -440,7 +440,7 @@ c.colors.webpage.darkmode.grayscale.all = False
 Desaturation factor for images in dark mode. If set to 0, images are left as-is. If set to 1, images are completely grayscale. Values between 0 and 1 desaturate the colors accordingly.
 # Type: Float
 #+begin_src python
-c.colors.webpage.darkmode.grayscale.images = 0.0
+c.colors.webpage.darkmode.grayscale.images = 0.35
 #+end_src
 
 Which images to apply dark mode to. With QtWebEngine 5.15.0, this setting can cause frequent renderer process crashes due to a https://codereview.qt-project.org/c/qt/qtwebengine- chromium/+/304211[bug in Qt].
@@ -450,7 +450,7 @@ Valid values:
 - never: Never apply dark mode filter to any images.
 - smart: Apply dark mode based on image content. Not available with Qt 5.15.0.
 #+begin_src python
-c.colors.webpage.darkmode.policy.images = 'never'
+c.colors.webpage.darkmode.policy.images = 'always'
 #+end_src
 
 Which pages to apply dark mode to. The underlying Chromium setting has
@@ -467,7 +467,8 @@ c.colors.webpage.darkmode.policy.page = 'smart'
 Threshold for inverting background elements with dark mode. Background elements with brightness above this threshold will be inverted, and below it will be left as in the original, non-dark-mode page. Set to 256 to never invert the color or to 0 to always invert it. Note: This behavior is the opposite of `colors.webpage.darkmode.threshold.text`!
 # Type: Int
 #+begin_src python
-c.colors.webpage.darkmode.threshold.background = 205
+c.colors.webpage.darkmode.threshold.background = 100
+# c.colors.webpage.darkmode.threshold.background = 205
 #+end_src
 
 Threshold for inverting text with dark mode. Text colors with brightness below this threshold will be inverted, and above it will be left as in the original, non-dark-mode page. Set to 256 to always invert text color or to 0 to never invert text color.
@@ -1391,6 +1392,11 @@ Tab and Status Bars
 config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
 config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+#+end_src
+
+Dark Mode
+#+begin_src python
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
 #+end_src
 
 CSS Themes

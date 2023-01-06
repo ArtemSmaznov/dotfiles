@@ -203,13 +203,14 @@ c.colors.webpage.darkmode.enabled = False
 
 c.colors.webpage.darkmode.grayscale.all = False
 
-c.colors.webpage.darkmode.grayscale.images = 0.0
+c.colors.webpage.darkmode.grayscale.images = 0.35
 
-c.colors.webpage.darkmode.policy.images = 'never'
+c.colors.webpage.darkmode.policy.images = 'always'
 
 c.colors.webpage.darkmode.policy.page = 'smart'
 
-c.colors.webpage.darkmode.threshold.background = 205
+c.colors.webpage.darkmode.threshold.background = 100
+# c.colors.webpage.darkmode.threshold.background = 205
 
 c.colors.webpage.darkmode.threshold.text = 150
 
@@ -650,6 +651,8 @@ config.bind('<F11>', 'fullscreen')
 config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
 config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
 
 config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
 config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
