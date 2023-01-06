@@ -690,6 +690,8 @@ config.bind('<Space>qr', 'restart')
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help -t')
 config.bind('<Space>hs', 'set-cmd-text -s :help -t')
+config.bind('<Space>hv', 'version')
+config.bind('<Space>hi', 'version')
 config.bind('<F1>'     , 'help -t')
 
 config.bind('<Space><Tab>c', 'session-save -c ;; set-cmd-text -s :session-load --clear')
