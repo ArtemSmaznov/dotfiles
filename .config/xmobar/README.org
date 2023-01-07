@@ -1,7 +1,8 @@
-#+TITLE: XMobar
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Lightweight, text-based, status bar written in Haskell
-#+STARTUP: overview
+#+title:       XMobar
+#+author:      Artem Smaznov
+#+description: Lightweight, text-based, status bar written in Haskell
+#+startup:     overview
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]

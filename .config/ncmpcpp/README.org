@@ -1,8 +1,9 @@
-#+TITLE: ncmpcpp
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: An ncurses Music Player Daemon (MPD) client
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle config
+#+title:       ncmpcpp
+#+author:      Artem Smaznov
+#+description: An ncurses Music Player Daemon (MPD) client
+#+startup:     overview
+#+property:    header-args :tangle config
+#+auto_tangle: t
 
 Example configuration file: [[file:/usr/share/doc/ncmpcpp/config]]
 

@@ -1,8 +1,9 @@
-#+TITLE: Tmux
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: a terminal multiplexer: it enables a number of terminals (or windows), each running a separate program, to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle tmux.conf
+#+title:       Tmux
+#+author:      Artem Smaznov
+#+description: a terminal multiplexer: it enables a number of terminals (or windows), each running a separate program, to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
+#+startup:     overview
+#+property:    header-args :tangle tmux.conf
+#+auto_tangle: t
 
 #+begin_src conf
 # Plugins

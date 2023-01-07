@@ -1,8 +1,9 @@
-#+TITLE: Dunst
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A lightweight replacement for the notification-daemons provided by most desktop environments
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/dunst/dunstrc
+#+title:       Dunst
+#+author:      Artem Smaznov
+#+description: A lightweight replacement for the notification-daemons provided by most desktop environments
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/dunst/dunstrc
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
@@ -18,8 +19,7 @@
   - [[#legacy][Legacy]]
   - [[#mouse][Mouse]]
 - [[#experimental][Experimental]]
-- [[#shortcuts][Shortcuts]]
-- [[#urgent][Urgent]]
+- [[#urgency][Urgency]]
 - [[#other][Other]]
 
 * Dependencies

@@ -1,8 +1,9 @@
-#+TITLE: Zathura
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A vim-like document viewer
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle zathurarc
+#+title:       Zathura
+#+author:      Artem Smaznov
+#+description: A vim-like document viewer
+#+startup:     overview
+#+property:    header-args :tangle zathurarc
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
@@ -18,10 +19,13 @@
 - [[#window-title][Window Title]]
 - [[#status-bar][Status Bar]]
 - [[#key-bindings][Key Bindings]]
-  - [[#normal-mode][Normal Mode]]
-  - [[#fullscreen-mode][Fullscreen Mode]]
-  - [[#presentation-mode][Presentation Mode]]
-  - [[#index-mode][Index Mode]]
+  - [[#un-mapping][Un-mapping]]
+  - [[#general-1][General]]
+  - [[#navigation][Navigation]]
+  - [[#view][View]]
+  - [[#zoom][Zoom]]
+  - [[#hints][Hints]]
+  - [[#command][Command]]
 
 * Dependencies
 |-----------------+------------------------------|

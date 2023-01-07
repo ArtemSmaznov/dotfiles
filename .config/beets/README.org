@@ -1,8 +1,9 @@
-#+TITLE: Beet
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Music tagger and library organizer
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle config.yaml
+#+title:       Beet
+#+author:      Artem Smaznov
+#+description: Music tagger and library organizer
+#+startup:     overview
+#+property:    header-args :tangle config.yaml
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]

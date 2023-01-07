@@ -1,8 +1,9 @@
-#+TITLE: Cava
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Console-based audio visualizer
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/cava/config
+#+title:       Cava
+#+author:      Artem Smaznov
+#+description: Console-based audio visualizer
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/cava/config
+#+auto_tangle: t
 
 Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 

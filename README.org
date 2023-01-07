@@ -2,6 +2,7 @@
 #+author:      Artem Smaznov
 #+description: A collection of personal dotfiles
 #+startup:     overview
+#+auto_tangle: t
 
 Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
 

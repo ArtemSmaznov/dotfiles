@@ -1,8 +1,9 @@
-#+TITLE: MPD
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Music Player Daemon
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle mpd.conf
+#+title:       MPD
+#+author:      Artem Smaznov
+#+description: Music Player Daemon
+#+startup:     overview
+#+property:    header-args :tangle mpd.conf
+#+auto_tangle: t
 
 Example configuration file for MPD: [[file:/usr/share/doc/mpd/mpdconf.example]]
 Read the user manual for documentation: http://www.musicpd.org/doc/user/

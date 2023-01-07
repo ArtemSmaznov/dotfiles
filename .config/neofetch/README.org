@@ -1,8 +1,9 @@
-#+TITLE: Neofetch
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Everybody has one
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/neofetch/config.conf
+#+title:       Neofetch
+#+author:      Artem Smaznov
+#+description: Everybody has one
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/neofetch/config.conf
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#print-info][Print Info]]

@@ -1,8 +1,9 @@
-#+TITLE: ViFM
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A vim-like terminal file manager
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle vifmrc
+#+title:       ViFM
+#+author:      Artem Smaznov
+#+description: A vim-like terminal file manager
+#+startup:     overview
+#+property:    header-args :tangle vifmrc
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]

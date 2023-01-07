@@ -1,7 +1,8 @@
-#+TITLE: Vimiv
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A vim-like minimalist image viewer
-#+STARTUP: overview
+#+title:       Vimiv
+#+author:      Artem Smaznov
+#+description: A vim-like minimalist image viewer
+#+startup:     overview
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]

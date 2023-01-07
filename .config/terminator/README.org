@@ -1,8 +1,9 @@
-#+TITLE: Terminator
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Terminator is a terminal emulator which supports tabs and multiple resizable terminal panels in one window. It is based on GNOME Terminal.
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/terminator/config
+#+title:       Terminator
+#+author:      Artem Smaznov
+#+description: Terminator is a terminal emulator which supports tabs and multiple resizable terminal panels in one window. It is based on GNOME Terminal.
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/terminator/config
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]

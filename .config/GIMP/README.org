@@ -1,21 +1,19 @@
-#+TITLE: GIMP
-#+AUTHOR: Artem Smaznov
+#+title:   GIMP
+#+author:  Artem Smaznov
+#+startup: overview
 
 * Config location
 ** Linux
-
 #+begin_src
 ~/.config/GIMP/{version}
 #+end_src
 
 ** Windows 10
-
 #+begin_src
 C:\Users{USERNAME}\AppData\Roaming\GIMP{version}
 #+end_src
 
 ** Older Windows
-
 #+begin_src
 C:\Documents and Settings{USERNAME}.gimp-{version}
 #+end_src

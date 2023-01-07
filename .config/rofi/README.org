@@ -1,8 +1,9 @@
-#+TITLE: Rofi
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: Window switcher, run dialog, ssh-launcher and dmenu replacement
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/rofi/config.rasi
+#+title:       Rofi
+#+author:      Artem Smaznov
+#+description: Window switcher, run dialog, ssh-launcher and dmenu replacement
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/rofi/config.rasi
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
@@ -10,13 +11,11 @@
 - [[#list-view][List View]]
 - [[#imports][Imports]]
 - [[#keybindings][Keybindings]]
-  - [[#begin-config][Begin Config]]
   - [[#typing][Typing]]
   - [[#navigation][Navigation]]
   - [[#misc][Misc]]
   - [[#custom][Custom]]
   - [[#mouse-bindings][Mouse Bindings]]
-  - [[#end-config][End Config]]
 - [[#rofi-pass][Rofi-Pass]]
   - [[#main][Main]]
   - [[#programs-to-be-used][Programs to be used]]

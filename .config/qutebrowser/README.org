@@ -1,8 +1,9 @@
-#+TITLE: QuteBrowser
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A vim-like minimalist web browser
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle config.py
+#+title:       QuteBrowser
+#+author:      Artem Smaznov
+#+description: A vim-like minimalist web browser
+#+startup:     overview
+#+property:    header-args :tangle config.py
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#documentation][Documentation]]

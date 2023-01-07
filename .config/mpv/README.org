@@ -1,7 +1,8 @@
-#+TITLE: MPV
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A vim-like minimalist media player
-#+STARTUP: overview
+#+title:       MPV
+#+author:      Artem Smaznov
+#+description: A vim-like minimalist media player
+#+startup:     overview
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
@@ -18,6 +19,7 @@
   - [[#other][Other]]
 - [[#scripts][Scripts]]
   - [[#torque-progress-bar][Torque Progress-bar]]
+  - [[#yt-dlp][yt-dlp]]
 - [[#keybindings][Keybindings]]
   - [[#info][Info]]
   - [[#initialization][Initialization]]

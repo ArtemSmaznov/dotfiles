@@ -1,18 +1,19 @@
-#+TITLE: Picom
-#+AUTHOR: Artem Smaznov
-#+DESCRIPTION: A compositor to prettify the desktop with shadows, transparency, blur and minor animations
-#+STARTUP: overview
-#+PROPERTY: header-args :tangle ~/.config/picom/picom.conf
+#+title:       Picom
+#+author:      Artem Smaznov
+#+description: A compositor to prettify the desktop with shadows, transparency, blur and minor animations
+#+startup:     overview
+#+property:    header-args :tangle ~/.config/picom/picom.conf
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
+- [[#window-type-settings][Window type settings]]
+- [[#transparency][Transparency]]
+- [[#blur][Blur]]
+- [[#corners][Corners]]
 - [[#shadows][Shadows]]
 - [[#animations][Animations]]
-- [[#transparency][Transparency]]
-- [[#corners][Corners]]
-- [[#blur][Blur]]
 - [[#general-settings][General Settings]]
-- [[#window-type-settings][Window type settings]]
 - [[#logs][Logs]]
 
 * Dependencies

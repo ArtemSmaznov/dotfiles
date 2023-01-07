@@ -2,6 +2,7 @@
 #+author:      Artem Smaznov
 #+description: Miscalenious dotfiles
 #+startup:     overview
+#+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#auto-start][Auto-start]]
