@@ -356,6 +356,9 @@ set viewcolumns=-{name}..,6{}.
 
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
 
+" Toggle hidden files
+nnoremap z. :set dotfiles!<cr>
+
 " Display sorting dialog
 nnoremap S :sort<cr>
 
@@ -376,7 +379,7 @@ vnoremap <f2> cw
 nmap <space> <nop>
 
 map <space>t<esc> <nop>
-nnoremap <space>th za
+nnoremap <space>t. :set dotfiles!<cr>
 
 nmap <space>h<esc> <nop>
 nnoremap <space>hr :restart<cr>

@@ -49,6 +49,7 @@
 - [[#syntax-highlighting][Syntax Highlighting]]
 - [[#panels][Panels]]
 - [[#key-bindings][Key Bindings]]
+  - [[#dot-files][Dot Files]]
   - [[#sample-bindings][Sample Bindings]]
   - [[#leader][Leader]]
   - [[#panes][Panes]]
@@ -603,6 +604,12 @@ Filter-out build and temporary files
 #+end_src
 
 * Key Bindings
+** Dot Files
+#+begin_src vimrc
+" Toggle hidden files
+nnoremap z. :set dotfiles!<cr>
+#+end_src
+
 ** Sample Bindings
 #+begin_src vimrc
 " Display sorting dialog
@@ -630,7 +637,7 @@ nmap <space> <nop>
 *** Toggle
 #+begin_src vimrc
 map <space>t<esc> <nop>
-nnoremap <space>th za
+nnoremap <space>t. :set dotfiles!<cr>
 #+end_src
 
 *** Help
