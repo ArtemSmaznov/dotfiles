@@ -42,6 +42,7 @@ xss-lock -- "$HOME/.local/bin/dm-scripts/dm-lock" &
 #+begin_src shell :tangle autostart-scripts/autostart.sh
 picom -b &
 nm-applet &
+blueman-applet &
 dunst &
 unclutter -jitter 5 &
 #+end_src
