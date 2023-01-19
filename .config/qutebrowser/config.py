@@ -451,6 +451,7 @@ c.url.searchengines = {
     "r"      : "https://www.reddit.com/search/?q={}",
     "gh"     : "https://github.com/search?q={}&ref=opensearch",
     "od"     : "https://odysee.com/$/search?q={}",
+    "ytm"    : "https://music.youtube.com/search?q={}",
     "yt"     : "https://www.youtube.com/results?search_query={}",
     "yth"    : "https://www.youtube.com/feed/history?query={}",
     "mx"     : "https://www.musixmatch.com/search/{}",

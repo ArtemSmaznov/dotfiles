@@ -877,6 +877,7 @@ c.url.searchengines = {
     "r"      : "https://www.reddit.com/search/?q={}",
     "gh"     : "https://github.com/search?q={}&ref=opensearch",
     "od"     : "https://odysee.com/$/search?q={}",
+    "ytm"    : "https://music.youtube.com/search?q={}",
     "yt"     : "https://www.youtube.com/results?search_query={}",
     "yth"    : "https://www.youtube.com/feed/history?query={}",
     "mx"     : "https://www.musixmatch.com/search/{}",
@@ -2017,6 +2018,7 @@ Other
 #+end_src
 
 *** Prompt Mode
+Downloads Prompt
 #+begin_src python
 config.bind('<Tab>', 'prompt-item-focus next', mode='prompt')
 config.bind('<Shift-Tab>', 'prompt-item-focus prev', mode='prompt')
