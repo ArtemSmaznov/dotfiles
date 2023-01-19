@@ -122,13 +122,12 @@ alias update-proton="$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh"
 alias pay="PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass"
 
 alias pman='sudo pacman'
-alias pacman-upgrade='sudo pacman -Syu'
-# alias pacman-mirrors-update='sudo pacman-mirrors --geoip'
-alias pacman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'
-alias pacman-orphans-fullclean='sudo pacman -Rns $(pacman -Qtdq)'
+# alias pman-mirrors-update='sudo pacman-mirrors --geoip'
+alias pman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'
+alias pman-orphans-fullclean='sudo pacman -Rns $(pacman -Qtdq)'
 # fzf
-alias pacman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-alias pacman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
+alias pman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias pman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
 
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
@@ -189,6 +188,7 @@ alias pgp="pass git push"
 alias pgf="pass git pull"
 
 alias shazam='songrec recognize'
+alias ytd='yt-dlp'
 
 function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
