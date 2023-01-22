@@ -68,7 +68,7 @@ Config {
 *** Separator
 #+begin_src haskell
    , commands =
-        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "separator" 36000
+        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "sep" 36000
 #+end_src
 
 *** Logo
@@ -92,7 +92,7 @@ Workspaces, layout, window name received from XMonad
 *** MPD
 #+begin_src haskell
         , Run MPD
-          ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
+          ["-t", "  <statei>  <artist> - <title> [<flags>] " -- ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
                , "--"
                , "-P", "<fn=1></fn>" -- play icon
                , "-Z", "<fn=1></fn>" -- pause icon
@@ -117,6 +117,15 @@ Keyboard Layout Indicator
         , Run Com "echo" ["<box type=Bottom width=2 mb=2 color=#fb4934><action=`alacritty -e sudo pacman -Syu`>  <fn=1>\xf0f3</fn>  "] "_us" 3600
         , Run Com ".local/bin/dm-scripts/helpers/updates" [] "updates" 3600
         , Run Com "echo" ["  </action></box>"] "_ue" 3600
+#+end_src
+
+*** Battery
+#+begin_src haskell
+        , Run BatteryP ["cat /sys/class/sony_controller_battery_a0:ab:51:62:65:1d/capacity"]
+          ["-t", "<acstatus><watts> <left>%"
+               , "--low", "20"
+               -- , "--"
+               ] 100
 #+end_src
 
 *** Network
@@ -175,7 +184,7 @@ Keyboard Layout Indicator
 *** Date
 #+begin_src haskell
         , Run Date
-          "<box type=Bottom width=2 mb=2 color=#fb4934><action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=1>\xf5f5</fn>  %a, %d %b %Y  </action></box>"
+          "<action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=1>\xf5f5</fn>  %a, %d %b %Y  </action>"
           "date" 3600
 #+end_src
 
@@ -196,13 +205,13 @@ Script that dynamically adjusts xmobar padding depending on number of trayer ico
 * Main Monitor Template
 #+begin_src haskell :noweb yes :tangle mainScreen.hs
 <<GLOBAL>>
-   , template = "%logo% %time% %separator% %UnsafeStdinReader% }{ %mpd% %_ks%%kbd%%_ke% %_us%%updates%%_ue% %dynnetwork% %coretemp%%cpu% %memory% %default:Master% %date% %trayerpad%"
+   , template = "%logo% %time% %sep% %UnsafeStdinReader% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %dynnetwork% %coretemp%%cpu% %memory% %default:Master% %sep% %date% %trayerpad%"
    }
 #+end_src
 
 * Secondary Monitor Template
 #+begin_src haskell :noweb yes :tangle secondaryScreen.hs
 <<GLOBAL>>
-   , template = "%logo% %time% %separator% %UnsafeStdinReader% }{ %kbd% %default:Master% %date% %uptime% "
+   , template = "%logo% %time% %sep% %UnsafeStdinReader% } { %mpd% %sep% %kbd% %sep% %default:Master% %uptime% %sep% %date% "
    }
 #+end_src

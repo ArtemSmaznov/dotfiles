@@ -21,14 +21,14 @@ Config {
    , alignSep = "}{"  -- separator between left-right alignment
    , iconRoot = ".config/xmobar/xpm/"
    , commands =
-        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "separator" 36000
+        [ Run Com "echo" ["<fc=#7c6f64>|</fc>"] "sep" 36000
         , Run Com "echo" ["<action=`rofi -show drun`> <fn=3><fc=#1793d1>\xf303</fc></fn></action>"] "logo" 36000
         , Run Date
           "%l:%M %p "
           "time" 10
         , Run UnsafeStdinReader
         , Run MPD
-          ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
+          ["-t", "  <statei>  <artist> - <title> [<flags>] " -- ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
                , "--"
                , "-P", "<fn=1></fn>" -- play icon
                , "-Z", "<fn=1></fn>" -- pause icon
@@ -44,6 +44,11 @@ Config {
         , Run Com "echo" ["<box type=Bottom width=2 mb=2 color=#fb4934><action=`alacritty -e sudo pacman -Syu`>  <fn=1>\xf0f3</fn>  "] "_us" 3600
         , Run Com ".local/bin/dm-scripts/helpers/updates" [] "updates" 3600
         , Run Com "echo" ["  </action></box>"] "_ue" 3600
+        , Run BatteryP ["cat /sys/class/sony_controller_battery_a0:ab:51:62:65:1d/capacity"]
+          ["-t", "<acstatus><watts> <left>%"
+               , "--low", "20"
+               -- , "--"
+               ] 100
         , Run DynNetwork
           ["-t", "<box type=Bottom width=2 mb=2 color=#8ec07c>  <fn=1>\xf484</fn>  <rx> <fn=6>\xf309\xf30c</fn> <tx> </box>"
                , "-S", "True"
@@ -82,12 +87,12 @@ Config {
                , "-c", "#fb4934"
                ] 10
         , Run Date
-          "<box type=Bottom width=2 mb=2 color=#fb4934><action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=1>\xf5f5</fn>  %a, %d %b %Y  </action></box>"
+          "<action=`emacsclient -c -a 'emacs' --eval '(cfw:open-org-calendar)'`>  <fn=1>\xf5f5</fn>  %a, %d %b %Y  </action>"
           "date" 3600
         , Run Uptime
           ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f>  <fn=2>\xf0aa</fn>  <days>d <hours>h  </box>"
                ] 3600
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 ]
-   , template = "%logo% %time% %separator% %UnsafeStdinReader% }{ %mpd% %_ks%%kbd%%_ke% %_us%%updates%%_ue% %dynnetwork% %coretemp%%cpu% %memory% %default:Master% %date% %trayerpad%"
+   , template = "%logo% %time% %sep% %UnsafeStdinReader% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %dynnetwork% %coretemp%%cpu% %memory% %default:Master% %sep% %date% %trayerpad%"
    }
