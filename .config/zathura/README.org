@@ -71,7 +71,7 @@ set window-icon-document false
 * UI
 Set color scheme
 #+begin_src vimrc
-include colors/gruvbox
+include themes/base16
 #+end_src
 
 Set font

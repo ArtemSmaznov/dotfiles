@@ -18,8 +18,8 @@
   - [[#wayland][Wayland]]
   - [[#legacy][Legacy]]
   - [[#mouse][Mouse]]
-- [[#experimental][Experimental]]
 - [[#urgency][Urgency]]
+- [[#experimental][Experimental]]
 - [[#other][Other]]
 
 * Dependencies
@@ -338,6 +338,37 @@ mouse_middle_click = close_current
 mouse_right_click = close_all
 #+end_src
 
+* Urgency
+IMPORTANT: colors have to be defined in quotation marks.
+Otherwise the "#" and following would be interpreted as a comment.
+#+begin_src conf
+[base16_low]
+msg_urgency = low
+timeout = 15
+# Icon for notifications with low urgency, uncomment to enable
+#icon = /path/to/icon
+#+end_src
+
+#+begin_src conf
+[base16_normal]
+msg_urgency = normal
+timeout = 60
+# Icon for notifications with normal urgency, uncomment to enable
+#icon = /path/to/icon
+#+end_src
+
+#+begin_src conf
+[base16_critical]
+msg_urgency = critical
+frame_color = "#ff0000"
+timeout = 0
+# Icon for notifications with critical urgency, uncomment to enable
+#icon = /path/to/icon
+
+# Start flavours
+# End flavours
+#+end_src
+
 * Experimental
 Experimental features that may or may not work correctly. Do not expect them to have a consistent behaviour across releases.
 #+begin_src conf
@@ -351,37 +382,6 @@ resolution and physical size. This might be useful in setups where there are
 multiple screens with very different dpi values.
 #+begin_src conf
 per_monitor_dpi = false
-#+end_src
-
-* Urgency
-IMPORTANT: colors have to be defined in quotation marks.
-Otherwise the "#" and following would be interpreted as a comment.
-#+begin_src conf
-[urgency_low]
-background = "#1f1f1f"
-foreground = "#978965"
-timeout = 15
-# Icon for notifications with low urgency, uncomment to enable
-#icon = /path/to/icon
-#+end_src
-
-#+begin_src conf
-[urgency_normal]
-background = "#1f1f1f"
-foreground = "#c0b18b"
-timeout = 60
-# Icon for notifications with normal urgency, uncomment to enable
-#icon = /path/to/icon
-#+end_src
-
-#+begin_src conf
-[urgency_critical]
-background = "#1f1f1f"
-foreground = "#FF5252"
-frame_color = "#ff0000"
-timeout = 0
-# Icon for notifications with critical urgency, uncomment to enable
-#icon = /path/to/icon
 #+end_src
 
 * Other

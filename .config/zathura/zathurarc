@@ -6,7 +6,7 @@ set selection-notification true
 
 set window-icon-document false
 
-include colors/gruvbox
+include themes/base16
 
 set font "hack normal 12"
 

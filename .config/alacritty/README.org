@@ -68,7 +68,7 @@ font:
 * Colors
 #+begin_src yaml
 import:
-  - ~/.config/alacritty/themes/gruvbox.yml
+  - ~/.config/alacritty/themes/base16.yml
   - ~/.config/alacritty/local.yml
 
 custom_cursor_colors: false

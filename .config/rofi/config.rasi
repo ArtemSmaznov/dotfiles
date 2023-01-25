@@ -78,4 +78,4 @@ listview {
 }
 
 @import "keys.rasi"
-@import "themes/gruvbox.rasi"
+@import "themes/base16.rasi"

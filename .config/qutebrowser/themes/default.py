@@ -1,58 +1,58 @@
-import colors.gruvbox as color
+import themes.base16 as color
 
-foreground = color.foreground
-background = color.background
+foreground = color.base07
+background = color.base00
 
-title = color.color11
+title = color.base0A
 
-loading = color.orange2
-success = color.color10
-warning = color.color11
-error = color.color09
-fail = color.color01
+loading = color.base09
+success = color.base0B
+warning = color.base0A
+error = color.base08
+insecure = color.base0F
 
-match = color.color10
+match = color.base0B
 
 # Tabs
-tab_odd = color.bg1
-tab_even = color.bg2
-tab_selected = color.color14
+tab_odd = color.base01
+tab_even = color.base02
+tab_selected = color.base0C
 
 # Prompts
-prompt_selected_bg = color.bg2
+prompt_selected_bg = color.base02
 
 # Hints
-hint_bg = color.color11
+hint_bg = color.base0A
 
 # Completion
-completion_match = color.color10
-completion_odd = color.bg1
+completion_match = color.base0B
+completion_odd = color.base01
 completion_even = background
-completion_selected = color.bg2
-completion_borders = color.bg4
+completion_selected = color.base02
+completion_borders = color.base03
 
 # Which Key
 whichkey_radius = 10
 
 # Context Menu
-contextmenu_selected_bg = color.bg2
-contextmenu_disabled_fg = color.fg3
-contextmenu_disabled_bg = color.bg1
+contextmenu_selected_bg = color.base02
+contextmenu_disabled_fg = color.base04
+contextmenu_disabled_bg = color.base01
 
 # Status Bar Modes
 status_normal_fg = foreground
 status_normal_bg = background
 status_insert_fg = background
-status_insert_bg = color.color12
+status_insert_bg = color.base0D
 status_passthrough_fg = background
-status_passthrough_bg = color.color14
+status_passthrough_bg = color.base0C
 status_private_fg = background
-status_private_bg = color.bg1
+status_private_bg = color.base01
 status_command_fg = foreground
 status_command_bg = background
 status_command_private_fg = foreground
 status_command_private_bg = background
 status_caret_fg = background
-status_caret_bg = color.color13
+status_caret_bg = color.base0E
 status_caret_selection_fg = background
-status_caret_selection_bg = color.color12
+status_caret_selection_bg = color.base0D

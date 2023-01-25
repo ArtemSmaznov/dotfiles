@@ -49,7 +49,7 @@ paru -S vimiv-qt-git
 monitor_filesystem = True
 shuffle = False
 startup_library = True
-style = gruvbox.conf
+style = base16.conf
 #+end_src
 
 ** Command

@@ -137,11 +137,11 @@ c.colors.statusbar.caret.selection.bg = theme.status_caret_selection_bg
 c.colors.statusbar.progress.bg = theme.loading
 
 c.colors.statusbar.url.fg = theme.loading
-c.colors.statusbar.url.success.http.fg = theme.error
-c.colors.statusbar.url.success.https.fg = theme.success
+c.colors.statusbar.url.success.http.fg = theme.insecure
+c.colors.statusbar.url.success.https.fg = theme.tab_selected
 c.colors.statusbar.url.hover.fg = theme.foreground
 c.colors.statusbar.url.warn.fg = theme.warning
-c.colors.statusbar.url.error.fg = theme.fail
+c.colors.statusbar.url.error.fg = theme.error
 
 c.colors.tabs.bar.bg = theme.background
 

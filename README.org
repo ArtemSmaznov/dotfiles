@@ -11,6 +11,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#display-manager-dm][Display Manager (DM)]]
 - [[#window-manager-wm][Window Manager (WM)]]
 - [[#shell][Shell]]
+- [[#theme][Theme]]
 - [[#terminal-emulator][Terminal Emulator]]
 - [[#terminal-tools][Terminal Tools]]
 - [[#text-editor][Text Editor]]
@@ -42,6 +43,8 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:.config/SHELLS.org::*Exportrc][Exportrc]]
 - [[file:.config/SHELLS.org::*Aliasrc][Aliasrc]]
 - [[file:.config/SHELLS.org::*Starship][Starship Prompt]]
+* Theme
+- [[file:.config/flavours/README.org][Flavours]]
 * Terminal Emulator
 - [[file:.config/alacritty/README.org][Alacritty]]
 - [[file:.config/terminator/README.org][Terminator]]

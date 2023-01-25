@@ -122,7 +122,7 @@ listview {
 * Imports
 #+begin_src conf
 @import "keys.rasi"
-@import "themes/gruvbox.rasi"
+@import "themes/base16.rasi"
 #+end_src
 
 * Keybindings

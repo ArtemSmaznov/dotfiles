@@ -1,0 +1,86 @@
+[[item]]
+file = "~/.config/alacritty/themes/base16.yml"
+template = "alacritty"
+# subtemplate = "default-256"
+hook = "touch ~/.config/alacritty/alacritty.yml"
+rewrite = true
+
+[[item]]
+file = "~/.config/btop/themes/base16.theme"
+template = "btop"
+rewrite = true
+
+[[item]]
+file = "~/.config/doom/themes/base16-theme.el"
+template = "doom"
+rewrite = true
+
+[[item]]
+file = "~/.local/bin/dm-scripts/dm-lock"
+template = "dmlock"
+rewrite = false
+
+[[item]]
+file = "~/.config/dunst/dunstrc"
+template = "dunst"
+subtemplate = "custom"
+hook = "killall dunst"
+rewrite = false
+
+[[item]]
+file = "~/.config/qutebrowser/themes/base16.py"
+template = "qutebrowser"
+subtemplate = "custom"
+hook = "pgrep -x qutebrowser && qutebrowser :config-source"
+light = false
+rewrite = true
+
+[[item]]
+file = "~/.config/rofi/themes/base16.rasi"
+template = "rofi"
+subtemplate = "colors"
+rewrite = true
+
+[[item]]
+file = "~/.termux/termux.properties"
+template = "termux"
+# subtemplate = "default-256"
+rewrite = false
+
+[[item]]
+file = "~/.config/vimiv/styles/base16.conf"
+template = "vimiv"
+start = "; Start flavours"
+end = "; End flavours"
+
+[[item]]
+file = "~/.config/xmobar/mainScreen.hs"
+template = "xmobar"
+start = "-- Start flavours"
+end = "-- End flavours"
+
+[[item]]
+file = "~/.config/xmobar/secondaryScreen.hs"
+template = "xmobar"
+start = "-- Start flavours"
+end = "-- End flavours"
+
+[[item]]
+file = "~/.config/xmonad/lib/Themes/Base16.hs"
+template = "xmonad"
+hook = "xmonad --restart"
+light = false
+rewrite = true
+
+[[item]]
+file = "~/.Xresources"
+template = "xresources"
+# subtemplate = "default-256"
+start = "! Start flavours"
+end = "! End flavours"
+
+[[item]]
+file = "~/.config/zathura/themes/base16"
+template = "zathura"
+subtemplate = "recolor"
+rewrite = true

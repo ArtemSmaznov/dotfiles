@@ -1,0 +1,176 @@
+#+title:       Flavours
+#+author:      Artem Smaznov
+#+description: A manager/builder for Base16
+#+startup:     overview
+#+auto_tangle: t
+#+property:    header-args :tangle config.toml
+
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#alacritty][Alacritty]]
+- [[#btop][BTop]]
+- [[#idea-doom-emacs][IDEA Doom Emacs]]
+- [[#dm-lock][dm-lock]]
+- [[#dunst][Dunst]]
+- [[#idea-fzf][IDEA FZF]]
+- [[#idea-gtk-2][IDEA GTK 2]]
+- [[#idea-gtk-3][IDEA GTK 3]]
+- [[#qutebrowser][QuteBrowser]]
+- [[#rofi][Rofi]]
+- [[#idea-shell][IDEA Shell]]
+- [[#termux][Termux]]
+- [[#idea-vim][IDEA Vim]]
+- [[#vimiv][Vimiv]]
+- [[#xmobar][Xmobar]]
+- [[#xmonad][Xmonad]]
+- [[#xresources][Xresources]]
+- [[#zathura][Zathura]]
+
+* Dependencies
+|----------+------------------------------|
+| Name     | Description                  |
+|----------+------------------------------|
+| [[https://aur.archlinux.org/packages/flavours][flavours]] | A manager/builder for Base16 |
+|----------+------------------------------|
+
+#+begin_example shell
+paru -S flavours
+#+end_example
+
+Before using =flavours= will need to pull all the templates and schemes
+#+begin_example shell
+flavours update all
+#+end_example
+
+* Alacritty
+#+begin_src toml
+[[item]]
+file = "~/.config/alacritty/themes/base16.yml"
+template = "alacritty"
+# subtemplate = "default-256"
+hook = "touch ~/.config/alacritty/alacritty.yml"
+rewrite = true
+#+end_src
+
+* BTop
+#+begin_src toml
+[[item]]
+file = "~/.config/btop/themes/base16.theme"
+template = "btop"
+rewrite = true
+#+end_src
+
+* IDEA Doom Emacs
+#+begin_src toml
+[[item]]
+file = "~/.config/doom/themes/base16-theme.el"
+template = "doom"
+rewrite = true
+#+end_src
+
+* dm-lock
+#+begin_src toml
+[[item]]
+file = "~/.local/bin/dm-scripts/dm-lock"
+template = "dmlock"
+rewrite = false
+#+end_src
+
+* Dunst
+#+begin_src toml
+[[item]]
+file = "~/.config/dunst/dunstrc"
+template = "dunst"
+subtemplate = "custom"
+hook = "killall dunst"
+rewrite = false
+#+end_src
+
+* IDEA FZF
+* IDEA GTK 2
+* IDEA GTK 3
+* TODO QuteBrowser
+#+begin_src toml
+[[item]]
+file = "~/.config/qutebrowser/themes/base16.py"
+template = "qutebrowser"
+subtemplate = "custom"
+hook = "pgrep -x qutebrowser && qutebrowser :config-source"
+light = false
+rewrite = true
+#+end_src
+
+* Rofi
+#+begin_src toml
+[[item]]
+file = "~/.config/rofi/themes/base16.rasi"
+template = "rofi"
+subtemplate = "colors"
+rewrite = true
+#+end_src
+
+* IDEA Shell
+* Termux
+#+begin_src toml
+[[item]]
+file = "~/.termux/termux.properties"
+template = "termux"
+# subtemplate = "default-256"
+rewrite = false
+#+end_src
+
+* IDEA Vim
+* Vimiv
+#+begin_src toml
+[[item]]
+file = "~/.config/vimiv/styles/base16.conf"
+template = "vimiv"
+start = "; Start flavours"
+end = "; End flavours"
+#+end_src
+
+* TODO Xmobar
+#+begin_src toml
+[[item]]
+file = "~/.config/xmobar/mainScreen.hs"
+template = "xmobar"
+start = "-- Start flavours"
+end = "-- End flavours"
+#+end_src
+
+#+begin_src toml
+[[item]]
+file = "~/.config/xmobar/secondaryScreen.hs"
+template = "xmobar"
+start = "-- Start flavours"
+end = "-- End flavours"
+#+end_src
+
+* Xmonad
+#+begin_src toml
+[[item]]
+file = "~/.config/xmonad/lib/Themes/Base16.hs"
+template = "xmonad"
+hook = "xmonad --restart"
+light = false
+rewrite = true
+#+end_src
+
+* Xresources
+#+begin_src toml
+[[item]]
+file = "~/.Xresources"
+template = "xresources"
+# subtemplate = "default-256"
+start = "! Start flavours"
+end = "! End flavours"
+#+end_src
+
+* Zathura
+#+begin_src toml
+[[item]]
+file = "~/.config/zathura/themes/base16"
+template = "zathura"
+subtemplate = "recolor"
+rewrite = true
+#+end_src

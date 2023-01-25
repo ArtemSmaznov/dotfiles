@@ -8,8 +8,10 @@ Config {
                        , "xft:Font Awesome 6 Free Solid:pixelsize=16"            -- 5 used for workspaces in xmonad
                        , "xft:Font Awesome 6 Free Solid:pixelsize=14"            -- 6 used for network arrows
                        ]
+   -- Start flavours
    , bgColor         = "#282828"
-   , fgColor         = "#ebdbb2"
+   , fgColor         = "#fbf1c7"
+   -- End flavours
    , position        = TopH 24
    , lowerOnStart     = True    -- send to bottom of window stack on start
    , hideOnStart      = False   -- start with window unmapped (hidden)
