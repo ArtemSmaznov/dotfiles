@@ -28,6 +28,20 @@ hook = "killall dunst"
 rewrite = false
 
 [[item]]
+file = "~/.config/mpv/script-opts/torque-progressbar/main.conf"
+template = "mpv"
+subtemplate = "torque-progressbar"
+rewrite = false
+
+[[item]]
+file = "~/.config/gtk-3.0/gtk.css"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = false
+start = "/* Start flavours */"
+end = "/* End flavours */"
+
+[[item]]
 file = "~/.config/qutebrowser/themes/base16.py"
 template = "qutebrowser"
 subtemplate = "custom"

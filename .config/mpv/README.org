@@ -3,6 +3,7 @@
 #+description: A vim-like minimalist media player
 #+startup:     overview
 #+auto_tangle: t
+#+property:    header-args :tangle mpv.conf
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
@@ -65,97 +66,97 @@ Profiles should be placed at the bottom of the configuration file to ensure that
 
 ** Window
 Disabling fixed aspect ratio for mpv window stops it from being launched in floating layout in qtile WM. In theory, this should make it play nicer with other tiling window managers as well.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 # no-keepaspect-window
 #+end_src
 
 Start in fullscreen mode by default.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 # fs=yes
 # fs-screen=current
 #+end_src
 
 Force starting with centered window
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 geometry=50%:50%
 #+end_src
 
 Don't allow a new window to have a size larger than 90% of the screen size
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 autofit-larger=90%x90%
 #+end_src
 
 Keep the player window on top of all other windows.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #ontop=yes
 #+end_src
 
 Do not close the window on exit.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 keep-open=yes
 #+end_src
 
 Do not wait with showing the video window until it has loaded. (This will resize the window once video is loaded. Also always shows a window with audio.)
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #force-window=immediate
 #+end_src
 
 Make mouse cursor automatically hide after given number of milliseconds.
 =no= will disable cursor autohide
 =always= means the cursor will stay hidden.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 cursor-autohide=1000
 #+end_src
 
 ** Playback
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 loop-file=no
 loop-playlist=inf
 #+end_src
 
 ** Video
 Disable the On Screen Controller (OSC).
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 osc=no
 #+end_src
 
 Specify high quality video rendering preset (for --vo=gpu only)
 Can cause performance problems with some drivers and GPUs.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 profile=gpu-hq
 #+end_src
 
 Force video to lock on the display's refresh rate, and change video and audio speed to some degree to ensure synchronous playback - can cause problems with some drivers and desktop environments.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #video-sync=display-resample
 #+end_src
 
 Enable hardware decoding if available. Often, this does not work with all video outputs, but should work well with default settings on most systems.
 If performance or energy usage is an issue, forcing the vdpau or vaapi VOs may or may not help.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #hwdec=auto
 #+end_src
 
 ** Audio
 Specify default audio device. You can list devices with: --audio-device=help
 The option takes the device string (the stuff between the '...').
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #audio-device=alsa/default
 #+end_src
 
 Do not filter audio to keep pitch when changing playback speed.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #audio-pitch-correction=no
 #+end_src
 
 Output 5.1 audio natively, and upmix/downmix audio with a different format.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #audio-channels=5.1
 #+end_src
 
 Disable any automatic remix, _if_ the audio output accepts the audio format of the currently played file. See caveats mentioned in the manpage.
 (The default is "auto-safe", see manpage.)
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #audio-channels=auto
 #+end_src
 
@@ -167,40 +168,40 @@ Set what is displayed on the OSD during seeks.
 - =bar= (default)
 - =msg=
 - =msg-bar=
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 osd-on-seek=no
 #+end_src
 
 Set the duration of the OSD messages in ms (default: 1000).
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 osd-duration=1000
 #+end_src
 
 Gaussian blur factor. 0 means no blur applied (default).
 - 0 .. 20.0
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 osd-blur=0
 #+end_src
 
 ** Cache
 Use a large seekable RAM cache even for local input.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #cache=yes
 #+end_src
 
 Use extra large RAM cache (needs cache=yes to make it useful).
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #demuxer-max-bytes=500M
 #demuxer-max-back-bytes=100M
 #+end_src
 
 Disable the behavior that the player will pause if the cache goes below a certain fill size.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #cache-pause=no
 #+end_src
 
 Store cache payload on the hard disk instead of in RAM. (This may negatively impact performance unless used for slow input such as network.)
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #cache-dir=~/.cache/
 #cache-on-disk=yes
 #+end_src
@@ -208,13 +209,13 @@ Store cache payload on the hard disk instead of in RAM. (This may negatively imp
 ** Profiles
 The options declared as part of profiles override global default settings, but only take effect when the profile is active.
 The following profile can be enabled on the command line with: --profile=eye-cancer
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #[eye-cancer]
 #sharpen=5
 #+end_src
 
 ** Screenshot
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 screenshot-directory="~/Pictures/screenshots/"
 screenshot-template="mpv-%F-%wH-%wM-%wS-%wT"
 #+end_src
@@ -239,73 +240,60 @@ By default, NetWM support is autodetected (auto).
 
 This option might be removed in the future.
 Values: =yes|no|auto=
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 # x11-netwm=yes
 #+end_src
 
 Save playback position in between sessions
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 save-position-on-quit=yes
 #+end_src
 
 Disable default keybindings
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 no-input-default-bindings
 #+end_src
 
 Pretend to be a web browser. Might fix playback with some streaming sites, but also will break with shoutcast streams.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #user-agent="Mozilla/5.0"
 #+end_src
 
 Display English subtitles if available.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #slang=en
 #+end_src
 
 Fuzzy search subtitles
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 sub-auto=fuzzy
 #+end_src
 
 Play Finnish audio if available, fall back to English otherwise.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #alang=fi,en
 #+end_src
 
 Change subtitle encoding. For Arabic subtitles use 'cp1256'.
 If the file seems to be valid UTF-8, prefer UTF-8.
 (You can add '+' in front of the codepage to force it.)
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #sub-codepage=cp1256
 #+end_src
 
 You can also include other configuration files.
-#+begin_src conf :tangle mpv.conf
+#+begin_src conf
 #include=/path/to/the/file/you/want/to/include
 #+end_src
 
 * Scripts
 ** Torque Progress-bar
+:PROPERTIES:
+:header-args: :tangle script-opts/torque-progressbar/main.conf
+:END:
 *** Colors
-Here are some useful ASS override tags (omit square brackets)
-\fn[Font Name] : sets the font to the named font.
-\fs[number]    : sets the font size to the given number.
-\b[1/0]        : sets the text bold or not (\b1 is bold, \b0 is regular weight).
-\i[1/0]        : sets the text italic or not (same semantics as bold).
-\bord[number]  : sets the outline width to the given number (in pixels).
-\shad[number]  : sets the shadow size to the given number (pixels).
-\c&H[BBGGRR]&  : sets the fill color for the text to the given color (hex pairs in
-	             the order, blue, green, red).
-\3c&H[BBGGRR]& : sets the outline color of the text to the given color.
-\4c&H[BBGGRR]& : sets the shadow color of the text to the given color.
-\alpha&H[AA]&  : sets the line's transparency as a hex pair. 00 is fully opaque
-               and FF is fully transparent. Some UI elements are composed of
-               multiple layered lines, so adding transparency may not look good.
-               For further granularity, \1a&H[AA]& controls the fill opacity,
-               \3a&H[AA]& controls the outline opacity, and \4a&H[AA]& controls
-               the shadow opacity.
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
+# Start flavours
 # Default style that is applied to all UI elements. A string of ASS override tags.
 # Individual elements have their own style settings which override the tags here.
 # Changing the font will likely require changing the hover-time margin settings
@@ -319,8 +307,7 @@ bar-default-style=\bord0\shad0
 
 # A string of ASS override tags that get applied only to the progress layer of the
 # bar.
-bar-foreground-style=\alpha&H00\c&H1d24cc& # red
-# bar-foreground-style=\alpha&H00\c&H0e5dd6& # orange
+bar-foreground-style=\alpha&H00\c&H1d24cc&
 
 # A string of ASS override tags that get applied only to the cache layer of the
 # bar, particularly the part of the cache bar that is behind the current playback
@@ -372,11 +359,11 @@ chapter-marker-before-style=\c&H000000&
 # A string of ASS override tags that get applied only to chapter markers that have
 # already been passed.
 chapter-marker-after-style=\c&H000000&
-
+# End flavours
 #+end_src
 
 *** UI
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Controls whether or not the progress bar is drawn at all. If this is disabled,
 # it also (naturally) disables the click-to-seek functionality.
 enable-bar=yes
@@ -435,7 +422,7 @@ pause-indicator=yes
 
 *** Bar
 Inactive
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets the height of the bar display when the mouse is not in the active zone and
 # there is no request-display active. A value of 0 or less will cause bar-hide-
 # inactive to be set to true and the bar height to be set to 1. This should result
@@ -452,7 +439,7 @@ bar-cache-height-inactive=3
 #+end_src
 
 Active
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets the height of the rectangular area at the bottom of the screen that expands
 # the progress bar and shows playback time information when the mouse is hovered
 # over it.
@@ -471,7 +458,7 @@ bar-cache-height-active=20
 #+end_src
 
 *** Title
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the video title is displayed at all.
 enable-title=yes
 
@@ -496,7 +483,7 @@ title-offscreen-pos=-40
 #+end_src
 
 *** Clock
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the system time is displayed at all.
 enable-system-time=yes
 
@@ -522,7 +509,7 @@ system-time-offscreen-pos=-100
 
 *** Seek Time
 Elapsed
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the elapsed time is displayed at all.
 enable-elapsed-time=yes
 
@@ -543,7 +530,7 @@ elapsed-offscreen-pos=-100
 #+end_src
 
 Remaining
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the remaining time is displayed at all.
 enable-remaining-time=yes
 
@@ -564,7 +551,7 @@ remaining-offscreen-pos=-100
 #+end_src
 
 Hover
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the calculated time corresponding to the mouse position
 # is displayed when the mouse hovers over the progress bar.
 enable-hover-time=yes
@@ -592,7 +579,7 @@ hover-time-offscreen-pos=-50
 #+end_src
 
 *** Chapter Markers
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets whether or not the progress bar is decorated with chapter markers. Due to
 # the way the chapter markers are currently implemented, videos with a large
 # number of chapters may slow down the script somewhat, but I have yet to run
@@ -613,7 +600,7 @@ chapter-marker-active-height-fraction=1
 #+end_src
 
 *** Timing
-#+begin_src conf :tangle script-opts/torque-progressbar/main.conf
+#+begin_src conf
 # Sets the amount of time in seconds that the UI stays on the screen after it
 # receives a request-display signal. A value of 0 will keep the display on screen
 # only as long as the key bound to it is held down.
@@ -628,15 +615,20 @@ redraw-period=0.03
 # Controls how long the UI animations take. A value of 0 disables all animations
 # (which breaks the pause indicator).
 animation-duration=0.25
-
 #+end_src
 
 ** yt-dlp
-#+begin_src conf :tangle script-opts/yt-dlp/main.conf
+:PROPERTIES:
+:header-args: :tangle script-opts/yt-dlp/main.conf
+:END:
+#+begin_src conf
 ytdl_hook-ytdl_path=/usr/bin/yt-dlp
 #+end_src
 
 * Keybindings
+:PROPERTIES:
+:header-args: :tangle input.conf
+:END:
 ** Info
 List of commands and further details: DOCS/man/input.rst
 List of special keys: --input-keylist
@@ -656,12 +648,12 @@ On compilation, this file is baked into the mpv binary, and all lines are uncomm
 
 ** Initialization
 If this is enabled, treat all the following bindings as default.
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 # default-bindings start
 #+end_src
 
 ** Window
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 q quit
 Q quit-watch-later
 q {encode} quit 4
@@ -675,27 +667,27 @@ ESC set fullscreen no
 f cycle fullscreen                     # toggle fullscreen
 #+end_src
 
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 #Alt+0 set window-scale 0.5
 #Alt+1 set window-scale 1.0
 #Alt+2 set window-scale 2.0
 #+end_src
 
 ** Playback
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 k     cycle pause
 SPACE cycle pause
 #+end_src
 
 Scale playback speed
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 # [ multiply speed 1/1.1
 # ] multiply speed 1.1
 # { multiply speed 0.5
 # } multiply speed 2.0
 #+end_src
 
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 [ multiply speed 1/1.1
 ] multiply speed 1.1
 { add speed -0.25
@@ -703,19 +695,19 @@ Scale playback speed
 #+end_src
 
 Reset speed to normal
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 BS set speed 1.0
 #+end_src
 
 A-B Loop
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 \ ab-loop                              # Set/clear A-B loop points
 #L cycle-values loop-file "inf" "no"    # toggle infinite looping
 #+end_src
 
 ** Navigation
 Seek units are in seconds, but note that these are limited by keyframes
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 j           seek -5
 l           seek  5
 J           seek -15
@@ -731,12 +723,12 @@ Shift+UP    seek  60
 #+end_src
 
 Frame-by-frame navigation
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 . frame-step                           # advance one frame and pause
 , frame-back-step                      # go back by one frame and pause
 #+end_src
 
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 HOME seek 0 absolute-percent
 END  set pause yes ; seek 100 absolute-percent
 
@@ -753,7 +745,7 @@ END  set pause yes ; seek 100 absolute-percent
 $ set pause yes ; seek 100 absolute-percent
 #+end_src
 
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 #Shift+PGUP seek 600
 #Shift+PGDWN seek -600
 #Shift+BS revert-seek                   # undo previous (or marked) seek
@@ -761,7 +753,7 @@ $ set pause yes ; seek 100 absolute-percent
 #+end_src
 
 ** Playlists
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 p show_text ${playlist} # show playlist
 # ENTER playlist-next   # skip to next file
 Shift+n playlist-next   # skip to next file
@@ -771,7 +763,7 @@ Shift+p playlist-prev   # skip to previous file
 #+end_src
 
 ** Audio
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 UP    add volume 1
 DOWN  add volume -1
 m     cycle mute
@@ -786,14 +778,14 @@ m     cycle mute
 
 ** OSD
 Legacy
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 # o show-progress
 # O no-osd cycle-values osd-level 3 1    # cycle through OSD mode
 # Ctrl+o script-binding osc/visibility      # cycle OSC display
 #+end_src
 
 Torque Progressbar
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 o script-binding progressbar/request-display
 Ctrl+o script-binding progressbar/toggle-inactive-bar
 . script-binding progressbar/step-forward
@@ -801,7 +793,7 @@ Ctrl+o script-binding progressbar/toggle-inactive-bar
 #+end_src
 
 Info
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 i     script-binding stats/display-stats
 I     script-binding stats/display-stats-toggle
 `     script-binding console/enable
@@ -811,12 +803,12 @@ Alt+x script-binding console/enable
 
 ** Subtitles
 Skip to previous/next subtitle (subject to some restrictions; see manpage)
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 Alt+LEFT   no-osd sub-seek -1
 Alt+RIGHT  no-osd sub-seek  1
 #+end_src
 
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 v cycle sub-visibility
 c cycle sub-visibility
 
@@ -848,7 +840,7 @@ S cycle sub down                       # ...backwards
 
 ** Screenshot
 Take screenshot without subtitles
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 Ctrl+PRINT screenshot video
 F12        screenshot video
 Alt+s      screenshot video
@@ -856,7 +848,7 @@ Alt+S      screenshot each-frame            # automatically screenshot every fra
 #+end_src
 
 ** Image Adjustment
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 Alt+1 add contrast -1
 Alt+2 add contrast 1
 Alt+3 add brightness -1
@@ -897,7 +889,7 @@ Alt+a cycle-values video-aspect-override "16:9" "4:3" "2.35:1" "-1"
 
 ** Chapters
 Jump between chapters
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 PGDWN  add chapter -1
 PGUP   add chapter 1
 Ctrl+j add chapter -1
@@ -905,7 +897,7 @@ Ctrl+l add chapter 1
 #+end_src
 
 ** Media Keys
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 #POWER      quit
 PLAY        cycle pause
 PAUSE       cycle pause
@@ -925,7 +917,7 @@ CLOSE_WIN   {encode} quit 4
 #+end_src
 
 ** Mouse Bindings
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 MBTN_RIGHT_DBL quit
 MBTN_LEFT      cycle pause ; script-binding progressbar/left-click
 MBTN_LEFT_DBL  cycle fullscreen    # toggle fullscreen on/off
@@ -935,7 +927,7 @@ MBTN_FORWARD   playlist-next
 #+end_src
 
 Mouse wheels, touch-pad or other input devices that have axes if the input devices supports precise scrolling it will also scale the numeric value accordingly
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 WHEEL_UP      add volume 1
 WHEEL_DOWN    add volume -1
 WHEEL_LEFT    seek -1
@@ -943,7 +935,7 @@ WHEEL_RIGHT   seek 1
 #+end_src
 
 ** Misc
-#+begin_src conf :tangle input.conf
+#+begin_src conf
 E cycle edition                        # next edition
 #ctrl+h cycle-values hwdec "auto" "no"  # cycle hardware decoding
 #+end_src

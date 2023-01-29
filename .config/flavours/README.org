@@ -13,8 +13,9 @@
 - [[#dm-lock][dm-lock]]
 - [[#dunst][Dunst]]
 - [[#idea-fzf][IDEA FZF]]
-- [[#idea-gtk-2][IDEA GTK 2]]
-- [[#idea-gtk-3][IDEA GTK 3]]
+- [[#mpv][MPV]]
+- [[#strt-gtk-2][STRT GTK 2]]
+- [[#strt-gtk-3][STRT GTK 3]]
 - [[#qutebrowser][QuteBrowser]]
 - [[#rofi][Rofi]]
 - [[#idea-shell][IDEA Shell]]
@@ -87,8 +88,37 @@ rewrite = false
 #+end_src
 
 * IDEA FZF
-* IDEA GTK 2
-* IDEA GTK 3
+* MPV
+#+begin_src toml
+[[item]]
+file = "~/.config/mpv/script-opts/torque-progressbar/main.conf"
+template = "mpv"
+subtemplate = "torque-progressbar"
+rewrite = false
+#+end_src
+
+* STRT GTK 2
+#+begin_src toml :tangle no
+[[item]]
+file = "~/.config/gtk-2.0/gtkrc"
+# template = "gtk-flatcolor"
+# subtemplate = "gtk-2"
+template = "gtk2"
+subtemplate = "schemes"
+rewrite = false
+#+end_src
+
+* STRT GTK 3
+#+begin_src toml
+[[item]]
+file = "~/.config/gtk-3.0/gtk.css"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = false
+start = "/* Start flavours */"
+end = "/* End flavours */"
+#+end_src
+
 * TODO QuteBrowser
 #+begin_src toml
 [[item]]
