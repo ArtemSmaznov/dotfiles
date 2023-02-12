@@ -30,7 +30,7 @@ Config {
           "time" 10
         , Run UnsafeStdinReader
         , Run MPD
-          ["-t", "  <statei>  <artist> - <title> [<flags>] " -- ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
+          ["-t", "  <statei>  <fn=4><artist> - <title></fn> [<flags>] " -- ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
                , "--"
                , "-P", "<fn=1></fn>" -- play icon
                , "-Z", "<fn=1></fn>" -- pause icon
