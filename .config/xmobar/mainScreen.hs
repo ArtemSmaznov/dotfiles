@@ -1,16 +1,16 @@
 Config {
    -- appearance
-     font            = "xft:SF Pro Text Regular:size=9:bold:antialias=true"
-   , additionalFonts = [ "xft:Hack Nerd Font Mono:style=Regular:pixelsize=22"    -- 1
-                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=28"    -- 2
-                       , "xft:Hack Nerd Font Mono:style=Regular:pixelsize=32"    -- 3
-                       , "xft:Source Han Sans JP"                                -- 4
-                       , "xft:Font Awesome 6 Free Solid:pixelsize=16"            -- 5 used for workspaces in xmonad
-                       , "xft:Font Awesome 6 Free Solid:pixelsize=14"            -- 6 used for network arrows
+     font            = "SF Pro Text Regular 11"
+   , additionalFonts = [ "Hack Nerd Font Mono 18"       -- 1
+                       , "Hack Nerd Font Mono 20"       -- 2
+                       , "Hack Nerd Font Mono 28"       -- 3
+                       , "Source Han Sans JP"           -- 4
+                       , "Font Awesome 6 Free Solid 12" -- 5 used for workspaces in xmonad
+                       , "Font Awesome 6 Free Solid 10" -- 6 used for network arrows
                        ]
    -- Start flavours
    , bgColor         = "#282828"
-   , fgColor         = "#fbf1c7"
+   , fgColor         = "#ebdbb2"
    -- End flavours
    , position        = TopH 24
    , lowerOnStart     = True    -- send to bottom of window stack on start
