@@ -6,7 +6,7 @@
 (protocol-version 26)
 (file-version 5)
 
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/file-jxl/file-jxl" 1664385711
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/file-jxl/file-jxl" 1675523216
     (proc-def "file-jxl-load" 1
          "Loads JPEG XL image files"
          "Loads JPEG XL image files"
