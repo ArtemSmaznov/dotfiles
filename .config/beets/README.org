@@ -55,6 +55,7 @@ replace:
     ':': ' -'
     '[\x00-\x1f]': _
     '[~!\\/<>"\?\*\|]': ''
+    "'": ''
     '[\.]$': ''
     '^[\.]': ''
     '\s+$': ''
@@ -103,6 +104,7 @@ musicbrainz:
 paths:
     default: $albumartist/$album%aunique{}/$track - $title
     singleton: $artist/$title
+    albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $title
     comp: compilations/$album%aunique{}/$track - $title
 #+end_src
 
