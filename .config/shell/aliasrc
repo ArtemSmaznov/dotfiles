@@ -129,6 +129,11 @@ alias pman-orphans-fullclean='sudo pacman -Rns $(pacman -Qtdq)'
 alias pman-browse="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias pman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rcs"
 
+function pman-mirrors-update() {
+    curl -s "https://archlinux.org/mirrorlist/?country=CA&protocol=https&use_mirror_status=on" | sed -e 's/#Server/Server/' -e '/^## \w*$/d' | rankmirrors - > /tmp/mirrorlist
+    sudo cp /tmp/mirrorlist /etc/pacman.d/mirrorlist
+}
+
 alias reboot='sudo shutdown -r now'
 alias forcereboot='sudo shutdown -r -n now'
 alias shutdown='sudo shutdown -P'
