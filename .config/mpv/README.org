@@ -410,11 +410,6 @@ bar-cache-position=underlay
 # file name and system time when the mouse is hovered over it.
 top-hover-zone-height=40
 
-# Acts as a multiplier to increase the size of every UI element. Useful for high-
-# DPI displays that cause the UI to be rendered too small (happens at least on
-# macOS).
-display-scale-factor=1
-
 # Sets whether or not the pause indicator is displayed. The pause indicator is a
 # momentary icon that flashes in the middle of the screen, similar to youtube.
 pause-indicator=yes
