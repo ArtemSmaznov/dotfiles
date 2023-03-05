@@ -10,7 +10,7 @@ Config {
                        ]
    -- Start flavours
    , bgColor         = "#282828"
-   , fgColor         = "#ebdbb2"
+   , fgColor         = "#fbf1c7"
    -- End flavours
    , position        = TopH 24
    , lowerOnStart     = True    -- send to bottom of window stack on start
