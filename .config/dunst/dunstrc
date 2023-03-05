@@ -83,7 +83,7 @@ text_icon_padding = 0
 frame_width = 0
 
 # Defines color of the frame around the notification window.
-frame_color = "#ac5d2f"
+# frame_color = "#ac5d2f"
 
 # Size of gap to display between notifications - requires a compositor.
 # If value is greater than 0, separator_height will be ignored and a border
@@ -251,101 +251,6 @@ mouse_left_click = do_action, close_current
 mouse_middle_click = close_current
 mouse_right_click = close_all
 
-[base16_low]
-msg_urgency = low
-timeout = 15
-# Icon for notifications with low urgency, uncomment to enable
-#icon = /path/to/icon
-
-[base16_normal]
-msg_urgency = normal
-timeout = 60
-# Icon for notifications with normal urgency, uncomment to enable
-#icon = /path/to/icon
-
-[base16_critical]
-msg_urgency = critical
-frame_color = "#ff0000"
-timeout = 0
-# Icon for notifications with critical urgency, uncomment to enable
-#icon = /path/to/icon
-
-# Start flavours
-# [global]
-# frame_color = "#d5c4a1"
-# separator_color = "#d5c4a1"
-
-[base16_low]
-msg_urgency = low
-background = "#3c3836"
-foreground = "#665c54"
-
-[base16_normal]
-msg_urgency = normal
-background = "#504945"
-foreground = "#d5c4a1"
-
-[base16_critical]
-msg_urgency = critical
-background = "#fb4934"
-foreground = "#ebdbb2"
-# End flavours
-
-[experimental]
-
-per_monitor_dpi = false
-
-# Every section that isn't one of the above is interpreted as a rules to
-# override settings for certain messages.
-#
-# Messages can be matched by
-#    appname (discouraged, see desktop_entry)
-#    body
-#    category
-#    desktop_entry
-#    icon
-#    match_transient
-#    msg_urgency
-#    stack_tag
-#    summary
-#
-# and you can override the
-#    background
-#    foreground
-#    format
-#    frame_color
-#    fullscreen
-#    new_icon
-#    set_stack_tag
-#    set_transient
-#    set_category
-#    timeout
-#    urgency
-#    icon_position
-#    skip_display
-#    history_ignore
-#    action_name
-#    word_wrap
-#    ellipsize
-#    alignment
-#    hide_text
-#
-# Shell-like globbing will get expanded.
-#
-# Instead of the appname filter, it's recommended to use the desktop_entry filter.
-# GLib based applications export their desktop-entry name. In comparison to the appname,
-# the desktop-entry won't get localized.
-#
-# SCRIPTING
-# You can specify a script that gets run when the rule matches by
-# setting the "script" option.
-# The script will be called as follows:
-#   script appname summary body icon urgency
-# where urgency can be "LOW", "NORMAL" or "CRITICAL".
-#
-# NOTE: It might be helpful to run dunst -print in a terminal in order
-# to find fitting options for rules.
-
 # Disable the transient hint so that idle_threshold cannot be bypassed from the
 # client
 #[transient_disable]
@@ -378,15 +283,10 @@ per_monitor_dpi = false
 #    summary = "*script*"
 #    script = dunst_test.sh
 
-#[ignore]
+# [ignore]
 #    # This notification will not be displayed
 #    summary = "foobar"
 #    skip_display = true
-
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
 
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
@@ -418,3 +318,51 @@ per_monitor_dpi = false
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
+[mpd]
+appname = "mpd-notification"
+history_ignore = yes
+timeout = 10
+
+[blueman]
+appname = "blueman"
+urgency = low
+
+[digikam]
+appname = "digikam"
+urgency = low
+
+[urgency_low]
+msg_urgency = low
+timeout = 10
+
+[urgency_normal]
+msg_urgency = normal
+timeout = 60
+
+[urgency_critical]
+msg_urgency = critical
+timeout = 0
+
+# Start flavours
+# [global]
+[base16_low]
+msg_urgency = low
+background = "#3c3836"
+foreground = "#bdae93"
+
+[base16_normal]
+msg_urgency = normal
+background = "#504945"
+foreground = "#d5c4a1"
+
+[base16_critical]
+msg_urgency = critical
+frame_color = "#fabd2f"
+background = "#fb4934"
+foreground = "#ebdbb2"
+# End flavours
+
+[experimental]
+
+per_monitor_dpi = false
