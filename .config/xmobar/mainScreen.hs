@@ -28,7 +28,7 @@ Config {
         , Run Date
           "%l:%M %p"
           "time" 10
-        , Run UnsafeStdinReader
+        , Run XMonadLog
         , Run MPD
           ["-t", "  <statei> <fn=4><artist> - <title></fn> [<flags>]" -- ["-t", "<box type=Bottom width=2 mb=2 color=#fabd2f> <statei>  <artist> - <title> </box>"
                , "--"
@@ -96,5 +96,5 @@ Config {
                ] 3600
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 ]
-   , template = " %logo%%time% %sep%%UnsafeStdinReader% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% %trayerpad%"
+   , template = " %logo%%time% %sep%%XMonadLog% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% %trayerpad%"
    }
