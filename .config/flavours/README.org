@@ -11,12 +11,15 @@
 - [[#btop][BTop]]
 - [[#idea-doom-emacs][IDEA Doom Emacs]]
 - [[#dm-lock][dm-lock]]
+- [[#trayer][Trayer]]
 - [[#dunst][Dunst]]
+- [[#strt-eww][STRT eww]]
 - [[#idea-fzf][IDEA FZF]]
 - [[#mpv][MPV]]
 - [[#strt-gtk-2][STRT GTK 2]]
 - [[#strt-gtk-3][STRT GTK 3]]
-- [[#qutebrowser][QuteBrowser]]
+- [[#qtile][qTile]]
+- [[#strt-qutebrowser][STRT QuteBrowser]]
 - [[#rofi][Rofi]]
 - [[#idea-shell][IDEA Shell]]
 - [[#termux][Termux]]
@@ -77,6 +80,7 @@ template = "dmlock"
 rewrite = false
 #+end_src
 
+* TODO Trayer
 * Dunst
 #+begin_src toml
 [[item]]
@@ -85,6 +89,16 @@ template = "dunst"
 subtemplate = "custom"
 hook = "killall dunst"
 rewrite = false
+#+end_src
+
+* STRT eww
+#+begin_src toml
+[[item]]
+file = "~/.config/eww/themes/base16.scss"
+template = "eww"
+subtemplate = "default"
+light = true
+rewrite = true
 #+end_src
 
 * IDEA FZF
@@ -119,7 +133,17 @@ start = "/* Start flavours */"
 end = "/* End flavours */"
 #+end_src
 
-* TODO QuteBrowser
+* qTile
+#+begin_src toml
+[[item]]
+file = "~/.config/qtile/themes/base16.py"
+template = "qtile"
+hook = "qtile cmd-obj -o cmd -f restart"
+light = false
+rewrite = true
+#+end_src
+
+* STRT QuteBrowser
 #+begin_src toml
 [[item]]
 file = "~/.config/qutebrowser/themes/base16.py"

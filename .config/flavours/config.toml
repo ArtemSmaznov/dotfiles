@@ -28,6 +28,13 @@ hook = "killall dunst"
 rewrite = false
 
 [[item]]
+file = "~/.config/eww/themes/base16.scss"
+template = "eww"
+subtemplate = "default"
+light = true
+rewrite = true
+
+[[item]]
 file = "~/.config/mpv/script-opts/torque-progressbar/main.conf"
 template = "mpv"
 subtemplate = "torque-progressbar"
@@ -40,6 +47,13 @@ subtemplate = "gtk-3"
 rewrite = false
 start = "/* Start flavours */"
 end = "/* End flavours */"
+
+[[item]]
+file = "~/.config/qtile/themes/base16.py"
+template = "qtile"
+hook = "qtile cmd-obj -o cmd -f restart"
+light = false
+rewrite = true
 
 [[item]]
 file = "~/.config/qutebrowser/themes/base16.py"
