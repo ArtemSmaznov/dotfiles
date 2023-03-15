@@ -1,0 +1,191 @@
+#+title:       Scripts
+#+author:      Artem Smaznov
+#+description: Miscalenious scripts
+#+startup:     overview
+#+property:    header-args :shebang #!/usr/bin/env bash
+#+auto_tangle: t
+
+* Table of Contents :toc:
+- [[#auto-start][auto-start]]
+- [[#call-trayer][call-trayer]]
+- [[#get-lang][get-lang]]
+- [[#get-music][get-music]]
+- [[#get-mute][get-mute]]
+- [[#get-trayer-width][get-trayer-width]]
+- [[#get-updates][get-updates]]
+- [[#get-uptime][get-uptime]]
+- [[#get-volume][get-volume]]
+- [[#set-lang][set-lang]]
+- [[#set-volume][set-volume]]
+- [[#toggle-mute][toggle-mute]]
+
+* auto-start
+:PROPERTIES:
+:header-args: :shebang #!/usr/bin/env bash :tangle auto-start.sh
+:END:
+Startup Sound
+#+begin_src shell
+paplay "$HOME/public/audio/windows95-startup.wav" &
+#+end_src
+
+Wallpaper
+#+begin_src shell
+~/.local/bin/dm-scripts/dm-wallpaper -refresh &
+#+end_src
+
+Screen Locker
+#+begin_src shell
+# xscreensaver -no-splash &
+# xautolock -time 60 -locker "$HOME/.local/bin/dm-scripts/dm-lock" &
+xss-lock -- "$HOME/.local/bin/dm-scripts/dm-lock" &
+#+end_src
+
+System Utilities
+#+begin_src shell
+eww daemon &
+picom -b &
+nm-applet &
+blueman-applet &
+dunst &
+unclutter -jitter 5 &
+#+end_src
+
+Japanese Language Input
+#+begin_src shell
+fcitx5 -d &
+#+end_src
+
+Background Apps
+#+begin_src shell
+redshift-gtk &
+# solaar -w hide &
+# emacs --daemon &
+#+end_src
+
+Launch Apps
+#+begin_src shell
+# alacritty -t btop -e btop &
+qutebrowser &
+/usr/bin/steam-runtime %U &
+nextcloud &
+#+end_src
+
+* call-trayer
+#+begin_src shell :tangle call-trayer.sh
+color="0x282828"
+bar_size=24
+
+trayer \
+    --edge top \
+    --align right \
+    --widthtype request \
+    --height $bar_size \
+    --SetDockType true \
+    --SetPartialStrut true \
+    --transparent true \
+    --tint $color \
+    --alpha 0 \
+    --expand true \
+    --padding 4 \
+    --monitor 1
+#+end_src
+
+* get-lang
+#+begin_src shell :tangle get-lang.sh
+setxkbmap -query | awk '$1=="layout:" {print $2}'
+#+end_src
+
+* get-music
+#+begin_src shell :tangle get-music.sh
+usage="""Usage:
+    get-music.sh song
+    get-music.sh state
+    get-music.sh flags """
+
+convert_flag() {
+    if [[ $(mpc status "%$1%") == "on" ]]
+    then echo $2
+    else echo -
+    fi
+}
+
+get_flags() {
+    echo "[$(convert_flag repeat r)$(convert_flag random z)$(convert_flag single s)$(convert_flag consume c)]"
+}
+
+case $1 in
+    song) mpc current -f "%artist% - %title%";;
+    state) mpc status "%state%";;
+    flags) get_flags;;
+    ,*) echo "$usage"
+esac
+#+end_src
+
+* get-mute
+#+begin_src shell :tangle get-mute.sh
+stream=$( amixer sget Master | grep "%" | awk -F'[][]' '{print $4}' | sort -u )
+if [ $stream == "on" ]
+then echo off
+else echo on
+fi
+#+end_src
+
+* get-trayer-width
+#+begin_src shell :tangle get-trayer-width.sh
+if [ $(pidof trayer) ]
+then xprop -name panel | grep 'program specified minimum size' | awk '{print $5}'
+else echo 0
+fi
+#+end_src
+
+* get-updates
+#+begin_src shell :tangle get-updates.sh
+checkupdates | wc -l
+#+end_src
+
+* get-uptime
+#+begin_src shell :tangle get-uptime.sh
+uptime --pretty \
+    | sed -e 's/up //' \
+          -e 's/ \([a-z]\)\w*,*/\1/g' \
+    | awk '{print $1 " " $2}'
+#+end_src
+
+* get-volume
+#+begin_src shell :tangle get-volume.sh
+amixer sget Master | grep "%" | awk -F'[][]' '{print $2}' | tr -d '%' | sort -r | head -1
+#+end_src
+
+* set-lang
+#+begin_src shell :tangle set-lang.sh
+#
+# Usage: set-lang.sh [language]
+# Examples:
+# - set-lang.sh jp
+# - set-lang.sh en
+
+setxkbmap -layout $1
+
+if [[ $(eww ping 2> /dev/null) == "pong" ]]
+then eww update kbd=$1
+fi
+#+end_src
+
+* set-volume
+#+begin_src shell :tangle set-volume.sh
+#
+# Usage: set-volume.sh [+-] [%step]
+# Examples:
+# - set-volume.sh + 2
+# - set-volume.sh - 1
+
+direction=$1
+step=$2
+
+amixer -q sset Master ${step}%${direction} unmute
+#+end_src
+
+* toggle-mute
+#+begin_src shell :tangle toggle-mute.sh
+amixer -q sset Master toggle
+#+end_src
