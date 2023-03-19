@@ -7,14 +7,18 @@
 
 * Table of Contents :toc:
 - [[#auto-start][auto-start]]
-- [[#call-trayer][call-trayer]]
+- [[#get-battery][get-battery]]
+- [[#get-ip][get-ip]]
 - [[#get-lang][get-lang]]
 - [[#get-music][get-music]]
 - [[#get-mute][get-mute]]
+- [[#get-network-interface][get-network-interface]]
 - [[#get-trayer-width][get-trayer-width]]
 - [[#get-updates][get-updates]]
 - [[#get-uptime][get-uptime]]
 - [[#get-volume][get-volume]]
+- [[#listen-title][listen-title]]
+- [[#listen-workspace][listen-workspace]]
 - [[#set-lang][set-lang]]
 - [[#set-volume][set-volume]]
 - [[#toggle-mute][toggle-mute]]
@@ -42,7 +46,6 @@ xss-lock -- "$HOME/.local/bin/dm-scripts/dm-lock" &
 
 System Utilities
 #+begin_src shell
-eww daemon &
 picom -b &
 nm-applet &
 blueman-applet &
@@ -70,24 +73,32 @@ qutebrowser &
 nextcloud &
 #+end_src
 
-* call-trayer
-#+begin_src shell :tangle call-trayer.sh
-color="0x282828"
-bar_size=24
+* get-battery
+List available batteries
+#+begin_example shell
+upower -e
+#+end_example
 
-trayer \
-    --edge top \
-    --align right \
-    --widthtype request \
-    --height $bar_size \
-    --SetDockType true \
-    --SetPartialStrut true \
-    --transparent true \
-    --tint $color \
-    --alpha 0 \
-    --expand true \
-    --padding 4 \
-    --monitor 1
+metric:
++ percentage
++ present
++ state
++ warning-level
+
+device:
++ battery_ps_controller_battery_a0oabo51o62o65o1d
+#+begin_src shell :tangle get-battery.sh
+metric=$1
+device=$2
+
+# upower -i "/org/freedesktop/UPower/devices/battery_ps_controller_battery_a0oabo51o62o65o1d"
+upower -i "/org/freedesktop/UPower/devices/$device" | grep $metric | awk '{print $2}' | sed 's/%//'
+#+end_src
+
+* get-ip
+#+begin_src shell :tangle get-ip.sh
+# curl -s https://ipinfo.io/ip
+curl -s ifconfig.co
 #+end_src
 
 * get-lang
@@ -130,6 +141,14 @@ else echo on
 fi
 #+end_src
 
+* get-network-interface
+#+begin_src shell :tangle get-network-interface.sh
+route |
+    grep default |
+    head -1 |
+    awk '{print $8}'
+#+end_src
+
 * get-trayer-width
 #+begin_src shell :tangle get-trayer-width.sh
 if [ $(pidof trayer) ]
@@ -154,6 +173,34 @@ uptime --pretty \
 * get-volume
 #+begin_src shell :tangle get-volume.sh
 amixer sget Master | grep "%" | awk -F'[][]' '{print $2}' | tr -d '%' | sort -r | head -1
+#+end_src
+
+* listen-title
+#+begin_src shell :tangle listen-title.sh
+xprop -spy -root _NET_ACTIVE_WINDOW |
+    while read window_id
+    do
+        echo $window_id |
+            awk '{print "getwindowname " $5}' |
+            xdotool - |
+            sed 's/\(.\{20\}\).*/\1.../'
+    done
+#+end_src
+
+* listen-workspace
+xmonad workspaces
+#+begin_example shell
+xprop -root -spy -notype _XMONAD_LOG | \
+        stdbuf -oL sed -e 's/^_XMONAD_LOG = "//'  -e 's/|||.*//'   -e 's/\\"/"/g'
+#+end_example
+
+active workspace
+#+begin_src shell :tangle listen-workspace.sh
+xprop -spy -root _NET_CURRENT_DESKTOP |
+    while read workspace_index; do
+        echo $workspace_index |
+            awk '{print $3}'
+    done
 #+end_src
 
 * set-lang

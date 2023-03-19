@@ -7,7 +7,6 @@ paplay "$HOME/public/audio/windows95-startup.wav" &
 # xautolock -time 60 -locker "$HOME/.local/bin/dm-scripts/dm-lock" &
 xss-lock -- "$HOME/.local/bin/dm-scripts/dm-lock" &
 
-eww daemon &
 picom -b &
 nm-applet &
 blueman-applet &

@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 color="0x282828"
+
 bar_size=24
 
+if [[ $(pidof trayer) ]]
+then
+    killall trayer
+fi
+
+sleep 2
 trayer \
     --edge top \
     --align right \
@@ -15,3 +22,5 @@ trayer \
     --expand true \
     --padding 4 \
     --monitor 1
+    # --distancefrom right \
+    # --distance 400 \

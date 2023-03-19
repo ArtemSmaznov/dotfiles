@@ -1,0 +1,50 @@
+#+title:       Trayer
+#+author:      Artem Smaznov
+#+description: A lightweight GTK2-based systray for UNIX desktop
+#+startup:     overview
+#+property:    header-args :shebang #!/usr/bin/env bash :tangle trayer.sh
+#+auto_tangle: t
+
+* Table of Contents :toc:
+- [[#theme][Theme]]
+- [[#size][Size]]
+- [[#killing][Killing]]
+- [[#config][Config]]
+
+* Theme
+#+begin_src shell
+color="0x282828"
+#+end_src
+
+* Size
+#+begin_src shell
+bar_size=24
+#+end_src
+
+* Killing
+#+begin_src shell
+if [[ $(pidof trayer) ]]
+then
+    killall trayer
+fi
+#+end_src
+
+* Config
+#+begin_src shell
+sleep 2
+trayer \
+    --edge top \
+    --align right \
+    --widthtype request \
+    --height $bar_size \
+    --SetDockType true \
+    --SetPartialStrut true \
+    --transparent true \
+    --tint $color \
+    --alpha 0 \
+    --expand true \
+    --padding 4 \
+    --monitor 1
+    # --distancefrom right \
+    # --distance 400 \
+#+end_src
