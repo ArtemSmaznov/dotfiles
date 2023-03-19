@@ -17,8 +17,10 @@
 - [[#get-updates][get-updates]]
 - [[#get-uptime][get-uptime]]
 - [[#get-volume][get-volume]]
+- [[#listen-current-workspace][listen-current-workspace]]
 - [[#listen-title][listen-title]]
-- [[#listen-workspace][listen-workspace]]
+- [[#listen-wm-layout][listen-wm-layout]]
+- [[#listen-wm-workspaces][listen-wm-workspaces]]
 - [[#set-lang][set-lang]]
 - [[#set-volume][set-volume]]
 - [[#toggle-mute][toggle-mute]]
@@ -175,6 +177,16 @@ uptime --pretty \
 amixer sget Master | grep "%" | awk -F'[][]' '{print $2}' | tr -d '%' | sort -r | head -1
 #+end_src
 
+* listen-current-workspace
+active workspace
+#+begin_src shell :tangle listen-current-workspace.sh
+xprop -spy -root _NET_CURRENT_DESKTOP |
+    while read workspace_index; do
+        echo $workspace_index |
+            awk '{print $3}'
+    done
+#+end_src
+
 * listen-title
 #+begin_src shell :tangle listen-title.sh
 xprop -spy -root _NET_ACTIVE_WINDOW |
@@ -182,25 +194,47 @@ xprop -spy -root _NET_ACTIVE_WINDOW |
     do
         echo $window_id |
             awk '{print "getwindowname " $5}' |
-            xdotool - |
-            sed 's/\(.\{20\}\).*/\1.../'
+            xdotool -
     done
 #+end_src
 
-* listen-workspace
-xmonad workspaces
-#+begin_example shell
-xprop -root -spy -notype _XMONAD_LOG | \
-        stdbuf -oL sed -e 's/^_XMONAD_LOG = "//'  -e 's/|||.*//'   -e 's/\\"/"/g'
-#+end_example
+* listen-wm-layout
+#+begin_src shell :tangle listen-wm-layout.sh
+if [[ $DESKTOP_SESSION == "xmonad" ]]
+then
+    xprop -spy -root _XMONAD_LOG |
+        stdbuf -oL sed 's/^.*= //' |
+        stdbuf -oL sed 's/^"\(.*\)"$/\1/' |
+        stdbuf -oL awk -F'::::' '{ print $2 }'
+fi
 
-active workspace
-#+begin_src shell :tangle listen-workspace.sh
-xprop -spy -root _NET_CURRENT_DESKTOP |
-    while read workspace_index; do
-        echo $workspace_index |
-            awk '{print $3}'
-    done
+exit 0
+#+end_src
+
+* listen-wm-workspaces
+#+begin_src shell :tangle listen-wm-workspaces.sh
+if [[ $DESKTOP_SESSION == "xmonad" ]]
+then
+    xprop -spy -root _XMONAD_LOG |
+        stdbuf -oL sed 's/^.*= //' |
+        stdbuf -oL sed 's/^"\(.*\)"$/\1/' |
+        stdbuf -oL awk -F'::::' "{ print \$1 }"
+fi
+
+exit 0
+#+end_src
+
+#+begin_src shell :tangle listen-wm-workspaces.sh :tangle no
+if [[ $DESKTOP_SESSION == "xmonad" ]]
+then
+    xprop -spy -root _XMONAD_LOG |
+        stdbuf -oL sed 's/^.*= //' |
+        stdbuf -oL sed 's/^"\(.*\)"$/\1/' |
+        stdbuf -oL awk -F'::::' "{ print \"[\\\"\" \$1 \"\\\"]\" }" |
+        stdbuf -oL sed 's/ /\", \"/g'
+fi
+
+exit 0
 #+end_src
 
 * set-lang
