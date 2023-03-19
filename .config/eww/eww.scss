@@ -1,0 +1,141 @@
+@import "./themes/base16.scss";
+
+$main-font: "Hack Nerd Font";
+$icon-font: "Font Awesome 6 Free Solid";
+$jp-font: "Source Han Sans JP";
+
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  background-color: $base00;
+  color: $base07;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  font: 14px $main-font;
+}
+
+// music
+.music {
+  font-family: $jp-font;
+}
+
+.music .music-flags {
+  padding-left: 5px;
+}
+
+// color overwrites
+.state-good,    .green  { color: $base0B; }
+.state-warning, .yellow { color: $base0A; }
+.state-urgent,  .red    { color: $base08; }
+
+
+// icons
+.icon, .workspaces button {
+  font: 14px $icon-font;
+}
+
+.icon {
+  padding-right: 5px;
+}
+
+// power menu
+button:hover { color: $base0E; }
+
+.shutdown, .reboot, .suspend, .lock-screen, .log-out {
+  font: 16px $icon-font;
+  padding-right: 7px;
+}
+
+.shutdown    { color: $base08; }
+.reboot      { color: $base0A; }
+.suspend     { color: $base0D; }
+.lock-screen { color: $base0C; }
+.log-out     { color: $base0B; }
+
+// ---
+.workspaces .current {
+  border-top: 2px solid $base0E;
+  border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.start-logo {
+  margin-left: 5px;
+}
+
+.time {
+  margin-left: 5px;
+}
+
+.date {
+  margin-right: 10px;
+}
+
+.separator {
+  all: unset;
+  color: $base03;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.bar .status-widget {
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+// ------
+
+.rightside slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.slider scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: $base00;
+  border-radius: 10px;
+}
+.slider scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.slider scale trough highlight {
+  all: unset;
+  background-color: $base0E;
+  color: $base00;
+  border-radius: 10px;
+}
+.slider scale trough {
+  all: unset;
+  background-color: $base02;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+}
+// .label-ram {
+//   font-size: large;
+// }
+
+// calendar
+calendar {
+  padding: 4px;
+}
+
+calendar:selected {
+  color: $base0E;
+  font-weight: bold;
+}
+
+.ws-urgent       { color: $base08; }
+.ws-current-main { color: $base0E; }
+.ws-current-side { color: $base0F; }
+.ws-filled       { color: $base07; }
+.ws-empty        { color: $base02; }

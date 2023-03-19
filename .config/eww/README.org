@@ -1,0 +1,556 @@
+#+title:       Elkowar's Wacky Widgets
+#+author:      Artem Smaznov
+#+description: Standalone widget system that allows you to implement your own, custom widgets in any window manager
+#+startup:     overview
+#+property:    header-args :tangle eww.yuck
+#+auto_tangle: t
+
+* Variables
+User Constants
+#+begin_src yuck
+(defvar profile-face "/home/artem/.face")
+(defvar scripts "~/.local/bin")
+(defvar dm-scripts "~/.local/bin/dm-scripts")
+#+end_src
+
+#+begin_src yuck
+;; shows screen instead of monitor - always 0
+(defpoll focused-screen :interval "1s"
+  "eval $(xdotool getactivewindow getwindowgeometry --shell) && echo $SCREEN"
+  )
+#+end_src
+
+* Main Bar
+#+begin_src yuck
+(defwindow bar0
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "24px"
+                      :anchor "top center")
+  :reserve (struts :side "top"
+                   :distance "24px")
+  (centerbox :orientation "h"
+             :class "bar"
+             (box :class "leftside"
+                  :orientation "h"
+                  :space-evenly false
+                  :halign "start"
+                  (logo)
+                  (time)
+                  (separator)
+                  (workspaces)
+                  (separator)
+                  wm-layout
+                  (separator)
+                  (window-title))
+             (debug)
+             (box :class "rightside"
+                  :orientation "h"
+                  :space-evenly false
+                  :halign "end"
+                  (music)
+                  (separator)
+                  (kbd)
+                  (separator)
+                  (updates)
+                  (ram)
+                  (cpu)
+                  (volume)
+                  ;; (disk_usage :icon "根hdd"
+                  ;;             :disk "/")
+                  ;; (disk_usage :icon "家hdd"
+                  ;;             :disk "/home/artem")
+                  (separator)
+                  (date)
+                  (profile))))
+#+end_src
+
+* Secondary Bar
+#+begin_src yuck
+(defwindow bar1
+  :monitor 1
+  :windowtype "dock"
+  :stacking "bg"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "24px"
+                      :anchor "top center")
+  :reserve (struts :side "top"
+                   :distance "24px")
+  (centerbox :orientation "h"
+             :class "bar"
+             (box :class "leftside"
+                  :orientation "h"
+                  :space-evenly false
+                  :halign "start"
+                  (logo)
+                  (time)
+                  (separator)
+                  (workspaces-old)
+                  (separator)
+                  (window-title))
+             ""
+             (box :class "rightside"
+                  :orientation "h"
+                  :space-evenly false
+                  :halign "end"
+                  (music)
+                  (separator)
+                  (kbd)
+                  (separator)
+                  (battery)
+                  (volume)
+                  (uptime)
+                  (separator)
+                  (date)
+                  (sys-tray))))
+#+end_src
+
+* Bar Widgets
+** Debug
+#+begin_src yuck
+(defvar debug "")
+
+(defwidget debug []
+  (box :class "debug"
+       :orientation "h"
+       :halign "center"
+       debug
+       ))
+#+end_src
+
+** Separator
+#+begin_src yuck
+(defwidget separator []
+  (box :class "separator"
+       :orientation "h"
+       :halign "center"
+       "|"))
+#+end_src
+
+** Logo
+#+begin_src yuck
+(defwidget logo []
+  (image :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+         :image-height "24"
+         :class "start-logo"))
+#+end_src
+
+** Time
+#+begin_src yuck
+(defwidget time []
+  (box :class "time"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {time}))
+
+(defpoll time
+  :interval "1s"
+  :initial "0:00 AM"
+   "date '+%l:%M %p'")
+#+end_src
+
+** Workspaces
+#+begin_src yuck
+(defwidget workspaces-old []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 12
+    (button :onclick "xdotool key super+1" :class { focused-workspace == 0 ? "current" : "" } "globe")
+    (button :onclick "xdotool key super+2" :class { focused-workspace == 1 ? "current" : "" } "gamepad")
+    (button :onclick "xdotool key super+3" :class { focused-workspace == 2 ? "current" : "" } "keyboard")
+    (button :onclick "xdotool key super+4" :class { focused-workspace == 3 ? "current" : "" } "folder")
+    (button :onclick "xdotool key super+5" :class { focused-workspace == 4 ? "current" : "" } "headphones")
+    (button :onclick "xdotool key super+6" :class { focused-workspace == 5 ? "current" : "" } "camera")
+    (button :onclick "xdotool key super+7" :class { focused-workspace == 6 ? "current" : "" } "sms")
+    (button :onclick "xdotool key super+8" :class { focused-workspace == 7 ? "current" : "" } "layer-group")
+    (button :onclick "xdotool key super+9" :class { focused-workspace == 8 ? "current" : "" } "chart-bar")))
+
+(deflisten focused-workspace
+  :initial 0
+  "~/.local/bin/listen-current-workspace.sh")
+#+end_src
+
+#+begin_src yuck
+(deflisten workspaces
+  "~/.local/bin/listen-wm-workspaces.sh")
+
+(defvar foo 0)
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :spacing 6
+       (for ws in { captures(workspaces, "\\S*") }
+            (button :onclick "xdotool key super+1"
+                    :class { ws[0] =~ "!" ? "ws-urgent"       :
+                             ws[0] =~ "]" ? "ws-current-main" :
+                             ws[0] =~ ">" ? "ws-current-side" :
+                             ws[0] =~ "-" ? "ws-filled"       :
+                             ws[0] =~ "_" ? "ws-empty"        :
+                                         "ws-urgent"       }
+                    { replace(ws[0], "[!<>-]", "") }
+                    ))))
+#+end_src
+
+** Layout
+#+begin_src yuck
+(deflisten wm-layout
+  "~/.local/bin/listen-wm-layout.sh")
+#+end_src
+
+** Title
+#+begin_src yuck
+(defwidget window-title []
+  (label :limit-width 30
+         :text window-title))
+
+(deflisten window-title
+  "~/.local/bin/listen-title.sh")
+#+end_src
+
+** Music
+#+begin_src yuck
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+       (icon :icon { music-song  == ""        ? "stop"  :
+                     music-state == "playing" ? "music" :
+                                                "pause" })
+       (label :class "music-song"
+              :limit-width 40
+              :text music-song)
+       (label :class "music-flags"
+              :text music-flags)
+       ))
+
+(defpoll music-song  :interval "1s"
+  "~/.local/bin/get-music.sh song")
+
+(defpoll music-state :interval "1s"
+  :iniitial "paused"
+  "~/.local/bin/get-music.sh state")
+
+(defpoll music-flags :interval "1s"
+  :iniitial "[----]"
+  "~/.local/bin/get-music.sh flags")
+#+end_src
+
+** System Tray
+#+begin_src yuck
+(defwidget sys-tray []
+  (box :orientation "h"
+       :visible { trayer-width != 0 ? true : false }
+       :space-evenly false
+       (separator)
+       (box :orientation "h"
+            :width trayer-width)))
+
+(defpoll trayer-width
+  :interval "2s"
+  :initial "0"
+  :run-while true
+  "~/.local/bin/get-trayer-width.sh")
+#+end_src
+
+** Keyboard Layout
+#+begin_src yuck
+(defvar kbd "us")
+
+(defwidget kbd []
+  (box :orientation "h"
+       :space-evenly false
+       (flag :lang kbd)))
+
+(defwidget flag [?lang]
+  (image :image-height "18"
+         :path "/usr/share/iso-flag-png/${lang}.png"))
+
+;; (defpoll kbd :interval "1s"
+;;              :initial "us"
+;;              "~/.local/bin/get-lang.sh")
+#+end_src
+
+** Pacman
+#+begin_src yuck
+(defwidget updates []
+  (box :class { updates ==   0 ? "status-widget state-good"  :
+                updates ==  69 ? "status-widget red"         :
+                updates == 220 ? "status-widget yellow"      :
+                updates == 420 ? "status-widget green"       :
+                                 "status-widget"             }
+       :orientation "h"
+       :space-evenly false
+       (icon :icon { updates ==   0 ? "check"    :
+                     updates ==  69 ? "heart"    :
+                     updates == 220 ? "bolt"     :
+                     updates == 404 ? "warning"  :
+                     updates == 420 ? "cannabis" :
+                                      "bell" })
+       (revealer :class { updates >= 400 ? "state-warning" : "" }
+                 :transition "slideright"
+                 :reveal {updates > 0 ? true : false}
+                 :duration 2
+                 updates)
+       )
+  )
+
+(defpoll updates :interval "30m"
+                 :initial 0
+                 "~/.local/bin/get-updates.sh")
+#+end_src
+
+** Battery
+#+begin_src yuck
+(defwidget battery []
+  (revealer :transition "slideright"
+            :reveal {present == "yes" ? true : false}
+            :duration 2
+            (slider :icon "gamepad"
+                    :value charge
+                    :onchange ""
+                    )))
+
+(defpoll charge :interval "10s"
+  :iniitial 50
+  "~/.local/bin/get-battery.sh percentage battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll present :interval "10s"
+  :iniitial 50
+  "~/.local/bin/get-battery.sh present battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll state :interval "10s"
+  :iniitial 50
+  "~/.local/bin/get-battery.sh state battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll warning-level :interval "10s"
+  :iniitial 50
+  "~/.local/bin/get-battery.sh warning-level battery_ps_controller_battery_a0oabo51o62o65o1d")
+#+end_src
+
+** RAM
+#+begin_src yuck
+(defwidget ram []
+    (slider :icon "memory"
+            :value {EWW_RAM.used_mem_perc}
+            :onchange ""))
+#+end_src
+
+** CPU
+#+begin_src yuck
+(defwidget cpu []
+    (slider :icon "microchip"
+            :value {EWW_CPU.avg}
+            :onchange ""))
+#+end_src
+
+** Disk Usage
+#+begin_src yuck
+(defwidget disk_usage [?icon disk]
+    (slider :icon icon
+            :value {round((1 - (EWW_DISK[disk].free / EWW_DISK[disk].total)) * 100, 0)}
+            :onchange ""))
+#+end_src
+
+** Volume
+#+begin_src yuck
+(defwidget volume []
+    (slider :icon { mute   == "on" ? "volume-xmark" :
+                    volume ==  0   ? "volume-off"   :
+                    volume <= 40   ? "volume-low"   :
+                                     "volume-high"  }
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%"
+            ))
+
+(defpoll volume :interval "1s"
+                :iniitial 50
+                "~/.local/bin/get-volume.sh")
+
+(defpoll mute :interval "1s"
+              :iniitial "off"
+              "~/.local/bin/get-mute.sh")
+#+end_src
+
+** Uptime
+#+begin_src yuck
+(defwidget uptime []
+  (box :orientation "h"
+       :space-evenly false
+       (icon :icon "circle-arrow-up")
+       uptime))
+
+(defpoll uptime :interval "1m"
+                :initial "0d 0h"
+                "~/.local/bin/get-uptime.sh")
+#+end_src
+
+** Date
+#+begin_src yuck
+(defwidget date []
+  (eventbox :onclick      "eww open --toggle --screen $(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}') calendar-window"
+            :cursor "pointer"
+            (box :class "date"
+                 :orientation "h"
+                 :space-evenly false
+                 :halign "center"
+                 (icon :icon { matches(date, "20 Apr") ? "cannabis" :
+                               matches(date, "25 Dec") ? "candy-cane" :
+                               matches(date, "31 Dec") ? "champagne-glasses" :
+                                                         "calendar" })
+                 {date})))
+
+(defpoll date
+  :interval "1h"
+  :initial "1 Jan 1970"
+  "date '+%a, %d %b %Y'")
+#+end_src
+
+** Profile
+#+begin_src yuck
+(defvar show-power-menu false)
+(defwidget profile []
+  (eventbox :onhover     "eww update show-power-menu=true"
+            :onhoverlost "eww update show-power-menu=false"
+            :cursor "pointer"
+            :timeout 5
+            (box :orientation "h"
+                 :space-evenly false
+                 (revealer :transition "slideleft"
+                           :reveal show-power-menu
+                           :duration 2
+                           (power-menu))
+                 (image :path profile-face
+                        :image-height 24))))
+
+(defwidget power-menu []
+  (box :orientation "h"
+       :space-evenly true
+       :class "status-widget power-menu"
+       (button :onclick "eww update confirmation-message='Shutdown System?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
+               :tooltip "Shutdown"
+               :class "shutdown"
+               "power-off")
+       (button :onclick "eww update confirmation-message='Restart System?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
+               :tooltip "Reboot"
+               :class "reboot"
+               "rotate")
+       (button :onclick "eww update confirmation-message='Suspend System?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
+               :tooltip "Suspend"
+               :class "suspend"
+               "moon")
+       (button :onclick "${dm-scripts}/dm-power lock"
+               :tooltip "Lock Screen"
+               :class "lock-screen"
+               "lock")
+       (button :onclick "eww update confirmation-message='Log Out?' yes-command='eww reload' && eww open confirmation-window"
+               :tooltip "Logout"
+               :class "log-out"
+               "right-from-bracket")))
+#+end_src
+
+* Calendar
+#+begin_src yuck
+(defwindow calendar-window
+  :monitor 0
+  :geometry (geometry :x "-10px"
+                      :y "34px"
+                      :anchor "top right")
+  :windowtype "dialog"
+  :stacking "fg"
+  :wm-ignore true
+  (calendar :show-details true
+            :show-heading true
+            :show-day-names true
+            :show-week-numbers false)
+  )
+#+end_src
+
+* Templates
+** Icon
+#+begin_src yuck
+(defwidget icon [?icon]
+  (box :class "icon" icon))
+#+end_src
+
+** Slider
+#+begin_src yuck
+(defwidget slider [icon value onchange]
+  (box :orientation "h"
+       :class "slider status-widget"
+       :space-evenly false
+    (icon :icon icon)
+    (scale :min 0
+           :max 100
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+#+end_src
+
+** Circular Progress
+#+begin_src yuck
+(defwidget circular [icon value]
+  (box :orientation "h"
+       :class "progress status-widget"
+       :space-evenly false
+       (icon :icon icon)
+       (circular-progress :value value
+                          :start-at 0
+                          :thickness 7
+                          :clockwise true
+                          )))
+#+end_src
+
+** Confirmation Window
+#+begin_src yuck
+(defwindow confirmation-window
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "300px"
+                      :height "100px"
+                      :anchor "center")
+  :windowtype "dialog"
+  :stacking "fg"
+  :wm-ignore true
+  (confirmation-dialog)
+  )
+#+end_src
+
+#+begin_src yuck
+(defvar confirmation-message "")
+(defvar yes-command "")
+(defvar dismiss-command "eww close confirmation-window")
+
+(defwidget confirmation-dialog []
+  (box :orientation "v"
+       confirmation-message
+       (box :orientation "h"
+            (button :onclick "${yes-command} & ${dismiss-command}"
+                    "Yes")
+            (button :onclick dismiss-command
+                    "No")
+       )))
+#+end_src
+
+* Scripts
+** Open Bars
+#+begin_src shell :shebang #!/usr/bin/env bash :tangle open-bars.sh
+if [[ ! $(pidof eww) ]]; then
+    eww daemon
+fi
+
+eww open-many \
+    bar0 \
+    bar1
+#+end_src
