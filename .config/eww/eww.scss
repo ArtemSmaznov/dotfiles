@@ -56,10 +56,11 @@ button:hover { color: $base0E; }
 .log-out     { color: $base0B; }
 
 // ---
-.workspaces .current {
-  border-top: 2px solid $base0E;
-  border-bottom: 2px solid rgba(0,0,0,0);
-}
+.ws-urgent       { color: $base08; }
+.ws-current-main { border-top: 2px solid $base0E; border-bottom: 2px solid $base00; }
+.ws-current-side { border-top: 2px solid $base00; border-bottom: 2px solid $base0F; }
+.ws-filled       { color: $base07; }
+.ws-empty        { color: $base02; }
 
 .start-logo {
   margin-left: 5px;
@@ -133,9 +134,3 @@ calendar:selected {
   color: $base0E;
   font-weight: bold;
 }
-
-.ws-urgent       { color: $base08; }
-.ws-current-main { color: $base0E; }
-.ws-current-side { color: $base0F; }
-.ws-filled       { color: $base07; }
-.ws-empty        { color: $base02; }

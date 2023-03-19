@@ -90,16 +90,13 @@ User Constants
                   (logo)
                   (time)
                   (separator)
-                  (workspaces-old)
-                  (separator)
-                  (window-title))
-             ""
+                  (workspaces)
+                  (separator))
+             (window-title)
              (box :class "rightside"
                   :orientation "h"
                   :space-evenly false
                   :halign "end"
-                  (music)
-                  (separator)
                   (kbd)
                   (separator)
                   (battery)
@@ -157,28 +154,6 @@ User Constants
 
 ** Workspaces
 #+begin_src yuck
-(defwidget workspaces-old []
-  (box :class "workspaces"
-       :orientation "h"
-       :space-evenly false
-       :halign "start"
-       :spacing 12
-    (button :onclick "xdotool key super+1" :class { focused-workspace == 0 ? "current" : "" } "globe")
-    (button :onclick "xdotool key super+2" :class { focused-workspace == 1 ? "current" : "" } "gamepad")
-    (button :onclick "xdotool key super+3" :class { focused-workspace == 2 ? "current" : "" } "keyboard")
-    (button :onclick "xdotool key super+4" :class { focused-workspace == 3 ? "current" : "" } "folder")
-    (button :onclick "xdotool key super+5" :class { focused-workspace == 4 ? "current" : "" } "headphones")
-    (button :onclick "xdotool key super+6" :class { focused-workspace == 5 ? "current" : "" } "camera")
-    (button :onclick "xdotool key super+7" :class { focused-workspace == 6 ? "current" : "" } "sms")
-    (button :onclick "xdotool key super+8" :class { focused-workspace == 7 ? "current" : "" } "layer-group")
-    (button :onclick "xdotool key super+9" :class { focused-workspace == 8 ? "current" : "" } "chart-bar")))
-
-(deflisten focused-workspace
-  :initial 0
-  "~/.local/bin/listen-current-workspace.sh")
-#+end_src
-
-#+begin_src yuck
 (deflisten workspaces
   "~/.local/bin/listen-wm-workspaces.sh")
 
@@ -228,7 +203,7 @@ User Constants
                      music-state == "playing" ? "music" :
                                                 "pause" })
        (label :class "music-song"
-              :limit-width 40
+              :limit-width 50
               :text music-song)
        (label :class "music-flags"
               :text music-flags)
@@ -305,7 +280,7 @@ User Constants
        )
   )
 
-(defpoll updates :interval "30m"
+(defpoll updates :interval "15m"
                  :initial 0
                  "~/.local/bin/get-updates.sh")
 #+end_src
