@@ -1,0 +1,3 @@
+default:
+  extension: .scss
+  output: themes/base16

@@ -1,0 +1,87 @@
+# Base16 {{scheme-name}} theme
+# by {{scheme-author}}
+# template by Artem Smaznov
+
+# Here are some useful ASS override tags (omit square brackets)
+# \fn[Font Name] : sets the font to the named font.
+# \fs[number]    : sets the font size to the given number.
+# \b[1/0]        : sets the text bold or not (\b1 is bold, \b0 is regular weight).
+# \i[1/0]        : sets the text italic or not (same semantics as bold).
+# \bord[number]  : sets the outline width to the given number (in pixels).
+# \shad[number]  : sets the shadow size to the given number (pixels).
+# \c&H[BBGGRR]&  : sets the fill color for the text to the given color (hex pairs in
+#                the order, blue, green, red).
+# \3c&H[BBGGRR]& : sets the outline color of the text to the given color.
+# \4c&H[BBGGRR]& : sets the shadow color of the text to the given color.
+# \alpha&H[AA]&  : sets the line's transparency as a hex pair. 00 is fully opaque
+#                and FF is fully transparent. Some UI elements are composed of
+#                multiple layered lines, so adding transparency may not look good.
+#                For further granularity, \1a&H[AA]& controls the fill opacity,
+#                \3a&H[AA]& controls the outline opacity, and \4a&H[AA]& controls
+#                the shadow opacity.
+
+# Default style that is applied to all UI elements. A string of ASS override tags.
+# Individual elements have their own style settings which override the tags here.
+# Changing the font will likely require changing the hover-time margin settings
+# and the offscreen-pos settings.
+default-style=\fnSource Sans Pro\fs30\b1\bord0\shad0\c&H{{base06-hex-b}}{{base06-hex-g}}{{base06-hex-r}}& # Base 06
+
+# A string of ASS override tags that get applied to all three layers of the bar:
+# progress, cache, and background. You probably don't want to remove \bord0 unless
+# your default-style includes it.
+bar-default-style=\bord0\shad0
+
+# A string of ASS override tags that get applied only to the progress layer of the
+# bar.
+bar-foreground-style=\alpha&H00\c&H{{base08-hex-b}}{{base08-hex-g}}{{base08-hex-r}}& # Base 08 - Red
+
+# A string of ASS override tags that get applied only to the cache layer of the
+# bar, particularly the part of the cache bar that is behind the current playback
+# position. The default sets only the color.
+bar-cache-style=\c&H{{base04-hex-b}}{{base04-hex-g}}{{base04-hex-r}}& # Base 04
+
+# A string of ASS override tags that get applied only to the cache layer of the
+# bar, particularly the part of the cache bar that is after the current playback
+# position. The tags specified here are applied after bar-cache-style and override
+# them. Leaving this blank will leave the style the same as specified by bar-
+# cache-style. The split does not account for a nonzero progress-bar-width and may
+# look odd when used in tandem with that setting.
+bar-cache-background-style=
+
+# A string of ASS override tags that get applied only to the background layer of
+# the bar. The default sets only the color.
+bar-background-style=\c&H{{base00-hex-b}}{{base00-hex-g}}{{base00-hex-r}}& # Base 00 - Black
+
+# A string of ASS override tags that get applied only to the elapsed time display.
+elapsed-style=\c&H{{base07-hex-b}}{{base07-hex-g}}{{base07-hex-r}}& # Base 07 - White
+
+# A string of ASS override tags that get applied only to the remaining time
+# display.
+remaining-style=\c&H{{base07-hex-b}}{{base07-hex-g}}{{base07-hex-r}}& # Base 07 - White
+
+# A string of ASS override tags that get applied only to the hover time display.
+# Unfortunately, due to the way the hover time display is animated, alpha values
+# set here will be overridden. This is subject to change in future versions.
+hover-time-style=\fs26
+
+# A string of ASS override tags that get applied only to the video title display.
+title-style=\c&H{{base07-hex-b}}{{base07-hex-g}}{{base07-hex-r}}& # Base 07 - White
+
+# A string of ASS override tags that get applied only to the system time display.
+system-time-style=\c&H{{base05-hex-b}}{{base05-hex-g}}{{base05-hex-r}}& # Base 05
+
+# A string of ASS override tags that get applied only to the foreground of the
+# pause indicator.
+pause-indicator-foreground-style=\c&H{{base06-hex-b}}{{base06-hex-g}}{{base06-hex-r}}& # Base 06
+
+# A string of ASS override tags that get applied only to the background of the
+# pause indicator.
+pause-indicator-background-style=\c&H{{base00-hex-b}}{{base00-hex-g}}{{base00-hex-r}}& # Base 00 - Black
+
+# A string of ASS override tags that get applied only to chapter markers that have
+# not yet been passed.
+chapter-marker-before-style=\c&H000000&
+
+# A string of ASS override tags that get applied only to chapter markers that have
+# already been passed.
+chapter-marker-after-style=\c&H000000&

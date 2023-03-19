@@ -1,0 +1,3 @@
+torque-progressbar:
+    extension: .conf
+    output: script-opts/torque-progressbar/main
