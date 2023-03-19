@@ -21,6 +21,13 @@ template = "dmlock"
 rewrite = false
 
 [[item]]
+file = "~/.config/trayer/trayer.sh"
+template = "trayer"
+# hook = "~/.config/trayer/trayer.sh"
+light = false
+rewrite = false
+
+[[item]]
 file = "~/.config/dunst/dunstrc"
 template = "dunst"
 subtemplate = "custom"

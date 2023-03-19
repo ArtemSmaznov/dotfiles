@@ -13,7 +13,10 @@
 
 * Theme
 #+begin_src shell
-color="0x282828"
+#
+# Start flavours
+background="0x282828"
+# End flavours
 #+end_src
 
 * Size
@@ -40,7 +43,7 @@ trayer \
     --SetDockType true \
     --SetPartialStrut true \
     --transparent true \
-    --tint $color \
+    --tint $background \
     --alpha 0 \
     --expand true \
     --padding 4 \

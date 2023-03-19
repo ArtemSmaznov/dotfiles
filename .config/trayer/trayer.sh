@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-color="0x282828"
+#
+# Start flavours
+# Base16 Gruvbox dark, medium theme
+# by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# template by Artem Smaznov
+
+background="0x282828"
+# End flavours
 
 bar_size=24
 
@@ -17,7 +24,7 @@ trayer \
     --SetDockType true \
     --SetPartialStrut true \
     --transparent true \
-    --tint $color \
+    --tint $background \
     --alpha 0 \
     --expand true \
     --padding 4 \

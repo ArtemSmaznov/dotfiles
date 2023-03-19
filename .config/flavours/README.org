@@ -13,7 +13,7 @@
 - [[#dm-lock][dm-lock]]
 - [[#trayer][Trayer]]
 - [[#dunst][Dunst]]
-- [[#strt-eww][STRT eww]]
+- [[#eww][EWW]]
 - [[#idea-fzf][IDEA FZF]]
 - [[#mpv][MPV]]
 - [[#strt-gtk-2][STRT GTK 2]]
@@ -80,7 +80,16 @@ template = "dmlock"
 rewrite = false
 #+end_src
 
-* TODO Trayer
+* Trayer
+#+begin_src toml
+[[item]]
+file = "~/.config/trayer/trayer.sh"
+template = "trayer"
+# hook = "~/.config/trayer/trayer.sh"
+light = false
+rewrite = false
+#+end_src
+
 * Dunst
 #+begin_src toml
 [[item]]
@@ -91,7 +100,7 @@ hook = "killall dunst"
 rewrite = false
 #+end_src
 
-* STRT eww
+* EWW
 #+begin_src toml
 [[item]]
 file = "~/.config/eww/themes/base16.scss"
