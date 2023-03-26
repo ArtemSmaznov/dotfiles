@@ -226,3 +226,4 @@ function ex() {
 }
 
 alias ledger="ledger --init-file $XDG_CONFIG_HOME/ledger/ledgerrc"
+alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
