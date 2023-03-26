@@ -10,13 +10,20 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#boot-loader][Boot Loader]]
 - [[#display-manager-dm][Display Manager (DM)]]
 - [[#window-manager-wm][Window Manager (WM)]]
+- [[#status-bars][Status Bars]]
+- [[#system-tray][System Tray]]
+- [[#desktop-widgets][Desktop Widgets]]
+- [[#compositor][Compositor]]
+- [[#screen-locker][Screen Locker]]
 - [[#shell][Shell]]
-- [[#theme][Theme]]
+- [[#theming][Theming]]
 - [[#terminal-emulator][Terminal Emulator]]
 - [[#terminal-tools][Terminal Tools]]
 - [[#text-editor][Text Editor]]
-- [[#media-player][Media Player]]
-- [[#image-viewer][Image Viewer]]
+- [[#music][Music]]
+- [[#photos][Photos]]
+- [[#videos][Videos]]
+- [[#finance][Finance]]
 - [[#pdf-viewer][PDF Viewer]]
 - [[#file-manager][File Manager]]
 - [[#web-browser][Web Browser]]
@@ -26,16 +33,27 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#other][Other]]
 
 * Boot Loader
-- [[file:projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
+- [[file:~/projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
 * Display Manager (DM)
 =Display Manager= or =DM= is also known as =Login Manager= and is the login screen you see before booting into your =WM/DE=.
-- [[file:projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
+- [[file:~/projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
 * Window Manager (WM)
 =Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to user a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
 - [[file:xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
 - [[file:qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 - [[file:awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
+* Status Bars
+- [[file:eww/README.org][eww]]
+- [[file:xmobar/README.org][XMobar]]
+* System Tray
+- [[file:trayer/README.org][trayer]]
+* Desktop Widgets
+- [[file:eww/README.org][eww]]
+- [[file:conky/README.org][Conky]]
+* Compositor
 - [[file:picom/README.org][Picom]]
+* Screen Locker
+- [[file:i3lock/README.org][i3lock]]
 * Shell
 - [[file:SHELLS.org::*Bash][Bash]]
 - [[file:SHELLS.org::*ZSH][ZSH]]
@@ -43,31 +61,36 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:SHELLS.org::*Exportrc][Exportrc]]
 - [[file:SHELLS.org::*Aliasrc][Aliasrc]]
 - [[file:SHELLS.org::*Starship][Starship Prompt]]
-* Theme
+* Theming
 - [[file:flavours/README.org][Flavours]]
 * Terminal Emulator
 - [[file:alacritty/README.org][Alacritty]]
 - [[file:terminator/README.org][Terminator]]
 * Terminal Tools
 - [[file:tmux/README.org][tmux]]
-- [[file:cava/README.org][cava]]
 - [[file:gh/][gh]]
+- [[file:git/][git]]
 - [[file:neofetch/README.org][neofetch]]
 - [[file:htop/][htop]]
 - [[file:btop/][btop]]
+- [[file:nvtop/][nvtop]]
 - [[file:bashtop/][bashtop]]
 * Text Editor
 - [[file:doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
-- [[file:.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
+- [[file:~/.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
 - [[file:nano/README.org][Nano]]
-* Media Player
-- [[file:mpv/README.org][mpv]]
-- [[file:mpd/README.org][mpd]]
-- [[file:mpc/][mpc]]
-- [[file:ncmpcpp/README.org][ncmpcpp]]
+* Music
 - [[file:beets/README.org][beets]]
-* Image Viewer
+- [[file:cava/README.org][cava]]
+- [[file:mpc/][mpc]]
+- [[file:mpd/README.org][mpd]]
+- [[file:ncmpcpp/README.org][ncmpcpp]]
+* Photos
 - [[file:vimiv/README.org][vimiv]]
+* Videos
+- [[file:mpv/README.org][mpv]]
+* Finance
+- [[file:ledger/][ledger]]
 * PDF Viewer
 - [[file:zathura/README.org][zathura]]
 - xviewer
@@ -79,19 +102,19 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:ranger/][ranger]]
 * Web Browser
 - [[file:qutebrowser/README.org][QuteBrowser]]
-- TODO [[file:nyxt/README.org][Nyxt]]
-- TODO Vimb
+- [[file:nyxt/README.org][Nyxt]]
+- Vimb
 * CLI Web Browser
-- TODO Lynx
-- TODO w3m
+- Lynx
+- w3m
 * Email
-- [[file:README.org::*mbsync][mbsync]]
+- [[file:isync/README.org][mbsync]]
 * System Utilities
 - [[file:rofi/README.org][rofi]]
 - [[file:dunst/README.org][dunst]]
 - [[file:redshift/README.org][redshift]]
+- [[file:fcitx5/][fcitx5]]
 * Other
-- [[file:Pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
-- [[file:.local/bin/dmscripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/dmscripts][repo]])
-- [[file:README.org::*Auto-start][Auto-start]]
-- [[file:README.org::*Conky][Conky]]
+- [[file:~/pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
+- [[file:~/.local/bin/README.org][Scripts]] ([[https://github.com/ArtemSmaznov/scripts][repo]])
+- [[file:~/.local/bin/dm-scripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/scripts/tree/master/dm-scripts][repo]])
