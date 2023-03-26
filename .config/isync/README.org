@@ -1,0 +1,129 @@
+#+title:       isync
+#+author:      Artem Smaznov
+#+startup:     overview
+#+property:    header-args :tangle mbsyncrc
+#+auto_tangle: t
+
+based on http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
+
+* Gmail Main
+Account information
+#+begin_src conf
+IMAPAccount gmail-main
+Host imap.gmail.com
+UserCmd "emacsclient -e \"my/email/main\" | cut -d '\"' -f2"
+PassCmd "emacsclient -e \"(my/lookup-password :host \\\"smtp.gmail.com\\\" :user my/email/main)\" | cut -d '\"' -f2"
+# Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+PipelineDepth 50
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#+end_src
+
+Then we specify the local and remote storage
+- the remote storage is where we get the mail from (e.g., the
+  specification of an imap account)
+- the local storage is where we store the email on our computer
+
+Remote storage (use the imap account specified above)
+#+begin_src conf
+IMAPStore gmail-remote
+Account gmail-main
+#+end_src
+
+Local storage (create directories with mkdir -p maildir/gmail)
+#+begin_src conf
+MaildirStore gmail-local
+Path ~/.local/share/mail/
+Inbox ~/.local/share/mail/Inbox
+Subfolders Verbatim
+#+end_src
+
+Connections specify links between remote and local folders
+
+Connections are specified using patterns, which match remote mail
+folders. some commonly used patters include:
+
+1. =*= to match everything
+2. =!dir= to exclude dir
+3. =dir= to match dir
+
+Gmail mailboxes:
+- =All Mail=
+- =Drafts=
+- =Important=
+- =Sent Mail=
+- =Spam=
+- =Starred=
+- =Trash=
+
+#+begin_src conf
+Channel gmail-main
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+Create Both
+Expunge Both
+SyncState *
+#+end_src
+
+* Gmail Artem
+Account information
+#+begin_src conf
+# IMAPAccount gmail-artem
+# Host imap.gmail.com
+# UserCmd "emacsclient -e \"my/email/artem\" | cut -d '\"' -f2"
+# PassCmd "emacsclient -e \"(my/lookup-password :host \\\"smtp.gmail.com\\\" :user my/email/artem)\" | cut -d '\"' -f2"
+# # Throttle mbsync and avoid Gmail's OVERQUOTA error when backing up Gmail
+# PipelineDepth 50
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+#+end_src
+
+Then we specify the local and remote storage
+- the remote storage is where we get the mail from (e.g., the
+  specification of an imap account)
+- the local storage is where we store the email on our computer
+
+Remote storage (use the imap account specified above)
+#+begin_src conf
+# IMAPStore gmail-artem-remote
+# Account gmail-artem
+#+end_src
+
+Local storage (create directories with mkdir -p maildir/gmail)
+#+begin_src conf
+# MaildirStore gmail-artem-local
+# Path ~/Maildir/Artem/
+# Inbox ~/Maildir/Artem/Inbox
+# Subfolders Verbatim
+#+end_src
+
+Connections specify links between remote and local folders
+
+Connections are specified using patterns, which match remote mail
+folders. some commonly used patters include:
+
+1. =*= to match everything
+2. =!dir= to exclude dir
+3. =dir= to match dir
+
+Gmail mailboxes:
+- =All Mail=
+- =Drafts=
+- =Important=
+- =Sent Mail=
+- =Spam=
+- =Starred=
+- =Trash=
+
+#+begin_src conf
+# Channel gmail-artem
+# Far :gmail-artem-remote:
+# Near :gmail-artem-local:
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Important"
+# Create Both
+# # Expunge Both
+# SyncState *
+#+end_src
