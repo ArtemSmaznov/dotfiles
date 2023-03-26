@@ -121,13 +121,13 @@ rewrite = false
 #+end_src
 
 * STRT GTK 2
-#+begin_src toml :tangle no
+#+begin_src toml
 [[item]]
 file = "~/.config/gtk-2.0/gtkrc"
-# template = "gtk-flatcolor"
-# subtemplate = "gtk-2"
-template = "gtk2"
-subtemplate = "schemes"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+# template = "gtk2"
+# subtemplate = "schemes"
 rewrite = false
 #+end_src
 

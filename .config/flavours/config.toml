@@ -48,6 +48,14 @@ subtemplate = "torque-progressbar"
 rewrite = false
 
 [[item]]
+file = "~/.config/gtk-2.0/gtkrc"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+# template = "gtk2"
+# subtemplate = "schemes"
+rewrite = false
+
+[[item]]
 file = "~/.config/gtk-3.0/gtk.css"
 template = "gtk-flatcolor"
 subtemplate = "gtk-3"
