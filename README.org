@@ -32,66 +32,66 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
 * Window Manager (WM)
 =Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to user a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
-- [[file:.config/xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
-- [[file:.config/qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
-- [[file:.config/awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
-- [[file:.config/picom/README.org][Picom]]
+- [[file:xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
+- [[file:qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
+- [[file:awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
+- [[file:picom/README.org][Picom]]
 * Shell
-- [[file:.config/SHELLS.org::*Bash][Bash]]
-- [[file:.config/SHELLS.org::*ZSH][ZSH]]
-- [[file:.config/SHELLS.org::*Fish][Fish]]
-- [[file:.config/SHELLS.org::*Exportrc][Exportrc]]
-- [[file:.config/SHELLS.org::*Aliasrc][Aliasrc]]
-- [[file:.config/SHELLS.org::*Starship][Starship Prompt]]
+- [[file:SHELLS.org::*Bash][Bash]]
+- [[file:SHELLS.org::*ZSH][ZSH]]
+- [[file:SHELLS.org::*Fish][Fish]]
+- [[file:SHELLS.org::*Exportrc][Exportrc]]
+- [[file:SHELLS.org::*Aliasrc][Aliasrc]]
+- [[file:SHELLS.org::*Starship][Starship Prompt]]
 * Theme
-- [[file:.config/flavours/README.org][Flavours]]
+- [[file:flavours/README.org][Flavours]]
 * Terminal Emulator
-- [[file:.config/alacritty/README.org][Alacritty]]
-- [[file:.config/terminator/README.org][Terminator]]
+- [[file:alacritty/README.org][Alacritty]]
+- [[file:terminator/README.org][Terminator]]
 * Terminal Tools
-- [[file:.config/tmux/README.org][tmux]]
-- [[file:.config/cava/README.org][cava]]
-- [[file:.config/gh/][gh]]
-- [[file:.config/neofetch/README.org][neofetch]]
-- [[file:.config/htop/][htop]]
-- [[file:.config/btop/][btop]]
-- [[file:.config/bashtop/][bashtop]]
+- [[file:tmux/README.org][tmux]]
+- [[file:cava/README.org][cava]]
+- [[file:gh/][gh]]
+- [[file:neofetch/README.org][neofetch]]
+- [[file:htop/][htop]]
+- [[file:btop/][btop]]
+- [[file:bashtop/][bashtop]]
 * Text Editor
-- [[file:.config/doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
+- [[file:doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
 - [[file:.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
-- [[file:.config/nano/README.org][Nano]]
+- [[file:nano/README.org][Nano]]
 * Media Player
-- [[file:.config/mpv/README.org][mpv]]
-- [[file:.config/mpd/README.org][mpd]]
-- [[file:.config/mpc/][mpc]]
-- [[file:.config/ncmpcpp/README.org][ncmpcpp]]
-- [[file:.config/beets/README.org][beets]]
+- [[file:mpv/README.org][mpv]]
+- [[file:mpd/README.org][mpd]]
+- [[file:mpc/][mpc]]
+- [[file:ncmpcpp/README.org][ncmpcpp]]
+- [[file:beets/README.org][beets]]
 * Image Viewer
-- [[file:.config/vimiv/README.org][vimiv]]
+- [[file:vimiv/README.org][vimiv]]
 * PDF Viewer
-- [[file:.config/zathura/README.org][zathura]]
+- [[file:zathura/README.org][zathura]]
 - xviewer
 - sejda
 - okular
 * File Manager
 - PCManFM
-- [[file:.config/vifm/README.org][vifm]]
-- [[file:.config/ranger/][ranger]]
+- [[file:vifm/README.org][vifm]]
+- [[file:ranger/][ranger]]
 * Web Browser
-- [[file:.config/qutebrowser/README.org][QuteBrowser]]
-- TODO [[file:.config/nyxt/README.org][Nyxt]]
+- [[file:qutebrowser/README.org][QuteBrowser]]
+- TODO [[file:nyxt/README.org][Nyxt]]
 - TODO Vimb
 * CLI Web Browser
 - TODO Lynx
 - TODO w3m
 * Email
-- [[file:.config/README.org::*mbsync][mbsync]]
+- [[file:README.org::*mbsync][mbsync]]
 * System Utilities
-- [[file:.config/rofi/README.org][rofi]]
-- [[file:.config/dunst/README.org][dunst]]
-- [[file:.config/redshift/README.org][redshift]]
+- [[file:rofi/README.org][rofi]]
+- [[file:dunst/README.org][dunst]]
+- [[file:redshift/README.org][redshift]]
 * Other
 - [[file:Pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
 - [[file:.local/bin/dmscripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/dmscripts][repo]])
-- [[file:.config/README.org::*Auto-start][Auto-start]]
-- [[file:.config/README.org::*Conky][Conky]]
+- [[file:README.org::*Auto-start][Auto-start]]
+- [[file:README.org::*Conky][Conky]]
