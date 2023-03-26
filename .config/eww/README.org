@@ -189,7 +189,7 @@ User Constants
          :text window-title))
 
 (deflisten window-title
-  "~/.local/bin/listen-title.sh")
+  "~/.local/bin/listen-wm-title.sh")
 #+end_src
 
 ** Music
@@ -262,6 +262,7 @@ User Constants
   (box :class { updates ==   0 ? "status-widget state-good"  :
                 updates ==  69 ? "status-widget red"         :
                 updates == 220 ? "status-widget yellow"      :
+                updates == 404 ? "status-widget yellow"      :
                 updates == 420 ? "status-widget green"       :
                                  "status-widget"             }
        :orientation "h"

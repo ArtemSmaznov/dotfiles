@@ -20,6 +20,7 @@
 - [[#listen-current-workspace][listen-current-workspace]]
 - [[#listen-title][listen-title]]
 - [[#listen-wm-layout][listen-wm-layout]]
+- [[#listen-wm-title][listen-wm-title]]
 - [[#listen-wm-workspaces][listen-wm-workspaces]]
 - [[#set-lang][set-lang]]
 - [[#set-volume][set-volume]]
@@ -206,6 +207,19 @@ then
         stdbuf -oL sed 's/^.*= //' |
         stdbuf -oL sed 's/^"\(.*\)"$/\1/' |
         stdbuf -oL awk -F'::::' '{ print $2 }'
+fi
+
+exit 0
+#+end_src
+
+* listen-wm-title
+#+begin_src shell :tangle listen-wm-title.sh
+if [[ $DESKTOP_SESSION == "xmonad" ]]
+then
+    xprop -spy -root _XMONAD_LOG |
+        stdbuf -oL sed 's/^.*= //' |
+        stdbuf -oL sed 's/^"\(.*\)"$/\1/' |
+        stdbuf -oL awk -F'::::' '{ print $3 }'
 fi
 
 exit 0
