@@ -47,4 +47,4 @@
 *color15:      base07
 ! End flavours
 
-#include ".Xresources.d/xscreensaver"
+#include "Xresources.d/xscreensaver"
