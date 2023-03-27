@@ -57,7 +57,7 @@ source_config $XDG_CONFIG_HOME/shell/exportrc
 source_config $XDG_CONFIG_HOME/shell/aliasrc
 source_config $XDG_CONFIG_HOME/shell/wol
 source_config $XDG_CONFIG_HOME/bash/prompt
-source_config $XDG_CONFIG_HOME/bash/bashrc
+source_config $XDG_CONFIG_HOME/bash/localrc
 
 # FZF configs
 source_config /usr/share/fzf/key-bindings.bash

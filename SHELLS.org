@@ -127,7 +127,7 @@ $endif
 
 * Bash
 :PROPERTIES:
-:header-args: :tangle ~/.bashrc
+:header-args: :tangle bash/bashrc
 :END:
 ** Start Section
 #+begin_src shell
@@ -232,7 +232,7 @@ if has_command neofetch; then neofetch; fi
 
 * ZSH
 :PROPERTIES:
-:header-args: :tangle ~/.zshrc
+:header-args: :tangle zsh/zshrc
 :END:
 ** Options
 #+begin_src shell
@@ -385,7 +385,7 @@ if has_command neofetch; then neofetch; fi
 
 * Fish
 :PROPERTIES:
-:header-args: :tangle ~/.config/fish/config.fish
+:header-args: :tangle fish/config.fish
 :END:
 ** End Section
 #+begin_src conf
@@ -394,7 +394,7 @@ starship init fish | source
 
 * Exportrc
 :PROPERTIES:
-:header-args: :tangle ~/.config/shell/exportrc
+:header-args: :tangle shell/exportrc
 :END:
 ** xprofile
 :PROPERTIES:
@@ -475,7 +475,7 @@ export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
 * Aliasrc
 :PROPERTIES:
-:header-args: :tangle ~/.config/shell/aliasrc
+:header-args: :tangle shell/aliasrc
 :END:
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
@@ -774,7 +774,7 @@ alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 
 * Starship
 :PROPERTIES:
-:header-args: :tangle ~/.config/starship.toml
+:header-args: :tangle starship.toml
 :END:
 ** General
 #+begin_src toml

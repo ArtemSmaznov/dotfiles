@@ -102,7 +102,7 @@ function source_config() {
 source_config $XDG_CONFIG_HOME/shell/exportrc
 source_config $XDG_CONFIG_HOME/shell/aliasrc
 source_config $XDG_CONFIG_HOME/shell/wol
-source_config $XDG_CONFIG_HOME/zsh/zshrc
+source_config $XDG_CONFIG_HOME/zsh/localrc
 
 # FZF configs
 source_config /usr/share/fzf/key-bindings.zsh
