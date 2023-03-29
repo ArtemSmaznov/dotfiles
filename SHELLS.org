@@ -193,6 +193,9 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 
 # Show auto-completion list automatically, without double tab
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+
+# extra completions
+[[ $commands[beet] ]] && eval $(beet completion)
 #+end_src
 
 ** Sources
@@ -290,6 +293,7 @@ zle -N down-line-or-beginning-search
 
 # extra completions
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[beet] ]] && eval $(beet completion)
 #+end_src
 
 ** Keys

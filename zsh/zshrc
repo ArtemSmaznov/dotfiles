@@ -43,6 +43,7 @@ zle -N down-line-or-beginning-search
 
 # extra completions
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[beet] ]] && eval $(beet completion)
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
