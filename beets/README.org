@@ -12,7 +12,9 @@
 - [[#importer-options][Importer Options]]
 - [[#musicbrainz][MusicBrainz]]
 - [[#plugins][Plugins]]
+  - [[#bad-files][Bad Files]]
   - [[#chroma][Chroma]]
+  - [[#duplicates][Duplicates]]
   - [[#fetchart][FetchArt]]
   - [[#info][Info]]
   - [[#lastgenre][LastGenre]]
@@ -119,7 +121,15 @@ musicbrainz:
 
 * Plugins
 #+begin_src yaml
-plugins: chroma fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
+plugins: badfiles chroma duplicates fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
+#+end_src
+
+** Bad Files
+The badfiles plugin adds a beet bad command to check for missing and corrupt
+files.
+#+begin_src yaml
+badfiles:
+  check_on_import: yes
 #+end_src
 
 ** Chroma
@@ -129,6 +139,10 @@ plugins: chroma fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
 chroma:
     auto: yes
 #+end_src
+
+** Duplicates
+This plugin adds a new command, duplicates or dup, which finds and lists
+duplicate tracks or albums in your collection.
 
 ** FetchArt
 The [[https://beets.readthedocs.io/en/stable/plugins/fetchart.html][fetchart]] plugin retrieves album art images from various sources on the Web and stores them as image files.
