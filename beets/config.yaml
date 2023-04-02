@@ -35,23 +35,7 @@ paths:
     albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $title
     comp: compilations/$album%aunique{}/$track - $title
 
-plugins: lastgenre mpdupdate mpdstats chroma fetchart
-
-lastgenre:
-    auto: yes
-    canonical: no
-    count: 5
-    fallback:
-    force: yes
-    min_weight: 10
-    prefer_specific: no
-    source: album
-    whitelist: yes
-    title_case: yes
-
-mpd:
-    rating: yes
-    rating_mix: 0.75
+plugins: chroma fetchart info lastgenre mpdstats mpdupdate scrub
 
 chroma:
     auto: yes
@@ -79,3 +63,25 @@ fetchart:
     store_source: no
     high_resolution: no
     deinterlace: no
+
+lastgenre:
+    auto: yes
+    canonical: no
+    count: 5
+    fallback:
+    force: yes
+    min_weight: 10
+    prefer_specific: no
+    source: album
+    whitelist: yes
+    title_case: yes
+
+lyrics:
+  auto: no
+
+mpd:
+    rating: yes
+    rating_mix: 0.75
+
+scrub:
+    auto: yes

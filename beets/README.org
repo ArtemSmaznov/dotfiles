@@ -13,11 +13,14 @@
 - [[#musicbrainz][MusicBrainz]]
 - [[#path-format-configuration][Path Format Configuration]]
 - [[#plugins][Plugins]]
-  - [[#lastgenre][LastGenre]]
-  - [[#mpdupdate][MPDUpdate]]
-  - [[#mpdstats][MPDStats]]
   - [[#chroma][Chroma]]
   - [[#fetchart][FetchArt]]
+  - [[#info][Info]]
+  - [[#lastgenre][LastGenre]]
+  - [[#lyrics][Lyrics]]
+  - [[#mpd-stats][MPD Stats]]
+  - [[#mpd-update][MPD Update]]
+  - [[#scrub][Scrub]]
 
 * Dependencies
 |-------------------+------------------------------------|
@@ -110,46 +113,7 @@ paths:
 
 * Plugins
 #+begin_src yaml
-plugins: lastgenre mpdupdate mpdstats chroma fetchart
-#+end_src
-** LastGenre
-The [[https://beets.readthedocs.io/en/stable/plugins/lastgenre.html][lastgenre]] plugin fetches tags from [[https://last.fm/][Last.fm]] and assigns them as genres to your albums and items.
-
-#+begin_src yaml
-lastgenre:
-    auto: yes
-    canonical: no
-    count: 5
-    fallback:
-    force: yes
-    min_weight: 10
-    prefer_specific: no
-    source: album
-    whitelist: yes
-    title_case: yes
-#+end_src
-
-fetch genres for albums or items matching a certain query.
-#+begin_example shell
-beet lastgenre [QUERY]
-#+end_example
-
-By default, beet lastgenre matches albums. 
-Match individual tracks or singletons.
-#+begin_example shell
-beet lastgenre -A [QUERY]
-#+end_example
-
-** MPDUpdate
-[[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
-
-** MPDStats
-[[https://beets.readthedocs.io/en/stable/plugins/mpdstats.html][mpdstats]] is a plugin for beets that collects statistics about your listening habits from [[https://www.musicpd.org/][MPD]].
-
-#+begin_src yaml
-mpd:
-    rating: yes
-    rating_mix: 0.75
+plugins: chroma fetchart info lastgenre mpdstats mpdupdate scrub
 #+end_src
 
 ** Chroma
@@ -187,4 +151,66 @@ fetchart:
     store_source: no
     high_resolution: no
     deinterlace: no
+#+end_src
+
+** Info
+The info plugin provides a command that dumps the current tag values for any file format supported by beets
+
+** LastGenre
+The [[https://beets.readthedocs.io/en/stable/plugins/lastgenre.html][lastgenre]] plugin fetches tags from [[https://last.fm/][Last.fm]] and assigns them as genres to your albums and items.
+
+#+begin_src yaml
+lastgenre:
+    auto: yes
+    canonical: no
+    count: 5
+    fallback:
+    force: yes
+    min_weight: 10
+    prefer_specific: no
+    source: album
+    whitelist: yes
+    title_case: yes
+#+end_src
+
+fetch genres for albums or items matching a certain query.
+#+begin_example shell
+beet lastgenre [QUERY]
+#+end_example
+
+By default, beet lastgenre matches albums.
+Match individual tracks or singletons.
+#+begin_example shell
+beet lastgenre -A [QUERY]
+#+end_example
+
+** Lyrics
+The lyrics plugin fetches and stores song lyrics from databases on the Web.
+Namely, the current version of the plugin uses Musixmatch, Genius.com,
+Tekstowo.pl, and, optionally, the Google custom search API.
+#+begin_src yaml
+lyrics:
+  auto: no
+#+end_src
+
+** MPD Stats
+[[https://beets.readthedocs.io/en/stable/plugins/mpdstats.html][mpdstats]] is a plugin for beets that collects statistics about your listening habits from [[https://www.musicpd.org/][MPD]].
+Needs to be run with =beet mpdstats=
+
+#+begin_src yaml
+mpd:
+    rating: yes
+    rating_mix: 0.75
+#+end_src
+
+** MPD Update
+[[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
+** Scrub
+The scrub plugin lets you remove extraneous metadata from files’ tags. If you’d
+prefer never to see crufty tags that come from other tools, the plugin can
+automatically remove all non-beets-tracked tags whenever a file’s metadata is
+written to disk by removing the tag entirely before writing new data
+#+begin_src yaml
+scrub:
+    auto: yes
 #+end_src
