@@ -26,16 +26,16 @@ import:
     bell: yes
     languages: en ru
 
-musicbrainz:
-    searchlimit: 15
-
 paths:
     default: $albumartist/$album%aunique{}/$track - $title
     singleton: $artist/$title
     albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $title
     comp: compilations/$album%aunique{}/$track - $title
 
-plugins: chroma fetchart info lastgenre mpdstats mpdupdate scrub
+musicbrainz:
+    searchlimit: 15
+
+plugins: chroma fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
 
 chroma:
     auto: yes

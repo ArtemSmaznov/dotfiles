@@ -10,14 +10,16 @@
 - [[#global-options][Global Options]]
 - [[#ui][UI]]
 - [[#importer-options][Importer Options]]
-- [[#musicbrainz][MusicBrainz]]
 - [[#path-format-configuration][Path Format Configuration]]
+- [[#musicbrainz][MusicBrainz]]
 - [[#plugins][Plugins]]
   - [[#chroma][Chroma]]
   - [[#fetchart][FetchArt]]
   - [[#info][Info]]
   - [[#lastgenre][LastGenre]]
   - [[#lyrics][Lyrics]]
+  - [[#mbsubmit][MBSubmit]]
+  - [[#mbsync][MBSync]]
   - [[#mpd-stats][MPD Stats]]
   - [[#mpd-update][MPD Update]]
   - [[#scrub][Scrub]]
@@ -96,12 +98,6 @@ import:
     languages: en ru
 #+end_src
 
-* MusicBrainz
-#+begin_src yaml
-musicbrainz:
-    searchlimit: 15
-#+end_src
-
 * Path Format Configuration
 #+begin_src yaml
 paths:
@@ -111,9 +107,15 @@ paths:
     comp: compilations/$album%aunique{}/$track - $title
 #+end_src
 
+* MusicBrainz
+#+begin_src yaml
+musicbrainz:
+    searchlimit: 15
+#+end_src
+
 * Plugins
 #+begin_src yaml
-plugins: chroma fetchart info lastgenre mpdstats mpdupdate scrub
+plugins: chroma fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
 #+end_src
 
 ** Chroma
@@ -192,6 +194,15 @@ Tekstowo.pl, and, optionally, the Google custom search API.
 lyrics:
   auto: no
 #+end_src
+
+** MBSubmit
+The mbsubmit plugin provides an extra prompt choice during an import session
+that prints the tracks of the current album in a format that is parseable by
+MusicBrainz’s track parser.
+
+** MBSync
+This plugin provides the mbsync command, which lets you fetch metadata from
+MusicBrainz for albums and tracks that already have MusicBrainz IDs
 
 ** MPD Stats
 [[https://beets.readthedocs.io/en/stable/plugins/mpdstats.html][mpdstats]] is a plugin for beets that collects statistics about your listening habits from [[https://www.musicpd.org/][MPD]].
