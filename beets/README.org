@@ -10,7 +10,6 @@
 - [[#global-options][Global Options]]
 - [[#ui][UI]]
 - [[#importer-options][Importer Options]]
-- [[#path-format-configuration][Path Format Configuration]]
 - [[#musicbrainz][MusicBrainz]]
 - [[#plugins][Plugins]]
   - [[#chroma][Chroma]]
@@ -52,19 +51,6 @@ sudo pacman -S --needed beets \
 #+begin_src yaml
 library: ~/.config/beets/library.db
 directory: ~/music
-
-asciify_paths: yes
-per_disc_numbering: yes
-
-replace:
-    ':': ' -'
-    '[\x00-\x1f]': _
-    '[~!\\/<>"\?\*\|]': ''
-    "'": ''
-    '[\.]$': ''
-    '^[\.]': ''
-    '\s+$': ''
-    '^\s+': ''
 #+end_src
 
 * UI
@@ -87,7 +73,7 @@ ui:
 #+begin_src yaml
 import:
     write: yes       # -w -W
-    copy: yes        # -c -C
+    copy: no         # -c -C
     move: yes
     resume: ask      # -p -P
     timid: no        # -t
@@ -98,13 +84,31 @@ import:
     languages: en ru
 #+end_src
 
-* Path Format Configuration
+#+begin_src yaml
+asciify_paths: yes
+per_disc_numbering: yes
+#+end_src
+
 #+begin_src yaml
 paths:
-    default: $albumartist/$album%aunique{}/$track - $title
-    singleton: $artist/$title
-    albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $title
-    comp: compilations/$album%aunique{}/$track - $title
+    default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+    singleton: '%lower{$artist}/%lower{$title}'
+    albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+    comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+#+end_src
+
+#+begin_src yaml
+replace:
+    '[\x00-\x1f]': _
+    '&': 'and'
+    '[~!\\/<>"\?\*\|\[\]()]': ''
+    "'": ''
+    '[\.]+$': ''
+    '^[\.]': ''
+    '\s+$': ''
+    '^\s+': ''
+    '\s*[-,;:]\s*': '-'
+    ' ': '-'
 #+end_src
 
 * MusicBrainz
