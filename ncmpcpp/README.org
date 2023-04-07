@@ -513,6 +513,14 @@ Accepted values:
 #+begin_src conf
 def_key "ctrl-s"
   sort_playlist
+
+def_key "h"
+  require_screen "playlist"
+  seek_backward
+
+def_key "l"
+  require_screen "playlist"
+  seek_forward
 #+end_src
 
 *** Browser
@@ -580,6 +588,14 @@ def_key "space"
 def_key "escape"
   require_screen "visualizer"
   previous_screen
+
+def_key "h"
+  require_screen "visualizer"
+  seek_backward
+
+def_key "l"
+  require_screen "visualizer"
+  seek_forward
 #+end_src
 
 *** Lyrics
@@ -603,6 +619,14 @@ def_key "escape"
 def_key "q"
   require_screen "lyrics"
   previous_screen
+
+def_key "h"
+  require_screen "lyrics"
+  seek_backward
+
+def_key "l"
+  require_screen "lyrics"
+  seek_forward
 #+end_src
 
 *** Clock
@@ -610,6 +634,14 @@ def_key "q"
 def_key "escape"
   require_screen "clock"
   previous_screen
+
+def_key "h"
+  require_screen "clock"
+  seek_backward
+
+def_key "l"
+  require_screen "clock"
+  seek_forward
 #+end_src
 
 *** Song Info
