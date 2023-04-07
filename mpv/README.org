@@ -987,6 +987,7 @@ Alt+x script-binding console/enable
 
 #+begin_src conf
 ctrl+a show_text ${track-list} # show list of audio/sub streams
+ctrl+s show_text ${track-list} # show list of audio/sub streams
 ctrl+p show_text ${playlist}   # show playlist
 #+end_src
 
