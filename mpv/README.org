@@ -723,15 +723,8 @@ system-time-offscreen-pos=-100
 *** Seek Time
 Elapsed
 #+begin_src conf
-# Sets whether or not the elapsed time is displayed at all.
 enable-elapsed-time=yes
-
-# Controls how far from the left edge of the window the elapsed time display is
-# positioned.
 elapsed-left-margin=4
-
-# Controls how far above the expanded progress bar the elapsed time display is
-# positioned.
 elapsed-bottom-margin=0
 
 # Controls how far off the left side of the window the elapsed time display tries
@@ -744,15 +737,8 @@ elapsed-offscreen-pos=-100
 
 Remaining
 #+begin_src conf
-# Sets whether or not the remaining time is displayed at all.
 enable-remaining-time=yes
-
-# Controls how far from the right edge of the window the remaining time display is
-# positioned.
 remaining-right-margin=4
-
-# Controls how far above the expanded progress bar the remaining time display is
-# positioned.
 remaining-bottom-margin=0
 
 # Controls how far off the left side of the window the remaining time display
@@ -763,24 +749,11 @@ remaining-bottom-margin=0
 remaining-offscreen-pos=-100
 #+end_src
 
-Hover
+Select time on mouse hover
 #+begin_src conf
-# Sets whether or not the calculated time corresponding to the mouse position
-# is displayed when the mouse hovers over the progress bar.
 enable-hover-time=yes
-
-# Controls how close to the left edge of the window the hover time display can
-# get. If this value is too small, it will end up overlapping the elapsed time
-# display.
 hover-time-left-margin=120
-
-# Controls how close to the right edge of the window the hover time display can
-# get. If this value is too small, it will end up overlapping the remaining time
-# display.
 hover-time-right-margin=130
-
-# Controls how far above the expanded progress bar the remaining time display is
-# positioned.
 hover-time-bottom-margin=0
 
 # Controls how far off the bottom of the window the mouse hover time display tries
