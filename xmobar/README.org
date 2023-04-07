@@ -207,13 +207,13 @@ Script that dynamically adjusts xmobar padding depending on number of trayer ico
 * Main Monitor Template
 #+begin_src haskell :noweb yes :tangle mainScreen.hs
 <<GLOBAL>>
-   , template = " %logo%%time% %sep%%XMonadLog% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% %trayerpad%"
+   , template = " %logo%%time% %sep%%XMonadLog% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% "
    }
 #+end_src
 
 * Secondary Monitor Template
 #+begin_src haskell :noweb yes :tangle secondaryScreen.hs
 <<GLOBAL>>
-   , template = " %logo%%time% %sep%%XMonadLog% } { %mpd% %sep% %kbd% %sep% %default:Master% %uptime% %sep% %date% "
+   , template = " %logo%%time% %sep%%XMonadLog% } { %kbd% %sep% %default:Master% %uptime% %sep% %date% %trayerpad%"
    }
 #+end_src

@@ -96,5 +96,5 @@ Config {
                ] 3600
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 ]
-   , template = " %logo%%time% %sep%%XMonadLog% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% %trayerpad%"
+   , template = " %logo%%time% %sep%%XMonadLog% }{ %mpd% %sep%%_ks%%kbd%%_ke%%sep% %_us%%updates%%_ue% %coretemp%%cpu% %default:Master% %sep% %date% "
    }
