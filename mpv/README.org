@@ -216,7 +216,7 @@ The following profile can be enabled on the command line with: --profile=eye-can
 
 ** Screenshot
 #+begin_src conf
-screenshot-directory="~/Pictures/screenshots/"
+screenshot-directory="~/pictures/screenshots/"
 screenshot-template="mpv-%F-%wH-%wM-%wS-%wT"
 #+end_src
 
@@ -888,7 +888,7 @@ f cycle fullscreen                     # toggle fullscreen
 
 ** Playback
 #+begin_src conf
-k     cycle pause
+p     cycle pause
 SPACE cycle pause
 #+end_src
 
@@ -921,9 +921,9 @@ A-B Loop
 ** Navigation
 Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf
-j           seek -5
+h           seek -5
 l           seek  5
-J           seek -15
+h           seek -15
 L           seek  15
 
 LEFT        seek -10
@@ -967,26 +967,24 @@ $ set pause yes ; seek 100 absolute-percent
 
 ** Playlists
 #+begin_src conf
-p show_text ${playlist} # show playlist
 # ENTER playlist-next   # skip to next file
-Shift+n playlist-next   # skip to next file
-Shift+p playlist-prev   # skip to previous file
 >       playlist-next   # skip to next file
 <       playlist-prev   # skip to previous file
 #+end_src
 
 ** Audio
 #+begin_src conf
-UP    add volume 1
+j     add volume -1
+k     add volume 1
 DOWN  add volume -1
+UP    add volume 1
 m     cycle mute
 
 #ctrl++ add audio-delay 0.100           # this changes audio/video sync
 #ctrl+- add audio-delay -0.100
 
-#F9 show_text ${track-list}             # show list of audio/sub streams
-
-#SHARP cycle audio                      # switch audio streams
+a cycle audio                           # switch audio streams
+A cycle audio down                      # switch audio streams
 #+end_src
 
 ** OSD
@@ -1014,6 +1012,11 @@ I     script-binding stats/display-stats-toggle
 Alt+x script-binding console/enable
 #+end_src
 
+#+begin_src conf
+ctrl+a show_text ${track-list} # show list of audio/sub streams
+ctrl+p show_text ${playlist}   # show playlist
+#+end_src
+
 ** Subtitles
 Skip to previous/next subtitle (subject to some restrictions; see manpage)
 #+begin_src conf
@@ -1022,11 +1025,9 @@ Alt+RIGHT  no-osd sub-seek  1
 #+end_src
 
 #+begin_src conf
-v cycle sub-visibility
 c cycle sub-visibility
 
 # stretch SSA/ASS subtitles with anamorphic videos to match historical
-V cycle sub-ass-vsfilter-aspect-compat
 C cycle sub-ass-vsfilter-aspect-compat
 
 # switch between applying no style overrides to SSA/ASS subtitles, and
@@ -1105,7 +1106,7 @@ Jump between chapters
 #+begin_src conf
 PGDWN  add chapter -1
 PGUP   add chapter 1
-Ctrl+j add chapter -1
+Ctrl+h add chapter -1
 Ctrl+l add chapter 1
 #+end_src
 
