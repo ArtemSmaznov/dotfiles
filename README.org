@@ -62,7 +62,13 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[file:SHELLS.org::*Aliasrc][Aliasrc]]
 - [[file:SHELLS.org::*Starship][Starship Prompt]]
 * Theming
+Excluding base16 themes from git tracking
+#+begin_example shell
+git update-index --skip-worktree file
+#+end_example
+
 - [[file:flavours/README.org][Flavours]]
+
 * Terminal Emulator
 - [[file:alacritty/README.org][Alacritty]]
 - [[file:terminator/README.org][Terminator]]
