@@ -10,7 +10,7 @@
 - [[#alacritty][Alacritty]]
 - [[#btop][BTop]]
 - [[#idea-doom-emacs][IDEA Doom Emacs]]
-- [[#dm-lock][dm-lock]]
+- [[#i3lock][i3lock]]
 - [[#trayer][Trayer]]
 - [[#dunst][Dunst]]
 - [[#eww][EWW]]
@@ -72,10 +72,10 @@ template = "doom"
 rewrite = true
 #+end_src
 
-* dm-lock
+* i3lock
 #+begin_src toml
 [[item]]
-file = "~/.local/bin/dm-scripts/dm-lock"
+file = "~/.config/i3lock/i3lock.sh"
 template = "dmlock"
 rewrite = false
 #+end_src
@@ -222,7 +222,7 @@ rewrite = true
 * Xresources
 #+begin_src toml
 [[item]]
-file = "~/.Xresources"
+file = "~/.config/X11/Xresources"
 template = "xresources"
 # subtemplate = "default-256"
 start = "! Start flavours"

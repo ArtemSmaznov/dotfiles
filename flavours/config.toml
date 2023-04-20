@@ -16,7 +16,7 @@ template = "doom"
 rewrite = true
 
 [[item]]
-file = "~/.local/bin/dm-scripts/dm-lock"
+file = "~/.config/i3lock/i3lock.sh"
 template = "dmlock"
 rewrite = false
 
@@ -116,7 +116,7 @@ light = false
 rewrite = true
 
 [[item]]
-file = "~/.Xresources"
+file = "~/.config/X11/Xresources"
 template = "xresources"
 # subtemplate = "default-256"
 start = "! Start flavours"
