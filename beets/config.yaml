@@ -37,7 +37,7 @@ replace:
 musicbrainz:
     searchlimit: 15
 
-plugins: badfiles chroma duplicates fetchart info lastgenre mbsubmit mbsync mpdstats mpdupdate scrub
+plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync mpdstats mpdupdate scrub
 
 badfiles:
   check_on_import: yes
