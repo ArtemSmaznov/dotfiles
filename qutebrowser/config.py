@@ -872,11 +872,11 @@ config.bind('dX', 'download-delete')
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
 config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-config.bind('da', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}')
-config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
 
-config.bind('dA', 'spawn alacritty -e youtube-dl -f bestaudio {url}')
-config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
+config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
+config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
 
 config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
 config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
@@ -939,9 +939,9 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
 config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
 
 config.bind('<Ctrl-f>', 'hint --rapid')
 
@@ -969,9 +969,9 @@ config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secre
 config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
 config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
 config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
 
 config.bind('<Space>ds', 'view-source')
 

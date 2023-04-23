@@ -1715,14 +1715,14 @@ Hints
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
 config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-config.bind('da', 'hint links spawn alacritty -e youtube-dl -f bestaudio {hint-url}')
-config.bind('dv', 'hint media spawn alacritty -e youtube-dl {hint-url}')
+config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
 #+end_src
 
 Download Current
 #+begin_src python
-config.bind('dA', 'spawn alacritty -e youtube-dl -f bestaudio {url}')
-config.bind('dV', 'spawn alacritty -e youtube-dl {url}')
+config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
+config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
 #+end_src
 
 Prompt Mode
@@ -1828,9 +1828,9 @@ config.bind(';h', 'hint all hover')
 
 Media
 #+begin_src python
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
 config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
 #+end_src
 
 Rapid - Open in background and remain in hint mode
@@ -1877,9 +1877,9 @@ config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secre
 
 ** Media
 #+begin_src python
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>aa', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
 config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
 #+end_src
 
 You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv

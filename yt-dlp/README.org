@@ -1,0 +1,43 @@
+#+title:       yt-dlp
+#+author:      Artem Smaznov
+#+description: Download videos from youtube.com or other video platforms
+#+startup:     overview
+#+property:    header-args :tangle config
+#+auto_tangle: t
+
+* Table of Contents :toc:
+- [[#default][Default]]
+- [[#audio][Audio]]
+
+* Default
+#+begin_src conf
+--yes-playlist
+--embed-metadata
+--paths ~/downloads/
+--restrict-filenames
+#+end_src
+
+* Audio
+:PROPERTIES:
+:header-args: :tangle audio.conf
+:END:
+General settings
+#+begin_src conf
+--yes-playlist
+--embed-metadata
+--paths ~/downloads/
+--restrict-filenames
+#+end_src
+
+Audio-specific options
+#+begin_src conf
+--format bestaudio
+--extract-audio
+--audio-format mp3
+--audio-quality 0
+#+end_src
+
+Cookies for authentication
+#+begin_src conf
+# --cookies-from-browser BRAVE
+#+end_src

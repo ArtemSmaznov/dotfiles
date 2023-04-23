@@ -733,7 +733,9 @@ alias pgf="pass git pull"
 Search and play YouTube audio
 #+begin_src shell
 alias shazam='songrec recognize'
-alias ytd='yt-dlp'
+
+alias ytdv='yt-dlp'
+alias ytda='yt-dlp --config-locations ~/.config/yt-dlp/audio.conf'
 
 function yta() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
