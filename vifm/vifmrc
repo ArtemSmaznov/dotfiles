@@ -368,9 +368,6 @@ nnoremap s :shell<cr>
 " Open console in current directory
 nnoremap ,t :!alacritty &<cr>
 
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
-
 nnoremap <a-x> :
 nnoremap x t
 nnoremap <f2> cw
@@ -378,14 +375,34 @@ vnoremap <f2> cw
 
 nmap <space> <nop>
 
-map <space>t<esc> <nop>
-nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space><Tab>1 :tabnext 1<cr>
+nnoremap <space><Tab>2 :tabnext 2<cr>
+nnoremap <space><Tab>3 :tabnext 3<cr>
+nnoremap <space><Tab>4 :tabnext 4<cr>
+nnoremap <space><Tab>5 :tabnext 5<cr>
+nnoremap <space><Tab>6 :tabnext 6<cr>
+nnoremap <space><Tab>7 :tabnext 7<cr>
+nnoremap <space><Tab>8 :tabnext 8<cr>
+nnoremap <space><Tab>9 :tabnext 9<cr>
+nnoremap <space><Tab>[ :tabprevious<cr>
+nnoremap <space><Tab>] :tabnext<cr>
+nnoremap <space><Tab>d :tabclose<cr>
+nnoremap <space><Tab>n :tabnew<cr>
+nnoremap <space><Tab>r :tabname<space>
+nnoremap <space><Tab>O :tabonly<cr>
 
 nmap <space>h<esc> <nop>
 nnoremap <space>hr :restart<cr>
 
 nmap <space>q<esc> <nop>
 nnoremap <space>qq :q<cr>
+
+map <space>t<esc> <nop>
+nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tw :set wrap!<cr>
+
+nnoremap [w :tabprevious<cr>
+nnoremap ]w :tabnext<cr>
 
 nmap <space>w<esc> <nop>
 
@@ -430,7 +447,7 @@ nnoremap o :!gvim --remote-tab-silent %f<cr>
 nnoremap O :!gvim %f<cr>
 
 " Open file in the background using its default program
-nnoremap gb :file &<cr>l
+nnoremap gb :file &<cr>l<esc>echo "open in background"<cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>

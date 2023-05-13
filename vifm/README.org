@@ -52,6 +52,7 @@
   - [[#dot-files][Dot Files]]
   - [[#sample-bindings][Sample Bindings]]
   - [[#leader][Leader]]
+  - [[#square-brackets][Square Brackets]]
   - [[#panes][Panes]]
   - [[#file-handling][File Handling]]
   - [[#f-keys][F-keys]]
@@ -621,9 +622,6 @@ nnoremap s :shell<cr>
 " Open console in current directory
 nnoremap ,t :!alacritty &<cr>
 
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
-
 nnoremap <a-x> :
 nnoremap x t
 nnoremap <f2> cw
@@ -634,22 +632,48 @@ vnoremap <f2> cw
 #+begin_src vimrc
 nmap <space> <nop>
 #+end_src
-*** Toggle
+*** TAB -> workspace
+#+begin_src vimrc
+nnoremap <space><Tab>1 :tabnext 1<cr>
+nnoremap <space><Tab>2 :tabnext 2<cr>
+nnoremap <space><Tab>3 :tabnext 3<cr>
+nnoremap <space><Tab>4 :tabnext 4<cr>
+nnoremap <space><Tab>5 :tabnext 5<cr>
+nnoremap <space><Tab>6 :tabnext 6<cr>
+nnoremap <space><Tab>7 :tabnext 7<cr>
+nnoremap <space><Tab>8 :tabnext 8<cr>
+nnoremap <space><Tab>9 :tabnext 9<cr>
+nnoremap <space><Tab>[ :tabprevious<cr>
+nnoremap <space><Tab>] :tabnext<cr>
+nnoremap <space><Tab>d :tabclose<cr>
+nnoremap <space><Tab>n :tabnew<cr>
+nnoremap <space><Tab>r :tabname<space>
+nnoremap <space><Tab>O :tabonly<cr>
+#+end_src
+
+*** h -> help
+#+begin_src vimrc
+nmap <space>h<esc> <nop>
+nnoremap <space>hr :restart<cr>
+#+end_src
+
+*** q -> quit
+#+begin_src vimrc
+nmap <space>q<esc> <nop>
+nnoremap <space>qq :q<cr>
+#+end_src
+
+*** t -> toggle
 #+begin_src vimrc
 map <space>t<esc> <nop>
 nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tw :set wrap!<cr>
 #+end_src
 
-*** Help
+** Square Brackets
 #+begin_src vimrc
-nmap <space>h<esc> <nop>
-nnoremap <space>hr :restart<cr> 
-#+end_src
-
-*** Quit
-#+begin_src vimrc
-nmap <space>q<esc> <nop>
-nnoremap <space>qq :q<cr> 
+nnoremap [w :tabprevious<cr>
+nnoremap ]w :tabnext<cr>
 #+end_src
 
 ** Panes
@@ -715,7 +739,7 @@ nnoremap o :!gvim --remote-tab-silent %f<cr>
 nnoremap O :!gvim %f<cr>
 
 " Open file in the background using its default program
-nnoremap gb :file &<cr>l
+nnoremap gb :file &<cr>l<esc>echo "open in background"<cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
