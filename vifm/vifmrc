@@ -91,16 +91,19 @@ set nohlsearch
 " Use increment searching (search while typing)
 set incsearch
 
-mark h ~/
+mark h ~
 mark d ~/downloads
 mark D ~/documents
+mark E /etc
 mark f ~/documents/finance
 mark m ~/music
 mark M /run/mount
 mark v ~/videos
 mark p ~/pictures
 mark P ~/pictures/photos
+mark r ~/videos/recordings
 mark s ~/pictures/screenshots
+mark T /tmp
 mark w ~/pictures/wallpapers
 mark c ~/.config
 mark b ~/.local/bin
