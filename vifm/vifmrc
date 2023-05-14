@@ -112,8 +112,7 @@ mark c ~/.config
 mark b ~/.local/bin
 mark S /home/Steam/steamapps/compatdata
 
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=bmarks,tui,dhistory,state,savedirs,chistory,shistory,phistory,fhistory,dirstack,registers
 
 " :com[mand][!] command_name action
 " The following macros can be used in a command
