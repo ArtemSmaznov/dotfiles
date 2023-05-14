@@ -80,6 +80,9 @@ paru -S vifmimg-git fontpreview taffy
 
 * General
 #+begin_src vimrc
+set number
+set relativenumber
+
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
@@ -149,7 +152,7 @@ Format for displaying time in file list. For example:
 =TIME_STAMP_FORMAT=%m/%d-%H:%M=
 See man date or man strftime for details.
 #+begin_src vimrc
-set timefmt=%d-%b-%Y\ %H:%M
+set timefmt=%e-%b-%Y\ %l:%M%P
 #+end_src
 
 Set custom status line look
@@ -247,7 +250,7 @@ command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
 command! make !!make %a
-command! mkcd :mkdir %a | cd %a
+command! mkdirg :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart full
 #+end_src
@@ -291,7 +294,7 @@ filextype */
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in vimiv} vimiv %f,
         \ {View as ASCII} img2txt %c,
-        \ {View file info} identify %f | less,
+        \ {View file info} identify %f %m,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          \ vifmimg draw %px %py %pw %ph %c
          \ %pc
@@ -588,6 +591,13 @@ Filter-out build and temporary files
 
 * Key Bindings
 ** Root
+Unbind
+#+begin_src vimrc
+nmap t <nop>
+nmap i <nop>
+" nmap i :setl previewprg='identify %c'<cr>:view<cr>
+#+end_src
+
 Previews
 #+begin_src vimrc
 nnoremap w :view<cr>
@@ -607,12 +617,10 @@ nnoremap s :shell<cr>
 
 #+begin_src vimrc
 nnoremap x t
-nmap t <nop>
 #+end_src
 
 #+begin_src vimrc
 nnoremap o i
-nmap i <nop>
 nnoremap O :file<cr>
 #+end_src
 
@@ -678,6 +686,7 @@ map <space>t<esc> <nop>
 
 #+begin_src vimrc
 nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tl :set number!<cr>:set relativenumber!<cr>
 nnoremap <space>tm :set millerview!<cr>
 nnoremap <space>tu :hideui<cr>
 nnoremap <space>tw :set wrap!<cr>

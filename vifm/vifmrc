@@ -1,3 +1,6 @@
+set number
+set relativenumber
+
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
@@ -51,7 +54,7 @@ set undolevels=100
 
 colorscheme gruvbox Default
 
-set timefmt=%d-%b-%Y\ %H:%M
+set timefmt=%e-%b-%Y\ %l:%M%P
 
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
@@ -129,7 +132,7 @@ command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
 command! make !!make %a
-command! mkcd :mkdir %a | cd %a
+command! mkdirg :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart full
 
@@ -139,7 +142,7 @@ filextype */
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in vimiv} vimiv %f,
         \ {View as ASCII} img2txt %c,
-        \ {View file info} identify %f | less,
+        \ {View file info} identify %f %m,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          \ vifmimg draw %px %py %pw %ph %c
          \ %pc
@@ -339,6 +342,10 @@ set viewcolumns=-{name}..,6{}.
 
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
 
+nmap t <nop>
+nmap i <nop>
+" nmap i :setl previewprg='identify %c'<cr>:view<cr>
+
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
@@ -352,10 +359,8 @@ nnoremap S :sort<cr>
 nnoremap s :shell<cr>
 
 nnoremap x t
-nmap t <nop>
 
 nnoremap o i
-nmap i <nop>
 nnoremap O :file<cr>
 
 nmap <space> <nop>
@@ -393,6 +398,7 @@ nnoremap <space>qq :q<cr>
 map <space>t<esc> <nop>
 
 nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tl :set number!<cr>:set relativenumber!<cr>
 nnoremap <space>tm :set millerview!<cr>
 nnoremap <space>tu :hideui<cr>
 nnoremap <space>tw :set wrap!<cr>
