@@ -145,19 +145,19 @@ set undolevels=100
 * Theme
 List of color schemes to try (picks the first one supported by the terminal)
 #+begin_src vimrc
-colorscheme gruvbox Default
+colorscheme base16
 #+end_src
 
 Format for displaying time in file list. For example:
 =TIME_STAMP_FORMAT=%m/%d-%H:%M=
 See man date or man strftime for details.
 #+begin_src vimrc
-set timefmt=%e-%b-%Y\ %l:%M%P
+set timefmt="%l:%M%P %e-%b-%Y "
 #+end_src
 
 Set custom status line look
 #+begin_src vimrc
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline="%[%T %] %= %2*%A  %6*%5u:%g  %3*%E/%a  %4*%d"
 #+end_src
 
 Getting icons to display in vifm
@@ -216,6 +216,7 @@ mark p ~/pictures
 mark P ~/pictures/photos
 mark r ~/videos/recordings
 mark s ~/pictures/screenshots
+mark t ~/.cache/tmp
 mark T /tmp
 mark w ~/pictures/wallpapers
 mark c ~/.config
@@ -610,7 +611,6 @@ Filter-out build and temporary files
 Unbind
 #+begin_src vimrc
 nmap t <nop>
-nmap i <nop>
 " nmap i :setl previewprg='identify %c'<cr>:view<cr>
 #+end_src
 
@@ -633,6 +633,7 @@ nnoremap s :shell<cr>
 
 #+begin_src vimrc
 nnoremap x t
+nnoremap i <c-g>
 #+end_src
 
 #+begin_src vimrc
@@ -662,6 +663,7 @@ nnoremap <space><Tab>8 :tabnext 8<cr>
 nnoremap <space><Tab>9 :tabnext 9<cr>
 nnoremap <space><Tab>[ :tabprevious<cr>
 nnoremap <space><Tab>] :tabnext<cr>
+nnoremap <space><Tab>c :tabclose<cr>
 nnoremap <space><Tab>d :tabclose<cr>
 nnoremap <space><Tab>n :tabnew<cr>
 nnoremap <space><Tab>r :tabname<space>
@@ -720,6 +722,7 @@ nnoremap <space>w< 5<c-w>-
 nnoremap <space>w= <c-w>=
 nnoremap <space>w> 5<c-w>+
 nnoremap <space>w_ <c-w>_
+nnoremap <space>wc :compare<cr>
 nnoremap <space>wb <c-w>b
 nnoremap <space>wh <c-w>h
 nnoremap <space>wH <c-w>H

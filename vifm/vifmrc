@@ -52,11 +52,11 @@ set history=100
 
 set undolevels=100
 
-colorscheme gruvbox Default
+colorscheme base16
 
-set timefmt=%e-%b-%Y\ %l:%M%P
+set timefmt="%l:%M%P %e-%b-%Y "
 
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline="%[%T %] %= %2*%A  %6*%5u:%g  %3*%E/%a  %4*%d"
 
 " file types
 set classify=' :dir:/, :exe:, :reg:, :link:'
@@ -106,6 +106,7 @@ mark p ~/pictures
 mark P ~/pictures/photos
 mark r ~/videos/recordings
 mark s ~/pictures/screenshots
+mark t ~/.cache/tmp
 mark T /tmp
 mark w ~/pictures/wallpapers
 mark c ~/.config
@@ -342,7 +343,6 @@ set viewcolumns=-{name}..,6{}.
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
 
 nmap t <nop>
-nmap i <nop>
 " nmap i :setl previewprg='identify %c'<cr>:view<cr>
 
 nnoremap w :view<cr>
@@ -358,6 +358,7 @@ nnoremap S :sort<cr>
 nnoremap s :shell<cr>
 
 nnoremap x t
+nnoremap i <c-g>
 
 nnoremap o i
 nnoremap O :file<cr>
@@ -377,6 +378,7 @@ nnoremap <space><Tab>8 :tabnext 8<cr>
 nnoremap <space><Tab>9 :tabnext 9<cr>
 nnoremap <space><Tab>[ :tabprevious<cr>
 nnoremap <space><Tab>] :tabnext<cr>
+nnoremap <space><Tab>c :tabclose<cr>
 nnoremap <space><Tab>d :tabclose<cr>
 nnoremap <space><Tab>n :tabnew<cr>
 nnoremap <space><Tab>r :tabname<space>
@@ -410,6 +412,7 @@ nnoremap <space>w< 5<c-w>-
 nnoremap <space>w= <c-w>=
 nnoremap <space>w> 5<c-w>+
 nnoremap <space>w_ <c-w>_
+nnoremap <space>wc :compare<cr>
 nnoremap <space>wb <c-w>b
 nnoremap <space>wh <c-w>h
 nnoremap <space>wH <c-w>H

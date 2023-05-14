@@ -1,0 +1,80 @@
+" The Default color scheme is used for any directory that does not have
+" a specified scheme and for parts of user interface like menus. A
+" color scheme set for a base directory will also
+" be used for the sub directories.
+
+" The standard ncurses colors are:
+" Default = -1 = None, can be used for transparency or default color
+" Black = 0
+" Red = 1
+" Green = 2
+" Yellow = 3
+" Blue = 4
+" Magenta = 5
+" Cyan = 6
+" White = 7
+
+" Light versions of colors are also available (set bold attribute):
+" LightBlack
+" LightRed
+" LightGreen
+" LightYellow
+" LightBlue
+" LightMagenta
+" LightCyan
+" LightWhite
+
+" Available attributes (some of them can be combined):
+" bold
+" underline
+" reverse or inverse
+" standout
+" italic (on unsupported systems becomes reverse)
+" none
+
+highlight clear " Reset all styles
+
+highlight Win           cterm=none           ctermfg=white       ctermbg=default    " color of all windows (views, dialogs, menus) and default color for their content (e.g. regular files in views)
+highlight AuxWin        cterm=none           ctermfg=default     ctermbg=default    " color of auxiliary areas of windows
+highlight OtherWin      cterm=none           ctermfg=default     ctermbg=default    " color of inactive pane
+highlight Border        cterm=none           ctermfg=default     ctermbg=default    " color of vertical parts of the border
+
+highlight TabLine       cterm=none           ctermfg=white       ctermbg=default    " tab line color (for vifm-'tabscope' set to "global")
+highlight TabLineSel    cterm=inverse        ctermfg=green       ctermbg=default    " color of the tip of selected tab (regardless of vifm-'tabscope')
+highlight TopLine       cterm=none           ctermfg=lightblue   ctermbg=default    " top line color of the other pane
+highlight TopLineSel    cterm=bold           ctermfg=blue        ctermbg=default    " top line color of the current pane
+highlight CmdLine       cterm=none           ctermfg=cyan        ctermbg=black      " the command line/status bar color
+highlight ErrorMsg      cterm=bold,inverse   ctermfg=red         ctermbg=default    " color of error messages in the status bar
+highlight StatusLine    cterm=none           ctermfg=default     ctermbg=black      " color of the line above the status bar
+highlight JobLine       cterm=bold           ctermfg=default     ctermbg=default    " color of job line that appears above the status line
+highlight WildMenu      cterm=bold           ctermfg=default     ctermbg=lightblack " color of the wild menu items
+highlight SuggestBox    cterm=none           ctermfg=default     ctermbg=default    " color of key suggestion box
+
+highlight CurrLine      cterm=bold,inverse   ctermfg=default     ctermbg=default    " line at cursor position in active view
+highlight OtherLine     cterm=bold           ctermfg=default     ctermbg=lightblack " line at cursor position in inactive view
+highlight OddLine       cterm=none           ctermfg=default     ctermbg=default    " color of every second entry line in a pane
+highlight LineNr        cterm=none           ctermfg=lightblack  ctermbg=default    " line number column of views
+
+highlight Selected      cterm=none           ctermfg=yellow      ctermbg=black      " color of selected files
+highlight Directory     cterm=bold           ctermfg=blue        ctermbg=default    " color of directories
+highlight Link          cterm=none           ctermfg=magenta     ctermbg=default    " color of symbolic links in the views
+highlight BrokenLink    cterm=bold,standout  ctermfg=red         ctermbg=default    " color of broken symbolic links
+highlight HardLink      cterm=none           ctermfg=default     ctermbg=default    " color of regular files with more than one hard link
+highlight Socket        cterm=bold           ctermfg=default     ctermbg=default    " color of sockets
+highlight Device        cterm=standout       ctermfg=yellow      ctermbg=default    " color of block and character devices
+highlight Executable    cterm=none           ctermfg=green       ctermbg=default    " color of executable files
+highlight Fifo          cterm=none           ctermfg=yellow      ctermbg=default    " color of fifo pipes
+
+highlight CmpMismatch   cterm=none           ctermfg=red         ctermbg=default    " color of mismatched files in side-by-side comparison by paths
+highlight CmpUnmatched  cterm=none           ctermfg=yellow      ctermbg=default    " comparison file entry that has no pair in the other pane
+highlight CmpBlank      cterm=none           ctermfg=green       ctermbg=default    " entry placeholder in a compare view, paired with CmpUnmatched
+
+" User1..User20 - 20 colors which can be used via %* vifm-'statusline' macro
+highlight User1         cterm=none           ctermfg=red         ctermbg=default
+highlight User2         cterm=none           ctermfg=green       ctermbg=default
+highlight User3         cterm=none           ctermfg=yellow      ctermbg=default
+highlight User4         cterm=none           ctermfg=blue        ctermbg=default
+highlight User5         cterm=none           ctermfg=magenta     ctermbg=default
+highlight User6         cterm=none           ctermfg=cyan        ctermbg=default
+highlight User7         cterm=none           ctermfg=white       ctermbg=default
+highlight User8         cterm=none           ctermfg=black       ctermbg=default
