@@ -78,7 +78,7 @@ set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and
 " registers (at most 5 files).  In other view, when available.
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set suggestoptions=normal,visual,view,otherpane,keys,foldsubkeys,marks,registers
 
 " Ignore case in search patterns unless it contains at least one uppercase
 " letter
@@ -134,18 +134,12 @@ command! vgrep vim "+grep %a"
 command! reload :write | restart full
 
 filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
+        \ {Show disk usage} du -h %f | less,
 
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in vimiv}
-        \ vimiv %f,
-        \ {View in sxiv}
-        \ sxiv %f,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
+        \ {View in vimiv} vimiv %f,
+        \ {View as ASCII} img2txt %c,
+        \ {View file info} identify %f | less,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          \ vifmimg draw %px %py %pw %ph %c
          \ %pc
@@ -155,57 +149,65 @@ fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          " \ {File info}
          " \ identify %f
 
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
-        \<audio/*>
-       \ {Play using mpv}
-       \ mpv %c,
-       \ {Play using ffplay}
-       \ ffplay -nodisp -autoexit %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
-fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
-        \<audio/mpeg>
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},<audio/*>
+       \ {Play using mpv} mpv %c,
+       \ {Play using ffplay} ffplay -nodisp -autoexit %c,
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},<audio/mpeg>
         \ taffy
 " fileviewer {*.mp3},<audio/mpeg> mp3info
 " fileviewer {*.flac},<audio/flac> soxi
 
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]},
-         \<video/*>
-        \ {View using mpv}
-        \ mpv %f,
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
-        \ {View using mplayer}
-        \ mplayer %f,
+          \*.as[fx]},<video/*>
+        \ {View using mpv} mpv %f,
+        \ {View using ffplay} ffplay -fs -autoexit %f,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]},
-          \<video/*>
+           \*.as[fx]},<video/*>
          \ ffprobe -pretty %c 2>&1
 
 filextype {*.html,*.htm},<text/html>
-        \ {Open with dwb}
-        \ dwb %f %i &,
-        \ {Open with firefox}
-        \ firefox %f &,
-        \ {Open with uzbl}
-        \ uzbl-browser %f %i &,
-filetype {*.html,*.htm},<text/html> links, lynx
-
-filetype {*.[1-8]},<text/troff> man ./%c
-fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
+        \ {Open with qutebrowser} qutebrowser %f %i &,
+        \ {Open with firefox} firefox %f &,
+filetype {*.html,*.htm},<text/html>
+        \ {View in lynx} lynx,
+        \ {View in links} links,
 
 filextype {*.pdf},<application/pdf>
-        \ zathura %c %i &, apvlv %c, xpdf %c
+        \ {View in zathura} zathura %c %i &,
+        \ {View in okular} okular %c,
 fileviewer {*.pdf},<application/pdf>
          \ vifmimg pdf %px %py %pw %ph %c
          \ %pc
          \ vifmimg clear
         " \ pdftotext -nopgbrk %c -
+
+filetype {*.torrent},<application/x-bittorrent>
+       \ ktorrent %f &
+fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
+
+filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},<application/zip,application/java-archive>
+       \ {Mount with fuse-zip} FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {View contents} zip -sf %c | less,
+       \ {Extract here} tar -xf %c,
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt
+       \ zip -sf %c
+       \ echo "No zip to preview:"
+
+filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},<application/x-tar>
+       \ {Mount with archivemount} FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+fileviewer *.tgz,*.tar.gz
+       \ tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2
+       \ tar -tjf %c
+fileviewer *.tar.txz,*.txz
+       \ xz --list %c
+fileviewer {*.tar},<application/x-tar>
+       \ tar -tf %c
+
+filetype {*.[1-8]},<text/troff> man ./%c
+fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
          \<application/vnd.openxmlformats-officedocument.*,
@@ -275,28 +277,6 @@ filetype *.sha512
 filetype {*.asc},<application/pgp-signature>
        \ {Check signature}
        \ !!gpg --verify %c,
-
-filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
-fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
-
-filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
-        \<application/zip,application/java-archive>
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ {Extract here}
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
-
-filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
-        \<application/x-tar>
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer {*.tar},<application/x-tar> tar -tf %c
 
 filetype {*.rar},<application/x-rar>
        \ {Mount with rar2fs}
@@ -372,14 +352,15 @@ nnoremap S :sort<cr>
 nnoremap s :shell<cr>
 
 nnoremap x t
+nmap t <nop>
 
-" Open file in existing instance of gvim
-nnoremap o :!gvim --remote-tab-silent %f<cr>
-
-" Open file in new instance of gvim
-nnoremap O :!gvim %f<cr>
+nnoremap o i
+nmap i <nop>
+nnoremap O :file<cr>
 
 nmap <space> <nop>
+
+nnoremap <wait> <space>' /<cr>
 
 nnoremap <space><Tab>1 :tabnext 1<cr>
 nnoremap <space><Tab>2 :tabnext 2<cr>
@@ -398,16 +379,25 @@ nnoremap <space><Tab>r :tabname<space>
 nnoremap <space><Tab>O :tabonly<cr>
 
 nmap <space>h<esc> <nop>
+
 nnoremap <space>hr :restart<cr>
 
-nmap <space>q<esc> <nop>
+map <space>o<esc> <nop>
+
+nnoremap <space>ot :!alacritty &<cr>
+
+map <space>q<esc> <nop>
+
 nnoremap <space>qq :q<cr>
 
 map <space>t<esc> <nop>
+
 nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tm :set millerview!<cr>
+nnoremap <space>tu :hideui<cr>
 nnoremap <space>tw :set wrap!<cr>
 
-nmap <space>w<esc> <nop>
+map <space>w<esc> <nop>
 
 nnoremap <space>w+ 5<c-w>+
 nnoremap <space>w- 5<c-w>-
@@ -479,9 +469,6 @@ nnoremap <a-x> :
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
-
-" Open console in current directory
-nnoremap ,t :!alacritty &<cr>
 
 " Various customization examples
 

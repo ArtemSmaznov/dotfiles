@@ -21,8 +21,10 @@
   - [[#audio][Audio]]
   - [[#video][Video]]
   - [[#web][Web]]
-  - [[#man-page][Man page]]
   - [[#pdf][Pdf]]
+  - [[#torrent][Torrent]]
+  - [[#archives][Archives]]
+  - [[#man-page][Man page]]
   - [[#office-files][Office files]]
   - [[#djvu][Djvu]]
   - [[#epub][Epub]]
@@ -36,9 +38,6 @@
   - [[#sha256][SHA256]]
   - [[#sha512][SHA512]]
   - [[#gpg-signature][GPG signature]]
-  - [[#torrent][Torrent]]
-  - [[#fusezipmount][FuseZipMount]]
-  - [[#archivemount][ArchiveMount]]
   - [[#rar2fsmount-and-rar-archives][Rar2FsMount and rar archives]]
   - [[#isomount][IsoMount]]
   - [[#sshmount][SshMount]]
@@ -49,7 +48,7 @@
 - [[#syntax-highlighting][Syntax Highlighting]]
 - [[#panels][Panels]]
 - [[#key-bindings][Key Bindings]]
-  - [[#root][root]]
+  - [[#root][Root]]
   - [[#leader][Leader]]
   - [[#g][g]]
   - [[#y][y]]
@@ -58,7 +57,6 @@
   - [[#f-keys][F-keys]]
   - [[#alt][Alt]]
   - [[#renaming][Renaming]]
-  - [[#misc][Misc]]
 - [[#customization][Customization]]
 
 * Dependencies
@@ -187,7 +185,7 @@ set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and
 " registers (at most 5 files).  In other view, when available.
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set suggestoptions=normal,visual,view,otherpane,keys,foldsubkeys,marks,registers
 
 " Ignore case in search patterns unless it contains at least one uppercase
 " letter
@@ -285,21 +283,15 @@ program.
 ** Directories
 #+begin_src vimrc
 filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
+        \ {Show disk usage} du -h %f | less,
 #+end_src
 
 ** Images
 #+begin_src vimrc
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in vimiv}
-        \ vimiv %f,
-        \ {View in sxiv}
-        \ sxiv %f,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
+        \ {View in vimiv} vimiv %f,
+        \ {View as ASCII} img2txt %c,
+        \ {View file info} identify %f | less,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          \ vifmimg draw %px %py %pw %ph %c
          \ %pc
@@ -312,16 +304,10 @@ fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
 
 ** Audio
 #+begin_src vimrc
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
-        \<audio/*>
-       \ {Play using mpv}
-       \ mpv %c,
-       \ {Play using ffplay}
-       \ ffplay -nodisp -autoexit %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
-fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
-        \<audio/mpeg>
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},<audio/*>
+       \ {Play using mpv} mpv %c,
+       \ {Play using ffplay} ffplay -nodisp -autoexit %c,
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},<audio/mpeg>
         \ taffy
 " fileviewer {*.mp3},<audio/mpeg> mp3info
 " fileviewer {*.flac},<audio/flac> soxi
@@ -331,50 +317,72 @@ fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
 #+begin_src vimrc
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]},
-         \<video/*>
-        \ {View using mpv}
-        \ mpv %f,
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
-        \ {View using mplayer}
-        \ mplayer %f,
+          \*.as[fx]},<video/*>
+        \ {View using mpv} mpv %f,
+        \ {View using ffplay} ffplay -fs -autoexit %f,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]},
-          \<video/*>
+           \*.as[fx]},<video/*>
          \ ffprobe -pretty %c 2>&1
 #+end_src
 
 ** Web
 #+begin_src vimrc
 filextype {*.html,*.htm},<text/html>
-        \ {Open with dwb}
-        \ dwb %f %i &,
-        \ {Open with firefox}
-        \ firefox %f &,
-        \ {Open with uzbl}
-        \ uzbl-browser %f %i &,
-filetype {*.html,*.htm},<text/html> links, lynx
+        \ {Open with qutebrowser} qutebrowser %f %i &,
+        \ {Open with firefox} firefox %f &,
+filetype {*.html,*.htm},<text/html>
+        \ {View in lynx} lynx,
+        \ {View in links} links,
+#+end_src
+
+** Pdf
+#+begin_src vimrc
+filextype {*.pdf},<application/pdf>
+        \ {View in zathura} zathura %c %i &,
+        \ {View in okular} okular %c,
+fileviewer {*.pdf},<application/pdf>
+         \ vifmimg pdf %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+        " \ pdftotext -nopgbrk %c -
+#+end_src
+
+** Torrent
+#+begin_src vimrc
+filetype {*.torrent},<application/x-bittorrent>
+       \ ktorrent %f &
+fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
+#+end_src
+
+** Archives
+#+begin_src vimrc
+filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},<application/zip,application/java-archive>
+       \ {Mount with fuse-zip} FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {View contents} zip -sf %c | less,
+       \ {Extract here} tar -xf %c,
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt
+       \ zip -sf %c
+       \ echo "No zip to preview:"
+#+end_src
+
+#+begin_src vimrc
+filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},<application/x-tar>
+       \ {Mount with archivemount} FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+fileviewer *.tgz,*.tar.gz
+       \ tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2
+       \ tar -tjf %c
+fileviewer *.tar.txz,*.txz
+       \ xz --list %c
+fileviewer {*.tar},<application/x-tar>
+       \ tar -tf %c
 #+end_src
 
 ** Man page
 #+begin_src vimrc
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
-#+end_src
-
-** Pdf
-#+begin_src vimrc
-filextype {*.pdf},<application/pdf>
-        \ zathura %c %i &, apvlv %c, xpdf %c
-fileviewer {*.pdf},<application/pdf>
-         \ vifmimg pdf %px %py %pw %ph %c
-         \ %pc
-         \ vifmimg clear
-        " \ pdftotext -nopgbrk %c -
 #+end_src
 
 ** Office files
@@ -485,37 +493,6 @@ filetype {*.asc},<application/pgp-signature>
        \ !!gpg --verify %c,
 #+end_src
 
-** Torrent
-#+begin_src vimrc
-filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
-fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
-#+end_src
-
-** FuseZipMount
-#+begin_src vimrc
-filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
-        \<application/zip,application/java-archive>
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ {Extract here}
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
-#+end_src
-
-** ArchiveMount
-#+begin_src vimrc
-filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
-        \<application/x-tar>
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer {*.tar},<application/x-tar> tar -tf %c
-#+end_src
-
 ** Rar2FsMount and rar archives
 #+begin_src vimrc
 filetype {*.rar},<application/x-rar>
@@ -610,7 +587,7 @@ Filter-out build and temporary files
 #+end_src
 
 * Key Bindings
-** root
+** Root
 Previews
 #+begin_src vimrc
 nnoremap w :view<cr>
@@ -630,20 +607,24 @@ nnoremap s :shell<cr>
 
 #+begin_src vimrc
 nnoremap x t
+nmap t <nop>
 #+end_src
 
 #+begin_src vimrc
-" Open file in existing instance of gvim
-nnoremap o :!gvim --remote-tab-silent %f<cr>
-
-" Open file in new instance of gvim
-nnoremap O :!gvim %f<cr>
+nnoremap o i
+nmap i <nop>
+nnoremap O :file<cr>
 #+end_src
 
 ** Leader
 #+begin_src vimrc
 nmap <space> <nop>
 #+end_src
+*** Root
+#+begin_src vimrc
+nnoremap <wait> <space>' /<cr>
+#+end_src
+
 *** TAB -> workspace
 #+begin_src vimrc
 nnoremap <space><Tab>1 :tabnext 1<cr>
@@ -666,25 +647,45 @@ nnoremap <space><Tab>O :tabonly<cr>
 *** h -> help
 #+begin_src vimrc
 nmap <space>h<esc> <nop>
+#+end_src
+
+#+begin_src vimrc
 nnoremap <space>hr :restart<cr>
+#+end_src
+
+*** o -> open
+#+begin_src vimrc
+map <space>o<esc> <nop>
+#+end_src
+
+#+begin_src vimrc
+nnoremap <space>ot :!alacritty &<cr>
 #+end_src
 
 *** q -> quit
 #+begin_src vimrc
-nmap <space>q<esc> <nop>
+map <space>q<esc> <nop>
+#+end_src
+
+#+begin_src vimrc
 nnoremap <space>qq :q<cr>
 #+end_src
 
 *** t -> toggle
 #+begin_src vimrc
 map <space>t<esc> <nop>
+#+end_src
+
+#+begin_src vimrc
 nnoremap <space>t. :set dotfiles!<cr>
+nnoremap <space>tm :set millerview!<cr>
+nnoremap <space>tu :hideui<cr>
 nnoremap <space>tw :set wrap!<cr>
 #+end_src
 
 *** w -> window
 #+begin_src vimrc
-nmap <space>w<esc> <nop>
+map <space>w<esc> <nop>
 #+end_src
 
 #+begin_src vimrc
@@ -783,12 +784,6 @@ nnoremap <a-x> :
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
-#+end_src
-
-** Misc
-#+begin_src vimrc
-" Open console in current directory
-nnoremap ,t :!alacritty &<cr>
 #+end_src
 
 * Customization
