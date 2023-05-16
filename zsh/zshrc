@@ -28,6 +28,7 @@ fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
 
 # Autocompletion
+autoload bashcompinit && bashcompinit # for aws cli
 autoload -Uz compinit && compinit # Load autocompletion
 zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
 zstyle ':completion:*' menu select
