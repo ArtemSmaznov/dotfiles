@@ -896,7 +896,7 @@ Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf
 h           seek -5
 l           seek  5
-h           seek -15
+H           seek -15
 L           seek  15
 
 LEFT        seek -10
