@@ -39,7 +39,7 @@ highlight AuxWin        cterm=none           ctermfg=default     ctermbg=default
 highlight OtherWin      cterm=none           ctermfg=default     ctermbg=default    " color of inactive pane
 highlight Border        cterm=none           ctermfg=default     ctermbg=default    " color of vertical parts of the border
 
-highlight TabLine       cterm=none           ctermfg=white       ctermbg=default    " tab line color (for vifm-'tabscope' set to "global")
+highlight TabLine       cterm=none           ctermfg=white       ctermbg=default    " tab line color
 highlight TabLineSel    cterm=inverse        ctermfg=green       ctermbg=default    " color of the tip of selected tab (regardless of vifm-'tabscope')
 highlight TopLine       cterm=none           ctermfg=lightblue   ctermbg=default    " top line color of the other pane
 highlight TopLineSel    cterm=bold           ctermfg=blue        ctermbg=default    " top line color of the current pane
