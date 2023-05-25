@@ -95,23 +95,23 @@ set nohlsearch
 set incsearch
 
 mark h ~
+mark b ~/.local/bin
+mark c ~/.config
+mark t ~/.cache/tmp
 mark d ~/downloads
 mark D ~/documents
-mark E /etc
 mark f ~/documents/finance
 mark m ~/music
-mark M /run/mount
-mark v ~/videos
 mark p ~/pictures
 mark P ~/pictures/photos
-mark r ~/videos/recordings
 mark s ~/pictures/screenshots
-mark t ~/.cache/tmp
-mark T /tmp
 mark w ~/pictures/wallpapers
-mark c ~/.config
-mark b ~/.local/bin
-mark S /home/Steam/steamapps/compatdata
+mark v ~/videos
+mark r ~/videos/recordings
+mark E /etc
+mark T /tmp
+mark M /run/mount
+mark g /run/media/games
 
 set vifminfo=bmarks,tui,dhistory,state,savedirs,chistory,shistory,phistory,fhistory,dirstack,registers
 
