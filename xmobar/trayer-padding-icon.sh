@@ -9,13 +9,12 @@
 # `Run Com "/where/ever/trayer-padding-icon.sh" [] "trayerpad" 10`
 # and use `%trayerpad%` in your template.
 
-
 # Function to create a transparent Wx1 px XPM icon
-create_xpm_icon () {
+create_xpm_icon() {
     timestamp=$(date)
-    pixels=$(for i in `seq $1`; do echo -n "."; done)
+    pixels=$(for i in $(seq $1); do echo -n "."; done)
 
-    cat << EOF > "$2"
+    cat <<EOF >"$2"
 /* XPM *
 static char * trayer_pad_xpm[] = {
 /* This XPM icon is used for padding in xmobar to */
@@ -34,7 +33,8 @@ EOF
 }
 
 # Width of the trayer window
-width=$(xprop -name panel | grep 'program specified minimum size' | cut -d ' ' -f 5)
+width=$(/home/artem/.local/bin/get-trayer-width.sh)
+# width=$(xprop -name panel | grep 'program specified minimum size' | cut -d ' ' -f 5)
 
 # Icon file name
 iconfile="/tmp/trayer-padding-${width}px.xpm"

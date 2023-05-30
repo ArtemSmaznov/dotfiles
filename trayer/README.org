@@ -15,6 +15,10 @@
 #+begin_src shell
 #
 # Start flavours
+# Base16 Gruvbox dark, medium theme
+# by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# template by Artem Smaznov
+
 background="0x282828"
 # End flavours
 #+end_src
@@ -47,7 +51,7 @@ trayer \
     --alpha 0 \
     --expand true \
     --padding 4 \
-    --monitor 1
+    --monitor 0
     # --distancefrom right \
     # --distance 400 \
 #+end_src

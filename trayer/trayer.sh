@@ -28,6 +28,6 @@ trayer \
     --alpha 0 \
     --expand true \
     --padding 4 \
-    --monitor 1
+    --monitor 0
     # --distancefrom right \
     # --distance 400 \
