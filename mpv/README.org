@@ -128,13 +128,13 @@ profile=gpu-hq
 
 Force video to lock on the display's refresh rate, and change video and audio speed to some degree to ensure synchronous playback - can cause problems with some drivers and desktop environments.
 #+begin_src conf
-#video-sync=display-resample
+# video-sync=display-resample
 #+end_src
 
 Enable hardware decoding if available. Often, this does not work with all video outputs, but should work well with default settings on most systems.
 If performance or energy usage is an issue, forcing the vdpau or vaapi VOs may or may not help.
 #+begin_src conf
-#hwdec=auto
+# hwdec=auto
 #+end_src
 
 ** Audio
@@ -294,6 +294,28 @@ You can also include other configuration files.
 *** Colors
 #+begin_src conf
 # Start flavours
+# Base16 Gruvbox dark, medium theme
+# by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# template by Artem Smaznov
+
+# Here are some useful ASS override tags (omit square brackets)
+# \fn[Font Name] : sets the font to the named font.
+# \fs[number]    : sets the font size to the given number.
+# \b[1/0]        : sets the text bold or not (\b1 is bold, \b0 is regular weight).
+# \i[1/0]        : sets the text italic or not (same semantics as bold).
+# \bord[number]  : sets the outline width to the given number (in pixels).
+# \shad[number]  : sets the shadow size to the given number (pixels).
+# \c&H[BBGGRR]&  : sets the fill color for the text to the given color (hex pairs in
+#                the order, blue, green, red).
+# \3c&H[BBGGRR]& : sets the outline color of the text to the given color.
+# \4c&H[BBGGRR]& : sets the shadow color of the text to the given color.
+# \alpha&H[AA]&  : sets the line's transparency as a hex pair. 00 is fully opaque
+#                and FF is fully transparent. Some UI elements are composed of
+#                multiple layered lines, so adding transparency may not look good.
+#                For further granularity, \1a&H[AA]& controls the fill opacity,
+#                \3a&H[AA]& controls the outline opacity, and \4a&H[AA]& controls
+#                the shadow opacity.
+
 # Default style that is applied to all UI elements. A string of ASS override tags.
 # Individual elements have their own style settings which override the tags here.
 # Changing the font will likely require changing the hover-time margin settings
@@ -577,7 +599,6 @@ redraw-period=0.03
 # Controls how long the UI animations take. A value of 0 disables all animations
 # (which breaks the pause indicator).
 animation-duration=0.25
-# End flavours
 #+end_src
 
 *** UI
