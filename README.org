@@ -10,6 +10,7 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 - [[#boot-loader][Boot Loader]]
 - [[#display-manager-dm][Display Manager (DM)]]
 - [[#window-manager-wm][Window Manager (WM)]]
+- [[#wayland-compositor][Wayland Compositor]]
 - [[#status-bars][Status Bars]]
 - [[#system-tray][System Tray]]
 - [[#desktop-widgets][Desktop Widgets]]
@@ -38,13 +39,17 @@ Larger configurations such as Window Managers, VIM, etc. as well as themes are h
 =Display Manager= or =DM= is also known as =Login Manager= and is the login screen you see before booting into your =WM/DE=.
 - [[file:~/projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
 * Window Manager (WM)
-=Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to user a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
+=Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to use a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
 - [[file:xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
 - [[file:qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
 - [[file:awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
+* Wayland Compositor
+A =Compositor= in Wayland is similar to =Window Manager + Compositor= in X11.
+- [[file:hypr/README.org][Hyprland]] ([[https://github.com/ArtemSmaznov/Hyprland][repo]])
 * Status Bars
 - [[file:eww/README.org][eww]]
 - [[file:xmobar/README.org][XMobar]]
+- [[file:waybar/README.org][Waybar]]
 * System Tray
 - [[file:trayer/README.org][trayer]]
 * Desktop Widgets

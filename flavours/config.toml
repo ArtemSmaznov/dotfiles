@@ -48,6 +48,12 @@ subtemplate = "torque-progressbar"
 rewrite = false
 
 [[item]]
+file = "~/.config/hypr/themes/base16.conf"
+template = "hyprland"
+light = true
+rewrite = true
+
+[[item]]
 file = "~/.config/gtk-2.0/gtkrc"
 template = "gtk-flatcolor"
 subtemplate = "gtk-2"
@@ -95,6 +101,12 @@ file = "~/.config/vimiv/styles/base16.conf"
 template = "vimiv"
 start = "; Start flavours"
 end = "; End flavours"
+
+[[item]]
+file = "~/.config/waybar/themes/base16.css"
+template = "waybar"
+light = true
+rewrite = true
 
 [[item]]
 file = "~/.config/xmobar/mainScreen.hs"

@@ -16,6 +16,7 @@
 - [[#eww][EWW]]
 - [[#idea-fzf][IDEA FZF]]
 - [[#mpv][MPV]]
+- [[#hyprland][Hyprland]]
 - [[#strt-gtk-2][STRT GTK 2]]
 - [[#strt-gtk-3][STRT GTK 3]]
 - [[#qtile][qTile]]
@@ -25,6 +26,7 @@
 - [[#termux][Termux]]
 - [[#idea-vim][IDEA Vim]]
 - [[#vimiv][Vimiv]]
+- [[#waybar][Waybar]]
 - [[#xmobar][Xmobar]]
 - [[#xmonad][Xmonad]]
 - [[#xresources][Xresources]]
@@ -119,6 +121,14 @@ template = "mpv"
 subtemplate = "torque-progressbar"
 rewrite = false
 #+end_src
+* Hyprland
+#+begin_src toml
+[[item]]
+file = "~/.config/hypr/themes/base16.conf"
+template = "hyprland"
+light = true
+rewrite = true
+#+end_src
 
 * STRT GTK 2
 #+begin_src toml
@@ -190,6 +200,15 @@ file = "~/.config/vimiv/styles/base16.conf"
 template = "vimiv"
 start = "; Start flavours"
 end = "; End flavours"
+#+end_src
+
+* Waybar
+#+begin_src toml
+[[item]]
+file = "~/.config/waybar/themes/base16.css"
+template = "waybar"
+light = true
+rewrite = true
 #+end_src
 
 * TODO Xmobar
