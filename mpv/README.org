@@ -882,6 +882,7 @@ f cycle fullscreen                     # toggle fullscreen
 
 ** Playback
 #+begin_src conf
+k     cycle pause
 p     cycle pause
 SPACE cycle pause
 #+end_src
@@ -916,8 +917,10 @@ A-B Loop
 Seek units are in seconds, but note that these are limited by keyframes
 #+begin_src conf
 h           seek -5
+j           seek -5
 l           seek  5
 H           seek -15
+J           seek -15
 L           seek  15
 
 LEFT        seek -10
@@ -968,8 +971,8 @@ $ set pause yes ; seek 100 absolute-percent
 
 ** Audio
 #+begin_src conf
-j     add volume -1
-k     add volume 1
+# j     add volume -1
+# k     add volume 1
 DOWN  add volume -1
 UP    add volume 1
 m     cycle mute
