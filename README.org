@@ -59,6 +59,8 @@ A =Compositor= in Wayland is similar to =Window Manager + Compositor= in X11.
 - [[file:picom/README.org][Picom]]
 * Screen Locker
 - [[file:i3lock/README.org][i3lock]]
+- [[file:swaylock/README.org][swaylock]]
+- [[file:swayidle/README.org][swayidle]]
 * Shell
 - [[file:SHELLS.org::*Bash][Bash]]
 - [[file:SHELLS.org::*ZSH][ZSH]]

@@ -26,6 +26,7 @@
 - [[#termux][Termux]]
 - [[#idea-vim][IDEA Vim]]
 - [[#vimiv][Vimiv]]
+- [[#swaylock][Swaylock]]
 - [[#waybar][Waybar]]
 - [[#xmobar][Xmobar]]
 - [[#xmonad][Xmonad]]
@@ -200,6 +201,15 @@ file = "~/.config/vimiv/styles/base16.conf"
 template = "vimiv"
 start = "; Start flavours"
 end = "; End flavours"
+#+end_src
+
+* Swaylock
+#+begin_src toml
+[[item]]
+file = "~/.config/swaylock/config"
+template = "swaylock"
+light = true
+rewrite = false
 #+end_src
 
 * Waybar

@@ -103,6 +103,12 @@ start = "; Start flavours"
 end = "; End flavours"
 
 [[item]]
+file = "~/.config/swaylock/config"
+template = "swaylock"
+light = true
+rewrite = false
+
+[[item]]
 file = "~/.config/waybar/themes/base16.css"
 template = "waybar"
 light = true
