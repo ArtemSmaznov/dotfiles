@@ -257,12 +257,13 @@ Choose the order of the modules
 #+begin_src jsonc
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ disconnected",
+        "format-alt": "{ifname}: {ipaddr}",
+        "interval": 2,
     },
 #+end_src
 
@@ -277,6 +278,7 @@ Choose the order of the modules
 #+begin_src jsonc
     "cpu": {
         "format": "  {usage}%",
+        "format-alt": "  {load}",
         "tooltip": false
     },
 #+end_src
