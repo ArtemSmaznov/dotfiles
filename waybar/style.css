@@ -1,0 +1,290 @@
+@import "./themes/base16.css";
+
+*{
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Hack Nerd Font",
+                 "Source Han Sans JP",
+                 "Font Awesome 6 Free Solid",
+                 "FontAwesome",
+                 "Roboto";
+    font-size: 13px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+    color: @base07;
+}
+
+window#waybar {
+    background-color: @base00;
+    border-bottom: 3px solid @base00;
+    color: @base07;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: @BASE07;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @base03;
+}
+
+#scratchpad {
+    background: @base00;
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid @base07;
+}
+
+#custom-separator {
+    background: inherit;
+    color: @base03;
+}
+
+.modules-left > widget:first-child > #image {
+    padding-left: 5px;
+}
+
+
+
+#workspaces button label {
+    font-family: "Font Awesome 6 Free Solid";
+}
+
+#workspaces button {
+    padding: 0 7px;
+    background-color: transparent;
+    color: @base07;
+}
+
+#workspaces button:hover {
+    background: @base01;
+}
+
+#workspaces button.active {
+    background-color: @base02;
+    box-shadow: inset 0 -3px @base0E;
+}
+
+#workspaces button.persistent {
+    color: @base02;
+}
+
+#workspaces button.urgent {
+    background-color: @base08;
+}
+
+#submap {
+    padding: 0 5px;
+    background: @base0A;
+    color: @base00;
+}
+
+#window {
+}
+
+#mpd {
+    background: inherit;
+}
+
+#mpd.disconnected {
+    background: inherit;
+}
+
+#mpd.stopped {
+    background: inherit;
+}
+
+#mpd.paused {
+    background: inherit;
+}
+
+#tray {
+    background: inherit;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#language {
+    background: @base03;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#custom-updates {
+    padding-right: 5px;
+    background: inherit;
+    box-shadow: inset 0 -2px @base0E;
+}
+
+#battery {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0D;
+}
+
+#battery.charging, #battery.plugged {
+    color: @base07;
+    background: inherit;
+    box-shadow: inset 0 -2px @base0D;
+}
+
+@keyframes blink {
+    to {
+        background-color: @base0D;
+        color: @base0D;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: inherit;
+    color: @base0D;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0C;
+}
+
+#network.disconnected {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0C;
+}
+
+#memory {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0B;
+}
+
+#cpu {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0A;
+}
+
+#temperature {
+    background: inherit;
+    box-shadow: inset 0 -2px @base09;
+}
+
+#temperature.critical {
+    background: inherit;
+    box-shadow: inset 0 -2px @base09;
+}
+
+#pulseaudio {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#pulseaudio.muted {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#wireplumber {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#wireplumber.muted {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#clock.date {
+    background: inherit;
+}
+
+#idle_inhibitor {
+    background: inherit;
+}
+
+#idle_inhibitor.activated {
+    background: inherit;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}

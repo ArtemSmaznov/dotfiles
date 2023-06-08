@@ -1,0 +1,230 @@
+{
+    "layer": "top",    // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24,      // Waybar height (to be removed for auto height)
+    "spacing": 4,      // Gaps between modules (4px)
+
+    "modules-left": [
+        "image#logo",
+        "clock#time",
+        "custom/separator",
+        "wlr/workspaces",
+        "custom/separator",
+        "hyprland/submap",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "mpd"
+    ],
+
+    "modules-right": [
+        "tray",
+        "hyprland/language",
+        "custom/separator",
+        "custom/updates",
+        "battery#controller",
+        "network",
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+        "custom/separator",
+        "clock#date",
+        "idle_inhibitor"
+    ],
+
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false,
+        "interval": 360
+    },
+
+    "image#logo": {
+        "path": "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+    },
+
+    "clock#time": {
+        "format": "{:%OI:%M %p}"
+    },
+
+    "wlr/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": false,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+        }
+    },
+
+    "hyprland/submap": {
+        "format": "{}",
+        "tooltip": true
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title} [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume}%",
+        "format-stopped": "Stopped [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume%}",
+        "tooltip-format": "{album}\n\n{stateIcon} ({songPosition}/{queueLength}) {artist} - {title}\n\nProgress: {elapsedTime}/{totalTime}\nPlayer Volume: {volume}%\nModes: [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ]",
+        "interval": 2,
+        "on-click": "mpc toggle",
+        "unknown-tag": ".",
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "repeat-icons": {
+            // "on": " ",
+            "on": "r",
+            "off": "-"
+        },
+        "random-icons": {
+            // "on": " ",
+            "on": "z",
+            "off": "-"
+        },
+        "single-icons": {
+            // "on": "1 ",
+            "on": "s",
+            "off": "-"
+        },
+        "consume-icons": {
+            // "on": " ",
+            "on": "c",
+            "off": "-"
+        },
+        "format-disconnected": "Disconnected",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "show-passive-items": false,
+        "spacing": 5
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-ru": "RU",
+        "format-ja": "JP"
+    },
+
+    "custom/updates": {
+        "exec": "~/.local/bin/get-updates.sh",
+        "format": "  {}",
+        "tooltip": false,
+        "interval": 360
+    },
+
+    "battery#controller": {
+        "bat": "ps-controller-battery-a0:ab:51:62:65:1d",
+        "interval": 60,
+        "states": {
+            // "good": 90,
+            "warning": 40,
+            "critical": 15
+        },
+        "format": " {icon} {capacity}%",
+        "format-alt": " {icon} {time}",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-muted": " {volume}% {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} {volume}% {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "qpwgraph"
+    },
+
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "on-click": "qpwgraph",
+        "scroll-step": 2,
+        "format-icons": ["", "", ""]
+    },
+
+    "clock#date": {
+        "format": "{:%a, %d %b %Y}",
+        "tooltip-format": "<big>{:%A}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
+
+}

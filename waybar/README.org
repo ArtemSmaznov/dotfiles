@@ -1,0 +1,723 @@
+#+title:       Waybar
+#+author:      Artem Smaznov
+#+description: Highly customizable Wayland bar for Sway and Wlroots based compositors
+#+startup:     overview
+#+property:    header-args :tangle config.jsonc
+#+auto_tangle: t
+
+* Table of Contents :toc:
+- [[#size][Size]]
+- [[#sides][Sides]]
+  - [[#left][Left]]
+  - [[#center][Center]]
+  - [[#right][Right]]
+- [[#widgets][Widgets]]
+  - [[#separator][Separator]]
+  - [[#logo][Logo]]
+  - [[#time][Time]]
+  - [[#workspaces][Workspaces]]
+  - [[#submap][Submap]]
+  - [[#window-title][Window Title]]
+  - [[#music][Music]]
+  - [[#system-tray][System Tray]]
+  - [[#keyboard-language][Keyboard Language]]
+  - [[#updates][Updates]]
+  - [[#battery][Battery]]
+  - [[#network][Network]]
+  - [[#ram][RAM]]
+  - [[#cpu][CPU]]
+  - [[#cpu-thermal][CPU Thermal]]
+  - [[#pulseaudio][PulseAudio]]
+  - [[#wireplumber][WirePlumber]]
+  - [[#date][Date]]
+  - [[#inhibit-mode][Inhibit Mode]]
+- [[#end][End]]
+- [[#styles][Styles]]
+  - [[#theme][Theme]]
+  - [[#global][Global]]
+  - [[#windows][Windows]]
+  - [[#generic-buttons][Generic Buttons]]
+  - [[#scratchpads][Scratchpads]]
+  - [[#mode][Mode]]
+  - [[#widgets-1][Widgets]]
+  - [[#label-focus][Label Focus]]
+  - [[#player][Player]]
+
+* Size
+#+begin_src jsonc
+{
+    "layer": "top",    // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24,      // Waybar height (to be removed for auto height)
+    "spacing": 4,      // Gaps between modules (4px)
+#+end_src
+
+* Sides
+Choose the order of the modules
+** Left
+#+begin_src jsonc
+    "modules-left": [
+        "image#logo",
+        "clock#time",
+        "custom/separator",
+        "wlr/workspaces",
+        "custom/separator",
+        "hyprland/submap",
+        "hyprland/window"
+    ],
+#+end_src
+
+** Center
+#+begin_src jsonc
+    "modules-center": [
+        "mpd"
+    ],
+#+end_src
+
+** Right
+#+begin_src jsonc
+    "modules-right": [
+        "tray",
+        "hyprland/language",
+        "custom/separator",
+        "custom/updates",
+        "battery#controller",
+        "network",
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+        "custom/separator",
+        "clock#date",
+        "idle_inhibitor"
+    ],
+#+end_src
+
+* Widgets
+** Separator
+#+begin_src jsonc
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false,
+        "interval": 360
+    },
+#+end_src
+
+** Logo
+#+begin_src jsonc
+    "image#logo": {
+        "path": "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+    },
+#+end_src
+
+** Time
+#+begin_src jsonc
+    "clock#time": {
+        "format": "{:%OI:%M %p}"
+    },
+#+end_src
+
+** Workspaces
+#+begin_src jsonc
+    "wlr/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": false,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+        }
+    },
+#+end_src
+
+** Submap
+#+begin_src jsonc
+    "hyprland/submap": {
+        "format": "{}",
+        "tooltip": true
+    },
+#+end_src
+
+** Window Title
+#+begin_src jsonc
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+#+end_src
+
+** Music
+#+begin_src jsonc
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title} [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume}%",
+        "format-stopped": "Stopped [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume%}",
+        "tooltip-format": "{album}\n\n{stateIcon} ({songPosition}/{queueLength}) {artist} - {title}\n\nProgress: {elapsedTime}/{totalTime}\nPlayer Volume: {volume}%\nModes: [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ]",
+        "interval": 2,
+        "on-click": "mpc toggle",
+        "unknown-tag": ".",
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "repeat-icons": {
+            // "on": " ",
+            "on": "r",
+            "off": "-"
+        },
+        "random-icons": {
+            // "on": " ",
+            "on": "z",
+            "off": "-"
+        },
+        "single-icons": {
+            // "on": "1 ",
+            "on": "s",
+            "off": "-"
+        },
+        "consume-icons": {
+            // "on": " ",
+            "on": "c",
+            "off": "-"
+        },
+        "format-disconnected": "Disconnected",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+#+end_src
+
+** System Tray
+#+begin_src jsonc
+    "tray": {
+        // "icon-size": 21,
+        "show-passive-items": false,
+        "spacing": 5
+    },
+#+end_src
+
+** Keyboard Language
+#+begin_src jsonc
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-ru": "RU",
+        "format-ja": "JP"
+    },
+#+end_src
+
+** Updates
+#+begin_src jsonc
+    "custom/updates": {
+        "exec": "~/.local/bin/get-updates.sh",
+        "format": "  {}",
+        "tooltip": false,
+        "interval": 360
+    },
+#+end_src
+
+** Battery
+#+begin_src jsonc
+    "battery#controller": {
+        "bat": "ps-controller-battery-a0:ab:51:62:65:1d",
+        "interval": 60,
+        "states": {
+            // "good": 90,
+            "warning": 40,
+            "critical": 15
+        },
+        "format": " {icon} {capacity}%",
+        "format-alt": " {icon} {time}",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+#+end_src
+
+** Network
+#+begin_src jsonc
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+#+end_src
+
+** RAM
+#+begin_src jsonc
+    "memory": {
+        "format": " {}%"
+    },
+#+end_src
+
+** CPU
+#+begin_src jsonc
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+#+end_src
+
+** CPU Thermal
+#+begin_src jsonc
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+#+end_src
+
+** PulseAudio
+#+begin_src jsonc
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-muted": " {volume}% {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} {volume}% {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "qpwgraph"
+    },
+#+end_src
+
+** WirePlumber
+#+begin_src jsonc
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "on-click": "qpwgraph",
+        "scroll-step": 2,
+        "format-icons": ["", "", ""]
+    },
+#+end_src
+
+** Date
+#+begin_src jsonc
+    "clock#date": {
+        "format": "{:%a, %d %b %Y}",
+        "tooltip-format": "<big>{:%A}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+#+end_src
+
+** Inhibit Mode
+#+begin_src jsonc
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
+#+end_src
+
+* End
+#+begin_src jsonc
+}
+#+end_src
+
+* Styles
+:PROPERTIES:
+:header-args: :tangle style.css
+:END:
+** Theme
+#+begin_src css
+@import "./themes/base16.css";
+#+end_src
+
+** Global
+#+begin_src css
+,*{
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Hack Nerd Font",
+                 "Source Han Sans JP",
+                 "Font Awesome 6 Free Solid",
+                 "FontAwesome",
+                 "Roboto";
+    font-size: 13px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+    color: @base07;
+}
+#+end_src
+
+** Windows
+#+begin_src css
+window#waybar {
+    background-color: @base00;
+    border-bottom: 3px solid @base00;
+    color: @base07;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: @BASE07;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+#+end_src
+
+** Generic Buttons
+#+begin_src css
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @base03;
+}
+#+end_src
+
+** Scratchpads
+#+begin_src css
+#scratchpad {
+    background: @base00;
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+#+end_src
+
+** Mode
+#+begin_src css
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid @base07;
+}
+#+end_src
+
+** Widgets
+*** Separator
+#+begin_src css
+#custom-separator {
+    background: inherit;
+    color: @base03;
+}
+#+end_src
+
+*** Logo
+#+begin_src css
+.modules-left > widget:first-child > #image {
+    padding-left: 5px;
+}
+#+end_src
+
+*** Time
+#+begin_src css
+#+end_src
+
+*** Workspaces
+#+begin_src css
+#workspaces button label {
+    font-family: "Font Awesome 6 Free Solid";
+}
+
+#workspaces button {
+    padding: 0 7px;
+    background-color: transparent;
+    color: @base07;
+}
+
+#workspaces button:hover {
+    background: @base01;
+}
+
+#workspaces button.active {
+    background-color: @base02;
+    box-shadow: inset 0 -3px @base0E;
+}
+
+#workspaces button.persistent {
+    color: @base02;
+}
+
+#workspaces button.urgent {
+    background-color: @base08;
+}
+#+end_src
+
+*** Submap
+#+begin_src css
+#submap {
+    padding: 0 5px;
+    background: @base0A;
+    color: @base00;
+}
+#+end_src
+
+*** Window Title
+#+begin_src css
+#window {
+}
+#+end_src
+
+*** Music
+#+begin_src css
+#mpd {
+    background: inherit;
+}
+
+#mpd.disconnected {
+    background: inherit;
+}
+
+#mpd.stopped {
+    background: inherit;
+}
+
+#mpd.paused {
+    background: inherit;
+}
+#+end_src
+
+*** System Tray
+#+begin_src css
+#tray {
+    background: inherit;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+#+end_src
+
+*** Keyboard Language
+#+begin_src css
+#language {
+    background: @base03;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+#+end_src
+
+*** Updates
+#+begin_src css
+#custom-updates {
+    padding-right: 5px;
+    background: inherit;
+    box-shadow: inset 0 -2px @base0E;
+}
+#+end_src
+
+*** Battery
+#+begin_src css
+#battery {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0D;
+}
+
+#battery.charging, #battery.plugged {
+    color: @base07;
+    background: inherit;
+    box-shadow: inset 0 -2px @base0D;
+}
+
+@keyframes blink {
+    to {
+        background-color: @base0D;
+        color: @base0D;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: inherit;
+    color: @base0D;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#+end_src
+
+*** Network
+#+begin_src css
+#network {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0C;
+}
+
+#network.disconnected {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0C;
+}
+#+end_src
+
+*** RAM
+#+begin_src css
+#memory {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0B;
+}
+#+end_src
+
+*** CPU
+#+begin_src css
+#cpu {
+    background: inherit;
+    box-shadow: inset 0 -2px @base0A;
+}
+#+end_src
+
+*** CPU Thermal
+#+begin_src css
+#temperature {
+    background: inherit;
+    box-shadow: inset 0 -2px @base09;
+}
+
+#temperature.critical {
+    background: inherit;
+    box-shadow: inset 0 -2px @base09;
+}
+#+end_src
+
+*** Audio
+#+begin_src css
+#pulseaudio {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#pulseaudio.muted {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#wireplumber {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+
+#wireplumber.muted {
+    background: inherit;
+    box-shadow: inset 0 -2px @base08;
+}
+#+end_src
+
+*** Date
+#+begin_src css
+#clock.date {
+    background: inherit;
+}
+#+end_src
+
+*** Inhibit Mode
+#+begin_src css
+#idle_inhibitor {
+    background: inherit;
+}
+
+#idle_inhibitor.activated {
+    background: inherit;
+}
+#+end_src
+
+** Label Focus
+#+begin_src css
+label:focus {
+    background-color: #000000;
+}
+#+end_src
+
+** Player
+#+begin_src css
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+#+end_src
