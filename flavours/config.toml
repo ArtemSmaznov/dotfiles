@@ -111,7 +111,8 @@ rewrite = false
 [[item]]
 file = "~/.config/waybar/themes/base16.css"
 template = "waybar"
-light = true
+hook = "killall waybar && waybar &"
+light = false
 rewrite = true
 
 [[item]]
