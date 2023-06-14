@@ -134,8 +134,9 @@
     "hyprland/language": {
         "format": "{}",
         "format-en": "US",
-        "format-ru": "RU",
-        "format-ja": "JP"
+        "format-ru": "РУ",
+        "format-ja": "日本",
+        "separate-outputs": true
     },
 
     "custom/updates": {
