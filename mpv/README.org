@@ -217,7 +217,7 @@ The following profile can be enabled on the command line with: --profile=eye-can
 ** Screenshot
 #+begin_src conf
 screenshot-directory="~/pictures/screenshots/"
-screenshot-template="mpv-%F-%wH-%wM-%wS-%wT"
+screenshot-template="mpv-%F-%wH%wM%wS-%wT"
 #+end_src
 
 ** Other
