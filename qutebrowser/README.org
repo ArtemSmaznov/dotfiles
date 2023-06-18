@@ -1615,8 +1615,7 @@ config.bind('<Alt-8>', 'tab-focus 8')
 config.bind('<Alt-9>', 'tab-focus 9')
 config.bind('<Alt-0>', 'tab-focus -1')
 config.bind('t$', 'tab-focus -1')
-config.bind('<Ctrl-Tab>', 'tab-focus last')
-config.bind('<Ctrl-^>', 'tab-focus last')
+config.bind('<Alt-`>', 'tab-focus last')
 config.bind('<Space>`', 'tab-focus last')
 #+end_src
 
