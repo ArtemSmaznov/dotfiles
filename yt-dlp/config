@@ -1,4 +1,4 @@
 --yes-playlist
 --embed-metadata
---paths ~/downloads/music/
+--paths ~/downloads/
 --restrict-filenames
