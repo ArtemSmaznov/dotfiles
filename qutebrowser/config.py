@@ -575,8 +575,8 @@ config.unbind('-') # zoom-out
 config.unbind('+') # zoom-in
 config.unbind('=') # zoom
 
-# config.unbind('wo') # set-cmd-text -s :open -w
-# config.unbind('wO') # set-cmd-text :open -w {url:pretty}
+# config.unbind('wo') # cmd-set-text -s :open -w
+# config.unbind('wO') # cmd-set-text :open -w {url:pretty}
 
 config.unbind('wh') # back -w
 config.unbind('wl') # forward -w
@@ -593,8 +593,8 @@ config.unbind('T') # tab-focus
 config.unbind('th') # back -t
 config.unbind('tl') # forward -t
 
-config.unbind('xo') # set-cmd-text -s :open -b
-config.unbind('xO') # set-cmd-text :open -b -r {url:pretty}
+config.unbind('xo') # cmd-set-text -s :open -b
+config.unbind('xO') # cmd-set-text :open -b -r {url:pretty}
 
 config.unbind('Pp') # open -t -- {clipboard}
 config.unbind('PP') # open -t -- {primary}
@@ -640,10 +640,10 @@ config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
 
 config.bind('Ss', 'set')
-config.bind('ss', 'set-cmd-text -s :set')
-config.bind('sl', 'set-cmd-text -s :set -t')
+config.bind('ss', 'cmd-set-text -s :set')
+config.bind('sl', 'cmd-set-text -s :set -t')
 
-config.bind('sk', 'set-cmd-text -s :bind')
+config.bind('sk', 'cmd-set-text -s :bind')
 
 config.bind('<Ctrl-Shift-Tab>', 'nop')
 
@@ -669,14 +669,14 @@ config.bind('<Ctrl-R>', 'reload -f')
 config.bind('<F5>', 'reload')
 config.bind('<Ctrl-F5>', 'reload -f')
 
-config.bind('<Space>p', 'set-cmd-text -s :process')
+config.bind('<Space>p', 'cmd-set-text -s :process')
 config.bind('<Space>m', ':messages -t')
 
-config.bind('<Alt-x>', 'set-cmd-text :')
-config.bind(':', 'set-cmd-text :')
-config.bind('/', 'set-cmd-text /')
-config.bind('?', 'set-cmd-text ?')
-config.bind('.', 'repeat-command')
+config.bind('<Alt-x>', 'cmd-set-text :')
+config.bind(':', 'cmd-set-text :')
+config.bind('/', 'cmd-set-text /')
+config.bind('?', 'cmd-set-text ?')
+config.bind('.', 'cmd-repeat-last')
 
 config.bind('n', 'search-next')
 config.bind('N', 'search-prev')
@@ -692,29 +692,29 @@ config.bind('<Space>qr', 'restart')
 
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'set-cmd-text -s :help -t')
+config.bind('<Space>hs', 'cmd-set-text -s :help -t')
 config.bind('<Space>hv', 'version')
 config.bind('<Space>hc', 'set')
 config.bind('<Space>hl', 'messages -t')
 config.bind('<Space>hi', 'version')
 config.bind('<F1>'     , 'help -t')
 
-config.bind('<Space><Tab>c', 'session-save -c ;; set-cmd-text -s :session-load --clear')
-config.bind('<Space><Tab>d', 'set-cmd-text -s :session-delete')
-config.bind('<Space><Tab>l', 'set-cmd-text -s :session-load')
+config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
+config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
+config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
 config.bind('<Space><Tab>R', 'session-load -f autosave')
-config.bind('<Space><Tab>s', 'set-cmd-text -s :session-save --only-active-window')
-config.bind('<Space><Tab>S', 'set-cmd-text -s :session-save')
-config.bind('<Space><Tab>t', 'set-cmd-text -s :session-load -temp')
+config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
+config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
+config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
 config.bind('<Space><Tab>u', 'session-save')
-config.bind('<Space><Tab>x', 'set-cmd-text -s :session-delete')
+config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
 
 config.bind('h', 'scroll left')
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
 config.bind('l', 'scroll right')
-config.bind('J', 'run-with-count 5 scroll down')
-config.bind('K', 'run-with-count 5 scroll up')
+config.bind('J', 'cmd-run-with-count 5 scroll down')
+config.bind('K', 'cmd-run-with-count 5 scroll up')
 
 config.bind('<Ctrl-B>', 'scroll-page 0 -1')
 config.bind('<Ctrl-F>', 'scroll-page 0 1')
@@ -745,8 +745,8 @@ config.bind('wL', 'forward -w')
 
 config.bind('wf', 'hint all window')
 
-config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
-config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
 
 config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
@@ -769,17 +769,17 @@ config.bind('<Ctrl-h>', 'home')
 config.bind('<Ctrl-T>', 'open -t')
 config.bind('tn', 'open -t')
 
-config.bind('o', 'set-cmd-text -s :open')
+config.bind('o', 'cmd-set-text -s :open')
 
-config.bind('O', 'set-cmd-text -s :open -t')
-config.bind('<Space>to', 'set-cmd-text -s :open -t')
-config.bind('<Space>tO', 'set-cmd-text :open -t {url:pretty}')
-config.bind('gs', 'set-cmd-text -s :open -b')
+config.bind('O', 'cmd-set-text -s :open -t')
+config.bind('<Space>to', 'cmd-set-text -s :open -t')
+config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
+config.bind('gs', 'cmd-set-text -s :open -b')
 
-config.bind('go', 'set-cmd-text :open {url:pretty}')
+config.bind('go', 'cmd-set-text :open {url:pretty}')
 
-config.bind('gO', 'set-cmd-text :open -t -r {url:pretty}')
-config.bind('gS', 'set-cmd-text :open -b -r {url:pretty}')
+config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
+config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
 
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pP', 'open -- {primary}')
@@ -815,9 +815,9 @@ config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
 config.bind('<Alt-Shift-l>', 'tab-focus -1')
 config.bind('<Alt-Shift-h>', 'tab-focus 1')
 
-config.bind('gt', 'set-cmd-text -sr :tab-focus')
-config.bind('<Space>,', 'set-cmd-text -sr :tab-focus')
-config.bind('<Space><', 'set-cmd-text -sr :tab-select')
+config.bind('gt', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space><', 'cmd-set-text -sr :tab-select')
 
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
@@ -847,16 +847,16 @@ config.bind('<Ctrl-Alt-p>', 'print')
 
 config.bind('tG', 'tab-give')
 config.bind('tP', 'tab-give --private')
-config.bind('tg', 'set-cmd-text -s :tab-give')
-config.bind('tt', 'set-cmd-text -s :tab-take')
+config.bind('tg', 'cmd-set-text -s :tab-give')
+config.bind('tt', 'cmd-set-text -s :tab-take')
 
 config.bind('tcc', 'tab-clone')
 config.bind('tcG', 'tab-give --keep')
 config.bind('tcP', 'tab-give --keep --private')
-config.bind('tcg', 'set-cmd-text -s :tab-give --keep')
-config.bind('tct', 'set-cmd-text -s :tab-take --keep')
+config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
+config.bind('tct', 'cmd-set-text -s :tab-take --keep')
 
-config.bind('D', 'set-cmd-text -s :download')
+config.bind('D', 'cmd-set-text -s :download')
 
 config.bind('ds', 'download-cancel')
 config.bind('dC', 'download-cancel')
@@ -909,18 +909,18 @@ config.bind('Yi', 'hint images yank-primary')
 config.bind('gq', 'bookmark-list --tab')
 config.bind('gb', 'bookmark-list --tab --jump')
 
-config.bind('bo', 'set-cmd-text -s :quickmark-load')
-config.bind('Bo', 'set-cmd-text -s :bookmark-load')
+config.bind('bo', 'cmd-set-text -s :quickmark-load')
+config.bind('Bo', 'cmd-set-text -s :bookmark-load')
 
-config.bind('bO', 'set-cmd-text -s :quickmark-load -t')
-config.bind('BO', 'set-cmd-text -s :bookmark-load -t')
+config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
+config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
 
 config.bind('bs', 'quickmark-save')
 config.bind('Bs', 'bookmark-add')
 config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
-config.bind('bA', 'set-cmd-text :quickmark-add {url} "{title}"')
+config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
 config.bind('Ba', 'bookmark-add {url} "{title}"')
-config.bind('BA', 'set-cmd-text :bookmark-add {url} "{title}"')
+config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
 
 config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
 config.bind('Bd', 'bookmark-del')
@@ -1029,7 +1029,7 @@ config.bind('<Escape>', 'mode-leave', mode='register')
 config.bind('<Escape>', 'mode-leave', mode='yesno')
 config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
 
-config.bind('<Ctrl-E>'      , 'edit-command'           , mode='command')
+config.bind('<Ctrl-E>'      , 'cmd-edit'               , mode='command')
 config.bind('<Return>'      , 'command-accept'         , mode='command')
 config.bind('<Ctrl-Return>' , 'command-accept --rapid' , mode='command')
 
