@@ -48,6 +48,11 @@ sticker_file        "~/.config/mpd/sticker.sql"
 #+end_src
 
 * Database
+Required for ncmpcpp search to work with a large mpd library
+#+begin_src conf
+max_output_buffer_size  "16384" # 16 MiB
+#+end_src
+
 #+begin_src conf
 database {
     plugin           "simple"
