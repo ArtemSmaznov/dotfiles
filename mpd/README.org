@@ -64,7 +64,15 @@ input {
 #+end_src
 
 * Outputs
-Default
+PipeWire
+#+begin_src conf
+audio_output {
+    type    "pipewire"
+    name    "PipeWire"
+}
+#+end_src
+
+Pulse Audio
 #+begin_src conf
 audio_output {
     type    "pulse"
