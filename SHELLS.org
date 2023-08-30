@@ -25,7 +25,7 @@
 - [[#fish][Fish]]
   - [[#end-section-2][End Section]]
 - [[#exportrc][Exportrc]]
-  - [[#xprofile][xprofile]]
+  - [[#profile][profile]]
   - [[#user-directories][User Directories]]
   - [[#editor][Editor]]
   - [[#history-2][History]]
@@ -401,12 +401,9 @@ starship init fish | source
 :PROPERTIES:
 :header-args: :tangle shell/exportrc
 :END:
-** xprofile
-:PROPERTIES:
-:header-args: :tangle ~/.xprofile
-:END:
+** profile
 *** XDG
-#+begin_src shell
+#+begin_src shell :tangle ~/.profile
 export XDG_DESKTOP_DIR="$HOME/desktop"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export XDG_TEMPLATES_DIR="$HOME/templates"
@@ -418,7 +415,7 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 #+end_src
 
 *** Japanese Input
-#+begin_src shell
+#+begin_src shell :tangle ~/.xprofile
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -449,6 +446,8 @@ Create the following files manually.
 
 =/etc/profile.d/xdg.sh=
 #+begin_example shell
+[ -f $HOME/.profile ] && . $HOME/.profile
+
 # XDG Directories
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
