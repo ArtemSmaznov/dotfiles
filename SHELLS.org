@@ -643,8 +643,11 @@ alias pman-list="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro
 
 Update mirrors
 #+begin_src shell
-function pman-mirrors-update() {
-    curl -s "https://archlinux.org/mirrorlist/?country=CA&protocol=https&use_mirror_status=on" | sed -e 's/#Server/Server/' -e '/^## \w*$/d' | rankmirrors - > /tmp/mirrorlist
+function pman-update-mirrors() {
+    country="$1" # US
+    curl -s "https://archlinux.org/mirrorlist/?country=$country&protocol=https&use_mirror_status=on" |
+        sed -e 's/#Server/Server/' -e '/^## \w*$/d' |
+        rankmirrors - > /tmp/mirrorlist
     sudo cp /tmp/mirrorlist /etc/pacman.d/mirrorlist
 }
 #+end_src
@@ -693,10 +696,14 @@ alias openports='netstat -nape --inet'
 ** Server
 #+begin_src shell
 # Extend screen
-alias extendtolaptop='ssh -YC wifi-laptop-arch x2x -east -to :0.0'
+alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
 
 # occ for nextcloud container
-alias occ='ssh laptop-arch "docker exec -i --user www-data nextcloud-app php occ"'
+alias occ='ssh amadeus "docker exec -i --user www-data nextcloud-app php occ"'
+
+# transmission
+alias t='transmission-remote'
+alias rt='transmission-remote amadeus:9091'
 #+end_src
 
 ** Git
