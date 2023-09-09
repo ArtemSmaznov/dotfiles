@@ -37,7 +37,18 @@ replace:
 musicbrainz:
     searchlimit: 15
 
-plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync mpdstats mpdupdate scrub
+plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync missing mpdstats mpdupdate scrub
+
+albumtypes:
+  types:
+    - ep: 'EP'
+    - single: 'Single'
+    - remix: 'Remix'
+    - live: 'Live'
+    - soundtrack: 'OST'
+    - compilation: 'Anthology'
+  ignore_va: compilation
+  bracket: '[]'
 
 badfiles:
   check_on_import: yes

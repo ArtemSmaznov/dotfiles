@@ -12,6 +12,7 @@
 - [[#importer-options][Importer Options]]
 - [[#musicbrainz][MusicBrainz]]
 - [[#plugins][Plugins]]
+  - [[#kill-album-types][KILL Album Types]]
   - [[#bad-files][Bad Files]]
   - [[#chroma][Chroma]]
   - [[#duplicates][Duplicates]]
@@ -21,6 +22,7 @@
   - [[#lyrics][Lyrics]]
   - [[#mbsubmit][MBSubmit]]
   - [[#mbsync][MBSync]]
+  - [[#missing][Missing]]
   - [[#mpd-stats][MPD Stats]]
   - [[#mpd-update][MPD Update]]
   - [[#scrub][Scrub]]
@@ -121,11 +123,28 @@ musicbrainz:
 
 * Plugins
 #+begin_src yaml
-plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync mpdstats mpdupdate scrub
+plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync missing mpdstats mpdupdate scrub
+#+end_src
+
+** KILL Album Types
+CLOSED: [2023-09-04 Mon 19:09]
+The =albumtypes= plugin adds the ability to format and output album types, such as
+“Album”, “EP”, “Single”, etc.
+#+begin_src yaml
+albumtypes:
+  types:
+    - ep: 'EP'
+    - single: 'Single'
+    - remix: 'Remix'
+    - live: 'Live'
+    - soundtrack: 'OST'
+    - compilation: 'Anthology'
+  ignore_va: compilation
+  bracket: '[]'
 #+end_src
 
 ** Bad Files
-The badfiles plugin adds a beet bad command to check for missing and corrupt
+The =badfiles= plugin adds a beet bad command to check for missing and corrupt
 files.
 #+begin_src yaml
 badfiles:
@@ -141,7 +160,7 @@ chroma:
 #+end_src
 
 ** Duplicates
-This plugin adds a new command, duplicates or dup, which finds and lists
+This plugin adds a new command, ~duplicates~ or ~dup~, which finds and lists
 duplicate tracks or albums in your collection.
 
 ** FetchArt
@@ -174,7 +193,7 @@ fetchart:
 #+end_src
 
 ** Info
-The info plugin provides a command that dumps the current tag values for any file format supported by beets
+The =info= plugin provides a command that dumps the current tag values for any file format supported by beets
 
 ** LastGenre
 The [[https://beets.readthedocs.io/en/stable/plugins/lastgenre.html][lastgenre]] plugin fetches tags from [[https://last.fm/][Last.fm]] and assigns them as genres to your albums and items.
@@ -205,7 +224,7 @@ beet lastgenre -A [QUERY]
 #+end_example
 
 ** Lyrics
-The lyrics plugin fetches and stores song lyrics from databases on the Web.
+The =lyrics= plugin fetches and stores song lyrics from databases on the Web.
 Namely, the current version of the plugin uses Musixmatch, Genius.com,
 Tekstowo.pl, and, optionally, the Google custom search API.
 #+begin_src yaml
@@ -214,13 +233,17 @@ lyrics:
 #+end_src
 
 ** MBSubmit
-The mbsubmit plugin provides an extra prompt choice during an import session
+The =mbsubmit= plugin provides an extra prompt choice during an import session
 that prints the tracks of the current album in a format that is parseable by
 MusicBrainz’s track parser.
 
 ** MBSync
 This plugin provides the mbsync command, which lets you fetch metadata from
 MusicBrainz for albums and tracks that already have MusicBrainz IDs
+
+** Missing
+This plugin adds a new command, ~missing~ or ~miss~, which finds and lists, for
+every album in your collection, which or how many tracks are missing.
 
 ** MPD Stats
 [[https://beets.readthedocs.io/en/stable/plugins/mpdstats.html][mpdstats]] is a plugin for beets that collects statistics about your listening habits from [[https://www.musicpd.org/][MPD]].
@@ -235,7 +258,7 @@ mpd:
 ** MPD Update
 [[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
 ** Scrub
-The scrub plugin lets you remove extraneous metadata from files’ tags. If you’d
+The =scrub= plugin lets you remove extraneous metadata from files’ tags. If you’d
 prefer never to see crufty tags that come from other tools, the plugin can
 automatically remove all non-beets-tracked tags whenever a file’s metadata is
 written to disk by removing the tag entirely before writing new data
