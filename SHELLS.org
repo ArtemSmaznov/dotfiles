@@ -515,15 +515,19 @@ alias vfm='vifmrun'
 
 ** Listing directories
 #+begin_src shell
-if hash exa 2>/dev/null; then
-    alias exa='exa --icons --group-directories-first'
-    alias ls='exa -Fh'                # add file type extensions
+if hash eza 2>/dev/null; then
+    alias eza='eza --icons --group-directories-first'
+    alias ls='eza -Fh'                # add file type extensions
     alias la='ls -ah'                 # show hidden files
     alias ll='ls -alg'                # long listing format
+    alias tree='eza --tree'           # tree listing
+    alias treed='tree --only-dirs'    # tree listing directories
 else
     alias ls='ls -Fh --color=always'  # add colors and file type extensions
     alias la='ls -Ah'                 # show hidden files
     alias ll='ls -als'                # long listing format
+    alias tree='tree -CAhF --dirsfirst'
+    alias treed='tree -CAFd'
 fi
 alias llf="\ls -l | egrep -v '^d'" # long list files only
 alias lld="\ls -l | egrep '^d'"    # long list directories only
@@ -666,8 +670,6 @@ alias suspend='systemctl suspend'
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
-alias tree='tree -CAhF --dirsfirst'
-alias treed='tree -CAFd'
 alias mountedinfo='df -hT'
 
 # Audio Outout info
