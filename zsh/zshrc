@@ -22,7 +22,7 @@ path+=($HOME/.local/bin/dm-scripts)
 path+=($XDG_CONFIG_HOME/emacs/bin)
 
 ### SET MANPAGER
-export MANPAGER='/bin/zsh -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+export MANPAGER="vim -c ASMANPAGER -"
 
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 zstyle :compinstall filename "$HOME/.zshrc"
