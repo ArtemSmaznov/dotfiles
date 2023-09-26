@@ -5,6 +5,16 @@ unsetopt beep # Disable the bell
 
 setopt autocd # auto cd when entering just the path
 
+if [[ "$TERM" == "dumb" ]]
+then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+fi
+
 # History
 export SAVEHIST=10000
 export HISTSIZE=10000

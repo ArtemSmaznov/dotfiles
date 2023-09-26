@@ -247,6 +247,19 @@ unsetopt beep # Disable the bell
 setopt autocd # auto cd when entering just the path
 #+end_src
 
+Dumb Shell
+#+begin_src shell
+if [[ "$TERM" == "dumb" ]]
+then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+fi
+#+end_src
+
 ** History
 #+begin_src shell
 # History
