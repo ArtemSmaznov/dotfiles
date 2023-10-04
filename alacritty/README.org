@@ -69,7 +69,7 @@ font:
   bold_italic:
     family: 'Hack Nerd Font Mono'
     style: Bold Italic
-  size: 12.0
+  size: 14.0
 #+end_src
 
 * Colors
