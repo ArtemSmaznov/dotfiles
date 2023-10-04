@@ -16,6 +16,7 @@
   - [[#logo][Logo]]
   - [[#time][Time]]
   - [[#workspaces][Workspaces]]
+  - [[#layout][Layout]]
   - [[#submap][Submap]]
   - [[#window-title][Window Title]]
   - [[#music][Music]]
@@ -61,6 +62,8 @@ Choose the order of the modules
         "clock#time",
         "custom/separator",
         "wlr/workspaces",
+        "custom/separator",
+        "custom/layout",
         "custom/separator",
         "hyprland/submap",
         "hyprland/window"
@@ -150,6 +153,16 @@ Choose the order of the modules
             "8": [],
             "9": []
         }
+    },
+#+end_src
+
+** Layout
+#+begin_src jsonc
+    "custom/layout": {
+        "exec": "~/.local/bin/get-wm-layout.sh",
+        "format": "{}",
+        "tooltip": false,
+        "interval": 1
     },
 #+end_src
 
