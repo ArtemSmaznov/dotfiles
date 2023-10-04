@@ -718,7 +718,7 @@ alias occ='ssh amadeus "docker exec -i --user www-data nextcloud-app php occ"'
 
 # transmission
 alias t='transmission-remote'
-alias rt='transmission-remote amadeus:9091'
+alias rt='transmission-remote amadeus:9091 --authenv'
 #+end_src
 
 ** Git
