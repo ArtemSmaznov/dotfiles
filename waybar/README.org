@@ -113,7 +113,9 @@ Choose the order of the modules
 ** Time
 #+begin_src jsonc
     "clock#time": {
-        "format": "{:%OI:%M %p}"
+        "format": "{:%OI:%M %p}",
+        "format-alt": "{:%OI:%M:%S %p}",
+        "interval": 1
     },
 #+end_src
 
@@ -332,7 +334,25 @@ Choose the order of the modules
 #+begin_src jsonc
     "clock#date": {
         "format": "{:%a, %d %b %Y}",
-        "tooltip-format": "<big>{:%A}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:Week %W - %A}</big>\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b>{}</b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
 #+end_src
 
