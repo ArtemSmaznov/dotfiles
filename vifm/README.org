@@ -313,11 +313,11 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View as ASCII} img2txt %c,
         \ {View file info} identify %f %m,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ vifmimg draw %px %py %pw %ph %c
-         \ %pc
-         \ vifmimg clear
+         " \ vifmimg draw %px %py %pw %ph %c
+         " \ %pc
+         " \ vifmimg clear
          " \ {ASCII image preview}
-         " \ img2txt %c
+         \ img2txt %c
          " \ {File info}
          " \ identify %f
 #+end_src
