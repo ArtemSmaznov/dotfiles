@@ -442,6 +442,12 @@ c.url.auto_search = 'naive'
 
 c.url.open_base_url = True
 
+c.url.start_pages = ["https://brave.search.com"]
+
+c.url.default_page = 'https://brave.search.com'
+
+# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+
 c.url.searchengines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
     "aw"     : "https://wiki.archlinux.org/index.php?search={}",
@@ -468,10 +474,6 @@ c.url.searchengines = {
     "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
     "g"      : "https://www.google.com/search?q={}",
 }
-
-c.url.start_pages = ["https://www.facebook.com/messages/", "https://mail.google.com/"]
-
-# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 

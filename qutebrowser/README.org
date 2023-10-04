@@ -855,6 +855,25 @@ invoked without parameters.
 c.url.open_base_url = True
 #+end_src
 
+Page(s) to open at the start.
+# Type: List of FuzzyUrl, or FuzzyUrl
+#+begin_src python
+c.url.start_pages = ["https://brave.search.com"]
+#+end_src
+
+Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
+for a blank page.
+# Type: FuzzyUrl
+#+begin_src python
+c.url.default_page = 'https://brave.search.com'
+#+end_src
+
+URL parameters to strip with `:yank url`.
+# Type: List of String
+#+begin_src python
+# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+#+end_src
+
 Search engines which can be used via the address bar. Maps a search engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}` placeholder. The placeholder will be replaced by the search term, use `{{` and `}}` for literal `{`/`}` braces.
 # Type: Dict
 The following further placeholds are defined to configure how special characters in the search terms are replaced by safe characters (called 'quoting'):
@@ -889,18 +908,6 @@ c.url.searchengines = {
     "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
     "g"      : "https://www.google.com/search?q={}",
 }
-#+end_src
-
-Page(s) to open at the start.
-# Type: List of FuzzyUrl, or FuzzyUrl
-#+begin_src python
-c.url.start_pages = ["https://www.facebook.com/messages/", "https://mail.google.com/"]
-#+end_src
-
-URL parameters to strip with `:yank url`.
-# Type: List of String
-#+begin_src python
-# c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 #+end_src
 
 * Aliases
