@@ -835,13 +835,6 @@ Valid values:
 c.url.auto_search = 'naive'
 #+end_src
 
-Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
-for a blank page.
-# Type: FuzzyUrl
-#+begin_src python
-c.url.default_page = 'https://search.brave.com/'
-#+end_src
-
 URL segments where `:navigate increment/decrement` will search for a
 number.
 # Type: FlagList
@@ -901,7 +894,7 @@ c.url.searchengines = {
 Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
 #+begin_src python
-c.url.start_pages = ["https://search.brave.com"]
+c.url.start_pages = ["https://www.facebook.com/messages/", "https://mail.google.com/"]
 #+end_src
 
 URL parameters to strip with `:yank url`.

@@ -438,8 +438,6 @@ c.prompt.radius = 0
 
 c.url.auto_search = 'naive'
 
-c.url.default_page = 'https://search.brave.com/'
-
 # c.url.incdec_segments = ['path', 'query']
 
 c.url.open_base_url = True
@@ -471,7 +469,7 @@ c.url.searchengines = {
     "g"      : "https://www.google.com/search?q={}",
 }
 
-c.url.start_pages = ["https://search.brave.com"]
+c.url.start_pages = ["https://www.facebook.com/messages/", "https://mail.google.com/"]
 
 # c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
