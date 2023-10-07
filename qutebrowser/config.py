@@ -938,7 +938,8 @@ config.bind(';P', 'hint images tab')
 
 config.bind(';h', 'hint all hover')
 
-config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'                     ) # cast video
 config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
 config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
 
@@ -968,7 +969,8 @@ config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secre
 config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
 config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 
-config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
 config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
 config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
 
