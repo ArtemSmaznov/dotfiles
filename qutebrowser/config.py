@@ -442,9 +442,9 @@ c.url.auto_search = 'naive'
 
 c.url.open_base_url = True
 
-c.url.start_pages = ["https://brave.search.com"]
+# c.url.start_pages = ["https://search.brave.com"]
 
-c.url.default_page = 'https://brave.search.com'
+# c.url.default_page = 'https://search.brave.com'
 
 # c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
