@@ -57,13 +57,11 @@ function mkdirg() {
     cd $1
 }
 
-function cpr() {
-  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
-}
+alias cpr="rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1"
+alias mvr="rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files"
 
-function mvr() {
-  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
-}
+alias scpr="sudo rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --rsync-path='sudo rsync'"
+alias smvr="sudo rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --rsync-path='sudo rsync' --remove-source-files"
 
 function cpp() {
     set -e
