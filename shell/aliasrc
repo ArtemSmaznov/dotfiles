@@ -169,6 +169,9 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 # Show open ports
 alias openports='netstat -nape --inet'
 
+alias dockercls='docker container ls --format "table {{.ID}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
+alias dockercll='docker container ls --all --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.State}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
+
 # Extend screen
 alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
 
