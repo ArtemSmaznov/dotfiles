@@ -2,7 +2,7 @@
 #+author:      Artem Smaznov
 #+description: Window switcher, run dialog, ssh-launcher and dmenu replacement
 #+startup:     overview
-#+property:    header-args :tangle ~/.config/rofi/config.rasi
+#+property:    header-args :tangle config.rasi
 #+auto_tangle: t
 
 * Table of Contents :toc:
