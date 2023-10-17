@@ -442,9 +442,9 @@ c.url.auto_search = 'naive'
 
 c.url.open_base_url = True
 
-# c.url.start_pages = ["https://search.brave.com"]
+c.url.start_pages = ["https://search.brave.com"]
 
-# c.url.default_page = 'https://search.brave.com'
+c.url.default_page = 'https://search.brave.com'
 
 # c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
@@ -1013,11 +1013,17 @@ config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.
 config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 
-config.bind('I', 'open --private')
-config.bind('<Ctrl-Shift-N>', 'open -p')
-config.bind('i', 'mode-enter insert')
+config.bind('<Ctrl-Shift-N>', 'open --window')
+config.bind('<Ctrl-Shift-I>', 'open --private')
 config.bind('v', 'mode-enter caret')
 config.bind('V', 'mode-enter caret ;; selection-toggle --line')
+
+config.bind('i', 'mode-enter insert')
+config.bind('I', 'mode-enter insert ;; fake-key <Home>')
+config.bind('a', 'mode-enter insert ;; fake-key <Right>')
+config.bind('A', 'mode-enter insert ;; fake-key <End>')
+config.bind('<Ctrl-A>', 'mode-enter insert ;; fake-key <Ctrl-A>')
+
 config.bind('<Ctrl-V>', 'mode-enter passthrough')
 config.bind("'", 'mode-enter jump_mark')
 config.bind('m', 'mode-enter set_mark')
