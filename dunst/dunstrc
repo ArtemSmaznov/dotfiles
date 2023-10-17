@@ -26,10 +26,10 @@ width = (300,500)
 height = 300
 
 # Position the notification in the top right corner
-origin = top-right
+origin = bottom-right
 
 # Offset from the origin
-offset = 18x38
+offset = 38x38
 
 # Scale factor. It is auto-detected if value is 0.
 scale = 0
@@ -345,7 +345,6 @@ msg_urgency = critical
 timeout = 0
 
 # Start flavours
-# [global]
 [base16_low]
 msg_urgency = low
 background = "#3c3836"
