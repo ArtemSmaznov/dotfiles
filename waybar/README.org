@@ -346,7 +346,7 @@ Choose the order of the modules
 ** Date
 #+begin_src jsonc
     "clock#date": {
-        "format": "{:%a, %d %b %Y}",
+        "format": "{:%a, %d-%b-%Y}",
         "tooltip-format": "<big>{:Week %W - %A}</big>\n\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "year",
