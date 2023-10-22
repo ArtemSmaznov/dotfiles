@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       9f4832c8-9a75-4170-9f75-0205959f830c
+:END:
 #+title:       QuteBrowser
 #+author:      Artem Smaznov
 #+description: A vim-like minimalist web browser

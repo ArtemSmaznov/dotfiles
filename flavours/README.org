@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       d74d0c44-54d8-471e-a9e0-55e38aaafa42
+:END:
 #+title:       Flavours
 #+author:      Artem Smaznov
 #+description: A manager/builder for Base16

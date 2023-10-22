@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       6c5ba4ff-379b-4cae-a4f3-0ecee56795b2
+:END:
 #+title:       MPD
 #+author:      Artem Smaznov
 #+description: Music Player Daemon

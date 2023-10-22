@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       4ec41632-ba27-4642-919a-1a8d875bc3e0
+:END:
 #+title:       Conky
 #+author:      Artem Smaznov
 #+startup:     overview

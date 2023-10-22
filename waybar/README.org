@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       8d66f45b-11a8-43fe-b8e7-9ef284aff619
+:END:
 #+title:       Waybar
 #+author:      Artem Smaznov
 #+description: Highly customizable Wayland bar for Sway and Wlroots based compositors

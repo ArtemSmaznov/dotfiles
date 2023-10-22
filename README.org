@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       6cf40b81-d121-4fb5-a2e2-b41f1b740159
+:END:
 #+title:       Dotfiles
 #+author:      Artem Smaznov
 #+description: A collection of personal dotfiles
@@ -6,128 +9,102 @@
 
 Larger configurations such as Window Managers, VIM, etc. as well as themes are hosted on their own separate repositories:
 
-* Table of Content :toc:
-- [[#boot-loader][Boot Loader]]
-- [[#display-manager-dm][Display Manager (DM)]]
-- [[#window-manager-wm][Window Manager (WM)]]
-- [[#wayland-compositor][Wayland Compositor]]
-- [[#status-bars][Status Bars]]
-- [[#system-tray][System Tray]]
-- [[#desktop-widgets][Desktop Widgets]]
-- [[#compositor][Compositor]]
-- [[#screen-locker][Screen Locker]]
-- [[#shell][Shell]]
-- [[#theming][Theming]]
-- [[#terminal-emulator][Terminal Emulator]]
-- [[#terminal-tools][Terminal Tools]]
-- [[#text-editor][Text Editor]]
-- [[#music][Music]]
-- [[#photos][Photos]]
-- [[#videos][Videos]]
-- [[#finance][Finance]]
-- [[#pdf-viewer][PDF Viewer]]
-- [[#file-manager][File Manager]]
-- [[#web-browser][Web Browser]]
-- [[#cli-web-browser][CLI Web Browser]]
-- [[#email][Email]]
-- [[#system-utilities][System Utilities]]
-- [[#other][Other]]
-
 * Boot Loader
-- [[file:~/projects/GRUB-themes/README.org][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
+- [[id:64920fbd-583d-4253-9c53-484283d7db5c][GRUB]] ([[https://github.com/ArtemSmaznov/GRUB-themes][repo]])
 * Display Manager (DM)
 =Display Manager= or =DM= is also known as =Login Manager= and is the login screen you see before booting into your =WM/DE=.
-- [[file:~/projects/SDDM-themes/README.org][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
+- [[id:2fde8824-a4dc-4e93-b419-9dd9b24ac780][SDDM]] ([[https://github.com/ArtemSmaznov/SDDM-themes][repo]])
 * Window Manager (WM)
 =Window Manager= or =WM= is part of the =DE= that manages the windows for your apps/programs. Many choose to use a =WM= on its own without any =DE= to have more configuration options and install all the tools and utilities manually.
-- [[file:xmonad/README.org][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
-- [[file:qtile/README.org][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
-- [[file:awesome/README.org][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
-* Wayland Compositor
+- [[id:17ea607c-a8bd-49b7-a7ca-d600c7daf82f][XMonad]] ([[https://github.com/ArtemSmaznov/XMonad][repo]])
+- [[id:5588e323-3433-44c4-b3cd-c24f30d1c09a][qTile]] ([[https://github.com/ArtemSmaznov/qTile][repo]])
+- [[id:08a28fe4-e317-4577-be6d-eaa8e6bfe713][AwesomeWM]] ([[https://github.com/ArtemSmaznov/AwesomeWM][repo]])
+* Wayland Compositors
 A =Compositor= in Wayland is similar to =Window Manager + Compositor= in X11.
-- [[file:hypr/README.org][Hyprland]] ([[https://github.com/ArtemSmaznov/Hyprland][repo]])
+- [[id:5164eb69-db1d-4eb1-81d0-d1d75a490ea6][Hyprland]] ([[https://github.com/ArtemSmaznov/Hyprland][repo]])
 * Status Bars
-- [[file:eww/README.org][eww]]
-- [[file:xmobar/README.org][XMobar]]
-- [[file:waybar/README.org][Waybar]]
+- [[id:8d66f45b-11a8-43fe-b8e7-9ef284aff619][Waybar]]
+- [[id:2824ddd7-259a-4263-afd9-2e69928d2108][XMobar]]
+- [[id:08dab5c6-188b-4891-b65f-2637d6d3bd4a][eww]]
 * System Tray
-- [[file:trayer/README.org][trayer]]
+- [[id:f31dd7ad-18c7-4a70-9188-f1d929d951a5][Trayer]]
 * Desktop Widgets
-- [[file:eww/README.org][eww]]
-- [[file:conky/README.org][Conky]]
+- [[id:08dab5c6-188b-4891-b65f-2637d6d3bd4a][eww]]
+- [[id:4ec41632-ba27-4642-919a-1a8d875bc3e0][Conky]]
 * Compositor
-- [[file:picom/README.org][Picom]]
+- [[id:7878ed18-4e99-4846-b62c-1e98d82ab606][Picom]]
 * Screen Locker
-- [[file:i3lock/README.org][i3lock]]
-- [[file:swaylock/README.org][swaylock]]
-- [[file:swayidle/README.org][swayidle]]
-* Shell
-- [[file:SHELLS.org::*Bash][Bash]]
-- [[file:SHELLS.org::*ZSH][ZSH]]
+- [[id:d36ac0cc-1b58-489e-bdbc-71ec8e72cfdc][i3lock]]
+- [[id:c44a1733-0e23-4715-b6c8-49b9eeb13945][Swaylock]]
+- [[id:39c1a505-cb92-4dcd-84f1-67aaa2bd4ea0][Swayidle]]
+* [[id:b48affc1-15d0-4255-bd03-998038b82b25][Shell]]
+- [[id:61810610-4a66-4381-8038-2f0690e2be9c][Bash]]
+- [[id:f02f3b68-12b8-45cd-b81d-5843fbe821c3][ZSH]]
 - [[file:SHELLS.org::*Fish][Fish]]
-- [[file:SHELLS.org::*Exportrc][Exportrc]]
-- [[file:SHELLS.org::*Aliasrc][Aliasrc]]
-- [[file:SHELLS.org::*Starship][Starship Prompt]]
+- [[id:0863797a-6250-4cd6-b78a-70ce9121d635][Exportrc]]
+- [[id:9c4de24e-c999-42dc-8b36-2b87466fbadf][Aliasrc]]
+- [[id:3193f717-a319-4d2e-9f35-7f0839ed685e][Starship]]
 * Theming
 Excluding base16 themes from git tracking
 #+begin_example shell
 git update-index --skip-worktree file
 #+end_example
 
-- [[file:flavours/README.org][Flavours]]
+- [[id:d74d0c44-54d8-471e-a9e0-55e38aaafa42][Flavours]]
 
 * Terminal Emulator
-- [[file:alacritty/README.org][Alacritty]]
-- [[file:terminator/README.org][Terminator]]
+- [[id:cc15ed49-6823-4a56-8cbb-a3cd1148fbcf][Alacritty]]
+- [[id:bba9166a-fce2-432e-bd22-4d73d416af0a][Terminator]]
 * Terminal Tools
-- [[file:tmux/README.org][tmux]]
+- [[id:e9e69b9f-4c57-4010-82b4-30be2fe8535a][tmux]]
 - [[file:gh/][gh]]
 - [[file:git/][git]]
-- [[file:neofetch/README.org][neofetch]]
+- [[id:ff5a8e43-6b12-4e00-a64d-671cd81b9902][neofetch]]
 - [[file:htop/][htop]]
 - [[file:btop/][btop]]
 - [[file:nvtop/][nvtop]]
 - [[file:bashtop/][bashtop]]
 * Text Editor
 - [[file:doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
-- [[file:~/.vim/README.org][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
-- [[file:nano/README.org][Nano]]
+- [[id:f39d2412-eec4-44dd-94d8-9ca6d851ee3a][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
+- [[id:07dc3049-c92a-4c93-8da3-2b4b3713218e][Nano]]
 * Music
-- [[file:beets/README.org][beets]]
-- [[file:cava/README.org][cava]]
-- [[file:mpc/][mpc]]
-- [[file:mpd/README.org][mpd]]
-- [[file:ncmpcpp/README.org][ncmpcpp]]
+- [[id:4f80ac6e-7f6d-4c1d-8127-f1d689b0ca7f][Beets]]
+- [[id:41bd2128-bf26-40a2-b66a-4fc085e0008b][Cava]]
+- [[file:mpc/][MPC]]
+- [[id:6c5ba4ff-379b-4cae-a4f3-0ecee56795b2][MPD]]
+- [[id:48cc151d-dc50-4642-91a4-6a32deff314b][ncmpcpp]]
 * Photos
-- [[file:vimiv/README.org][vimiv]]
+- [[id:eaa77951-acd6-4e36-baf1-5376ddd6b73f][Vimiv]]
 * Videos
-- [[file:mpv/README.org][mpv]]
+- [[id:dff9ef30-0e05-4e9b-9338-5f4e179fdf57][mpv]]
 * Finance
-- [[file:ledger/][ledger]]
+- [[file:ledger/][Ledger]]
 * PDF Viewer
-- [[file:zathura/README.org][zathura]]
-- xviewer
-- sejda
-- okular
+- [[id:250f7e01-fc25-4c7c-820a-35ded4042a04][Zathura]]
+- Xviewer
+- Sejda
+- Okular
 * File Manager
 - PCManFM
-- [[file:vifm/README.org][vifm]]
-- [[file:ranger/][ranger]]
+- [[id:0ae3a9db-655b-47f5-89cc-e55b4e72834b][ViFM]]
+- [[file:ranger/][Ranger]]
 * Web Browser
-- [[file:qutebrowser/README.org][QuteBrowser]]
-- [[file:nyxt/README.org][Nyxt]]
+- [[id:9f4832c8-9a75-4170-9f75-0205959f830c][QuteBrowser]]
+- [[id:a34c7fc1-1f56-442d-9960-28560e39a44d][Nyxt]]
 - Vimb
 * CLI Web Browser
 - Lynx
 - w3m
 * Email
-- [[file:isync/README.org][mbsync]]
+- [[id:46da18d1-41a8-46c3-bd94-7959b47aa4be][mbsync]]
 * System Utilities
-- [[file:rofi/README.org][rofi]]
-- [[file:dunst/README.org][dunst]]
-- [[file:redshift/README.org][redshift]]
-- [[file:fcitx5/][fcitx5]]
+- [[id:bd185657-ac98-47bd-b96c-f46685239a54][Rofi]]
+- [[id:9440187f-6b67-4fca-9b3f-7ceb681f3398][Wofi]]
+- [[id:7e0f082a-18a1-42d2-b056-c0be528ddcbc][Dunst]]
+- [[id:2bea95d4-9985-46fc-9450-5f3a9793ab7d][Redshift]]
+- [[file:fcitx5/][Fcitx5]]
 * Other
-- [[file:~/pictures/wallpapers/README.org][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
-- [[file:~/.local/bin/README.org][Scripts]] ([[https://github.com/ArtemSmaznov/scripts][repo]])
-- [[file:~/.local/bin/dm-scripts/README.org][DMScripts]] ([[https://github.com/ArtemSmaznov/scripts/tree/master/dm-scripts][repo]])
+- [[id:554fb9e7-8017-48c4-80fc-b00d99b64b55][Wallpapers]] ([[https://github.com/ArtemSmaznov/Wallpapers][repo]])
+- [[id:d4c60fae-8667-4066-902f-692a61572338][Scripts]] ([[https://github.com/ArtemSmaznov/scripts][repo]])
+- [[id:c9d06930-ec33-4afc-b320-3942fa73e592][dm-scripts]] ([[https://github.com/ArtemSmaznov/scripts/tree/master/dm-scripts][repo]])

@@ -1,3 +1,7 @@
+:PROPERTIES:
+:ID:       08dab5c6-188b-4891-b65f-2637d6d3bd4a
+:ROAM_ALIASES: eww
+:END:
 #+title:       Elkowar's Wacky Widgets
 #+author:      Artem Smaznov
 #+description: Standalone widget system that allows you to implement your own, custom widgets in any window manager

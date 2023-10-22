@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       7e0f082a-18a1-42d2-b056-c0be528ddcbc
+:END:
 #+title:       Dunst
 #+author:      Artem Smaznov
 #+description: A lightweight replacement for the notification-daemons provided by most desktop environments

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       dff9ef30-0e05-4e9b-9338-5f4e179fdf57
+:END:
 #+title:       MPV
 #+author:      Artem Smaznov
 #+description: A vim-like minimalist media player

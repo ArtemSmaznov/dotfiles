@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       a34c7fc1-1f56-442d-9960-28560e39a44d
+:END:
 #+title:       NYXT Browser
 #+author:      Artem Smaznov
 #+description: A vim-like minimalist web browser

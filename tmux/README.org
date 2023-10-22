@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       e9e69b9f-4c57-4010-82b4-30be2fe8535a
+:END:
 #+title:       Tmux
 #+author:      Artem Smaznov
 #+description: a terminal multiplexer: it enables a number of terminals (or windows), each running a separate program, to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.

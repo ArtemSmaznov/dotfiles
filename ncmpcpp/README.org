@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       48cc151d-dc50-4642-91a4-6a32deff314b
+:END:
 #+title:       ncmpcpp
 #+author:      Artem Smaznov
 #+description: An ncurses Music Player Daemon (MPD) client

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       b48affc1-15d0-4255-bd03-998038b82b25
+:END:
 #+title:       Shells
 #+author:      Artem Smaznov
 #+description: Dotfiles for Shells and Shell accecorries
@@ -56,6 +59,7 @@
 * readline
 :PROPERTIES:
 :header-args: :tangle readline/inputrc
+:ID:       c94fed99-29ea-4504-b7f9-5f0af9b3e2e6
 :END:
 #+begin_src shell
 # do not bell on tab-completion
@@ -128,6 +132,7 @@ $endif
 * Bash
 :PROPERTIES:
 :header-args: :tangle bash/bashrc
+:ID:       61810610-4a66-4381-8038-2f0690e2be9c
 :END:
 ** Start Section
 #+begin_src shell
@@ -236,6 +241,7 @@ if has_command neofetch; then neofetch; fi
 * ZSH
 :PROPERTIES:
 :header-args: :tangle zsh/zshrc
+:ID:       f02f3b68-12b8-45cd-b81d-5843fbe821c3
 :END:
 ** Options
 #+begin_src shell
@@ -404,6 +410,7 @@ if has_command neofetch; then neofetch; fi
 * Fish
 :PROPERTIES:
 :header-args: :tangle fish/config.fish
+:ID:       9ef51a6b-7157-4ae4-9d92-b7c75103fbd6
 :END:
 ** End Section
 #+begin_src conf
@@ -413,6 +420,7 @@ starship init fish | source
 * Exportrc
 :PROPERTIES:
 :header-args: :tangle shell/exportrc
+:ID:       0863797a-6250-4cd6-b78a-70ce9121d635
 :END:
 ** profile
 *** XDG
@@ -493,6 +501,7 @@ export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 * Aliasrc
 :PROPERTIES:
 :header-args: :tangle shell/aliasrc
+:ID:       9c4de24e-c999-42dc-8b36-2b87466fbadf
 :END:
 To temporarily bypass an alias, we precede the command with a `\`
 e.g. the ls command is aliased, but to use the normal ls command you would type `\ls`
@@ -807,6 +816,7 @@ alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 * Starship
 :PROPERTIES:
 :header-args: :tangle starship.toml
+:ID:       3193f717-a319-4d2e-9f35-7f0839ed685e
 :END:
 ** General
 #+begin_src toml

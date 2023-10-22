@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       7878ed18-4e99-4846-b62c-1e98d82ab606
+:END:
 #+title:       Picom
 #+author:      Artem Smaznov
 #+description: A compositor to prettify the desktop with shadows, transparency, blur and minor animations

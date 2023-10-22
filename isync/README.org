@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       46da18d1-41a8-46c3-bd94-7959b47aa4be
+:END:
 #+title:       isync
 #+author:      Artem Smaznov
 #+startup:     overview

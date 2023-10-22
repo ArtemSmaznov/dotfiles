@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       ff5a8e43-6b12-4e00-a64d-671cd81b9902
+:END:
 #+title:       Neofetch
 #+author:      Artem Smaznov
 #+description: Everybody has one

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       250f7e01-fc25-4c7c-820a-35ded4042a04
+:END:
 #+title:       Zathura
 #+author:      Artem Smaznov
 #+description: A vim-like document viewer

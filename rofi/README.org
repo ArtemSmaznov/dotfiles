@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       bd185657-ac98-47bd-b96c-f46685239a54
+:END:
 #+title:       Rofi
 #+author:      Artem Smaznov
 #+description: Window switcher, run dialog, ssh-launcher and dmenu replacement

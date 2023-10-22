@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       eaa77951-acd6-4e36-baf1-5376ddd6b73f
+:END:
 #+title:       Vimiv
 #+author:      Artem Smaznov
 #+description: A vim-like minimalist image viewer

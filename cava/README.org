@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       41bd2128-bf26-40a2-b66a-4fc085e0008b
+:END:
 #+title:       Cava
 #+author:      Artem Smaznov
 #+description: Console-based audio visualizer

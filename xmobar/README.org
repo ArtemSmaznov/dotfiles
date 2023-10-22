@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       2824ddd7-259a-4263-afd9-2e69928d2108
+:END:
 #+title:       XMobar
 #+author:      Artem Smaznov
 #+description: Lightweight, text-based, status bar written in Haskell
@@ -197,7 +200,7 @@ Keyboard Layout Indicator
                ] 3600
 #+end_src
 
-*** Trayer
+*** [[id:f31dd7ad-18c7-4a70-9188-f1d929d951a5][Trayer]]
 Script that dynamically adjusts xmobar padding depending on number of trayer icons.
 #+begin_src haskell
         , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20

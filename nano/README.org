@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       07dc3049-c92a-4c93-8da3-2b4b3713218e
+:END:
 #+title:       Nano
 #+author:      Artem Smaznov
 #+description: GNU nano (or nano) is a text editor which aims to introduce a simple interface and intuitive command options to console based text editing. nano supports features including colorized syntax highlighting, DOS/Mac file type conversions, spellchecking and UTF-8 encoding. nano opened with an empty buffer typically occupies under 4 MB of resident memory.

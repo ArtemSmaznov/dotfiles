@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       2bea95d4-9985-46fc-9450-5f3a9793ab7d
+:END:
 #+title:       RedShift
 #+author:      Artem Smaznov
 #+description: Redshift adjusts the color temperature of your screen according to your surroundings

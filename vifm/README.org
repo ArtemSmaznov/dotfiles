@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       0ae3a9db-655b-47f5-89cc-e55b4e72834b
+:END:
 #+title:       ViFM
 #+author:      Artem Smaznov
 #+description: A vim-like terminal file manager
