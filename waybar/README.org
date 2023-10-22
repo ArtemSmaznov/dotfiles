@@ -64,7 +64,7 @@ Choose the order of the modules
         "image#logo",
         "clock#time",
         "custom/separator",
-        "wlr/workspaces",
+        "hyprland/workspaces",
         "custom/separator",
         "custom/layout",
         "custom/separator",
@@ -127,7 +127,7 @@ Choose the order of the modules
 
 ** Workspaces
 #+begin_src jsonc
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "all-outputs": false,
@@ -538,19 +538,21 @@ button:hover {
 
 #workspaces button:hover {
     background: @base01;
+    box-shadow: inset 0 -3px @base04;
+}
+
+#workspaces button.empty {
+    color: @base02;
 }
 
 #workspaces button.active {
     background-color: @base02;
     box-shadow: inset 0 -3px @base0E;
-}
-
-#workspaces button.persistent {
-    color: @base02;
+    color: @base07;
 }
 
 #workspaces button.urgent {
-    background-color: @base08;
+    color: @base08;
 }
 #+end_src
 

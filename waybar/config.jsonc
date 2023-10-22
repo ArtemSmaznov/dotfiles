@@ -8,7 +8,7 @@
         "image#logo",
         "clock#time",
         "custom/separator",
-        "wlr/workspaces",
+        "hyprland/workspaces",
         "custom/separator",
         "custom/layout",
         "custom/separator",
@@ -52,7 +52,7 @@
         "interval": 1
     },
 
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "all-outputs": false,
