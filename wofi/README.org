@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       9440187f-6b67-4fca-9b3f-7ceb681f3398
+:END:
+#+title:       Wofi
+#+author:      Artem Smaznov
+#+description: Window switcher, run dialog, ssh-launcher and rofi replacement
+#+startup:     overview
+#+property:    header-args :tangle config
+#+auto_tangle: t
+
+* Table of Contents :toc:
+- [[#configuration][Configuration]]
+- [[#theme][Theme]]
+- [[#keybindings][Keybindings]]
+
+* Configuration
+#+begin_src conf
+show=drun
+prompt=Type to filter
+normal_window=false
+allow_images=true
+allow_markup=true
+insensitive=true
+columns=1
+gtk_dark=true
+orientation=vertical
+image_size=20
+dynamic_lines=true
+layer=overlay
+#+end_src
+
+* Theme
+#+begin_src conf
+stylesheet=themes/base16.css
+#+end_src
+
+* Keybindings
+#+begin_src conf
+key_left=Control_L-h
+key_down=Control_L-j
+key_up=Control_L-k
+key_right=Control_L-l
+key_forward=Tab
+key_backward=ISO_Left_Tab
+key_submit=Return
+key_exit=Escape
+key_pgdn=Control_L-J
+key_pgup=Control_L-K
+key_expand=Control_L-Return
+key_hide_search=Control_L-slash
+key_copy=Control_L-c
+#+end_src

@@ -25,6 +25,7 @@
 - [[#qtile][qTile]]
 - [[#strt-qutebrowser][STRT QuteBrowser]]
 - [[#rofi][Rofi]]
+- [[#wofi][Wofi]]
 - [[#idea-shell][IDEA Shell]]
 - [[#termux][Termux]]
 - [[#idea-vim][IDEA Vim]]
@@ -184,6 +185,14 @@ rewrite = true
 file = "~/.config/rofi/themes/base16.rasi"
 template = "rofi"
 subtemplate = "colors"
+rewrite = true
+#+end_src
+
+* Wofi
+#+begin_src toml
+[[item]]
+file = "~/.config/wofi/themes/base16.css"
+template = "wofi"
 rewrite = true
 #+end_src
 
