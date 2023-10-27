@@ -12,11 +12,12 @@
         "custom/separator",
         "custom/layout",
         "custom/separator",
-        "hyprland/submap",
-        "hyprland/window"
+        "hyprland/submap"
     ],
 
     "modules-center": [
+        "hyprland/window",
+        "custom/separator",
         "mpd"
     ],
 
