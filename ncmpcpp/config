@@ -245,7 +245,7 @@ external_editor = vim
 ## Note: set to yes if external editor is a console application.
 use_console_editor = yes
 
-lyrics_directory = ~/music/.lyrics
+lyrics_directory = ~/music/lyrics
 
 lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 # lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
