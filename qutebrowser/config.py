@@ -1410,7 +1410,8 @@ c.tabs.mousewheel_switching = False
 
 # c.qt.force_platformtheme = None
 
-c.qt.force_software_rendering = 'qt-quick'
+# c.qt.force_software_rendering = 'software-opengl'
+c.qt.force_software_rendering = 'none'
 
 # c.qt.highdpi = False
 
