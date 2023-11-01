@@ -1,3 +1,7 @@
+import:
+  - ~/.config/alacritty/themes/base16.yml
+  - ~/.config/alacritty/local.yml
+
 window:
   # Window padding (changes require restart)
   #
@@ -23,29 +27,26 @@ window:
   #   - None (default)
   option_as_alt: Both
 
-font:
-  normal:
-    family: 'Hack Nerd Font Mono'
-    style: Regular
-  bold:
-    family: 'Hack Nerd Font Mono'
-    style: Bold
-  italic:
-    family: 'Hack Nerd Font Mono'
-    style: Italic
-  bold_italic:
-    family: 'Hack Nerd Font Mono'
-    style: Bold Italic
-  size: 14.0
-
-import:
-  - ~/.config/alacritty/themes/base16.yml
-  - ~/.config/alacritty/local.yml
-
 custom_cursor_colors: false
 
+define: &font_family 'Hack Nerd Font Mono'
+
+font:
+  normal:
+    family: *font_family
+    style: Regular
+  bold:
+    family: *font_family
+    style: Bold
+  italic:
+    family: *font_family
+    style: Italic
+  bold_italic:
+    family: *font_family
+    style: Bold Italic
+  # size: 14.0
+
 cursor:
-  # Cursor style
   style:
     # Values for `shape`:
     #   - ▇ Block
