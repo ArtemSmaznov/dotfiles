@@ -1528,6 +1528,7 @@ config.bind('}}', 'navigate next -t')
 config.bind('<Space>wq', 'close')
 config.bind('<Space>wO', 'window-only')
 
+config.bind('wn', 'open -w')
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
 
