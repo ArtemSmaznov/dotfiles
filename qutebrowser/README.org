@@ -2452,7 +2452,7 @@ Characters used for hint strings.
 # Type: =UniqueCharString=
 #+begin_src python
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuopasdfghjkzxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjk;zxcvbnm'
 #+end_src
 
 Dictionary file to be used by the word hints.

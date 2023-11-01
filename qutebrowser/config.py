@@ -1284,7 +1284,7 @@ c.hints.auto_follow_timeout = 0
 # c.hints.border = '1px solid #E3BE23'
 
 # c.hints.chars = 'asdfghjkl'
-c.hints.chars = 'qwertyuopasdfghjkzxcvbnm'
+c.hints.chars = 'qwertyuopasdfghjk;zxcvbnm'
 
 c.hints.dictionary = '/usr/share/dict/words'
 
