@@ -19,7 +19,10 @@ tab_even = color.base02
 tab_selected = color.base0C
 
 # Prompts
+prompt_fg = foreground
+prompt_bg = color.base01
 prompt_selected_bg = color.base02
+radius = 10
 
 # Hints
 hint_bg = color.base0A
@@ -30,9 +33,6 @@ completion_odd = color.base01
 completion_even = background
 completion_selected = color.base02
 completion_borders = color.base03
-
-# Which Key
-whichkey_radius = 10
 
 # Context Menu
 contextmenu_selected_bg = color.base02

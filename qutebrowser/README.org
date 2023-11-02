@@ -36,7 +36,6 @@
   - [[#zooming][Zooming]]
   - [[#other][Other]]
   - [[#new-instance][New Instance]]
-  - [[#downloads-1][Downloads]]
 - [[#search-engines][Search Engines]]
 - [[#aliases][Aliases]]
 - [[#sessions][Sessions]]
@@ -45,6 +44,8 @@
 - [[#tabs-1][Tabs]]
   - [[#visuals][Visuals]]
   - [[#behavior-1][Behavior]]
+- [[#status-bar-1][Status Bar]]
+- [[#downloads-1][Downloads]]
 - [[#key-bindings][Key Bindings]]
   - [[#info][Info]]
   - [[#unbind][Unbind]]
@@ -120,7 +121,8 @@ import themes.default as theme
 ** Fonts
 #+begin_src python
 c.fonts.default_size = '12pt'
-c.fonts.default_family = ['Lato']
+c.fonts.default_family = ["Hack Nerd Font", "Hack Nerd Font Regular", 'Lato']
+
 # c.fonts.completion.category = 'bold default_size default_family'
 # c.fonts.completion.entry = 'default_size default_family'
 # c.fonts.contextmenu = None
@@ -189,10 +191,10 @@ c.colors.completion.scrollbar.bg = theme.background
 
 ** Which Key
 #+begin_src python
-c.colors.keyhint.fg = theme.foreground
-c.colors.keyhint.bg = theme.background
+c.colors.keyhint.fg = theme.prompt_fg
+c.colors.keyhint.bg = theme.prompt_bg
 c.colors.keyhint.suffix.fg = theme.match
-c.keyhint.radius = theme.whichkey_radius
+c.keyhint.radius = theme.radius
 #+end_src
 
 ** Context Menu
@@ -242,43 +244,16 @@ c.colors.hints.match.fg = theme.foreground
 
 ** Prompts
 #+begin_src python
-c.colors.prompts.fg = theme.foreground
-c.colors.prompts.bg = theme.background
+c.colors.prompts.fg = theme.prompt_fg
+c.colors.prompts.bg = theme.prompt_bg
 
-c.colors.prompts.selected.fg = theme.foreground
+c.colors.prompts.selected.fg = theme.prompt_fg
 c.colors.prompts.selected.bg = theme.prompt_selected_bg
 
 c.colors.prompts.border = theme.background
 #+end_src
 
 ** Status Bar
-Valid values for statusbar position:
-- top
-- bottom
-
-Valid values for showing the statusbar:
-- always: Always show the statusbar.
-- never: Always hide the statusbar.
-- in-mode: Show the statusbar when in modes other than normal mode.
-
-Valid values for widgets:
-- =url=: Current page URL.
-- =scroll=: Percentage of the current page position like `10%`.
-- =scroll_raw=: Raw percentage of the current page position like `10`.
-- =history=: Display an arrow when possible to go back/forward in history.
-- =tabs=: Current active tab, e.g. `2`.
-- =keypress=: Display pressed keys when composing a vi command.
-- =progress=: Progress bar for the current page loading.
-- =text:foo=: Display the static text after the colon, `foo` in the example.
-
-#+begin_src python
-c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 5, 'right': 5}
-c.statusbar.position = 'bottom'
-c.statusbar.show = 'always'
-c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
-#+end_src
-
-*** Colors
 #+begin_src python
 # Color of the statusbar.
 c.colors.statusbar.normal.fg = theme.status_normal_fg
@@ -409,7 +384,7 @@ c.messages.timeout = 5000
 ** Web Pages
 Background color for web pages if unset (or empty to use the theme's color).
 #+begin_src python
-# c.colors.webpage.bg = theme.background
+c.colors.webpage.bg = ''
 #+end_src
 
 ** Dark Mode
@@ -773,59 +748,6 @@ Valid values:
 c.new_instance_open_target_window = 'last-focused'
 #+end_src
 
-** TODO Downloads
-#+begin_src python
-# Directory to save downloads to. If unset, a sensible OS-specific default is used.
-# Type: Directory
-c.downloads.location.directory = None
-
-# Prompt the user for the download location. If set to false,
-# `downloads.location.directory` will be used.
-# Type: Bool
-c.downloads.location.prompt = True
-
-# Remember the last used download directory.
-# Type: Bool
-c.downloads.location.remember = True
-
-# What to display in the download filename input.
-# Type: String
-# Valid values:
-# - path: Show only the download path.
-# - filename: Show only download filename.
-# - both: Show download path and filename.
-c.downloads.location.suggestion = 'path'
-
-# Default program used to open downloads. If null, the default internal
-# handler is used. Any `{}` in the string will be expanded to the
-# filename, else the filename will be appended.
-# Type: String
-c.downloads.open_dispatcher = None
-
-# Where to show the downloaded files.
-# Type: VerticalPosition
-# Valid values:
-# - top
-# - bottom
-c.downloads.position = 'bottom'
-
-# Duration (in milliseconds) to wait before removing finished downloads.
-# If set to -1, downloads are never removed.
-# Type: Int
-c.downloads.remove_finished = 30000
-#+end_src
-
-Show a file browser in download prompts.
-Type: =Bool=
-
-Rounding radius (in pixels) for the edges of prompts.
-Type: =Int=
-
-#+begin_src python
-c.prompt.filebrowser = True
-c.prompt.radius = 0
-#+end_src
-
 * Search Engines
 What search to start when something else than a URL is entered.
 # Type: String
@@ -977,7 +899,7 @@ Valid values:
 - left
 - right
 #+begin_src python
-c.tabs.position = 'top'
+c.tabs.position = 'bottom'
 #+end_src
 
 When to show the tab bar.
@@ -1005,44 +927,11 @@ Type: =PercOrInt=
 # c.tabs.width = '15%'
 #+end_src
 
-*** Indicators
-Padding (in pixels) for tab indicators.
-Type: =Padding=
-#+begin_src python
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
-#+end_src
-
-Width (in pixels) of the progress indicator (0 to disable).
-Type: =Int=
-#+begin_src python
-c.tabs.indicator.width = 3
-#+end_src
-
-*** Favicons
-Scaling factor for favicons in the tab bar. The tab size is unchanged,
-so big favicons also require extra `tabs.padding`.
-Type: =Float=
-#+begin_src python
-# c.tabs.favicons.scale = 1.0
-#+end_src
-
-When to show favicons in the tab bar. When switching this from never
-to always/pinned, note that favicons might not be loaded yet, thus
-tabs might require a reload to display them.
-Type: =String=
-Valid values:
-- always: Always show favicons.
-- never: Always hide favicons.
-- pinned: Show favicons only on pinned tabs.
-#+begin_src python
-c.tabs.favicons.show = 'always'
-#+end_src
-
 *** Titles
 Padding (in pixels) around text for tabs.
 Type: =Padding=
 #+begin_src python
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 5, 'right': 5}
 #+end_src
 
 Alignment of the text inside of tabs.
@@ -1074,6 +963,39 @@ The following placeholders are defined:
 | ={audio}=         | Indicator for audio/mute status                              |
 #+begin_src python
 c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
+#+end_src
+
+*** Favicons
+Scaling factor for favicons in the tab bar. The tab size is unchanged,
+so big favicons also require extra `tabs.padding`.
+Type: =Float=
+#+begin_src python
+# c.tabs.favicons.scale = 1.0
+#+end_src
+
+When to show favicons in the tab bar. When switching this from never
+to always/pinned, note that favicons might not be loaded yet, thus
+tabs might require a reload to display them.
+Type: =String=
+Valid values:
+- always: Always show favicons.
+- never: Always hide favicons.
+- pinned: Show favicons only on pinned tabs.
+#+begin_src python
+c.tabs.favicons.show = 'always'
+#+end_src
+
+*** Indicators
+Padding (in pixels) for tab indicators.
+Type: =Padding=
+#+begin_src python
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+#+end_src
+
+Width (in pixels) of the progress indicator (0 to disable).
+Type: =Int=
+#+begin_src python
+c.tabs.indicator.width = 3
 #+end_src
 
 *** Pinned Tabs
@@ -1206,6 +1128,86 @@ Maximum stack size to remember for tab switches (-1 for no maximum).
 Type: =Int=
 #+begin_src python
 # c.tabs.focus_stack_size = 10
+#+end_src
+
+* Status Bar
+Valid values for statusbar position:
+- top
+- bottom
+
+Valid values for showing the statusbar:
+- always: Always show the statusbar.
+- never: Always hide the statusbar.
+- in-mode: Show the statusbar when in modes other than normal mode.
+
+Valid values for widgets:
+- =url=: Current page URL.
+- =scroll=: Percentage of the current page position like `10%`.
+- =scroll_raw=: Raw percentage of the current page position like `10`.
+- =history=: Display an arrow when possible to go back/forward in history.
+- =tabs=: Current active tab, e.g. `2`.
+- =keypress=: Display pressed keys when composing a vi command.
+- =progress=: Progress bar for the current page loading.
+- =text:foo=: Display the static text after the colon, `foo` in the example.
+
+#+begin_src python
+c.statusbar.padding = {'top': 4, 'bottom': 4, 'left': 5, 'right': 5}
+c.statusbar.position = 'top'
+c.statusbar.show = 'always'
+c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
+#+end_src
+
+* Downloads
+#+begin_src python
+# Directory to save downloads to. If unset, a sensible OS-specific default is used.
+# Type: Directory
+c.downloads.location.directory = None
+
+# Prompt the user for the download location. If set to false,
+# `downloads.location.directory` will be used.
+# Type: Bool
+c.downloads.location.prompt = True
+
+# Remember the last used download directory.
+# Type: Bool
+c.downloads.location.remember = True
+
+# What to display in the download filename input.
+# Type: String
+# Valid values:
+# - path: Show only the download path.
+# - filename: Show only download filename.
+# - both: Show download path and filename.
+c.downloads.location.suggestion = 'path'
+
+# Default program used to open downloads. If null, the default internal
+# handler is used. Any `{}` in the string will be expanded to the
+# filename, else the filename will be appended.
+# Type: String
+c.downloads.open_dispatcher = None
+
+# Where to show the downloaded files.
+# Type: VerticalPosition
+# Valid values:
+# - top
+# - bottom
+c.downloads.position = 'top'
+
+# Duration (in milliseconds) to wait before removing finished downloads.
+# If set to -1, downloads are never removed.
+# Type: Int
+c.downloads.remove_finished = 60000
+#+end_src
+
+Show a file browser in download prompts.
+Type: =Bool=
+
+Rounding radius (in pixels) for the edges of prompts.
+Type: =Int=
+
+#+begin_src python
+c.prompt.filebrowser = True
+c.prompt.radius = theme.radius
 #+end_src
 
 * Key Bindings
@@ -1711,6 +1713,7 @@ config.bind('dc', 'download-clear')
 
 config.bind('do', 'download-open')
 config.bind('dX', 'download-delete')
+config.bind('dD', 'download-delete')
 #+end_src
 
 Hints

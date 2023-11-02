@@ -5,7 +5,8 @@ from qutebrowser.api import interceptor
 import themes.default as theme
 
 c.fonts.default_size = '12pt'
-c.fonts.default_family = ['Lato']
+c.fonts.default_family = ["Hack Nerd Font", "Hack Nerd Font Regular", 'Lato']
+
 # c.fonts.completion.category = 'bold default_size default_family'
 # c.fonts.completion.entry = 'default_size default_family'
 # c.fonts.contextmenu = None
@@ -55,10 +56,10 @@ c.colors.completion.item.selected.match.fg = theme.match
 c.colors.completion.scrollbar.fg = theme.foreground
 c.colors.completion.scrollbar.bg = theme.background
 
-c.colors.keyhint.fg = theme.foreground
-c.colors.keyhint.bg = theme.background
+c.colors.keyhint.fg = theme.prompt_fg
+c.colors.keyhint.bg = theme.prompt_bg
 c.colors.keyhint.suffix.fg = theme.match
-c.keyhint.radius = theme.whichkey_radius
+c.keyhint.radius = theme.radius
 
 c.colors.contextmenu.menu.fg = theme.foreground
 c.colors.contextmenu.menu.bg = theme.background
@@ -88,18 +89,13 @@ c.colors.hints.fg = theme.background
 c.colors.hints.bg = theme.hint_bg
 c.colors.hints.match.fg = theme.foreground
 
-c.colors.prompts.fg = theme.foreground
-c.colors.prompts.bg = theme.background
+c.colors.prompts.fg = theme.prompt_fg
+c.colors.prompts.bg = theme.prompt_bg
 
-c.colors.prompts.selected.fg = theme.foreground
+c.colors.prompts.selected.fg = theme.prompt_fg
 c.colors.prompts.selected.bg = theme.prompt_selected_bg
 
 c.colors.prompts.border = theme.background
-
-c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 5, 'right': 5}
-c.statusbar.position = 'bottom'
-c.statusbar.show = 'always'
-c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
 
 # Color of the statusbar.
 c.colors.statusbar.normal.fg = theme.status_normal_fg
@@ -193,7 +189,7 @@ c.colors.messages.error.border = theme.error
 
 c.messages.timeout = 5000
 
-# c.colors.webpage.bg = theme.background
+c.colors.webpage.bg = ''
 
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
@@ -394,48 +390,6 @@ c.new_instance_open_target = 'tab'
 
 c.new_instance_open_target_window = 'last-focused'
 
-# Directory to save downloads to. If unset, a sensible OS-specific default is used.
-# Type: Directory
-c.downloads.location.directory = None
-
-# Prompt the user for the download location. If set to false,
-# `downloads.location.directory` will be used.
-# Type: Bool
-c.downloads.location.prompt = True
-
-# Remember the last used download directory.
-# Type: Bool
-c.downloads.location.remember = True
-
-# What to display in the download filename input.
-# Type: String
-# Valid values:
-# - path: Show only the download path.
-# - filename: Show only download filename.
-# - both: Show download path and filename.
-c.downloads.location.suggestion = 'path'
-
-# Default program used to open downloads. If null, the default internal
-# handler is used. Any `{}` in the string will be expanded to the
-# filename, else the filename will be appended.
-# Type: String
-c.downloads.open_dispatcher = None
-
-# Where to show the downloaded files.
-# Type: VerticalPosition
-# Valid values:
-# - top
-# - bottom
-c.downloads.position = 'bottom'
-
-# Duration (in milliseconds) to wait before removing finished downloads.
-# If set to -1, downloads are never removed.
-# Type: Int
-c.downloads.remove_finished = 30000
-
-c.prompt.filebrowser = True
-c.prompt.radius = 0
-
 c.url.auto_search = 'naive'
 
 # c.url.incdec_segments = ['path', 'query']
@@ -488,7 +442,7 @@ c.auto_save.interval = 15000
 c.tabs.min_width = -1
 c.tabs.max_width = 200
 
-c.tabs.position = 'top'
+c.tabs.position = 'bottom'
 
 c.tabs.show = 'multiple'
 
@@ -496,19 +450,19 @@ c.tabs.show = 'multiple'
 
 # c.tabs.width = '15%'
 
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 5, 'right': 5}
 
-c.tabs.indicator.width = 3
+c.tabs.title.alignment = 'left'
+
+c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
 
 # c.tabs.favicons.scale = 1.0
 
 c.tabs.favicons.show = 'always'
 
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 
-c.tabs.title.alignment = 'left'
-
-c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
+c.tabs.indicator.width = 3
 
 c.tabs.title.format_pinned = '{perc}{audio}{private}'
 
@@ -539,6 +493,53 @@ c.tabs.pinned.shrink = True
 # c.tabs.new_position.stacking = True
 
 # c.tabs.focus_stack_size = 10
+
+c.statusbar.padding = {'top': 4, 'bottom': 4, 'left': 5, 'right': 5}
+c.statusbar.position = 'top'
+c.statusbar.show = 'always'
+c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
+
+# Directory to save downloads to. If unset, a sensible OS-specific default is used.
+# Type: Directory
+c.downloads.location.directory = None
+
+# Prompt the user for the download location. If set to false,
+# `downloads.location.directory` will be used.
+# Type: Bool
+c.downloads.location.prompt = True
+
+# Remember the last used download directory.
+# Type: Bool
+c.downloads.location.remember = True
+
+# What to display in the download filename input.
+# Type: String
+# Valid values:
+# - path: Show only the download path.
+# - filename: Show only download filename.
+# - both: Show download path and filename.
+c.downloads.location.suggestion = 'path'
+
+# Default program used to open downloads. If null, the default internal
+# handler is used. Any `{}` in the string will be expanded to the
+# filename, else the filename will be appended.
+# Type: String
+c.downloads.open_dispatcher = None
+
+# Where to show the downloaded files.
+# Type: VerticalPosition
+# Valid values:
+# - top
+# - bottom
+c.downloads.position = 'top'
+
+# Duration (in milliseconds) to wait before removing finished downloads.
+# If set to -1, downloads are never removed.
+# Type: Int
+c.downloads.remove_finished = 60000
+
+c.prompt.filebrowser = True
+c.prompt.radius = theme.radius
 
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
 
@@ -868,6 +869,7 @@ config.bind('dc', 'download-clear')
 
 config.bind('do', 'download-open')
 config.bind('dX', 'download-delete')
+config.bind('dD', 'download-delete')
 
 config.bind('di', 'hint images download')
 config.bind('dl', 'hint links download')
