@@ -165,20 +165,18 @@ window:
 * Font
 The =style= can be specified to pick a specific face.
 #+begin_src yaml
-define: &font_family 'Hack Nerd Font Mono'
-
 font:
   normal:
-    family: *font_family
+    family: Hack Nerd Font Mono
     style: Regular
   bold:
-    family: *font_family
+    family: Hack Nerd Font Mono
     style: Bold
   italic:
-    family: *font_family
+    family: Hack Nerd Font Mono
     style: Italic
   bold_italic:
-    family: *font_family
+    family: Hack Nerd Font Mono
     style: Bold Italic
   # size: 14.0
 
