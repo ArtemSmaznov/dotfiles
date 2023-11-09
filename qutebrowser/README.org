@@ -318,7 +318,7 @@ Tab Indicator
 #+begin_src python
 # Color gradient for the tab indicator.
 c.colors.tabs.indicator.start = theme.loading
-c.colors.tabs.indicator.stop = theme.success
+c.colors.tabs.indicator.stop = theme.tab_indicator
 
 # Color for the tab indicator on errors.
 c.colors.tabs.indicator.error = theme.error
@@ -931,7 +931,7 @@ Type: =PercOrInt=
 Padding (in pixels) around text for tabs.
 Type: =Padding=
 #+begin_src python
-c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 5, 'right': 5}
+c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 0, 'right': 5}
 #+end_src
 
 Alignment of the text inside of tabs.
@@ -989,7 +989,7 @@ c.tabs.favicons.show = 'always'
 Padding (in pixels) for tab indicators.
 Type: =Padding=
 #+begin_src python
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.indicator.padding = {'top': 0, 'bottom': 0, 'left': 0, 'right': 8}
 #+end_src
 
 Width (in pixels) of the progress indicator (0 to disable).

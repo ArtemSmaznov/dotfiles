@@ -16,7 +16,8 @@ match = color.base0B
 # Tabs
 tab_odd = color.base01
 tab_even = color.base02
-tab_selected = color.base0C
+tab_selected = color.base0B
+tab_indicator = color.base03
 
 # Prompts
 prompt_fg = foreground

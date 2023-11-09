@@ -143,7 +143,7 @@ c.colors.tabs.bar.bg = theme.background
 
 # Color gradient for the tab indicator.
 c.colors.tabs.indicator.start = theme.loading
-c.colors.tabs.indicator.stop = theme.success
+c.colors.tabs.indicator.stop = theme.tab_indicator
 
 # Color for the tab indicator on errors.
 c.colors.tabs.indicator.error = theme.error
@@ -450,7 +450,7 @@ c.tabs.show = 'multiple'
 
 # c.tabs.width = '15%'
 
-c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 5, 'right': 5}
+c.tabs.padding = {'top': 3, 'bottom': 3, 'left': 0, 'right': 5}
 
 c.tabs.title.alignment = 'left'
 
@@ -460,7 +460,7 @@ c.tabs.title.format = ' {perc}{audio}{private}{current_title}'
 
 c.tabs.favicons.show = 'always'
 
-c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.indicator.padding = {'top': 0, 'bottom': 0, 'left': 0, 'right': 8}
 
 c.tabs.indicator.width = 3
 
