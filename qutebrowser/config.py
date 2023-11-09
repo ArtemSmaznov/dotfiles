@@ -495,7 +495,7 @@ c.tabs.pinned.shrink = True
 # c.tabs.focus_stack_size = 10
 
 c.statusbar.padding = {'top': 4, 'bottom': 4, 'left': 5, 'right': 5}
-c.statusbar.position = 'top'
+c.statusbar.position = 'bottom'
 c.statusbar.show = 'always'
 c.statusbar.widgets = ['keypress', 'progress', 'history', 'text: -- ', 'url', 'text: -- ', 'scroll']
 
