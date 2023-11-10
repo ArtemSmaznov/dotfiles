@@ -531,7 +531,7 @@ c.downloads.open_dispatcher = None
 # Valid values:
 # - top
 # - bottom
-c.downloads.position = 'top'
+c.downloads.position = 'bottom'
 
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
