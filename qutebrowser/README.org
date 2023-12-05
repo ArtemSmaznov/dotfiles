@@ -1868,18 +1868,20 @@ config.bind(';dm', 'hint media delete')
 ** Pass
 Command Mode
 #+begin_src python
-config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
-config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
-config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
 #+end_src
 
 Insert Mode
 #+begin_src python
-config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
-config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
-config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
 #+end_src
 
 ** Media

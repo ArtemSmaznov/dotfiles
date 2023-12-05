@@ -962,15 +962,17 @@ config.bind(';dl', 'hint links delete')
 config.bind(';di', 'hint images delete')
 config.bind(';dm', 'hint media delete')
 
-config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
-config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
-config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                )
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
 
-config.bind('<Ctrl-p><a>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
-config.bind('<Ctrl-p><u>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
-config.bind('<Ctrl-p><p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Ctrl-p><o>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
 
 # config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
 config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
