@@ -410,18 +410,6 @@ Render all web contents using a dark theme. Example configurations from Chromium
 c.colors.webpage.darkmode.enabled = False
 #+end_src
 
-Render all colors as grayscale. This only has an effect when `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or `brightness-rgb`.
-# Type: Bool
-#+begin_src python
-c.colors.webpage.darkmode.grayscale.all = False
-#+end_src
-
-Desaturation factor for images in dark mode. If set to 0, images are left as-is. If set to 1, images are completely grayscale. Values between 0 and 1 desaturate the colors accordingly.
-# Type: Float
-#+begin_src python
-c.colors.webpage.darkmode.grayscale.images = 0.35
-#+end_src
-
 Which images to apply dark mode to. With QtWebEngine 5.15.0, this setting can cause frequent renderer process crashes due to a https://codereview.qt-project.org/c/qt/qtwebengine- chromium/+/304211[bug in Qt].
 # Type: String
 Valid values:
@@ -453,7 +441,7 @@ c.colors.webpage.darkmode.threshold.background = 100
 Threshold for inverting text with dark mode. Text colors with brightness below this threshold will be inverted, and above it will be left as in the original, non-dark-mode page. Set to 256 to always invert text color or to 0 to never invert text color.
 # Type: Int
 #+begin_src python
-c.colors.webpage.darkmode.threshold.text = 150
+c.colors.webpage.darkmode.threshold.foreground = 150
 #+end_src
 
 Value to use for `prefers-color-scheme:` for websites. The "light" value is only available with QtWebEngine 5.15.2+. On older versions, it is the same as "auto". The "auto" value is broken on QtWebEngine 5.15.2 due to a Qt bug. There, it will fall back to "light" unconditionally.
@@ -2894,8 +2882,8 @@ Valid values:
 - =qt-quick=: Tell Qt Quick to use a software renderer instead of =OpenGL=. (=QT_QUICK_BACKEND=software=)
 - =chromium=: Tell Chromium to disable GPU support and use =Skia= software rendering instead. (=--disable-gpu=)
 - =none=: Don't force software rendering.
+
 #+begin_src python
-# c.qt.force_software_rendering = 'software-opengl'
 c.qt.force_software_rendering = 'none'
 #+end_src
 

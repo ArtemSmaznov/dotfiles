@@ -197,10 +197,6 @@ c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
 c.colors.webpage.darkmode.enabled = False
 
-c.colors.webpage.darkmode.grayscale.all = False
-
-c.colors.webpage.darkmode.grayscale.images = 0.35
-
 c.colors.webpage.darkmode.policy.images = 'always'
 
 c.colors.webpage.darkmode.policy.page = 'smart'
@@ -208,7 +204,7 @@ c.colors.webpage.darkmode.policy.page = 'smart'
 c.colors.webpage.darkmode.threshold.background = 100
 # c.colors.webpage.darkmode.threshold.background = 205
 
-c.colors.webpage.darkmode.threshold.text = 150
+c.colors.webpage.darkmode.threshold.foreground = 150
 
 c.colors.webpage.preferred_color_scheme = "dark"
 
@@ -1417,7 +1413,6 @@ c.tabs.mousewheel_switching = False
 
 # c.qt.force_platformtheme = None
 
-# c.qt.force_software_rendering = 'software-opengl'
 c.qt.force_software_rendering = 'none'
 
 # c.qt.highdpi = False
