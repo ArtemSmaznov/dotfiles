@@ -65,7 +65,7 @@ git update-index --skip-worktree file
 - [[file:nvtop/][nvtop]]
 - [[file:bashtop/][bashtop]]
 * Text Editor
-- [[file:doom/README.org][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
+- [[id:f8753b37-4a40-43d8-af24-1542cdfea063][Doom-emacs]] ([[https://github.com/ArtemSmaznov/Doom-emacs/][repo]])
 - [[id:f39d2412-eec4-44dd-94d8-9ca6d851ee3a][Vim]] ([[https://github.com/ArtemSmaznov/Vim][repo]])
 - [[id:07dc3049-c92a-4c93-8da3-2b4b3713218e][Nano]]
 * Music
