@@ -26,6 +26,7 @@
   - [[#system-tray][System Tray]]
   - [[#keyboard-language][Keyboard Language]]
   - [[#updates][Updates]]
+  - [[#updates-1][Updates]]
   - [[#battery][Battery]]
   - [[#network][Network]]
   - [[#ram][RAM]]
@@ -53,6 +54,7 @@
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 24,      // Waybar height (to be removed for auto height)
+    // "output": "DP-1",
     "spacing": 4,      // Gaps between modules (4px)
 #+end_src
 
@@ -255,6 +257,25 @@ Choose the order of the modules
     },
 #+end_src
 
+** Updates
+#+begin_src jsonc :tangle no
+    "custom/updates": {
+        "exec": "./get-updates.sh",
+        "format": " {icon} {}",
+        "return-type": "json",
+        "format-icons": {
+            "0": "",
+            "101": "",
+            "220": "",
+            "404": "",
+            "420": "",
+            ".": ""
+        },
+        "tooltip": false,
+        "interval": 360
+    },
+#+end_src
+
 ** Battery
 #+begin_src jsonc
     "battery#controller": {
@@ -439,8 +460,9 @@ Choose the order of the modules
 ** Windows
 #+begin_src css
 window#waybar {
+    /* background-color: transparent; */
     background-color: @base00;
-    border-bottom: 3px solid @base00;
+    /* border-bottom: 3px solid @base00; */
     color: @base07;
     transition-property: background-color;
     transition-duration: .5s;
@@ -610,7 +632,8 @@ button:hover {
 *** Keyboard Language
 #+begin_src css
 #language {
-    background: @base03;
+    background: transparent;
+    /* background: @base03; */
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;

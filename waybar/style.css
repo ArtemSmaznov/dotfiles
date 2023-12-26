@@ -36,8 +36,9 @@
 }
 
 window#waybar {
+    /* background-color: transparent; */
     background-color: @base00;
-    border-bottom: 3px solid @base00;
+    /* border-bottom: 3px solid @base00; */
     color: @base07;
     transition-property: background-color;
     transition-duration: .5s;
@@ -171,7 +172,8 @@ button:hover {
 }
 
 #language {
-    background: @base03;
+    background: transparent;
+    /* background: @base03; */
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
