@@ -5,15 +5,16 @@
 #+author:      Artem Smaznov
 #+description: A vim-like minimalist web browser
 #+startup:     overview
-#+property:    header-args :tangle init.lisp
+#+property:    header-args :tangle config.lisp
 #+auto_tangle: t
 
 * Table of Contents :toc:
 - [[#dependencies][Dependencies]]
 - [[#theme][Theme]]
-- [[#behavior][Behavior]]
-  - [[#vim-mode][Vim mode]]
-  - [[#search-engines][Search Engines]]
+- [[#start-page][Start Page]]
+- [[#search-engines][Search Engines]]
+- [[#vim-mode][Vim mode]]
+- [[#key-bindings][Key Bindings]]
 
 * Dependencies
 |------+-----------------------------------|
@@ -28,8 +29,11 @@ paru -S nyxt
 
 * Theme
 #+begin_src lisp
-(in-package #:nyxt-user)
+(define-configuration browser
+    ((theme theme:+dark-theme+)))
+#+end_src
 
+#+begin_src lisp :tangle no
 (define-configuration window
   ((message-buffer-style
     (str:concat
@@ -142,23 +146,19 @@ paru -S nyxt
 
 #+end_src
 
-* Behavior
-** Vim mode
+* Start Page
 #+begin_src lisp
-(define-configuration buffer
-  ((default-modes (append '(nyxt::vi-normal-mode) %slot-default%))))
-(define-configuration prompt-buffer
-  ((default-modes (append '(nyxt::vi-insert-mode) %slot-default%))))
+;; (defmethod customize-instance ((browser browser) &key)
+;;   (setf (slot-value browser 'default-new-buffer-url) "nyxt:new"))
 #+end_src
 
-** Search Engines
-Default search engine
-#+begin_src lisp
+#+begin_src lisp :tangle no
 (define-configuration web-buffer
   ((default-new-buffer-url "https://search.brave.com/")))
 #+end_src
 
-#+begin_src lisp
+* Search Engines
+#+begin_src lisp :tangle no
 (defvar *my-search-engines*
   (list
    '("archwiki" "https://wiki.archlinux.org/index.php?search=~a" "https://wiki.archlinux.org/")
@@ -180,4 +180,46 @@ Default search engine
   ((search-engines (append %slot-default%
                            (mapcar (lambda (engine) (apply 'make-search-engine engine))
                                    ,*my-search-engines*)))))
+#+end_src
+
+* Vim mode
+#+begin_src lisp
+(define-configuration
+    (web-buffer panel-buffer
+                nyxt/mode/editor:editor-buffer)
+    ((default-modes
+      (pushnew 'nyxt/mode/vi:vi-normal-mode %slot-value%))))
+#+end_src
+
+* Key Bindings
+Overwrite
+#+begin_src lisp
+(define-configuration (web-buffer input-buffer)
+    ((override-map
+      (let ((map (make-keymap "override-map")))
+        (define-key map
+          "M-x" 'execute-command
+          "g t" 'switch-buffer
+          "C-space" 'nothing)))))
+#+end_src
+
+Custom Mode
+#+begin_src lisp :tangle no
+(defvar *my-keymap* (make-keymap "my-map"))
+
+(define-key *my-keymap* "C-f" 'nyxt/mode/history:history-forwards
+            "C-b" 'nyxt/mode/history:history-backwards)
+
+(define-mode my-mode
+    nil
+  "Dummy mode for the custom key bindings in *my-keymap*."
+  ((keyscheme-map
+    (nkeymaps/core:make-keyscheme-map keyscheme:cua *my-keymap*
+                                      keyscheme:emacs *my-keymap*
+                                      keyscheme:vi-normal
+                                      *my-keymap*))))
+
+(define-configuration web-buffer
+  "Enable this mode by default."
+  ((default-modes (pushnew 'my-mode %slot-value%))))
 #+end_src
