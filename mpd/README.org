@@ -82,10 +82,10 @@ audio_output {
 
 Pulse Audio
 #+begin_src conf
-audio_output {
-    type    "pulse"
-    name    "Pulse Audio"
-}
+# audio_output {
+#     type    "pulse"
+#     name    "Pulse Audio"
+# }
 #+end_src
 
 ncmpcpp Visualizer
