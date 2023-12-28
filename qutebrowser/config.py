@@ -423,6 +423,7 @@ c.url.searchengines = {
     "gd"     : "https://drive.google.com/drive/search?q={}",
     "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
     "g"      : "https://www.google.com/search?q={}",
+    "ip"     : "https://ipleak.net/{}",
 }
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}

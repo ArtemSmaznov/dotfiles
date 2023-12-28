@@ -820,6 +820,7 @@ c.url.searchengines = {
     "gd"     : "https://drive.google.com/drive/search?q={}",
     "gm"     : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
     "g"      : "https://www.google.com/search?q={}",
+    "ip"     : "https://ipleak.net/{}",
 }
 #+end_src
 
