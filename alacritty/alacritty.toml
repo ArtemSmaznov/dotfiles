@@ -1,0 +1,80 @@
+import = [
+  "~/.config/alacritty/themes/base16.toml",
+  "~/.config/alacritty/local.toml"
+]
+
+working_directory = "None"
+
+live_config_reload = true
+
+#ipc_socket = true
+
+[window]
+
+dynamic_title = true
+
+dynamic_padding = false
+
+# option_as_alt = "Both" # (macos only)
+
+[window.padding]
+x = 5
+y = 5
+
+[scrolling]
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "Hack Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "Hack Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "Hack Nerd Font Mono"
+style = "Bold Italic"
+
+[bell]
+
+[selection]
+
+[cursor]
+
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[mouse]
+
+[hints]
+
+alphabet = "jfkds;ahgureowpq"
+
+[[hints.enabled]]
+
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+hyperlinks = true
+
+post_processing = true
+
+command = "xdg-open"
+
+[hints.enabled.binding]
+key = "F"
+mods = "Control"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[keyboard]
+
+[debug]
