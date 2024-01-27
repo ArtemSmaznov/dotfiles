@@ -4,6 +4,7 @@
     "height": 24,      // Waybar height (to be removed for auto height)
     // "output": "DP-1",
     "spacing": 4,      // Gaps between modules (4px)
+    // "exclusive": true,
 
     "modules-left": [
         "image#logo",
@@ -27,6 +28,7 @@
         "hyprland/language",
         "custom/separator",
         "custom/updates",
+        "custom/updates/flags",
         "battery#controller",
         "network",
         "memory",
@@ -155,6 +157,13 @@
     "custom/updates": {
         "exec": "~/.local/bin/get-updates.sh",
         "format": "  {}",
+        "tooltip": false,
+        "interval": 360
+    },
+
+    "custom/updates/flags": {
+        "exec": "~/.local/bin/get-update-flags.sh",
+        "format": "{}",
         "tooltip": false,
         "interval": 360
     },

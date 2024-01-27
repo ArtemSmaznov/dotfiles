@@ -26,6 +26,7 @@
   - [[#system-tray][System Tray]]
   - [[#keyboard-language][Keyboard Language]]
   - [[#updates][Updates]]
+  - [[#update-flags][Update Flags]]
   - [[#updates-1][Updates]]
   - [[#battery][Battery]]
   - [[#network][Network]]
@@ -56,6 +57,7 @@
     "height": 24,      // Waybar height (to be removed for auto height)
     // "output": "DP-1",
     "spacing": 4,      // Gaps between modules (4px)
+    // "exclusive": true,
 #+end_src
 
 * Sides
@@ -90,6 +92,7 @@ Choose the order of the modules
         "hyprland/language",
         "custom/separator",
         "custom/updates",
+        "custom/updates/flags",
         "battery#controller",
         "network",
         "memory",
@@ -257,7 +260,17 @@ Choose the order of the modules
     },
 #+end_src
 
-** Updates
+** Update Flags
+#+begin_src jsonc
+    "custom/updates/flags": {
+        "exec": "~/.local/bin/get-update-flags.sh",
+        "format": "{}",
+        "tooltip": false,
+        "interval": 360
+    },
+#+end_src
+
+** TODO Updates
 #+begin_src jsonc :tangle no
     "custom/updates": {
         "exec": "./get-updates.sh",
