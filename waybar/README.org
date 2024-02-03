@@ -10,13 +10,15 @@
 
 * Table of Contents :toc:
 - [[#size][Size]]
-- [[#sides][Sides]]
-  - [[#left][Left]]
-  - [[#center][Center]]
-  - [[#right][Right]]
+- [[#imports][Imports]]
+- [[#left][Left]]
+- [[#center][Center]]
+- [[#right][Right]]
+- [[#end][End]]
 - [[#widgets][Widgets]]
-  - [[#separator][Separator]]
+  - [[#start][Start]]
   - [[#logo][Logo]]
+  - [[#separator][Separator]]
   - [[#time][Time]]
   - [[#workspaces][Workspaces]]
   - [[#layout][Layout]]
@@ -37,7 +39,7 @@
   - [[#date][Date]]
   - [[#inhibit-mode][Inhibit Mode]]
   - [[#profile][Profile]]
-- [[#end][End]]
+  - [[#end-1][End]]
 - [[#kill-styles][KILL Styles]]
   - [[#theme][Theme]]
   - [[#global][Global]]
@@ -61,9 +63,14 @@
     "exclusive": true,
 #+end_src
 
-* Sides
-Choose the order of the modules
-** Left
+* Imports
+#+begin_src jsonc
+    "include": [
+        "~/.config/waybar/widgets.jsonc"
+    ],
+#+end_src
+
+* Left
 #+begin_src jsonc
     "modules-left": [
         "image#logo",
@@ -77,7 +84,7 @@ Choose the order of the modules
     ],
 #+end_src
 
-** Center
+* Center
 #+begin_src jsonc
     "modules-center": [
         "hyprland/window",
@@ -86,7 +93,7 @@ Choose the order of the modules
     ],
 #+end_src
 
-** Right
+* Right
 #+begin_src jsonc
     "modules-right": [
         "tray",
@@ -107,14 +114,18 @@ Choose the order of the modules
     ],
 #+end_src
 
-* Widgets
-** Separator
+* End
 #+begin_src jsonc
-    "custom/separator": {
-        "format": "|",
-        "tooltip": false,
-        "interval": 360
-    },
+}
+#+end_src
+
+* Widgets
+:PROPERTIES:
+:header-args: :tangle widgets.jsonc
+:END:
+** Start
+#+begin_src jsonc
+{
 #+end_src
 
 ** Logo
@@ -123,6 +134,15 @@ Choose the order of the modules
         "path": "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg",
         "size": 25,
         "on-click": "wofi --show drun"
+    },
+#+end_src
+
+** Separator
+#+begin_src jsonc
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false,
+        "interval": 360
     },
 #+end_src
 
@@ -432,7 +452,7 @@ WirePlumber
     },
 #+end_src
 
-* End
+** End
 #+begin_src jsonc
 }
 #+end_src
