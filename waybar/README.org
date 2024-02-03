@@ -9,12 +9,14 @@
 #+auto_tangle: t
 
 * Table of Contents :toc:
-- [[#size][Size]]
-- [[#imports][Imports]]
-- [[#left][Left]]
-- [[#center][Center]]
-- [[#right][Right]]
-- [[#end][End]]
+- [[#main-bar][Main Bar]]
+  - [[#left][Left]]
+  - [[#center][Center]]
+  - [[#right][Right]]
+- [[#secondary-bar][Secondary Bar]]
+  - [[#left-1][Left]]
+  - [[#center-1][Center]]
+  - [[#right-1][Right]]
 - [[#widgets][Widgets]]
   - [[#start][Start]]
   - [[#logo][Logo]]
@@ -39,7 +41,7 @@
   - [[#date][Date]]
   - [[#inhibit-mode][Inhibit Mode]]
   - [[#profile][Profile]]
-  - [[#end-1][End]]
+  - [[#end][End]]
 - [[#kill-styles][KILL Styles]]
   - [[#theme][Theme]]
   - [[#global][Global]]
@@ -51,29 +53,28 @@
   - [[#label-focus][Label Focus]]
   - [[#player][Player]]
 
-* Size
+* Main Bar
 #+begin_src jsonc
-{
+[{
+    "name": "first-bar",
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    // "output": "DP-1",
+    "output": "DP-1",
     "height": 30,      // Waybar height (to be removed for auto height)
     "spacing": 4,      // Gaps between modules (4px)
     "mode": "dock",
     "exclusive": true,
-#+end_src
 
-* Imports
-#+begin_src jsonc
     "include": [
         "~/.config/waybar/widgets.jsonc"
     ],
 #+end_src
 
-* Left
+** Left
 #+begin_src jsonc
     "modules-left": [
         "image#logo",
+        "custom/separator",
         "clock#time",
         "custom/separator",
         "hyprland/workspaces",
@@ -84,7 +85,7 @@
     ],
 #+end_src
 
-* Center
+** Center
 #+begin_src jsonc
     "modules-center": [
         "hyprland/window",
@@ -93,7 +94,7 @@
     ],
 #+end_src
 
-* Right
+** Right
 #+begin_src jsonc
     "modules-right": [
         "tray",
@@ -112,11 +113,63 @@
         "idle_inhibitor",
         "image#profile",
     ],
+},
 #+end_src
 
-* End
+* Secondary Bar
 #+begin_src jsonc
-}
+{
+    "name": "second-bar",
+    "layer": "top",    // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-2",
+    "height": 30,      // Waybar height (to be removed for auto height)
+    "spacing": 4,      // Gaps between modules (4px)
+    "mode": "dock",
+    "exclusive": true,
+
+    "include": [
+        "~/.config/waybar/widgets.jsonc"
+    ],
+#+end_src
+
+** Left
+#+begin_src jsonc
+    "modules-left": [
+        "image#logo",
+        "custom/separator",
+        "clock#time",
+        "custom/separator",
+        "hyprland/workspaces",
+        "custom/separator",
+        "custom/layout",
+        "custom/separator",
+        "hyprland/submap"
+    ],
+#+end_src
+
+** Center
+#+begin_src jsonc
+    "modules-center": [
+        "mpd",
+    ],
+#+end_src
+
+** Right
+#+begin_src jsonc
+    "modules-right": [
+        "hyprland/language",
+        "custom/separator",
+        "battery#controller",
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+        "custom/separator",
+        "clock#date",
+        "idle_inhibitor",
+    ],
+}]
 #+end_src
 
 * Widgets
@@ -160,7 +213,7 @@
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "all-outputs": false,
+        "all-outputs": true,
         "active-only": false,
         "on-click": "activate",
         "format": "{icon}",

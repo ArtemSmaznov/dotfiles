@@ -1,7 +1,8 @@
-{
+[{
+    "name": "first-bar",
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    // "output": "DP-1",
+    "output": "DP-1",
     "height": 30,      // Waybar height (to be removed for auto height)
     "spacing": 4,      // Gaps between modules (4px)
     "mode": "dock",
@@ -13,6 +14,7 @@
 
     "modules-left": [
         "image#logo",
+        "custom/separator",
         "clock#time",
         "custom/separator",
         "hyprland/workspaces",
@@ -45,5 +47,48 @@
         "idle_inhibitor",
         "image#profile",
     ],
+},
 
-}
+{
+    "name": "second-bar",
+    "layer": "top",    // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-2",
+    "height": 30,      // Waybar height (to be removed for auto height)
+    "spacing": 4,      // Gaps between modules (4px)
+    "mode": "dock",
+    "exclusive": true,
+
+    "include": [
+        "~/.config/waybar/widgets.jsonc"
+    ],
+
+    "modules-left": [
+        "image#logo",
+        "custom/separator",
+        "clock#time",
+        "custom/separator",
+        "hyprland/workspaces",
+        "custom/separator",
+        "custom/layout",
+        "custom/separator",
+        "hyprland/submap"
+    ],
+
+    "modules-center": [
+        "mpd",
+    ],
+
+    "modules-right": [
+        "hyprland/language",
+        "custom/separator",
+        "battery#controller",
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+        "custom/separator",
+        "clock#date",
+        "idle_inhibitor",
+    ],
+}]
