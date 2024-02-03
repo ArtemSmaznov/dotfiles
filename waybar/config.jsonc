@@ -48,7 +48,9 @@
     },
 
     "image#logo": {
-        "path": "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+        "path": "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg",
+        "size": 25,
+        "on-click": "wofi --show drun"
     },
 
     "clock#time": {
@@ -142,7 +144,7 @@
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 20,
         "show-passive-items": false,
         "spacing": 5
     },
