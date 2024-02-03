@@ -38,7 +38,7 @@
   - [[#date][Date]]
   - [[#inhibit-mode][Inhibit Mode]]
 - [[#end][End]]
-- [[#styles][Styles]]
+- [[#kill-styles][KILL Styles]]
   - [[#theme][Theme]]
   - [[#global][Global]]
   - [[#windows][Windows]]
@@ -54,10 +54,11 @@
 {
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24,      // Waybar height (to be removed for auto height)
     // "output": "DP-1",
+    "height": 30,      // Waybar height (to be removed for auto height)
     "spacing": 4,      // Gaps between modules (4px)
-    // "exclusive": true,
+    "mode": "dock",
+    "exclusive": true,
 #+end_src
 
 * Sides
@@ -233,7 +234,7 @@ Choose the order of the modules
 ** System Tray
 #+begin_src jsonc
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 18,
         "show-passive-items": false,
         "spacing": 5
     },
@@ -282,6 +283,7 @@ Choose the order of the modules
             "220": "",
             "404": "",
             "420": "",
+            "1001": "",
             ".": ""
         },
         "tooltip": false,
@@ -423,9 +425,10 @@ Choose the order of the modules
 }
 #+end_src
 
-* Styles
+* KILL Styles
+CLOSED: [2024-02-02 Fri 19:45]
 :PROPERTIES:
-:header-args: :tangle style.css
+:header-args: :tangle no
 :END:
 ** Theme
 #+begin_src css
@@ -473,8 +476,8 @@ Choose the order of the modules
 ** Windows
 #+begin_src css
 window#waybar {
-    /* background-color: transparent; */
-    background-color: @base00;
+    background-color: transparent;
+    /* background-color: @base01; */
     /* border-bottom: 3px solid @base00; */
     color: @base07;
     transition-property: background-color;

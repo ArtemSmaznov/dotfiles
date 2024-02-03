@@ -1,10 +1,11 @@
 {
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24,      // Waybar height (to be removed for auto height)
     // "output": "DP-1",
+    "height": 30,      // Waybar height (to be removed for auto height)
     "spacing": 4,      // Gaps between modules (4px)
-    // "exclusive": true,
+    "mode": "dock",
+    "exclusive": true,
 
     "modules-left": [
         "image#logo",
@@ -141,7 +142,7 @@
     },
 
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 18,
         "show-passive-items": false,
         "spacing": 5
     },
