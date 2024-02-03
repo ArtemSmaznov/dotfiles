@@ -287,15 +287,29 @@ button:hover {
 }
 
 #idle_inhibitor {
-    background: inherit;
-    font-size: 18px;
-    color: @base03;
     padding-right: 15px;
 }
 
+#gamemode,
+#idle_inhibitor {
+    font-size: 18px;
+    color: @base07;
+    opacity: 0.4;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#gamemode.running,
 #idle_inhibitor.activated {
-    background: inherit;
+    opacity: 1.0;
+}
+
+#gamemode.running {
     color: @base0E;
+}
+
+#idle_inhibitor.activated {
+    color: @base0D;
 }
 
 label:focus {

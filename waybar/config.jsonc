@@ -44,6 +44,7 @@
         "pulseaudio",
         "custom/separator",
         "clock#date",
+        "gamemode",
         "idle_inhibitor",
         "image#profile",
     ],
@@ -89,6 +90,7 @@
         "pulseaudio",
         "custom/separator",
         "clock#date",
+        "gamemode",
         "idle_inhibitor",
     ],
 }]

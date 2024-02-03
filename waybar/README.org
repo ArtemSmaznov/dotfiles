@@ -39,6 +39,7 @@
   - [[#cpu-thermal][CPU Thermal]]
   - [[#volume][Volume]]
   - [[#date][Date]]
+  - [[#game-mode][Game Mode]]
   - [[#inhibit-mode][Inhibit Mode]]
   - [[#profile][Profile]]
   - [[#end][End]]
@@ -110,6 +111,7 @@
         "pulseaudio",
         "custom/separator",
         "clock#date",
+        "gamemode",
         "idle_inhibitor",
         "image#profile",
     ],
@@ -167,6 +169,7 @@
         "pulseaudio",
         "custom/separator",
         "clock#date",
+        "gamemode",
         "idle_inhibitor",
     ],
 }]
@@ -483,6 +486,22 @@ WirePlumber
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down"
         }
+    },
+#+end_src
+
+** Game Mode
+#+begin_src jsonc
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "",
+        "hide-not-running": false,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
     },
 #+end_src
 
