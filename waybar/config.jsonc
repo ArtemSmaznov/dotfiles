@@ -38,7 +38,8 @@
         "pulseaudio",
         "custom/separator",
         "clock#date",
-        "idle_inhibitor"
+        "idle_inhibitor",
+        "image#profile",
     ],
 
     "custom/separator": {
@@ -271,6 +272,11 @@
             "activated": "",
             "deactivated": ""
         }
-    }
+    },
+
+    "image#profile": {
+        "path": "/home/artem/.face",
+        "size": 25
+    },
 
 }

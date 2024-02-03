@@ -36,6 +36,7 @@
   - [[#volume][Volume]]
   - [[#date][Date]]
   - [[#inhibit-mode][Inhibit Mode]]
+  - [[#profile][Profile]]
 - [[#end][End]]
 - [[#kill-styles][KILL Styles]]
   - [[#theme][Theme]]
@@ -101,7 +102,8 @@ Choose the order of the modules
         "pulseaudio",
         "custom/separator",
         "clock#date",
-        "idle_inhibitor"
+        "idle_inhibitor",
+        "image#profile",
     ],
 #+end_src
 
@@ -419,7 +421,15 @@ WirePlumber
             "activated": "",
             "deactivated": ""
         }
-    }
+    },
+#+end_src
+
+** Profile
+#+begin_src jsonc
+    "image#profile": {
+        "path": "/home/artem/.face",
+        "size": 25
+    },
 #+end_src
 
 * End
