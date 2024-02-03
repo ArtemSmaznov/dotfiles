@@ -25,16 +25,15 @@
   - [[#music][Music]]
   - [[#system-tray][System Tray]]
   - [[#keyboard-language][Keyboard Language]]
-  - [[#updates][Updates]]
-  - [[#update-flags][Update Flags]]
-  - [[#updates-1][Updates]]
   - [[#battery][Battery]]
+  - [[#updates][Updates]]
+  - [[#updates-1][Updates]]
+  - [[#update-flags][Update Flags]]
   - [[#network][Network]]
   - [[#ram][RAM]]
   - [[#cpu][CPU]]
   - [[#cpu-thermal][CPU Thermal]]
-  - [[#pulseaudio][PulseAudio]]
-  - [[#wireplumber][WirePlumber]]
+  - [[#volume][Volume]]
   - [[#date][Date]]
   - [[#inhibit-mode][Inhibit Mode]]
 - [[#end][End]]
@@ -253,27 +252,25 @@ Choose the order of the modules
     },
 #+end_src
 
-** Updates
+** Battery :colored:
 #+begin_src jsonc
-    "custom/updates": {
-        "exec": "~/.local/bin/get-updates.sh",
-        "format": "  {}",
-        "tooltip": false,
-        "interval": 360
+    "battery#controller": {
+        "bat": "ps-controller-battery-a0:ab:51:62:65:1d",
+        "interval": 60,
+        "states": {
+            // "good": 90,
+            "warning": 40,
+            "critical": 15
+        },
+        "format": " {icon} {capacity}%",
+        "format-alt": " {icon} {time}",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
     },
 #+end_src
 
-** Update Flags
-#+begin_src jsonc
-    "custom/updates/flags": {
-        "exec": "~/.local/bin/get-update-flags.sh",
-        "format": "{}",
-        "tooltip": false,
-        "interval": 360
-    },
-#+end_src
-
-** TODO Updates
+** TODO Updates :colored:
 #+begin_src jsonc :tangle no
     "custom/updates": {
         "exec": "./get-updates.sh",
@@ -293,25 +290,27 @@ Choose the order of the modules
     },
 #+end_src
 
-** Battery
+** Updates :colored:
 #+begin_src jsonc
-    "battery#controller": {
-        "bat": "ps-controller-battery-a0:ab:51:62:65:1d",
-        "interval": 60,
-        "states": {
-            // "good": 90,
-            "warning": 40,
-            "critical": 15
-        },
-        "format": " {icon} {capacity}%",
-        "format-alt": " {icon} {time}",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+    "custom/updates": {
+        "exec": "~/.local/bin/get-updates.sh",
+        "format": "  {}",
+        "tooltip": false,
+        "interval": 360
     },
 #+end_src
 
-** Network
+** Update Flags
+#+begin_src jsonc
+    "custom/updates/flags": {
+        "exec": "~/.local/bin/get-update-flags.sh",
+        "format": "{}",
+        "tooltip": false,
+        "interval": 360
+    },
+#+end_src
+
+** Network :colored:
 #+begin_src jsonc
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -325,14 +324,14 @@ Choose the order of the modules
     },
 #+end_src
 
-** RAM
+** RAM :colored:
 #+begin_src jsonc
     "memory": {
         "format": " {}%"
     },
 #+end_src
 
-** CPU
+** CPU :colored:
 #+begin_src jsonc
     "cpu": {
         "format": "  {usage}%",
@@ -341,7 +340,7 @@ Choose the order of the modules
     },
 #+end_src
 
-** CPU Thermal
+** CPU Thermal :colored:
 #+begin_src jsonc
     "temperature": {
         "critical-threshold": 80,
@@ -350,7 +349,8 @@ Choose the order of the modules
     },
 #+end_src
 
-** PulseAudio
+** Volume :colored:
+Pulse Audio
 #+begin_src jsonc
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -374,7 +374,7 @@ Choose the order of the modules
     },
 #+end_src
 
-** WirePlumber
+WirePlumber
 #+begin_src jsonc
     "wireplumber": {
         "format": "{volume}% {icon}",

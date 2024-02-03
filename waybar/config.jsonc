@@ -157,20 +157,6 @@
         "separate-outputs": true
     },
 
-    "custom/updates": {
-        "exec": "~/.local/bin/get-updates.sh",
-        "format": "  {}",
-        "tooltip": false,
-        "interval": 360
-    },
-
-    "custom/updates/flags": {
-        "exec": "~/.local/bin/get-update-flags.sh",
-        "format": "{}",
-        "tooltip": false,
-        "interval": 360
-    },
-
     "battery#controller": {
         "bat": "ps-controller-battery-a0:ab:51:62:65:1d",
         "interval": 60,
@@ -184,6 +170,20 @@
         "format-charging": "  {capacity}%",
         "format-plugged": "  {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/updates": {
+        "exec": "~/.local/bin/get-updates.sh",
+        "format": "  {}",
+        "tooltip": false,
+        "interval": 360
+    },
+
+    "custom/updates/flags": {
+        "exec": "~/.local/bin/get-update-flags.sh",
+        "format": "{}",
+        "tooltip": false,
+        "interval": 360
     },
 
     "network": {
