@@ -30,8 +30,15 @@
 #mode,
 #scratchpad,
 #mpd {
-    padding: 0 10px;
+    padding: 0 5px;
     color: @base07;
+}
+
+#custom-separator {
+    color: @base03;
+    text-shadow: none;
+    background: inherit;
+    padding: 0 1px;
 }
 
 window#waybar {
@@ -93,11 +100,6 @@ button:hover {
     border-bottom: 3px solid @base07;
 }
 
-#custom-separator {
-    background: inherit;
-    color: @base03;
-}
-
 .modules-left > widget:first-child > #image {
     padding-left: 10px;
 }
@@ -110,7 +112,6 @@ button:hover {
 
 #workspaces button {
     padding: 0 7px;
-    background-color: transparent;
     color: @base07;
 }
 
@@ -120,13 +121,15 @@ button:hover {
 }
 
 #workspaces button.empty {
-    color: @base02;
+    color: @base07;
+    opacity: 0.4;
 }
 
 #workspaces button.active {
     background-color: @base02;
     box-shadow: inset 0 -3px @base0E;
     color: @base07;
+    opacity: 1;
 }
 
 #workspaces button.urgent {
@@ -166,19 +169,12 @@ button:hover {
 
 #tray > .passive {
     -gtk-icon-effect: dim;
+    background-color: @base03;
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: @base08;
-}
-
-#language {
-    background: transparent;
-    /* background: @base03; */
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -216,8 +212,12 @@ button:hover {
 /* Updates */
 /* ---------------------------------- */
 #custom-updates {
+    padding-right: 0;
+    box-shadow: inset 0 -2px @base0D;
+}
+
+#custom-update-flags {
     padding-right: 5px;
-    background: inherit;
     box-shadow: inset 0 -2px @base0D;
 }
 
@@ -282,8 +282,9 @@ button:hover {
 }
 
 /* -------------------------------------------------------------------------- */
-#clock.date {
-    background: inherit;
+#image.profile {
+    padding: 0;
+    margin: 0;
 }
 
 #idle_inhibitor {

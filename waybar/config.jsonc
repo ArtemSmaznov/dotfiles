@@ -31,11 +31,11 @@
     ],
 
     "modules-right": [
-        "tray",
         "hyprland/language",
+        "tray",
         "custom/separator",
         "custom/updates",
-        "custom/updates/flags",
+        "custom/update-flags",
         "battery#controller",
         "network",
         "memory",

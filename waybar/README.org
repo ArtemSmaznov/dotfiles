@@ -28,7 +28,7 @@
   - [[#window-title][Window Title]]
   - [[#music][Music]]
   - [[#system-tray][System Tray]]
-  - [[#keyboard-language][Keyboard Language]]
+  - [[#language][Language]]
   - [[#battery][Battery]]
   - [[#updates][Updates]]
   - [[#updates-1][Updates]]
@@ -98,11 +98,11 @@
 ** Right
 #+begin_src jsonc
     "modules-right": [
-        "tray",
         "hyprland/language",
+        "tray",
         "custom/separator",
         "custom/updates",
-        "custom/updates/flags",
+        "custom/update-flags",
         "battery#controller",
         "network",
         "memory",
@@ -275,9 +275,9 @@
 ** Music
 #+begin_src jsonc
     "mpd": {
-        "format": "{stateIcon} {artist} - {title} [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume}%",
-        "format-stopped": "Stopped [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ] {volume%}",
-        "tooltip-format": "{album}\n\n{stateIcon} ({songPosition}/{queueLength}) {artist} - {title}\n\nProgress: {elapsedTime}/{totalTime}\nPlayer Volume: {volume}%\nModes: [ {repeatIcon}{randomIcon}{singleIcon}{consumeIcon} ]",
+        "format": "{stateIcon} {artist} - {title} [{repeatIcon}{randomIcon}{singleIcon}{consumeIcon}] {volume}%",
+        "format-stopped": "Stopped [{repeatIcon}{randomIcon}{singleIcon}{consumeIcon}] {volume%}",
+        "tooltip-format": "{album}\n\n{stateIcon} ({songPosition}/{queueLength}) {artist} - {title}\n\nProgress: {elapsedTime}/{totalTime}\nPlayer Volume: {volume}%\nModes: [{repeatIcon}{randomIcon}{singleIcon}{consumeIcon}]",
         "interval": 2,
         "on-click": "mpc toggle",
         "unknown-tag": ".",
@@ -314,12 +314,13 @@
 #+begin_src jsonc
     "tray": {
         "icon-size": 20,
-        "show-passive-items": false,
-        "spacing": 5
+        "show-passive-items": true,
+        "spacing": 5,
+        "reverse-direction": true,
     },
 #+end_src
 
-** Keyboard Language
+** Language
 #+begin_src jsonc
     "hyprland/language": {
         "format": "{}",
@@ -364,7 +365,7 @@
             ".": ""
         },
         "tooltip": false,
-        "interval": 360
+        "interval": 300
     },
 #+end_src
 
@@ -374,17 +375,17 @@
         "exec": "~/.local/bin/get-updates.sh",
         "format": "  {}",
         "tooltip": false,
-        "interval": 360
+        "interval": 300
     },
 #+end_src
 
-** Update Flags
+** Update Flags :colored:
 #+begin_src jsonc
-    "custom/updates/flags": {
+    "custom/update-flags": {
         "exec": "~/.local/bin/get-update-flags.sh",
         "format": "{}",
         "tooltip": false,
-        "interval": 360
+        "interval": 300
     },
 #+end_src
 
@@ -432,8 +433,8 @@ Pulse Audio
 #+begin_src jsonc
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-muted": " {volume}% {format_source}",
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
         "format-source": " {volume}%",
         "format-source-muted": " {volume}%",
         "format-bluetooth": "{icon} {volume}% {format_source}",
