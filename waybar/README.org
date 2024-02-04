@@ -101,9 +101,9 @@
         "hyprland/language",
         "tray",
         "custom/separator",
+        "battery#controller",
         "custom/updates",
         "custom/update-flags",
-        "battery#controller",
         "network",
         "memory",
         "cpu",
@@ -220,6 +220,28 @@
         "active-only": false,
         "on-click": "activate",
         "format": "{icon}",
+        // "format-icons": {
+        //     "globe": "",
+        //     "gamepad": "",
+        //     "keyboard": "",
+        //     "folder": "",
+        //     "headphones": "",
+        //     "camera": "",
+        //     "bubble": "",
+        //     "server": "",
+        //     "graph": ""
+        // },
+        // "persistent-workspaces": {
+        //     "globe": [],
+        //     "gamepad": [],
+        //     "keyboard": [],
+        //     "folder": [],
+        //     "headphones": [],
+        //     "camera": [],
+        //     "bubble": [],
+        //     "server": [],
+        //     "graph": []
+        // }
         "format-icons": {
             "1": "",
             "2": "",
@@ -240,7 +262,7 @@
             "6": [],
             "7": [],
             "8": [],
-            "9": []
+            "9": [],
         }
     },
 #+end_src
