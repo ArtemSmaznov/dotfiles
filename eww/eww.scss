@@ -1,36 +1,198 @@
+// unsets everything so you can style everything from scratch
+* { all: unset }
+
 @import "./themes/base16.scss";
 
-$main-font: "Hack Nerd Font";
+$text-font: "Hack Nerd Font",
+            "Source Han Sans JP",
+            "Font Awesome 6 Free Solid",
+            "FontAwesome",
+            "Roboto";
 $icon-font: "Font Awesome 6 Free Solid";
-$jp-font: "Source Han Sans JP";
 
-* {
-  all: unset; //Unsets everything so you can style everything from scratch
+        //XXXXXXXXXXXXXXXXXXXXX\\
+       //|                     |\\
+      //||=====================||\\
+     //|||   _  *       *      |||\\
+    // |||  |o|   |_ ______ _| ||| \\
+   //  |||  | |   || ||  || || |||  \\
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+ //\=================================/\\
+//\\ ******** Global Styles ******** //\\
+//\\=================================//\\
+.bar {                               //\\
+  background-color: transparent;     //\\
+  color: $base07;                    //\\
+  padding-left: 5px;                 //\\
+  padding-right: 0px;                //\\
+  font-family: $text-font;           //\\
+  font-size: 14px;                   //\\
+}                                    //\\
+                                     //\\
+//\\===II============================//\\
+//=\\__II____II_________________________|
+//==\\*****************************//==\\
+
+
+// coloring classes
+.white                  { color: $base07; }
+.red,    .state-urgent  { color: $base08; }
+.orange                 { color: $base09; }
+.yellow, .state-warning { color: $base0A; }
+.green,  .state-good    { color: $base0B; }
+.cyan                   { color: $base0C; }
+.blue                   { color: $base0D; }
+.purple                 { color: $base0E; }
+.special                { color: $base0F; }
+
+.shutdown    { color: $base08; }
+.reboot      { color: $base0A; }
+.suspend     { color: $base0D; }
+.lock-screen { color: $base0C; }
+.log-out     { color: $base0B; }
+
+
+        //XXXXXXXXXXXXXXXXXXXXXXX\\
+       //|       _________       |\\
+      //||      |_______|x|      ||\\
+     //|||      | @ ***** |      |||\\
+    // |||      |_________|      ||| \\
+   //  |||                       |||  \\
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+ //\===================================/\\
+//\\ ******** Window Styles ********* //\\
+//\\==================================//\\
+                                      //\\
+                                      //\\
+//\\===II=============================//\\
+//=\\__II________________________________|
+//==\\******************************//==\\
+
+
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\
+       //|                 _|_|_                |\\
+      //||               -|     |-              ||\\
+     //|||               -| 9°C |-              |||\\
+    // |||               -|_____|-              ||| \\
+   //  |||                  | |                 |||  \\
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+ //\==================================================/\\
+//\\ **************** Widget Styles **************** //\\
+//\\=================================================//\\
+//\\                                                 //\\
+//\\-------------------------------------------------//\\
+//\\ =========== Global widget styles ============== //\\
+//\\-------------------------------------------------//\\
+.widget,                                             //\\
+.bar-widget {                                        //\\
+  margin: 0 2px;                                     //\\
+}                                                    //\\
+                                                     //\\
+.widget.colored {                                    //\\
+  border-bottom-width: 2px;                          //\\
+  border-bottom-style: solid                         //\\
+}                                                    //\\
+                                                     //\\
+.widget.colored.1 { border-bottom-color: $base08 }   //\\
+.widget.colored.2 { border-bottom-color: $base09 }   //\\
+.widget.colored.3 { border-bottom-color: $base0A }   //\\
+.widget.colored.4 { border-bottom-color: $base0B }   //\\
+.widget.colored.5 { border-bottom-color: $base0C }   //\\
+.widget.colored.6 { border-bottom-color: $base0D }   //\\
+.widget.colored.7 { border-bottom-color: $base0E }   //\\
+//\\-------------------------------------------------//\\
+//\\ =========== Widget specific styles ============ //\\
+//\\-------------------------------------------------//\\
+//\\ --- separator                                   //\\
+.separator {                                         //\\
+  color: $base03;                                    //\\
+  text-shadow: none;                                 //\\
+  padding: 0 1px;                                    //\\
+}                                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- logo                                        //\\
+.widget.logo {                                       //\\
+  margin-left: 5px;                                  //\\
+}                                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- time                                        //\\
+.widget.time {                                       //\\
+  margin: 0 5px;
+}                                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- workspaces                                  //\\
+.workspaces {
 }
 
-//Global Styles
-.bar {
-  background-color: $base00;
+.workspace-entry {
+  font: 14px $icon-font;
+  padding: 0 7px;
+}
+
+.workspace-entry.empty {
   color: $base07;
-  // padding-left: 10px;
-  // padding-right: 10px;
-  font: 14px $main-font;
+  opacity: 0.4;
+}
+.workspace-entry.occupied {
+  color: $base07;
+}
+.workspace-entry.urgent {
+  color: $base08;
 }
 
-// music
-.music {
-  font-family: $jp-font;
+.workspace-entry.monitor_0 {
+  background-color: $base03;
+  box-shadow: inset 0 -3px $base0E;
 }
-
-.music .music-flags {
+.workspace-entry.monitor_1 {
+  box-shadow: inset 0 -3px $base04;
+}
+//\\-------------------------------------------------//\\
+//\\ --- layout                                      //\\
+//\\-------------------------------------------------//\\
+//\\ --- title                                       //\\
+//\\-------------------------------------------------//\\
+//\\ --- music                                       //\\
+.widget.music {                                      //\\
+  font-family: $text-font;                           //\\
+}                                                    //\\
+                                                     //\\
+.widget.music .music-flags {                         //\\
+  padding-left: 5px;                                 //\\
+}                                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- language                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- system tray                                 //\\
+//\\-------------------------------------------------//\\
+//\\ --- updates                                     //\\
+.update-flags {
   padding-left: 5px;
 }
-
-// color overwrites
-.state-good,    .green  { color: $base0B; }
-.state-warning, .yellow { color: $base0A; }
-.state-urgent,  .red    { color: $base08; }
-
+//\\-------------------------------------------------//\\
+//\\ --- network                                     //\\
+//\\-------------------------------------------------//\\
+//\\ --- ram                                         //\\
+//\\-------------------------------------------------//\\
+//\\ --- cpu                                         //\\
+//\\-------------------------------------------------//\\
+//\\ --- volume                                      //\\
+//\\-------------------------------------------------//\\
+//\\ --- date                                        //\\
+.widget.date {                                       //\\
+  margin-right: 10px;                                //\\
+}                                                    //\\
+//\\-------------------------------------------------//\\
+//\\ --- profile                                     //\\
+.widget.profile {                                    //\\
+  margin-right: 0;                                   //\\
+}                                                    //\\
+                                                     //\\
+.profile-face {                                      //\\
+}                                                    //\\
+//\\===II============================================//\\
+//=\\__II_______________________________________________|
+//==\\*********************************************//==\\
 
 // icons
 .icon, .workspaces button {
@@ -49,37 +211,12 @@ button:hover { color: $base0E; }
   padding-right: 7px;
 }
 
-.shutdown    { color: $base08; }
-.reboot      { color: $base0A; }
-.suspend     { color: $base0D; }
-.lock-screen { color: $base0C; }
-.log-out     { color: $base0B; }
-
 // ---
 .ws-urgent       { color: $base08; }
 .ws-current-main { border-top: 2px solid $base0E; border-bottom: 2px solid $base00; }
 .ws-current-side { border-top: 2px solid $base00; border-bottom: 2px solid $base0F; }
 .ws-filled       { color: $base07; }
 .ws-empty        { color: $base02; }
-
-.start-logo {
-  margin-left: 5px;
-}
-
-.time {
-  margin-left: 5px;
-}
-
-.date {
-  margin-right: 10px;
-}
-
-.separator {
-  all: unset;
-  color: $base03;
-  margin-left: 5px;
-  margin-right: 5px;
-}
 
 .bar .status-widget {
   padding-right: 7px;
@@ -99,6 +236,7 @@ button:hover { color: $base0E; }
   color: $base00;
   border-radius: 10px;
 }
+
 .slider scale trough {
   all: unset;
   background-color: #4e4e4e;
@@ -114,6 +252,7 @@ button:hover { color: $base0E; }
   color: $base00;
   border-radius: 10px;
 }
+
 .slider scale trough {
   all: unset;
   background-color: $base02;
@@ -133,4 +272,14 @@ calendar {
 calendar:selected {
   color: $base0E;
   font-weight: bold;
+}
+
+.graph.net-down {
+  color: $base0D;
+  min-width: 50px;
+}
+
+.graph.net-up {
+  color: $base0A;
+  min-width: 50px;
 }
