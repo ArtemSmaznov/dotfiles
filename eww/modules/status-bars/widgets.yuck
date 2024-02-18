@@ -1,0 +1,318 @@
+(defwidget separator []
+  (box :class "separator"
+       :orientation "h"
+       :halign "center"
+       "|"))
+
+(defwidget logo []
+           (eventbox :onclick "wofi --show drun"
+                     :cursor "pointer"
+                     (image :class "widget logo"
+                            :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+                            :image-height "30")))
+
+(defwidget time []
+  (box :class "widget time"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {time}))
+
+(defwidget workspaces []
+           (box :class "bar-widget bar-widget-workspaces"
+                :space-evenly false
+                :spacing 2
+
+                (for workspace in listen_workspaces
+                     (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+                               (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"} ${workspace.monitor == 0 ? "monitor_0": ""} ${workspace.monitor == 1 ? "monitor_1": ""}"
+                                    (label :text { workspace.name == 1 ? "globe"        :
+                                                   workspace.name == 2 ? "gamepad"      :
+                                                   workspace.name == 3 ? "keyboard"     :
+                                                   workspace.name == 4 ? "folder"       :
+                                                   workspace.name == 5 ? "headphones"   :
+                                                   workspace.name == 6 ? "camera"       :
+                                                   workspace.name == 7 ? "comment"      :
+                                                   workspace.name == 8 ? "server"       :
+                                                   workspace.name == 9 ? "chart-simple" :
+                                                                          workspace.name }))))))
+
+
+
+(defwidget window-title []
+  (label :limit-width 40
+         :text window-title))
+
+(defwidget music []
+           (eventbox :onclick "eww open --toggle status-panel"
+                     :cursor "pointer"
+                     (box :class "widget music"
+                          :orientation "h"
+                          :space-evenly false
+                          :halign "center"
+                          (icon :icon { music-song  == ""        ? "stop"  :
+                                                    music-state == "playing" ? "music" :
+                                                    "pause" })
+                          (label :class "music-song"
+                                 :limit-width 50
+                                 :text music-song)
+                          (label :class "music-flags"
+                                 :text music-flags)
+                          (label :class "music-flags"
+                                 :text music-volume)
+                          )))
+
+(defwidget sys-tray []
+  (box :orientation "h"
+       :visible { trayer-width != 0 ? true : false }
+       :space-evenly false
+       (separator)
+       (box :orientation "h"
+            :width trayer-width)))
+
+(defwidget kbd []
+  (box :orientation "h"
+       :space-evenly false
+       :class "widget language"
+       (flag :lang kbd)))
+
+(defwidget flag [?lang]
+  (image :image-height "18"
+         :path "/usr/share/iso-flag-png/${lang}.png"))
+
+(defwidget battery []
+  (revealer :transition "slideright"
+            :reveal {present == "yes" ? true : false}
+            :duration "2s"
+            (box :class "widget colored 7 volume"
+                (slider :icon "gamepad"
+                    :value charge
+                    :onchange ""
+                    ))))
+
+(defwidget updates []
+           (eventbox :onclick "eww open --toggle updates-list"
+                     :cursor "pointer"
+                     (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
+                                           updates ==  69  ? "widget colored 6 status-widget red"         :
+                                           updates == 101  ? "widget colored 6 status-widget orange"      :
+                                           updates == 220  ? "widget colored 6 status-widget yellow"      :
+                                           updates == 360  ? "widget colored 6 status-widget blue"        :
+                                           updates == 404  ? "widget colored 6 status-widget yellow"      :
+                                           updates == 420  ? "widget colored 6 status-widget green"       :
+                                           updates == 1001 ? "widget colored 6 status-widget purple"      :
+                                           updates == year ? "widget colored 6 status-widget special"     :
+                                           "widget colored 6 status-widget"             }
+
+                          :orientation "h"
+                          :space-evenly false
+                          (icon :icon { updates ==   0  ? "check"    :
+                                                updates ==  69  ? "heart"    :
+                                                updates == 101  ? "book"     :
+                                                updates == 220  ? "bolt"     :
+                                                updates == 360  ? "globe" :
+                                                updates == 404  ? "warning"  :
+                                                updates == 420  ? "cannabis" :
+                                                updates == 1001 ? "moon"     :
+                                                updates == year ? "calendar" :
+                                                "bell" })
+
+                          (revealer :class { updates ==  69  ? ""  :
+                                                     updates == 101  ? ""  :
+                                                     updates == 220  ? ""  :
+                                                     updates == 360  ? ""  :
+                                                     updates == 404  ? ""  :
+                                                     updates == 420  ? ""  :
+                                                     updates == 1001 ? ""  :
+                                                     updates == year ? ""  :
+                                                     updates >= 900  ? "state-urgent"  :
+                                                     updates >= 400  ? "state-warning" :
+                                                     "" }
+                                    :transition "slideright"
+                                    :reveal {updates > 0}
+                                    :duration "2s"
+                                    updates)
+
+                          (revealer :class "yellow update-flags"
+                                    :transition "slideright"
+                                    :reveal {update-flags != ""}
+                                    :duration "2s"
+                                    update-flags))))
+
+(defwindow updates-list
+           :monitor 0
+           :geometry (geometry :x "650px"
+                               :y "10px"
+                               :anchor "top right")
+           :stacking "overlay"
+                   (label :text updates-list-content))
+
+(defwidget network []
+           (box :class "widget colored 5 network"
+                ;; :space-evenly false
+                (icon :icon "ethernet")
+                (graph :min 0
+                       :class "graph net-down"
+                       :time-range {graph_net_time_range}
+                       :dynamic false
+                       :max {graph_net_max_speed_bytes}
+                       :thickness 2
+                       :line-style "round"
+                       :value {EWW_NET.eno1.NET_DOWN})
+                ;; :value {EWW_NET[interface].NET_DOWN})
+                (icon :icon "⇵")
+                (graph :min 0
+                       :class "graph net-up"
+                       :time-range {graph_net_time_range}
+                       :dynamic false
+                       :max {graph_net_max_speed_bytes}
+                       :thickness 2
+                       :value {EWW_NET.eno1.NET_UP})))
+;; :value {EWW_NET[interface].NET_UP})))
+
+(defwidget ram []
+           (box :class "widget colored 4 volume"
+                (slider :icon "memory"
+                        :value {EWW_RAM.used_mem_perc}
+                        :onchange "")))
+
+(defwidget cpu []
+    (box :class "widget colored 3 volume"
+        (slider :icon "microchip"
+                :value {EWW_CPU.avg}
+                :onchange "")))
+
+(defwidget cpu-thermal []
+           (box :class "widget colored 2 volume"
+                (icon :icon "")
+                { round(EWW_TEMPS.K10TEMP_TCTL, 0) }
+                "°C"
+                ))
+
+(defwidget volume []
+    (box :class "widget colored 1 volume"
+        (slider :icon { mute   == "on" ? "volume-xmark" :
+                        volume ==  0   ? "volume-off"   :
+                        volume <= 40   ? "volume-low"   :
+                                        "volume-high"  }
+                :value volume
+                :onchange "amixer -D pulse sset Master {}%"
+                )))
+
+(defwidget disk_usage [?icon disk]
+    (slider :icon icon
+            :value {round((1 - (EWW_DISK[disk].free / EWW_DISK[disk].total)) * 100, 0)}
+            :onchange ""))
+
+(defwidget uptime []
+  (box :orientation "h"
+       :space-evenly false
+       (icon :icon "circle-arrow-up")
+       uptime))
+
+(defwidget date []
+  (eventbox :onclick "eww open --toggle --screen $(/home/artem/.config/hypr/scripts/get-current-monitor.sh id) calendar-window"
+            :cursor "pointer"
+            (box :class "widget date"
+                 :orientation "h"
+                 :space-evenly false
+                 :halign "center"
+                 (icon :icon { matches(date, "20 apr") ? "cannabis" :
+                               matches(date, "25 dec") ? "candy-cane" :
+                               matches(date, "31 dec") ? "champagne-glasses" :
+                                                         "calendar" })
+                 {date})))
+
+(defwidget profile []
+           (box :orientation "h"
+                :space-evenly false
+                :class "widget profile"
+                (revealer :transition "slideleft"
+                          :reveal show-power-menu
+                          :duration "2s"
+                          (power-menu))
+                (eventbox :onhover     "eww update show-power-menu=true"
+                          :onhoverlost "eww update show-power-menu=false"
+                          :onclick     "eww open powermenu-panel"
+                          :cursor "pointer"
+                          :timeout 5
+                          (image :path profile-face
+                                 :class "profile-face"
+                                 :image-height 35))))
+
+(defwidget power-menu []
+  (box :orientation "h"
+       :space-evenly true
+       :class "status-widget power-menu"
+       (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
+               :tooltip "shutdown"
+               :class "shutdown"
+               "power-off")
+       (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
+               :tooltip "reboot"
+               :class "reboot"
+               "rotate")
+       (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
+               :tooltip "suspend"
+               :class "suspend"
+               "moon")
+       (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
+               :tooltip "logout"
+               :class "log-out"
+               "right-from-bracket")
+       (button :onclick "${dm-scripts}/dm-power lock"
+               :tooltip "lock screen"
+               :class "lock-screen"
+               "lock")))
+
+(defwidget icon [?icon]
+  (box :class "icon" icon))
+
+(defwidget slider [icon value onchange]
+  (box :orientation "h"
+       :class "slider status-widget"
+       :space-evenly false
+    (icon :icon icon)
+    (scale :min 0
+           :max 100
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget circular [icon value]
+  (box :orientation "h"
+       :class "progress status-widget"
+       :space-evenly false
+       (icon :icon icon)
+       (circular-progress :value value
+                          :start-at 0
+                          :thickness 7
+                          :clockwise true
+                          )))
+
+(defwindow confirmation-window
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "300px"
+                      :height "100px"
+                      :anchor "center")
+  :windowtype "dialog"
+  :stacking "fg"
+  :wm-ignore true
+  (confirmation-dialog)
+  )
+
+(defvar confirmation-message "")
+(defvar yes-command "")
+(defvar dismiss-command "eww close confirmation-window")
+
+(defwidget confirmation-dialog []
+  (box :orientation "v"
+       confirmation-message
+       (box :orientation "h"
+            (button :onclick "${yes-command} & ${dismiss-command}"
+                    "yes")
+            (button :onclick dismiss-command
+                    "no")
+       )))

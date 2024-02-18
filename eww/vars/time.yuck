@@ -1,0 +1,13 @@
+(defpoll time
+         :interval "1s"
+         :initial "0:00 AM"
+         "date '+%l:%M %p'")
+
+(defpoll date
+         :interval "1h"
+         :initial "1 jan 1970"
+         "date '+%a, %d-%b-%y'")
+
+(defpoll year
+         :interval "24h"
+         "date +%Y")

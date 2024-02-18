@@ -1,0 +1,55 @@
+(defwindow powermenu-panel
+           :namespace "powermenu-panel"
+
+           :monitor 0
+           :stacking "overlay"
+           :geometry (geometry :anchor "top center"
+                               :x "0%"
+                               :y "30%"
+                               :width "100px"
+                               :height "100px")
+
+           (box :class "powermenu-panel"
+                :orientation "h"
+                :space-evenly true
+                :spacing 15
+                :valign "center"
+                :halign "center"
+
+                (powermenu_entry :class "shutdown1"
+                                 :label "power off"
+                                 :icon "power-off"
+                                 :onclick "${dm-scripts}/dm-power poweroff")
+                (powermenu_entry :class "reboot1"
+                                 :label "reboot"
+                                 :icon "rotate"
+                                 :onclick "${dm-scripts}/dm-power reboot")
+                (powermenu_entry :class "suspend1"
+                                 :label "suspend"
+                                 :icon "moon"
+                                 :onclick "${dm-scripts}/dm-power suspend")
+                (powermenu_entry :class "signout1"
+                                 :label "sign out"
+                                 :icon "right-from-bracket"
+                                 :onclick "${dm-scripts}/dm-power logout")
+                (powermenu_entry :class "lock1"
+                                 :label "lock"
+                                 :icon "lock"
+                                 :onclick "${dm-scripts}/dm-power lock")
+                (powermenu_entry :class "cancel1"
+                                 :label "cancel"
+                                 :icon "xmark"
+                                 :onclick "eww close powermenu-panel")))
+
+(defwidget powermenu_entry [label icon onclick class]
+           (box :class "powermenu-entry"
+                :orientation "v"
+                :space-evenly false
+
+                (button :class "powermenu-button ${class}"
+                        :onclick {onclick}
+                        (label :class "powermenu-icon ${class}"
+                               :text {icon}))
+
+                (label :class "powermenu-text"
+                       :text {label})))

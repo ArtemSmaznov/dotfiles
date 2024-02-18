@@ -1,0 +1,20 @@
+(defwindow status-panel
+           :namespace "status-panel"
+           :monitor 1
+           :stacking "bottom"
+           :geometry (geometry :anchor "bottom left"
+                               :x "50px"
+                               :y "50px"
+                               :width "100px"
+                               :height "100px")
+
+           (box :class "status-panel"
+                :active true
+                :orientation "v"
+                :space-evenly false
+                :spacing 50
+                :halign "center"
+                :valign "center"
+
+                (music-player)
+                ))

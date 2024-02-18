@@ -1,0 +1,76 @@
+.music-player {
+    background: rgba($base0E, 0.4);
+    color: $base07;
+    padding: 20px;
+    border-radius: 1.5rem;
+    min-width: 500px;
+}
+
+.music-player-album-art {
+    $album-art-size: 150px;
+    border-radius: 1.5rem;
+    background-size: $album-art-size;
+    min-height: $album-art-size;
+    min-width: $album-art-size;
+}
+
+.music-player-album-art-reactive .icon {
+    font-size: 64pt;
+    border-radius: 1.5rem;
+    // background-color: rgba($base02, 0.7);
+    background-image: radial-gradient(at center, transparent, $base01);
+}
+
+.music-player-track-title {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.music-player-track-artist {
+    font-size: 14pt;
+    color: $base0E;
+    opacity: 0.8;
+}
+
+.music-player-track-album {
+    font-size: 14pt;
+    color: $base05;
+    opacity: 0.6;
+}
+
+.music-progress-bar,
+.music-player-controls,
+.music-player-controls .icon {
+    // border: 1px solid black;
+}
+
+.music-player-controls button:hover {
+    background: rgba($base03, 0.8);
+    border-radius: 50%;
+}
+
+.music-progress-bar {
+    margin: 0 15px;
+}
+
+.music-progress-bar trough {
+    background-color: $base03;
+    min-height: 5px;
+    min-width: 50px;
+    border-radius: 10px;
+}
+
+.music-progress-bar trough highlight {
+    background-color: $base07;
+    border-radius: 10px;
+}
+
+.music-player-controls button {
+    min-width:  40px;
+    min-height: 40px;
+}
+
+.music-player-controls .icon {
+    font-size: 18pt;
+    padding: 0;
+}

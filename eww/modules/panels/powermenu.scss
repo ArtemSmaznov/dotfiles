@@ -1,0 +1,67 @@
+.powermenu-panel {
+  background-color: transparent;
+  color: $base07;
+  font-family: $text-font;
+  border-radius: 1.5rem;
+  padding: 40px 40px 20px 40px;
+}
+
+.powermenu-button {
+  background-color: $base03;
+  font-family: $icon-font;
+  font-size: 32pt;
+  border-radius: 20%;
+  transition: 0.3s;
+  padding: 40px;
+  transition: 0.3s;
+  box-shadow: 0 0 2px $base01;
+}
+
+.shutdown1:hover { color: $base08 }
+.shutdown1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base08,
+                 1px 1px $base08;
+}
+
+.reboot1:hover { color: $base09 }
+.reboot1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base09,
+                 1px 1px $base09;
+}
+
+.lock1:hover { color: $base0B }
+.lock1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0B,
+                 1px 1px $base0B;
+}
+
+.suspend1:hover { color: $base0E }
+.suspend1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0E,
+                 1px 1px $base0E;
+}
+
+.signout1:hover { color: $base0C }
+.signout1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0C,
+                 1px 1px $base0C;
+}
+
+.cancel1:hover { color: $base03 }
+.cancel1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base07,
+                 1px 1px $base07;
+}
+
+.powermenu-icon {
+}
+
+.powermenu-text {
+    margin-top: 10px;
+}

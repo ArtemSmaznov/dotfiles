@@ -6,179 +6,510 @@
 #+author:      Artem Smaznov
 #+description: Standalone widget system that allows you to implement your own, custom widgets in any window manager
 #+startup:     overview
-#+property:    header-args :tangle eww.yuck
 #+auto_tangle: t
 
+* Table of Contents
+- [[#variables][Variables]]
+- [[#status-bars][Status-bars]]
+  - [[#main][Main]]
+  - [[#secondary][Secondary]]
+  - [[#widgets][Widgets]]
+- [[#--------------][--------------]]
+- [[#07-panels][Panels]]
+  - [[#strt-power-menu][STRT Power Menu]]
+  - [[#notification-tray][Notification Tray]]
+  - [[#idea-launcher][IDEA Launcher]]
+  - [[#quick-settings][Quick Settings]]
+  - [[#multi-media][Multi-media]]
+  - [[#profile][Profile]]
+  - [[#idea-office][IDEA Office]]
+- [[#widget-templates][Widget Templates]]
+  - [[#icon][Icon]]
+  - [[#slider][Slider]]
+  - [[#circular-progress][Circular Progress]]
+  - [[#confirmation-window][Confirmation Window]]
+- [[#calendar][Calendar]]
+
+* Theme
+#+begin_src scss :tangle eww.scss
+@import "themes/base16.scss";
+
+$text-font: "Hack Nerd Font",
+            "Source Han Sans JP",
+            "Font Awesome 6 Free Solid",
+            "FontAwesome",
+            "Roboto";
+$icon-font: "Font Awesome 6 Free Solid";
+
+$indicator-line-width: 3px;
+$accent-line-width: 2px;
+
+,* {
+  all: unset;
+}
+
+.white                  { color: $base07; }
+.red,    .state-urgent  { color: $base08; }
+.orange                 { color: $base09; }
+.yellow, .state-warning { color: $base0A; }
+.green,  .state-good    { color: $base0B; }
+.cyan                   { color: $base0C; }
+.blue                   { color: $base0D; }
+.purple                 { color: $base0E; }
+.special                { color: $base0F; }
+
+.shutdown    { color: $base08; }
+.reboot      { color: $base0A; }
+.suspend     { color: $base0D; }
+.lock-screen { color: $base0C; }
+.log-out     { color: $base0B; }
+#+end_src
+
 * Variables
-User Constants
-#+begin_src yuck
+** States
+#+begin_src yuck :tangle eww.yuck
+(include "vars/states.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/states.yuck
+(defvar show-power-menu false)
+#+end_src
+
+** Images
+#+begin_src yuck :tangle eww.yuck
+(include "vars/images.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/images.yuck
 (defvar profile-face "/home/artem/.face")
+#+end_src
+
+** Scripts
+#+begin_src yuck :tangle eww.yuck
+(include "vars/scripts.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/scripts.yuck
 (defvar scripts "~/.local/bin")
 (defvar dm-scripts "~/.local/bin/dm-scripts")
+
+(defvar hypr-scripts "~/.config/hypr/scripts")
 #+end_src
 
-#+begin_src yuck
-;; shows screen instead of monitor - always 0
-(defpoll focused-screen :interval "1s"
-  "eval $(xdotool getactivewindow getwindowgeometry --shell) && echo $SCREEN"
-  )
+** Music
+#+begin_src yuck :tangle eww.yuck
+(include "vars/music.yuck")
 #+end_src
 
-* Status Bar
-** Main Bar
-#+begin_src yuck
+#+begin_src yuck :tangle vars/music.yuck
+(defpoll music-state
+         :interval "1h"
+         :initial "paused"
+         "~/.local/bin/get-music.sh state")
+
+(defpoll music-progress
+         :interval "1s"
+         :initial 0
+         :run-while {music-state == "playing"}
+         "~/.local/bin/get-music.sh progress")
+
+(defpoll music-album-cover-color
+         :interval "1h"
+         "~/.local/bin/get-music.sh albumcovercolor")
+
+(defpoll music-album-cover-file
+         :interval "1h"
+         "~/.local/bin/get-music.sh albumcover")
+
+(defpoll music-artist
+         :interval "1h"
+         "~/.local/bin/get-music.sh artist")
+
+(defpoll music-album
+         :interval "1h"
+         "~/.local/bin/get-music.sh album")
+
+(defpoll music-title
+         :interval "1h"
+         "~/.local/bin/get-music.sh title")
+
+(defpoll music-song
+         :interval "1h"
+         "~/.local/bin/get-music.sh song")
+
+(defpoll music-flags
+         :interval "1h"
+         :iniitial "[----]"
+         "~/.local/bin/get-music.sh flags")
+
+(defpoll music-volume
+         :interval "1h"
+         :iniitial "-%"
+         "~/.local/bin/get-music.sh volume")
+#+end_src
+
+** Time
+#+begin_src yuck :tangle eww.yuck
+(include "vars/time.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/time.yuck
+(defpoll time
+         :interval "1s"
+         :initial "0:00 AM"
+         "date '+%l:%M %p'")
+
+(defpoll date
+         :interval "1h"
+         :initial "1 jan 1970"
+         "date '+%a, %d-%b-%y'")
+
+(defpoll year
+         :interval "24h"
+         "date +%Y")
+#+end_src
+
+** Systray
+#+begin_src yuck :tangle eww.yuck
+(include "vars/systray.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/systray.yuck
+(defpoll trayer-width
+         :interval "2s"
+         :initial "0"
+         :run-while true
+         "~/.local/bin/get-trayer-width.sh")
+#+end_src
+
+** Keyboard
+#+begin_src yuck :tangle eww.yuck
+(include "vars/keyboard.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/keyboard.yuck
+(defpoll kbd
+         :interval "1s"
+         :initial "us"
+         "~/.local/bin/get-lang.sh")
+#+end_src
+
+** System
+#+begin_src yuck :tangle eww.yuck
+(include "vars/system.yuck")
+#+end_src
+
+*** Updates
+#+begin_src yuck :tangle vars/system.yuck
+(defpoll updates
+         :interval "5s"
+         :initial 0
+         "~/.local/bin/get-updates.sh")
+
+(defpoll update-flags
+         :interval "5s"
+         :initial ""
+         "~/.local/bin/get-update-flags.sh")
+
+(defpoll updates-list-content
+         :interval "15m"
+         "cat /var/cache/pacman/updates")
+#+end_src
+
+*** Battery
+#+begin_src yuck :tangle vars/system.yuck
+(defpoll charge
+         :interval "10s"
+         :iniitial 50
+         "~/.local/bin/get-battery.sh percentage battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll present
+         :interval "10s"
+         :iniitial 50
+         "~/.local/bin/get-battery.sh present battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll state
+         :interval "10s"
+         :iniitial 50
+         "~/.local/bin/get-battery.sh state battery_ps_controller_battery_a0oabo51o62o65o1d")
+
+(defpoll warning-level
+         :interval "10s"
+         :iniitial 50
+         "~/.local/bin/get-battery.sh warning-level battery_ps_controller_battery_a0oabo51o62o65o1d")
+#+end_src
+
+*** Network
+#+begin_src yuck :tangle vars/system.yuck
+(defvar graph_net_time_range "10m")
+(defvar graph_net_max_speed_bytes { 150 * 1024 * 1024 / 8 })
+
+(defpoll interface
+         :interval "1m"
+         "~/.local/bin/get-network-interface.sh")
+#+end_src
+
+*** Volume
+#+begin_src yuck :tangle vars/system.yuck
+(defpoll volume
+         :interval "1s"
+         :iniitial 50
+         "~/.local/bin/get-volume.sh")
+
+(defpoll mute
+         :interval "1s"
+         :iniitial "off"
+         "~/.local/bin/get-mute.sh")
+#+end_src
+
+*** Uptime
+#+begin_src yuck :tangle vars/system.yuck
+(defpoll uptime
+         :interval "1m"
+         :initial "0d 0h"
+         "~/.local/bin/get-uptime.sh")
+#+end_src
+
+** WM
+#+begin_src yuck :tangle eww.yuck
+(include "vars/wm.yuck")
+#+end_src
+
+Workspaces
+#+begin_src yuck :tangle vars/wm.yuck
+(defpoll listen_workspaces
+         :interval "1s"
+         :initial "[]"
+         "bash ~/.config/hypr/scripts/get-workspaces.sh")
+#+end_src
+
+Window Title
+#+begin_src yuck :tangle vars/wm.yuck
+(deflisten window-title
+           "bash ~/.config/hypr/scripts/listen-window-title.sh")
+#+end_src
+
+Layout
+#+begin_src yuck :tangle vars/wm.yuck
+(deflisten wm-layout
+  "~/.local/bin/listen-wm-layout.sh")
+
+(defpoll wm-layout-2
+         :interval "1s"
+         :iniitial ""
+         "~/.local/bin/get-wm-layout.sh")
+#+end_src
+
+* Status-bars
+** Styles
+#+begin_src scss :tangle eww.scss
+@import "modules/status-bars/style.scss";
+#+end_src
+
+#+begin_src scss :tangle modules/status-bars/style.scss
+.bar {
+  background-color: rgba($base00, 0.2);
+  color: $base07;
+  padding-left: 5px;
+  padding-right: 0px;
+  font-family: $text-font;
+  font-size: 12pt;
+  text-shadow: 1 1 $base00;
+}
+
+.widget,
+.bar-widget {
+  margin: 0 2px;
+}
+
+.widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
+.widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
+.widget.colored.3 { box-shadow: inset 0 -$accent-line-width $base0A }
+.widget.colored.4 { box-shadow: inset 0 -$accent-line-width $base0B }
+.widget.colored.5 { box-shadow: inset 0 -$accent-line-width $base0C }
+.widget.colored.6 { box-shadow: inset 0 -$accent-line-width $base0D }
+.widget.colored.7 { box-shadow: inset 0 -$accent-line-width $base0E }
+
+.icon,
+.workspaces button {
+  font: 12pt $icon-font;
+}
+
+.icon {
+  padding-right: 7px;
+}
+
+.shutdown, .reboot, .suspend, .lock-screen, .log-out {
+  font: 14pt $icon-font;
+  padding-right: 7px;
+}
+
+.ws-urgent       { color: $base08; }
+.ws-current-main { border-top: 2px solid $base0E; border-bottom: 2px solid $base00; }
+.ws-current-side { border-top: 2px solid $base00; border-bottom: 2px solid $base0F; }
+.ws-filled       { color: $base07; }
+.ws-empty        { color: $base02; }
+
+.bar .status-widget {
+  padding-right: 7px;
+  padding-left: 7px;
+}
+#+end_src
+
+** Primary
+#+begin_src yuck :tangle eww.yuck
+(include "modules/status-bars/primary.yuck")
+#+end_src
+
+#+begin_src yuck :tangle modules/status-bars/primary.yuck
 (defwindow main-bar
-  :monitor 0
-  :stacking "fg"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "100%"
-                      :height "30px"
-                      :anchor "top center")
+           :monitor 0
+           :stacking "fg"
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "100%"
+                               :height "35px"
+                               :anchor "top center")
 
-  ;; wayland
-  :exclusive true
+           ;; wayland
+           :exclusive true
 
-  ;; x11
-  :windowtype "dock"
-  :reserve (struts :side "top"
-                   :distance "30px")
+           ;; x11
+           :windowtype "dock"
+           :reserve (struts :side "top"
+                            :distance "35px")
 
-  (centerbox :orientation "h"
-             :class "bar"
+           (centerbox :orientation "h"
+                      :class "bar"
+
+                      ;; left
+                      (box :class "leftside"
+                           :orientation "h"
+                           :space-evenly false
+                           :halign "start"
+
+                           (logo)
+                           (separator)
+                           (time)
+                           (separator)
+                           (workspaces)
+                           (separator)
+                           wm-layout-2
+                           (separator))
+
+                      ;; center
+                      (box :class "center"
+                           :orientation "h"
+                           :space-evenly false
+                           :halign "center"
+
+                           (window-title)
+                           (separator)
+                           (music))
+
+                      ;; right
+                      (box :class "rightside"
+                           :orientation "h"
+                           :space-evenly false
+                           :halign "end"
+
+                           (kbd)
+                           (sys-tray)
+
+                           (separator)
+                           (battery)
+                           (updates)
+                           (network)
+                           (ram)
+                           (cpu)
+                           (cpu-thermal)
+                           (volume)
+                           ;; (disk_usage :icon "根hdd"
+                           ;;             :disk "/")
+                           ;; (disk_usage :icon "家hdd"
+                           ;;             :disk "/home/artem")
+                           (separator)
+
+                           (date)
+                           (profile))))
 #+end_src
 
-*** Left
-#+begin_src yuck
-(box :class "leftside"
-     :orientation "h"
-     :space-evenly false
-     :halign "start"
-
-     (logo)
-     (separator)
-     (time)
-     (separator)
-     (workspaces)
-     (separator)
-     wm-layout-2
-     (separator))
+** Secondary
+#+begin_src yuck :tangle eww.yuck
+(include "modules/status-bars/secondary.yuck")
 #+end_src
 
-*** Center
-#+begin_src yuck
-(box :class "center"
-     :orientation "h"
-     :space-evenly false
-     :halign "center"
-
-     (window-title)
-     (separator)
-     (music))
-#+end_src
-
-*** Right
-#+begin_src yuck
-(box :class "rightside"
-     :orientation "h"
-     :space-evenly false
-     :halign "end"
-
-     (kbd)
-     (sys-tray)
-
-     (separator)
-     (battery)
-     (updates)
-     (network)
-     (ram)
-     (cpu)
-     (cpu-thermal)
-     (volume)
-     ;; (disk_usage :icon "根hdd"
-     ;;             :disk "/")
-     ;; (disk_usage :icon "家hdd"
-     ;;             :disk "/home/artem")
-     (separator)
-
-     (date)
-     (profile))))
-#+end_src
-
-** Secondary Bar
-#+begin_src yuck
+#+begin_src yuck :tangle modules/status-bars/secondary.yuck
 (defwindow second-bar
-  :monitor 1
-  :stacking "fg"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "100%"
-                      :height "30px"
-                      :anchor "top center")
+           :monitor 1
+           :stacking "fg"
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "100%"
+                               :height "30px"
+                               :anchor "top center")
 
-  ;; wayland
-  :exclusive true
+           ;; wayland
+           :exclusive true
 
-  ;; x11
-  :windowtype "dock"
-  :reserve (struts :side "top"
-                   :distance "30px")
+           ;; x11
+           :windowtype "dock"
+           :reserve (struts :side "top"
+                            :distance "30px")
 
-  (centerbox :orientation "h"
-             :class "bar"
-#+end_src
+           (centerbox :orientation "h"
+                      :class "bar"
 
-*** Left
-#+begin_src yuck
-(box :class "leftside"
-     :orientation "h"
-     :space-evenly false
-     :halign "start"
-     (logo)
-     (time)
-     (separator)
-     (workspaces)
-     (separator))
-#+end_src
+                      ;; left
+                      (box :class "leftside"
+                           :orientation "h"
+                           :space-evenly false
+                           :halign "start"
 
-*** Center
-#+begin_src yuck
-(music)
-#+end_src
+                           (logo)
+                           (time)
+                           (separator)
+                           (workspaces)
+                           (separator)
+                           )
 
-*** Right
-#+begin_src yuck
-(box :class "rightside"
-     :orientation "h"
-     :space-evenly false
-     :halign "end"
+                      ;; center
+                      (music)
 
-     (kbd)
+                      ;; right
+                      (box :class "rightside"
+                           :orientation "h"
+                           :space-evenly false
+                           :halign "end"
 
-     (separator)
-     (battery)
-     (volume)
-     (separator)
+                           (kbd)
 
-     (date)
-     (uptime))))
+                           (separator)
+                           (battery)
+                           (volume)
+                           (separator)
+
+                           (date)
+                           (uptime)
+                           )))
 #+end_src
 
 ** Widgets
-*** Debug
-#+begin_src yuck
-(defvar debug "")
-
-(defwidget debug []
-  (box :class "widget debug"
-       :orientation "h"
-       :halign "center"
-       debug
-       ))
+#+begin_src yuck :tangle eww.yuck
+(include "modules/status-bars/widgets.yuck")
+#+end_src
+*** Separator
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.separator {
+  color: $base03;
+  text-shadow: none;
+  padding: 0 1px;
+}
 #+end_src
 
-*** Separator
-#+begin_src yuck
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget separator []
   (box :class "separator"
        :orientation "h"
@@ -187,30 +518,73 @@ User Constants
 #+end_src
 
 *** Logo
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.logo {
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget logo []
-  (image :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
-         :image-height "24"
-         :class "widget logo"))
+           (eventbox :onclick "wofi --show drun"
+                     :cursor "pointer"
+                     (image :class "widget logo"
+                            :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
+                            :image-height "30")))
 #+end_src
 
 *** Time
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.time {
+  margin: 0 5px;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget time []
   (box :class "widget time"
        :orientation "h"
        :space-evenly false
        :halign "center"
     {time}))
-
-(defpoll time
-  :interval "1s"
-  :initial "0:00 AM"
-   "date '+%l:%M %p'")
 #+end_src
 
-*** Hyprland Workspaces
-#+begin_src yuck
+*** Workspaces
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.workspaces {
+}
+
+.workspace-entry {
+  font: 12pt $icon-font;
+  padding: 0 7px;
+}
+
+.workspace-entry.empty {
+  color: $base07;
+  opacity: 0.4;
+}
+.workspace-entry.occupied {
+  color: $base07;
+}
+.workspace-entry.urgent {
+  color: $base08;
+}
+
+.workspace-entry.monitor_0 {
+  background-color: $base03;
+  box-shadow: inset 0 -$indicator-line-width $base0E;
+}
+.workspace-entry.monitor_1 {
+  box-shadow: inset 0 -$indicator-line-width $base04;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget workspaces []
            (box :class "bar-widget bar-widget-workspaces"
                 :space-evenly false
@@ -229,70 +603,70 @@ User Constants
                                                    workspace.name == 8 ? "server"       :
                                                    workspace.name == 9 ? "chart-simple" :
                                                                           workspace.name }))))))
-
-(defpoll listen_workspaces
-         :interval "2s"
-         :initial "[]"
-         "bash ~/.config/hypr/scripts/get-workspaces.sh")
 #+end_src
 
 *** Layout
-#+begin_src yuck
-(deflisten wm-layout
-  "~/.local/bin/listen-wm-layout.sh")
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
 
-(defpoll wm-layout-2 :interval "1s"
-  :iniitial ""
-  "~/.local/bin/get-wm-layout.sh")
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 #+end_src
 
 *** Title
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget window-title []
   (label :limit-width 40
          :text window-title))
-
-(deflisten window-title
-  "bash ~/.config/hypr/scripts/listen-window-title.sh")
 #+end_src
 
 *** Music
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.music {
+  font-family: $text-font;
+}
+
+.widget.music .music-flags {
+  padding-left: 5px;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget music []
-  (box :class "widget music"
-       :orientation "h"
-       :space-evenly false
-       :halign "center"
-       (icon :icon { music-song  == ""        ? "stop"  :
-                     music-state == "playing" ? "music" :
-                                                "pause" })
-       (label :class "music-song"
-              :limit-width 50
-              :text music-song)
-       (label :class "music-flags"
-              :text music-flags)
-       (label :class "music-flags"
-              :text music-volume)
-       ))
-
-(defpoll music-song  :interval "1s"
-  "~/.local/bin/get-music.sh song")
-
-(defpoll music-state :interval "1s"
-  :iniitial "paused"
-  "~/.local/bin/get-music.sh state")
-
-(defpoll music-flags :interval "1s"
-  :iniitial "[----]"
-  "~/.local/bin/get-music.sh flags")
-
-(defpoll music-volume :interval "1s"
-  :iniitial "[----]"
-  "~/.local/bin/get-music.sh volume")
+           (eventbox :onclick "eww open --toggle status-panel"
+                     :cursor "pointer"
+                     (box :class "widget music"
+                          :orientation "h"
+                          :space-evenly false
+                          :halign "center"
+                          (icon :icon { music-song  == ""        ? "stop"  :
+                                                    music-state == "playing" ? "music" :
+                                                    "pause" })
+                          (label :class "music-song"
+                                 :limit-width 50
+                                 :text music-song)
+                          (label :class "music-flags"
+                                 :text music-flags)
+                          (label :class "music-flags"
+                                 :text music-volume)
+                          )))
 #+end_src
 
 *** System Tray
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget sys-tray []
   (box :orientation "h"
        :visible { trayer-width != 0 ? true : false }
@@ -300,20 +674,15 @@ User Constants
        (separator)
        (box :orientation "h"
             :width trayer-width)))
-
-(defpoll trayer-width
-  :interval "2s"
-  :initial "0"
-  :run-while true
-  "~/.local/bin/get-trayer-width.sh")
 #+end_src
 
 *** Language
-#+begin_src yuck
-(defpoll kbd :interval "1s"
-             :initial "us"
-             "~/.local/bin/get-lang.sh")
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
 
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget kbd []
   (box :orientation "h"
        :space-evenly false
@@ -326,128 +695,155 @@ User Constants
 #+end_src
 
 *** Battery
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget battery []
   (revealer :transition "slideright"
             :reveal {present == "yes" ? true : false}
-            :duration 2
+            :duration "2s"
             (box :class "widget colored 7 volume"
                 (slider :icon "gamepad"
                     :value charge
                     :onchange ""
                     ))))
-
-(defpoll charge :interval "10s"
-  :iniitial 50
-  "~/.local/bin/get-battery.sh percentage battery_ps_controller_battery_a0oabo51o62o65o1d")
-
-(defpoll present :interval "10s"
-  :iniitial 50
-  "~/.local/bin/get-battery.sh present battery_ps_controller_battery_a0oabo51o62o65o1d")
-
-(defpoll state :interval "10s"
-  :iniitial 50
-  "~/.local/bin/get-battery.sh state battery_ps_controller_battery_a0oabo51o62o65o1d")
-
-(defpoll warning-level :interval "10s"
-  :iniitial 50
-  "~/.local/bin/get-battery.sh warning-level battery_ps_controller_battery_a0oabo51o62o65o1d")
 #+end_src
 
 *** Updates
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.update-flags {
+  padding-left: 5px;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget updates []
-  (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
-                updates ==  69  ? "widget colored 6 status-widget red"         :
-                updates == 101  ? "widget colored 6 status-widget orange"      :
-                updates == 220  ? "widget colored 6 status-widget yellow"      :
-                updates == 404  ? "widget colored 6 status-widget yellow"      :
-                updates == 420  ? "widget colored 6 status-widget green"       :
-                updates == 1001 ? "widget colored 6 status-widget purple"      :
-                updates == year ? "widget colored 6 status-widget special"     :
-                                  "widget colored 6 status-widget"             }
+           (eventbox :onclick "eww open --toggle updates-list"
+                     :cursor "pointer"
+                     (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
+                                           updates ==  69  ? "widget colored 6 status-widget red"         :
+                                           updates == 101  ? "widget colored 6 status-widget orange"      :
+                                           updates == 220  ? "widget colored 6 status-widget yellow"      :
+                                           updates == 360  ? "widget colored 6 status-widget blue"        :
+                                           updates == 404  ? "widget colored 6 status-widget yellow"      :
+                                           updates == 420  ? "widget colored 6 status-widget green"       :
+                                           updates == 1001 ? "widget colored 6 status-widget purple"      :
+                                           updates == year ? "widget colored 6 status-widget special"     :
+                                           "widget colored 6 status-widget"             }
 
-       :orientation "h"
-       :space-evenly false
-       (icon :icon { updates ==   0  ? "check"    :
-                     updates ==  69  ? "heart"    :
-                     updates == 101  ? "book"     :
-                     updates == 220  ? "bolt"     :
-                     updates == 404  ? "warning"  :
-                     updates == 420  ? "cannabis" :
-                     updates == 1001 ? "moon"     :
-                     updates == year ? "calendar" :
-                                       "bell" })
+                          :orientation "h"
+                          :space-evenly false
+                          (icon :icon { updates ==   0  ? "check"    :
+                                                updates ==  69  ? "heart"    :
+                                                updates == 101  ? "book"     :
+                                                updates == 220  ? "bolt"     :
+                                                updates == 360  ? "globe" :
+                                                updates == 404  ? "warning"  :
+                                                updates == 420  ? "cannabis" :
+                                                updates == 1001 ? "moon"     :
+                                                updates == year ? "calendar" :
+                                                "bell" })
 
-       (revealer :class { updates ==  69  ? ""  :
-                          updates == 101  ? ""  :
-                          updates == 220  ? ""  :
-                          updates == 404  ? ""  :
-                          updates == 420  ? ""  :
-                          updates == 1001 ? ""  :
-                          updates == year ? ""  :
-                          updates >= 900  ? "state-urgent"  :
-                          updates >= 400  ? "state-warning" :
-                                            "" }
-                 :transition "slideright"
-                 :reveal {updates > 0}
-                 :duration 2
-                 updates)
+                          (revealer :class { updates ==  69  ? ""  :
+                                                     updates == 101  ? ""  :
+                                                     updates == 220  ? ""  :
+                                                     updates == 360  ? ""  :
+                                                     updates == 404  ? ""  :
+                                                     updates == 420  ? ""  :
+                                                     updates == 1001 ? ""  :
+                                                     updates == year ? ""  :
+                                                     updates >= 900  ? "state-urgent"  :
+                                                     updates >= 400  ? "state-warning" :
+                                                     "" }
+                                    :transition "slideright"
+                                    :reveal {updates > 0}
+                                    :duration "2s"
+                                    updates)
 
-       (revealer :class "yellow update-flags"
-                 :transition "slideright"
-                 :reveal {update-flags != ""}
-                 :duration 2
-                 update-flags)))
+                          (revealer :class "yellow update-flags"
+                                    :transition "slideright"
+                                    :reveal {update-flags != ""}
+                                    :duration "2s"
+                                    update-flags))))
+#+end_src
 
-(defpoll year :interval "24h"
-                 "date +%Y")
-
-(defpoll updates :interval "5s"
-                 :initial 0
-                 "~/.local/bin/get-updates.sh")
-
-(defpoll update-flags :interval "5s"
-                 :initial ""
-                 "~/.local/bin/get-update-flags.sh")
+*** IDEA Updates List
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
+(defwindow updates-list
+           :monitor 0
+           :geometry (geometry :x "650px"
+                               :y "10px"
+                               :anchor "top right")
+           :stacking "overlay"
+                   (label :text updates-list-content))
 #+end_src
 
 *** Network
-#+begin_src yuck
-(defwidget network []
-    (box :class "widget colored 5 network"
-        (icon :icon "ethernet")
-        (graph :min 0
-               :class "graph net-down"
-               :time-rage "1h"
-               :dynamic false
-               :thickness 2
-               :line-style "round"
-               :value {EWW_NET[interface].NET_DOWN})
-        (icon :icon "⇵")
-        (graph :min 0
-               :class "graph net-up"
-               :time-rage "1h"
-               :dynamic false
-               :thickness 2
-               :value {EWW_NET[interface].NET_UP})))
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.graph.net-down {
+  color: $base0D;
+  min-width: 50px;
+}
 
-(defpoll interface
-         :interval "1m"
-         "~/.local/bin/get-network-interface.sh")
+.graph.net-up {
+  color: $base0A;
+  min-width: 50px;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
+(defwidget network []
+           (box :class "widget colored 5 network"
+                ;; :space-evenly false
+                (icon :icon "ethernet")
+                (graph :min 0
+                       :class "graph net-down"
+                       :time-range {graph_net_time_range}
+                       :dynamic false
+                       :max {graph_net_max_speed_bytes}
+                       :thickness 2
+                       :line-style "round"
+                       :value {EWW_NET.eno1.NET_DOWN})
+                ;; :value {EWW_NET[interface].NET_DOWN})
+                (icon :icon "⇵")
+                (graph :min 0
+                       :class "graph net-up"
+                       :time-range {graph_net_time_range}
+                       :dynamic false
+                       :max {graph_net_max_speed_bytes}
+                       :thickness 2
+                       :value {EWW_NET.eno1.NET_UP})))
+;; :value {EWW_NET[interface].NET_UP})))
 #+end_src
 
 *** RAM
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget ram []
-    (box :class "widget colored 4 volume"
-    (slider :icon "memory"
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")))
+           (box :class "widget colored 4 volume"
+                (slider :icon "memory"
+                        :value {EWW_RAM.used_mem_perc}
+                        :onchange "")))
 #+end_src
 
 *** CPU
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget cpu []
     (box :class "widget colored 3 volume"
         (slider :icon "microchip"
@@ -456,17 +852,27 @@ User Constants
 #+end_src
 
 *** CPU Thermal
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget cpu-thermal []
-    (box :class "widget colored 2 volume"
-        (icon :icon "")
-                {EWW_TEMPS.CORETEMP_CORE_0}
+           (box :class "widget colored 2 volume"
+                (icon :icon "")
+                { round(EWW_TEMPS.K10TEMP_TCTL, 0) }
                 "°C"
                 ))
 #+end_src
 
 *** Volume
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget volume []
     (box :class "widget colored 1 volume"
         (slider :icon { mute   == "on" ? "volume-xmark" :
@@ -476,18 +882,15 @@ User Constants
                 :value volume
                 :onchange "amixer -D pulse sset Master {}%"
                 )))
-
-(defpoll volume :interval "1s"
-                :iniitial 50
-                "~/.local/bin/get-volume.sh")
-
-(defpoll mute :interval "1s"
-              :iniitial "off"
-              "~/.local/bin/get-mute.sh")
 #+end_src
 
 *** Disk Usage
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget disk_usage [?icon disk]
     (slider :icon icon
             :value {round((1 - (EWW_DISK[disk].free / EWW_DISK[disk].total)) * 100, 0)}
@@ -495,93 +898,541 @@ User Constants
 #+end_src
 
 *** Uptime
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget uptime []
   (box :orientation "h"
        :space-evenly false
        (icon :icon "circle-arrow-up")
        uptime))
-
-(defpoll uptime :interval "1m"
-                :initial "0d 0h"
-                "~/.local/bin/get-uptime.sh")
 #+end_src
 
 *** Date
-#+begin_src yuck
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.date {
+  margin-right: 10px;
+}
+
+calendar {
+  padding: 4px;
+}
+
+calendar:selected {
+  color: $base0E;
+  font-weight: bold;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget date []
-  (eventbox :onclick      "eww open --toggle --screen $(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}') calendar-window"
+  (eventbox :onclick "eww open --toggle --screen $(/home/artem/.config/hypr/scripts/get-current-monitor.sh id) calendar-window"
             :cursor "pointer"
             (box :class "widget date"
                  :orientation "h"
                  :space-evenly false
                  :halign "center"
-                 (icon :icon { matches(date, "20 Apr") ? "cannabis" :
-                               matches(date, "25 Dec") ? "candy-cane" :
-                               matches(date, "31 Dec") ? "champagne-glasses" :
+                 (icon :icon { matches(date, "20 apr") ? "cannabis" :
+                               matches(date, "25 dec") ? "candy-cane" :
+                               matches(date, "31 dec") ? "champagne-glasses" :
                                                          "calendar" })
                  {date})))
-
-(defpoll date
-  :interval "1h"
-  :initial "1 Jan 1970"
-  "date '+%a, %d-%b-%Y'")
 #+end_src
 
 *** Profile
-#+begin_src yuck
-(defvar show-power-menu false)
-(defwidget profile []
-  (eventbox :onhover     "eww update show-power-menu=true"
-            :onhoverlost "eww update show-power-menu=false"
-            :cursor "pointer"
-            :timeout 5
-            (box :orientation "h"
-                 :space-evenly false
-                 :class "widget profile"
-                 (revealer :transition "slideleft"
-                           :reveal show-power-menu
-                           :duration 2
-                           (power-menu))
-                 (image :path profile-face
-                        :class "profile-face"
-                        :image-height 24))))
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.profile {
+  margin-right: 0;
+}
 
+.profile-face {
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
+(defwidget profile []
+           (box :orientation "h"
+                :space-evenly false
+                :class "widget profile"
+                (revealer :transition "slideleft"
+                          :reveal show-power-menu
+                          :duration "2s"
+                          (power-menu))
+                (eventbox :onhover     "eww update show-power-menu=true"
+                          :onhoverlost "eww update show-power-menu=false"
+                          :onclick     "eww open powermenu-panel"
+                          :cursor "pointer"
+                          :timeout 5
+                          (image :path profile-face
+                                 :class "profile-face"
+                                 :image-height 35))))
+#+end_src
+
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget power-menu []
   (box :orientation "h"
        :space-evenly true
        :class "status-widget power-menu"
-       (button :onclick "eww update confirmation-message='Shutdown System?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
-               :tooltip "Shutdown"
+       (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
+               :tooltip "shutdown"
                :class "shutdown"
                "power-off")
-       (button :onclick "eww update confirmation-message='Restart System?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
-               :tooltip "Reboot"
+       (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
+               :tooltip "reboot"
                :class "reboot"
                "rotate")
-       (button :onclick "eww update confirmation-message='Suspend System?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
-               :tooltip "Suspend"
+       (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
+               :tooltip "suspend"
                :class "suspend"
                "moon")
-       (button :onclick "${dm-scripts}/dm-power lock"
-               :tooltip "Lock Screen"
-               :class "lock-screen"
-               "lock")
-       (button :onclick "eww update confirmation-message='Log Out?' yes-command='eww reload' && eww open confirmation-window"
-               :tooltip "Logout"
+       (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
+               :tooltip "logout"
                :class "log-out"
-               "right-from-bracket")))
+               "right-from-bracket")
+       (button :onclick "${dm-scripts}/dm-power lock"
+               :tooltip "lock screen"
+               :class "lock-screen"
+               "lock")))
 #+end_src
 
-* Widget Templates
-** Icon
-#+begin_src yuck
+* [0/7] panels
+** STRT Power Menu
+#+begin_src yuck :tangle eww.yuck
+(include "modules/panels/powermenu.yuck")
+#+end_src
+*** window
+#+begin_src yuck :tangle modules/panels/powermenu.yuck
+(defwindow powermenu-panel
+           :namespace "powermenu-panel"
+
+           :monitor 0
+           :stacking "overlay"
+           :geometry (geometry :anchor "top center"
+                               :x "0%"
+                               :y "30%"
+                               :width "100px"
+                               :height "100px")
+
+           (box :class "powermenu-panel"
+                :orientation "h"
+                :space-evenly true
+                :spacing 15
+                :valign "center"
+                :halign "center"
+
+                (powermenu_entry :class "shutdown1"
+                                 :label "power off"
+                                 :icon "power-off"
+                                 :onclick "${dm-scripts}/dm-power poweroff")
+                (powermenu_entry :class "reboot1"
+                                 :label "reboot"
+                                 :icon "rotate"
+                                 :onclick "${dm-scripts}/dm-power reboot")
+                (powermenu_entry :class "suspend1"
+                                 :label "suspend"
+                                 :icon "moon"
+                                 :onclick "${dm-scripts}/dm-power suspend")
+                (powermenu_entry :class "signout1"
+                                 :label "sign out"
+                                 :icon "right-from-bracket"
+                                 :onclick "${dm-scripts}/dm-power logout")
+                (powermenu_entry :class "lock1"
+                                 :label "lock"
+                                 :icon "lock"
+                                 :onclick "${dm-scripts}/dm-power lock")
+                (powermenu_entry :class "cancel1"
+                                 :label "cancel"
+                                 :icon "xmark"
+                                 :onclick "eww close powermenu-panel")))
+#+end_src
+
+*** widgets
+#+begin_src yuck :tangle modules/panels/powermenu.yuck
+(defwidget powermenu_entry [label icon onclick class]
+           (box :class "powermenu-entry"
+                :orientation "v"
+                :space-evenly false
+
+                (button :class "powermenu-button ${class}"
+                        :onclick {onclick}
+                        (label :class "powermenu-icon ${class}"
+                               :text {icon}))
+
+                (label :class "powermenu-text"
+                       :text {label})))
+#+end_src
+
+*** styles
+#+begin_src scss :tangle eww.scss
+@import "modules/panels/powermenu.scss";
+#+end_src
+
+#+begin_src scss :tangle modules/panels/powermenu.scss
+.powermenu-panel {
+  background-color: transparent;
+  color: $base07;
+  font-family: $text-font;
+  border-radius: 1.5rem;
+  padding: 40px 40px 20px 40px;
+}
+
+.powermenu-button {
+  background-color: $base03;
+  font-family: $icon-font;
+  font-size: 32pt;
+  border-radius: 20%;
+  transition: 0.3s;
+  padding: 40px;
+  transition: 0.3s;
+  box-shadow: 0 0 2px $base01;
+}
+
+.shutdown1:hover { color: $base08 }
+.shutdown1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base08,
+                 1px 1px $base08;
+}
+
+.reboot1:hover { color: $base09 }
+.reboot1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base09,
+                 1px 1px $base09;
+}
+
+.lock1:hover { color: $base0B }
+.lock1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0B,
+                 1px 1px $base0B;
+}
+
+.suspend1:hover { color: $base0E }
+.suspend1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0E,
+                 1px 1px $base0E;
+}
+
+.signout1:hover { color: $base0C }
+.signout1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0C,
+                 1px 1px $base0C;
+}
+
+.cancel1:hover { color: $base03 }
+.cancel1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base07,
+                 1px 1px $base07;
+}
+
+.powermenu-icon {
+}
+
+.powermenu-text {
+    margin-top: 10px;
+}
+#+end_src
+
+** STRT Status
+#+begin_src yuck :tangle eww.yuck
+(include "modules/panels/status.yuck")
+#+end_src
+
+*** styles
+#+begin_src scss :tangle eww.scss
+@import "modules/panels/status.scss";
+#+end_src
+
+#+begin_src scss :tangle modules/panels/status.scss
+.status-panel {
+    background: transparent;
+}
+#+end_src
+
+*** window
+#+begin_src yuck :tangle modules/panels/status.yuck
+(defwindow status-panel
+           :namespace "status-panel"
+           :monitor 1
+           :stacking "bottom"
+           :geometry (geometry :anchor "bottom left"
+                               :x "50px"
+                               :y "50px"
+                               :width "100px"
+                               :height "100px")
+
+           (box :class "status-panel"
+                :active true
+                :orientation "v"
+                :space-evenly false
+                :spacing 50
+                :halign "center"
+                :valign "center"
+
+                (music-player)
+                ))
+#+end_src
+
+** TODO notification tray
+** IDEA launcher
+** TODO quick settings
+** TODO profile
+** IDEA office
+*** idea clock
+*** idea calendar
+*** idea notes
+** Calendar
+#+begin_src yuck :tangle eww.yuck
+(include "modules/panels/calendar.yuck")
+#+end_src
+
+*** window
+#+begin_src yuck :tangle modules/panels/calendar.yuck
+(defwindow calendar-window
+           :monitor 0
+           :geometry (geometry :x "10px"
+                               :y "10px"
+                               :anchor "top right")
+           :windowtype "dialog"
+           :stacking "fg"
+           :wm-ignore true
+           (calendar :show-details true
+                     :show-heading true
+                     :show-day-names true
+                     :show-week-numbers false))
+#+end_src
+
+* Modules
+** Music Player
+#+begin_src yuck :tangle eww.yuck
+(include "modules/music-player.yuck")
+#+end_src
+
+*** widgets
+#+begin_src yuck :tangle modules/music-player.yuck
+(defwidget music-player []
+           (box :class "music-player"
+                :orientation "h"
+                :space-evenly false
+                :spacing 30
+
+                (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                          :cursor "pointer"
+                          (overlay :class "music-player-album-art-reactive"
+                                   (music-player-album-art)
+                                   (revealer :transition "crossfade"
+                                             :duration "0.35s"
+                                             :reveal {music-state != "playing"}
+                                             (label :class "icon"
+                                                    :text { music-state == "paused"  ? "pause" :
+                                                                               music-state == "stopped" ? "stop"  :
+                                                                               "" } ))))
+
+                (box :class "music-player-content"
+                     :hexpand true
+                     :vexpand true
+                     :orientation "v"
+                     :space-evenly false
+
+                     (music-player-track-info)
+                     (music-player-controls)
+                     )))
+
+
+
+(defwidget music-player-album-art []
+           (box :class "music-player-album-art"
+                :vexpand false
+                :hexpand false
+                :style "background-image: url('${music-album-cover-file}');"))
+
+(defwidget music-player-track-info []
+           (box :class "music-player-track-info"
+                :orientation "v"
+                :vexpand true
+                :halign "start"
+                :space-evenly false
+
+                (label :class "music-player-track-title"
+                       :hexpand true
+                       :xalign 0
+                       :text music-title)
+
+                (label :class "music-player-track-artist"
+                       :xalign 0
+                       :text music-artist)
+
+                (box :class "music-player-track-album"
+                     :hexpand true
+                     :vexpand true
+                     ;; :valign "end"
+                     :space-evenly false
+                     (box :class "icon"
+                          "record-vinyl")
+                     (label :xalign 0
+                            :text music-album))))
+
+(defwidget music-player-controls []
+           (box :class "music-player-controls"
+                :orientation "h"
+                :spacing 3
+                :space-evenly false
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh prev"
+                                  (label :class "icon"
+                                         :text "backward-step")))
+
+                (scale :class "music-progress-bar"
+                       :hexpand true
+                       :vexpand false
+                       :value music-progress
+                       :min 0
+                       :max 100
+                       :active {music-state == "playing"}
+                       :onchange "~/.local/bin/musictl.sh goto {}%")
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh next"
+                                  (label :class "icon"
+                                         :text "forward-step")))
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh flag-random"
+                                  (label :class "icon"
+                                         :style "opacity: ${ music-flags =~'z' ? 1 : 0.3 };"
+                                         :text "shuffle")))
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh flag-single"
+                                  (label :class "icon"
+                                         :style "opacity: ${ music-flags =~'r' ? 1 : 0.3 };"
+                                         :text { music-flags =~ "s" ? "rotate-right" : "repeat" })))
+                ))
+#+end_src
+
+*** styles
+#+begin_src scss :tangle eww.scss
+@import "modules/music-player.scss";
+#+end_src
+
+Media Player
+#+begin_src scss :tangle modules/music-player.scss
+.music-player {
+    background: rgba($base0E, 0.4);
+    color: $base07;
+    padding: 20px;
+    border-radius: 1.5rem;
+    min-width: 500px;
+}
+
+.music-player-album-art {
+    $album-art-size: 150px;
+    border-radius: 1.5rem;
+    background-size: $album-art-size;
+    min-height: $album-art-size;
+    min-width: $album-art-size;
+}
+
+.music-player-album-art-reactive .icon {
+    font-size: 64pt;
+    border-radius: 1.5rem;
+    // background-color: rgba($base02, 0.7);
+    background-image: radial-gradient(at center, transparent, $base01);
+}
+
+.music-player-track-title {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.music-player-track-artist {
+    font-size: 14pt;
+    color: $base0E;
+    opacity: 0.8;
+}
+
+.music-player-track-album {
+    font-size: 14pt;
+    color: $base05;
+    opacity: 0.6;
+}
+
+.music-progress-bar,
+.music-player-controls,
+.music-player-controls .icon {
+    // border: 1px solid black;
+}
+
+.music-player-controls button:hover {
+    background: rgba($base03, 0.8);
+    border-radius: 50%;
+}
+
+.music-progress-bar {
+    margin: 0 15px;
+}
+
+.music-progress-bar trough {
+    background-color: $base03;
+    min-height: 5px;
+    min-width: 50px;
+    border-radius: 10px;
+}
+
+.music-progress-bar trough highlight {
+    background-color: $base07;
+    border-radius: 10px;
+}
+
+.music-player-controls button {
+    min-width:  40px;
+    min-height: 40px;
+}
+
+.music-player-controls .icon {
+    font-size: 18pt;
+    padding: 0;
+}
+#+end_src
+
+* widget templates
+** icon
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget icon [?icon]
   (box :class "icon" icon))
 #+end_src
 
-** Slider
-#+begin_src yuck
+** slider
+*** styles
+#+begin_src scss :tangle eww.scss
+.slider scale trough {
+  background-color: $base02;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+}
+
+.slider scale trough highlight {
+  background-color: $base0E;
+  color: $base07;
+  border-radius: 10px;
+}
+#+end_src
+
+*** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget slider [icon value onchange]
   (box :orientation "h"
        :class "slider status-widget"
@@ -594,8 +1445,8 @@ User Constants
            :onchange onchange)))
 #+end_src
 
-** Circular Progress
-#+begin_src yuck
+** circular progress
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget circular [icon value]
   (box :orientation "h"
        :class "progress status-widget"
@@ -608,8 +1459,8 @@ User Constants
                           )))
 #+end_src
 
-** Confirmation Window
-#+begin_src yuck
+** confirmation window
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwindow confirmation-window
   :monitor 0
   :geometry (geometry :x "0%"
@@ -624,7 +1475,7 @@ User Constants
   )
 #+end_src
 
-#+begin_src yuck
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defvar confirmation-message "")
 (defvar yes-command "")
 (defvar dismiss-command "eww close confirmation-window")
@@ -634,26 +1485,28 @@ User Constants
        confirmation-message
        (box :orientation "h"
             (button :onclick "${yes-command} & ${dismiss-command}"
-                    "Yes")
+                    "yes")
             (button :onclick dismiss-command
-                    "No")
+                    "no")
        )))
 #+end_src
 
-* Calendar
-#+begin_src yuck
-(defwindow calendar-window
-  :monitor 0
-  :geometry (geometry :x "-10px"
-                      :y "34px"
-                      :anchor "top right")
-  :windowtype "dialog"
-  :stacking "fg"
-  :wm-ignore true
-  (calendar :show-details true
-            :show-heading true
-            :show-day-names true
-            :show-week-numbers false)
-  )
+* Scripts
+:PROPERTIES:
+:header-args: :shebang #!/usr/bin/env bash
+:END:
+** song-switch
+#+begin_src shell :tangle scripts/song-switch.sh
+eww update music-song="$(~/.local/bin/get-music.sh song)"
+eww update music-title="$(~/.local/bin/get-music.sh title)"
+eww update music-artist="$(~/.local/bin/get-music.sh artist)"
+eww update music-album="$(~/.local/bin/get-music.sh album)"
+eww update music-album-cover-file="$(~/.local/bin/get-music.sh albumcover)"
 #+end_src
 
+** update-music
+#+begin_src shell :tangle scripts/update-music.sh
+eww update music-flags="$(~/.local/bin/get-music.sh flags)"
+eww update music-volume="$(~/.local/bin/get-music.sh volume)"
+eww update music-state="$(~/.local/bin/get-music.sh state)"
+#+end_src

@@ -1,0 +1,44 @@
+(defpoll music-state
+         :interval "1h"
+         :initial "paused"
+         "~/.local/bin/get-music.sh state")
+
+(defpoll music-progress
+         :interval "1s"
+         :initial 0
+         :run-while {music-state == "playing"}
+         "~/.local/bin/get-music.sh progress")
+
+(defpoll music-album-cover-color
+         :interval "1h"
+         "~/.local/bin/get-music.sh albumcovercolor")
+
+(defpoll music-album-cover-file
+         :interval "1h"
+         "~/.local/bin/get-music.sh albumcover")
+
+(defpoll music-artist
+         :interval "1h"
+         "~/.local/bin/get-music.sh artist")
+
+(defpoll music-album
+         :interval "1h"
+         "~/.local/bin/get-music.sh album")
+
+(defpoll music-title
+         :interval "1h"
+         "~/.local/bin/get-music.sh title")
+
+(defpoll music-song
+         :interval "1h"
+         "~/.local/bin/get-music.sh song")
+
+(defpoll music-flags
+         :interval "1h"
+         :iniitial "[----]"
+         "~/.local/bin/get-music.sh flags")
+
+(defpoll music-volume
+         :interval "1h"
+         :iniitial "-%"
+         "~/.local/bin/get-music.sh volume")

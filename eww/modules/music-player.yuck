@@ -1,0 +1,99 @@
+(defwidget music-player []
+           (box :class "music-player"
+                :orientation "h"
+                :space-evenly false
+                :spacing 30
+
+                (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                          :cursor "pointer"
+                          (overlay :class "music-player-album-art-reactive"
+                                   (music-player-album-art)
+                                   (revealer :transition "crossfade"
+                                             :duration "0.35s"
+                                             :reveal {music-state != "playing"}
+                                             (label :class "icon"
+                                                    :text { music-state == "paused"  ? "pause" :
+                                                                               music-state == "stopped" ? "stop"  :
+                                                                               "" } ))))
+
+                (box :class "music-player-content"
+                     :hexpand true
+                     :vexpand true
+                     :orientation "v"
+                     :space-evenly false
+
+                     (music-player-track-info)
+                     (music-player-controls)
+                     )))
+
+
+
+(defwidget music-player-album-art []
+           (box :class "music-player-album-art"
+                :vexpand false
+                :hexpand false
+                :style "background-image: url('${music-album-cover-file}');"))
+
+(defwidget music-player-track-info []
+           (box :class "music-player-track-info"
+                :orientation "v"
+                :vexpand true
+                :halign "start"
+                :space-evenly false
+
+                (label :class "music-player-track-title"
+                       :hexpand true
+                       :xalign 0
+                       :text music-title)
+
+                (label :class "music-player-track-artist"
+                       :xalign 0
+                       :text music-artist)
+
+                (box :class "music-player-track-album"
+                     :hexpand true
+                     :vexpand true
+                     ;; :valign "end"
+                     :space-evenly false
+                     (box :class "icon"
+                          "record-vinyl")
+                     (label :xalign 0
+                            :text music-album))))
+
+(defwidget music-player-controls []
+           (box :class "music-player-controls"
+                :orientation "h"
+                :spacing 3
+                :space-evenly false
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh prev"
+                                  (label :class "icon"
+                                         :text "backward-step")))
+
+                (scale :class "music-progress-bar"
+                       :hexpand true
+                       :vexpand false
+                       :value music-progress
+                       :min 0
+                       :max 100
+                       :active {music-state == "playing"}
+                       :onchange "~/.local/bin/musictl.sh goto {}%")
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh next"
+                                  (label :class "icon"
+                                         :text "forward-step")))
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh flag-random"
+                                  (label :class "icon"
+                                         :style "opacity: ${ music-flags =~'z' ? 1 : 0.3 };"
+                                         :text "shuffle")))
+
+                (eventbox :cursor "pointer"
+                          (button :onclick "~/.local/bin/musictl.sh flag-single"
+                                  (label :class "icon"
+                                         :style "opacity: ${ music-flags =~'r' ? 1 : 0.3 };"
+                                         :text { music-flags =~ "s" ? "rotate-right" : "repeat" })))
+                ))

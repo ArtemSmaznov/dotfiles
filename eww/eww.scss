@@ -1,7 +1,4 @@
-// unsets everything so you can style everything from scratch
-* { all: unset }
-
-@import "./themes/base16.scss";
+@import "themes/base16.scss";
 
 $text-font: "Hack Nerd Font",
             "Source Han Sans JP",
@@ -10,31 +7,13 @@ $text-font: "Hack Nerd Font",
             "Roboto";
 $icon-font: "Font Awesome 6 Free Solid";
 
-        //XXXXXXXXXXXXXXXXXXXXX\\
-       //|                     |\\
-      //||=====================||\\
-     //|||   _  *       *      |||\\
-    // |||  |o|   |_ ______ _| ||| \\
-   //  |||  | |   || ||  || || |||  \\
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
- //\=================================/\\
-//\\ ******** Global Styles ******** //\\
-//\\=================================//\\
-.bar {                               //\\
-  background-color: transparent;     //\\
-  color: $base07;                    //\\
-  padding-left: 5px;                 //\\
-  padding-right: 0px;                //\\
-  font-family: $text-font;           //\\
-  font-size: 14px;                   //\\
-}                                    //\\
-                                     //\\
-//\\===II============================//\\
-//=\\__II____II_________________________|
-//==\\*****************************//==\\
+$indicator-line-width: 3px;
+$accent-line-width: 2px;
 
+* {
+  all: unset;
+}
 
-// coloring classes
 .white                  { color: $base07; }
 .red,    .state-urgent  { color: $base08; }
 .orange                 { color: $base09; }
@@ -51,235 +30,23 @@ $icon-font: "Font Awesome 6 Free Solid";
 .lock-screen { color: $base0C; }
 .log-out     { color: $base0B; }
 
+@import "modules/status-bars/style.scss";
 
-        //XXXXXXXXXXXXXXXXXXXXXXX\\
-       //|       _________       |\\
-      //||      |_______|x|      ||\\
-     //|||      | @ ***** |      |||\\
-    // |||      |_________|      ||| \\
-   //  |||                       |||  \\
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
- //\===================================/\\
-//\\ ******** Window Styles ********* //\\
-//\\==================================//\\
-                                      //\\
-                                      //\\
-//\\===II=============================//\\
-//=\\__II________________________________|
-//==\\******************************//==\\
+@import "modules/panels/powermenu.scss";
 
+@import "modules/panels/status.scss";
 
-        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\
-       //|                 _|_|_                |\\
-      //||               -|     |-              ||\\
-     //|||               -| 9°C |-              |||\\
-    // |||               -|_____|-              ||| \\
-   //  |||                  | |                 |||  \\
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
- //\==================================================/\\
-//\\ **************** Widget Styles **************** //\\
-//\\=================================================//\\
-//\\                                                 //\\
-//\\-------------------------------------------------//\\
-//\\ =========== Global widget styles ============== //\\
-//\\-------------------------------------------------//\\
-.widget,                                             //\\
-.bar-widget {                                        //\\
-  margin: 0 2px;                                     //\\
-}                                                    //\\
-                                                     //\\
-.widget.colored {                                    //\\
-  border-bottom-width: 2px;                          //\\
-  border-bottom-style: solid                         //\\
-}                                                    //\\
-                                                     //\\
-.widget.colored.1 { border-bottom-color: $base08 }   //\\
-.widget.colored.2 { border-bottom-color: $base09 }   //\\
-.widget.colored.3 { border-bottom-color: $base0A }   //\\
-.widget.colored.4 { border-bottom-color: $base0B }   //\\
-.widget.colored.5 { border-bottom-color: $base0C }   //\\
-.widget.colored.6 { border-bottom-color: $base0D }   //\\
-.widget.colored.7 { border-bottom-color: $base0E }   //\\
-//\\-------------------------------------------------//\\
-//\\ =========== Widget specific styles ============ //\\
-//\\-------------------------------------------------//\\
-//\\ --- separator                                   //\\
-.separator {                                         //\\
-  color: $base03;                                    //\\
-  text-shadow: none;                                 //\\
-  padding: 0 1px;                                    //\\
-}                                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- logo                                        //\\
-.widget.logo {                                       //\\
-  margin-left: 5px;                                  //\\
-}                                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- time                                        //\\
-.widget.time {                                       //\\
-  margin: 0 5px;
-}                                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- workspaces                                  //\\
-.workspaces {
-}
-
-.workspace-entry {
-  font: 14px $icon-font;
-  padding: 0 7px;
-}
-
-.workspace-entry.empty {
-  color: $base07;
-  opacity: 0.4;
-}
-.workspace-entry.occupied {
-  color: $base07;
-}
-.workspace-entry.urgent {
-  color: $base08;
-}
-
-.workspace-entry.monitor_0 {
-  background-color: $base03;
-  box-shadow: inset 0 -3px $base0E;
-}
-.workspace-entry.monitor_1 {
-  box-shadow: inset 0 -3px $base04;
-}
-//\\-------------------------------------------------//\\
-//\\ --- layout                                      //\\
-//\\-------------------------------------------------//\\
-//\\ --- title                                       //\\
-//\\-------------------------------------------------//\\
-//\\ --- music                                       //\\
-.widget.music {                                      //\\
-  font-family: $text-font;                           //\\
-}                                                    //\\
-                                                     //\\
-.widget.music .music-flags {                         //\\
-  padding-left: 5px;                                 //\\
-}                                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- language                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- system tray                                 //\\
-//\\-------------------------------------------------//\\
-//\\ --- updates                                     //\\
-.update-flags {
-  padding-left: 5px;
-}
-//\\-------------------------------------------------//\\
-//\\ --- network                                     //\\
-//\\-------------------------------------------------//\\
-//\\ --- ram                                         //\\
-//\\-------------------------------------------------//\\
-//\\ --- cpu                                         //\\
-//\\-------------------------------------------------//\\
-//\\ --- volume                                      //\\
-//\\-------------------------------------------------//\\
-//\\ --- date                                        //\\
-.widget.date {                                       //\\
-  margin-right: 10px;                                //\\
-}                                                    //\\
-//\\-------------------------------------------------//\\
-//\\ --- profile                                     //\\
-.widget.profile {                                    //\\
-  margin-right: 0;                                   //\\
-}                                                    //\\
-                                                     //\\
-.profile-face {                                      //\\
-}                                                    //\\
-//\\===II============================================//\\
-//=\\__II_______________________________________________|
-//==\\*********************************************//==\\
-
-// icons
-.icon, .workspaces button {
-  font: 14px $icon-font;
-}
-
-.icon {
-  padding-right: 5px;
-}
-
-// power menu
-button:hover { color: $base0E; }
-
-.shutdown, .reboot, .suspend, .lock-screen, .log-out {
-  font: 16px $icon-font;
-  padding-right: 7px;
-}
-
-// ---
-.ws-urgent       { color: $base08; }
-.ws-current-main { border-top: 2px solid $base0E; border-bottom: 2px solid $base00; }
-.ws-current-side { border-top: 2px solid $base00; border-bottom: 2px solid $base0F; }
-.ws-filled       { color: $base07; }
-.ws-empty        { color: $base02; }
-
-.bar .status-widget {
-  padding-right: 7px;
-  padding-left: 7px;
-}
-
-// ------
-
-.rightside slider {
-  all: unset;
-  color: #ffd5cd;
-}
-
-.slider scale trough highlight {
-  all: unset;
-  background-color: #D35D6E;
-  color: $base00;
-  border-radius: 10px;
-}
+@import "modules/music-player.scss";
 
 .slider scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-.slider scale trough highlight {
-  all: unset;
-  background-color: $base0E;
-  color: $base00;
-  border-radius: 10px;
-}
-
-.slider scale trough {
-  all: unset;
   background-color: $base02;
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
 }
-// .label-ram {
-//   font-size: large;
-// }
 
-// calendar
-calendar {
-  padding: 4px;
-}
-
-calendar:selected {
-  color: $base0E;
-  font-weight: bold;
-}
-
-.graph.net-down {
-  color: $base0D;
-  min-width: 50px;
-}
-
-.graph.net-up {
-  color: $base0A;
-  min-width: 50px;
+.slider scale trough highlight {
+  background-color: $base0E;
+  color: $base07;
+  border-radius: 10px;
 }
