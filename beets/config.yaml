@@ -96,6 +96,11 @@ lyrics:
   auto: no
 
 mpd:
+    host: localhost
+    port: 6600
+    # password:
+    # music_directory:
+
     rating: yes
     rating_mix: 0.75
 

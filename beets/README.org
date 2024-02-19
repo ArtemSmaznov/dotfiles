@@ -254,6 +254,11 @@ Needs to be run with =beet mpdstats=
 
 #+begin_src yaml
 mpd:
+    host: localhost
+    port: 6600
+    # password:
+    # music_directory:
+
     rating: yes
     rating_mix: 0.75
 #+end_src
