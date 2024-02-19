@@ -50,17 +50,16 @@
                           :orientation "h"
                           :space-evenly false
                           :halign "center"
-                          (icon :icon { music-song  == ""        ? "stop"  :
+                          (icon :icon { music-title  == ""        ? "stop"  :
                                                     music-state == "playing" ? "music" :
                                                     "pause" })
                           (label :class "music-song"
                                  :limit-width 50
-                                 :text music-song)
+                                 :text "${music-artist} · ${music-title}")
                           (label :class "music-flags"
-                                 :text music-flags)
-                          (label :class "music-flags"
-                                 :text music-volume)
-                          )))
+                                 :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")
+                          (label :class "music-volume"
+                                 :text "${replace(round(music-volume, 2), '0.', '')}%"))))
 
 (defwidget sys-tray []
   (box :orientation "h"

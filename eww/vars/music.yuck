@@ -1,44 +1,55 @@
-(defpoll music-state
-         :interval "1h"
-         :initial "paused"
-         "~/.local/bin/get-music.sh state")
+(deflisten music-title
+           :initial ""
+           "~/.local/bin/listen-music-info.sh title")
 
-(defpoll music-progress
-         :interval "1s"
-         :initial 0
-         :run-while {music-state == "playing"}
-         "~/.local/bin/get-music.sh progress")
+(deflisten music-artist
+           :initial ""
+           "~/.local/bin/listen-music-info.sh artist")
+
+(deflisten music-album
+           :initial ""
+           "~/.local/bin/listen-music-info.sh album")
+
+(deflisten music-track-progress
+           ;; :run-while {music-state == "playing"}
+           :initial 0
+           "~/.local/bin/listen-music-info.sh progress")
+
+(deflisten music-track-duration
+           ;; :run-while {music-state == "playing"}
+           :initial 1
+           "~/.local/bin/listen-music-info.sh duration")
+
+(deflisten music-state
+           :initial "stopped"
+           "~/.local/bin/listen-music-info.sh state")
+
+(deflisten music-flag-loop
+           :initial "-"
+           "~/.local/bin/listen-music-info.sh loop") ;; playlist | track | none
+
+(deflisten music-flag-shuffle
+           :initial false
+           "~/.local/bin/listen-music-info.sh shuffle") ;; true | false
+
+(defpoll music-flag-consume
+           :interval "2s"
+           :initial "-"
+           "~/.local/bin/get-music.sh consume")
+
+(defpoll music-flag-crossfade
+           :interval "2s"
+           :initial "-"
+           "~/.local/bin/get-music.sh crossfade")
+
+(deflisten music-volume
+         :iniitial "-%"
+         "~/.local/bin/listen-music-info.sh volume")
 
 (defpoll music-album-cover-color
          :interval "1h"
          "~/.local/bin/get-music.sh albumcovercolor")
 
-(defpoll music-album-cover-file
-         :interval "1h"
-         "~/.local/bin/get-music.sh albumcover")
-
-(defpoll music-artist
-         :interval "1h"
-         "~/.local/bin/get-music.sh artist")
-
-(defpoll music-album
-         :interval "1h"
-         "~/.local/bin/get-music.sh album")
-
-(defpoll music-title
-         :interval "1h"
-         "~/.local/bin/get-music.sh title")
-
-(defpoll music-song
-         :interval "1h"
-         "~/.local/bin/get-music.sh song")
-
-(defpoll music-flags
-         :interval "1h"
-         :iniitial "[----]"
-         "~/.local/bin/get-music.sh flags")
-
-(defpoll music-volume
-         :interval "1h"
-         :iniitial "-%"
-         "~/.local/bin/get-music.sh volume")
+(deflisten music-album-cover-file
+           :initial ""
+           "~/.local/bin/listen-music-info.sh cover_file")

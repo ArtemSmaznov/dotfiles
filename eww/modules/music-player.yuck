@@ -4,7 +4,7 @@
                 :space-evenly false
                 :spacing 30
 
-                (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                (eventbox :onclick "~/.local/bin/playerctl.sh toggle"
                           :cursor "pointer"
                           (overlay :class "music-player-album-art-reactive"
                                    (music-player-album-art)
@@ -67,33 +67,33 @@
                 :space-evenly false
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh prev"
+                          (button :onclick "~/.local/bin/playerctl.sh prev"
                                   (label :class "icon"
                                          :text "backward-step")))
 
                 (scale :class "music-progress-bar"
                        :hexpand true
                        :vexpand false
-                       :value music-progress
                        :min 0
-                       :max 100
+                       :value { music-track-progress / 1000 / 1000 }
+                       :max { music-track-duration / 1000 / 1000 }
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/musictl.sh goto {}%")
+                       :onchange "~/.local/bin/playerctl.sh goto {}")
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh next"
+                          (button :onclick "~/.local/bin/playerctl.sh next"
                                   (label :class "icon"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh flag-random"
+                          (button :onclick "~/.local/bin/playerctl.sh random"
                                   (label :class "icon"
-                                         :style "opacity: ${ music-flags =~'z' ? 1 : 0.3 };"
+                                         :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh flag-single"
+                          (button :onclick "~/.local/bin/playerctl.sh single"
                                   (label :class "icon"
-                                         :style "opacity: ${ music-flags =~'r' ? 1 : 0.3 };"
-                                         :text { music-flags =~ "s" ? "rotate-right" : "repeat" })))
+                                         :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
+                                         :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))

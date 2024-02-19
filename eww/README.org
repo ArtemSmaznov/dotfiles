@@ -101,51 +101,69 @@ $accent-line-width: 2px;
 (include "vars/music.yuck")
 #+end_src
 
+Track info
 #+begin_src yuck :tangle vars/music.yuck
-(defpoll music-state
-         :interval "1h"
-         :initial "paused"
-         "~/.local/bin/get-music.sh state")
+(deflisten music-title
+           :initial ""
+           "~/.local/bin/listen-music-info.sh title")
 
-(defpoll music-progress
-         :interval "1s"
-         :initial 0
-         :run-while {music-state == "playing"}
-         "~/.local/bin/get-music.sh progress")
+(deflisten music-artist
+           :initial ""
+           "~/.local/bin/listen-music-info.sh artist")
 
+(deflisten music-album
+           :initial ""
+           "~/.local/bin/listen-music-info.sh album")
+
+(deflisten music-track-progress
+           ;; :run-while {music-state == "playing"}
+           :initial 0
+           "~/.local/bin/listen-music-info.sh progress")
+
+(deflisten music-track-duration
+           ;; :run-while {music-state == "playing"}
+           :initial 1
+           "~/.local/bin/listen-music-info.sh duration")
+#+end_src
+
+Player info
+#+begin_src yuck :tangle vars/music.yuck
+(deflisten music-state
+           :initial "stopped"
+           "~/.local/bin/listen-music-info.sh state")
+
+(deflisten music-flag-loop
+           :initial "-"
+           "~/.local/bin/listen-music-info.sh loop") ;; playlist | track | none
+
+(deflisten music-flag-shuffle
+           :initial false
+           "~/.local/bin/listen-music-info.sh shuffle") ;; true | false
+
+(defpoll music-flag-consume
+           :interval "2s"
+           :initial "-"
+           "~/.local/bin/get-music.sh consume")
+
+(defpoll music-flag-crossfade
+           :interval "2s"
+           :initial "-"
+           "~/.local/bin/get-music.sh crossfade")
+
+(deflisten music-volume
+         :iniitial "-%"
+         "~/.local/bin/listen-music-info.sh volume")
+#+end_src
+
+Album cover art
+#+begin_src yuck :tangle vars/music.yuck
 (defpoll music-album-cover-color
          :interval "1h"
          "~/.local/bin/get-music.sh albumcovercolor")
 
-(defpoll music-album-cover-file
-         :interval "1h"
-         "~/.local/bin/get-music.sh albumcover")
-
-(defpoll music-artist
-         :interval "1h"
-         "~/.local/bin/get-music.sh artist")
-
-(defpoll music-album
-         :interval "1h"
-         "~/.local/bin/get-music.sh album")
-
-(defpoll music-title
-         :interval "1h"
-         "~/.local/bin/get-music.sh title")
-
-(defpoll music-song
-         :interval "1h"
-         "~/.local/bin/get-music.sh song")
-
-(defpoll music-flags
-         :interval "1h"
-         :iniitial "[----]"
-         "~/.local/bin/get-music.sh flags")
-
-(defpoll music-volume
-         :interval "1h"
-         :iniitial "-%"
-         "~/.local/bin/get-music.sh volume")
+(deflisten music-album-cover-file
+           :initial ""
+           "~/.local/bin/listen-music-info.sh cover_file")
 #+end_src
 
 ** Time
@@ -633,7 +651,7 @@ Layout
   font-family: $text-font;
 }
 
-.widget.music .music-flags {
+.widget.music label {
   padding-left: 5px;
 }
 #+end_src
@@ -647,17 +665,16 @@ Layout
                           :orientation "h"
                           :space-evenly false
                           :halign "center"
-                          (icon :icon { music-song  == ""        ? "stop"  :
+                          (icon :icon { music-title  == ""        ? "stop"  :
                                                     music-state == "playing" ? "music" :
                                                     "pause" })
                           (label :class "music-song"
                                  :limit-width 50
-                                 :text music-song)
+                                 :text "${music-artist} · ${music-title}")
                           (label :class "music-flags"
-                                 :text music-flags)
-                          (label :class "music-flags"
-                                 :text music-volume)
-                          )))
+                                 :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")
+                          (label :class "music-volume"
+                                 :text "${replace(round(music-volume, 2), '0.', '')}%"))))
 #+end_src
 
 *** System Tray
@@ -1227,7 +1244,7 @@ calendar:selected {
                 :space-evenly false
                 :spacing 30
 
-                (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                (eventbox :onclick "~/.local/bin/playerctl.sh toggle"
                           :cursor "pointer"
                           (overlay :class "music-player-album-art-reactive"
                                    (music-player-album-art)
@@ -1290,35 +1307,35 @@ calendar:selected {
                 :space-evenly false
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh prev"
+                          (button :onclick "~/.local/bin/playerctl.sh prev"
                                   (label :class "icon"
                                          :text "backward-step")))
 
                 (scale :class "music-progress-bar"
                        :hexpand true
                        :vexpand false
-                       :value music-progress
                        :min 0
-                       :max 100
+                       :value { music-track-progress / 1000 / 1000 }
+                       :max { music-track-duration / 1000 / 1000 }
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/musictl.sh goto {}%")
+                       :onchange "~/.local/bin/playerctl.sh goto {}")
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh next"
+                          (button :onclick "~/.local/bin/playerctl.sh next"
                                   (label :class "icon"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh flag-random"
+                          (button :onclick "~/.local/bin/playerctl.sh random"
                                   (label :class "icon"
-                                         :style "opacity: ${ music-flags =~'z' ? 1 : 0.3 };"
+                                         :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/musictl.sh flag-single"
+                          (button :onclick "~/.local/bin/playerctl.sh single"
                                   (label :class "icon"
-                                         :style "opacity: ${ music-flags =~'r' ? 1 : 0.3 };"
-                                         :text { music-flags =~ "s" ? "rotate-right" : "repeat" })))
+                                         :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
+                                         :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))
 #+end_src
 
@@ -1495,8 +1512,12 @@ Media Player
 :PROPERTIES:
 :header-args: :shebang #!/usr/bin/env bash
 :END:
-** song-switch
-#+begin_src shell :tangle scripts/song-switch.sh
+** update-music-info
+#+begin_src shell :tangle scripts/update-music-info.sh
+eww update music-flags="$(~/.local/bin/get-music.sh flags)"
+eww update music-volume="$(~/.local/bin/get-music.sh volume)"
+eww update music-state="$(~/.local/bin/get-music.sh state)"
+
 eww update music-song="$(~/.local/bin/get-music.sh song)"
 eww update music-title="$(~/.local/bin/get-music.sh title)"
 eww update music-artist="$(~/.local/bin/get-music.sh artist)"
@@ -1504,9 +1525,12 @@ eww update music-album="$(~/.local/bin/get-music.sh album)"
 eww update music-album-cover-file="$(~/.local/bin/get-music.sh albumcover)"
 #+end_src
 
-** update-music
-#+begin_src shell :tangle scripts/update-music.sh
-eww update music-flags="$(~/.local/bin/get-music.sh flags)"
-eww update music-volume="$(~/.local/bin/get-music.sh volume)"
-eww update music-state="$(~/.local/bin/get-music.sh state)"
+** update-on-song-switch
+#+begin_src shell :tangle scripts/update-on-song-switch.sh
+eww update music-song="$(~/.local/bin/get-music.sh song)"
+eww update music-title="$(~/.local/bin/get-music.sh title)"
+eww update music-artist="$(~/.local/bin/get-music.sh artist)"
+eww update music-album="$(~/.local/bin/get-music.sh album)"
+eww update music-album-cover-file="$(~/.local/bin/get-music.sh albumcover)"
+# eww update music-player-cover-color="$(~/.local/bin/get-music.sh albumcovercolor)"
 #+end_src
