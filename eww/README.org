@@ -115,15 +115,11 @@ Track info
            :initial ""
            "~/.local/bin/listen-music-info.sh album")
 
-(deflisten music-track-progress
-           ;; :run-while {music-state == "playing"}
+(defpoll music-track-progress
+           :run-while {music-state == "playing"}
+           :interval "1s"
            :initial 0
-           "~/.local/bin/listen-music-info.sh progress")
-
-(deflisten music-track-duration
-           ;; :run-while {music-state == "playing"}
-           :initial 1
-           "~/.local/bin/listen-music-info.sh duration")
+           "~/.local/bin/get-music.sh progress")
 #+end_src
 
 Player info
@@ -1315,10 +1311,10 @@ calendar:selected {
                        :hexpand true
                        :vexpand false
                        :min 0
-                       :value { music-track-progress / 1000 / 1000 }
-                       :max { music-track-duration / 1000 / 1000 }
+                       :value music-track-progress
+                       :max 100
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/playerctl.sh goto {}")
+                       :onchange "~/.local/bin/playerctl.sh goto {}%")
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/playerctl.sh next"
@@ -1512,25 +1508,3 @@ Media Player
 :PROPERTIES:
 :header-args: :shebang #!/usr/bin/env bash
 :END:
-** update-music-info
-#+begin_src shell :tangle scripts/update-music-info.sh
-eww update music-flags="$(~/.local/bin/get-music.sh flags)"
-eww update music-volume="$(~/.local/bin/get-music.sh volume)"
-eww update music-state="$(~/.local/bin/get-music.sh state)"
-
-eww update music-song="$(~/.local/bin/get-music.sh song)"
-eww update music-title="$(~/.local/bin/get-music.sh title)"
-eww update music-artist="$(~/.local/bin/get-music.sh artist)"
-eww update music-album="$(~/.local/bin/get-music.sh album)"
-eww update music-album-cover-file="$(~/.local/bin/get-music.sh albumcover)"
-#+end_src
-
-** update-on-song-switch
-#+begin_src shell :tangle scripts/update-on-song-switch.sh
-eww update music-song="$(~/.local/bin/get-music.sh song)"
-eww update music-title="$(~/.local/bin/get-music.sh title)"
-eww update music-artist="$(~/.local/bin/get-music.sh artist)"
-eww update music-album="$(~/.local/bin/get-music.sh album)"
-eww update music-album-cover-file="$(~/.local/bin/get-music.sh albumcover)"
-# eww update music-player-cover-color="$(~/.local/bin/get-music.sh albumcovercolor)"
-#+end_src

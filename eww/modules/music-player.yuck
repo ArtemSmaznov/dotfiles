@@ -75,10 +75,10 @@
                        :hexpand true
                        :vexpand false
                        :min 0
-                       :value { music-track-progress / 1000 / 1000 }
-                       :max { music-track-duration / 1000 / 1000 }
+                       :value music-track-progress
+                       :max 100
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/playerctl.sh goto {}")
+                       :onchange "~/.local/bin/playerctl.sh goto {}%")
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/playerctl.sh next"

@@ -10,15 +10,11 @@
            :initial ""
            "~/.local/bin/listen-music-info.sh album")
 
-(deflisten music-track-progress
-           ;; :run-while {music-state == "playing"}
+(defpoll music-track-progress
+           :run-while {music-state == "playing"}
+           :interval "1s"
            :initial 0
-           "~/.local/bin/listen-music-info.sh progress")
-
-(deflisten music-track-duration
-           ;; :run-while {music-state == "playing"}
-           :initial 1
-           "~/.local/bin/listen-music-info.sh duration")
+           "~/.local/bin/get-music.sh progress")
 
 (deflisten music-state
            :initial "stopped"
