@@ -1,32 +1,14 @@
-(deflisten music-title
-           :initial ""
-           "~/.local/bin/listen-music-info.sh title")
-
-(deflisten music-artist
-           :initial ""
-           "~/.local/bin/listen-music-info.sh artist")
-
-(deflisten music-album
-           :initial ""
-           "~/.local/bin/listen-music-info.sh album")
-
-(defpoll music-track-progress
-           :run-while {music-state == "playing"}
-           :interval "1s"
-           :initial 0
-           "~/.local/bin/get-music.sh progress")
-
 (deflisten music-state
            :initial "stopped"
-           "~/.local/bin/listen-music-info.sh state")
+           "~/.local/bin/listen-player.sh state mpd")
 
 (deflisten music-flag-loop
            :initial "-"
-           "~/.local/bin/listen-music-info.sh loop") ;; playlist | track | none
+           "~/.local/bin/listen-player.sh loop mpd") ;; playlist | track | none
 
 (deflisten music-flag-shuffle
            :initial false
-           "~/.local/bin/listen-music-info.sh shuffle") ;; true | false
+           "~/.local/bin/listen-player.sh shuffle mpd") ;; true | false
 
 (defpoll music-flag-consume
            :interval "2s"
@@ -40,12 +22,30 @@
 
 (deflisten music-volume
          :iniitial "-%"
-         "~/.local/bin/listen-music-info.sh volume")
+         "~/.local/bin/listen-player.sh volume mpd")
+
+(deflisten music-title
+           :initial ""
+           "~/.local/bin/listen-player.sh title mpd")
+
+(deflisten music-artist
+           :initial ""
+           "~/.local/bin/listen-player.sh artist mpd")
+
+(deflisten music-album
+           :initial ""
+           "~/.local/bin/listen-player.sh album mpd")
+
+(defpoll music-track-progress
+           :run-while { music-state == "playing" }
+           :interval "1s"
+           :initial 0
+           "~/.local/bin/get-music.sh progress")
+
+(deflisten music-album-cover-file
+           :initial ""
+           "~/.local/bin/listen-player.sh cover_file mpd")
 
 (defpoll music-album-cover-color
          :interval "1h"
          "~/.local/bin/get-music.sh albumcovercolor")
-
-(deflisten music-album-cover-file
-           :initial ""
-           "~/.local/bin/listen-music-info.sh cover_file")

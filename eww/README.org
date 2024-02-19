@@ -75,6 +75,15 @@ $accent-line-width: 2px;
 (defvar show-power-menu false)
 #+end_src
 
+** Theme
+#+begin_src yuck :tangle eww.yuck
+(include "vars/theme.yuck")
+#+end_src
+
+#+begin_src yuck :tangle vars/theme.yuck
+(defvar revealer-duration "0.35s")
+#+end_src
+
 ** Images
 #+begin_src yuck :tangle eww.yuck
 (include "vars/images.yuck")
@@ -96,45 +105,59 @@ $accent-line-width: 2px;
 (defvar hypr-scripts "~/.config/hypr/scripts")
 #+end_src
 
-** Music
+** Player
 #+begin_src yuck :tangle eww.yuck
-(include "vars/music.yuck")
+(include "vars/player.yuck")
+#+end_src
+
+Player info
+#+begin_src yuck :tangle vars/player.yuck
+(deflisten player-name
+           :initial "mpd"
+           "~/.local/bin/listen-player.sh player")
+
+(deflisten player-state
+           :initial "stopped"
+           "~/.local/bin/listen-player.sh state")
+
+(deflisten player-volume
+         :iniitial "-%"
+         "~/.local/bin/listen-player.sh volume")
 #+end_src
 
 Track info
-#+begin_src yuck :tangle vars/music.yuck
-(deflisten music-title
+#+begin_src yuck :tangle vars/player.yuck
+(deflisten player-title
            :initial ""
-           "~/.local/bin/listen-music-info.sh title")
+           "~/.local/bin/listen-player.sh title")
 
-(deflisten music-artist
+(deflisten player-artist
            :initial ""
-           "~/.local/bin/listen-music-info.sh artist")
+           "~/.local/bin/listen-player.sh artist")
 
-(deflisten music-album
+(deflisten player-album
            :initial ""
-           "~/.local/bin/listen-music-info.sh album")
+           "~/.local/bin/listen-player.sh album")
+#+end_src
 
-(defpoll music-track-progress
-           :run-while {music-state == "playing"}
-           :interval "1s"
-           :initial 0
-           "~/.local/bin/get-music.sh progress")
+** Music
+#+begin_src yuck :tangle eww.yuck
+(include "vars/music.yuck")
 #+end_src
 
 Player info
 #+begin_src yuck :tangle vars/music.yuck
 (deflisten music-state
            :initial "stopped"
-           "~/.local/bin/listen-music-info.sh state")
+           "~/.local/bin/listen-player.sh state mpd")
 
 (deflisten music-flag-loop
            :initial "-"
-           "~/.local/bin/listen-music-info.sh loop") ;; playlist | track | none
+           "~/.local/bin/listen-player.sh loop mpd") ;; playlist | track | none
 
 (deflisten music-flag-shuffle
            :initial false
-           "~/.local/bin/listen-music-info.sh shuffle") ;; true | false
+           "~/.local/bin/listen-player.sh shuffle mpd") ;; true | false
 
 (defpoll music-flag-consume
            :interval "2s"
@@ -148,18 +171,39 @@ Player info
 
 (deflisten music-volume
          :iniitial "-%"
-         "~/.local/bin/listen-music-info.sh volume")
+         "~/.local/bin/listen-player.sh volume mpd")
+#+end_src
+
+Track info
+#+begin_src yuck :tangle vars/music.yuck
+(deflisten music-title
+           :initial ""
+           "~/.local/bin/listen-player.sh title mpd")
+
+(deflisten music-artist
+           :initial ""
+           "~/.local/bin/listen-player.sh artist mpd")
+
+(deflisten music-album
+           :initial ""
+           "~/.local/bin/listen-player.sh album mpd")
+
+(defpoll music-track-progress
+           :run-while { music-state == "playing" }
+           :interval "1s"
+           :initial 0
+           "~/.local/bin/get-music.sh progress")
 #+end_src
 
 Album cover art
 #+begin_src yuck :tangle vars/music.yuck
+(deflisten music-album-cover-file
+           :initial ""
+           "~/.local/bin/listen-player.sh cover_file mpd")
+
 (defpoll music-album-cover-color
          :interval "1h"
          "~/.local/bin/get-music.sh albumcovercolor")
-
-(deflisten music-album-cover-file
-           :initial ""
-           "~/.local/bin/listen-music-info.sh cover_file")
 #+end_src
 
 ** Time
@@ -419,7 +463,7 @@ Layout
 
                            (window-title)
                            (separator)
-                           (music))
+                           (player))
 
                       ;; right
                       (box :class "rightside"
@@ -488,7 +532,7 @@ Layout
                            )
 
                       ;; center
-                      (music)
+                      (player)
 
                       ;; right
                       (box :class "rightside"
@@ -640,37 +684,59 @@ Layout
          :text window-title))
 #+end_src
 
-*** Music
+*** Player
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
-.widget.music {
+.widget.player {
   font-family: $text-font;
 }
 
-.widget.music label {
+.widget.player label {
   padding-left: 5px;
 }
 #+end_src
 
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
-(defwidget music []
+(defwidget player []
            (eventbox :onclick "eww open --toggle status-panel"
                      :cursor "pointer"
-                     (box :class "widget music"
+                     (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
                           :halign "center"
-                          (icon :icon { music-title  == ""        ? "stop"  :
-                                                    music-state == "playing" ? "music" :
-                                                    "pause" })
-                          (label :class "music-song"
+
+                          (icon :icon { player-state == "stopped" ? "stop" :
+                                        player-state == "playing" ? "play" :
+                                                                    "pause" })
+                          (label :text "·")
+
+                          (revealer :transition "slideright"
+                                    :duration revealer-duration
+                                    :reveal { player-artist != "" }
+                                    (box :orientation "h"
+                                         :space-evenly false
+                                         (label :class "player-artist"
+                                                :limit-width 50
+                                                :text player-artist)
+                                         (label :text "-")))
+
+                          (label :class "player-title"
                                  :limit-width 50
-                                 :text "${music-artist} · ${music-title}")
-                          (label :class "music-flags"
-                                 :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")
-                          (label :class "music-volume"
-                                 :text "${replace(round(music-volume, 2), '0.', '')}%"))))
+                                 :text player-title)
+
+                          (revealer :transition "slideright"
+                                    :duration revealer-duration
+                                    :reveal { player-name == "mpd" }
+                                    (box :orientation "h"
+                                         :space-evenly false
+                                         (label :text "·")
+                                         (label :class "music-flags"
+                                                :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")))
+
+                          (label :text "·")
+                          (label :class "player-volume"
+                                 :text "${replace(round(player-volume, 2), '0.', '')}%"))))
 #+end_src
 
 *** System Tray
@@ -716,8 +782,8 @@ Layout
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget battery []
   (revealer :transition "slideright"
+            :duration revealer-duration
             :reveal {present == "yes" ? true : false}
-            :duration "2s"
             (box :class "widget colored 7 volume"
                 (slider :icon "gamepad"
                     :value charge
@@ -739,49 +805,49 @@ Layout
            (eventbox :onclick "eww open --toggle updates-list"
                      :cursor "pointer"
                      (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
-                                           updates ==  69  ? "widget colored 6 status-widget red"         :
-                                           updates == 101  ? "widget colored 6 status-widget orange"      :
-                                           updates == 220  ? "widget colored 6 status-widget yellow"      :
-                                           updates == 360  ? "widget colored 6 status-widget blue"        :
-                                           updates == 404  ? "widget colored 6 status-widget yellow"      :
-                                           updates == 420  ? "widget colored 6 status-widget green"       :
-                                           updates == 1001 ? "widget colored 6 status-widget purple"      :
-                                           updates == year ? "widget colored 6 status-widget special"     :
+                                   updates ==  69  ? "widget colored 6 status-widget red"         :
+                                   updates == 101  ? "widget colored 6 status-widget orange"      :
+                                   updates == 220  ? "widget colored 6 status-widget yellow"      :
+                                   updates == 360  ? "widget colored 6 status-widget blue"        :
+                                   updates == 404  ? "widget colored 6 status-widget yellow"      :
+                                   updates == 420  ? "widget colored 6 status-widget green"       :
+                                   updates == 1001 ? "widget colored 6 status-widget purple"      :
+                                   updates == year ? "widget colored 6 status-widget special"     :
                                            "widget colored 6 status-widget"             }
 
                           :orientation "h"
                           :space-evenly false
                           (icon :icon { updates ==   0  ? "check"    :
-                                                updates ==  69  ? "heart"    :
-                                                updates == 101  ? "book"     :
-                                                updates == 220  ? "bolt"     :
-                                                updates == 360  ? "globe" :
-                                                updates == 404  ? "warning"  :
-                                                updates == 420  ? "cannabis" :
-                                                updates == 1001 ? "moon"     :
-                                                updates == year ? "calendar" :
+                                        updates ==  69  ? "heart"    :
+                                        updates == 101  ? "book"     :
+                                        updates == 220  ? "bolt"     :
+                                        updates == 360  ? "globe"    :
+                                        updates == 404  ? "warning"  :
+                                        updates == 420  ? "cannabis" :
+                                        updates == 1001 ? "moon"     :
+                                        updates == year ? "calendar" :
                                                 "bell" })
 
-                          (revealer :class { updates ==  69  ? ""  :
-                                                     updates == 101  ? ""  :
-                                                     updates == 220  ? ""  :
-                                                     updates == 360  ? ""  :
-                                                     updates == 404  ? ""  :
-                                                     updates == 420  ? ""  :
-                                                     updates == 1001 ? ""  :
-                                                     updates == year ? ""  :
-                                                     updates >= 900  ? "state-urgent"  :
-                                                     updates >= 400  ? "state-warning" :
+                          (revealer :class { updates ==  69  ? ""              :
+                                             updates == 101  ? ""              :
+                                             updates == 220  ? ""              :
+                                             updates == 360  ? ""              :
+                                             updates == 404  ? ""              :
+                                             updates == 420  ? ""              :
+                                             updates == 1001 ? ""              :
+                                             updates == year ? ""              :
+                                             updates >= 900  ? "state-urgent"  :
+                                             updates >= 400  ? "state-warning" :
                                                      "" }
                                     :transition "slideright"
                                     :reveal {updates > 0}
-                                    :duration "2s"
+                                    :duration revealer-duration
                                     updates)
 
                           (revealer :class "yellow update-flags"
                                     :transition "slideright"
                                     :reveal {update-flags != ""}
-                                    :duration "2s"
+                                    :duration revealer-duration
                                     update-flags))))
 #+end_src
 
@@ -976,7 +1042,7 @@ calendar:selected {
                 :class "widget profile"
                 (revealer :transition "slideleft"
                           :reveal show-power-menu
-                          :duration "2s"
+                          :duration revealer-duration
                           (power-menu))
                 (eventbox :onhover     "eww update show-power-menu=true"
                           :onhoverlost "eww update show-power-menu=false"
@@ -1231,6 +1297,9 @@ calendar:selected {
 #+begin_src yuck :tangle eww.yuck
 (include "modules/music-player.yuck")
 #+end_src
+#+begin_src scss :tangle eww.scss
+@import "modules/music-player.scss";
+#+end_src
 
 *** widgets
 #+begin_src yuck :tangle modules/music-player.yuck
@@ -1240,18 +1309,7 @@ calendar:selected {
                 :space-evenly false
                 :spacing 30
 
-                (eventbox :onclick "~/.local/bin/playerctl.sh toggle"
-                          :cursor "pointer"
-                          (overlay :class "music-player-album-art-reactive"
-                                   (music-player-album-art)
-                                   (revealer :transition "crossfade"
-                                             :duration "0.35s"
-                                             :reveal {music-state != "playing"}
-                                             (label :class "icon"
-                                                    :text { music-state == "paused"  ? "pause" :
-                                                                               music-state == "stopped" ? "stop"  :
-                                                                               "" } ))))
-
+                (music-player-album-art)
                 (box :class "music-player-content"
                      :hexpand true
                      :vexpand true
@@ -1259,16 +1317,23 @@ calendar:selected {
                      :space-evenly false
 
                      (music-player-track-info)
-                     (music-player-controls)
-                     )))
-
-
+                     (music-player-controls))))
 
 (defwidget music-player-album-art []
-           (box :class "music-player-album-art"
-                :vexpand false
-                :hexpand false
-                :style "background-image: url('${music-album-cover-file}');"))
+           (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                     :cursor "pointer"
+                     (overlay :class "music-player-album-art-reactive"
+                              (box :class "music-player-album-art"
+                                   :vexpand false
+                                   :hexpand false
+                                   :style "background-image: url('${music-album-cover-file}');")
+                              (revealer :transition "crossfade"
+                                        :duration revealer-duration
+                                        :reveal {music-state != "playing"}
+                                        (label :class "icon"
+                                               :text { music-state == "paused"  ? "pause" :
+                                                                   music-state == "stopped" ? "stop"  :
+                                                                   "" } )))))
 
 (defwidget music-player-track-info []
            (box :class "music-player-track-info"
@@ -1303,7 +1368,7 @@ calendar:selected {
                 :space-evenly false
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh prev"
+                          (button :onclick "~/.local/bin/musictl.sh prev"
                                   (label :class "icon"
                                          :text "backward-step")))
 
@@ -1314,21 +1379,21 @@ calendar:selected {
                        :value music-track-progress
                        :max 100
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/playerctl.sh goto {}%")
+                       :onchange "~/.local/bin/musictl.sh goto {}%")
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh next"
+                          (button :onclick "~/.local/bin/musictl.sh next"
                                   (label :class "icon"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh random"
+                          (button :onclick "~/.local/bin/musictl.sh random"
                                   (label :class "icon"
                                          :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh single"
+                          (button :onclick "~/.local/bin/musictl.sh single"
                                   (label :class "icon"
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
@@ -1336,10 +1401,6 @@ calendar:selected {
 #+end_src
 
 *** styles
-#+begin_src scss :tangle eww.scss
-@import "modules/music-player.scss";
-#+end_src
-
 Media Player
 #+begin_src scss :tangle modules/music-player.scss
 .music-player {

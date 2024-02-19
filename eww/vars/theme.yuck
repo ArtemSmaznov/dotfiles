@@ -1,0 +1,1 @@
+(defvar revealer-duration "0.35s")

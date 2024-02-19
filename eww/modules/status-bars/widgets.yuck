@@ -43,23 +43,45 @@
   (label :limit-width 40
          :text window-title))
 
-(defwidget music []
+(defwidget player []
            (eventbox :onclick "eww open --toggle status-panel"
                      :cursor "pointer"
-                     (box :class "widget music"
+                     (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
                           :halign "center"
-                          (icon :icon { music-title  == ""        ? "stop"  :
-                                                    music-state == "playing" ? "music" :
-                                                    "pause" })
-                          (label :class "music-song"
+
+                          (icon :icon { player-state == "stopped" ? "stop" :
+                                        player-state == "playing" ? "play" :
+                                                                    "pause" })
+                          (label :text "·")
+
+                          (revealer :transition "slideright"
+                                    :duration revealer-duration
+                                    :reveal { player-artist != "" }
+                                    (box :orientation "h"
+                                         :space-evenly false
+                                         (label :class "player-artist"
+                                                :limit-width 50
+                                                :text player-artist)
+                                         (label :text "-")))
+
+                          (label :class "player-title"
                                  :limit-width 50
-                                 :text "${music-artist} · ${music-title}")
-                          (label :class "music-flags"
-                                 :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")
-                          (label :class "music-volume"
-                                 :text "${replace(round(music-volume, 2), '0.', '')}%"))))
+                                 :text player-title)
+
+                          (revealer :transition "slideright"
+                                    :duration revealer-duration
+                                    :reveal { player-name == "mpd" }
+                                    (box :orientation "h"
+                                         :space-evenly false
+                                         (label :text "·")
+                                         (label :class "music-flags"
+                                                :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")))
+
+                          (label :text "·")
+                          (label :class "player-volume"
+                                 :text "${replace(round(player-volume, 2), '0.', '')}%"))))
 
 (defwidget sys-tray []
   (box :orientation "h"
@@ -81,8 +103,8 @@
 
 (defwidget battery []
   (revealer :transition "slideright"
+            :duration revealer-duration
             :reveal {present == "yes" ? true : false}
-            :duration "2s"
             (box :class "widget colored 7 volume"
                 (slider :icon "gamepad"
                     :value charge
@@ -93,49 +115,49 @@
            (eventbox :onclick "eww open --toggle updates-list"
                      :cursor "pointer"
                      (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
-                                           updates ==  69  ? "widget colored 6 status-widget red"         :
-                                           updates == 101  ? "widget colored 6 status-widget orange"      :
-                                           updates == 220  ? "widget colored 6 status-widget yellow"      :
-                                           updates == 360  ? "widget colored 6 status-widget blue"        :
-                                           updates == 404  ? "widget colored 6 status-widget yellow"      :
-                                           updates == 420  ? "widget colored 6 status-widget green"       :
-                                           updates == 1001 ? "widget colored 6 status-widget purple"      :
-                                           updates == year ? "widget colored 6 status-widget special"     :
+                                   updates ==  69  ? "widget colored 6 status-widget red"         :
+                                   updates == 101  ? "widget colored 6 status-widget orange"      :
+                                   updates == 220  ? "widget colored 6 status-widget yellow"      :
+                                   updates == 360  ? "widget colored 6 status-widget blue"        :
+                                   updates == 404  ? "widget colored 6 status-widget yellow"      :
+                                   updates == 420  ? "widget colored 6 status-widget green"       :
+                                   updates == 1001 ? "widget colored 6 status-widget purple"      :
+                                   updates == year ? "widget colored 6 status-widget special"     :
                                            "widget colored 6 status-widget"             }
 
                           :orientation "h"
                           :space-evenly false
                           (icon :icon { updates ==   0  ? "check"    :
-                                                updates ==  69  ? "heart"    :
-                                                updates == 101  ? "book"     :
-                                                updates == 220  ? "bolt"     :
-                                                updates == 360  ? "globe" :
-                                                updates == 404  ? "warning"  :
-                                                updates == 420  ? "cannabis" :
-                                                updates == 1001 ? "moon"     :
-                                                updates == year ? "calendar" :
+                                        updates ==  69  ? "heart"    :
+                                        updates == 101  ? "book"     :
+                                        updates == 220  ? "bolt"     :
+                                        updates == 360  ? "globe"    :
+                                        updates == 404  ? "warning"  :
+                                        updates == 420  ? "cannabis" :
+                                        updates == 1001 ? "moon"     :
+                                        updates == year ? "calendar" :
                                                 "bell" })
 
-                          (revealer :class { updates ==  69  ? ""  :
-                                                     updates == 101  ? ""  :
-                                                     updates == 220  ? ""  :
-                                                     updates == 360  ? ""  :
-                                                     updates == 404  ? ""  :
-                                                     updates == 420  ? ""  :
-                                                     updates == 1001 ? ""  :
-                                                     updates == year ? ""  :
-                                                     updates >= 900  ? "state-urgent"  :
-                                                     updates >= 400  ? "state-warning" :
+                          (revealer :class { updates ==  69  ? ""              :
+                                             updates == 101  ? ""              :
+                                             updates == 220  ? ""              :
+                                             updates == 360  ? ""              :
+                                             updates == 404  ? ""              :
+                                             updates == 420  ? ""              :
+                                             updates == 1001 ? ""              :
+                                             updates == year ? ""              :
+                                             updates >= 900  ? "state-urgent"  :
+                                             updates >= 400  ? "state-warning" :
                                                      "" }
                                     :transition "slideright"
                                     :reveal {updates > 0}
-                                    :duration "2s"
+                                    :duration revealer-duration
                                     updates)
 
                           (revealer :class "yellow update-flags"
                                     :transition "slideright"
                                     :reveal {update-flags != ""}
-                                    :duration "2s"
+                                    :duration revealer-duration
                                     update-flags))))
 
 (defwindow updates-list
@@ -228,7 +250,7 @@
                 :class "widget profile"
                 (revealer :transition "slideleft"
                           :reveal show-power-menu
-                          :duration "2s"
+                          :duration revealer-duration
                           (power-menu))
                 (eventbox :onhover     "eww update show-power-menu=true"
                           :onhoverlost "eww update show-power-menu=false"

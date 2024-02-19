@@ -32,7 +32,7 @@
                            )
 
                       ;; center
-                      (music)
+                      (player)
 
                       ;; right
                       (box :class "rightside"

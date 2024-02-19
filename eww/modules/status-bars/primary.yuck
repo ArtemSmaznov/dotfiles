@@ -41,7 +41,7 @@
 
                            (window-title)
                            (separator)
-                           (music))
+                           (player))
 
                       ;; right
                       (box :class "rightside"

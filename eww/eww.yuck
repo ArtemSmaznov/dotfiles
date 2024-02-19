@@ -1,8 +1,12 @@
 (include "vars/states.yuck")
 
+(include "vars/theme.yuck")
+
 (include "vars/images.yuck")
 
 (include "vars/scripts.yuck")
+
+(include "vars/player.yuck")
 
 (include "vars/music.yuck")
 

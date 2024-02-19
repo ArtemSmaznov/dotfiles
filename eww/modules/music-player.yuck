@@ -4,18 +4,7 @@
                 :space-evenly false
                 :spacing 30
 
-                (eventbox :onclick "~/.local/bin/playerctl.sh toggle"
-                          :cursor "pointer"
-                          (overlay :class "music-player-album-art-reactive"
-                                   (music-player-album-art)
-                                   (revealer :transition "crossfade"
-                                             :duration "0.35s"
-                                             :reveal {music-state != "playing"}
-                                             (label :class "icon"
-                                                    :text { music-state == "paused"  ? "pause" :
-                                                                               music-state == "stopped" ? "stop"  :
-                                                                               "" } ))))
-
+                (music-player-album-art)
                 (box :class "music-player-content"
                      :hexpand true
                      :vexpand true
@@ -23,16 +12,23 @@
                      :space-evenly false
 
                      (music-player-track-info)
-                     (music-player-controls)
-                     )))
-
-
+                     (music-player-controls))))
 
 (defwidget music-player-album-art []
-           (box :class "music-player-album-art"
-                :vexpand false
-                :hexpand false
-                :style "background-image: url('${music-album-cover-file}');"))
+           (eventbox :onclick "~/.local/bin/musictl.sh toggle"
+                     :cursor "pointer"
+                     (overlay :class "music-player-album-art-reactive"
+                              (box :class "music-player-album-art"
+                                   :vexpand false
+                                   :hexpand false
+                                   :style "background-image: url('${music-album-cover-file}');")
+                              (revealer :transition "crossfade"
+                                        :duration revealer-duration
+                                        :reveal {music-state != "playing"}
+                                        (label :class "icon"
+                                               :text { music-state == "paused"  ? "pause" :
+                                                                   music-state == "stopped" ? "stop"  :
+                                                                   "" } )))))
 
 (defwidget music-player-track-info []
            (box :class "music-player-track-info"
@@ -67,7 +63,7 @@
                 :space-evenly false
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh prev"
+                          (button :onclick "~/.local/bin/musictl.sh prev"
                                   (label :class "icon"
                                          :text "backward-step")))
 
@@ -78,21 +74,21 @@
                        :value music-track-progress
                        :max 100
                        :active {music-state == "playing"}
-                       :onchange "~/.local/bin/playerctl.sh goto {}%")
+                       :onchange "~/.local/bin/musictl.sh goto {}%")
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh next"
+                          (button :onclick "~/.local/bin/musictl.sh next"
                                   (label :class "icon"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh random"
+                          (button :onclick "~/.local/bin/musictl.sh random"
                                   (label :class "icon"
                                          :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
-                          (button :onclick "~/.local/bin/playerctl.sh single"
+                          (button :onclick "~/.local/bin/musictl.sh single"
                                   (label :class "icon"
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
