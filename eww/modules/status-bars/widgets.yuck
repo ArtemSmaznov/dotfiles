@@ -287,7 +287,8 @@
                "lock")))
 
 (defwidget icon [?icon]
-  (box :class "icon" icon))
+  (label :class "icon"
+         :text icon))
 
 (defwidget slider [icon value onchange]
   (box :orientation "h"

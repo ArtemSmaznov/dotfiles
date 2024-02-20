@@ -8,6 +8,7 @@
 
 .music-player-album-art {
     $album-art-size: 150px;
+
     border-radius: 1.5rem;
     background-size: $album-art-size;
     min-height: $album-art-size;
@@ -38,31 +39,38 @@
     opacity: 0.6;
 }
 
-.music-progress-bar,
-.music-player-controls,
-.music-player-controls .icon {
-    // border: 1px solid black;
-}
-
 .music-player-controls button:hover {
     background: rgba($base03, 0.8);
     border-radius: 50%;
 }
 
+.music-player-rating-bar {
+    margin: 5px 0;
+    trough {
+        background-color: $base03;
+        min-width: 5px;
+        border-radius: 10px;
+    }
+    progress {
+        // background-color: $base0A;
+        background-image: linear-gradient(to bottom, $base0C, $base0A, $base08);
+        min-width: 5px;
+        border-radius: 10px;
+    }
+}
+
 .music-progress-bar {
     margin: 0 15px;
-}
-
-.music-progress-bar trough {
-    background-color: $base03;
-    min-height: 5px;
-    min-width: 50px;
-    border-radius: 10px;
-}
-
-.music-progress-bar trough highlight {
-    background-color: $base07;
-    border-radius: 10px;
+    trough {
+        background-color: $base03;
+        min-height: 5px;
+        min-width: 50px;
+        border-radius: 10px;
+    }
+    highlight {
+        background-color: $base07;
+        border-radius: 10px;
+    }
 }
 
 .music-player-controls button {

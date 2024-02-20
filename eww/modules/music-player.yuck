@@ -2,17 +2,19 @@
            (box :class "music-player"
                 :orientation "h"
                 :space-evenly false
-                :spacing 30
+                :spacing 15
 
                 (music-player-album-art)
+                (music-player-rating-bar)
                 (box :class "music-player-content"
-                     :hexpand true
-                     :vexpand true
                      :orientation "v"
                      :space-evenly false
+                     :hexpand true
+                     :vexpand true
 
                      (music-player-track-info)
                      (music-player-controls))))
+
 
 (defwidget music-player-album-art []
            (eventbox :onclick "~/.local/bin/musictl.sh toggle"
@@ -29,6 +31,26 @@
                                                :text { music-state == "paused"  ? "pause" :
                                                                    music-state == "stopped" ? "stop"  :
                                                                    "" } )))))
+
+
+(defwidget music-player-rating-bar []
+           (box :class "music-player-rating"
+                :orientation "v"
+                :space-evenly false
+                :hexpand false
+                :vexpand true
+
+                (progress :class "music-player-rating-bar"
+                          :orientation "v"
+                          :halign "center"
+                          :vexpand true
+                          :flipped true
+                          :value { music-rating * 100 })
+                (label :class "icon yellow"
+                       :style "margin: 5px 0;"
+                       :text "star")
+                ))
+
 
 (defwidget music-player-track-info []
            (box :class "music-player-track-info"
@@ -55,6 +77,7 @@
                           "record-vinyl")
                      (label :xalign 0
                             :text music-album))))
+
 
 (defwidget music-player-controls []
            (box :class "music-player-controls"

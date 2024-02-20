@@ -81,7 +81,7 @@ $accent-line-width: 2px;
 #+end_src
 
 #+begin_src yuck :tangle vars/theme.yuck
-(defvar revealer-duration "0.35s")
+(defvar revealer-duration ".35s")
 #+end_src
 
 ** Images
@@ -189,10 +189,18 @@ Track info
            "~/.local/bin/listen-player.sh album mpd")
 
 (defpoll music-track-progress
-           :run-while { music-state == "playing" }
            :interval "1s"
            :initial 0
+           :run-while { music-state == "playing" }
            "~/.local/bin/get-music.sh progress")
+
+(deflisten music-track-file
+           :initial ""
+           "~/.local/bin/listen-player.sh track_file mpd")
+
+(deflisten music-rating
+           :initial 0
+           "~/.local/bin/listen-player.sh rating")
 #+end_src
 
 Album cover art
@@ -394,7 +402,7 @@ Layout
 }
 
 .icon {
-  padding-right: 7px;
+  margin-right: 7px;
 }
 
 .shutdown, .reboot, .suspend, .lock-screen, .log-out {
@@ -1301,23 +1309,114 @@ calendar:selected {
 @import "modules/music-player.scss";
 #+end_src
 
+*** styles
+Media Player
+#+begin_src scss :tangle modules/music-player.scss
+.music-player {
+    background: rgba($base0E, 0.4);
+    color: $base07;
+    padding: 20px;
+    border-radius: 1.5rem;
+    min-width: 500px;
+}
+
+.music-player-album-art {
+    $album-art-size: 150px;
+
+    border-radius: 1.5rem;
+    background-size: $album-art-size;
+    min-height: $album-art-size;
+    min-width: $album-art-size;
+}
+
+.music-player-album-art-reactive .icon {
+    font-size: 64pt;
+    border-radius: 1.5rem;
+    // background-color: rgba($base02, 0.7);
+    background-image: radial-gradient(at center, transparent, $base01);
+}
+
+.music-player-track-title {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.music-player-track-artist {
+    font-size: 14pt;
+    color: $base0E;
+    opacity: 0.8;
+}
+
+.music-player-track-album {
+    font-size: 14pt;
+    color: $base05;
+    opacity: 0.6;
+}
+
+.music-player-controls button:hover {
+    background: rgba($base03, 0.8);
+    border-radius: 50%;
+}
+
+.music-player-rating-bar {
+    margin: 5px 0;
+    trough {
+        background-color: $base03;
+        min-width: 5px;
+        border-radius: 10px;
+    }
+    progress {
+        // background-color: $base0A;
+        background-image: linear-gradient(to bottom, $base0C, $base0A, $base08);
+        min-width: 5px;
+        border-radius: 10px;
+    }
+}
+
+.music-progress-bar {
+    margin: 0 15px;
+    trough {
+        background-color: $base03;
+        min-height: 5px;
+        min-width: 50px;
+        border-radius: 10px;
+    }
+    highlight {
+        background-color: $base07;
+        border-radius: 10px;
+    }
+}
+
+.music-player-controls button {
+    min-width:  40px;
+    min-height: 40px;
+}
+
+.music-player-controls .icon {
+    font-size: 18pt;
+    padding: 0;
+}
+#+end_src
+
 *** widgets
 #+begin_src yuck :tangle modules/music-player.yuck
 (defwidget music-player []
            (box :class "music-player"
                 :orientation "h"
                 :space-evenly false
-                :spacing 30
+                :spacing 15
 
                 (music-player-album-art)
+                (music-player-rating-bar)
                 (box :class "music-player-content"
-                     :hexpand true
-                     :vexpand true
                      :orientation "v"
                      :space-evenly false
+                     :hexpand true
+                     :vexpand true
 
                      (music-player-track-info)
                      (music-player-controls))))
+
 
 (defwidget music-player-album-art []
            (eventbox :onclick "~/.local/bin/musictl.sh toggle"
@@ -1334,6 +1433,26 @@ calendar:selected {
                                                :text { music-state == "paused"  ? "pause" :
                                                                    music-state == "stopped" ? "stop"  :
                                                                    "" } )))))
+
+
+(defwidget music-player-rating-bar []
+           (box :class "music-player-rating"
+                :orientation "v"
+                :space-evenly false
+                :hexpand false
+                :vexpand true
+
+                (progress :class "music-player-rating-bar"
+                          :orientation "v"
+                          :halign "center"
+                          :vexpand true
+                          :flipped true
+                          :value { music-rating * 100 })
+                (label :class "icon yellow"
+                       :style "margin: 5px 0;"
+                       :text "star")
+                ))
+
 
 (defwidget music-player-track-info []
            (box :class "music-player-track-info"
@@ -1360,6 +1479,7 @@ calendar:selected {
                           "record-vinyl")
                      (label :xalign 0
                             :text music-album))))
+
 
 (defwidget music-player-controls []
            (box :class "music-player-controls"
@@ -1400,92 +1520,12 @@ calendar:selected {
                 ))
 #+end_src
 
-*** styles
-Media Player
-#+begin_src scss :tangle modules/music-player.scss
-.music-player {
-    background: rgba($base0E, 0.4);
-    color: $base07;
-    padding: 20px;
-    border-radius: 1.5rem;
-    min-width: 500px;
-}
-
-.music-player-album-art {
-    $album-art-size: 150px;
-    border-radius: 1.5rem;
-    background-size: $album-art-size;
-    min-height: $album-art-size;
-    min-width: $album-art-size;
-}
-
-.music-player-album-art-reactive .icon {
-    font-size: 64pt;
-    border-radius: 1.5rem;
-    // background-color: rgba($base02, 0.7);
-    background-image: radial-gradient(at center, transparent, $base01);
-}
-
-.music-player-track-title {
-    font-size: 20pt;
-    font-weight: bold;
-}
-
-.music-player-track-artist {
-    font-size: 14pt;
-    color: $base0E;
-    opacity: 0.8;
-}
-
-.music-player-track-album {
-    font-size: 14pt;
-    color: $base05;
-    opacity: 0.6;
-}
-
-.music-progress-bar,
-.music-player-controls,
-.music-player-controls .icon {
-    // border: 1px solid black;
-}
-
-.music-player-controls button:hover {
-    background: rgba($base03, 0.8);
-    border-radius: 50%;
-}
-
-.music-progress-bar {
-    margin: 0 15px;
-}
-
-.music-progress-bar trough {
-    background-color: $base03;
-    min-height: 5px;
-    min-width: 50px;
-    border-radius: 10px;
-}
-
-.music-progress-bar trough highlight {
-    background-color: $base07;
-    border-radius: 10px;
-}
-
-.music-player-controls button {
-    min-width:  40px;
-    min-height: 40px;
-}
-
-.music-player-controls .icon {
-    font-size: 18pt;
-    padding: 0;
-}
-#+end_src
-
 * widget templates
 ** icon
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget icon [?icon]
-  (box :class "icon" icon))
+  (label :class "icon"
+         :text icon))
 #+end_src
 
 ** slider

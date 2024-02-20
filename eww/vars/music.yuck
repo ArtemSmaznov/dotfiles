@@ -37,10 +37,18 @@
            "~/.local/bin/listen-player.sh album mpd")
 
 (defpoll music-track-progress
-           :run-while { music-state == "playing" }
            :interval "1s"
            :initial 0
+           :run-while { music-state == "playing" }
            "~/.local/bin/get-music.sh progress")
+
+(deflisten music-track-file
+           :initial ""
+           "~/.local/bin/listen-player.sh track_file mpd")
+
+(deflisten music-rating
+           :initial 0
+           "~/.local/bin/listen-player.sh rating")
 
 (deflisten music-album-cover-file
            :initial ""
