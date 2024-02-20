@@ -14,6 +14,7 @@ $accent-line-width: 2px;
   all: unset;
 }
 
+.gray                   { color: $base04; }
 .white                  { color: $base07; }
 .red,    .state-urgent  { color: $base08; }
 .orange                 { color: $base09; }

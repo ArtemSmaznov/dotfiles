@@ -48,6 +48,7 @@ $accent-line-width: 2px;
   all: unset;
 }
 
+.gray                   { color: $base04; }
 .white                  { color: $base07; }
 .red,    .state-urgent  { color: $base08; }
 .orange                 { color: $base09; }
@@ -1448,10 +1449,12 @@ Media Player
                           :vexpand true
                           :flipped true
                           :value { music-rating * 100 })
-                (label :class "icon yellow"
+                (label :class "icon ${ music-rating == 0.5 ? 'gray'   :
+                                       music-rating <  0.3 ? 'red'    :
+                                       music-rating <  0.6 ? 'yellow' :
+                                                             'green'  }"
                        :style "margin: 5px 0;"
-                       :text "star")
-                ))
+                       :text "star")))
 
 
 (defwidget music-player-track-info []
@@ -1473,7 +1476,6 @@ Media Player
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
-                     ;; :valign "end"
                      :space-evenly false
                      (box :class "icon"
                           "record-vinyl")
