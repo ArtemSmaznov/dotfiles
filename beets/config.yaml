@@ -96,8 +96,8 @@ lyrics:
   auto: no
 
 mpd:
-    host: localhost
-    port: 6600
+    # host: $MPD_HOST
+    # port: $MPD_PORT
     # password:
     # music_directory:
 

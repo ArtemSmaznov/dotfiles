@@ -254,8 +254,8 @@ Needs to be run with =beet mpdstats=
 
 #+begin_src yaml
 mpd:
-    host: localhost
-    port: 6600
+    # host: $MPD_HOST
+    # port: $MPD_PORT
     # password:
     # music_directory:
 

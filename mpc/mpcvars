@@ -1,2 +1,3 @@
-export MPC_FORMAT="%artist% (%album%) - %track% %title%"
-
+export MPC_FORMAT="(%album%) %artist% - %title%"
+export MPD_HOST="izumi"
+export MPD_PORT="6600"

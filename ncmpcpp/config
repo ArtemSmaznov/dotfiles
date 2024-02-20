@@ -1,5 +1,5 @@
-mpd_host = localhost
-mpd_port = 6600
+# mpd_host = $MPD_HOST
+# mpd_port = $MPD_PORT
 mpd_connection_timeout = 5
 
 mpd_music_dir = ~/music
