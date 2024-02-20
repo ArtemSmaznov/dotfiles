@@ -1318,7 +1318,6 @@ Media Player
     color: $base07;
     padding: 20px;
     border-radius: 1.5rem;
-    min-width: 500px;
 }
 
 .music-player-album-art {
@@ -1406,6 +1405,7 @@ Media Player
                 :orientation "h"
                 :space-evenly false
                 :spacing 15
+                :width 600
 
                 (music-player-album-art)
                 (music-player-rating-bar)

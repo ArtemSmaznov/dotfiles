@@ -3,6 +3,7 @@
                 :orientation "h"
                 :space-evenly false
                 :spacing 15
+                :width 600
 
                 (music-player-album-art)
                 (music-player-rating-bar)
