@@ -609,7 +609,7 @@ function cpp() {
 ** Search
 #+begin_src shell
 # Less
-alias less='less -iRNJ --use-color'
+alias less='less -iRJ --use-color'
 
 # Grep
 alias grep='grep --colour=auto'
