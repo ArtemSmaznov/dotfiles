@@ -29,7 +29,7 @@
                               (box :class "music-player-album-art"
                                    :vexpand false
                                    :hexpand false
-                                   :style "background-image: url('${music-album-cover-file}');")
+                                   :style "background-image: url('${ music-album-cover-file == '' ? no-album-cover : music-album-cover-file }');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration
                                         :reveal { music-state != "playing" }
@@ -80,16 +80,22 @@
                        :xalign 0
                        :text music-title)
 
-                (label :class "music-player-track-artist"
-                       :xalign 0
-                       :text music-artist)
+                (revealer :transition "slidedown"
+                          :duration revealer-duration
+                          :reveal { music-artist != "" }
+                          (label :class "music-player-track-artist"
+                                 :xalign 0
+                                 :text music-artist))
 
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
                      :space-evenly false
-                     (box :class "icon"
-                          "record-vinyl")
+                     (revealer :transition "slideleft"
+                               :duration revealer-duration
+                               :reveal { music-album != "" }
+                               (box :class "icon"
+                                    "record-vinyl"))
                      (label :xalign 0
                             :text music-album))))
 

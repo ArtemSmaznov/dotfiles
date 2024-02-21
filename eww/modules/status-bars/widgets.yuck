@@ -77,7 +77,7 @@
                                          :space-evenly false
                                          (label :text "·")
                                          (label :class "music-flags"
-                                                :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")))
+                                                :text music-flags)))
 
                           (label :text "·")
                           (label :class "player-volume"

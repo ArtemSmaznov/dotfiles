@@ -91,7 +91,8 @@ $accent-line-width: 2px;
 #+end_src
 
 #+begin_src yuck :tangle vars/images.yuck
-(defvar profile-face "/home/artem/.face")
+(defvar profile-face   "/home/artem/.face")
+(defvar no-album-cover "/home/artem/music/no-cover")
 #+end_src
 
 ** Scripts
@@ -152,27 +153,48 @@ Player info
            :initial "stopped"
            "~/.local/bin/listen-player.sh state mpd")
 
-(deflisten music-flag-loop
-           :initial "-"
-           "~/.local/bin/listen-player.sh loop mpd") ;; playlist | track | none
-
-(deflisten music-flag-shuffle
-           :initial false
-           "~/.local/bin/listen-player.sh shuffle mpd") ;; true | false
-
-(defpoll music-flag-consume
-           :interval "2s"
-           :initial "-"
-           "~/.local/bin/get-music.sh consume")
-
-(defpoll music-flag-crossfade
-           :interval "2s"
-           :initial "-"
-           "~/.local/bin/get-music.sh crossfade")
-
 (deflisten music-volume
          :iniitial "-%"
          "~/.local/bin/listen-player.sh volume mpd")
+#+end_src
+
+Flags
+#+begin_src yuck :tangle vars/music.yuck
+(deflisten music-flag-loop
+           :initial "None" ;; playlist | track
+           "~/.local/bin/listen-player.sh loop mpd")
+
+(deflisten music-flag-shuffle
+           :initial false ;; true
+           "~/.local/bin/listen-player.sh shuffle mpd")
+
+(deflisten music-flags
+           :initial "[------]" ;; [rzscxU]
+           "~/.local/bin/listen-player.sh flags mpd")
+
+(deflisten music-flag-repeat
+           :initial "-" ;; r
+           "~/.local/bin/listen-player.sh repeat mpd")
+
+(deflisten music-flag-random
+           :initial "-" ;; z
+           "~/.local/bin/listen-player.sh random mpd")
+
+(deflisten music-flag-single
+           :initial "-" ;; s
+           "~/.local/bin/listen-player.sh single mpd")
+
+(deflisten music-flag-consume
+           :initial "-" ;; c
+           "~/.local/bin/listen-player.sh consume mpd")
+
+(deflisten music-flag-crossfade
+           :initial "-" ;; x
+           "~/.local/bin/listen-player.sh crossfade mpd")
+
+(deflisten music-flag-update
+           :initial "-" ;; u
+           "~/.local/bin/listen-player.sh update mpd")
 #+end_src
 
 Track info
@@ -753,7 +775,7 @@ Layout
                                          :space-evenly false
                                          (label :text "·")
                                          (label :class "music-flags"
-                                                :text "[${ music-flag-loop != 'none' ? 'r' : '-' }${ music-flag-shuffle ? 'z' : '-' }${ music-flag-loop == 'track' ? 's' : '-' }${ music-flag-consume }${ music-flag-crossfade }]")))
+                                                :text music-flags)))
 
                           (label :text "·")
                           (label :class "player-volume"
@@ -1443,7 +1465,7 @@ Media Player
                               (box :class "music-player-album-art"
                                    :vexpand false
                                    :hexpand false
-                                   :style "background-image: url('${music-album-cover-file}');")
+                                   :style "background-image: url('${ music-album-cover-file == '' ? no-album-cover : music-album-cover-file }');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration
                                         :reveal { music-state != "playing" }
@@ -1494,16 +1516,22 @@ Media Player
                        :xalign 0
                        :text music-title)
 
-                (label :class "music-player-track-artist"
-                       :xalign 0
-                       :text music-artist)
+                (revealer :transition "slidedown"
+                          :duration revealer-duration
+                          :reveal { music-artist != "" }
+                          (label :class "music-player-track-artist"
+                                 :xalign 0
+                                 :text music-artist))
 
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
                      :space-evenly false
-                     (box :class "icon"
-                          "record-vinyl")
+                     (revealer :transition "slideleft"
+                               :duration revealer-duration
+                               :reveal { music-album != "" }
+                               (box :class "icon"
+                                    "record-vinyl"))
                      (label :xalign 0
                             :text music-album))))
 
