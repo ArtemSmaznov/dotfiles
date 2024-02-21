@@ -83,6 +83,9 @@ $accent-line-width: 2px;
 
 #+begin_src yuck :tangle vars/theme.yuck
 (defvar revealer-duration ".35s")
+(defvar status-bar-text-spacing 5)
+(defvar status-bar-widget-spacing 2)
+(defvar status-bar-graph-width 40)
 #+end_src
 
 ** Images
@@ -411,17 +414,13 @@ Layout
 .bar {
   background-color: rgba($base00, 0.2);
   color: $base07;
-  padding-left: 5px;
-  padding-right: 0px;
   font-family: $text-font;
   font-size: 12pt;
   text-shadow: 1 1 $base00;
 }
 
-.widget,
-.bar-widget {
-  margin: 0 2px;
-}
+.leftside  { padding-left:  7px }
+.rightside { padding-right: 7px }
 
 .widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
 .widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
@@ -432,17 +431,14 @@ Layout
 .widget.colored.7 { box-shadow: inset 0 -$accent-line-width $base0E }
 
 .icon,
-.workspaces button {
-  font: 12pt $icon-font;
-}
+.workspaces button { font: 12pt $icon-font }
 
-.icon {
-  margin-right: 7px;
-}
-
-.shutdown, .reboot, .suspend, .lock-screen, .log-out {
-  font: 14pt $icon-font;
-  padding-right: 7px;
+.shutdown,
+.reboot,
+.suspend,
+.lock-screen,
+.log-out {
+  font-size: 14pt;
 }
 
 .ws-urgent       { color: $base08; }
@@ -451,9 +447,8 @@ Layout
 .ws-filled       { color: $base07; }
 .ws-empty        { color: $base02; }
 
-.bar .status-widget {
-  padding-right: 7px;
-  padding-left: 7px;
+.status-widget {
+  margin: 0 7px;
 }
 #+end_src
 
@@ -471,10 +466,8 @@ Layout
                                :width "100%"
                                :height "35px"
                                :anchor "top center")
-
            ;; wayland
            :exclusive true
-
            ;; x11
            :windowtype "dock"
            :reserve (struts :side "top"
@@ -482,13 +475,11 @@ Layout
 
            (centerbox :orientation "h"
                       :class "bar"
-
-                      ;; left
                       (box :class "leftside"
                            :orientation "h"
                            :space-evenly false
                            :halign "start"
-
+                           :spacing 5
                            (logo)
                            (separator)
                            (time)
@@ -498,25 +489,21 @@ Layout
                            wm-layout-2
                            (separator))
 
-                      ;; center
                       (box :class "center"
                            :orientation "h"
                            :space-evenly false
                            :halign "center"
-
+                           :spacing 5
                            (window-title)
                            (separator)
                            (player))
 
-                      ;; right
-                      (box :class "rightside"
-                           :orientation "h"
+                      (box :orientation "h"
                            :space-evenly false
                            :halign "end"
-
+                           :spacing 5
                            (kbd)
                            (sys-tray)
-
                            (separator)
                            (battery)
                            (updates)
@@ -525,12 +512,7 @@ Layout
                            (cpu)
                            (cpu-thermal)
                            (volume)
-                           ;; (disk_usage :icon "根hdd"
-                           ;;             :disk "/")
-                           ;; (disk_usage :icon "家hdd"
-                           ;;             :disk "/home/artem")
                            (separator)
-
                            (date)
                            (profile))))
 #+end_src
@@ -552,7 +534,6 @@ Layout
 
            ;; wayland
            :exclusive true
-
            ;; x11
            :windowtype "dock"
            :reserve (struts :side "top"
@@ -561,12 +542,11 @@ Layout
            (centerbox :orientation "h"
                       :class "bar"
 
-                      ;; left
                       (box :class "leftside"
                            :orientation "h"
                            :space-evenly false
                            :halign "start"
-
+                           :spacing 5
                            (logo)
                            (time)
                            (separator)
@@ -577,22 +557,19 @@ Layout
                       ;; center
                       (player)
 
-                      ;; right
                       (box :class "rightside"
                            :orientation "h"
                            :space-evenly false
                            :halign "end"
-
+                           :spacing 5
                            (kbd)
-
                            (separator)
                            (battery)
                            (volume)
                            (separator)
-
                            (date)
-                           (uptime)
-                           )))
+                           (separator)
+                           (uptime))))
 #+end_src
 
 ** Widgets
@@ -612,7 +589,7 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget separator []
-  (box :class "separator"
+  (box :class "status-bar-widget separator"
        :orientation "h"
        :halign "center"
        "|"))
@@ -628,9 +605,9 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget logo []
-           (eventbox :onclick "wofi --show drun"
-                     :cursor "pointer"
-                     (image :class "widget logo"
+           (eventbox :cursor "pointer"
+                     :onclick "wofi --show drun"
+                     (image :class "status-bar-widget logo"
                             :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
                             :image-height "30")))
 #+end_src
@@ -639,7 +616,6 @@ Layout
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
 .widget.time {
-  margin: 0 5px;
 }
 #+end_src
 
@@ -649,7 +625,6 @@ Layout
   (box :class "widget time"
        :orientation "h"
        :space-evenly false
-       :halign "center"
     {time}))
 #+end_src
 
@@ -689,7 +664,7 @@ Layout
 (defwidget workspaces []
            (box :class "bar-widget bar-widget-workspaces"
                 :space-evenly false
-                :spacing 2
+                :spacing status-bar-widget-spacing
 
                 (for workspace in listen_workspaces
                      (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
@@ -733,10 +708,6 @@ Layout
 .widget.player {
   font-family: $text-font;
 }
-
-.widget.player label {
-  padding-left: 5px;
-}
 #+end_src
 
 **** widgets
@@ -747,6 +718,7 @@ Layout
                      (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
+                          :spacing status-bar-text-spacing
                           :halign "center"
 
                           (icon :icon { player-state == "stopped" ? "stop" :
@@ -759,6 +731,7 @@ Layout
                                     :reveal { player-artist != "" }
                                     (box :orientation "h"
                                          :space-evenly false
+                                         :spacing status-bar-text-spacing
                                          (label :class "player-artist"
                                                 :limit-width 50
                                                 :text player-artist)
@@ -773,6 +746,7 @@ Layout
                                     :reveal { player-name == "mpd" }
                                     (box :orientation "h"
                                          :space-evenly false
+                                         :spacing status-bar-text-spacing
                                          (label :text "·")
                                          (label :class "music-flags"
                                                 :text music-flags)))
@@ -837,9 +811,6 @@ Layout
 *** Updates
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
-.update-flags {
-  padding-left: 5px;
-}
 #+end_src
 
 **** widgets
@@ -860,6 +831,7 @@ Layout
 
                           :orientation "h"
                           :space-evenly false
+                          :spacing status-bar-text-spacing
                           (icon :icon { updates ==   0  ? "check"    :
                                         updates ==  69  ? "heart"    :
                                         updates == 101  ? "book"     :
@@ -910,12 +882,10 @@ Layout
 #+begin_src scss :tangle modules/status-bars/style.scss
 .graph.net-down {
   color: $base0D;
-  min-width: 50px;
 }
 
 .graph.net-up {
   color: $base0A;
-  min-width: 50px;
 }
 #+end_src
 
@@ -923,9 +893,12 @@ Layout
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget network []
            (box :class "widget colored 5 network"
-                ;; :space-evenly false
+                :space-evenly false
+                :spacing status-bar-text-spacing
+
                 (icon :icon "ethernet")
                 (graph :min 0
+                       :width status-bar-graph-width
                        :class "graph net-down"
                        :time-range {graph_net_time_range}
                        :dynamic false
@@ -936,6 +909,7 @@ Layout
                 ;; :value {EWW_NET[interface].NET_DOWN})
                 (icon :icon "⇵")
                 (graph :min 0
+                       :width status-bar-graph-width
                        :class "graph net-up"
                        :time-range {graph_net_time_range}
                        :dynamic false
@@ -1029,6 +1003,7 @@ Layout
 (defwidget uptime []
   (box :orientation "h"
        :space-evenly false
+       :spacing status-bar-text-spacing
        (icon :icon "circle-arrow-up")
        uptime))
 #+end_src
@@ -1036,18 +1011,6 @@ Layout
 *** Date
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
-.widget.date {
-  margin-right: 10px;
-}
-
-calendar {
-  padding: 4px;
-}
-
-calendar:selected {
-  color: $base0E;
-  font-weight: bold;
-}
 #+end_src
 
 **** widgets
@@ -1059,6 +1022,8 @@ calendar:selected {
                  :orientation "h"
                  :space-evenly false
                  :halign "center"
+                 :spacing status-bar-text-spacing
+
                  (icon :icon { matches(date, "20 apr") ? "cannabis" :
                                matches(date, "25 dec") ? "candy-cane" :
                                matches(date, "31 dec") ? "champagne-glasses" :
@@ -1070,7 +1035,7 @@ calendar:selected {
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
 .widget.profile {
-  margin-right: 0;
+  margin-left: 5px;
 }
 
 .profile-face {
@@ -1099,28 +1064,29 @@ calendar:selected {
 
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget power-menu []
-  (box :orientation "h"
+  (box :class "status-widget power-menu"
+       :orientation "h"
        :space-evenly true
-       :class "status-widget power-menu"
+       :spacing 7
        (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
                :tooltip "shutdown"
-               :class "shutdown"
+               :class "icon shutdown"
                "power-off")
        (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
                :tooltip "reboot"
-               :class "reboot"
+               :class "icon reboot"
                "rotate")
        (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
                :tooltip "suspend"
-               :class "suspend"
+               :class "icon suspend"
                "moon")
        (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
                :tooltip "logout"
-               :class "log-out"
+               :class "icon log-out"
                "right-from-bracket")
        (button :onclick "${dm-scripts}/dm-power lock"
                :tooltip "lock screen"
-               :class "lock-screen"
+               :class "icon lock-screen"
                "lock")))
 #+end_src
 
@@ -1319,6 +1285,18 @@ calendar:selected {
 (include "modules/panels/calendar.yuck")
 #+end_src
 
+*** styles
+#+begin_src scss :tangle modules/panels/calendar.scss
+calendar {
+  padding: 4px;
+}
+
+calendar:selected {
+  color: $base0E;
+  font-weight: bold;
+}
+#+end_src
+
 *** window
 #+begin_src yuck :tangle modules/panels/calendar.yuck
 (defwindow calendar-window
@@ -1407,7 +1385,7 @@ Media Player
     border-radius: 50%;
 }
 
-.music-progress-bar {
+.music-player-progress-bar {
     margin: 0 15px;
     trough {
         background-color: $base03;
@@ -1428,7 +1406,6 @@ Media Player
 
 .music-player-controls .icon {
     font-size: 18pt;
-    padding: 0;
 }
 #+end_src
 
@@ -1526,7 +1503,9 @@ Media Player
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
+                     :valign "center"
                      :space-evenly false
+                     :spacing 10
                      (revealer :transition "slideleft"
                                :duration revealer-duration
                                :reveal { music-album != "" }
@@ -1546,31 +1525,41 @@ Media Player
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh prev"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :text "backward-step")))
 
-                (scale :class "music-progress-bar"
-                       :hexpand true
-                       :vexpand false
-                       :min 0
-                       :value music-track-progress
-                       :max 100
-                       :active {music-state == "playing"}
-                       :onchange "~/.local/bin/musictl.sh goto {}%")
+                (eventbox :cursor "pointer"
+                          :hexpand true
+                          :vexpand false
+                          :valign "center"
+                          (scale :class "music-player-progress-bar"
+                                 :min 0
+                                 :value music-track-progress
+                                 :max 100
+                                 :active {music-state == "playing"}
+                                 :onchange "~/.local/bin/musictl.sh goto {}%"))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh next"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh random"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh single"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))
@@ -1604,15 +1593,17 @@ Media Player
 *** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget slider [icon value onchange]
-  (box :orientation "h"
-       :class "slider status-widget"
-       :space-evenly false
-    (icon :icon icon)
-    (scale :min 0
-           :max 100
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
+           (box :class "slider status-widget"
+                :orientation "h"
+                :space-evenly false
+                :spacing 10
+
+                (icon :icon icon)
+                (scale :min 0
+                       :max 100
+                       :active {onchange != ""}
+                       :value value
+                       :onchange onchange)))
 #+end_src
 
 ** circular progress

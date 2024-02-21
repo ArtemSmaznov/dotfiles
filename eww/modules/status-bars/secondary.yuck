@@ -9,7 +9,6 @@
 
            ;; wayland
            :exclusive true
-
            ;; x11
            :windowtype "dock"
            :reserve (struts :side "top"
@@ -18,12 +17,11 @@
            (centerbox :orientation "h"
                       :class "bar"
 
-                      ;; left
                       (box :class "leftside"
                            :orientation "h"
                            :space-evenly false
                            :halign "start"
-
+                           :spacing 5
                            (logo)
                            (time)
                            (separator)
@@ -34,19 +32,16 @@
                       ;; center
                       (player)
 
-                      ;; right
                       (box :class "rightside"
                            :orientation "h"
                            :space-evenly false
                            :halign "end"
-
+                           :spacing 5
                            (kbd)
-
                            (separator)
                            (battery)
                            (volume)
                            (separator)
-
                            (date)
-                           (uptime)
-                           )))
+                           (separator)
+                           (uptime))))

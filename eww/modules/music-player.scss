@@ -58,7 +58,7 @@
     border-radius: 50%;
 }
 
-.music-progress-bar {
+.music-player-progress-bar {
     margin: 0 15px;
     trough {
         background-color: $base03;
@@ -79,5 +79,4 @@
 
 .music-player-controls .icon {
     font-size: 18pt;
-    padding: 0;
 }

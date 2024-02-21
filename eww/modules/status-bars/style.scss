@@ -1,17 +1,13 @@
 .bar {
   background-color: rgba($base00, 0.2);
   color: $base07;
-  padding-left: 5px;
-  padding-right: 0px;
   font-family: $text-font;
   font-size: 12pt;
   text-shadow: 1 1 $base00;
 }
 
-.widget,
-.bar-widget {
-  margin: 0 2px;
-}
+.leftside  { padding-left:  7px }
+.rightside { padding-right: 7px }
 
 .widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
 .widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
@@ -22,17 +18,14 @@
 .widget.colored.7 { box-shadow: inset 0 -$accent-line-width $base0E }
 
 .icon,
-.workspaces button {
-  font: 12pt $icon-font;
-}
+.workspaces button { font: 12pt $icon-font }
 
-.icon {
-  margin-right: 7px;
-}
-
-.shutdown, .reboot, .suspend, .lock-screen, .log-out {
-  font: 14pt $icon-font;
-  padding-right: 7px;
+.shutdown,
+.reboot,
+.suspend,
+.lock-screen,
+.log-out {
+  font-size: 14pt;
 }
 
 .ws-urgent       { color: $base08; }
@@ -41,9 +34,8 @@
 .ws-filled       { color: $base07; }
 .ws-empty        { color: $base02; }
 
-.bar .status-widget {
-  padding-right: 7px;
-  padding-left: 7px;
+.status-widget {
+  margin: 0 7px;
 }
 
 .separator {
@@ -56,7 +48,6 @@
 }
 
 .widget.time {
-  margin: 0 5px;
 }
 
 .workspaces {
@@ -94,9 +85,6 @@
   font-family: $text-font;
 }
 
-.widget.player label {
-  padding-left: 5px;
-}
 
 
 
@@ -104,18 +92,13 @@
 
 
 
-.update-flags {
-  padding-left: 5px;
-}
 
 .graph.net-down {
   color: $base0D;
-  min-width: 50px;
 }
 
 .graph.net-up {
   color: $base0A;
-  min-width: 50px;
 }
 
 
@@ -130,21 +113,10 @@
 
 
 
-.widget.date {
-  margin-right: 10px;
-}
 
-calendar {
-  padding: 4px;
-}
-
-calendar:selected {
-  color: $base0E;
-  font-weight: bold;
-}
 
 .widget.profile {
-  margin-right: 0;
+  margin-left: 5px;
 }
 
 .profile-face {

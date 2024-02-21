@@ -1,13 +1,13 @@
 (defwidget separator []
-  (box :class "separator"
+  (box :class "status-bar-widget separator"
        :orientation "h"
        :halign "center"
        "|"))
 
 (defwidget logo []
-           (eventbox :onclick "wofi --show drun"
-                     :cursor "pointer"
-                     (image :class "widget logo"
+           (eventbox :cursor "pointer"
+                     :onclick "wofi --show drun"
+                     (image :class "status-bar-widget logo"
                             :path "/home/artem/.local/share/icons/Papirus-Dark/64x64/apps/distributor-logo-archlinux.svg"
                             :image-height "30")))
 
@@ -15,13 +15,12 @@
   (box :class "widget time"
        :orientation "h"
        :space-evenly false
-       :halign "center"
     {time}))
 
 (defwidget workspaces []
            (box :class "bar-widget bar-widget-workspaces"
                 :space-evenly false
-                :spacing 2
+                :spacing status-bar-widget-spacing
 
                 (for workspace in listen_workspaces
                      (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
@@ -49,6 +48,7 @@
                      (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
+                          :spacing status-bar-text-spacing
                           :halign "center"
 
                           (icon :icon { player-state == "stopped" ? "stop" :
@@ -61,6 +61,7 @@
                                     :reveal { player-artist != "" }
                                     (box :orientation "h"
                                          :space-evenly false
+                                         :spacing status-bar-text-spacing
                                          (label :class "player-artist"
                                                 :limit-width 50
                                                 :text player-artist)
@@ -75,6 +76,7 @@
                                     :reveal { player-name == "mpd" }
                                     (box :orientation "h"
                                          :space-evenly false
+                                         :spacing status-bar-text-spacing
                                          (label :text "·")
                                          (label :class "music-flags"
                                                 :text music-flags)))
@@ -127,6 +129,7 @@
 
                           :orientation "h"
                           :space-evenly false
+                          :spacing status-bar-text-spacing
                           (icon :icon { updates ==   0  ? "check"    :
                                         updates ==  69  ? "heart"    :
                                         updates == 101  ? "book"     :
@@ -170,9 +173,12 @@
 
 (defwidget network []
            (box :class "widget colored 5 network"
-                ;; :space-evenly false
+                :space-evenly false
+                :spacing status-bar-text-spacing
+
                 (icon :icon "ethernet")
                 (graph :min 0
+                       :width status-bar-graph-width
                        :class "graph net-down"
                        :time-range {graph_net_time_range}
                        :dynamic false
@@ -183,6 +189,7 @@
                 ;; :value {EWW_NET[interface].NET_DOWN})
                 (icon :icon "⇵")
                 (graph :min 0
+                       :width status-bar-graph-width
                        :class "graph net-up"
                        :time-range {graph_net_time_range}
                        :dynamic false
@@ -228,6 +235,7 @@
 (defwidget uptime []
   (box :orientation "h"
        :space-evenly false
+       :spacing status-bar-text-spacing
        (icon :icon "circle-arrow-up")
        uptime))
 
@@ -238,6 +246,8 @@
                  :orientation "h"
                  :space-evenly false
                  :halign "center"
+                 :spacing status-bar-text-spacing
+
                  (icon :icon { matches(date, "20 apr") ? "cannabis" :
                                matches(date, "25 dec") ? "candy-cane" :
                                matches(date, "31 dec") ? "champagne-glasses" :
@@ -262,28 +272,29 @@
                                  :image-height 35))))
 
 (defwidget power-menu []
-  (box :orientation "h"
+  (box :class "status-widget power-menu"
+       :orientation "h"
        :space-evenly true
-       :class "status-widget power-menu"
+       :spacing 7
        (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
                :tooltip "shutdown"
-               :class "shutdown"
+               :class "icon shutdown"
                "power-off")
        (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
                :tooltip "reboot"
-               :class "reboot"
+               :class "icon reboot"
                "rotate")
        (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
                :tooltip "suspend"
-               :class "suspend"
+               :class "icon suspend"
                "moon")
        (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
                :tooltip "logout"
-               :class "log-out"
+               :class "icon log-out"
                "right-from-bracket")
        (button :onclick "${dm-scripts}/dm-power lock"
                :tooltip "lock screen"
-               :class "lock-screen"
+               :class "icon lock-screen"
                "lock")))
 
 (defwidget icon [?icon]
@@ -291,15 +302,17 @@
          :text icon))
 
 (defwidget slider [icon value onchange]
-  (box :orientation "h"
-       :class "slider status-widget"
-       :space-evenly false
-    (icon :icon icon)
-    (scale :min 0
-           :max 100
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
+           (box :class "slider status-widget"
+                :orientation "h"
+                :space-evenly false
+                :spacing 10
+
+                (icon :icon icon)
+                (scale :min 0
+                       :max 100
+                       :active {onchange != ""}
+                       :value value
+                       :onchange onchange)))
 
 (defwidget circular [icon value]
   (box :orientation "h"

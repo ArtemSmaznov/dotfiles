@@ -90,7 +90,9 @@
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
+                     :valign "center"
                      :space-evenly false
+                     :spacing 10
                      (revealer :transition "slideleft"
                                :duration revealer-duration
                                :reveal { music-album != "" }
@@ -110,31 +112,41 @@
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh prev"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :text "backward-step")))
 
-                (scale :class "music-progress-bar"
-                       :hexpand true
-                       :vexpand false
-                       :min 0
-                       :value music-track-progress
-                       :max 100
-                       :active {music-state == "playing"}
-                       :onchange "~/.local/bin/musictl.sh goto {}%")
+                (eventbox :cursor "pointer"
+                          :hexpand true
+                          :vexpand false
+                          :valign "center"
+                          (scale :class "music-player-progress-bar"
+                                 :min 0
+                                 :value music-track-progress
+                                 :max 100
+                                 :active {music-state == "playing"}
+                                 :onchange "~/.local/bin/musictl.sh goto {}%"))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh next"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :text "forward-step")))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh random"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :style "opacity: ${ music-flag-shuffle ? 1 : 0.3 };"
                                          :text "shuffle")))
 
                 (eventbox :cursor "pointer"
                           (button :onclick "~/.local/bin/musictl.sh single"
                                   (label :class "icon"
+                                         :halign "center"
+                                         :valign "center"
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))

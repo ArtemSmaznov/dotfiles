@@ -6,10 +6,8 @@
                                :width "100%"
                                :height "35px"
                                :anchor "top center")
-
            ;; wayland
            :exclusive true
-
            ;; x11
            :windowtype "dock"
            :reserve (struts :side "top"
@@ -17,13 +15,11 @@
 
            (centerbox :orientation "h"
                       :class "bar"
-
-                      ;; left
                       (box :class "leftside"
                            :orientation "h"
                            :space-evenly false
                            :halign "start"
-
+                           :spacing 5
                            (logo)
                            (separator)
                            (time)
@@ -33,25 +29,21 @@
                            wm-layout-2
                            (separator))
 
-                      ;; center
                       (box :class "center"
                            :orientation "h"
                            :space-evenly false
                            :halign "center"
-
+                           :spacing 5
                            (window-title)
                            (separator)
                            (player))
 
-                      ;; right
-                      (box :class "rightside"
-                           :orientation "h"
+                      (box :orientation "h"
                            :space-evenly false
                            :halign "end"
-
+                           :spacing 5
                            (kbd)
                            (sys-tray)
-
                            (separator)
                            (battery)
                            (updates)
@@ -60,11 +52,6 @@
                            (cpu)
                            (cpu-thermal)
                            (volume)
-                           ;; (disk_usage :icon "根hdd"
-                           ;;             :disk "/")
-                           ;; (disk_usage :icon "家hdd"
-                           ;;             :disk "/home/artem")
                            (separator)
-
                            (date)
                            (profile))))
