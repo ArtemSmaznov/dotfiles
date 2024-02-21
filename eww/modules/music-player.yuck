@@ -6,7 +6,12 @@
                 :width 600
 
                 (music-player-album-art)
-                (music-player-rating-bar)
+
+                (revealer :transition "slideleft"
+                          :duration revealer-duration
+                          :reveal { music-play-count > 0 || music-skip-count > 0 }
+                          (music-player-rating-bar))
+
                 (box :class "music-player-content"
                      :orientation "v"
                      :space-evenly false
@@ -27,7 +32,7 @@
                                    :style "background-image: url('${music-album-cover-file}');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration
-                                        :reveal {music-state != "playing"}
+                                        :reveal { music-state != "playing" }
                                         (label :class "icon"
                                                :text { music-state == "paused"  ? "pause" :
                                                                    music-state == "stopped" ? "stop"  :
@@ -41,18 +46,26 @@
                 :hexpand false
                 :vexpand true
 
+                (revealer :transition "slideup"
+                          :duration revealer-duration
+                          :reveal { music-rating > 0.9 }
+                          (label :class "icon yellow"
+                                 :style "margin: 5px 0;"
+                                 :text "star"))
+
                 (progress :class "music-player-rating-bar"
                           :orientation "v"
                           :halign "center"
                           :vexpand true
                           :flipped true
                           :value { music-rating * 100 })
-                (label :class "icon ${ music-rating == 0.5 ? 'gray'   :
-                                       music-rating <  0.3 ? 'red'    :
-                                       music-rating <  0.6 ? 'yellow' :
-                                                             'green'  }"
-                       :style "margin: 5px 0;"
-                       :text "star")))
+
+                (revealer :transition "slidedown"
+                          :duration revealer-duration
+                          :reveal { music-rating < 0.1 }
+                          (label :class "icon red"
+                                 :style "margin: 5px 0;"
+                                 :text "ban"))))
 
 
 (defwidget music-player-track-info []
@@ -84,6 +97,7 @@
 (defwidget music-player-controls []
            (box :class "music-player-controls"
                 :orientation "h"
+                :hexpand true
                 :spacing 3
                 :space-evenly false
 

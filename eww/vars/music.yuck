@@ -50,6 +50,18 @@
            :initial 0
            "~/.local/bin/listen-player.sh rating")
 
+(deflisten music-play-count
+           :initial 0
+           "~/.local/bin/listen-player.sh play_count")
+
+(deflisten music-skip-count
+           :initial 0
+           "~/.local/bin/listen-player.sh skip_count")
+
+(deflisten music-last-played
+           :initial 0
+           "~/.local/bin/listen-player.sh last_played")
+
 (deflisten music-album-cover-file
            :initial ""
            "~/.local/bin/listen-player.sh cover_file mpd")

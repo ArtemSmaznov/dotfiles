@@ -21,6 +21,21 @@
     background-image: radial-gradient(at center, transparent, $base01);
 }
 
+.music-player-rating-bar {
+    margin: 5px 0;
+    trough {
+        background-color: $base03;
+        min-width: 5px;
+        border-radius: 10px;
+    }
+    progress {
+        // background-color: $base0A;
+        background-image: linear-gradient(to top, $base08, $base04, $base0A);
+        min-width: 5px;
+        border-radius: 10px;
+    }
+}
+
 .music-player-track-title {
     font-size: 20pt;
     font-weight: bold;
@@ -41,21 +56,6 @@
 .music-player-controls button:hover {
     background: rgba($base03, 0.8);
     border-radius: 50%;
-}
-
-.music-player-rating-bar {
-    margin: 5px 0;
-    trough {
-        background-color: $base03;
-        min-width: 5px;
-        border-radius: 10px;
-    }
-    progress {
-        // background-color: $base0A;
-        background-image: linear-gradient(to bottom, $base0C, $base0A, $base08);
-        min-width: 5px;
-        border-radius: 10px;
-    }
 }
 
 .music-progress-bar {

@@ -202,6 +202,18 @@ Track info
 (deflisten music-rating
            :initial 0
            "~/.local/bin/listen-player.sh rating")
+
+(deflisten music-play-count
+           :initial 0
+           "~/.local/bin/listen-player.sh play_count")
+
+(deflisten music-skip-count
+           :initial 0
+           "~/.local/bin/listen-player.sh skip_count")
+
+(deflisten music-last-played
+           :initial 0
+           "~/.local/bin/listen-player.sh last_played")
 #+end_src
 
 Album cover art
@@ -1336,6 +1348,21 @@ Media Player
     background-image: radial-gradient(at center, transparent, $base01);
 }
 
+.music-player-rating-bar {
+    margin: 5px 0;
+    trough {
+        background-color: $base03;
+        min-width: 5px;
+        border-radius: 10px;
+    }
+    progress {
+        // background-color: $base0A;
+        background-image: linear-gradient(to top, $base08, $base04, $base0A);
+        min-width: 5px;
+        border-radius: 10px;
+    }
+}
+
 .music-player-track-title {
     font-size: 20pt;
     font-weight: bold;
@@ -1356,21 +1383,6 @@ Media Player
 .music-player-controls button:hover {
     background: rgba($base03, 0.8);
     border-radius: 50%;
-}
-
-.music-player-rating-bar {
-    margin: 5px 0;
-    trough {
-        background-color: $base03;
-        min-width: 5px;
-        border-radius: 10px;
-    }
-    progress {
-        // background-color: $base0A;
-        background-image: linear-gradient(to bottom, $base0C, $base0A, $base08);
-        min-width: 5px;
-        border-radius: 10px;
-    }
 }
 
 .music-progress-bar {
@@ -1408,7 +1420,12 @@ Media Player
                 :width 600
 
                 (music-player-album-art)
-                (music-player-rating-bar)
+
+                (revealer :transition "slideleft"
+                          :duration revealer-duration
+                          :reveal { music-play-count > 0 || music-skip-count > 0 }
+                          (music-player-rating-bar))
+
                 (box :class "music-player-content"
                      :orientation "v"
                      :space-evenly false
@@ -1429,7 +1446,7 @@ Media Player
                                    :style "background-image: url('${music-album-cover-file}');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration
-                                        :reveal {music-state != "playing"}
+                                        :reveal { music-state != "playing" }
                                         (label :class "icon"
                                                :text { music-state == "paused"  ? "pause" :
                                                                    music-state == "stopped" ? "stop"  :
@@ -1443,18 +1460,26 @@ Media Player
                 :hexpand false
                 :vexpand true
 
+                (revealer :transition "slideup"
+                          :duration revealer-duration
+                          :reveal { music-rating > 0.9 }
+                          (label :class "icon yellow"
+                                 :style "margin: 5px 0;"
+                                 :text "star"))
+
                 (progress :class "music-player-rating-bar"
                           :orientation "v"
                           :halign "center"
                           :vexpand true
                           :flipped true
                           :value { music-rating * 100 })
-                (label :class "icon ${ music-rating == 0.5 ? 'gray'   :
-                                       music-rating <  0.3 ? 'red'    :
-                                       music-rating <  0.6 ? 'yellow' :
-                                                             'green'  }"
-                       :style "margin: 5px 0;"
-                       :text "star")))
+
+                (revealer :transition "slidedown"
+                          :duration revealer-duration
+                          :reveal { music-rating < 0.1 }
+                          (label :class "icon red"
+                                 :style "margin: 5px 0;"
+                                 :text "ban"))))
 
 
 (defwidget music-player-track-info []
@@ -1486,6 +1511,7 @@ Media Player
 (defwidget music-player-controls []
            (box :class "music-player-controls"
                 :orientation "h"
+                :hexpand true
                 :spacing 3
                 :space-evenly false
 
