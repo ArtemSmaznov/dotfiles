@@ -1370,8 +1370,8 @@ Media Player
 
 .music-player-track-artist {
     font-size: 14pt;
-    color: $base0E;
-    opacity: 0.8;
+    color: darken($base0E, 50);
+    opacity: 0.6;
 }
 
 .music-player-track-album {
