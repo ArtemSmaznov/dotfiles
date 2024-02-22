@@ -255,9 +255,9 @@
                  {date})))
 
 (defwidget profile []
-           (box :orientation "h"
+           (box :class "widget profile"
+                :orientation "h"
                 :space-evenly false
-                :class "widget profile"
                 (revealer :transition "slideleft"
                           :reveal show-power-menu
                           :duration revealer-duration
@@ -267,6 +267,7 @@
                           :onclick     "eww open powermenu-panel"
                           :cursor "pointer"
                           :timeout 5
+
                           (image :path profile-face
                                  :class "profile-face"
                                  :image-height 35))))

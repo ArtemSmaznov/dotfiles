@@ -1039,15 +1039,16 @@ Layout
 }
 
 .profile-face {
+  border-radius: 50%;
 }
 #+end_src
 
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget profile []
-           (box :orientation "h"
+           (box :class "widget profile"
+                :orientation "h"
                 :space-evenly false
-                :class "widget profile"
                 (revealer :transition "slideleft"
                           :reveal show-power-menu
                           :duration revealer-duration
@@ -1057,10 +1058,11 @@ Layout
                           :onclick     "eww open powermenu-panel"
                           :cursor "pointer"
                           :timeout 5
+
                           (image :path profile-face
                                  :class "profile-face"
                                  :image-height 35))))
-#+end_src
+                          #+end_src
 
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget power-menu []
@@ -1344,20 +1346,18 @@ Media Player
 .music-player-album-art-reactive .icon {
     font-size: 64pt;
     border-radius: 1.5rem;
-    // background-color: rgba($base02, 0.7);
-    background-image: radial-gradient(at center, transparent, $base01);
+    background: radial-gradient(at center, transparent, $base01);
 }
 
 .music-player-rating-bar {
     margin: 5px 0;
-    trough {
-        background-color: $base03;
+    progress {
+        background: $base03;
         min-width: 5px;
         border-radius: 10px;
     }
-    progress {
-        // background-color: $base0A;
-        background-image: linear-gradient(to top, $base08, $base04, $base0A);
+    trough {
+        background: linear-gradient(to top, $base08, $base04, $base0A);
         min-width: 5px;
         border-radius: 10px;
     }
@@ -1470,8 +1470,8 @@ Media Player
                           :orientation "v"
                           :halign "center"
                           :vexpand true
-                          :flipped true
-                          :value { music-rating * 100 })
+                          :flipped false
+                          :value { (1 - music-rating) * 100 })
 
                 (revealer :transition "slidedown"
                           :duration revealer-duration

@@ -17,20 +17,18 @@
 .music-player-album-art-reactive .icon {
     font-size: 64pt;
     border-radius: 1.5rem;
-    // background-color: rgba($base02, 0.7);
-    background-image: radial-gradient(at center, transparent, $base01);
+    background: radial-gradient(at center, transparent, $base01);
 }
 
 .music-player-rating-bar {
     margin: 5px 0;
-    trough {
-        background-color: $base03;
+    progress {
+        background: $base03;
         min-width: 5px;
         border-radius: 10px;
     }
-    progress {
-        // background-color: $base0A;
-        background-image: linear-gradient(to top, $base08, $base04, $base0A);
+    trough {
+        background: linear-gradient(to top, $base08, $base04, $base0A);
         min-width: 5px;
         border-radius: 10px;
     }
