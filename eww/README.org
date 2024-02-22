@@ -1263,12 +1263,12 @@ Layout
                                :height "100px")
 
            (box :class "status-panel"
-                :active true
                 :orientation "v"
-                :space-evenly false
-                :spacing 50
                 :halign "center"
                 :valign "center"
+                :space-evenly false
+                :spacing 15
+                :active true
 
                 (music-player)
                 ))
@@ -1351,12 +1351,12 @@ Media Player
 
 .music-player-rating-bar {
     margin: 5px 0;
-    progress {
+    trough {
         background: $base03;
         min-width: 5px;
         border-radius: 10px;
     }
-    trough {
+    progress {
         background: linear-gradient(to top, $base08, $base04, $base0A);
         min-width: 5px;
         border-radius: 10px;
@@ -1470,8 +1470,9 @@ Media Player
                           :orientation "v"
                           :halign "center"
                           :vexpand true
-                          :flipped false
-                          :value { (1 - music-rating) * 100 })
+                          :flipped true
+                          ;; :style "background-size: 1px 126px;"
+                          :value { music-rating * 100 })
 
                 (revealer :transition "slidedown"
                           :duration revealer-duration

@@ -57,8 +57,9 @@
                           :orientation "v"
                           :halign "center"
                           :vexpand true
-                          :flipped false
-                          :value { (1 - music-rating) * 100 })
+                          :flipped true
+                          ;; :style "background-size: 1px 126px;"
+                          :value { music-rating * 100 })
 
                 (revealer :transition "slidedown"
                           :duration revealer-duration

@@ -9,12 +9,12 @@
                                :height "100px")
 
            (box :class "status-panel"
-                :active true
                 :orientation "v"
-                :space-evenly false
-                :spacing 50
                 :halign "center"
                 :valign "center"
+                :space-evenly false
+                :spacing 15
+                :active true
 
                 (music-player)
                 ))
