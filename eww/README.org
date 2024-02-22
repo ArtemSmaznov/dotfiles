@@ -1338,19 +1338,20 @@ Media Player
     border-radius: 1.5rem;
 }
 
-.music-player-album-art {
-    $album-art-size: 150px;
-
-    border-radius: 1.5rem;
-    background-size: $album-art-size;
-    min-height: $album-art-size;
-    min-width: $album-art-size;
-}
-
 .music-player-album-art-reactive .icon {
     font-size: 64pt;
     border-radius: 1.5rem;
     background: radial-gradient(at center, transparent, $base01);
+}
+
+.music-player-album-art {
+    $album-art-size: 150px;
+
+    border-radius: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    min-height: $album-art-size;
+    min-width: $album-art-size;
 }
 
 .music-player-rating-bar {
