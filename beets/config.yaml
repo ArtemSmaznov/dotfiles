@@ -2,42 +2,58 @@ library: ~/.config/beets/library.db
 directory: ~/music
 
 import:
-    write: yes       # -w -W
-    copy: no         # -c -C
-    move: yes
-    resume: ask      # -p -P
-    timid: no        # -t
-    group_albums: no # -g
-    autotag: yes     # -a
-    duplicate_action: ask
-    bell: yes
-    languages: en ru
+  write: yes       # -w -W
+  copy: no         # -c -C
+  move: yes
+  resume: ask      # -p -P
+  timid: no        # -t
+  group_albums: no # -g
+  autotag: yes     # -a
+  duplicate_action: ask
+  bell: yes
+  languages: en ru
 
 asciify_paths: yes
 per_disc_numbering: yes
 
 paths:
-    default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
-    singleton: '%lower{$artist}/%lower{$title}'
-    albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
-    comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  singleton: '%lower{$artist}/%lower{$title}'
+  albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
 
 replace:
-    '[\x00-\x1f]': _
-    '&': 'and'
-    '[~!\\/<>"\?\*\|\[\]()]': ''
-    "'": ''
-    '[\.]+$': ''
-    '^[\.]': ''
-    '\s+$': ''
-    '^\s+': ''
-    '\s*[-,;:]\s*': '-'
-    ' ': '-'
+  '[\x00-\x1f]': _
+  '&': 'and'
+  '[~!\\/<>"\?\*\|\[\]()]': ''
+  "'": ''
+  '[\.]+$': ''
+  '^[\.]': ''
+  '\s+$': ''
+  '^\s+': ''
+  '\s*[-,;:]\s*': '-'
+  ' ': '-'
 
 musicbrainz:
-    searchlimit: 15
+  searchlimit: 15
 
-plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync missing mpdstats mpdupdate scrub
+plugins:
+  - badfiles
+  - chroma
+  - edit
+  - duplicates
+  - fetchart
+  - info
+  - lastgenre
+  - lyrics
+  - mbsubmit
+  - mbsync
+  - missing
+  - mpdstats
+  - mpdupdate
+  - playlist
+  - scrub
+  - unimported
 
 albumtypes:
   types:
@@ -54,55 +70,69 @@ badfiles:
   check_on_import: yes
 
 chroma:
-    auto: yes
+  auto: yes
+
+edit:
+  itemfields: track title artist album
+  albumfields: album albumartist
 
 fetchart:
-    auto: yes
-    minwidth: 0
-    maxwidth: 0
-    quality: 0
-    max_filesize: 0
-    enforce_ratio: no
-    cautious: no
-    cover_names:
-    - cover
-    - front
-    - art
-    - album
-    - folder
-    sources:
-    - filesystem
-    - coverart
-    - itunes
-    - amazon
-    - albumart
-    store_source: no
-    high_resolution: no
-    deinterlace: no
+  auto: yes
+  minwidth: 0
+  maxwidth: 0
+  quality: 0
+  max_filesize: 0
+  enforce_ratio: no
+  cautious: no
+  cover_names:
+  - cover
+  - front
+  - art
+  - album
+  - folder
+  sources:
+  - filesystem
+  - coverart
+  - itunes
+  - amazon
+  - albumart
+  store_source: no
+  high_resolution: no
+  deinterlace: no
 
 lastgenre:
-    auto: yes
-    canonical: no
-    count: 5
-    fallback:
-    force: yes
-    min_weight: 10
-    prefer_specific: no
-    source: album
-    whitelist: yes
-    title_case: yes
+  auto: yes
+  canonical: no
+  count: 5
+  fallback:
+  force: yes
+  min_weight: 10
+  prefer_specific: no
+  source: album
+  whitelist: yes
+  title_case: yes
 
 lyrics:
   auto: no
 
 mpd:
-    # host: $MPD_HOST
-    # port: $MPD_PORT
-    # password:
-    # music_directory:
+  # host: $MPD_HOST
+  # port: $MPD_PORT
+  # password:
+  # music_directory:
 
-    rating: yes
-    rating_mix: 0.75
+  rating: yes
+  rating_mix: 0.75
+
+playlist:
+  auto: yes
+  playlist_dir: ~/.config/mpd/playlists
+  relative_to: library
+  forward_slash: no
 
 scrub:
-    auto: yes
+  auto: yes
+
+unimported:
+  ignore_extensions: jpg png
+  ignore_subdirectories: import Unsorted

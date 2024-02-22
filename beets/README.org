@@ -19,6 +19,7 @@
   - [[#bad-files][Bad Files]]
   - [[#chroma][Chroma]]
   - [[#duplicates][Duplicates]]
+  - [[#edit][Edit]]
   - [[#fetchart][FetchArt]]
   - [[#info][Info]]
   - [[#lastgenre][LastGenre]]
@@ -28,7 +29,10 @@
   - [[#missing][Missing]]
   - [[#mpd-stats][MPD Stats]]
   - [[#mpd-update][MPD Update]]
+  - [[#playlist][Playlist]]
+  - [[#idea-plex-update][IDEA Plex Update]]
   - [[#scrub][Scrub]]
+  - [[#unimported][Unimported]]
 
 * Dependencies
 |-------------------+------------------------------------|
@@ -65,30 +69,30 @@ Available colors: ~black~, ~darkred~, ~darkgreen~, ~brown~ (~darkyellow~), ~dark
 
 #+begin_src yaml :tangle no
 ui:
-    color: yes
-    colors:
-        text_success: green
-        text_warning: yellow
-        text_error: red
-        text_highlight: red
-        text_highlight_minor: lightgray
-        action_default: turquoise
-        action: blue
+  color: yes
+  colors:
+    text_success: green
+    text_warning: yellow
+    text_error: red
+    text_highlight: red
+    text_highlight_minor: lightgray
+    action_default: turquoise
+    action: blue
 #+end_src
 
 * Importer Options
 #+begin_src yaml
 import:
-    write: yes       # -w -W
-    copy: no         # -c -C
-    move: yes
-    resume: ask      # -p -P
-    timid: no        # -t
-    group_albums: no # -g
-    autotag: yes     # -a
-    duplicate_action: ask
-    bell: yes
-    languages: en ru
+  write: yes       # -w -W
+  copy: no         # -c -C
+  move: yes
+  resume: ask      # -p -P
+  timid: no        # -t
+  group_albums: no # -g
+  autotag: yes     # -a
+  duplicate_action: ask
+  bell: yes
+  languages: en ru
 #+end_src
 
 #+begin_src yaml
@@ -98,35 +102,51 @@ per_disc_numbering: yes
 
 #+begin_src yaml
 paths:
-    default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
-    singleton: '%lower{$artist}/%lower{$title}'
-    albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
-    comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  singleton: '%lower{$artist}/%lower{$title}'
+  albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
 #+end_src
 
 #+begin_src yaml
 replace:
-    '[\x00-\x1f]': _
-    '&': 'and'
-    '[~!\\/<>"\?\*\|\[\]()]': ''
-    "'": ''
-    '[\.]+$': ''
-    '^[\.]': ''
-    '\s+$': ''
-    '^\s+': ''
-    '\s*[-,;:]\s*': '-'
-    ' ': '-'
+  '[\x00-\x1f]': _
+  '&': 'and'
+  '[~!\\/<>"\?\*\|\[\]()]': ''
+  "'": ''
+  '[\.]+$': ''
+  '^[\.]': ''
+  '\s+$': ''
+  '^\s+': ''
+  '\s*[-,;:]\s*': '-'
+  ' ': '-'
 #+end_src
 
 * MusicBrainz
 #+begin_src yaml
 musicbrainz:
-    searchlimit: 15
+  searchlimit: 15
 #+end_src
 
 * Plugins
 #+begin_src yaml
-plugins: badfiles chroma duplicates fetchart info lastgenre lyrics mbsubmit mbsync missing mpdstats mpdupdate scrub
+plugins:
+  - badfiles
+  - chroma
+  - edit
+  - duplicates
+  - fetchart
+  - info
+  - lastgenre
+  - lyrics
+  - mbsubmit
+  - mbsync
+  - missing
+  - mpdstats
+  - mpdupdate
+  - playlist
+  - scrub
+  - unimported
 #+end_src
 
 ** KILL Album Types
@@ -159,40 +179,48 @@ badfiles:
 
 #+begin_src yaml
 chroma:
-    auto: yes
+  auto: yes
 #+end_src
 
 ** Duplicates
 This plugin adds a new command, ~duplicates~ or ~dup~, which finds and lists
 duplicate tracks or albums in your collection.
 
+** Edit
+The =edit= plugin lets you modify music metadata using your favorite text editor.
+#+begin_src yaml
+edit:
+  itemfields: track title artist album
+  albumfields: album albumartist
+#+end_src
+
 ** FetchArt
 The [[https://beets.readthedocs.io/en/stable/plugins/fetchart.html][fetchart]] plugin retrieves album art images from various sources on the Web and stores them as image files.
 
 #+begin_src yaml
 fetchart:
-    auto: yes
-    minwidth: 0
-    maxwidth: 0
-    quality: 0
-    max_filesize: 0
-    enforce_ratio: no
-    cautious: no
-    cover_names:
-    - cover
-    - front
-    - art
-    - album
-    - folder
-    sources:
-    - filesystem
-    - coverart
-    - itunes
-    - amazon
-    - albumart
-    store_source: no
-    high_resolution: no
-    deinterlace: no
+  auto: yes
+  minwidth: 0
+  maxwidth: 0
+  quality: 0
+  max_filesize: 0
+  enforce_ratio: no
+  cautious: no
+  cover_names:
+  - cover
+  - front
+  - art
+  - album
+  - folder
+  sources:
+  - filesystem
+  - coverart
+  - itunes
+  - amazon
+  - albumart
+  store_source: no
+  high_resolution: no
+  deinterlace: no
 #+end_src
 
 ** Info
@@ -203,16 +231,16 @@ The [[https://beets.readthedocs.io/en/stable/plugins/lastgenre.html][lastgenre]]
 
 #+begin_src yaml
 lastgenre:
-    auto: yes
-    canonical: no
-    count: 5
-    fallback:
-    force: yes
-    min_weight: 10
-    prefer_specific: no
-    source: album
-    whitelist: yes
-    title_case: yes
+  auto: yes
+  canonical: no
+  count: 5
+  fallback:
+  force: yes
+  min_weight: 10
+  prefer_specific: no
+  source: album
+  whitelist: yes
+  title_case: yes
 #+end_src
 
 fetch genres for albums or items matching a certain query.
@@ -254,17 +282,31 @@ Needs to be run with =beet mpdstats=
 
 #+begin_src yaml
 mpd:
-    # host: $MPD_HOST
-    # port: $MPD_PORT
-    # password:
-    # music_directory:
+  # host: $MPD_HOST
+  # port: $MPD_PORT
+  # password:
+  # music_directory:
 
-    rating: yes
-    rating_mix: 0.75
+  rating: yes
+  rating_mix: 0.75
 #+end_src
 
 ** MPD Update
 [[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
+
+** Playlist
+=playlist= is a plugin to use playlists in m3u format.
+#+begin_src yaml
+playlist:
+  auto: yes
+  playlist_dir: ~/.config/mpd/playlists
+  relative_to: library
+  forward_slash: no
+#+end_src
+
+** IDEA Plex Update
+=plexupdate= is a very simple plugin for beets that lets you automatically update Plex’s music library whenever you change your beets library.
+
 ** Scrub
 The =scrub= plugin lets you remove extraneous metadata from files’ tags. If you’d
 prefer never to see crufty tags that come from other tools, the plugin can
@@ -272,5 +314,13 @@ automatically remove all non-beets-tracked tags whenever a file’s metadata is
 written to disk by removing the tag entirely before writing new data
 #+begin_src yaml
 scrub:
-    auto: yes
+  auto: yes
+#+end_src
+
+** Unimported
+The =unimported= plugin allows one to list all files in the library folder which are not listed in the beets library database, including art files.
+#+begin_src yaml
+unimported:
+  ignore_extensions: jpg png
+  ignore_subdirectories: import Unsorted
 #+end_src
