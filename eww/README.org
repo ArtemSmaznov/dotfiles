@@ -1282,7 +1282,10 @@ Layout
 *** idea clock
 *** idea calendar
 *** idea notes
-** Calendar
+* [0/4] Modules
+** PROJ Clock
+
+** PROJ Calendar
 #+begin_src yuck :tangle eww.yuck
 (include "modules/panels/calendar.yuck")
 #+end_src
@@ -1315,7 +1318,8 @@ calendar:selected {
                      :show-week-numbers false))
 #+end_src
 
-* Modules
+** PROJ Weather
+
 ** Music Player
 #+begin_src yuck :tangle eww.yuck
 (include "modules/music-player.yuck")
@@ -1565,6 +1569,8 @@ Media Player
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))
 #+end_src
+
+** PROJ Cava
 
 * widget templates
 ** icon
