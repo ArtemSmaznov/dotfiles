@@ -1356,15 +1356,18 @@ Media Player
 
 .music-player-rating-bar {
     margin: 5px 0;
+    transition-duration: 3s;
     trough {
         background: $base03;
         min-width: 5px;
         border-radius: 10px;
-    }
-    progress {
-        background: linear-gradient(to top, $base08, $base04, $base0A);
-        min-width: 5px;
-        border-radius: 10px;
+        transition-duration: inherit;
+        progress {
+            background: linear-gradient(to top, $base08, $base04, $base0A);
+            min-width: 5px;
+            border-radius: 10px;
+            transition-duration: inherit;
+        }
     }
 }
 
