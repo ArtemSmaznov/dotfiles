@@ -81,7 +81,7 @@
            "~/.local/bin/listen-player.sh last_played")
 
 (deflisten music-album-cover-file
-           :initial ""
+           :initial "/home/artem/music/no-cover"
            "~/.local/bin/listen-player.sh cover_file mpd")
 
 (defpoll music-album-cover-color

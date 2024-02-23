@@ -27,12 +27,12 @@
     trough {
         background: $base03;
         min-width: 5px;
-        border-radius: 10px;
+        border-radius: 1rem;
         transition-duration: inherit;
         progress {
             background: linear-gradient(to top, $base08, $base04, $base0A);
             min-width: 5px;
-            border-radius: 10px;
+            border-radius: 1rem;
             transition-duration: inherit;
         }
     }
@@ -64,13 +64,14 @@
     margin: 0 15px;
     trough {
         background-color: $base03;
-        min-height: 5px;
+        border-radius: 1rem;
+        min-height: 7px;
         min-width: 50px;
-        border-radius: 10px;
-    }
-    highlight {
-        background-color: $base07;
-        border-radius: 10px;
+        highlight {
+            background-color: $base07;
+            border-radius: 1rem;
+        }
+        slider {}
     }
 }
 
