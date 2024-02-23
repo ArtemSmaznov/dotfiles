@@ -1500,6 +1500,7 @@ Media Player
                 (label :class "music-player-track-title"
                        :hexpand true
                        :xalign 0
+                       :limit-width 24
                        :text music-title)
 
                 (revealer :transition "slidedown"
@@ -1507,6 +1508,7 @@ Media Player
                           :reveal { music-artist != "" }
                           (label :class "music-player-track-artist"
                                  :xalign 0
+                                 :limit-width 30
                                  :text music-artist))
 
                 (box :class "music-player-track-album"
@@ -1521,6 +1523,7 @@ Media Player
                                (box :class "icon"
                                     "record-vinyl"))
                      (label :xalign 0
+                            :limit-width 30
                             :text music-album))))
 
 
