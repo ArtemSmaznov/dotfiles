@@ -16,9 +16,15 @@
                      :orientation "v"
                      :space-evenly false
                      :hexpand true
-                     :vexpand true
 
-                     (music-player-track-info)
+                     (box :orientation "h"
+                          :hexpand true
+                          :vexpand true
+                          :space-evenly false
+                          :spacing 50
+                          (music-player-track-info)
+                          (box))
+
                      (music-player-controls))))
 
 
@@ -72,38 +78,43 @@
 (defwidget music-player-track-info []
            (box :class "music-player-track-info"
                 :orientation "v"
+                :hexpand true
                 :vexpand true
-                :halign "start"
                 :space-evenly false
 
-                (label :class "music-player-track-title"
-                       :hexpand true
-                       :xalign 0
-                       :limit-width 24
-                       :text music-title)
+                (box :orientation "v"
+                     :hexpand true
+                     :space-evenly false
+                     (scroll :hscroll true
+                             :vscroll false
+                             (label :class "music-player-track-title"
+                                    :xalign 0
+                                    :text music-title))
 
-                (revealer :transition "slidedown"
-                          :duration revealer-duration
-                          :reveal { music-artist != "" }
-                          (label :class "music-player-track-artist"
-                                 :xalign 0
-                                 :limit-width 30
-                                 :text music-artist))
+                     (revealer :transition "slidedown"
+                               :duration revealer-duration
+                               :reveal { music-artist != "" }
+
+                               (scroll :hscroll true
+                                       :vscroll false
+                                       (label :class "music-player-track-artist"
+                                              :xalign 0
+                                              :text music-artist))))
 
                 (box :class "music-player-track-album"
                      :hexpand true
                      :vexpand true
-                     :valign "center"
                      :space-evenly false
                      :spacing 10
-                     (revealer :transition "slideleft"
-                               :duration revealer-duration
-                               :reveal { music-album != "" }
-                               (box :class "icon"
-                                    "record-vinyl"))
-                     (label :xalign 0
-                            :limit-width 30
-                            :text music-album))))
+                     (label :class "icon"
+                            :text "record-vinyl")
+                     (scroll :hscroll true
+                             :vscroll false
+                             :hexpand true
+                             (label :hexpand true
+                                    :xalign 0
+                                    :text music-album)))))
+
 
 
 (defwidget music-player-controls []
