@@ -255,48 +255,14 @@
                  {date})))
 
 (defwidget profile []
-           (box :class "widget profile"
-                :orientation "h"
-                :space-evenly false
-                (revealer :transition "slideleft"
-                          :reveal show-power-menu
-                          :duration revealer-duration
-                          (power-menu))
-                (eventbox :onhover     "eww update show-power-menu=true"
-                          :onhoverlost "eww update show-power-menu=false"
-                          :onclick     "eww open powermenu-panel"
-                          :cursor "pointer"
-                          :timeout 5
+           (eventbox :class "status-bar-widget profile"
+                     :onclick "eww open powermenu-panel"
+                     :cursor "pointer"
 
-                          (image :path profile-face
-                                 :class "profile-face"
-                                 :image-height 35))))
-
-(defwidget power-menu []
-  (box :class "status-widget power-menu"
-       :orientation "h"
-       :space-evenly true
-       :spacing 7
-       (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
-               :tooltip "shutdown"
-               :class "icon shutdown"
-               "power-off")
-       (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
-               :tooltip "reboot"
-               :class "icon reboot"
-               "rotate")
-       (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
-               :tooltip "suspend"
-               :class "icon suspend"
-               "moon")
-       (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
-               :tooltip "logout"
-               :class "icon log-out"
-               "right-from-bracket")
-       (button :onclick "${dm-scripts}/dm-power lock"
-               :tooltip "lock screen"
-               :class "icon lock-screen"
-               "lock")))
+                     (box :class "profile-face"
+                          :width status-bar-size
+                          :height status-bar-size
+                          :style "background-image: url('${profile-face}');")))
 
 (defwidget icon [?icon]
   (label :class "icon"

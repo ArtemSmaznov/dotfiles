@@ -27,8 +27,8 @@
                      :cursor "pointer"
                      (overlay :class "music-player-album-art-reactive"
                               (box :class "music-player-album-art"
-                                   :vexpand false
                                    :hexpand false
+                                   :vexpand false
                                    :style "background-image: url('${ music-album-cover-file == '' ? no-album-cover : music-album-cover-file }');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration

@@ -82,6 +82,7 @@ $accent-line-width: 2px;
 #+end_src
 
 #+begin_src yuck :tangle vars/theme.yuck
+(defvar status-bar-size 35)
 (defvar revealer-duration ".35s")
 (defvar status-bar-text-spacing 5)
 (defvar status-bar-widget-spacing 2)
@@ -1034,62 +1035,31 @@ Layout
 *** Profile
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
-.widget.profile {
-  margin-left: 5px;
+.profile {
 }
 
 .profile-face {
-  border-radius: 50%;
+    margin: 5px;
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 50%;
+    border: 2px solid $base04;
 }
 #+end_src
 
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget profile []
-           (box :class "widget profile"
-                :orientation "h"
-                :space-evenly false
-                (revealer :transition "slideleft"
-                          :reveal show-power-menu
-                          :duration revealer-duration
-                          (power-menu))
-                (eventbox :onhover     "eww update show-power-menu=true"
-                          :onhoverlost "eww update show-power-menu=false"
-                          :onclick     "eww open powermenu-panel"
-                          :cursor "pointer"
-                          :timeout 5
+           (eventbox :class "status-bar-widget profile"
+                     :onclick "eww open powermenu-panel"
+                     :cursor "pointer"
 
-                          (image :path profile-face
-                                 :class "profile-face"
-                                 :image-height 35))))
-                          #+end_src
-
-#+begin_src yuck :tangle modules/status-bars/widgets.yuck
-(defwidget power-menu []
-  (box :class "status-widget power-menu"
-       :orientation "h"
-       :space-evenly true
-       :spacing 7
-       (button :onclick "eww update confirmation-message='shutdown system?' yes-command='${dm-scripts}/dm-power poweroff' && eww open confirmation-window"
-               :tooltip "shutdown"
-               :class "icon shutdown"
-               "power-off")
-       (button :onclick "eww update confirmation-message='restart system?' yes-command='${dm-scripts}/dm-power reboot' && eww open confirmation-window"
-               :tooltip "reboot"
-               :class "icon reboot"
-               "rotate")
-       (button :onclick "eww update confirmation-message='suspend system?' yes-command='${dm-scripts}/dm-power suspend' && eww open confirmation-window"
-               :tooltip "suspend"
-               :class "icon suspend"
-               "moon")
-       (button :onclick "eww update confirmation-message='log out?' yes-command='eww reload' && eww open confirmation-window"
-               :tooltip "logout"
-               :class "icon log-out"
-               "right-from-bracket")
-       (button :onclick "${dm-scripts}/dm-power lock"
-               :tooltip "lock screen"
-               :class "icon lock-screen"
-               "lock")))
+                     (box :class "profile-face"
+                          :width status-bar-size
+                          :height status-bar-size
+                          :style "background-image: url('${profile-face}');")))
 #+end_src
 
 * [0/7] panels
@@ -1448,8 +1418,8 @@ Media Player
                      :cursor "pointer"
                      (overlay :class "music-player-album-art-reactive"
                               (box :class "music-player-album-art"
-                                   :vexpand false
                                    :hexpand false
+                                   :vexpand false
                                    :style "background-image: url('${ music-album-cover-file == '' ? no-album-cover : music-album-cover-file }');")
                               (revealer :transition "crossfade"
                                         :duration revealer-duration
