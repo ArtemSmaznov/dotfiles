@@ -134,5 +134,5 @@ scrub:
   auto: yes
 
 unimported:
-  ignore_extensions: jpg png
-  ignore_subdirectories: import Unsorted
+  ignore_extensions: jpg png txt md org
+  ignore_subdirectories: Unsorted import

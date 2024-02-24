@@ -33,6 +33,7 @@
   - [[#idea-plex-update][IDEA Plex Update]]
   - [[#scrub][Scrub]]
   - [[#unimported][Unimported]]
+- [[#proj-fix-for-albumtype-metadata][PROJ Fix for albumtype metadata]]
 
 * Dependencies
 |-------------------+------------------------------------|
@@ -321,6 +322,9 @@ scrub:
 The =unimported= plugin allows one to list all files in the library folder which are not listed in the beets library database, including art files.
 #+begin_src yaml
 unimported:
-  ignore_extensions: jpg png
-  ignore_subdirectories: import Unsorted
+  ignore_extensions: jpg png txt md org
+  ignore_subdirectories: Unsorted import
 #+end_src
+
+* PROJ Fix for albumtype metadata
+https://github.com/beetbox/beets/pull/4582#issuecomment-1445023493
