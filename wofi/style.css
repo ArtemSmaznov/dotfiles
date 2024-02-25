@@ -1,0 +1,56 @@
+#window {
+    background: transparent;
+    color: --wofi-color7;
+    font-family: "Hack Nerd Font";
+    font-size: 14pt;
+}
+
+#input,
+#inner-box {
+    background-color: rgba(--wofi-rgb-color0, 0.2);
+}
+
+#input,
+#outer-box,
+#inner-box,
+#entry:selected {
+    border-radius: 1rem;
+}
+
+#input {
+    border: 5px solid rgba(--wofi-rgb-color3, 0.5);
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 16pt;
+}
+
+#input:focus {
+    border: 5px solid rgba(--wofi-rgb-color14, 0.5);
+}
+
+/* #entry:nth-child(odd) { */
+/*     background-color: rgba(--wofi-rgb-color3, 0.2); */
+/* } */
+
+/* #entry:nth-child(even) { */
+/*     background-color: @base01; */
+/* } */
+
+#img,
+#text {
+    margin: 10px;
+}
+
+#img {
+    margin-right: 3px;
+}
+
+#text:selected,
+#entry:selected {
+    color: --wofi-color14;
+    outline: none;
+}
+
+#entry:selected {
+    background-color: rgba(--wofi-rgb-color14, 0.2);
+}

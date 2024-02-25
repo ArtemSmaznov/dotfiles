@@ -1,17 +1,24 @@
+layer=overlay
+normal_window=false
+
+width=25%;
+height=60%;
+dynamic_lines=false
+# lines=10
+
+orientation=vertical
+columns=1
+
 show=drun
 prompt=Type to filter
-normal_window=false
-allow_images=true
-allow_markup=true
 insensitive=true
-columns=1
-gtk_dark=true
-orientation=vertical
-image_size=20
-dynamic_lines=true
-layer=overlay
+allow_markup=true
 
-stylesheet=themes/base16.css
+allow_images=true
+image_size=50
+
+colors=themes/base16
+# gtk_dark=true
 
 key_left=Control_L-h
 key_down=Control_L-j

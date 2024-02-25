@@ -15,23 +15,89 @@
 
 * Configuration
 #+begin_src conf
+layer=overlay
+normal_window=false
+
+width=25%;
+height=60%;
+dynamic_lines=false
+# lines=10
+
+orientation=vertical
+columns=1
+
 show=drun
 prompt=Type to filter
-normal_window=false
-allow_images=true
-allow_markup=true
 insensitive=true
-columns=1
-gtk_dark=true
-orientation=vertical
-image_size=20
-dynamic_lines=true
-layer=overlay
+allow_markup=true
+
+allow_images=true
+image_size=50
 #+end_src
 
 * Theme
 #+begin_src conf
-stylesheet=themes/base16.css
+colors=themes/base16
+# gtk_dark=true
+#+end_src
+
+#+begin_src css :tangle style.css
+#window {
+    background: transparent;
+    color: --wofi-color7;
+    font-family: "Hack Nerd Font";
+    font-size: 14pt;
+}
+
+#input,
+#inner-box {
+    background-color: rgba(--wofi-rgb-color0, 0.2);
+}
+
+#input,
+#outer-box,
+#inner-box,
+#entry:selected {
+    border-radius: 1rem;
+}
+
+#input {
+    border: 5px solid rgba(--wofi-rgb-color3, 0.5);
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 16pt;
+}
+
+#input:focus {
+    border: 5px solid rgba(--wofi-rgb-color14, 0.5);
+}
+
+/* #entry:nth-child(odd) { */
+/*     background-color: rgba(--wofi-rgb-color3, 0.2); */
+/* } */
+
+/* #entry:nth-child(even) { */
+/*     background-color: @base01; */
+/* } */
+
+#img,
+#text {
+    margin: 10px;
+}
+
+#img {
+    margin-right: 3px;
+}
+
+#text:selected,
+#entry:selected {
+    color: --wofi-color14;
+    outline: none;
+}
+
+#entry:selected {
+    background-color: rgba(--wofi-rgb-color14, 0.2);
+}
 #+end_src
 
 * Keybindings

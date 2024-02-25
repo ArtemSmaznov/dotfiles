@@ -191,7 +191,7 @@ rewrite = true
 * Wofi
 #+begin_src toml
 [[item]]
-file = "~/.config/wofi/themes/base16.css"
+file = "~/.config/wofi/themes/base16"
 template = "wofi"
 rewrite = true
 #+end_src

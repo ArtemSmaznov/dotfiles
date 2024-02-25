@@ -91,7 +91,7 @@ subtemplate = "colors"
 rewrite = true
 
 [[item]]
-file = "~/.config/wofi/themes/base16.css"
+file = "~/.config/wofi/themes/base16"
 template = "wofi"
 rewrite = true
 
