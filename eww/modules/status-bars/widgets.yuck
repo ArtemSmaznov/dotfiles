@@ -256,7 +256,7 @@
 
 (defwidget profile []
            (eventbox :class "status-bar-widget profile"
-                     :onclick "eww open powermenu-panel"
+                     :onclick "eww open --toggle powermenu-panel"
                      :cursor "pointer"
 
                      (box :class "profile-face"

@@ -64,6 +64,10 @@ $accent-line-width: 2px;
 .suspend     { color: $base0D; }
 .lock-screen { color: $base0C; }
 .log-out     { color: $base0B; }
+
+button:hover {
+    transition-duration: .35s;
+}
 #+end_src
 
 * Variables
@@ -74,6 +78,7 @@ $accent-line-width: 2px;
 
 #+begin_src yuck :tangle vars/states.yuck
 (defvar show-power-menu false)
+(defvar wm-key-chord "")
 #+end_src
 
 ** Theme
@@ -412,8 +417,12 @@ Layout
 #+end_src
 
 #+begin_src scss :tangle modules/status-bars/style.scss
-.bar {
+.main-bar,
+.second-bar {
   background-color: rgba($base00, 0.2);
+}
+
+.bar {
   color: $base07;
   font-family: $text-font;
   font-size: 12pt;
@@ -462,11 +471,11 @@ Layout
 (defwindow main-bar
            :monitor 0
            :stacking "fg"
-           :geometry (geometry :x "0%"
+           :geometry (geometry :anchor "top center"
+                               :x "0%"
                                :y "0%"
                                :width "100%"
-                               :height "35px"
-                               :anchor "top center")
+                               :height "35px")
            ;; wayland
            :exclusive true
            ;; x11
@@ -527,11 +536,11 @@ Layout
 (defwindow second-bar
            :monitor 1
            :stacking "fg"
-           :geometry (geometry :x "0%"
+           :geometry (geometry :anchor "top center"
+                               :x "0%"
                                :y "0%"
                                :width "100%"
-                               :height "30px"
-                               :anchor "top center")
+                               :height "30px")
 
            ;; wayland
            :exclusive true
@@ -1053,7 +1062,7 @@ Layout
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget profile []
            (eventbox :class "status-bar-widget profile"
-                     :onclick "eww open powermenu-panel"
+                     :onclick "eww open --toggle powermenu-panel"
                      :cursor "pointer"
 
                      (box :class "profile-face"
@@ -1062,60 +1071,173 @@ Layout
                           :style "background-image: url('${profile-face}');")))
 #+end_src
 
-* [0/7] panels
-** STRT Power Menu
+* Panels
+** Power Menu
 #+begin_src yuck :tangle eww.yuck
 (include "modules/panels/powermenu.yuck")
 #+end_src
+*** styles
+#+begin_src scss :tangle eww.scss
+@import "modules/panels/powermenu.scss";
+#+end_src
+
+#+begin_src scss :tangle modules/panels/powermenu.scss
+.powermenu-panel {
+    background-color: rgba($base00, 0.2);
+}
+
+.overlay {
+    color: $base07;
+    font-family: $text-font;
+}
+
+.powermenu-button {
+    background-color: $base03;
+    font-family: $icon-font;
+    font-size: 64pt;
+    border-radius: 20%;
+    padding: 40px;
+    box-shadow: 0 0 2px $base01;
+}
+
+.powermenu-text {
+    margin-top: 15px;
+    font-size: 16pt;
+}
+
+.powermenu.cancel {
+    color: $base07;
+    border: 3px solid $base07;
+    border-radius: 50%;
+}
+
+.powermenu.cancel label.icon {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 40pt;
+}
+
+// hover states
+.powermenu-button.shutdown1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base08,
+                 1px 1px $base08;
+}
+.powermenu-button.shutdown1:hover {
+    color: $base08;
+}
+
+.powermenu-button.reboot1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base09,
+                 1px 1px $base09;
+}
+.powermenu-button.reboot1:hover {
+    color: $base09;
+}
+
+.powermenu-button.lock1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0B,
+                 1px 1px $base0B;
+}
+.powermenu-button.lock1:hover {
+    color: $base0B;
+}
+
+.powermenu-button.suspend1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0E,
+                 1px 1px $base0E;
+}
+.powermenu-button.suspend1:hover {
+    color: $base0E;
+}
+
+.powermenu-button.signout1 {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base0C,
+                 1px 1px $base0C;
+}
+.powermenu-button.signout1:hover {
+    color: $base0C;
+}
+
+.powermenu.cancel {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base03,
+                 1px 1px $base03;
+}
+.powermenu.cancel:hover {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base07,
+                 0px 0px $base07;
+}
+#+end_src
+
 *** window
 #+begin_src yuck :tangle modules/panels/powermenu.yuck
 (defwindow powermenu-panel
-           :namespace "powermenu-panel"
-
            :monitor 0
            :stacking "overlay"
            :geometry (geometry :anchor "top center"
                                :x "0%"
-                               :y "30%"
-                               :width "100px"
-                               :height "100px")
+                               :y "0%"
+                               :width "100%"
+                               :height "100%")
 
-           (box :class "powermenu-panel"
-                :orientation "h"
-                :space-evenly true
-                :spacing 15
-                :valign "center"
-                :halign "center"
+           (centerbox :class "overlay"
+                      :orientation "v"
 
-                (powermenu_entry :class "shutdown1"
-                                 :label "power off"
-                                 :icon "power-off"
-                                 :onclick "${dm-scripts}/dm-power poweroff")
-                (powermenu_entry :class "reboot1"
-                                 :label "reboot"
-                                 :icon "rotate"
-                                 :onclick "${dm-scripts}/dm-power reboot")
-                (powermenu_entry :class "suspend1"
-                                 :label "suspend"
-                                 :icon "moon"
-                                 :onclick "${dm-scripts}/dm-power suspend")
-                (powermenu_entry :class "signout1"
-                                 :label "sign out"
-                                 :icon "right-from-bracket"
-                                 :onclick "${dm-scripts}/dm-power logout")
-                (powermenu_entry :class "lock1"
-                                 :label "lock"
-                                 :icon "lock"
-                                 :onclick "${dm-scripts}/dm-power lock")
-                (powermenu_entry :class "cancel1"
-                                 :label "cancel"
-                                 :icon "xmark"
-                                 :onclick "eww close powermenu-panel")))
+                      (box)
+                      (box :orientation "h"
+                           :halign "center"
+                           :spacing 20
+
+                           (powermenu_entry :class "shutdown1"
+                                            :icon "power-off"
+                                            :label "power off"
+                                            :hotkey "p"
+                                            :onclick "${dm-scripts}/dm-power poweroff")
+                           (powermenu_entry :class "reboot1"
+                                            :icon "rotate"
+                                            :label "reboot"
+                                            :hotkey "r"
+                                            :onclick "${dm-scripts}/dm-power reboot")
+                           (powermenu_entry :class "suspend1"
+                                            :icon "moon"
+                                            :label "suspend"
+                                            :hotkey "s,z"
+                                            :onclick "${dm-scripts}/dm-power suspend")
+                           (powermenu_entry :class "signout1"
+                                            :icon "right-from-bracket"
+                                            :label "sign out"
+                                            :onclick "${dm-scripts}/dm-power logout")
+                           (powermenu_entry :class "lock1"
+                                            :icon "lock"
+                                            :label "lock"
+                                            :hotkey "l"
+                                            :onclick "${dm-scripts}/dm-power lock"))
+
+                      (revealer :reveal { wm-key-chord != "dm-power" }
+                                (eventbox :class "powermenu cancel"
+                                          :halign "center"
+                                          :valign "center"
+                                          :width 150
+                                          :height 150
+                                          :onclick "eww close powermenu-panel"
+                                          :cursor "pointer"
+                                          (box :orientation "v"
+                                               :vexpand true
+                                               :space-evenly false
+                                               (label :class "icon"
+                                                      :text "xmark")
+                                               (label :text "Cancel"))))))
 #+end_src
 
 *** widgets
 #+begin_src yuck :tangle modules/panels/powermenu.yuck
-(defwidget powermenu_entry [label icon onclick class]
+(defwidget powermenu_entry [?class ?icon ?label ?hotkey ?onclick]
            (box :class "powermenu-entry"
                 :orientation "v"
                 :space-evenly false
@@ -1126,85 +1248,12 @@ Layout
                                :text {icon}))
 
                 (label :class "powermenu-text"
-                       :text {label})))
+                       :text {label})
+
+                (label :text { hotkey == "" ? "" : "[${hotkey}]" })))
 #+end_src
 
-*** styles
-#+begin_src scss :tangle eww.scss
-@import "modules/panels/powermenu.scss";
-#+end_src
-
-#+begin_src scss :tangle modules/panels/powermenu.scss
-.powermenu-panel {
-  background-color: transparent;
-  color: $base07;
-  font-family: $text-font;
-  border-radius: 1.5rem;
-  padding: 40px 40px 20px 40px;
-}
-
-.powermenu-button {
-  background-color: $base03;
-  font-family: $icon-font;
-  font-size: 32pt;
-  border-radius: 20%;
-  transition: 0.3s;
-  padding: 40px;
-  transition: 0.3s;
-  box-shadow: 0 0 2px $base01;
-}
-
-.shutdown1:hover { color: $base08 }
-.shutdown1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base08,
-                 1px 1px $base08;
-}
-
-.reboot1:hover { color: $base09 }
-.reboot1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base09,
-                 1px 1px $base09;
-}
-
-.lock1:hover { color: $base0B }
-.lock1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base0B,
-                 1px 1px $base0B;
-}
-
-.suspend1:hover { color: $base0E }
-.suspend1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base0E,
-                 1px 1px $base0E;
-}
-
-.signout1:hover { color: $base0C }
-.signout1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base0C,
-                 1px 1px $base0C;
-}
-
-.cancel1:hover { color: $base03 }
-.cancel1 {
-    text-shadow: 0px 0px 3px $base03,
-                 0px 0px 10px $base07,
-                 1px 1px $base07;
-}
-
-.powermenu-icon {
-}
-
-.powermenu-text {
-    margin-top: 10px;
-}
-#+end_src
-
-** STRT Status
+** Status
 #+begin_src yuck :tangle eww.yuck
 (include "modules/panels/status.yuck")
 #+end_src
@@ -1252,7 +1301,7 @@ Layout
 *** idea clock
 *** idea calendar
 *** idea notes
-* [0/4] Modules
+* Modules
 ** PROJ Clock
 
 ** PROJ Calendar

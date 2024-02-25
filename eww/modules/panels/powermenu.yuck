@@ -1,47 +1,61 @@
 (defwindow powermenu-panel
-           :namespace "powermenu-panel"
-
            :monitor 0
            :stacking "overlay"
            :geometry (geometry :anchor "top center"
                                :x "0%"
-                               :y "30%"
-                               :width "100px"
-                               :height "100px")
+                               :y "0%"
+                               :width "100%"
+                               :height "100%")
 
-           (box :class "powermenu-panel"
-                :orientation "h"
-                :space-evenly true
-                :spacing 15
-                :valign "center"
-                :halign "center"
+           (centerbox :class "overlay"
+                      :orientation "v"
 
-                (powermenu_entry :class "shutdown1"
-                                 :label "power off"
-                                 :icon "power-off"
-                                 :onclick "${dm-scripts}/dm-power poweroff")
-                (powermenu_entry :class "reboot1"
-                                 :label "reboot"
-                                 :icon "rotate"
-                                 :onclick "${dm-scripts}/dm-power reboot")
-                (powermenu_entry :class "suspend1"
-                                 :label "suspend"
-                                 :icon "moon"
-                                 :onclick "${dm-scripts}/dm-power suspend")
-                (powermenu_entry :class "signout1"
-                                 :label "sign out"
-                                 :icon "right-from-bracket"
-                                 :onclick "${dm-scripts}/dm-power logout")
-                (powermenu_entry :class "lock1"
-                                 :label "lock"
-                                 :icon "lock"
-                                 :onclick "${dm-scripts}/dm-power lock")
-                (powermenu_entry :class "cancel1"
-                                 :label "cancel"
-                                 :icon "xmark"
-                                 :onclick "eww close powermenu-panel")))
+                      (box)
+                      (box :orientation "h"
+                           :halign "center"
+                           :spacing 20
 
-(defwidget powermenu_entry [label icon onclick class]
+                           (powermenu_entry :class "shutdown1"
+                                            :icon "power-off"
+                                            :label "power off"
+                                            :hotkey "p"
+                                            :onclick "${dm-scripts}/dm-power poweroff")
+                           (powermenu_entry :class "reboot1"
+                                            :icon "rotate"
+                                            :label "reboot"
+                                            :hotkey "r"
+                                            :onclick "${dm-scripts}/dm-power reboot")
+                           (powermenu_entry :class "suspend1"
+                                            :icon "moon"
+                                            :label "suspend"
+                                            :hotkey "s,z"
+                                            :onclick "${dm-scripts}/dm-power suspend")
+                           (powermenu_entry :class "signout1"
+                                            :icon "right-from-bracket"
+                                            :label "sign out"
+                                            :onclick "${dm-scripts}/dm-power logout")
+                           (powermenu_entry :class "lock1"
+                                            :icon "lock"
+                                            :label "lock"
+                                            :hotkey "l"
+                                            :onclick "${dm-scripts}/dm-power lock"))
+
+                      (revealer :reveal { wm-key-chord != "dm-power" }
+                                (eventbox :class "powermenu cancel"
+                                          :halign "center"
+                                          :valign "center"
+                                          :width 150
+                                          :height 150
+                                          :onclick "eww close powermenu-panel"
+                                          :cursor "pointer"
+                                          (box :orientation "v"
+                                               :vexpand true
+                                               :space-evenly false
+                                               (label :class "icon"
+                                                      :text "xmark")
+                                               (label :text "Cancel"))))))
+
+(defwidget powermenu_entry [?class ?icon ?label ?hotkey ?onclick]
            (box :class "powermenu-entry"
                 :orientation "v"
                 :space-evenly false
@@ -52,4 +66,6 @@
                                :text {icon}))
 
                 (label :class "powermenu-text"
-                       :text {label})))
+                       :text {label})
+
+                (label :text { hotkey == "" ? "" : "[${hotkey}]" })))

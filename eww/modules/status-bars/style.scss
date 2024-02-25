@@ -1,5 +1,9 @@
-.bar {
+.main-bar,
+.second-bar {
   background-color: rgba($base00, 0.2);
+}
+
+.bar {
   color: $base07;
   font-family: $text-font;
   font-size: 12pt;

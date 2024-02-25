@@ -1,67 +1,91 @@
 .powermenu-panel {
-  background-color: transparent;
-  color: $base07;
-  font-family: $text-font;
-  border-radius: 1.5rem;
-  padding: 40px 40px 20px 40px;
+    background-color: rgba($base00, 0.2);
+}
+
+.overlay {
+    color: $base07;
+    font-family: $text-font;
 }
 
 .powermenu-button {
-  background-color: $base03;
-  font-family: $icon-font;
-  font-size: 32pt;
-  border-radius: 20%;
-  transition: 0.3s;
-  padding: 40px;
-  transition: 0.3s;
-  box-shadow: 0 0 2px $base01;
+    background-color: $base03;
+    font-family: $icon-font;
+    font-size: 64pt;
+    border-radius: 20%;
+    padding: 40px;
+    box-shadow: 0 0 2px $base01;
 }
 
-.shutdown1:hover { color: $base08 }
-.shutdown1 {
+.powermenu-text {
+    margin-top: 15px;
+    font-size: 16pt;
+}
+
+.powermenu.cancel {
+    color: $base07;
+    border: 3px solid $base07;
+    border-radius: 50%;
+}
+
+.powermenu.cancel label.icon {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 40pt;
+}
+
+// hover states
+.powermenu-button.shutdown1 {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base08,
                  1px 1px $base08;
 }
+.powermenu-button.shutdown1:hover {
+    color: $base08;
+}
 
-.reboot1:hover { color: $base09 }
-.reboot1 {
+.powermenu-button.reboot1 {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base09,
                  1px 1px $base09;
 }
+.powermenu-button.reboot1:hover {
+    color: $base09;
+}
 
-.lock1:hover { color: $base0B }
-.lock1 {
+.powermenu-button.lock1 {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base0B,
                  1px 1px $base0B;
 }
+.powermenu-button.lock1:hover {
+    color: $base0B;
+}
 
-.suspend1:hover { color: $base0E }
-.suspend1 {
+.powermenu-button.suspend1 {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base0E,
                  1px 1px $base0E;
 }
+.powermenu-button.suspend1:hover {
+    color: $base0E;
+}
 
-.signout1:hover { color: $base0C }
-.signout1 {
+.powermenu-button.signout1 {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base0C,
                  1px 1px $base0C;
 }
+.powermenu-button.signout1:hover {
+    color: $base0C;
+}
 
-.cancel1:hover { color: $base03 }
-.cancel1 {
+.powermenu.cancel {
+    text-shadow: 0px 0px 3px $base03,
+                 0px 0px 10px $base03,
+                 1px 1px $base03;
+}
+.powermenu.cancel:hover {
     text-shadow: 0px 0px 3px $base03,
                  0px 0px 10px $base07,
-                 1px 1px $base07;
-}
-
-.powermenu-icon {
-}
-
-.powermenu-text {
-    margin-top: 10px;
+                 0px 0px $base07;
 }

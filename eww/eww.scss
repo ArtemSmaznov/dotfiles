@@ -31,6 +31,10 @@ $accent-line-width: 2px;
 .lock-screen { color: $base0C; }
 .log-out     { color: $base0B; }
 
+button:hover {
+    transition-duration: .35s;
+}
+
 @import "modules/status-bars/style.scss";
 
 @import "modules/panels/powermenu.scss";
