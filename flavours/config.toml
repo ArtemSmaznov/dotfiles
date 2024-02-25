@@ -1,8 +1,8 @@
 [[item]]
-file = "~/.config/alacritty/themes/base16.yml"
+file = "~/.config/alacritty/themes/base16.toml"
 template = "alacritty"
 # subtemplate = "default-256"
-hook = "touch ~/.config/alacritty/alacritty.yml"
+hook = "touch ~/.config/alacritty/alacritty.toml"
 rewrite = true
 
 [[item]]
