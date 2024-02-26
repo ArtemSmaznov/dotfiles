@@ -48,7 +48,7 @@
                      (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
-                          :spacing status-bar-text-spacing
+                          :spacing status-bar-icon-spacing
                           :halign "center"
 
                           (icon :icon { player-state == "stopped" ? "stop" :
@@ -61,7 +61,7 @@
                                     :reveal { player-artist != "" }
                                     (box :orientation "h"
                                          :space-evenly false
-                                         :spacing status-bar-text-spacing
+                                         :spacing status-bar-icon-spacing
                                          (label :class "player-artist"
                                                 :limit-width 50
                                                 :text player-artist)
@@ -76,7 +76,7 @@
                                     :reveal { player-name == "mpd" }
                                     (box :orientation "h"
                                          :space-evenly false
-                                         :spacing status-bar-text-spacing
+                                         :spacing status-bar-icon-spacing
                                          (label :text "·")
                                          (label :class "music-flags"
                                                 :text music-flags)))
@@ -116,20 +116,20 @@
 (defwidget updates []
            (eventbox :onclick "eww open --toggle updates-list"
                      :cursor "pointer"
-                     (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
-                                   updates ==  69  ? "widget colored 6 status-widget red"         :
-                                   updates == 101  ? "widget colored 6 status-widget orange"      :
-                                   updates == 220  ? "widget colored 6 status-widget yellow"      :
-                                   updates == 360  ? "widget colored 6 status-widget blue"        :
-                                   updates == 404  ? "widget colored 6 status-widget yellow"      :
-                                   updates == 420  ? "widget colored 6 status-widget green"       :
-                                   updates == 1001 ? "widget colored 6 status-widget purple"      :
-                                   updates == year ? "widget colored 6 status-widget special"     :
-                                           "widget colored 6 status-widget"             }
+                     (box :class { updates ==   0  ? "status-widget colored 6 state-good"  :
+                                   updates ==  69  ? "status-widget colored 6 red"         :
+                                   updates == 101  ? "status-widget colored 6 orange"      :
+                                   updates == 220  ? "status-widget colored 6 yellow"      :
+                                   updates == 360  ? "status-widget colored 6 blue"        :
+                                   updates == 404  ? "status-widget colored 6 yellow"      :
+                                   updates == 420  ? "status-widget colored 6 green"       :
+                                   updates == 1001 ? "status-widget colored 6 purple"      :
+                                   updates == year ? "status-widget colored 6 special"     :
+                                                     "status-widget colored 6"             }
 
                           :orientation "h"
                           :space-evenly false
-                          :spacing status-bar-text-spacing
+                          ;; :spacing status-bar-icon-spacing
                           (icon :icon { updates ==   0  ? "check"    :
                                         updates ==  69  ? "heart"    :
                                         updates == 101  ? "book"     :
@@ -139,7 +139,7 @@
                                         updates == 420  ? "cannabis" :
                                         updates == 1001 ? "moon"     :
                                         updates == year ? "calendar" :
-                                                "bell" })
+                                                          "bell" })
 
                           (revealer :class { updates ==  69  ? ""              :
                                              updates == 101  ? ""              :
@@ -172,9 +172,9 @@
                    (label :text updates-list-content))
 
 (defwidget network []
-           (box :class "widget colored 5 network"
+           (box :class "status-widget colored 5 network"
                 :space-evenly false
-                :spacing status-bar-text-spacing
+                :spacing status-bar-icon-spacing
 
                 (icon :icon "ethernet")
                 (graph :min 0
@@ -199,26 +199,26 @@
 ;; :value {EWW_NET[interface].NET_UP})))
 
 (defwidget ram []
-           (box :class "widget colored 4 volume"
+           (box :class "status-widget colored 4 volume"
                 (slider :icon "memory"
                         :value {EWW_RAM.used_mem_perc}
                         :onchange "")))
 
 (defwidget cpu []
-    (box :class "widget colored 3 volume"
-        (slider :icon "microchip"
-                :value {EWW_CPU.avg}
-                :onchange "")))
+           (box :class "status-widget colored 3 volume"
+                (slider :icon "microchip"
+                        :value {EWW_CPU.avg}
+                        :onchange "")))
 
 (defwidget cpu-thermal []
-           (box :class "widget colored 2 volume"
+           (box :class "status-widget colored 2 volume"
+                :spacing status-bar-icon-spacing
                 (icon :icon "")
                 { round(EWW_TEMPS.K10TEMP_TCTL, 0) }
-                "°C"
-                ))
+                "°C"))
 
 (defwidget volume []
-    (box :class "widget colored 1 volume"
+    (box :class "status-widget colored 1 volume"
         (slider :icon { mute   == "on" ? "volume-xmark" :
                         volume ==  0   ? "volume-off"   :
                         volume <= 40   ? "volume-low"   :
@@ -235,7 +235,7 @@
 (defwidget uptime []
   (box :orientation "h"
        :space-evenly false
-       :spacing status-bar-text-spacing
+       :spacing status-bar-icon-spacing
        (icon :icon "circle-arrow-up")
        uptime))
 
@@ -246,7 +246,7 @@
                  :orientation "h"
                  :space-evenly false
                  :halign "center"
-                 :spacing status-bar-text-spacing
+                 :spacing status-bar-icon-spacing
 
                  (icon :icon { matches(date, "20 apr") ? "cannabis" :
                                matches(date, "25 dec") ? "candy-cane" :
@@ -272,7 +272,7 @@
            (box :class "slider status-widget"
                 :orientation "h"
                 :space-evenly false
-                :spacing 10
+                :spacing status-bar-icon-spacing
 
                 (icon :icon icon)
                 (scale :min 0

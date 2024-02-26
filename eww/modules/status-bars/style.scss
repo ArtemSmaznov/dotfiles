@@ -13,6 +13,18 @@
 .leftside  { padding-left:  7px }
 .rightside { padding-right: 7px }
 
+.status-widget {
+  padding: 0 7px;
+}
+
+.status-widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
+.status-widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
+.status-widget.colored.3 { box-shadow: inset 0 -$accent-line-width $base0A }
+.status-widget.colored.4 { box-shadow: inset 0 -$accent-line-width $base0B }
+.status-widget.colored.5 { box-shadow: inset 0 -$accent-line-width $base0C }
+.status-widget.colored.6 { box-shadow: inset 0 -$accent-line-width $base0D }
+.status-widget.colored.7 { box-shadow: inset 0 -$accent-line-width $base0E }
+
 .widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
 .widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
 .widget.colored.3 { box-shadow: inset 0 -$accent-line-width $base0A }
@@ -37,10 +49,6 @@
 .ws-current-side { border-top: 2px solid $base00; border-bottom: 2px solid $base0F; }
 .ws-filled       { color: $base07; }
 .ws-empty        { color: $base02; }
-
-.status-widget {
-  margin: 0 7px;
-}
 
 .separator {
   color: $base03;

@@ -1,5 +1,5 @@
 (defvar status-bar-size 35)
 (defvar revealer-duration ".35s")
-(defvar status-bar-text-spacing 5)
 (defvar status-bar-widget-spacing 2)
+(defvar status-bar-icon-spacing 10)
 (defvar status-bar-graph-width 40)

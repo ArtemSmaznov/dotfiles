@@ -89,8 +89,8 @@ button:hover {
 #+begin_src yuck :tangle vars/theme.yuck
 (defvar status-bar-size 35)
 (defvar revealer-duration ".35s")
-(defvar status-bar-text-spacing 5)
 (defvar status-bar-widget-spacing 2)
+(defvar status-bar-icon-spacing 10)
 (defvar status-bar-graph-width 40)
 #+end_src
 
@@ -432,6 +432,18 @@ Layout
 .leftside  { padding-left:  7px }
 .rightside { padding-right: 7px }
 
+.status-widget {
+  padding: 0 7px;
+}
+
+.status-widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
+.status-widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
+.status-widget.colored.3 { box-shadow: inset 0 -$accent-line-width $base0A }
+.status-widget.colored.4 { box-shadow: inset 0 -$accent-line-width $base0B }
+.status-widget.colored.5 { box-shadow: inset 0 -$accent-line-width $base0C }
+.status-widget.colored.6 { box-shadow: inset 0 -$accent-line-width $base0D }
+.status-widget.colored.7 { box-shadow: inset 0 -$accent-line-width $base0E }
+
 .widget.colored.1 { box-shadow: inset 0 -$accent-line-width $base08 }
 .widget.colored.2 { box-shadow: inset 0 -$accent-line-width $base09 }
 .widget.colored.3 { box-shadow: inset 0 -$accent-line-width $base0A }
@@ -457,9 +469,6 @@ Layout
 .ws-filled       { color: $base07; }
 .ws-empty        { color: $base02; }
 
-.status-widget {
-  margin: 0 7px;
-}
 #+end_src
 
 ** Primary
@@ -728,7 +737,7 @@ Layout
                      (box :class "widget player"
                           :orientation "h"
                           :space-evenly false
-                          :spacing status-bar-text-spacing
+                          :spacing status-bar-icon-spacing
                           :halign "center"
 
                           (icon :icon { player-state == "stopped" ? "stop" :
@@ -741,7 +750,7 @@ Layout
                                     :reveal { player-artist != "" }
                                     (box :orientation "h"
                                          :space-evenly false
-                                         :spacing status-bar-text-spacing
+                                         :spacing status-bar-icon-spacing
                                          (label :class "player-artist"
                                                 :limit-width 50
                                                 :text player-artist)
@@ -756,7 +765,7 @@ Layout
                                     :reveal { player-name == "mpd" }
                                     (box :orientation "h"
                                          :space-evenly false
-                                         :spacing status-bar-text-spacing
+                                         :spacing status-bar-icon-spacing
                                          (label :text "·")
                                          (label :class "music-flags"
                                                 :text music-flags)))
@@ -828,20 +837,20 @@ Layout
 (defwidget updates []
            (eventbox :onclick "eww open --toggle updates-list"
                      :cursor "pointer"
-                     (box :class { updates ==   0  ? "widget colored 6 status-widget state-good"  :
-                                   updates ==  69  ? "widget colored 6 status-widget red"         :
-                                   updates == 101  ? "widget colored 6 status-widget orange"      :
-                                   updates == 220  ? "widget colored 6 status-widget yellow"      :
-                                   updates == 360  ? "widget colored 6 status-widget blue"        :
-                                   updates == 404  ? "widget colored 6 status-widget yellow"      :
-                                   updates == 420  ? "widget colored 6 status-widget green"       :
-                                   updates == 1001 ? "widget colored 6 status-widget purple"      :
-                                   updates == year ? "widget colored 6 status-widget special"     :
-                                           "widget colored 6 status-widget"             }
+                     (box :class { updates ==   0  ? "status-widget colored 6 state-good"  :
+                                   updates ==  69  ? "status-widget colored 6 red"         :
+                                   updates == 101  ? "status-widget colored 6 orange"      :
+                                   updates == 220  ? "status-widget colored 6 yellow"      :
+                                   updates == 360  ? "status-widget colored 6 blue"        :
+                                   updates == 404  ? "status-widget colored 6 yellow"      :
+                                   updates == 420  ? "status-widget colored 6 green"       :
+                                   updates == 1001 ? "status-widget colored 6 purple"      :
+                                   updates == year ? "status-widget colored 6 special"     :
+                                                     "status-widget colored 6"             }
 
                           :orientation "h"
                           :space-evenly false
-                          :spacing status-bar-text-spacing
+                          ;; :spacing status-bar-icon-spacing
                           (icon :icon { updates ==   0  ? "check"    :
                                         updates ==  69  ? "heart"    :
                                         updates == 101  ? "book"     :
@@ -851,7 +860,7 @@ Layout
                                         updates == 420  ? "cannabis" :
                                         updates == 1001 ? "moon"     :
                                         updates == year ? "calendar" :
-                                                "bell" })
+                                                          "bell" })
 
                           (revealer :class { updates ==  69  ? ""              :
                                              updates == 101  ? ""              :
@@ -902,9 +911,9 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget network []
-           (box :class "widget colored 5 network"
+           (box :class "status-widget colored 5 network"
                 :space-evenly false
-                :spacing status-bar-text-spacing
+                :spacing status-bar-icon-spacing
 
                 (icon :icon "ethernet")
                 (graph :min 0
@@ -937,7 +946,7 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget ram []
-           (box :class "widget colored 4 volume"
+           (box :class "status-widget colored 4 volume"
                 (slider :icon "memory"
                         :value {EWW_RAM.used_mem_perc}
                         :onchange "")))
@@ -951,10 +960,10 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget cpu []
-    (box :class "widget colored 3 volume"
-        (slider :icon "microchip"
-                :value {EWW_CPU.avg}
-                :onchange "")))
+           (box :class "status-widget colored 3 volume"
+                (slider :icon "microchip"
+                        :value {EWW_CPU.avg}
+                        :onchange "")))
 #+end_src
 
 *** CPU Thermal
@@ -965,11 +974,11 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget cpu-thermal []
-           (box :class "widget colored 2 volume"
+           (box :class "status-widget colored 2 volume"
+                :spacing status-bar-icon-spacing
                 (icon :icon "")
                 { round(EWW_TEMPS.K10TEMP_TCTL, 0) }
-                "°C"
-                ))
+                "°C"))
 #+end_src
 
 *** Volume
@@ -980,7 +989,7 @@ Layout
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
 (defwidget volume []
-    (box :class "widget colored 1 volume"
+    (box :class "status-widget colored 1 volume"
         (slider :icon { mute   == "on" ? "volume-xmark" :
                         volume ==  0   ? "volume-off"   :
                         volume <= 40   ? "volume-low"   :
@@ -1013,7 +1022,7 @@ Layout
 (defwidget uptime []
   (box :orientation "h"
        :space-evenly false
-       :spacing status-bar-text-spacing
+       :spacing status-bar-icon-spacing
        (icon :icon "circle-arrow-up")
        uptime))
 #+end_src
@@ -1032,7 +1041,7 @@ Layout
                  :orientation "h"
                  :space-evenly false
                  :halign "center"
-                 :spacing status-bar-text-spacing
+                 :spacing status-bar-icon-spacing
 
                  (icon :icon { matches(date, "20 apr") ? "cannabis" :
                                matches(date, "25 dec") ? "candy-cane" :
@@ -1641,7 +1650,7 @@ Media Player
            (box :class "slider status-widget"
                 :orientation "h"
                 :space-evenly false
-                :spacing 10
+                :spacing status-bar-icon-spacing
 
                 (icon :icon icon)
                 (scale :min 0
