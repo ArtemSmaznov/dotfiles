@@ -650,6 +650,9 @@ alias update-proton="$GIT_DIRECTORY/../SystemSoftware/ProtonUpdater/cproton.sh"
 
 # Setup extra password store
 alias pay="PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass"
+
+alias bi="beet import"
+alias bsi="beet -s import"
 #+end_src
 
 ** System
