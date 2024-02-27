@@ -33,17 +33,20 @@ paths:
   albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
   comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
 
-replace:
-  '[\x00-\x1f]': _
-  '&': 'and'
+replace        :
+  '&'          : 'and'
+  '\+'         : 'plus'
+  '='          : 'equal'
   '[~!\\/<>"\?\*\|\[\]()]': ''
-  "'": ''
-  '[\.]+$': ''
-  '^[\.]': ''
-  '\s+$': ''
-  '^\s+': ''
-  '\s*[-,;:]\s*': '-'
-  ' ': '-'
+  "'"          : ''
+  '[\.]+$'     : ''
+  '^[\.]'      : ''
+  '\. '        : ' '
+  '\s+$'       : ''
+  '^\s+'       : ''
+  '\s*[-,;     :]\s*': '-'
+  ' '          : '-'
+  '[\x00-\x1f]': _
 
 musicbrainz:
   searchlimit: 15
