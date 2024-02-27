@@ -830,6 +830,10 @@ Layout
 *** Updates
 **** styles
 #+begin_src scss :tangle modules/status-bars/style.scss
+.status-widget .updates,
+.status-widget .update-flags {
+    padding-left: 7px;
+}
 #+end_src
 
 **** widgets
@@ -850,7 +854,6 @@ Layout
 
                           :orientation "h"
                           :space-evenly false
-                          ;; :spacing status-bar-icon-spacing
                           (icon :icon { updates ==   0  ? "check"    :
                                         updates ==  69  ? "heart"    :
                                         updates == 101  ? "book"     :
@@ -862,25 +865,25 @@ Layout
                                         updates == year ? "calendar" :
                                                           "bell" })
 
-                          (revealer :class { updates ==  69  ? ""              :
-                                             updates == 101  ? ""              :
-                                             updates == 220  ? ""              :
-                                             updates == 360  ? ""              :
-                                             updates == 404  ? ""              :
-                                             updates == 420  ? ""              :
-                                             updates == 1001 ? ""              :
-                                             updates == year ? ""              :
-                                             updates >= 900  ? "state-urgent"  :
-                                             updates >= 400  ? "state-warning" :
-                                                     "" }
+                          (revealer :class { updates ==  69  ? "updates"               :
+                                             updates == 101  ? "updates"               :
+                                             updates == 220  ? "updates"               :
+                                             updates == 360  ? "updates"               :
+                                             updates == 404  ? "updates"               :
+                                             updates == 420  ? "updates"               :
+                                             updates == 1001 ? "updates"               :
+                                             updates == year ? "updates"               :
+                                             updates >= 900  ? "updates state-urgent"  :
+                                             updates >= 400  ? "updates state-warning" :
+                                                               "updates" }
                                     :transition "slideright"
-                                    :reveal {updates > 0}
+                                    :reveal { updates > 0 }
                                     :duration revealer-duration
                                     updates)
 
                           (revealer :class "yellow update-flags"
                                     :transition "slideright"
-                                    :reveal {update-flags != ""}
+                                    :reveal { update-flags != "" }
                                     :duration revealer-duration
                                     update-flags))))
 #+end_src

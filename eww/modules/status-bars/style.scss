@@ -103,7 +103,10 @@
 
 
 
-
+.status-widget .updates,
+.status-widget .update-flags {
+    padding-left: 7px;
+}
 
 .graph.net-down {
   color: $base0D;
