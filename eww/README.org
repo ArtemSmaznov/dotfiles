@@ -45,7 +45,13 @@ $indicator-line-width: 3px;
 $accent-line-width: 2px;
 
 ,* {
-  all: unset;
+    all: unset;
+}
+
+.main-bar,
+.second-bar,
+.powermenu-panel {
+    background-color: rgba($base00, 0.2);
 }
 
 .gray                   { color: $base04; }
@@ -416,11 +422,6 @@ Layout
 #+end_src
 
 #+begin_src scss :tangle modules/status-bars/style.scss
-.main-bar,
-.second-bar {
-  background-color: rgba($base00, 0.2);
-}
-
 .bar {
   color: $base07;
   font-family: $text-font;
@@ -1093,10 +1094,6 @@ Layout
 #+end_src
 
 #+begin_src scss :tangle modules/panels/powermenu.scss
-.powermenu-panel {
-    background-color: rgba($base00, 0.2);
-}
-
 .overlay {
     color: $base07;
     font-family: $text-font;

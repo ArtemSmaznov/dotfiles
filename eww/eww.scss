@@ -11,7 +11,13 @@ $indicator-line-width: 3px;
 $accent-line-width: 2px;
 
 * {
-  all: unset;
+    all: unset;
+}
+
+.main-bar,
+.second-bar,
+.powermenu-panel {
+    background-color: rgba($base00, 0.2);
 }
 
 .gray                   { color: $base04; }
