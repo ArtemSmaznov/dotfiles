@@ -253,9 +253,8 @@ Album cover art
            :initial "/home/artem/music/no-cover"
            "~/.local/bin/listen-player.sh cover_file mpd")
 
-(defpoll music-album-cover-color
-         :interval "1h"
-         "~/.local/bin/get-music.sh albumcovercolor")
+(deflisten music-album-cover-color
+         "~/.local/bin/listen-player.sh cover_color mpd")
 #+end_src
 
 ** Time
@@ -1409,7 +1408,7 @@ Media Player
 
 .music-player-track-artist {
     font-size: 14pt;
-    color: darken($base0E, 50);
+    color: lighten($base0E, 20);
     opacity: 0.6;
 }
 
@@ -1457,6 +1456,7 @@ Media Player
                 :space-evenly false
                 :spacing 15
                 :width 600
+                ;; :style "background: ${music-album-cover-color};"
 
                 (music-player-album-art)
 

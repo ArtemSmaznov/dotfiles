@@ -84,6 +84,5 @@
            :initial "/home/artem/music/no-cover"
            "~/.local/bin/listen-player.sh cover_file mpd")
 
-(defpoll music-album-cover-color
-         :interval "1h"
-         "~/.local/bin/get-music.sh albumcovercolor")
+(deflisten music-album-cover-color
+         "~/.local/bin/listen-player.sh cover_color mpd")

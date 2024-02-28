@@ -4,6 +4,7 @@
                 :space-evenly false
                 :spacing 15
                 :width 600
+                ;; :style "background: ${music-album-cover-color};"
 
                 (music-player-album-art)
 
