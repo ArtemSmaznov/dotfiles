@@ -325,7 +325,7 @@ scrub:
 The =unimported= plugin allows one to list all files in the library folder which are not listed in the beets library database, including art files.
 #+begin_src yaml
 unimported:
-  ignore_extensions: jpg png txt md org
+  ignore_extensions: jpg png txt md org mod
   ignore_subdirectories: Unsorted import
 #+end_src
 
