@@ -584,6 +584,7 @@ Layout
                            (kbd)
                            (separator)
                            (battery)
+                           (cpu-thermal)
                            (volume)
                            (separator)
                            (date)
