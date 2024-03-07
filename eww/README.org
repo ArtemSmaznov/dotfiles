@@ -849,6 +849,7 @@ Layout
                                    updates == 360  ? "status-widget colored 6 blue"        :
                                    updates == 404  ? "status-widget colored 6 yellow"      :
                                    updates == 420  ? "status-widget colored 6 green"       :
+                                   updates == 555  ? "status-widget colored 6 green"       :
                                    updates == 1001 ? "status-widget colored 6 purple"      :
                                    updates == year ? "status-widget colored 6 special"     :
                                                      "status-widget colored 6"             }
@@ -862,6 +863,7 @@ Layout
                                         updates == 360  ? "globe"    :
                                         updates == 404  ? "warning"  :
                                         updates == 420  ? "cannabis" :
+                                        updates == 555  ? "dollar"   :
                                         updates == 1001 ? "moon"     :
                                         updates == year ? "calendar" :
                                                           "bell" })
@@ -872,6 +874,7 @@ Layout
                                              updates == 360  ? "updates"               :
                                              updates == 404  ? "updates"               :
                                              updates == 420  ? "updates"               :
+                                             updates == 555  ? "updates"               :
                                              updates == 1001 ? "updates"               :
                                              updates == year ? "updates"               :
                                              updates >= 900  ? "updates state-urgent"  :
@@ -880,24 +883,13 @@ Layout
                                     :transition "slideright"
                                     :reveal { updates > 0 }
                                     :duration revealer-duration
-                                    updates)
+                                    updates )
 
                           (revealer :class "yellow update-flags"
                                     :transition "slideright"
                                     :reveal { update-flags != "" }
                                     :duration revealer-duration
                                     update-flags))))
-#+end_src
-
-*** IDEA Updates List
-#+begin_src yuck :tangle modules/status-bars/widgets.yuck
-(defwindow updates-list
-           :monitor 0
-           :geometry (geometry :x "650px"
-                               :y "10px"
-                               :anchor "top right")
-           :stacking "overlay"
-                   (label :text updates-list-content))
 #+end_src
 
 *** Network
@@ -1616,6 +1608,25 @@ Media Player
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))
+#+end_src
+** STRT Updates List
+#+begin_src yuck :tangle eww.yuck
+(include "modules/updates-list.yuck")
+#+end_src
+#+begin_src scss :tangle eww.scss
+// @import "modules/updates-list.scss";
+#+end_src
+
+*** styles
+*** widgets
+#+begin_src yuck :tangle modules/updates-list.yuck
+(defwindow updates-list
+           :monitor 0
+           :geometry (geometry :x "650px"
+                               :y "10px"
+                               :anchor "top right")
+           :stacking "overlay"
+                   (label :text updates-list-content))
 #+end_src
 
 ** PROJ Cava

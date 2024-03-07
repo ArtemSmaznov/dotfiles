@@ -123,6 +123,7 @@
                                    updates == 360  ? "status-widget colored 6 blue"        :
                                    updates == 404  ? "status-widget colored 6 yellow"      :
                                    updates == 420  ? "status-widget colored 6 green"       :
+                                   updates == 555  ? "status-widget colored 6 green"       :
                                    updates == 1001 ? "status-widget colored 6 purple"      :
                                    updates == year ? "status-widget colored 6 special"     :
                                                      "status-widget colored 6"             }
@@ -136,6 +137,7 @@
                                         updates == 360  ? "globe"    :
                                         updates == 404  ? "warning"  :
                                         updates == 420  ? "cannabis" :
+                                        updates == 555  ? "dollar"   :
                                         updates == 1001 ? "moon"     :
                                         updates == year ? "calendar" :
                                                           "bell" })
@@ -146,6 +148,7 @@
                                              updates == 360  ? "updates"               :
                                              updates == 404  ? "updates"               :
                                              updates == 420  ? "updates"               :
+                                             updates == 555  ? "updates"               :
                                              updates == 1001 ? "updates"               :
                                              updates == year ? "updates"               :
                                              updates >= 900  ? "updates state-urgent"  :
@@ -154,21 +157,13 @@
                                     :transition "slideright"
                                     :reveal { updates > 0 }
                                     :duration revealer-duration
-                                    updates)
+                                    updates )
 
                           (revealer :class "yellow update-flags"
                                     :transition "slideright"
                                     :reveal { update-flags != "" }
                                     :duration revealer-duration
                                     update-flags))))
-
-(defwindow updates-list
-           :monitor 0
-           :geometry (geometry :x "650px"
-                               :y "10px"
-                               :anchor "top right")
-           :stacking "overlay"
-                   (label :text updates-list-content))
 
 (defwidget network []
            (box :class "status-widget colored 5 network"

@@ -33,3 +33,5 @@
 (include "modules/panels/calendar.yuck")
 
 (include "modules/music-player.yuck")
+
+(include "modules/updates-list.yuck")
