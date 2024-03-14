@@ -55,7 +55,7 @@
 
                 (revealer :transition "slideup"
                           :duration revealer-duration
-                          :reveal { music-rating > 0.9 }
+                          :reveal { music-rating >= 0.9 }
                           (label :class "icon yellow"
                                  :style "margin: 5px 0;"
                                  :text "star"))
@@ -70,7 +70,7 @@
 
                 (revealer :transition "slidedown"
                           :duration revealer-duration
-                          :reveal { music-rating < 0.1 }
+                          :reveal { music-rating <= 0.1 }
                           (label :class "icon red"
                                  :style "margin: 5px 0;"
                                  :text "ban"))))
