@@ -1220,20 +1220,19 @@ Layout
                                             :hotkey "l"
                                             :onclick "${dm-scripts}/dm-power lock"))
 
-                      (revealer :reveal { wm-key-chord != "dm-power" }
-                                (eventbox :class "powermenu cancel"
-                                          :halign "center"
-                                          :valign "center"
-                                          :width 150
-                                          :height 150
-                                          :onclick "eww close powermenu-panel"
-                                          :cursor "pointer"
-                                          (box :orientation "v"
-                                               :vexpand true
-                                               :space-evenly false
-                                               (label :class "icon"
-                                                      :text "xmark")
-                                               (label :text "Cancel"))))))
+                      (eventbox :class "powermenu cancel"
+                                :halign "center"
+                                :valign "center"
+                                :width 150
+                                :height 150
+                                :onclick "eww close powermenu-panel"
+                                :cursor "pointer"
+                                (box :orientation "v"
+                                     :vexpand true
+                                     :space-evenly false
+                                     (label :class "icon"
+                                            :text "xmark")
+                                     (label :text "Cancel")))))
 #+end_src
 
 *** widgets
