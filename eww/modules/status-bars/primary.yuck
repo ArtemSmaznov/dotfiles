@@ -27,7 +27,8 @@
                            (workspaces)
                            (separator)
                            wm-layout-2
-                           (separator))
+                           (separator)
+                           (key-chord))
 
                       (box :class "center"
                            :orientation "h"

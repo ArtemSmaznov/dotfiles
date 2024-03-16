@@ -27,7 +27,7 @@
                            (separator)
                            (workspaces)
                            (separator)
-                           )
+                           (key-chord))
 
                       ;; center
                       (player)

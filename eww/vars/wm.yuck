@@ -13,3 +13,5 @@
          :interval "1s"
          :iniitial ""
          "~/.local/bin/get-wm-layout.sh")
+
+(defvar wm-key-chord "")

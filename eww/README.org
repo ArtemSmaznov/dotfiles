@@ -84,7 +84,6 @@ button:hover {
 
 #+begin_src yuck :tangle vars/states.yuck
 (defvar show-power-menu false)
-(defvar wm-key-chord "")
 #+end_src
 
 ** Theme
@@ -415,6 +414,11 @@ Layout
          "~/.local/bin/get-wm-layout.sh")
 #+end_src
 
+Key Chord
+#+begin_src yuck :tangle vars/wm.yuck
+(defvar wm-key-chord "")
+#+end_src
+
 * Status-bars
 ** Styles
 #+begin_src scss :tangle eww.scss
@@ -506,7 +510,8 @@ Layout
                            (workspaces)
                            (separator)
                            wm-layout-2
-                           (separator))
+                           (separator)
+                           (key-chord))
 
                       (box :class "center"
                            :orientation "h"
@@ -571,7 +576,7 @@ Layout
                            (separator)
                            (workspaces)
                            (separator)
-                           )
+                           (key-chord))
 
                       ;; center
                       (player)
@@ -708,6 +713,28 @@ Layout
 
 **** widgets
 #+begin_src yuck :tangle modules/status-bars/widgets.yuck
+#+end_src
+
+*** Key Chord
+**** styles
+#+begin_src scss :tangle modules/status-bars/style.scss
+.widget.key-chord {
+    color: $base01;
+    background: $base0A;
+    font-weight: bold;
+    padding: 7px;
+    text-shadow: none;
+}
+#+end_src
+
+**** widgets
+#+begin_src yuck :tangle modules/status-bars/widgets.yuck
+(defwidget key-chord []
+           (revealer :transition "slideleft"
+                     :duration revealer-duration
+                     :reveal { wm-key-chord != "" }
+                     (label :class "widget key-chord"
+                            :text wm-key-chord)))
 #+end_src
 
 *** Title
