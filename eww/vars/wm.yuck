@@ -7,11 +7,13 @@
            "bash ~/.config/hypr/scripts/listen-window-title.sh")
 
 (deflisten wm-layout
-  "~/.local/bin/listen-wm-layout.sh")
+           "~/.local/bin/listen-wm-layout.sh")
 
 (defpoll wm-layout-2
          :interval "1s"
          :iniitial ""
          "~/.local/bin/get-wm-layout.sh")
 
-(defvar wm-key-chord "")
+(deflisten wm-key-chord
+           :initial ""
+           "bash ~/.config/hypr/scripts/listen-submap.sh")

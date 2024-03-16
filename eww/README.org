@@ -406,7 +406,7 @@ Window Title
 Layout
 #+begin_src yuck :tangle vars/wm.yuck
 (deflisten wm-layout
-  "~/.local/bin/listen-wm-layout.sh")
+           "~/.local/bin/listen-wm-layout.sh")
 
 (defpoll wm-layout-2
          :interval "1s"
@@ -416,7 +416,9 @@ Layout
 
 Key Chord
 #+begin_src yuck :tangle vars/wm.yuck
-(defvar wm-key-chord "")
+(deflisten wm-key-chord
+           :initial ""
+           "bash ~/.config/hypr/scripts/listen-submap.sh")
 #+end_src
 
 * Status-bars
