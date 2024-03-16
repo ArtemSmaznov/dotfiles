@@ -20,6 +20,7 @@
 - [[#idea-fzf][IDEA FZF]]
 - [[#mpv][MPV]]
 - [[#hyprland][Hyprland]]
+- [[#hyprlock][Hyprlock]]
 - [[#strt-gtk-2][STRT GTK 2]]
 - [[#strt-gtk-3][STRT GTK 3]]
 - [[#qtile][qTile]]
@@ -134,6 +135,15 @@ file = "~/.config/hypr/themes/base16.conf"
 template = "hyprland"
 light = true
 rewrite = true
+#+end_src
+
+* Hyprlock
+#+begin_src toml
+[[item]]
+file = "~/.config/hypr/hyprlock.conf"
+template = "hyprland"
+light = true
+rewrite = false
 #+end_src
 
 * STRT GTK 2

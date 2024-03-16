@@ -54,6 +54,12 @@ light = true
 rewrite = true
 
 [[item]]
+file = "~/.config/hypr/hyprlock.conf"
+template = "hyprland"
+light = true
+rewrite = false
+
+[[item]]
 file = "~/.config/gtk-2.0/gtkrc"
 template = "gtk-flatcolor"
 subtemplate = "gtk-2"
