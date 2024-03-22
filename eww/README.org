@@ -1318,6 +1318,7 @@ Key Chord
                 :spacing 15
                 :active true
 
+                (charge-levels)
                 (music-player)
                 ))
 #+end_src
@@ -1331,6 +1332,20 @@ Key Chord
 *** idea calendar
 *** idea notes
 * Modules
+** Styles
+#+begin_src scss :tangle eww.scss
+@import "modules/style.scss";
+#+end_src
+
+#+begin_src scss :tangle modules/style.scss
+.glass-module {
+    background: rgba($base02, 0.4);
+    color: $base07;
+    padding: 20px;
+    border-radius: 1.5rem;
+}
+#+end_src
+
 ** PROJ Clock
 
 ** PROJ Calendar
@@ -1377,13 +1392,9 @@ calendar:selected {
 #+end_src
 
 *** styles
-Media Player
 #+begin_src scss :tangle modules/music-player.scss
 .music-player {
     background: rgba($base0E, 0.4);
-    color: $base07;
-    padding: 20px;
-    border-radius: 1.5rem;
 }
 
 .music-player-album-art-reactive .icon {
@@ -1469,7 +1480,7 @@ Media Player
 *** widgets
 #+begin_src yuck :tangle modules/music-player.yuck
 (defwidget music-player []
-           (box :class "music-player"
+           (box :class "glass-module music-player"
                 :orientation "h"
                 :space-evenly false
                 :spacing 15
@@ -1636,6 +1647,55 @@ Media Player
                                          :style "opacity: ${ music-flag-loop != 'none' ? 1 : 0.3 };"
                                          :text { music-flag-loop == 'track' ? "rotate-right" : "repeat" })))
                 ))
+#+end_src
+
+** Charge Levels
+#+begin_src yuck :tangle eww.yuck
+(include "modules/charge-levels.yuck")
+#+end_src
+#+begin_src scss :tangle eww.scss
+@import "modules/charge-levels.scss";
+#+end_src
+
+*** styles
+#+begin_src scss :tangle modules/charge-levels.scss
+#+end_src
+
+*** widgets
+#+begin_src yuck :tangle modules/charge-levels.yuck
+(defwidget charge-levels []
+           (box :class "charge-levels"
+                :orientation "v"
+                :space-evenly true
+                :spacing 10
+                :width 300
+                :height 300
+
+                (radial-battery :device-name "PS Magma"
+                                :device-icon "gamepad"
+                                :charge 35)
+
+                (radial-battery :device-name "PS Onyx"
+                                :device-icon "gamepad"
+                                :charge 75)
+                ))
+
+(defwidget radial-battery [?device-name ?device-icon ?charge]
+           (revealer :transition "slideup"
+                     :duration revealer-duration
+                     :reveal { device-name != "" }
+                     (box :class "glass-module radial-battery"
+                          :orientation "v"
+
+                          (overlay
+                           (circular-progress :clockwise true
+                                              :thickness 2.0
+                                              :start-at 75
+                                              :value charge)
+
+                           (box :orientation "v"
+                                (icon :icon device-icon)
+                                (label :text device-name))))))
 #+end_src
 
 ** STRT Updates List

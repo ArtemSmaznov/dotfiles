@@ -16,5 +16,6 @@
                 :spacing 15
                 :active true
 
+                (charge-levels)
                 (music-player)
                 ))

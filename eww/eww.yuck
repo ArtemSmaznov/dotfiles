@@ -34,4 +34,6 @@
 
 (include "modules/music-player.yuck")
 
+(include "modules/charge-levels.yuck")
+
 (include "modules/updates-list.yuck")

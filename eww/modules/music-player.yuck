@@ -1,5 +1,5 @@
 (defwidget music-player []
-           (box :class "music-player"
+           (box :class "glass-module music-player"
                 :orientation "h"
                 :space-evenly false
                 :spacing 15
