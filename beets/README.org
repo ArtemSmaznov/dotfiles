@@ -29,6 +29,7 @@
   - [[#missing][Missing]]
   - [[#mpd-stats][MPD Stats]]
   - [[#mpd-update][MPD Update]]
+  - [[#permissions][Permissions]]
   - [[#playlist][Playlist]]
   - [[#idea-plex-update][IDEA Plex Update]]
   - [[#scrub][Scrub]]
@@ -163,6 +164,7 @@ plugins:
   - missing
   - mpdstats
   - mpdupdate
+  - permissions
   - playlist
   - scrub
   - unimported
@@ -312,6 +314,14 @@ mpd:
 
 ** MPD Update
 [[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
+
+** Permissions
+The =permissions= plugin allows you to set file permissions for imported music files and its directories.
+#+begin_src yaml
+permissions:
+  file: 644
+  dir: 755
+#+end_src
 
 ** Playlist
 =playlist= is a plugin to use playlists in m3u format.

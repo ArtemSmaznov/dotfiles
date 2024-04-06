@@ -80,6 +80,7 @@ plugins:
   - missing
   - mpdstats
   - mpdupdate
+  - permissions
   - playlist
   - scrub
   - unimported
@@ -152,6 +153,10 @@ mpd:
 
   rating: yes
   rating_mix: 0.75
+
+permissions:
+  file: 644
+  dir: 755
 
 playlist:
   auto: yes
