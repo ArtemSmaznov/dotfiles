@@ -51,7 +51,7 @@ mpd_crossfade_time = 5
 * Visualizer
 #+begin_src conf
 visualizer_data_source = "/tmp/mpd.fifo"
-visualizer_output_name = "FiFo file"
+visualizer_output_name = "FiFo"
 visualizer_in_stereo = "yes"
 #visualizer_sync_interval = 0
 #+end_src

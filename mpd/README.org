@@ -80,21 +80,13 @@ audio_output {
 }
 #+end_src
 
-Pulse Audio
-#+begin_src conf
-# audio_output {
-#     type    "pulse"
-#     name    "Pulse Audio"
-# }
-#+end_src
-
-ncmpcpp Visualizer
+ncmpcpp visualizer
 #+begin_src conf
 audio_output {
     type    "fifo"
-    name    "FiFo file"
+    name    "FiFo"
     path    "/tmp/mpd.fifo"
-    format  "44100:16:2"
+    format  "48000:16:2"
 }
 #+end_src
 
