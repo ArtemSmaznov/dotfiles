@@ -13,7 +13,7 @@
 #+begin_src conf
 --yes-playlist
 --embed-metadata
---paths ~/downloads/
+# --paths ~/downloads/
 --restrict-filenames
 --format "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
 #+end_src
@@ -26,7 +26,7 @@ General settings
 #+begin_src conf
 --yes-playlist
 --embed-metadata
---paths ~/downloads/music/
+--paths ~/music/import/
 --restrict-filenames
 #+end_src
 

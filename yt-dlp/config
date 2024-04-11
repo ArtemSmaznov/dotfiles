@@ -1,4 +1,5 @@
 --yes-playlist
 --embed-metadata
+# --paths ~/downloads/
 --restrict-filenames
 --format "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
