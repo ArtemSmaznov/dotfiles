@@ -211,7 +211,7 @@ sticky_history = yes
 history_length = 40
 
 # dmenu path.
-dmenu = /usr/bin/rofi -dmenu -i -p dunst
+dmenu = /usr/bin/wofi --dmenu --insensitive --prompt dunst
 
 # Browser for opening urls in context menu.
 browser = /usr/bin/xdg-open
