@@ -136,4 +136,4 @@ function has_command() {
 if has_command starship; then eval "$(starship init zsh)"; fi
 
 # Script to run on terminal launch
-if has_command neofetch; then neofetch; fi
+if has_command fastfetch; then fastfetch; fi
