@@ -44,6 +44,7 @@
   - [[#system][System]]
   - [[#server][Server]]
   - [[#git][Git]]
+  - [[#pass][Pass]]
   - [[#media][Media]]
   - [[#archives][Archives]]
   - [[#change-configs][Change Configs]]
@@ -759,7 +760,7 @@ alias gfprivate="gprivate pull"
 alias gdprivate="gprivate diff"
 #+end_src
 
-*** Pass
+** Pass
 #+begin_src shell
 alias pgs="pass git status"
 alias pgp="pass git push"
