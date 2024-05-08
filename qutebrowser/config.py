@@ -732,8 +732,10 @@ config.bind('<Ctrl-=>', 'zoom-in')
 
 config.bind('g=', 'navigate increment')
 config.bind('g-', 'navigate decrement')
+config.bind('g<Backspace>', 'navigate up')
 config.bind('gu', 'navigate up')
 config.bind('gU', 'navigate up -t')
+config.bind('gs', 'navigate strip')
 config.bind('[[', 'navigate prev')
 config.bind(']]', 'navigate next')
 config.bind('{{', 'navigate prev -t')
@@ -777,7 +779,6 @@ config.bind('o', 'cmd-set-text -s :open')
 config.bind('O', 'cmd-set-text -s :open -t')
 config.bind('<Space>to', 'cmd-set-text -s :open -t')
 config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
-config.bind('gs', 'cmd-set-text -s :open -b')
 
 config.bind('go', 'cmd-set-text :open {url:pretty}')
 
