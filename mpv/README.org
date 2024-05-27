@@ -278,7 +278,7 @@ sub-auto=fuzzy
 
 Play Finnish audio if available, fall back to English otherwise.
 #+begin_src conf
-#alang=fi,en
+alang=ja,en
 #+end_src
 
 Change subtitle encoding. For Arabic subtitles use 'cp1256'.
