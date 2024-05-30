@@ -765,6 +765,7 @@ alias gdprivate="gprivate diff"
 alias pgs="pass git status"
 alias pgp="pass git push"
 alias pgf="pass git pull"
+alias pgl="pass git log --oneline"
 #+end_src
 
 ** Media
