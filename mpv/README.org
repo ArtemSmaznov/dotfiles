@@ -31,9 +31,10 @@
   - [[#playback-1][Playback]]
   - [[#navigation][Navigation]]
   - [[#playlists][Playlists]]
+  - [[#video-1][Video]]
   - [[#audio-1][Audio]]
-  - [[#osd-1][OSD]]
   - [[#subtitles][Subtitles]]
+  - [[#osd-1][OSD]]
   - [[#screenshot-1][Screenshot]]
   - [[#image-adjustment][Image Adjustment]]
   - [[#chapters][Chapters]]
@@ -874,7 +875,6 @@ q {encode} quit 4
 ESC {encode} quit 4
 ctrl+c quit 4
 
-_ cycle video
 T cycle ontop                          # toggle video window ontop of other windows
 
 ESC set fullscreen no
@@ -890,8 +890,8 @@ f cycle fullscreen                     # toggle fullscreen
 ** Playback
 #+begin_src conf
 k     cycle pause
-p     cycle pause
-SPACE cycle pause
+# p     cycle pause
+# SPACE cycle pause
 #+end_src
 
 Scale playback speed
@@ -974,6 +974,14 @@ $ set pause yes ; seek 100 absolute-percent
 # ENTER playlist-next   # skip to next file
 >       playlist-next   # skip to next file
 <       playlist-prev   # skip to previous file
+p script-message-to command_palette show-command-palette "Playlist"
+# ctrl+p show_text ${playlist}   # show playlist
+#+end_src
+
+** Video
+#+begin_src conf
+v script-message-to command_palette show-command-palette "Video Tracks"
+V cycle video
 #+end_src
 
 ** Audio
@@ -987,8 +995,48 @@ m     cycle mute
 #ctrl++ add audio-delay 0.100           # this changes audio/video sync
 #ctrl+- add audio-delay -0.100
 
-a cycle audio                           # switch audio streams
-A cycle audio down                      # switch audio streams
+# a cycle audio                           # switch audio streams
+# A cycle audio down                      # switch audio streams
+a script-message-to command_palette show-command-palette "Audio Tracks"
+A cycle audio                           # switch audio streams
+ctrl+a show_text ${track-list} # show list of audio/sub streams
+#+end_src
+
+** Subtitles
+Skip to previous/next subtitle (subject to some restrictions; see manpage)
+#+begin_src conf
+Alt+LEFT   no-osd sub-seek -1
+Alt+RIGHT  no-osd sub-seek  1
+#+end_src
+
+#+begin_src conf
+
+# stretch SSA/ASS subtitles with anamorphic videos to match historical
+# C cycle sub-ass-vsfilter-aspect-compat
+
+# switch between applying no style overrides to SSA/ASS subtitles, and
+# overriding them almost completely with the normal subtitle style
+#u cycle-values sub-ass-override "force" "no"
+# s cycle sub                            # cycle through subtitles
+# S cycle sub down                       # ...backwards
+s script-message-to command_palette show-command-palette "Subtitle Tracks"
+S cycle sub-visibility
+ctrl+s show_text ${track-list} # show list of audio/sub streams
+
+#Shift+g add sub-scale +0.1            # increase subtitle font size
+#Shift+f add sub-scale -0.1            # decrease subtitle font size
+
+#z add sub-delay -0.1                  # subtract 100 ms delay from subs
+#Z add sub-delay +0.1                  # add
+#x add sub-delay +0.1                  # same as previous binding (discouraged)
+
+#r add sub-pos -1                      # move subtitles up
+#R add sub-pos +1                      #                down
+#t add sub-pos +1                      # same as previous binding (discouraged)
+
+# Adjust timing to previous/next subtitle
+#Ctrl+Shift+LEFT sub-step -1
+#Ctrl+Shift+RIGHT sub-step 1
 #+end_src
 
 ** OSD
@@ -1012,49 +1060,9 @@ Info
 i     script-binding stats/display-stats
 I     script-binding stats/display-stats-toggle
 `     script-binding console/enable
-:     script-binding console/enable
-Alt+x script-binding console/enable
-#+end_src
-
-#+begin_src conf
-ctrl+a show_text ${track-list} # show list of audio/sub streams
-ctrl+s show_text ${track-list} # show list of audio/sub streams
-ctrl+p show_text ${playlist}   # show playlist
-#+end_src
-
-** Subtitles
-Skip to previous/next subtitle (subject to some restrictions; see manpage)
-#+begin_src conf
-Alt+LEFT   no-osd sub-seek -1
-Alt+RIGHT  no-osd sub-seek  1
-#+end_src
-
-#+begin_src conf
-c cycle sub-visibility
-
-# stretch SSA/ASS subtitles with anamorphic videos to match historical
-C cycle sub-ass-vsfilter-aspect-compat
-
-# switch between applying no style overrides to SSA/ASS subtitles, and
-# overriding them almost completely with the normal subtitle style
-#u cycle-values sub-ass-override "force" "no"
-s cycle sub                            # cycle through subtitles
-S cycle sub down                       # ...backwards
-
-#Shift+g add sub-scale +0.1            # increase subtitle font size
-#Shift+f add sub-scale -0.1            # decrease subtitle font size
-
-#z add sub-delay -0.1                  # subtract 100 ms delay from subs
-#Z add sub-delay +0.1                  # add
-#x add sub-delay +0.1                  # same as previous binding (discouraged)
-
-#r add sub-pos -1                      # move subtitles up
-#R add sub-pos +1                      #                down
-#t add sub-pos +1                      # same as previous binding (discouraged)
-
-# Adjust timing to previous/next subtitle
-#Ctrl+Shift+LEFT sub-step -1
-#Ctrl+Shift+RIGHT sub-step 1
+Alt+x script-binding M-x
+F1 script-message-to command_palette show-command-palette "Bindings"
+# Alt+x script-message-to command_palette show-command-palette "Command Palette"
 #+end_src
 
 ** Screenshot
