@@ -69,7 +69,7 @@ directory: ~/music
 * UI
 Available colors: ~black~, ~darkred~, ~darkgreen~, ~brown~ (~darkyellow~), ~darkblue~, ~purple~ (~darkmagenta~), ~teal~ (~darkcyan~), ~lightgray~, ~darkgray~, ~red~, ~green~, ~yellow~, ~blue~, ~fuchsia~ (~magenta~), ~turquoise~ (~cyan~), ~white~
 
-#+begin_src yaml
+#+begin_src yaml :tangle no
 ui:
   color: yes
   colors:
