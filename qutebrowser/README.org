@@ -47,23 +47,25 @@
 - [[#status-bar-1][Status Bar]]
 - [[#downloads-1][Downloads]]
 - [[#key-bindings][Key Bindings]]
-  - [[#info][Info]]
   - [[#unbind][Unbind]]
-  - [[#qutebrowser][QuteBrowser]]
-  - [[#sessions-1][Sessions]]
-  - [[#navigation][Navigation]]
-  - [[#windows][Windows]]
-  - [[#tabs-2][Tabs]]
-  - [[#downloads-2][Downloads]]
-  - [[#yanking][Yanking]]
-  - [[#bookmarks--quickmarks][Bookmarks / Quickmarks]]
-  - [[#history-1][History]]
-  - [[#key-hints][Key Hints]]
-  - [[#pass][Pass]]
-  - [[#media][Media]]
-  - [[#development-tools][Development Tools]]
-  - [[#config-cycle][Config-cycle]]
   - [[#modes][Modes]]
+- [[#new-key-bindings][New Key Bindings]]
+  - [[#info][Info]]
+  - [[#root][root]]
+  - [[#-hints][; hints]]
+  - [[#brackets][brackets]]
+  - [[#b-bookmarks--quickmarks][b bookmarks / quickmarks]]
+  - [[#c-clear][c clear]]
+  - [[#d-download][d download]]
+  - [[#g-goto][g goto]]
+  - [[#p-pass--paste][p pass / paste]]
+  - [[#s-set][s set]]
+  - [[#t-tabs][t tabs]]
+  - [[#w-window][w window]]
+  - [[#y-yanking][y yanking]]
+  - [[#z-cycle-config][z cycle config]]
+  - [[#misc][misc]]
+  - [[#leader][leader]]
 - [[#privacy][Privacy]]
   - [[#youtube-add-blocking][YouTube Add Blocking]]
   - [[#ad-blocking][Ad Blocking]]
@@ -78,12 +80,12 @@
 - [[#which-key-1][Which Key]]
 - [[#editor][Editor]]
 - [[#content][Content]]
-- [[#history-2][History]]
+- [[#history-1][History]]
 - [[#file-select][File Select]]
 - [[#input][Input]]
 - [[#search][Search]]
 - [[#mouse][Mouse]]
-  - [[#tabs-3][Tabs]]
+  - [[#tabs-2][Tabs]]
 - [[#qt][Qt]]
 - [[#logging][Logging]]
 - [[#overwrites][Overwrites]]
@@ -1204,26 +1206,7 @@ c.prompt.filebrowser = True
 c.prompt.radius = theme.radius
 #+end_src
 
-* Key Bindings
-** Info
-Map keys to other keys, so that they are equivalent in all modes. When
-the key used as dictionary-key is pressed, the binding for the key
-used as dictionary-value is invoked instead. This is useful for global
-remappings of keys, for example to map <Ctrl-[> to <Escape>. NOTE:
-This should only be used if two keys should always be equivalent, i.e.
-for things like <Enter> (keypad) and <Return> (non-keypad). For normal
-command bindings, qutebrowser works differently to vim: You always
-bind keys to commands, usually via `:bind` or `config.bind()`. Instead
-of using this setting, consider finding the command a key is bound to
-(e.g. via `:bind gg`) and then binding the same command to the desired
-key. Note that when a key is bound (via `bindings.default` or
-`bindings.commands`), the mapping is ignored.
-# Type: Dict
-
-#+begin_src python
-# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
-#+end_src
-
+* TODO Key Bindings
 ** Unbind
 *** QuteBrowser
 Termination
@@ -1367,579 +1350,6 @@ config.unbind('wIj') # devtools bottom
 config.unbind('wIk') # devtools top
 config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
-#+end_src
-
-** QuteBrowser
-*** Changing Configuration
-#+begin_src python
-config.bind('Ss', 'set')
-config.bind('ss', 'cmd-set-text -s :set')
-config.bind('sl', 'cmd-set-text -s :set -t')
-
-config.bind('sk', 'cmd-set-text -s :bind')
-
-config.bind('<Ctrl-Shift-Tab>', 'nop')
-#+end_src
-
-#+begin_src python
-config.bind('sf', 'save')
-#+end_src
-
-*** Toggle UI
-#+begin_src python
-config.bind('<F11>', 'fullscreen')
-#+end_src
-
-Tab and Status Bars
-#+begin_src python
-config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
-config.bind('<Space>tb', 'config-cycle statusbar.show always never')
-config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
-#+end_src
-
-Dark Mode
-#+begin_src python
-config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
-#+end_src
-
-CSS Themes
-#+begin_src python
-config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-#+end_src
-
-*** Page refresh
-#+begin_src python
-config.bind('r', 'reload')
-config.bind('R', 'reload -f')
-config.bind('<Ctrl-R>', 'reload -f')
-config.bind('<F5>', 'reload')
-config.bind('<Ctrl-F5>', 'reload -f')
-#+end_src
-
-*** Info
-#+begin_src python
-config.bind('<Space>p', 'cmd-set-text -s :process')
-config.bind('<Space>m', ':messages -t')
-#+end_src
-
-*** Search and Command mode
-#+begin_src python
-config.bind('<Alt-x>', 'cmd-set-text :')
-config.bind(':', 'cmd-set-text :')
-config.bind('/', 'cmd-set-text /')
-config.bind('?', 'cmd-set-text ?')
-config.bind('.', 'cmd-repeat-last')
-
-config.bind('n', 'search-next')
-config.bind('N', 'search-prev')
-#+end_src
-
-*** Clearing screen
-#+begin_src python
-config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
-config.bind('cm', 'clear-messages')
-#+end_src
-
-*** Macros
-#+begin_src python
-config.bind('q', 'macro-record')
-config.bind('@', 'macro-run')
-#+end_src
-
-*** Quit
-#+begin_src python
-config.bind('<Space>qq', 'quit')
-config.bind('<Space>qr', 'restart')
-#+end_src
-
-*** Help
-#+begin_src python
-config.bind('<Space>hr', 'config-source')
-config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'cmd-set-text -s :help -t')
-config.bind('<Space>hv', 'version')
-config.bind('<Space>hc', 'set')
-config.bind('<Space>hl', 'messages -t')
-config.bind('<Space>hi', 'version')
-config.bind('<F1>'     , 'help -t')
-#+end_src
-
-** Sessions
-#+begin_src python
-config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
-config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
-config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
-config.bind('<Space><Tab>R', 'session-load -f autosave')
-config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
-config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
-config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
-config.bind('<Space><Tab>u', 'session-save')
-config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
-#+end_src
-
-** Navigation
-*** Scrolling
-#+begin_src python
-config.bind('h', 'scroll left')
-config.bind('j', 'scroll down')
-config.bind('k', 'scroll up')
-config.bind('l', 'scroll right')
-config.bind('J', 'cmd-run-with-count 5 scroll down')
-config.bind('K', 'cmd-run-with-count 5 scroll up')
-
-config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-config.bind('<Ctrl-F>', 'scroll-page 0 1')
-config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
-
-config.bind('gg', 'scroll-to-perc 0')
-config.bind('G', 'scroll-to-perc')
-#+end_src
-
-*** Zooming pages
-#+begin_src python
-config.bind('<Ctrl-0>', 'zoom')
-config.bind('<Ctrl-->', 'zoom-out')
-config.bind('<Ctrl-=>', 'zoom-in')
-#+end_src
-
-*** Navigation
-#+begin_src python
-config.bind('g=', 'navigate increment')
-config.bind('g-', 'navigate decrement')
-config.bind('g<Backspace>', 'navigate up')
-config.bind('gu', 'navigate up')
-config.bind('gU', 'navigate up -t')
-config.bind('gs', 'navigate strip')
-config.bind('[[', 'navigate prev')
-config.bind(']]', 'navigate next')
-config.bind('{{', 'navigate prev -t')
-config.bind('}}', 'navigate next -t')
-#+end_src
-
-** Windows
-#+begin_src python
-config.bind('<Space>wq', 'close')
-config.bind('<Space>wO', 'window-only')
-
-config.bind('wn', 'open -w')
-config.bind('wH', 'back -w')
-config.bind('wL', 'forward -w')
-
-config.bind('wf', 'hint all window')
-
-config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
-config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
-
-config.bind('<Ctrl-N>', 'open -w')
-config.bind('<Ctrl-Shift-W>', 'close')
-
-config.bind('U', 'undo -w')
-config.bind('<Space>wu', 'undo -w')
-#+end_src
-
-** Tabs
-*** Navigation
-Go back and forth in history
-#+begin_src python
-config.bind('<back>', 'back')
-config.bind('<forward>', 'forward')
-config.bind('H', 'back')
-config.bind('L', 'forward')
-config.bind('tH', 'back -t')
-config.bind('tL', 'forward -t')
-
-config.bind('<Ctrl-Shift-h>', 'back -b')
-config.bind('<Ctrl-Shift-l>', 'forward -b')
-#+end_src
-
-Go home
-#+begin_src python
-config.bind('<Ctrl-h>', 'home')
-#+end_src
-
-New tab
-#+begin_src python
-config.bind('<Ctrl-T>', 'open -t')
-config.bind('tn', 'open -t')
-#+end_src
-
-Go to URL
-#+begin_src python
-config.bind('o', 'cmd-set-text -s :open')
-
-config.bind('O', 'cmd-set-text -s :open -t')
-config.bind('<Space>to', 'cmd-set-text -s :open -t')
-config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
-#+end_src
-
-Edit current URL
-#+begin_src python
-config.bind('go', 'cmd-set-text :open {url:pretty}')
-
-config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
-config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
-#+end_src
-
-Open URL from clipboard
-#+begin_src python
-config.bind('pp', 'open -- {clipboard}')
-config.bind('pP', 'open -- {primary}')
-
-config.bind('<Space>tp', 'open -t -- {clipboard}')
-config.bind('<Space>tP', 'open -t -- {primary}')
-#+end_src
-
-Following focused links
-#+begin_src python
-config.bind('<Return>', 'selection-follow')
-config.bind('<Shift-Return>', 'selection-follow -t')
-#+end_src
-
-*** Switching Tabs
-Direct tab navigation
-#+begin_src python
-config.bind('t0', 'tab-focus 1')
-config.bind('t^', 'tab-focus 1')
-config.bind('<Alt-1>', 'tab-focus 1')
-config.bind('<Alt-2>', 'tab-focus 2')
-config.bind('<Alt-3>', 'tab-focus 3')
-config.bind('<Alt-4>', 'tab-focus 4')
-config.bind('<Alt-5>', 'tab-focus 5')
-config.bind('<Alt-6>', 'tab-focus 6')
-config.bind('<Alt-7>', 'tab-focus 7')
-config.bind('<Alt-8>', 'tab-focus 8')
-config.bind('<Alt-9>', 'tab-focus 9')
-config.bind('<Alt-0>', 'tab-focus -1')
-config.bind('t$', 'tab-focus -1')
-config.bind('<Alt-`>', 'tab-focus last')
-config.bind('<Space>`', 'tab-focus last')
-#+end_src
-
-Adjacent tabs
-#+begin_src python
-config.bind('<Alt-PgDown>', 'tab-next')
-config.bind('<Alt-PgUp>', 'tab-prev')
-config.bind('<Alt-l>', 'tab-next')
-config.bind('<Alt-h>', 'tab-prev')
-config.bind('<Alt-Ctrl-l>', 'tab-focus stack-next')
-config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
-config.bind('<Alt-Shift-l>', 'tab-focus -1')
-config.bind('<Alt-Shift-h>', 'tab-focus 1')
-#+end_src
-
-Tabs menu
-#+begin_src python
-config.bind('gt', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space><', 'cmd-set-text -sr :tab-select')
-#+end_src
-
-*** Closing Tabs
-#+begin_src python
-config.bind('<Ctrl-W>', 'tab-close')
-config.bind('x', 'tab-close')
-# config.bind('tO', 'tab-only')
-#+end_src
-
-Reopening recently closed tabs
-#+begin_src python
-config.bind('<Ctrl-Shift-T>', 'undo')
-config.bind('u', 'undo')
-config.bind('X', 'undo')
-#+end_src
-
-*** Moving Tabs
-#+begin_src python
-config.bind('tm', 'tab-move')
-config.bind('tj', 'tab-move +')
-config.bind('tk', 'tab-move -')
-config.bind('tJ', 'tab-move end')
-config.bind('tK', 'tab-move start')
-config.bind('>', 'tab-move +')
-config.bind('<', 'tab-move -')
-config.bind('<Alt-j>', 'tab-move +')
-config.bind('<Alt-k>', 'tab-move -')
-config.bind('<Alt-Shift-j>', 'tab-move end')
-config.bind('<Alt-Shift-k>', 'tab-move start')
-#+end_src
-
-*** Tab Actions
-General
-#+begin_src python
-config.bind('<Ctrl-c>', 'stop')
-config.bind('<Alt-m>', 'tab-mute')
-config.bind('<Alt-p>', 'tab-pin')
-config.bind('<Alt-p>', 'tab-pin', mode='insert')
-config.bind('<Ctrl-Alt-p>', 'print')
-#+end_src
-
-Give and Take
-#+begin_src python
-config.bind('tG', 'tab-give')
-config.bind('tP', 'tab-give --private')
-config.bind('tg', 'cmd-set-text -s :tab-give')
-config.bind('tt', 'cmd-set-text -s :tab-take')
-#+end_src
-
-Clone
-#+begin_src python
-config.bind('tcc', 'tab-clone')
-config.bind('tcG', 'tab-give --keep')
-config.bind('tcP', 'tab-give --keep --private')
-config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
-config.bind('tct', 'cmd-set-text -s :tab-take --keep')
-#+end_src
-
-** Downloads
-#+begin_src python
-config.bind('D', 'cmd-set-text -s :download')
-
-config.bind('ds', 'download-cancel')
-config.bind('dC', 'download-cancel')
-
-config.bind('dx', 'download-remove')
-config.bind('dr', 'download-retry')
-config.bind('dc', 'download-clear')
-
-config.bind('do', 'download-open')
-config.bind('dX', 'download-delete')
-config.bind('dD', 'download-delete')
-#+end_src
-
-Hints
-#+begin_src python
-config.bind('di', 'hint images download')
-config.bind('dl', 'hint links download')
-config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
-config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
-#+end_src
-
-Download Current
-#+begin_src python
-config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
-config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
-#+end_src
-
-Prompt Mode
-#+begin_src python
-config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
-config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
-#+end_src
-
-** Yanking
-#+begin_src python
-config.bind('ys', 'yank selection', mode='normal')
-config.bind('<Ctrl-c>', 'yank selection', mode='normal')
-#+end_src
-
-Yank Page
-#+begin_src python
-config.bind('yy', 'yank')
-config.bind('Yy', 'yank -s')
-
-config.bind('yp', 'yank pretty-url')
-config.bind('Yp', 'yank pretty-url -s')
-
-config.bind('yd', 'yank domain')
-config.bind('Yd', 'yank domain -s')
-
-config.bind('yt', 'yank title')
-config.bind('Yt', 'yank title -s')
-#+end_src
-
-Yank as link for Markup documents
-#+begin_src python
-config.bind('ym', 'yank inline [{title}]({url})')
-config.bind('Ym', 'yank inline [{title}]({url}) -s')
-#+end_src
-
-Yank as link for Org documents
-#+begin_src python
-config.bind('yo', 'yank inline [[{url}][{title}]]')
-config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
-#+end_src
-
-Yank Link
-#+begin_src python
-config.bind('yl', 'hint links yank')
-config.bind('Yl', 'hint links yank-primary')
-config.bind('yi', 'hint images yank')
-config.bind('Yi', 'hint images yank-primary')
-#+end_src
-
-** Bookmarks / Quickmarks
-Bookmark list
-#+begin_src python
-config.bind('gq', 'bookmark-list --tab')
-config.bind('gb', 'bookmark-list --tab --jump')
-#+end_src
-
-Open in current tab
-#+begin_src python
-config.bind('bo', 'cmd-set-text -s :quickmark-load')
-config.bind('Bo', 'cmd-set-text -s :bookmark-load')
-#+end_src
-
-Open in new tab
-#+begin_src python
-config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
-config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
-#+end_src
-
-Adding bookmarks
-#+begin_src python
-config.bind('bs', 'quickmark-save')
-config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
-config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
-config.bind('Ba', 'bookmark-add {url} "{title}"')
-config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
-#+end_src
-
-Deleting bookmarks
-#+begin_src python
-config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
-config.bind('Bd', 'bookmark-del')
-#+end_src
-
-** History
-#+begin_src python
-config.bind('gh', 'history -t')
-#+end_src
-
-** Key Hints
-#+begin_src python
-config.bind('f', 'hint')
-config.bind('F', 'hint all tab')
-
-config.bind(';i', 'hint inputs')
-
-config.bind(';m', 'hint media')
-config.bind(';p', 'hint images')
-config.bind(';P', 'hint images tab')
-
-config.bind(';h', 'hint all hover')
-#+end_src
-
-Media
-#+begin_src python
-# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
-config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'                     ) # cast video
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
-#+end_src
-
-Rapid - Open in background and remain in hint mode
-#+begin_src python
-config.bind('<Ctrl-f>', 'hint --rapid')
-
-config.bind(';ri', 'hint --rapid images tab-bg')
-config.bind(';Ri', 'hint --rapid images window')
-
-config.bind(';rl', 'hint --rapid links tab-bg')
-config.bind(';Rl', 'hint --rapid links window')
-#+end_src
-
-Edit link URL before opening
-#+begin_src python
-config.bind(';o', 'hint links fill :open {hint-url}')
-config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-#+end_src
-
-Delete element
-#+begin_src python
-config.bind(';da', 'hint all delete')
-config.bind(';dl', 'hint links delete')
-config.bind(';di', 'hint images delete')
-config.bind(';dm', 'hint media delete')
-#+end_src
-
-** Pass
-Command Mode
-#+begin_src python
-config.bind('<Ctrl-p><g>'      , 'spawn --output-messages pass generate --clip "{url:host}" 50'                )
-
-config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                )
-config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
-config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
-config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
-#+end_src
-
-Insert Mode
-#+begin_src python
-config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
-config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
-config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
-config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
-#+end_src
-
-** Media
-#+begin_src python
-# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
-config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
-#+end_src
-
-You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
-
-It also works nicely with rapid hints:
-
-:bind ,m spawn umpv {url}
-:bind ,M hint links spawn umpv {hint-url}
-:bind ;M hint --rapid links spawn umpv {hint-url}
-
-** Development Tools
-#+begin_src python
-config.bind('<Space>ds', 'view-source')
-
-config.bind('<Space>dt', 'devtools')
-config.bind('<Space>dd', 'devtools')
-config.bind('<Space>df', 'devtools-focus')
-
-config.bind('<Space>dH', 'devtools left')
-config.bind('<Space>dL', 'devtools right')
-config.bind('<Space>dJ', 'devtools bottom')
-config.bind('<Space>dK', 'devtools top')
-config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
-#+end_src
-
-** Config-cycle
-#+begin_src python
-config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
-config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
-config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
-config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
-config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
-config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
-config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
-config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 #+end_src
 
 ** Modes
@@ -2147,6 +1557,553 @@ config.bind('<Ctrl-B>', 'hint all tab-bg'          , mode='hint')
 config.bind('<Ctrl-F>', 'hint links'               , mode='hint')
 config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
 config.bind('<Return>', 'hint-follow'              , mode='hint')
+#+end_src
+
+* New Key Bindings
+** Info
+Map keys to other keys, so that they are equivalent in all modes. When
+the key used as dictionary-key is pressed, the binding for the key
+used as dictionary-value is invoked instead. This is useful for global
+remappings of keys, for example to map <Ctrl-[> to <Escape>. NOTE:
+This should only be used if two keys should always be equivalent, i.e.
+for things like <Enter> (keypad) and <Return> (non-keypad). For normal
+command bindings, qutebrowser works differently to vim: You always
+bind keys to commands, usually via `:bind` or `config.bind()`. Instead
+of using this setting, consider finding the command a key is bound to
+(e.g. via `:bind gg`) and then binding the same command to the desired
+key. Note that when a key is bound (via `bindings.default` or
+`bindings.commands`), the mapping is ignored.
+
+# Type: Dict
+#+begin_src python
+# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
+#+end_src
+** root
+#+begin_src python
+config.bind(':', 'cmd-set-text :')
+config.bind('.', 'cmd-repeat-last')
+
+config.bind('D', 'cmd-set-text -s :download')
+config.bind('u', 'undo')
+config.bind('U', 'undo -w')
+
+config.bind('x', 'tab-close')
+config.bind('X', 'undo')
+
+config.bind('<Ctrl-N>', 'open -w')
+config.bind('<Ctrl-Shift-W>', 'close')
+config.bind('<Ctrl-Shift-T>', 'undo')
+config.bind('<Ctrl-W>', 'tab-close')
+
+# config.bind('<Ctrl-c>', 'stop')
+config.bind('<Ctrl-c>', 'yank selection', mode='normal')
+config.bind('<Ctrl-c>', 'yank selection', mode='insert')
+config.bind('<Ctrl-c>', 'yank selection', mode='passthrough')
+
+config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+config.bind('<Ctrl-F>', 'scroll-page 0 1')
+config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+
+config.bind('<Alt-m>', 'tab-mute')
+config.bind('<Alt-p>', 'tab-pin')
+config.bind('<Alt-p>', 'tab-pin', mode='insert')
+config.bind('<Ctrl-Alt-p>', 'print')
+
+config.bind('<Alt-x>', 'cmd-set-text :')
+
+# move tabs
+config.bind('>', 'tab-move +')
+config.bind('<', 'tab-move -')
+config.bind('<Alt-j>', 'tab-move +')
+config.bind('<Alt-k>', 'tab-move -')
+config.bind('<Alt-Shift-j>', 'tab-move end')
+config.bind('<Alt-Shift-k>', 'tab-move start')
+
+# following focused links
+config.bind('<Return>', 'selection-follow')
+config.bind('<Shift-Return>', 'selection-follow -t')
+
+config.bind('<back>', 'back')
+config.bind('<forward>', 'forward')
+config.bind('H', 'back')
+config.bind('L', 'forward')
+
+config.bind('<Ctrl-Shift-h>', 'back -b')
+config.bind('<Ctrl-Shift-l>', 'forward -b')
+
+config.bind('<Ctrl-h>', 'home')
+config.bind('<Ctrl-T>', 'open -t')
+
+# go to url
+config.bind('o', 'cmd-set-text -s :open')
+config.bind('O', 'cmd-set-text -s :open -t')
+#+end_src
+
+*** Search
+#+begin_src python
+config.bind('/', 'cmd-set-text /')
+config.bind('?', 'cmd-set-text ?')
+
+config.bind('n', 'search-next')
+config.bind('N', 'search-prev')
+#+end_src
+
+*** Scroll
+#+begin_src python
+config.bind('h', 'scroll left')
+config.bind('j', 'scroll down')
+config.bind('k', 'scroll up')
+config.bind('l', 'scroll right')
+config.bind('J', 'cmd-run-with-count 5 scroll down')
+config.bind('K', 'cmd-run-with-count 5 scroll up')
+#+end_src
+
+*** Zoom
+#+begin_src python
+config.bind('<Ctrl-0>', 'zoom')
+config.bind('<Ctrl-->', 'zoom-out')
+config.bind('<Ctrl-=>', 'zoom-in')
+#+end_src
+
+*** Follow
+#+begin_src python
+config.bind('f', 'hint')
+config.bind('F', 'hint all tab')
+
+# rapid - open in background and remain in hint mode
+config.bind('<Ctrl-f>', 'hint --rapid')
+#+end_src
+
+*** Reload
+#+begin_src python
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
+config.bind('<Ctrl-R>', 'reload -f')
+#+end_src
+
+*** Macros
+#+begin_src python
+config.bind('q', 'macro-record')
+config.bind('@', 'macro-run')
+#+end_src
+
+*** Switching Tabs
+Direct tab navigation
+#+begin_src python
+config.bind('<Alt-1>', 'tab-focus 1')
+config.bind('<Alt-2>', 'tab-focus 2')
+config.bind('<Alt-3>', 'tab-focus 3')
+config.bind('<Alt-4>', 'tab-focus 4')
+config.bind('<Alt-5>', 'tab-focus 5')
+config.bind('<Alt-6>', 'tab-focus 6')
+config.bind('<Alt-7>', 'tab-focus 7')
+config.bind('<Alt-8>', 'tab-focus 8')
+config.bind('<Alt-9>', 'tab-focus 9')
+config.bind('<Alt-0>', 'tab-focus -1')
+config.bind('<Alt-`>', 'tab-focus last')
+#+end_src
+
+Adjacent tabs
+#+begin_src python
+config.bind('<Alt-PgDown>', 'tab-next')
+config.bind('<Alt-PgUp>', 'tab-prev')
+config.bind('<Alt-l>', 'tab-next')
+config.bind('<Alt-h>', 'tab-prev')
+config.bind('<Alt-Ctrl-l>', 'tab-focus stack-next')
+config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
+config.bind('<Alt-Shift-l>', 'tab-focus -1')
+config.bind('<Alt-Shift-h>', 'tab-focus 1')
+#+end_src
+
+** ; hints
+#+begin_src python
+config.bind(';i', 'hint inputs')
+
+config.bind(';m', 'hint media')
+config.bind(';p', 'hint images')
+config.bind(';P', 'hint images tab')
+
+config.bind(';h', 'hint all hover')
+
+# media
+# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'     ) # cast video
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
+
+# rapid
+config.bind(';ri', 'hint --rapid images tab-bg')
+config.bind(';Ri', 'hint --rapid images window')
+
+config.bind(';rl', 'hint --rapid links tab-bg')
+config.bind(';Rl', 'hint --rapid links window')
+
+# edit link url before opening
+config.bind(';o', 'hint links fill :open {hint-url}')
+config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+
+# delete element
+config.bind(';da', 'hint all delete')
+config.bind(';dl', 'hint links delete')
+config.bind(';di', 'hint images delete')
+config.bind(';dm', 'hint media delete')
+#+end_src
+
+** brackets
+#+begin_src python
+config.bind('[[', 'navigate prev')
+config.bind(']]', 'navigate next')
+config.bind('{{', 'navigate prev -t')
+config.bind('}}', 'navigate next -t')
+#+end_src
+
+** b bookmarks / quickmarks
+#+begin_src python
+# open in current tab
+config.bind('bo', 'cmd-set-text -s :quickmark-load')
+config.bind('Bo', 'cmd-set-text -s :bookmark-load')
+
+# open in new tab
+config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
+config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
+
+# adding bookmarks
+config.bind('bs', 'quickmark-save')
+config.bind('Bs', 'bookmark-add')
+config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
+config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
+config.bind('Ba', 'bookmark-add {url} "{title}"')
+config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
+
+# deleting bookmarks
+config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
+config.bind('Bd', 'bookmark-del')
+#+end_src
+
+** c clear
+#+begin_src python
+config.bind('cm', 'clear-messages')
+#+end_src
+** d download
+#+begin_src python
+config.bind('ds', 'download-cancel')
+config.bind('dC', 'download-cancel')
+
+config.bind('dx', 'download-remove')
+config.bind('dr', 'download-retry')
+config.bind('dc', 'download-clear')
+
+config.bind('do', 'download-open')
+config.bind('dX', 'download-delete')
+config.bind('dD', 'download-delete')
+
+# hints
+config.bind('di', 'hint images download')
+config.bind('dl', 'hint links download')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
+config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
+
+# download current
+config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
+config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
+
+# prompt mode
+config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
+config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
+#+end_src
+** g goto
+#+begin_src python
+config.bind('g=', 'navigate increment')
+config.bind('g-', 'navigate decrement')
+config.bind('g<Backspace>', 'navigate up')
+config.bind('gu', 'navigate up')
+config.bind('gU', 'navigate up -t')
+config.bind('gs', 'navigate strip')
+
+config.bind('gt', 'cmd-set-text -sr :tab-focus')
+
+config.bind('gg', 'scroll-to-perc 0')
+config.bind('G', 'scroll-to-perc')
+
+config.bind('gh', 'history -t')
+
+# bookmark list
+config.bind('gq', 'bookmark-list --tab')
+config.bind('gb', 'bookmark-list --tab --jump')
+
+# edit current url
+config.bind('go', 'cmd-set-text :open {url:pretty}')
+config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
+config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
+#+end_src
+
+** p pass / paste
+#+begin_src python
+# Command Mode
+config.bind('<Ctrl-p><g>'      , 'spawn --output-messages pass generate --clip "{url:host}" 50'                )
+
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                )
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
+
+# Insert Mode
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
+#+end_src
+
+Open URL from clipboard
+#+begin_src python
+config.bind('pp', 'open -- {clipboard}')
+config.bind('pP', 'open -- {primary}')
+#+end_src
+
+** TODO s set
+#+begin_src python
+config.bind('Ss', 'set')
+config.bind('ss', 'cmd-set-text -s :set')
+config.bind('sl', 'cmd-set-text -s :set -t')
+
+config.bind('sk', 'cmd-set-text -s :bind')
+
+config.bind('sf', 'save')
+#+end_src
+
+** t tabs
+#+begin_src python
+config.bind('tn', 'open -t')
+
+config.bind('t0', 'tab-focus 1')
+config.bind('t^', 'tab-focus 1')
+config.bind('t$', 'tab-focus -1')
+
+config.bind('tm', 'tab-move')
+config.bind('tj', 'tab-move +')
+config.bind('tk', 'tab-move -')
+config.bind('tJ', 'tab-move end')
+config.bind('tK', 'tab-move start')
+
+config.bind('tH', 'back -t')
+config.bind('tL', 'forward -t')
+
+# config.bind('tO', 'tab-only')
+
+# give and take
+config.bind('tG', 'tab-give')
+config.bind('tP', 'tab-give --private')
+config.bind('tg', 'cmd-set-text -s :tab-give')
+config.bind('tt', 'cmd-set-text -s :tab-take')
+#+end_src
+
+*** c clone
+#+begin_src python
+config.bind('tcc', 'tab-clone')
+config.bind('tcG', 'tab-give --keep')
+config.bind('tcP', 'tab-give --keep --private')
+config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
+config.bind('tct', 'cmd-set-text -s :tab-take --keep')
+#+end_src
+
+** w window
+#+begin_src python
+config.bind('wn', 'open -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
+
+config.bind('wf', 'hint all window')
+
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
+#+end_src
+
+** y yanking
+#+begin_src python
+config.bind('ys', 'yank selection', mode='normal')
+
+# yank page
+config.bind('yy', 'yank')
+config.bind('Yy', 'yank -s')
+
+config.bind('yp', 'yank pretty-url')
+config.bind('Yp', 'yank pretty-url -s')
+
+config.bind('yd', 'yank domain')
+config.bind('Yd', 'yank domain -s')
+
+config.bind('yt', 'yank title')
+config.bind('Yt', 'yank title -s')
+
+# yank as link for markup documents
+config.bind('ym', 'yank inline [{title}]({url})')
+config.bind('Ym', 'yank inline [{title}]({url}) -s')
+
+# yank as link for org documents
+config.bind('yo', 'yank inline [[{url}][{title}]]')
+config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
+
+# yank link
+config.bind('yl', 'hint links yank')
+config.bind('Yl', 'hint links yank-primary')
+config.bind('yi', 'hint images yank')
+config.bind('Yi', 'hint images yank-primary')
+#+end_src
+
+** z cycle config
+#+begin_src python
+config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
+config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
+config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
+config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
+config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
+config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
+config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
+config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
+#+end_src
+
+** misc
+#+begin_src python
+config.bind('<Ctrl-Shift-Tab>', 'nop')
+
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
+
+config.bind('<F1>'     , 'help -t')
+config.bind('<F5>'     , 'reload')
+config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<F11>'    , 'fullscreen')
+#+end_src
+
+** leader
+#+begin_src python
+config.bind('<Space>p', 'cmd-set-text -s :process')
+config.bind('<Space>m', ':messages -t')
+
+# tabs menu
+config.bind('<Space>`', 'tab-focus last')
+config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space><', 'cmd-set-text -sr :tab-select')
+#+end_src
+
+*** a audio
+*** c change
+#+begin_src python
+# change css themes
+config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+#+end_src
+
+*** d dev
+#+begin_src python
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
+#+end_src
+
+*** h help
+#+begin_src python
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help -t')
+config.bind('<Space>hs', 'cmd-set-text -s :help -t')
+config.bind('<Space>hv', 'version')
+config.bind('<Space>hc', 'set')
+config.bind('<Space>hl', 'messages -t')
+config.bind('<Space>hi', 'version')
+#+end_src
+
+*** q quit
+#+begin_src python
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
+#+end_src
+
+*** t toggle
+#+begin_src python
+# tab and status bars
+config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
+config.bind('<Space>tb', 'config-cycle statusbar.show always never')
+config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+
+# dark mode
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+
+# go to url
+config.bind('<Space>to', 'cmd-set-text -s :open -t')
+config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
+
+# open url from clipboard
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
+#+end_src
+
+*** v video
+#+begin_src python
+# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
+#+end_src
+
+You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+
+It also works nicely with rapid hints:
+
+:bind ,m spawn umpv {url}
+:bind ,M hint links spawn umpv {hint-url}
+:bind ;M hint --rapid links spawn umpv {hint-url}
+
+*** w window
+#+begin_src python
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
+config.bind('<Space>wu', 'undo -w')
+#+end_src
+
+*** tab sessions
+#+begin_src python
+config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
+config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
+config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
+config.bind('<Space><Tab>R', 'session-load -f autosave')
+config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
+config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
+config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
+config.bind('<Space><Tab>u', 'session-save')
+config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
 #+end_src
 
 * Privacy

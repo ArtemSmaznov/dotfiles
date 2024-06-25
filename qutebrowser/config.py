@@ -543,8 +543,6 @@ c.downloads.remove_finished = 60000
 c.prompt.filebrowser = True
 c.prompt.radius = theme.radius
 
-# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
-
 config.unbind('<Ctrl-Q>') # quit ?
 config.unbind('ZQ')       # quit
 config.unbind('ZZ')       # quit --save
@@ -641,387 +639,6 @@ config.unbind('wIj') # devtools bottom
 config.unbind('wIk') # devtools top
 config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
-
-config.bind('Ss', 'set')
-config.bind('ss', 'cmd-set-text -s :set')
-config.bind('sl', 'cmd-set-text -s :set -t')
-
-config.bind('sk', 'cmd-set-text -s :bind')
-
-config.bind('<Ctrl-Shift-Tab>', 'nop')
-
-config.bind('sf', 'save')
-
-config.bind('<F11>', 'fullscreen')
-
-config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
-config.bind('<Space>tb', 'config-cycle statusbar.show always never')
-config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
-
-config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
-
-config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-
-config.bind('r', 'reload')
-config.bind('R', 'reload -f')
-config.bind('<Ctrl-R>', 'reload -f')
-config.bind('<F5>', 'reload')
-config.bind('<Ctrl-F5>', 'reload -f')
-
-config.bind('<Space>p', 'cmd-set-text -s :process')
-config.bind('<Space>m', ':messages -t')
-
-config.bind('<Alt-x>', 'cmd-set-text :')
-config.bind(':', 'cmd-set-text :')
-config.bind('/', 'cmd-set-text /')
-config.bind('?', 'cmd-set-text ?')
-config.bind('.', 'cmd-repeat-last')
-
-config.bind('n', 'search-next')
-config.bind('N', 'search-prev')
-
-config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
-config.bind('cm', 'clear-messages')
-
-config.bind('q', 'macro-record')
-config.bind('@', 'macro-run')
-
-config.bind('<Space>qq', 'quit')
-config.bind('<Space>qr', 'restart')
-
-config.bind('<Space>hr', 'config-source')
-config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'cmd-set-text -s :help -t')
-config.bind('<Space>hv', 'version')
-config.bind('<Space>hc', 'set')
-config.bind('<Space>hl', 'messages -t')
-config.bind('<Space>hi', 'version')
-config.bind('<F1>'     , 'help -t')
-
-config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
-config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
-config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
-config.bind('<Space><Tab>R', 'session-load -f autosave')
-config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
-config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
-config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
-config.bind('<Space><Tab>u', 'session-save')
-config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
-
-config.bind('h', 'scroll left')
-config.bind('j', 'scroll down')
-config.bind('k', 'scroll up')
-config.bind('l', 'scroll right')
-config.bind('J', 'cmd-run-with-count 5 scroll down')
-config.bind('K', 'cmd-run-with-count 5 scroll up')
-
-config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-config.bind('<Ctrl-F>', 'scroll-page 0 1')
-config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
-
-config.bind('gg', 'scroll-to-perc 0')
-config.bind('G', 'scroll-to-perc')
-
-config.bind('<Ctrl-0>', 'zoom')
-config.bind('<Ctrl-->', 'zoom-out')
-config.bind('<Ctrl-=>', 'zoom-in')
-
-config.bind('g=', 'navigate increment')
-config.bind('g-', 'navigate decrement')
-config.bind('g<Backspace>', 'navigate up')
-config.bind('gu', 'navigate up')
-config.bind('gU', 'navigate up -t')
-config.bind('gs', 'navigate strip')
-config.bind('[[', 'navigate prev')
-config.bind(']]', 'navigate next')
-config.bind('{{', 'navigate prev -t')
-config.bind('}}', 'navigate next -t')
-
-config.bind('<Space>wq', 'close')
-config.bind('<Space>wO', 'window-only')
-
-config.bind('wn', 'open -w')
-config.bind('wH', 'back -w')
-config.bind('wL', 'forward -w')
-
-config.bind('wf', 'hint all window')
-
-config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
-config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
-
-config.bind('<Ctrl-N>', 'open -w')
-config.bind('<Ctrl-Shift-W>', 'close')
-
-config.bind('U', 'undo -w')
-config.bind('<Space>wu', 'undo -w')
-
-config.bind('<back>', 'back')
-config.bind('<forward>', 'forward')
-config.bind('H', 'back')
-config.bind('L', 'forward')
-config.bind('tH', 'back -t')
-config.bind('tL', 'forward -t')
-
-config.bind('<Ctrl-Shift-h>', 'back -b')
-config.bind('<Ctrl-Shift-l>', 'forward -b')
-
-config.bind('<Ctrl-h>', 'home')
-
-config.bind('<Ctrl-T>', 'open -t')
-config.bind('tn', 'open -t')
-
-config.bind('o', 'cmd-set-text -s :open')
-
-config.bind('O', 'cmd-set-text -s :open -t')
-config.bind('<Space>to', 'cmd-set-text -s :open -t')
-config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
-
-config.bind('go', 'cmd-set-text :open {url:pretty}')
-
-config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
-config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
-
-config.bind('pp', 'open -- {clipboard}')
-config.bind('pP', 'open -- {primary}')
-
-config.bind('<Space>tp', 'open -t -- {clipboard}')
-config.bind('<Space>tP', 'open -t -- {primary}')
-
-config.bind('<Return>', 'selection-follow')
-config.bind('<Shift-Return>', 'selection-follow -t')
-
-config.bind('t0', 'tab-focus 1')
-config.bind('t^', 'tab-focus 1')
-config.bind('<Alt-1>', 'tab-focus 1')
-config.bind('<Alt-2>', 'tab-focus 2')
-config.bind('<Alt-3>', 'tab-focus 3')
-config.bind('<Alt-4>', 'tab-focus 4')
-config.bind('<Alt-5>', 'tab-focus 5')
-config.bind('<Alt-6>', 'tab-focus 6')
-config.bind('<Alt-7>', 'tab-focus 7')
-config.bind('<Alt-8>', 'tab-focus 8')
-config.bind('<Alt-9>', 'tab-focus 9')
-config.bind('<Alt-0>', 'tab-focus -1')
-config.bind('t$', 'tab-focus -1')
-config.bind('<Alt-`>', 'tab-focus last')
-config.bind('<Space>`', 'tab-focus last')
-
-config.bind('<Alt-PgDown>', 'tab-next')
-config.bind('<Alt-PgUp>', 'tab-prev')
-config.bind('<Alt-l>', 'tab-next')
-config.bind('<Alt-h>', 'tab-prev')
-config.bind('<Alt-Ctrl-l>', 'tab-focus stack-next')
-config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
-config.bind('<Alt-Shift-l>', 'tab-focus -1')
-config.bind('<Alt-Shift-h>', 'tab-focus 1')
-
-config.bind('gt', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space><', 'cmd-set-text -sr :tab-select')
-
-config.bind('<Ctrl-W>', 'tab-close')
-config.bind('x', 'tab-close')
-# config.bind('tO', 'tab-only')
-
-config.bind('<Ctrl-Shift-T>', 'undo')
-config.bind('u', 'undo')
-config.bind('X', 'undo')
-
-config.bind('tm', 'tab-move')
-config.bind('tj', 'tab-move +')
-config.bind('tk', 'tab-move -')
-config.bind('tJ', 'tab-move end')
-config.bind('tK', 'tab-move start')
-config.bind('>', 'tab-move +')
-config.bind('<', 'tab-move -')
-config.bind('<Alt-j>', 'tab-move +')
-config.bind('<Alt-k>', 'tab-move -')
-config.bind('<Alt-Shift-j>', 'tab-move end')
-config.bind('<Alt-Shift-k>', 'tab-move start')
-
-config.bind('<Ctrl-c>', 'stop')
-config.bind('<Alt-m>', 'tab-mute')
-config.bind('<Alt-p>', 'tab-pin')
-config.bind('<Alt-p>', 'tab-pin', mode='insert')
-config.bind('<Ctrl-Alt-p>', 'print')
-
-config.bind('tG', 'tab-give')
-config.bind('tP', 'tab-give --private')
-config.bind('tg', 'cmd-set-text -s :tab-give')
-config.bind('tt', 'cmd-set-text -s :tab-take')
-
-config.bind('tcc', 'tab-clone')
-config.bind('tcG', 'tab-give --keep')
-config.bind('tcP', 'tab-give --keep --private')
-config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
-config.bind('tct', 'cmd-set-text -s :tab-take --keep')
-
-config.bind('D', 'cmd-set-text -s :download')
-
-config.bind('ds', 'download-cancel')
-config.bind('dC', 'download-cancel')
-
-config.bind('dx', 'download-remove')
-config.bind('dr', 'download-retry')
-config.bind('dc', 'download-clear')
-
-config.bind('do', 'download-open')
-config.bind('dX', 'download-delete')
-config.bind('dD', 'download-delete')
-
-config.bind('di', 'hint images download')
-config.bind('dl', 'hint links download')
-config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
-config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
-
-config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
-config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
-
-config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
-config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
-
-config.bind('ys', 'yank selection', mode='normal')
-config.bind('<Ctrl-c>', 'yank selection', mode='normal')
-
-config.bind('yy', 'yank')
-config.bind('Yy', 'yank -s')
-
-config.bind('yp', 'yank pretty-url')
-config.bind('Yp', 'yank pretty-url -s')
-
-config.bind('yd', 'yank domain')
-config.bind('Yd', 'yank domain -s')
-
-config.bind('yt', 'yank title')
-config.bind('Yt', 'yank title -s')
-
-config.bind('ym', 'yank inline [{title}]({url})')
-config.bind('Ym', 'yank inline [{title}]({url}) -s')
-
-config.bind('yo', 'yank inline [[{url}][{title}]]')
-config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
-
-config.bind('yl', 'hint links yank')
-config.bind('Yl', 'hint links yank-primary')
-config.bind('yi', 'hint images yank')
-config.bind('Yi', 'hint images yank-primary')
-
-config.bind('gq', 'bookmark-list --tab')
-config.bind('gb', 'bookmark-list --tab --jump')
-
-config.bind('bo', 'cmd-set-text -s :quickmark-load')
-config.bind('Bo', 'cmd-set-text -s :bookmark-load')
-
-config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
-config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
-
-config.bind('bs', 'quickmark-save')
-config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
-config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
-config.bind('Ba', 'bookmark-add {url} "{title}"')
-config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
-
-config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
-config.bind('Bd', 'bookmark-del')
-
-config.bind('gh', 'history -t')
-
-config.bind('f', 'hint')
-config.bind('F', 'hint all tab')
-
-config.bind(';i', 'hint inputs')
-
-config.bind(';m', 'hint media')
-config.bind(';p', 'hint images')
-config.bind(';P', 'hint images tab')
-
-config.bind(';h', 'hint all hover')
-
-# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
-config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'                     ) # cast video
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
-
-config.bind('<Ctrl-f>', 'hint --rapid')
-
-config.bind(';ri', 'hint --rapid images tab-bg')
-config.bind(';Ri', 'hint --rapid images window')
-
-config.bind(';rl', 'hint --rapid links tab-bg')
-config.bind(';Rl', 'hint --rapid links window')
-
-config.bind(';o', 'hint links fill :open {hint-url}')
-config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-
-config.bind(';da', 'hint all delete')
-config.bind(';dl', 'hint links delete')
-config.bind(';di', 'hint images delete')
-config.bind(';dm', 'hint media delete')
-
-config.bind('<Ctrl-p><g>'      , 'spawn --output-messages pass generate --clip "{url:host}" 50'                )
-
-config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                )
-config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
-config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
-config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
-config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
-
-config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
-config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
-config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
-config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
-config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
-
-# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
-config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
-
-config.bind('<Space>ds', 'view-source')
-
-config.bind('<Space>dt', 'devtools')
-config.bind('<Space>dd', 'devtools')
-config.bind('<Space>df', 'devtools-focus')
-
-config.bind('<Space>dH', 'devtools left')
-config.bind('<Space>dL', 'devtools right')
-config.bind('<Space>dJ', 'devtools bottom')
-config.bind('<Space>dK', 'devtools top')
-config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
-
-config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
-config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
-config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
-config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
-config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
-config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
-config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
-config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
-config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
-config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
-config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
-config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 
 config.bind('<Ctrl-Shift-N>', 'open --window')
 config.bind('<Ctrl-Shift-I>', 'open --private')
@@ -1184,6 +801,429 @@ config.bind('<Ctrl-B>', 'hint all tab-bg'          , mode='hint')
 config.bind('<Ctrl-F>', 'hint links'               , mode='hint')
 config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
 config.bind('<Return>', 'hint-follow'              , mode='hint')
+
+# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
+
+config.bind(':', 'cmd-set-text :')
+config.bind('.', 'cmd-repeat-last')
+
+config.bind('D', 'cmd-set-text -s :download')
+config.bind('u', 'undo')
+config.bind('U', 'undo -w')
+
+config.bind('x', 'tab-close')
+config.bind('X', 'undo')
+
+config.bind('<Ctrl-N>', 'open -w')
+config.bind('<Ctrl-Shift-W>', 'close')
+config.bind('<Ctrl-Shift-T>', 'undo')
+config.bind('<Ctrl-W>', 'tab-close')
+
+# config.bind('<Ctrl-c>', 'stop')
+config.bind('<Ctrl-c>', 'yank selection', mode='normal')
+config.bind('<Ctrl-c>', 'yank selection', mode='insert')
+config.bind('<Ctrl-c>', 'yank selection', mode='passthrough')
+
+config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+config.bind('<Ctrl-F>', 'scroll-page 0 1')
+config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+
+config.bind('<Alt-m>', 'tab-mute')
+config.bind('<Alt-p>', 'tab-pin')
+config.bind('<Alt-p>', 'tab-pin', mode='insert')
+config.bind('<Ctrl-Alt-p>', 'print')
+
+config.bind('<Alt-x>', 'cmd-set-text :')
+
+# move tabs
+config.bind('>', 'tab-move +')
+config.bind('<', 'tab-move -')
+config.bind('<Alt-j>', 'tab-move +')
+config.bind('<Alt-k>', 'tab-move -')
+config.bind('<Alt-Shift-j>', 'tab-move end')
+config.bind('<Alt-Shift-k>', 'tab-move start')
+
+# following focused links
+config.bind('<Return>', 'selection-follow')
+config.bind('<Shift-Return>', 'selection-follow -t')
+
+config.bind('<back>', 'back')
+config.bind('<forward>', 'forward')
+config.bind('H', 'back')
+config.bind('L', 'forward')
+
+config.bind('<Ctrl-Shift-h>', 'back -b')
+config.bind('<Ctrl-Shift-l>', 'forward -b')
+
+config.bind('<Ctrl-h>', 'home')
+config.bind('<Ctrl-T>', 'open -t')
+
+# go to url
+config.bind('o', 'cmd-set-text -s :open')
+config.bind('O', 'cmd-set-text -s :open -t')
+
+config.bind('/', 'cmd-set-text /')
+config.bind('?', 'cmd-set-text ?')
+
+config.bind('n', 'search-next')
+config.bind('N', 'search-prev')
+
+config.bind('h', 'scroll left')
+config.bind('j', 'scroll down')
+config.bind('k', 'scroll up')
+config.bind('l', 'scroll right')
+config.bind('J', 'cmd-run-with-count 5 scroll down')
+config.bind('K', 'cmd-run-with-count 5 scroll up')
+
+config.bind('<Ctrl-0>', 'zoom')
+config.bind('<Ctrl-->', 'zoom-out')
+config.bind('<Ctrl-=>', 'zoom-in')
+
+config.bind('f', 'hint')
+config.bind('F', 'hint all tab')
+
+# rapid - open in background and remain in hint mode
+config.bind('<Ctrl-f>', 'hint --rapid')
+
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
+config.bind('<Ctrl-R>', 'reload -f')
+
+config.bind('q', 'macro-record')
+config.bind('@', 'macro-run')
+
+config.bind('<Alt-1>', 'tab-focus 1')
+config.bind('<Alt-2>', 'tab-focus 2')
+config.bind('<Alt-3>', 'tab-focus 3')
+config.bind('<Alt-4>', 'tab-focus 4')
+config.bind('<Alt-5>', 'tab-focus 5')
+config.bind('<Alt-6>', 'tab-focus 6')
+config.bind('<Alt-7>', 'tab-focus 7')
+config.bind('<Alt-8>', 'tab-focus 8')
+config.bind('<Alt-9>', 'tab-focus 9')
+config.bind('<Alt-0>', 'tab-focus -1')
+config.bind('<Alt-`>', 'tab-focus last')
+
+config.bind('<Alt-PgDown>', 'tab-next')
+config.bind('<Alt-PgUp>', 'tab-prev')
+config.bind('<Alt-l>', 'tab-next')
+config.bind('<Alt-h>', 'tab-prev')
+config.bind('<Alt-Ctrl-l>', 'tab-focus stack-next')
+config.bind('<Alt-Ctrl-h>', 'tab-focus stack-prev')
+config.bind('<Alt-Shift-l>', 'tab-focus -1')
+config.bind('<Alt-Shift-h>', 'tab-focus 1')
+
+config.bind(';i', 'hint inputs')
+
+config.bind(';m', 'hint media')
+config.bind(';p', 'hint images')
+config.bind(';P', 'hint images tab')
+
+config.bind(';h', 'hint all hover')
+
+# media
+# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'     ) # cast video
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
+
+# rapid
+config.bind(';ri', 'hint --rapid images tab-bg')
+config.bind(';Ri', 'hint --rapid images window')
+
+config.bind(';rl', 'hint --rapid links tab-bg')
+config.bind(';Rl', 'hint --rapid links window')
+
+# edit link url before opening
+config.bind(';o', 'hint links fill :open {hint-url}')
+config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+
+# delete element
+config.bind(';da', 'hint all delete')
+config.bind(';dl', 'hint links delete')
+config.bind(';di', 'hint images delete')
+config.bind(';dm', 'hint media delete')
+
+config.bind('[[', 'navigate prev')
+config.bind(']]', 'navigate next')
+config.bind('{{', 'navigate prev -t')
+config.bind('}}', 'navigate next -t')
+
+# open in current tab
+config.bind('bo', 'cmd-set-text -s :quickmark-load')
+config.bind('Bo', 'cmd-set-text -s :bookmark-load')
+
+# open in new tab
+config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
+config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
+
+# adding bookmarks
+config.bind('bs', 'quickmark-save')
+config.bind('Bs', 'bookmark-add')
+config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
+config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
+config.bind('Ba', 'bookmark-add {url} "{title}"')
+config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
+
+# deleting bookmarks
+config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
+config.bind('Bd', 'bookmark-del')
+
+config.bind('cm', 'clear-messages')
+
+config.bind('ds', 'download-cancel')
+config.bind('dC', 'download-cancel')
+
+config.bind('dx', 'download-remove')
+config.bind('dr', 'download-retry')
+config.bind('dc', 'download-clear')
+
+config.bind('do', 'download-open')
+config.bind('dX', 'download-delete')
+config.bind('dD', 'download-delete')
+
+# hints
+config.bind('di', 'hint images download')
+config.bind('dl', 'hint links download')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
+config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
+
+# download current
+config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
+config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
+
+# prompt mode
+config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
+config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
+
+config.bind('g=', 'navigate increment')
+config.bind('g-', 'navigate decrement')
+config.bind('g<Backspace>', 'navigate up')
+config.bind('gu', 'navigate up')
+config.bind('gU', 'navigate up -t')
+config.bind('gs', 'navigate strip')
+
+config.bind('gt', 'cmd-set-text -sr :tab-focus')
+
+config.bind('gg', 'scroll-to-perc 0')
+config.bind('G', 'scroll-to-perc')
+
+config.bind('gh', 'history -t')
+
+# bookmark list
+config.bind('gq', 'bookmark-list --tab')
+config.bind('gb', 'bookmark-list --tab --jump')
+
+# edit current url
+config.bind('go', 'cmd-set-text :open {url:pretty}')
+config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
+config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
+
+# Command Mode
+config.bind('<Ctrl-p><g>'      , 'spawn --output-messages pass generate --clip "{url:host}" 50'                )
+
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                )
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     )
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       )
+
+# Insert Mode
+config.bind('<Ctrl-p><a>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)"'                , mode='insert')
+config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --username-only', mode='insert')
+config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
+config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
+config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
+
+config.bind('pp', 'open -- {clipboard}')
+config.bind('pP', 'open -- {primary}')
+
+config.bind('Ss', 'set')
+config.bind('ss', 'cmd-set-text -s :set')
+config.bind('sl', 'cmd-set-text -s :set -t')
+
+config.bind('sk', 'cmd-set-text -s :bind')
+
+config.bind('sf', 'save')
+
+config.bind('tn', 'open -t')
+
+config.bind('t0', 'tab-focus 1')
+config.bind('t^', 'tab-focus 1')
+config.bind('t$', 'tab-focus -1')
+
+config.bind('tm', 'tab-move')
+config.bind('tj', 'tab-move +')
+config.bind('tk', 'tab-move -')
+config.bind('tJ', 'tab-move end')
+config.bind('tK', 'tab-move start')
+
+config.bind('tH', 'back -t')
+config.bind('tL', 'forward -t')
+
+# config.bind('tO', 'tab-only')
+
+# give and take
+config.bind('tG', 'tab-give')
+config.bind('tP', 'tab-give --private')
+config.bind('tg', 'cmd-set-text -s :tab-give')
+config.bind('tt', 'cmd-set-text -s :tab-take')
+
+config.bind('tcc', 'tab-clone')
+config.bind('tcG', 'tab-give --keep')
+config.bind('tcP', 'tab-give --keep --private')
+config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
+config.bind('tct', 'cmd-set-text -s :tab-take --keep')
+
+config.bind('wn', 'open -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
+
+config.bind('wf', 'hint all window')
+
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
+
+config.bind('ys', 'yank selection', mode='normal')
+
+# yank page
+config.bind('yy', 'yank')
+config.bind('Yy', 'yank -s')
+
+config.bind('yp', 'yank pretty-url')
+config.bind('Yp', 'yank pretty-url -s')
+
+config.bind('yd', 'yank domain')
+config.bind('Yd', 'yank domain -s')
+
+config.bind('yt', 'yank title')
+config.bind('Yt', 'yank title -s')
+
+# yank as link for markup documents
+config.bind('ym', 'yank inline [{title}]({url})')
+config.bind('Ym', 'yank inline [{title}]({url}) -s')
+
+# yank as link for org documents
+config.bind('yo', 'yank inline [[{url}][{title}]]')
+config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
+
+# yank link
+config.bind('yl', 'hint links yank')
+config.bind('Yl', 'hint links yank-primary')
+config.bind('yi', 'hint images yank')
+config.bind('Yi', 'hint images yank-primary')
+
+config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
+config.bind('zIu', 'config-cycle -p -u {url} content.images ;; reload')
+config.bind('zPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zPu', 'config-cycle -p -u {url} content.plugins ;; reload')
+config.bind('zSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
+config.bind('zcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('zcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+config.bind('ziH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
+config.bind('zih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
+config.bind('ziu', 'config-cycle -p -t -u {url} content.images ;; reload')
+config.bind('zpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
+config.bind('zph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
+config.bind('zpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
+config.bind('zsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.bind('zsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
+
+config.bind('<Ctrl-Shift-Tab>', 'nop')
+
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
+
+config.bind('<F1>'     , 'help -t')
+config.bind('<F5>'     , 'reload')
+config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<F11>'    , 'fullscreen')
+
+config.bind('<Space>p', 'cmd-set-text -s :process')
+config.bind('<Space>m', ':messages -t')
+
+# tabs menu
+config.bind('<Space>`', 'tab-focus last')
+config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space><', 'cmd-set-text -sr :tab-select')
+
+# change css themes
+config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
+
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help -t')
+config.bind('<Space>hs', 'cmd-set-text -s :help -t')
+config.bind('<Space>hv', 'version')
+config.bind('<Space>hc', 'set')
+config.bind('<Space>hl', 'messages -t')
+config.bind('<Space>hi', 'version')
+
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
+
+# tab and status bars
+config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
+config.bind('<Space>tb', 'config-cycle statusbar.show always never')
+config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+
+# dark mode
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+
+# go to url
+config.bind('<Space>to', 'cmd-set-text -s :open -t')
+config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
+
+# open url from clipboard
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
+
+# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
+
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
+config.bind('<Space>wu', 'undo -w')
+
+config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
+config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
+config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
+config.bind('<Space><Tab>R', 'session-load -f autosave')
+config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
+config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
+config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
+config.bind('<Space><Tab>u', 'session-save')
+config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
 
 c.content.canvas_reading = True
 
