@@ -543,8 +543,6 @@ c.downloads.remove_finished = 60000
 c.prompt.filebrowser = True
 c.prompt.radius = theme.radius
 
-# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
-
 config.unbind('<Ctrl-Q>') # quit ?
 config.unbind('ZQ')       # quit
 config.unbind('ZZ')       # quit --save
@@ -641,106 +639,6 @@ config.unbind('wIj') # devtools bottom
 config.unbind('wIk') # devtools top
 config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
-
-config.bind('Ss', 'set')
-config.bind('ss', 'cmd-set-text -s :set')
-config.bind('sl', 'cmd-set-text -s :set -t')
-
-config.bind('sk', 'cmd-set-text -s :bind')
-
-config.bind('<Ctrl-Shift-Tab>', 'nop')
-
-config.bind('sf', 'save')
-
-config.bind('<F11>', 'fullscreen')
-
-config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
-config.bind('<Space>tb', 'config-cycle statusbar.show always never')
-config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
-
-config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
-
-config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-
-config.bind('r', 'reload')
-config.bind('R', 'reload -f')
-config.bind('<Ctrl-R>', 'reload -f')
-config.bind('<F5>', 'reload')
-config.bind('<Ctrl-F5>', 'reload -f')
-
-config.bind('<Space>p', 'cmd-set-text -s :process')
-config.bind('<Space>m', ':messages -t')
-
-config.bind('<Alt-x>', 'cmd-set-text :')
-config.bind(':', 'cmd-set-text :')
-config.bind('/', 'cmd-set-text /')
-config.bind('?', 'cmd-set-text ?')
-config.bind('.', 'cmd-repeat-last')
-
-config.bind('n', 'search-next')
-config.bind('N', 'search-prev')
-
-config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
-config.bind('cm', 'clear-messages')
-
-config.bind('q', 'macro-record')
-config.bind('@', 'macro-run')
-
-config.bind('<Space>qq', 'quit')
-config.bind('<Space>qr', 'restart')
-
-config.bind('<Space>hr', 'config-source')
-config.bind('<Space>hh', 'help -t')
-config.bind('<Space>hs', 'cmd-set-text -s :help -t')
-config.bind('<Space>hv', 'version')
-config.bind('<Space>hc', 'set')
-config.bind('<Space>hl', 'messages -t')
-config.bind('<Space>hi', 'version')
-config.bind('<F1>'     , 'help -t')
-
-config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
-config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
-config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
-config.bind('<Space><Tab>R', 'session-load -f autosave')
-config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
-config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
-config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
-config.bind('<Space><Tab>u', 'session-save')
-config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
-
-config.bind('h', 'scroll left')
-config.bind('j', 'scroll down')
-config.bind('k', 'scroll up')
-config.bind('l', 'scroll right')
-config.bind('J', 'cmd-run-with-count 5 scroll down')
-config.bind('K', 'cmd-run-with-count 5 scroll up')
-
-config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-config.bind('<Ctrl-F>', 'scroll-page 0 1')
-config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
-
-config.bind('gg', 'scroll-to-perc 0')
-config.bind('G', 'scroll-to-perc')
-
-config.bind('<Ctrl-0>', 'zoom')
-config.bind('<Ctrl-->', 'zoom-out')
-config.bind('<Ctrl-=>', 'zoom-in')
-
-config.bind('g=', 'navigate increment')
-config.bind('g-', 'navigate decrement')
-config.bind('g<Backspace>', 'navigate up')
-config.bind('gu', 'navigate up')
-config.bind('gU', 'navigate up -t')
-config.bind('gs', 'navigate strip')
-config.bind('[[', 'navigate prev')
-config.bind(']]', 'navigate next')
-config.bind('{{', 'navigate prev -t')
-config.bind('}}', 'navigate next -t')
 
 config.bind('<Space>wq', 'close')
 config.bind('<Space>wO', 'window-only')
@@ -932,38 +830,6 @@ config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
 config.bind('Bd', 'bookmark-del')
 
 config.bind('gh', 'history -t')
-
-config.bind('f', 'hint')
-config.bind('F', 'hint all tab')
-
-config.bind(';i', 'hint inputs')
-
-config.bind(';m', 'hint media')
-config.bind(';p', 'hint images')
-config.bind(';P', 'hint images tab')
-
-config.bind(';h', 'hint all hover')
-
-# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
-config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'                     ) # cast video
-config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
-config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
-
-config.bind('<Ctrl-f>', 'hint --rapid')
-
-config.bind(';ri', 'hint --rapid images tab-bg')
-config.bind(';Ri', 'hint --rapid images window')
-
-config.bind(';rl', 'hint --rapid links tab-bg')
-config.bind(';Rl', 'hint --rapid links window')
-
-config.bind(';o', 'hint links fill :open {hint-url}')
-config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-
-config.bind(';da', 'hint all delete')
-config.bind(';dl', 'hint links delete')
-config.bind(';di', 'hint images delete')
-config.bind(';dm', 'hint media delete')
 
 config.bind('<Ctrl-p><g>'      , 'spawn --output-messages pass generate --clip "{url:host}" 50'                )
 
@@ -1184,6 +1050,151 @@ config.bind('<Ctrl-B>', 'hint all tab-bg'          , mode='hint')
 config.bind('<Ctrl-F>', 'hint links'               , mode='hint')
 config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
 config.bind('<Return>', 'hint-follow'              , mode='hint')
+
+config.bind('@', 'macro-run')
+config.bind(':', 'cmd-set-text :')
+config.bind('/', 'cmd-set-text /')
+config.bind('?', 'cmd-set-text ?')
+config.bind('.', 'cmd-repeat-last')
+
+config.bind('<Ctrl-0>', 'zoom')
+config.bind('<Ctrl-->', 'zoom-out')
+config.bind('<Ctrl-=>', 'zoom-in')
+
+config.bind('q', 'macro-record')
+
+config.bind('h', 'scroll left')
+config.bind('j', 'scroll down')
+config.bind('k', 'scroll up')
+config.bind('l', 'scroll right')
+config.bind('J', 'cmd-run-with-count 5 scroll down')
+config.bind('K', 'cmd-run-with-count 5 scroll up')
+
+config.bind('n', 'search-next')
+config.bind('N', 'search-prev')
+
+config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+config.bind('<Ctrl-F>', 'scroll-page 0 1')
+config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+
+# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
+
+config.bind(';i', 'hint inputs')
+
+config.bind(';m', 'hint media')
+config.bind(';p', 'hint images')
+config.bind(';P', 'hint images tab')
+
+config.bind(';h', 'hint all hover')
+
+# media
+# config.bind(';c', 'hint links spawn --userscript cast {url}'                     ) # cast video
+config.bind(';c', 'hint links spawn ~/.local/bin/cast-to-tv.sh "{hint-url}"'     ) # cast video
+config.bind(';v', 'hint links spawn mpv --ytdl-format=best {hint-url}'           ) # play video
+config.bind(';a', 'hint links spawn mpv --ytdl-format=best {hint-url} --no-video') # play audio
+
+# rapid
+config.bind(';ri', 'hint --rapid images tab-bg')
+config.bind(';Ri', 'hint --rapid images window')
+
+config.bind(';rl', 'hint --rapid links tab-bg')
+config.bind(';Rl', 'hint --rapid links window')
+
+# edit link url before opening
+config.bind(';o', 'hint links fill :open {hint-url}')
+config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+
+# delete element
+config.bind(';da', 'hint all delete')
+config.bind(';dl', 'hint links delete')
+config.bind(';di', 'hint images delete')
+config.bind(';dm', 'hint media delete')
+
+config.bind('[[', 'navigate prev')
+config.bind(']]', 'navigate next')
+config.bind('{{', 'navigate prev -t')
+config.bind('}}', 'navigate next -t')
+
+config.bind('cm', 'clear-messages')
+
+config.bind('g=', 'navigate increment')
+config.bind('g-', 'navigate decrement')
+config.bind('g<Backspace>', 'navigate up')
+config.bind('gu', 'navigate up')
+config.bind('gU', 'navigate up -t')
+config.bind('gs', 'navigate strip')
+
+config.bind('gg', 'scroll-to-perc 0')
+config.bind('G', 'scroll-to-perc')
+
+config.bind('f', 'hint')
+config.bind('F', 'hint all tab')
+
+# rapid - open in background and remain in hint mode
+config.bind('<Ctrl-f>', 'hint --rapid')
+
+config.bind('Ss', 'set')
+config.bind('ss', 'cmd-set-text -s :set')
+config.bind('sl', 'cmd-set-text -s :set -t')
+
+config.bind('sk', 'cmd-set-text -s :bind')
+
+config.bind('sf', 'save')
+
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
+config.bind('<Ctrl-R>', 'reload -f')
+
+config.bind('<Alt-x>', 'cmd-set-text :')
+
+config.bind('<Space>p', 'cmd-set-text -s :process')
+config.bind('<Space>m', ':messages -t')
+
+# change css themes
+config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+
+config.bind('<Space>hr', 'config-source')
+config.bind('<Space>hh', 'help -t')
+config.bind('<Space>hs', 'cmd-set-text -s :help -t')
+config.bind('<Space>hv', 'version')
+config.bind('<Space>hc', 'set')
+config.bind('<Space>hl', 'messages -t')
+config.bind('<Space>hi', 'version')
+
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
+
+# tab and status bars
+config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
+config.bind('<Space>tb', 'config-cycle statusbar.show always never')
+config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+
+# dark mode
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+
+config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
+config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
+config.bind('<Space><Tab>l', 'cmd-set-text -s :session-load')
+config.bind('<Space><Tab>R', 'session-load -f autosave')
+config.bind('<Space><Tab>s', 'cmd-set-text -s :session-save --only-active-window')
+config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
+config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
+config.bind('<Space><Tab>u', 'session-save')
+config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
+
+config.bind('<Ctrl-Shift-Tab>', 'nop')
+
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
+
+config.bind('<F1>'     , 'help -t')
+config.bind('<F5>'     , 'reload')
+config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<F11>'    , 'fullscreen')
 
 c.content.canvas_reading = True
 
