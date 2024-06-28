@@ -428,6 +428,7 @@ c.url.searchengines = {
     "amazoncom"         : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "amazonca"          : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
     "acoustid"          : "https://acoustid.org/track/{}",
+    "gog"               : "https://www.gog.com/en/games?query={}",
 }
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
