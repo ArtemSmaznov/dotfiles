@@ -640,9 +640,6 @@ config.unbind('wIk') # devtools top
 config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
 
-config.bind('<Space>wq', 'close')
-config.bind('<Space>wO', 'window-only')
-
 config.bind('wn', 'open -w')
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
@@ -656,7 +653,6 @@ config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
 
 config.bind('U', 'undo -w')
-config.bind('<Space>wu', 'undo -w')
 
 config.bind('<back>', 'back')
 config.bind('<forward>', 'forward')
@@ -676,8 +672,6 @@ config.bind('tn', 'open -t')
 config.bind('o', 'cmd-set-text -s :open')
 
 config.bind('O', 'cmd-set-text -s :open -t')
-config.bind('<Space>to', 'cmd-set-text -s :open -t')
-config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
 
 config.bind('go', 'cmd-set-text :open {url:pretty}')
 
@@ -686,9 +680,6 @@ config.bind('gS', 'cmd-set-text :open -b -r {url:pretty}')
 
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pP', 'open -- {primary}')
-
-config.bind('<Space>tp', 'open -t -- {clipboard}')
-config.bind('<Space>tP', 'open -t -- {primary}')
 
 config.bind('<Return>', 'selection-follow')
 config.bind('<Shift-Return>', 'selection-follow -t')
@@ -719,8 +710,6 @@ config.bind('<Alt-Shift-l>', 'tab-focus -1')
 config.bind('<Alt-Shift-h>', 'tab-focus 1')
 
 config.bind('gt', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space><', 'cmd-set-text -sr :tab-select')
 
 config.bind('<Ctrl-W>', 'tab-close')
 config.bind('x', 'tab-close')
@@ -844,25 +833,6 @@ config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocatio
 config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
 config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
-
-# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
-config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
-
-config.bind('<Space>ds', 'view-source')
-
-config.bind('<Space>dt', 'devtools')
-config.bind('<Space>dd', 'devtools')
-config.bind('<Space>df', 'devtools-focus')
-
-config.bind('<Space>dH', 'devtools left')
-config.bind('<Space>dL', 'devtools right')
-config.bind('<Space>dJ', 'devtools bottom')
-config.bind('<Space>dK', 'devtools top')
-config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
 
 config.bind('zCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
 config.bind('zCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
@@ -1151,12 +1121,30 @@ config.bind('<Alt-x>', 'cmd-set-text :')
 config.bind('<Space>p', 'cmd-set-text -s :process')
 config.bind('<Space>m', ':messages -t')
 
+# tabs menu
+config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space><', 'cmd-set-text -sr :tab-select')
+
 # change css themes
 config.bind('<Space>ca' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
 config.bind('<Space>cd' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
 config.bind('<Space>cg' , 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
 config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
 config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
 
 config.bind('<Space>hr', 'config-source')
 config.bind('<Space>hh', 'help -t')
@@ -1176,6 +1164,24 @@ config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle 
 
 # dark mode
 config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+
+# go to url
+config.bind('<Space>to', 'cmd-set-text -s :open -t')
+config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
+
+# open url from clipboard
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
+
+# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
+
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
+config.bind('<Space>wu', 'undo -w')
 
 config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
 config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')

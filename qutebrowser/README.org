@@ -55,8 +55,6 @@
   - [[#bookmarks--quickmarks][Bookmarks / Quickmarks]]
   - [[#history-1][History]]
   - [[#pass][Pass]]
-  - [[#media][Media]]
-  - [[#development-tools][Development Tools]]
   - [[#config-cycle][Config-cycle]]
   - [[#modes][Modes]]
 - [[#new-key-bindings][New Key Bindings]]
@@ -1361,9 +1359,6 @@ config.unbind('wIw') # devtools window
 
 ** Windows
 #+begin_src python
-config.bind('<Space>wq', 'close')
-config.bind('<Space>wO', 'window-only')
-
 config.bind('wn', 'open -w')
 config.bind('wH', 'back -w')
 config.bind('wL', 'forward -w')
@@ -1377,7 +1372,6 @@ config.bind('<Ctrl-N>', 'open -w')
 config.bind('<Ctrl-Shift-W>', 'close')
 
 config.bind('U', 'undo -w')
-config.bind('<Space>wu', 'undo -w')
 #+end_src
 
 ** Tabs
@@ -1411,8 +1405,6 @@ Go to URL
 config.bind('o', 'cmd-set-text -s :open')
 
 config.bind('O', 'cmd-set-text -s :open -t')
-config.bind('<Space>to', 'cmd-set-text -s :open -t')
-config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
 #+end_src
 
 Edit current URL
@@ -1427,9 +1419,6 @@ Open URL from clipboard
 #+begin_src python
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pP', 'open -- {primary}')
-
-config.bind('<Space>tp', 'open -t -- {clipboard}')
-config.bind('<Space>tP', 'open -t -- {primary}')
 #+end_src
 
 Following focused links
@@ -1473,8 +1462,6 @@ config.bind('<Alt-Shift-h>', 'tab-focus 1')
 Tabs menu
 #+begin_src python
 config.bind('gt', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
-config.bind('<Space><', 'cmd-set-text -sr :tab-select')
 #+end_src
 
 *** Closing Tabs
@@ -1670,39 +1657,6 @@ config.bind('<Ctrl-p><u>'      , 'spawn --userscript qute-pass --dmenu-invocatio
 config.bind('<Ctrl-p><p>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --password-only', mode='insert')
 config.bind('<Ctrl-p><o>'      , 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:login|user): (.+)" --otp-only'     , mode='insert')
 config.bind('<Ctrl-p><Shift-p>', 'spawn --userscript qute-pass --dmenu-invocation "wofi --dmenu" --username-target secret --username-pattern "(?:pin): (.+)" --username-only'       , mode='insert')
-#+end_src
-
-** Media
-#+begin_src python
-# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
-config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
-config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
-config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
-#+end_src
-
-You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
-
-It also works nicely with rapid hints:
-
-:bind ,m spawn umpv {url}
-:bind ,M hint links spawn umpv {hint-url}
-:bind ;M hint --rapid links spawn umpv {hint-url}
-
-** Development Tools
-#+begin_src python
-config.bind('<Space>ds', 'view-source')
-
-config.bind('<Space>dt', 'devtools')
-config.bind('<Space>dd', 'devtools')
-config.bind('<Space>df', 'devtools-focus')
-
-config.bind('<Space>dH', 'devtools left')
-config.bind('<Space>dL', 'devtools right')
-config.bind('<Space>dJ', 'devtools bottom')
-config.bind('<Space>dK', 'devtools top')
-config.bind('<Space>dW', 'devtools window')
-
-config.bind('<Space>dD', 'hint all delete')
 #+end_src
 
 ** Config-cycle
@@ -2085,6 +2039,10 @@ config.bind('<Alt-x>', 'cmd-set-text :')
 #+begin_src python
 config.bind('<Space>p', 'cmd-set-text -s :process')
 config.bind('<Space>m', ':messages -t')
+
+# tabs menu
+config.bind('<Space>,', 'cmd-set-text -sr :tab-focus')
+config.bind('<Space><', 'cmd-set-text -sr :tab-select')
 #+end_src
 *** a
 *** c change
@@ -2097,7 +2055,23 @@ config.bind('<Space>csd', 'config-cycle content.user_stylesheets ~/.config/quteb
 config.bind('<Space>csl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 #+end_src
 
-*** d
+*** d dev
+#+begin_src python
+config.bind('<Space>ds', 'view-source')
+
+config.bind('<Space>dt', 'devtools')
+config.bind('<Space>dd', 'devtools')
+config.bind('<Space>df', 'devtools-focus')
+
+config.bind('<Space>dH', 'devtools left')
+config.bind('<Space>dL', 'devtools right')
+config.bind('<Space>dJ', 'devtools bottom')
+config.bind('<Space>dK', 'devtools top')
+config.bind('<Space>dW', 'devtools window')
+
+config.bind('<Space>dD', 'hint all delete')
+#+end_src
+
 *** h help
 #+begin_src python
 config.bind('<Space>hr', 'config-source')
@@ -2124,10 +2098,40 @@ config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle 
 
 # dark mode
 config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+
+# go to url
+config.bind('<Space>to', 'cmd-set-text -s :open -t')
+config.bind('<Space>tO', 'cmd-set-text :open -t {url:pretty}')
+
+# open url from clipboard
+config.bind('<Space>tp', 'open -t -- {clipboard}')
+config.bind('<Space>tP', 'open -t -- {primary}')
 #+end_src
 
-*** v
-*** w
+*** v video
+#+begin_src python
+# config.bind('<Space>vc', 'spawn --userscript cast {url}'                ) # cast current video
+config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"'                ) # cast current video
+config.bind('<Space>vv', 'spawn mpv --ytdl-format=best {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv --ytdl-format=best {url} --no-video') # play current audio
+#+end_src
+
+You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+
+It also works nicely with rapid hints:
+
+:bind ,m spawn umpv {url}
+:bind ,M hint links spawn umpv {hint-url}
+:bind ;M hint --rapid links spawn umpv {hint-url}
+
+*** w window
+#+begin_src python
+config.bind('<Space>wq', 'close')
+config.bind('<Space>wO', 'window-only')
+
+config.bind('<Space>wu', 'undo -w')
+#+end_src
+
 *** tab sessions
 #+begin_src python
 config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
@@ -2140,7 +2144,6 @@ config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
 config.bind('<Space><Tab>u', 'session-save')
 config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
 #+end_src
-
 
 ** misc
 #+begin_src python
