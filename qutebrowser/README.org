@@ -48,29 +48,27 @@
 - [[#downloads-1][Downloads]]
 - [[#key-bindings][Key Bindings]]
   - [[#unbind][Unbind]]
-  - [[#windows][Windows]]
   - [[#tabs-2][Tabs]]
-  - [[#downloads-2][Downloads]]
-  - [[#yanking][Yanking]]
-  - [[#bookmarks--quickmarks][Bookmarks / Quickmarks]]
-  - [[#history-1][History]]
   - [[#pass][Pass]]
   - [[#config-cycle][Config-cycle]]
   - [[#modes][Modes]]
 - [[#new-key-bindings][New Key Bindings]]
   - [[#info][Info]]
+  - [[#root][root]]
   - [[#-hints][; hints]]
   - [[#brackets][brackets]]
-  - [[#b-buffer][b buffer]]
+  - [[#b-bookmarks--quickmarks][b bookmarks / quickmarks]]
   - [[#c-clear][c clear]]
-  - [[#g-goto][g goto]]
+  - [[#d-downloads][d downloads]]
   - [[#f][f]]
+  - [[#g-goto][g goto]]
+  - [[#r][r]]
   - [[#s][s]]
   - [[#t][t]]
-  - [[#r][r]]
-  - [[#x][x]]
-  - [[#leader][leader]]
+  - [[#w-window][w window]]
+  - [[#y-yanking][y yanking]]
   - [[#misc][misc]]
+  - [[#leader][leader]]
 - [[#privacy][Privacy]]
   - [[#youtube-add-blocking][YouTube Add Blocking]]
   - [[#ad-blocking][Ad Blocking]]
@@ -85,7 +83,7 @@
 - [[#which-key-1][Which Key]]
 - [[#editor][Editor]]
 - [[#content][Content]]
-- [[#history-2][History]]
+- [[#history-1][History]]
 - [[#file-select][File Select]]
 - [[#input][Input]]
 - [[#search][Search]]
@@ -1357,23 +1355,6 @@ config.unbind('wIl') # devtools right
 config.unbind('wIw') # devtools window
 #+end_src
 
-** Windows
-#+begin_src python
-config.bind('wn', 'open -w')
-config.bind('wH', 'back -w')
-config.bind('wL', 'forward -w')
-
-config.bind('wf', 'hint all window')
-
-config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
-config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
-
-config.bind('<Ctrl-N>', 'open -w')
-config.bind('<Ctrl-Shift-W>', 'close')
-
-config.bind('U', 'undo -w')
-#+end_src
-
 ** Tabs
 *** Navigation
 Go back and forth in history
@@ -1518,124 +1499,6 @@ config.bind('tcG', 'tab-give --keep')
 config.bind('tcP', 'tab-give --keep --private')
 config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
 config.bind('tct', 'cmd-set-text -s :tab-take --keep')
-#+end_src
-
-** Downloads
-#+begin_src python
-config.bind('D', 'cmd-set-text -s :download')
-
-config.bind('ds', 'download-cancel')
-config.bind('dC', 'download-cancel')
-
-config.bind('dx', 'download-remove')
-config.bind('dr', 'download-retry')
-config.bind('dc', 'download-clear')
-
-config.bind('do', 'download-open')
-config.bind('dX', 'download-delete')
-config.bind('dD', 'download-delete')
-#+end_src
-
-Hints
-#+begin_src python
-config.bind('di', 'hint images download')
-config.bind('dl', 'hint links download')
-config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
-config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
-config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
-#+end_src
-
-Download Current
-#+begin_src python
-config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
-config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
-#+end_src
-
-Prompt Mode
-#+begin_src python
-config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
-config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
-#+end_src
-
-** Yanking
-#+begin_src python
-config.bind('ys', 'yank selection', mode='normal')
-config.bind('<Ctrl-c>', 'yank selection', mode='normal')
-#+end_src
-
-Yank Page
-#+begin_src python
-config.bind('yy', 'yank')
-config.bind('Yy', 'yank -s')
-
-config.bind('yp', 'yank pretty-url')
-config.bind('Yp', 'yank pretty-url -s')
-
-config.bind('yd', 'yank domain')
-config.bind('Yd', 'yank domain -s')
-
-config.bind('yt', 'yank title')
-config.bind('Yt', 'yank title -s')
-#+end_src
-
-Yank as link for Markup documents
-#+begin_src python
-config.bind('ym', 'yank inline [{title}]({url})')
-config.bind('Ym', 'yank inline [{title}]({url}) -s')
-#+end_src
-
-Yank as link for Org documents
-#+begin_src python
-config.bind('yo', 'yank inline [[{url}][{title}]]')
-config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
-#+end_src
-
-Yank Link
-#+begin_src python
-config.bind('yl', 'hint links yank')
-config.bind('Yl', 'hint links yank-primary')
-config.bind('yi', 'hint images yank')
-config.bind('Yi', 'hint images yank-primary')
-#+end_src
-
-** Bookmarks / Quickmarks
-Bookmark list
-#+begin_src python
-config.bind('gq', 'bookmark-list --tab')
-config.bind('gb', 'bookmark-list --tab --jump')
-#+end_src
-
-Open in current tab
-#+begin_src python
-config.bind('bo', 'cmd-set-text -s :quickmark-load')
-config.bind('Bo', 'cmd-set-text -s :bookmark-load')
-#+end_src
-
-Open in new tab
-#+begin_src python
-config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
-config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
-#+end_src
-
-Adding bookmarks
-#+begin_src python
-config.bind('bs', 'quickmark-save')
-config.bind('Bs', 'bookmark-add')
-config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
-config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
-config.bind('Ba', 'bookmark-add {url} "{title}"')
-config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
-#+end_src
-
-Deleting bookmarks
-#+begin_src python
-config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
-config.bind('Bd', 'bookmark-del')
-#+end_src
-
-** History
-#+begin_src python
-config.bind('gh', 'history -t')
 #+end_src
 
 ** Pass
@@ -1895,34 +1758,6 @@ config.bind('<Return>', 'hint-follow'              , mode='hint')
 #+end_src
 
 * New Key Bindings
-#+begin_src python
-config.bind('@', 'macro-run')
-config.bind(':', 'cmd-set-text :')
-config.bind('/', 'cmd-set-text /')
-config.bind('?', 'cmd-set-text ?')
-config.bind('.', 'cmd-repeat-last')
-
-config.bind('<Ctrl-0>', 'zoom')
-config.bind('<Ctrl-->', 'zoom-out')
-config.bind('<Ctrl-=>', 'zoom-in')
-
-config.bind('q', 'macro-record')
-
-config.bind('h', 'scroll left')
-config.bind('j', 'scroll down')
-config.bind('k', 'scroll up')
-config.bind('l', 'scroll right')
-config.bind('J', 'cmd-run-with-count 5 scroll down')
-config.bind('K', 'cmd-run-with-count 5 scroll up')
-
-config.bind('n', 'search-next')
-config.bind('N', 'search-prev')
-
-config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-config.bind('<Ctrl-F>', 'scroll-page 0 1')
-config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
-#+end_src
 ** Info
 Map keys to other keys, so that they are equivalent in all modes. When
 the key used as dictionary-key is pressed, the binding for the key
@@ -1941,6 +1776,47 @@ key. Note that when a key is bound (via `bindings.default` or
 #+begin_src python
 # c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Ctrl-I>': '<Tab>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
 #+end_src
+** root
+#+begin_src python
+config.bind('@', 'macro-run')
+config.bind(':', 'cmd-set-text :')
+config.bind('/', 'cmd-set-text /')
+config.bind('?', 'cmd-set-text ?')
+config.bind('.', 'cmd-repeat-last')
+
+config.bind('<Ctrl-0>', 'zoom')
+config.bind('<Ctrl-->', 'zoom-out')
+config.bind('<Ctrl-=>', 'zoom-in')
+
+config.bind('q', 'macro-record')
+
+config.bind('D', 'cmd-set-text -s :download')
+
+config.bind('h', 'scroll left')
+config.bind('j', 'scroll down')
+config.bind('k', 'scroll up')
+config.bind('l', 'scroll right')
+config.bind('J', 'cmd-run-with-count 5 scroll down')
+config.bind('K', 'cmd-run-with-count 5 scroll up')
+
+config.bind('n', 'search-next')
+config.bind('N', 'search-prev')
+
+config.bind('U', 'undo -w')
+
+config.bind('<Ctrl-N>', 'open -w')
+config.bind('<Ctrl-Shift-W>', 'close')
+
+config.bind('<Ctrl-c>', 'yank selection', mode='normal')
+
+config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+config.bind('<Ctrl-F>', 'scroll-page 0 1')
+config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+
+config.bind('<Alt-x>', 'cmd-set-text :')
+#+end_src
+
 ** ; hints
 #+begin_src python
 config.bind(';i', 'hint inputs')
@@ -1983,10 +1859,68 @@ config.bind('{{', 'navigate prev -t')
 config.bind('}}', 'navigate next -t')
 #+end_src
 
-** b buffer
+** b bookmarks / quickmarks
+#+begin_src python
+# open in current tab
+config.bind('bo', 'cmd-set-text -s :quickmark-load')
+config.bind('Bo', 'cmd-set-text -s :bookmark-load')
+
+# open in new tab
+config.bind('bO', 'cmd-set-text -s :quickmark-load -t')
+config.bind('BO', 'cmd-set-text -s :bookmark-load -t')
+
+# adding bookmarks
+config.bind('bs', 'quickmark-save')
+config.bind('Bs', 'bookmark-add')
+config.bind('ba', 'quickmark-add {url} "{title}" ;; message-info "Quickmark saved!"')
+config.bind('bA', 'cmd-set-text :quickmark-add {url} "{title}"')
+config.bind('Ba', 'bookmark-add {url} "{title}"')
+config.bind('BA', 'cmd-set-text :bookmark-add {url} "{title}"')
+
+# deleting bookmarks
+config.bind('bd', 'quickmark-del ;; message-info "Quickmark {url} deleted!')
+config.bind('Bd', 'bookmark-del')
+#+end_src
+
 ** c clear
 #+begin_src python
 config.bind('cm', 'clear-messages')
+#+end_src
+** d downloads
+#+begin_src python
+config.bind('ds', 'download-cancel')
+config.bind('dC', 'download-cancel')
+
+config.bind('dx', 'download-remove')
+config.bind('dr', 'download-retry')
+config.bind('dc', 'download-clear')
+
+config.bind('do', 'download-open')
+config.bind('dX', 'download-delete')
+config.bind('dD', 'download-delete')
+
+# hints
+config.bind('di', 'hint images download')
+config.bind('dl', 'hint links download')
+config.bind('dt', 'hint links spawn transmission-remote -a {hint-url}')
+config.bind('dv', 'hint links spawn alacritty -e yt-dlp {hint-url}')
+config.bind('da', 'hint links spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {hint-url}')
+
+# download current
+config.bind('dV', 'spawn alacritty -e yt-dlp {url}')
+config.bind('dA', 'spawn alacritty -e yt-dlp --config-locations ~/.config/yt-dlp/audio.conf {url}')
+
+# prompt mode
+config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
+config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
+#+end_src
+** f
+#+begin_src python
+config.bind('f', 'hint')
+config.bind('F', 'hint all tab')
+
+# rapid - open in background and remain in hint mode
+config.bind('<Ctrl-f>', 'hint --rapid')
 #+end_src
 
 ** g goto
@@ -2000,15 +1934,19 @@ config.bind('gs', 'navigate strip')
 
 config.bind('gg', 'scroll-to-perc 0')
 config.bind('G', 'scroll-to-perc')
+
+config.bind('gh', 'history -t')
+
+# bookmark list
+config.bind('gq', 'bookmark-list --tab')
+config.bind('gb', 'bookmark-list --tab --jump')
 #+end_src
 
-** f
+** r
 #+begin_src python
-config.bind('f', 'hint')
-config.bind('F', 'hint all tab')
-
-# rapid - open in background and remain in hint mode
-config.bind('<Ctrl-f>', 'hint --rapid')
+config.bind('r', 'reload')
+config.bind('R', 'reload -f')
+config.bind('<Ctrl-R>', 'reload -f')
 #+end_src
 
 ** s
@@ -2023,16 +1961,60 @@ config.bind('sf', 'save')
 #+end_src
 
 ** t
-** r
+** w window
 #+begin_src python
-config.bind('r', 'reload')
-config.bind('R', 'reload -f')
-config.bind('<Ctrl-R>', 'reload -f')
+config.bind('wn', 'open -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
+
+config.bind('wf', 'hint all window')
+
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
 #+end_src
 
-** x
+** y yanking
 #+begin_src python
-config.bind('<Alt-x>', 'cmd-set-text :')
+config.bind('ys', 'yank selection', mode='normal')
+
+# yank page
+config.bind('yy', 'yank')
+config.bind('Yy', 'yank -s')
+
+config.bind('yp', 'yank pretty-url')
+config.bind('Yp', 'yank pretty-url -s')
+
+config.bind('yd', 'yank domain')
+config.bind('Yd', 'yank domain -s')
+
+config.bind('yt', 'yank title')
+config.bind('Yt', 'yank title -s')
+
+# yank as link for markup documents
+config.bind('ym', 'yank inline [{title}]({url})')
+config.bind('Ym', 'yank inline [{title}]({url}) -s')
+
+# yank as link for org documents
+config.bind('yo', 'yank inline [[{url}][{title}]]')
+config.bind('Yo', 'yank inline [[{url}][{title}]] -s')
+
+# yank link
+config.bind('yl', 'hint links yank')
+config.bind('Yl', 'hint links yank-primary')
+config.bind('yi', 'hint images yank')
+config.bind('Yi', 'hint images yank-primary')
+#+end_src
+
+** misc
+#+begin_src python
+config.bind('<Ctrl-Shift-Tab>', 'nop')
+
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
+
+config.bind('<F1>'     , 'help -t')
+config.bind('<F5>'     , 'reload')
+config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<F11>'    , 'fullscreen')
 #+end_src
 
 ** leader
@@ -2143,18 +2125,6 @@ config.bind('<Space><Tab>S', 'cmd-set-text -s :session-save')
 config.bind('<Space><Tab>t', 'cmd-set-text -s :session-load -temp')
 config.bind('<Space><Tab>u', 'session-save')
 config.bind('<Space><Tab>x', 'cmd-set-text -s :session-delete')
-#+end_src
-
-** misc
-#+begin_src python
-config.bind('<Ctrl-Shift-Tab>', 'nop')
-
-config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages')
-
-config.bind('<F1>'     , 'help -t')
-config.bind('<F5>'     , 'reload')
-config.bind('<Ctrl-F5>', 'reload -f')
-config.bind('<F11>'    , 'fullscreen')
 #+end_src
 
 * Privacy
