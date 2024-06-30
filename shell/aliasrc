@@ -171,9 +171,6 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 # Show open ports
 alias openports='netstat -nape --inet'
 
-alias dockercls='docker container ls --format "table {{.ID}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
-alias dockercll='docker container ls --all --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.State}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
-
 # Extend screen
 alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
 
@@ -183,6 +180,10 @@ alias occ='ssh amadeus "docker exec -i --user www-data nextcloud-app php occ"'
 # transmission
 alias t='transmission-remote'
 alias rt='transmission-remote amadeus:9091 --authenv'
+
+# docker
+alias dls='docker container ls --format "table {{.ID}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
+alias dll='docker container ls --all --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.State}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
 
 alias gs="git fetch && git status"
 alias gc="git commit"
