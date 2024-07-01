@@ -182,14 +182,14 @@ alias t='transmission-remote'
 alias rt='transmission-remote amadeus:9091 --authenv'
 
 # docker
-alias ds='docker stats'
+alias dstat='docker stats'
 alias dls='docker container ls --format "table {{.ID}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
 alias dll='docker container ls --all --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.State}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"'
 alias dup='docker compose up -d'
 alias dupo='docker compose up -d --remove-orphans'
 alias ddown='docker compose down'
 alias dstop='docker compose stop'
-alias dlogs='docker logs'
+alias dlog='docker logs'
 alias dx='docker exec -it'
 
 alias gs="git fetch && git status"
