@@ -916,8 +916,8 @@ BS set speed 1.0
 
 A-B Loop
 #+begin_src conf
-\ ab-loop                              # Set/clear A-B loop points
-#L cycle-values loop-file "inf" "no"    # toggle infinite looping
+\ ab-loop                               # Set/clear A-B loop points
+Alt+\ cycle-values loop-file "inf" "no" # toggle infinite looping
 #+end_src
 
 ** Navigation
