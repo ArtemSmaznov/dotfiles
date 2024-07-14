@@ -178,8 +178,7 @@ alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
 alias occ='ssh amadeus "docker exec -i --user www-data nextcloud-app php occ"'
 
 # transmission
-alias t='transmission-remote'
-alias rt='transmission-remote amadeus:9091 --authenv'
+alias t='transmission-remote amadeus:9091 --authenv'
 
 # docker
 alias dstat='docker stats'
