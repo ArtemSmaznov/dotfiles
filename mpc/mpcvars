@@ -1,4 +1,4 @@
 export MPC_FORMAT="(%album%) %artist% - %title%"
 # export MPD_HOST="izumi.arts.lan"
-export MPD_HOST="192.168.0.26"
+# export MPD_HOST="192.168.0.26"
 export MPD_PORT="6600"
