@@ -747,8 +747,11 @@ alias dx='docker exec -it'
 alias gs="git fetch && git status"
 alias gc="git commit"
 alias gp="git push"
-alias gf="git pull"
+alias gf="git fetch --prune"
+alias gF="git pull"
 alias gd="git diff"
+alias glog="git log --oneline"
+alias glogl="git log --show-signature"
 #+end_src
 
 *** Bare Repositories
