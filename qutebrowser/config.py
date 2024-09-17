@@ -1208,6 +1208,8 @@ config.bind('<Space>tP', 'open -t -- {primary}')
 
 # config.bind('<Space>vc', 'spawn --userscript cast {url}'            ) # cast current video
 config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"' ) # cast current video
+config.bind('<Space>vv', 'spawn mpv {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv {url} --no-video') # play current audio
 
 config.bind('<Space>wq', 'close')
 config.bind('<Space>wO', 'window-only')

@@ -2074,6 +2074,8 @@ config.bind('<Space>tP', 'open -t -- {primary}')
 #+begin_src python
 # config.bind('<Space>vc', 'spawn --userscript cast {url}'            ) # cast current video
 config.bind('<Space>vc', 'spawn ~/.local/bin/cast-to-tv.sh "{url}"' ) # cast current video
+config.bind('<Space>vv', 'spawn mpv {url}'           ) # play current video
+config.bind('<Space>va', 'spawn mpv {url} --no-video') # play current audio
 #+end_src
 
 You can find the script here: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
