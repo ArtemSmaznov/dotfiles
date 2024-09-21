@@ -54,6 +54,7 @@
   - [[#root][Root]]
   - [[#leader][Leader]]
   - [[#g][g]]
+  - [[#o][o]]
   - [[#y][y]]
   - [[#z][z]]
   - [[#square-brackets][Square Brackets]]
@@ -614,6 +615,7 @@ Filter-out build and temporary files
 Unbind
 #+begin_src vimrc
 nmap t <nop>
+nmap o <nop>
 " nmap i :setl previewprg='identify %c'<cr>:view<cr>
 #+end_src
 
@@ -629,9 +631,6 @@ vnoremap w :view<cr>gv
 #+begin_src vimrc
 " Display sorting dialog
 nnoremap S :sort<cr>
-
-" Start shell in current directory
-nnoremap s :shell<cr>
 #+end_src
 
 #+begin_src vimrc
@@ -640,7 +639,6 @@ nnoremap i <c-g>
 #+end_src
 
 #+begin_src vimrc
-nnoremap o i
 nnoremap O :file<cr>
 #+end_src
 
@@ -755,6 +753,12 @@ nnoremap <a-o> :sync %c<cr>
 #+begin_src vimrc
 " Open file in the background using its default program
 nnoremap gb :file &<cr>l<esc>echo "open in background"<cr>
+#+end_src
+
+** o
+#+begin_src vimrc
+" Start shell in current directory
+nnoremap ot :shell<cr>
 #+end_src
 
 ** y
