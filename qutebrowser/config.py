@@ -481,7 +481,7 @@ c.tabs.mode_on_change = 'normal'
 
 c.tabs.wrap = True
 
-c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 
 c.tabs.last_close = 'startpage'
 

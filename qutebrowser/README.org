@@ -1068,7 +1068,7 @@ Valid values:
 - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
 - last-used: Select the previously selected tab.
 #+begin_src python
-c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 #+end_src
 
 How to behave when the last tab is closed. If the
