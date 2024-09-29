@@ -6,9 +6,9 @@ normal_window=true
 monitor=DP-1
 
 width=25%;
-height=60%;
-dynamic_lines=false
-# lines=10
+# height=40%;
+dynamic_lines=true
+lines=8
 
 orientation=vertical
 columns=1
