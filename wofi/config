@@ -1,5 +1,5 @@
 layer=overlay
-normal_window=false
+normal_window=true
 monitor=DP-1
 
 width=25%;
