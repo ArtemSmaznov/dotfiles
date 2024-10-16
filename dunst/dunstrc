@@ -338,7 +338,7 @@ timeout = 10
 
 [urgency_normal]
 msg_urgency = normal
-timeout = 60
+timeout = 30
 
 [urgency_critical]
 msg_urgency = critical
