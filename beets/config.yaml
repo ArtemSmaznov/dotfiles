@@ -83,6 +83,7 @@ plugins:
   - permissions
   - playlist
   - scrub
+  - smartplaylist
   - unimported
 
 albumtypes:
@@ -166,6 +167,14 @@ playlist:
 
 scrub:
   auto: yes
+
+smartplaylist:
+  relative_to: ~/music
+  playlist_dir: ~/.config/mpd/playlists
+  forward_slach: no
+  playlists:
+    - name: starred.m3u
+      query: 'rating::1.0'
 
 unimported:
   ignore_extensions: jpg png txt md org mod

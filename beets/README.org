@@ -33,6 +33,7 @@
   - [[#playlist][Playlist]]
   - [[#idea-plex-update][IDEA Plex Update]]
   - [[#scrub][Scrub]]
+  - [[#smart-playlist][Smart playlist]]
   - [[#unimported][Unimported]]
 - [[#proj-fix-for-albumtype-metadata][PROJ Fix for albumtype metadata]]
 
@@ -167,6 +168,7 @@ plugins:
   - permissions
   - playlist
   - scrub
+  - smartplaylist
   - unimported
 #+end_src
 
@@ -344,6 +346,17 @@ written to disk by removing the tag entirely before writing new data
 #+begin_src yaml
 scrub:
   auto: yes
+#+end_src
+
+** Smart playlist
+#+begin_src yaml
+smartplaylist:
+  relative_to: ~/music
+  playlist_dir: ~/.config/mpd/playlists
+  forward_slach: no
+  playlists:
+    - name: starred.m3u
+      query: 'rating::1.0'
 #+end_src
 
 ** Unimported
