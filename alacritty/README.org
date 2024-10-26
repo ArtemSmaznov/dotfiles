@@ -86,7 +86,7 @@ All imports must either be absolute paths starting with ~/~, or paths relative
 to the user's home directory starting with ~~/~.
 
 #+begin_src toml
-import = [
+general.import = [
   "~/.config/alacritty/themes/base16.toml",
   "~/.config/alacritty/local.toml"
 ]
@@ -123,7 +123,7 @@ Live config reload (changes require restart)
 Default: true
 
 #+begin_src toml
-live_config_reload = true
+general.live_config_reload = true
 #+end_src
 
 ** IPC Socket

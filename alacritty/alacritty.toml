@@ -1,11 +1,11 @@
-import = [
+general.import = [
   "~/.config/alacritty/themes/base16.toml",
   "~/.config/alacritty/local.toml"
 ]
 
 working_directory = "None"
 
-live_config_reload = true
+general.live_config_reload = true
 
 #ipc_socket = true
 
