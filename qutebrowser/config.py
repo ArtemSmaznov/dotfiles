@@ -1196,7 +1196,7 @@ config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
 
 # dark mode
-config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ;; restart ')
+config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ')
 
 # go to url
 config.bind('<Space>to', 'cmd-set-text -s :open -t')
