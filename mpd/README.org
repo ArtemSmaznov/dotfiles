@@ -90,6 +90,17 @@ audio_output {
 }
 #+end_src
 
+snap fifo
+#+begin_src conf
+audio_output {
+    type        "fifo"
+    name        "Snapcast"
+    path        "/tmp/snapfifo"
+    format      "48000:16:2"
+    mixer_type  "software"
+}
+#+end_src
+
 Streaming
 #+begin_src conf
 # audio_output {
