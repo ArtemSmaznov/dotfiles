@@ -298,7 +298,7 @@ c.content.fullscreen.overlay_timeout = 3000
 
 c.content.fullscreen.window = False
 
-# c.content.headers.accept_language = 'en-US,en;q=0.9'
+c.content.headers.accept_language = 'en-AU,en;q=0.9'
 
 # c.content.headers.custom = {}
 

@@ -586,7 +586,7 @@ c.content.fullscreen.window = False
 Value to send in the `Accept-Language` header. Note that the value read from JavaScript is always the global value.
 # Type: =String=
 #+begin_src python
-# c.content.headers.accept_language = 'en-US,en;q=0.9'
+c.content.headers.accept_language = 'en-AU,en;q=0.9'
 #+end_src
 
 Custom headers for qutebrowser HTTP requests.
