@@ -439,6 +439,11 @@ export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
 #+end_src
 
+*** Wine
+#+begin_src shell
+export WINEPREFIX="/run/media/games/wine"
+#+end_src
+
 *** UWSM
 :PROPERTIES:
 :header-args: :tangle no
