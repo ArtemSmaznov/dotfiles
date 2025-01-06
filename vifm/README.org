@@ -631,7 +631,8 @@ vnoremap w :view<cr>gv
 #+end_src
 
 #+begin_src vimrc
-" Display sorting dialog
+nnoremap s :shell<cr>
+" display sorting dialog
 nnoremap S :sort<cr>
 #+end_src
 

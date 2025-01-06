@@ -354,7 +354,8 @@ vnoremap w :view<cr>gv
 " exit preview mode
 " nnoremap <space>wz <c-w>z
 
-" Display sorting dialog
+nnoremap s :shell<cr>
+" display sorting dialog
 nnoremap S :sort<cr>
 
 nnoremap x t
