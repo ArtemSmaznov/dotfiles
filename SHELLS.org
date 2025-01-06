@@ -424,8 +424,11 @@ starship init fish | source
 :ID:       0863797a-6250-4cd6-b78a-70ce9121d635
 :END:
 ** profile
+:PROPERTIES:
+:header-args: :tangle ~/.profile
+:END:
 *** XDG
-#+begin_src shell :tangle ~/.profile
+#+begin_src shell
 export XDG_DESKTOP_DIR="$HOME/desktop"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export XDG_TEMPLATES_DIR="$HOME/templates"
@@ -434,6 +437,18 @@ export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
+#+end_src
+
+*** UWSM
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+#+begin_src shell
+export UWSM_USE_SESSION_SLICE=true
+
+if uwsm check may-start && uwsm select; then
+    exec systemd-cat -t uwsm_start uwsm start default
+fi
 #+end_src
 
 *** Japanese Input
