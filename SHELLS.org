@@ -716,7 +716,7 @@ alias mountedinfo='df -hT'
 alias aoutput='cat /proc/asound/card2/pcm0p/sub0/hw_params'
 
 # Search running processes
-alias p="ps aux | grep "
+# alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # Show all logs in /var/log
