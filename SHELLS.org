@@ -735,6 +735,12 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 alias openports='netstat -nape --inet'
 #+end_src
 
+*** systemd
+#+begin_src shell
+alias sys='systemctl'
+alias use='systemctl --user'
+#+end_src
+
 ** Server
 #+begin_src shell
 # Extend screen
