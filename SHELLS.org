@@ -441,7 +441,7 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 
 *** Wine
 #+begin_src shell
-export WINEPREFIX="/run/media/games/wine"
+export WINEPREFIX="/home/artem/games/wine"
 #+end_src
 
 *** UWSM
