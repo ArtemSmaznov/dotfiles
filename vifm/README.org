@@ -228,6 +228,7 @@ mark r ~/videos/recordings
 mark s ~/pictures/screenshots
 mark v ~/videos
 mark w ~/pictures/wallpapers
+mark z /home/amadeus/zmedia
 #+end_src
 
 * Session
