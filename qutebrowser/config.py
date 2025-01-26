@@ -398,39 +398,8 @@ c.url.default_page = 'https://search.brave.com'
 
 # c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
-c.url.searchengines = {
-    "DEFAULT"           : "https://search.brave.com/search?q={}",
-    "aw"                : "https://wiki.archlinux.org/index.php?search={}",
-    "aur"               : "https://aur.archlinux.org/packages?O=0&K={}",
-    "r"                 : "https://www.reddit.com/search/?q={}",
-    "gt"                : "https://translate.google.co.uk/?sl=auto&tl=en&text={}",
-    "gtj"               : "https://translate.google.co.uk/?sl=auto&tl=ja&text={}",
-    "gtr"               : "https://translate.google.co.uk/?sl=auto&tl=ru&text={}",
-    "gd"                : "https://drive.google.com/drive/search?q={}",
-    "gm"                : "https://www.google.com/maps/search/{}?hl=en&source=opensearch",
-    "g"                 : "https://www.google.com/search?q={}",
-    "ip"                : "https://ipleak.net/{}",
-    "youtube"           : "https://www.youtube.com/results?search_query={}",
-    "yth"               : "https://www.youtube.com/feed/history?query={}",
-    "ytm"               : "https://music.youtube.com/search?q={}",
-    "github"            : "https://github.com/search?q={}&ref=opensearch",
-    "bandcamp"          : "https://bandcamp.com/search?q={}",
-    "musicbrainsttitle" : "https://musicbrainz.org/search?method=indexed&type=recording&query={}",
-    "musicbrainsartist" : "https://musicbrainz.org/search?method=indexed&type=artist&query={}",
-    "musicbrainsalbum"  : "https://musicbrainz.org/search?method=indexed&type=release&query={}",
-    "crunchyroll"       : "https://www.crunchyroll.com/search?q={}",
-    "odysee"            : "https://odysee.com/$/search?q={}",
-    "musixmatch"        : "https://www.musixmatch.com/search/{}",
-    "fontawesome"       : "https://fontawesome.com/search?q={}&o=r",
-    "protondb"          : "https://www.protondb.com/search?q={}",
-    "newegg"            : "https://www.newegg.ca/p/pl?d={}",
-    "amazonuk"          : "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazoncom"         : "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "amazonca"          : "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}",
-    "acoustid"          : "https://acoustid.org/track/{}",
-    "gog"               : "https://www.gog.com/en/games?query={}",
-    "wall"              : "https://wallpapersden.com/search?q={}",
-}
+if os.path.isfile(os.path.expanduser('~/.config/qutebrowser/search-engines.py')):
+    config.source('search-engines.py')
 
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
