@@ -8,7 +8,7 @@ monitor=DP-1
 width=25%;
 # height=40%;
 dynamic_lines=true
-lines=8
+lines=20
 
 orientation=vertical
 columns=1
