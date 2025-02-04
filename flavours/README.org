@@ -91,11 +91,10 @@ rewrite = false
 * Trayer
 #+begin_src toml
 [[item]]
-file = "~/.config/trayer/trayer.sh"
+file = "~/.config/trayer/themes/base16.sh"
 template = "trayer"
-# hook = "~/.config/trayer/trayer.sh"
 light = false
-rewrite = false
+rewrite = true
 #+end_src
 
 * Dunst

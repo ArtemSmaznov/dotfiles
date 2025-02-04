@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
-#
-# Start flavours
-# Base16 Gruvbox dark, medium theme
-# by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-# template by Artem Smaznov
+# environment variables ________________________________________________________
+[ ! "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 
-background="0x282828"
-# End flavours
+# variables ====================================================================
+. "$XDG_CONFIG_HOME"/trayer/themes/base16.sh
 
 bar_size=24
 
-if [[ $(pidof trayer) ]]
-then
+# setup ________________________________________________________________________
+if [[ $(pidof trayer) ]]; then
     killall trayer
 fi
 
 sleep 2
+
+# execution ********************************************************************
 trayer \
     --edge top \
     --align right \
@@ -29,5 +28,5 @@ trayer \
     --expand true \
     --padding 4 \
     --monitor 0
-    # --distancefrom right \
-    # --distance 400 \
+# --distancefrom right \
+# --distance 400 \
