@@ -30,7 +30,7 @@ height = (0, 300)
 origin = top-right
 
 # Offset from the origin
-offset = 38x38
+offset = 20x20
 
 # Scale factor. It is auto-detected if value is 0.
 scale = 0
@@ -81,7 +81,7 @@ text_icon_padding = 0
 
 # Defines width in pixels of frame around the notification window.
 # Set to 0 to disable.
-frame_width = 0
+frame_width = 5
 
 # Defines color of the frame around the notification window.
 # frame_color = "#ac5d2f"
@@ -231,7 +231,7 @@ class = Dunst
 # corners.
 # The radius will be automatically lowered if it exceeds half of the
 # notification height to avoid clipping text and/or icons.
-corner_radius = 0
+corner_radius = 15
 
 # Ignore the dbus closeNotification message.
 # Useful to enforce the timeout set by dunst configuration. Without this
@@ -348,19 +348,21 @@ timeout = 0
 # Start flavours
 [base16_low]
 msg_urgency = low
-background = "#3c3836"
-foreground = "#bdae93"
+frame_color = "#f1f2f855"
+background = "#3a3c4e33"
+foreground = "#62d6e8"
 
 [base16_normal]
 msg_urgency = normal
-background = "#504945"
-foreground = "#d5c4a1"
+frame_color = "#b45bcf88"
+background = "#4d4f6833"
+foreground = "#e9e9f4"
 
 [base16_critical]
 msg_urgency = critical
-frame_color = "#fabd2f"
-background = "#fb4934"
-foreground = "#ebdbb2"
+frame_color = "#00f769AA"
+background = "#ea51b233"
+foreground = "#f1f2f8"
 # End flavours
 
 [experimental]
