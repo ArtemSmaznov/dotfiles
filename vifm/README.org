@@ -209,26 +209,25 @@ set incsearch
 * Marks
 #+begin_src vimrc
 mark a /home/amadeus
-mark D ~/downloads
-mark E /etc
-mark M /run/mount
-mark P ~/photos
-mark T /tmp
-
 mark b ~/.local/bin
 mark c ~/.config
 mark d ~/documents
+mark D ~/downloads
+mark E /etc
 mark f ~/documents/finance
-mark g /run/media/games
+mark g ~/games
 mark h ~
 mark i ~/music/import
 mark m ~/music
+mark M /run/mount
 mark p ~/pictures
+mark P ~/photos
 mark r ~/videos/recordings
 mark s ~/pictures/screenshots
+mark T /tmp
 mark v ~/videos
 mark w ~/pictures/wallpapers
-mark z /home/amadeus/zmedia
+mark z ~/zmedia
 #+end_src
 
 * Session
