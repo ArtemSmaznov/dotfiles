@@ -1160,8 +1160,8 @@ config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 
 # tab and status bars
+config.bind('<Space>ts', 'config-cycle statusbar.show always never')
 config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
-config.bind('<Space>tb', 'config-cycle statusbar.show always never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
 
 # dark mode
