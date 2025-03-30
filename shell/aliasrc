@@ -171,6 +171,8 @@ alias openports='netstat -nape --inet'
 alias sys='systemctl'
 alias use='systemctl --user'
 
+alias ollama='docker exec -it ollama ollama'
+
 # Extend screen
 alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
 

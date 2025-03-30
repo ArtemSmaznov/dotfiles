@@ -42,6 +42,7 @@
   - [[#search][Search]]
   - [[#tools][Tools]]
   - [[#system][System]]
+  - [[#docker][Docker]]
   - [[#server][Server]]
   - [[#git][Git]]
   - [[#pass][Pass]]
@@ -740,6 +741,11 @@ alias openports='netstat -nape --inet'
 #+begin_src shell
 alias sys='systemctl'
 alias use='systemctl --user'
+#+end_src
+
+** Docker
+#+begin_src shell
+alias ollama='docker exec -it ollama ollama'
 #+end_src
 
 ** Server
