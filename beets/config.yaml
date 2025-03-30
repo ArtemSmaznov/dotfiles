@@ -178,4 +178,4 @@ smartplaylist:
 
 unimported:
   ignore_extensions: jpg png txt md org mod
-  ignore_subdirectories: Unsorted import
+  ignore_subdirectories: Unsorted import playlists

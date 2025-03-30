@@ -364,7 +364,7 @@ The =unimported= plugin allows one to list all files in the library folder which
 #+begin_src yaml
 unimported:
   ignore_extensions: jpg png txt md org mod
-  ignore_subdirectories: Unsorted import
+  ignore_subdirectories: Unsorted import playlists
 #+end_src
 
 * PROJ Fix for albumtype metadata
