@@ -410,7 +410,7 @@ use_console_editor = yes
 Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
 MPD clients (eg. ncmpc) also use that location.
 #+begin_src conf
-lyrics_directory = ~/music/lyrics
+lyrics_directory = ~/zmedia/music/lyrics
 #+end_src
 
 #+begin_src conf
