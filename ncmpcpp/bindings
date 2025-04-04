@@ -70,11 +70,11 @@ def_key "space"
   require_screen "lyrics"
   toggle_lyrics_update_on_song_change
 
-def_key "e"
+def_key "E"
   require_screen "lyrics"
   edit_lyrics
 
-def_key "`"
+def_key "R"
   require_screen "lyrics"
   refetch_lyrics
 
