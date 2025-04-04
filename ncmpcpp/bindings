@@ -42,7 +42,7 @@ def_key "`"
 def_key "ctrl-s"
   toggle_media_library_sort_mode
 
-def_key "e"
+def_key "E"
   edit_playlist_name
 
 def_key "D"

@@ -570,7 +570,7 @@ def_key "ctrl-s"
 
 *** Playlist Editor
 #+begin_src conf
-def_key "e"
+def_key "E"
   edit_playlist_name
 
 def_key "D"
