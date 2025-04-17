@@ -193,7 +193,8 @@ tz:      set statusbar.show!
 tl:      toggle library
 tm:      toggle manipulate
 tt:      toggle thumbnail
-         
+
+<button-right>: toggle library
 <double-button-right>: quit
 #+end_src
 
@@ -242,6 +243,8 @@ k:                    prev
 +:                    unbind
 
 <double-button-left>: fullscreen
+<button-middle>:      enter thumbnail
+
 <button-forward>:     next
 <button-back>:        prev
 <scroll-up>:          prev
@@ -273,6 +276,8 @@ H:             set library.width -0.05
 <ctrl>-:       zoom out
 -:             unbind
 +:             unbind
+
+<button-middle>: open-selected
 #+end_src
 
 ** Command
