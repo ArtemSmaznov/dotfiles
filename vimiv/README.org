@@ -93,7 +93,7 @@ show_hidden = False
 ** Thumbnail
 #+begin_src conf :tangle vimiv.conf
 [THUMBNAIL]
-size = 128
+size = 256
 #+end_src
 
 ** Slideshow
