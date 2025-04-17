@@ -414,7 +414,7 @@ lyrics_directory = ~/zmedia/music/lyrics
 #+end_src
 
 #+begin_src conf
-lyrics_fetchers = genius, tekstowo, plyrics, justsomelyrics, jahlyrics, zeneszoveg, internet
+lyrics_fetchers = tekstowo, plyrics, justsomelyrics, jahlyrics, zeneszoveg, internet
 #lyrics_fetchers = genius, tekstowo, plyrics, justsomelyrics, jahlyrics, zeneszoveg, internet
 #follow_now_playing_lyrics = no
 #fetch_lyrics_for_current_song_in_background = no
