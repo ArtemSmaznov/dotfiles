@@ -808,7 +808,8 @@ alias pgl="pass git log --oneline"
 ** Media
 Search and play YouTube audio
 #+begin_src shell
-alias mpvh='ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint --gpu-api=vulkan --gpu-context=waylandvk'
+# alias mpvh='ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint --gpu-api=vulkan --gpu-context=waylandvk'
+alias mpvh='ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint'
 alias shazam='songrec recognize'
 
 alias ytdv='yt-dlp'
