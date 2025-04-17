@@ -17,4 +17,4 @@
 #   default = current
 
 # [commit]
-#   template = ~/.stCommitMsg
+#   template = /home/artem/.config/git/message
