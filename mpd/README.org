@@ -95,7 +95,7 @@ snap fifo
 audio_output {
     type        "fifo"
     name        "Snapcast"
-    path        "/tmp/snapfifo"
+    path        "/home/artem/docker/snapcast/fifos/snapcast.fifo"
     format      "48000:16:2"
     mixer_type  "software"
 }
