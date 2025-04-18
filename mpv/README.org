@@ -982,6 +982,7 @@ p script-message-to command_palette show-command-palette "Playlist"
 #+begin_src conf
 v script-message-to command_palette show-command-palette "Video Tracks"
 V cycle video
+R cycle_values video-rotate 90 180 270 0
 #+end_src
 
 ** Audio
