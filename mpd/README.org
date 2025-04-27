@@ -94,11 +94,23 @@ snap fifo
 #+begin_src conf
 audio_output {
     type        "fifo"
-    name        "Snapcast"
+    name        "snapcast.docker"
     path        "/home/artem/docker/snapcast/fifos/snapcast.fifo"
     format      "48000:16:2"
     mixer_type  "software"
 }
+#+end_src
+
+snapcast
+#+begin_src conf
+# audio_output {
+#     type             "snapcast"
+#     name             "snapcast.mpd"
+#     bind_to_address  "192.168.0.26"
+#     port             "1704"
+#     format           "48000:16:2"
+#     mixer_type       "software"
+# }
 #+end_src
 
 Streaming
