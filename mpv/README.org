@@ -1018,11 +1018,13 @@ Alt+RIGHT  no-osd sub-seek  1
 # switch between applying no style overrides to SSA/ASS subtitles, and
 # overriding them almost completely with the normal subtitle style
 #u cycle-values sub-ass-override "force" "no"
-# s cycle sub                            # cycle through subtitles
-# S cycle sub down                       # ...backwards
 s script-message-to command_palette show-command-palette "Subtitle Tracks"
 S cycle sub-visibility
 ctrl+s show_text ${track-list} # show list of audio/sub streams
+
+# external subs
+c cycle sub                            # cycle through subtitles
+C cycle sub down                       # ...backwards
 
 #Shift+g add sub-scale +0.1            # increase subtitle font size
 #Shift+f add sub-scale -0.1            # decrease subtitle font size
