@@ -891,7 +891,7 @@ f cycle fullscreen                     # toggle fullscreen
 #+begin_src conf
 k     cycle pause
 # p     cycle pause
-# SPACE cycle pause
+SPACE cycle pause
 #+end_src
 
 Scale playback speed
