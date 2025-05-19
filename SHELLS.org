@@ -673,6 +673,9 @@ alias pay="PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass-pay pass"
 
 alias bi="beet import"
 alias bsi="beet -s import"
+
+alias open="xdg-open"
+alias copy="wl-copy"
 #+end_src
 
 ** System
