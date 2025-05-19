@@ -993,8 +993,10 @@ DOWN  add volume -1
 UP    add volume 1
 m     cycle mute
 
-#ctrl++ add audio-delay 0.100           # this changes audio/video sync
-#ctrl+- add audio-delay -0.100
+# this changes audio/video sync
+alt+= add audio-delay 0.100
+alt+- add audio-delay -0.100
+alt+0 set audio-delay 0
 
 # a cycle audio                           # switch audio streams
 # A cycle audio down                      # switch audio streams
