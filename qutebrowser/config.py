@@ -1163,6 +1163,7 @@ config.bind('<Space>qr', 'restart')
 config.bind('<Space>ts', 'config-cycle statusbar.show always never')
 config.bind('<Space>tt', 'config-cycle tabs.show multiple never')
 config.bind('<Space>tz', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never')
+config.bind('<Space>tZ', 'config-cycle tabs.show multiple never ;; config-cycle statusbar.show always never ;; fullscreen')
 
 # dark mode
 config.bind('<Space>td' , 'config-cycle -p colors.webpage.darkmode.enabled ')
