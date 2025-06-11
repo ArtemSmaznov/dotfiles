@@ -220,8 +220,8 @@ alias pgp="pass git push"
 alias pgf="pass git pull"
 alias pgl="pass git log --oneline"
 
-# alias mpvh='ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint --gpu-api=vulkan --gpu-context=waylandvk'
-alias mpvh='ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint'
+alias mpvt='mpv -vo tct'
+alias mpvh='ENABLE_HDR_WSI=1 mpv -vo gpu-next --target-colorspace-hint'
 alias shazam='songrec recognize'
 
 alias ytdv='yt-dlp'
