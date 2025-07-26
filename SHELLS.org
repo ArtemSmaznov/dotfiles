@@ -42,7 +42,7 @@
   - [[#search][Search]]
   - [[#tools][Tools]]
   - [[#system][System]]
-  - [[#docker][Docker]]
+  - [[#ai][AI]]
   - [[#server][Server]]
   - [[#git][Git]]
   - [[#pass][Pass]]
@@ -746,9 +746,11 @@ alias sys='systemctl'
 alias use='systemctl --user'
 #+end_src
 
-** Docker
+** AI :ai:
 #+begin_src shell
-alias ollama='docker exec -it ollama ollama'
+alias or='ollama run'
+alias ops='ollama ps'
+alias ols='ollama list'
 #+end_src
 
 ** Server
