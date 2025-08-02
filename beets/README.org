@@ -159,7 +159,7 @@ plugins:
   - fetchart
   - info
   - lastgenre
-  - lyrics
+  # - lyrics
   - mbsubmit
   - mbsync
   - missing
