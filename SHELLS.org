@@ -701,14 +701,6 @@ function pman-update-mirrors() {
 }
 #+end_src
 
-*** Power Control
-#+begin_src shell
-alias reboot='sudo shutdown -r now'
-alias forcereboot='sudo shutdown -r -n now'
-alias shutdown='sudo shutdown -P'
-alias suspend='systemctl suspend'
-#+end_src
-
 *** System Tools
 #+begin_src shell
 # Alias's to show disk space and space used in a folder

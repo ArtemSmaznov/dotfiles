@@ -141,11 +141,6 @@ function pman-update-mirrors() {
     sudo cp /tmp/mirrorlist /etc/pacman.d/mirrorlist
 }
 
-alias reboot='sudo shutdown -r now'
-alias forcereboot='sudo shutdown -r -n now'
-alias shutdown='sudo shutdown -P'
-alias suspend='systemctl suspend'
-
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
