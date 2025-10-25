@@ -406,6 +406,8 @@ if has_command starship; then eval "$(starship init zsh)"; fi
 
 # Script to run on terminal launch
 if has_command fastfetch; then fastfetch; fi
+
+if has_command ludusavi; then eval "$(ludusavi complete zsh)"; fi
 #+end_src
 
 * Fish
