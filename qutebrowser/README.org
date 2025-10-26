@@ -1875,14 +1875,14 @@ config.bind('tct', 'cmd-set-text -s :tab-take --keep')
 
 ** w window
 #+begin_src python
-config.bind('wn', 'open -w')
-config.bind('wH', 'back -w')
-config.bind('wL', 'forward -w')
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
 
 config.bind('wf', 'hint all window')
 
-config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
-config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
+config.bind('wn', 'open -w')
 #+end_src
 
 ** y yanking
@@ -2055,6 +2055,8 @@ config.bind('<Space>wq', 'close')
 config.bind('<Space>wO', 'window-only')
 
 config.bind('<Space>wu', 'undo -w')
+
+config.bind('<Space>wT', 'tab-give')
 #+end_src
 
 *** tab sessions

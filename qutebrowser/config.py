@@ -1047,14 +1047,14 @@ config.bind('tcP', 'tab-give --keep --private')
 config.bind('tcg', 'cmd-set-text -s :tab-give --keep')
 config.bind('tct', 'cmd-set-text -s :tab-take --keep')
 
-config.bind('wn', 'open -w')
-config.bind('wH', 'back -w')
-config.bind('wL', 'forward -w')
+config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
+config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
 
 config.bind('wf', 'hint all window')
 
-config.bind('wb', 'cmd-set-text -s :quickmark-load -w')
-config.bind('wB', 'cmd-set-text -s :bookmark-load -w')
+config.bind('wH', 'back -w')
+config.bind('wL', 'forward -w')
+config.bind('wn', 'open -w')
 
 config.bind('ys', 'yank selection', mode='normal')
 
@@ -1185,6 +1185,8 @@ config.bind('<Space>wq', 'close')
 config.bind('<Space>wO', 'window-only')
 
 config.bind('<Space>wu', 'undo -w')
+
+config.bind('<Space>wT', 'tab-give')
 
 config.bind('<Space><Tab>c', 'session-save -c ;; cmd-set-text -s :session-load --clear')
 config.bind('<Space><Tab>d', 'cmd-set-text -s :session-delete')
