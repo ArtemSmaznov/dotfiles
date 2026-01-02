@@ -8,27 +8,29 @@
 #+auto_tangle: t
 
 * Table of Contents :toc:
-- [[#readline][readline]]
-- [[#bash][Bash]]
-  - [[#start-section][Start Section]]
+- [[#zsh][ZSH]]
   - [[#options][Options]]
   - [[#history][History]]
   - [[#exports][Exports]]
   - [[#auto-complete][Auto-complete]]
+  - [[#keys][Keys]]
   - [[#sources][Sources]]
   - [[#end-section][End Section]]
-- [[#zsh][ZSH]]
+- [[#bash][Bash]]
+  - [[#start-section][Start Section]]
   - [[#options-1][Options]]
   - [[#history-1][History]]
   - [[#exports-1][Exports]]
   - [[#auto-complete-1][Auto-complete]]
-  - [[#keys][Keys]]
   - [[#sources-1][Sources]]
   - [[#end-section-1][End Section]]
 - [[#fish][Fish]]
   - [[#end-section-2][End Section]]
+- [[#profile][Profile]]
+  - [[#xdg][XDG]]
+  - [[#uwsm][UWSM]]
+  - [[#japanese-input][Japanese Input]]
 - [[#exportrc][Exportrc]]
-  - [[#profile][profile]]
   - [[#user-directories][User Directories]]
   - [[#editor][Editor]]
   - [[#history-2][History]]
@@ -48,6 +50,7 @@
   - [[#media][Media]]
   - [[#archives][Archives]]
   - [[#change-configs][Change Configs]]
+- [[#read-line][Read line]]
 - [[#starship][Starship]]
   - [[#general][General]]
   - [[#character][Character]]
@@ -56,188 +59,6 @@
   - [[#line-break][Line Break]]
   - [[#directory][Directory]]
   - [[#nerd-font-icons][Nerd Font Icons]]
-
-* readline
-:PROPERTIES:
-:header-args: :tangle readline/inputrc
-:ID:       c94fed99-29ea-4504-b7f9-5f0af9b3e2e6
-:END:
-#+begin_src shell
-# do not bell on tab-completion
-#set bell-style none
-
-set meta-flag on
-set input-meta on
-set convert-meta off
-set output-meta on
-
-# Color files by types
-# Note that this may cause completion text blink in some terminals (e.g. xterm).
-set colored-stats On
-
-# Append char to indicate type
-# set visible-stats On
-
-# Mark symlinked directories
-set mark-symlinked-directories On
-
-# Color the common prefix
-set colored-completion-prefix On
-
-# Color the common prefix in menu-complete
-set menu-complete-display-prefix On
-
-# Enable mode indicator
-$if mode=vi
-  set show-mode-in-prompt on
-
-  # Indicate mode with the cursor shape
-  $if term=linux
-    set vi-ins-mode-string \1\e[?0c\2
-    set vi-cmd-mode-string \1\e[?8c\2
-  $else
-    set vi-ins-mode-string \1\e[6 q\2
-    set vi-cmd-mode-string \1\e[2 q\2
-  $endif
-$endif
-
-$if mode=emacs
-  # for linux console and RH/Debian xterm
-  "\e[1~": beginning-of-line
-  "\e[4~": end-of-line
-  "\e[5~": beginning-of-history
-  "\e[6~": end-of-history
-  "\e[7~": beginning-of-line
-  "\e[3~": delete-char
-  "\e[2~": quoted-insert
-  "\e[5C": forward-word
-  "\e[5D": backward-word
-  "\e\e[C": forward-word
-  "\e\e[D": backward-word
-  "\e[1;5C": forward-word
-  "\e[1;5D": backward-word
-
-  # for rxvt
-  "\e[8~": end-of-line
-
-  # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-  "\eOH": beginning-of-line
-  "\eOF": end-of-line
-
-  # for freebsd console
-  "\e[H": beginning-of-line
-  "\e[F": end-of-line
-$endif
-#+end_src
-
-* Bash
-:PROPERTIES:
-:header-args: :tangle bash/bashrc
-:ID:       61810610-4a66-4381-8038-2f0690e2be9c
-:END:
-** Start Section
-#+begin_src shell
-#!/bin/bash
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-iatest=$(expr index "$-" i)
-#+end_src
-
-** Options
-#+begin_src shell
-# VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
-set -o vi
-
-# Disable the bell
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
-
-shopt -s globstar     # ** to mean reclusive
-shopt -s autocd       # auto cd when entering just the path
-shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-
-#+end_src
-
-** History
-#+begin_src shell
-# Allow ctrl-S for history navigation (with ctrl-R)
-stty -ixon
-
-# Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
-shopt -s histappend
-PROMPT_COMMAND='history -a'
-
-# Expand the history size
-export HISTFILESIZE=10000
-export HISTSIZE=10000
-
-# Don't put duplicate lines in the history and do not add lines that start with a space
-export HISTCONTROL=erasedups:ignoreboth
-#+end_src
-
-** Exports
-#+begin_src shell
-# Make local bin files usable
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.local/bin/dm-scripts
-export PATH=$PATH:$XDG_CONFIG_HOME/emacs/bin
-
-### SET MANPAGER
-export MANPAGER="vim -c ASMANPAGER -"
-#+end_src
-
-** Auto-complete
-#+begin_src shell
-# Enable history completion with up and down arrow keys
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-
-# Ignore case on auto-completion
-# Note: bind used instead of sticking these in .inputrc
-if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
-
-# Show auto-completion list automatically, without double tab
-# if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
-
-# extra completions
-[[ $commands[beet] ]] && eval $(beet completion)
-#+end_src
-
-** Sources
-#+begin_src shell
-function source_config() {
-  [ -f $1 ] && source $1
-}
-
-# Primary imports
-source_config $XDG_CONFIG_HOME/shell/exportrc
-source_config $XDG_CONFIG_HOME/shell/aliasrc
-source_config $XDG_CONFIG_HOME/shell/wol
-source_config $XDG_CONFIG_HOME/bash/prompt
-source_config $XDG_CONFIG_HOME/bash/localrc
-
-# FZF configs
-source_config /usr/share/fzf/key-bindings.bash
-source_config /usr/share/fzf/completion.bash
-
-# MPC configs
-source_config $XDG_CONFIG_HOME/mpc/mpcvars
-#+end_src
-
-** End Section
-#+begin_src shell
-function has_command() {
-    hash "$1" 2>/dev/null
-    return $?
-}
-
-# Source the Starship Prompt
-if has_command starship; then eval "$(starship init bash)"; fi
-
-# Script to run on terminal launch
-if has_command fastfetch; then fastfetch; fi
-#+end_src
 
 * ZSH
 :PROPERTIES:
@@ -410,6 +231,115 @@ if has_command fastfetch; then fastfetch; fi
 if has_command ludusavi; then eval "$(ludusavi complete zsh)"; fi
 #+end_src
 
+* Bash
+:PROPERTIES:
+:header-args: :tangle bash/bashrc
+:ID:       61810610-4a66-4381-8038-2f0690e2be9c
+:END:
+** Start Section
+#+begin_src shell
+#!/bin/bash
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+iatest=$(expr index "$-" i)
+#+end_src
+
+** Options
+#+begin_src shell
+# VIM mode - comment this out if you are not comfirtable with vim or kniw what vim is
+set -o vi
+
+# Disable the bell
+if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+
+shopt -s globstar     # ** to mean reclusive
+shopt -s autocd       # auto cd when entering just the path
+shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
+
+#+end_src
+
+** History
+#+begin_src shell
+# Allow ctrl-S for history navigation (with ctrl-R)
+stty -ixon
+
+# Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+# Expand the history size
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+
+# Don't put duplicate lines in the history and do not add lines that start with a space
+export HISTCONTROL=erasedups:ignoreboth
+#+end_src
+
+** Exports
+#+begin_src shell
+# Make local bin files usable
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin/dm-scripts
+export PATH=$PATH:$XDG_CONFIG_HOME/emacs/bin
+
+### SET MANPAGER
+export MANPAGER="vim -c ASMANPAGER -"
+#+end_src
+
+** Auto-complete
+#+begin_src shell
+# Enable history completion with up and down arrow keys
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
+
+# Show auto-completion list automatically, without double tab
+# if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+
+# extra completions
+[[ $commands[beet] ]] && eval $(beet completion)
+#+end_src
+
+** Sources
+#+begin_src shell
+function source_config() {
+  [ -f $1 ] && source $1
+}
+
+# Primary imports
+source_config $XDG_CONFIG_HOME/shell/exportrc
+source_config $XDG_CONFIG_HOME/shell/aliasrc
+source_config $XDG_CONFIG_HOME/shell/wol
+source_config $XDG_CONFIG_HOME/bash/prompt
+source_config $XDG_CONFIG_HOME/bash/localrc
+
+# FZF configs
+source_config /usr/share/fzf/key-bindings.bash
+source_config /usr/share/fzf/completion.bash
+
+# MPC configs
+source_config $XDG_CONFIG_HOME/mpc/mpcvars
+#+end_src
+
+** End Section
+#+begin_src shell
+function has_command() {
+    hash "$1" 2>/dev/null
+    return $?
+}
+
+# Source the Starship Prompt
+if has_command starship; then eval "$(starship init bash)"; fi
+
+# Script to run on terminal launch
+if has_command fastfetch; then fastfetch; fi
+#+end_src
+
 * Fish
 :PROPERTIES:
 :header-args: :tangle fish/config.fish
@@ -420,12 +350,7 @@ if has_command ludusavi; then eval "$(ludusavi complete zsh)"; fi
 starship init fish | source
 #+end_src
 
-* Exportrc
-:PROPERTIES:
-:header-args: :tangle shell/exportrc
-:ID:       0863797a-6250-4cd6-b78a-70ce9121d635
-:END:
-** profile
+* Profile
 :PROPERTIES:
 :header-args: :tangle ~/.profile
 :END:
@@ -434,7 +359,7 @@ starship init fish | source
 # file is generated by SHELLS.org
 #+end_src
 
-*** XDG
+** XDG
 user dirs
 #+begin_src shell
 export XDG_DESKTOP_DIR="$HOME/desktop"
@@ -486,7 +411,7 @@ wine
 export WINEPREFIX="$HOME"/games/wine
 #+end_src
 
-*** UWSM
+** UWSM
 #+begin_src shell
 start_hyprland=true
 
@@ -496,13 +421,18 @@ if uwsm check may-start && ($start_hyprland || uwsm select); then
 fi
 #+end_src
 
-*** Japanese Input
+** Japanese Input
 #+begin_src shell :tangle ~/.xprofile
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 #+end_src
 
+* Exportrc
+:PROPERTIES:
+:header-args: :tangle shell/exportrc
+:ID:       0863797a-6250-4cd6-b78a-70ce9121d635
+:END:
 ** User Directories
 #+begin_src shell
 export GIT_DIRECTORY="$HOME/projects"
@@ -850,6 +780,79 @@ function ex() {
 #+begin_src shell
 alias ledger="ledger --init-file $XDG_CONFIG_HOME/ledger/ledgerrc"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
+#+end_src
+
+* Read line
+:PROPERTIES:
+:header-args: :tangle readline/inputrc
+:ID:       c94fed99-29ea-4504-b7f9-5f0af9b3e2e6
+:END:
+#+begin_src shell
+# do not bell on tab-completion
+#set bell-style none
+
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+
+# Append char to indicate type
+# set visible-stats On
+
+# Mark symlinked directories
+set mark-symlinked-directories On
+
+# Color the common prefix
+set colored-completion-prefix On
+
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+# Enable mode indicator
+$if mode=vi
+  set show-mode-in-prompt on
+
+  # Indicate mode with the cursor shape
+  $if term=linux
+    set vi-ins-mode-string \1\e[?0c\2
+    set vi-cmd-mode-string \1\e[?8c\2
+  $else
+    set vi-ins-mode-string \1\e[6 q\2
+    set vi-cmd-mode-string \1\e[2 q\2
+  $endif
+$endif
+
+$if mode=emacs
+  # for linux console and RH/Debian xterm
+  "\e[1~": beginning-of-line
+  "\e[4~": end-of-line
+  "\e[5~": beginning-of-history
+  "\e[6~": end-of-history
+  "\e[7~": beginning-of-line
+  "\e[3~": delete-char
+  "\e[2~": quoted-insert
+  "\e[5C": forward-word
+  "\e[5D": backward-word
+  "\e\e[C": forward-word
+  "\e\e[D": backward-word
+  "\e[1;5C": forward-word
+  "\e[1;5D": backward-word
+
+  # for rxvt
+  "\e[8~": end-of-line
+
+  # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+  "\eOH": beginning-of-line
+  "\eOF": end-of-line
+
+  # for freebsd console
+  "\e[H": beginning-of-line
+  "\e[F": end-of-line
+$endif
 #+end_src
 
 * Starship
