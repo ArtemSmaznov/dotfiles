@@ -29,6 +29,7 @@
   - [[#missing][Missing]]
   - [[#mpd-stats][MPD Stats]]
   - [[#mpd-update][MPD Update]]
+  - [[#musicbrainz-1][Musicbrainz]]
   - [[#permissions][Permissions]]
   - [[#playlist][Playlist]]
   - [[#idea-plex-update][IDEA Plex Update]]
@@ -165,6 +166,7 @@ plugins:
   - missing
   - mpdstats
   - mpdupdate
+  - musicbrainz
   - permissions
   - playlist
   - scrub
@@ -316,6 +318,14 @@ mpd:
 
 ** MPD Update
 [[https://beets.readthedocs.io/en/stable/plugins/mpdupdate.html][mpdupdate]] is a very simple plugin for beets that lets you automatically update MPD’s index whenever you change your beets library.
+
+** Musicbrainz
+#+begin_src yaml
+musicbrainz:
+  genres: no
+  external_ids:
+    bandcamp: yes
+#+end_src
 
 ** Permissions
 The =permissions= plugin allows you to set file permissions for imported music files and its directories.

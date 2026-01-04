@@ -80,6 +80,7 @@ plugins:
   - missing
   - mpdstats
   - mpdupdate
+  - musicbrainz
   - permissions
   - playlist
   - scrub
@@ -154,6 +155,11 @@ mpd:
 
   rating: yes
   rating_mix: 0.75
+
+musicbrainz:
+  genres: no
+  external_ids:
+    bandcamp: yes
 
 permissions:
   file: 644
