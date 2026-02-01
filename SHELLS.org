@@ -678,6 +678,10 @@ alias sys='systemctl'
 alias use='systemctl --user'
 #+end_src
 
+#+begin_src shell
+alias biosreboot='sudo systemctl reboot --firmware -setup'
+#+end_src
+
 ** AI :ai:
 #+begin_src shell
 alias or='ollama run'

@@ -169,6 +169,8 @@ alias openports='netstat -nape --inet'
 alias sys='systemctl'
 alias use='systemctl --user'
 
+alias biosreboot='sudo systemctl reboot --firmware -setup'
+
 alias or='ollama run'
 alias ops='ollama ps'
 alias ols='ollama list'
