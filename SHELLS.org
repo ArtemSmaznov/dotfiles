@@ -10,6 +10,7 @@
 * Table of Contents :toc:
 - [[#zsh][ZSH]]
   - [[#options][Options]]
+  - [[#xdg-defaults][XDG Defaults]]
   - [[#history][History]]
   - [[#exports][Exports]]
   - [[#auto-complete][Auto-complete]]
@@ -19,6 +20,7 @@
 - [[#bash][Bash]]
   - [[#start-section][Start Section]]
   - [[#options-1][Options]]
+  - [[#xdg-defaults-1][XDG Defaults]]
   - [[#history-1][History]]
   - [[#exports-1][Exports]]
   - [[#auto-complete-1][Auto-complete]]
@@ -86,6 +88,11 @@ then
     unfunction preexec
     PS1='$ '
 fi
+#+end_src
+
+** XDG Defaults
+#+begin_src shell
+[ ! "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 #+end_src
 
 ** History
@@ -257,7 +264,10 @@ if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 shopt -s globstar     # ** to mean reclusive
 shopt -s autocd       # auto cd when entering just the path
 shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-
+#+end_src
+** XDG Defaults
+#+begin_src shell
+[ ! "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 #+end_src
 
 ** History

@@ -15,6 +15,8 @@ shopt -s globstar     # ** to mean reclusive
 shopt -s autocd       # auto cd when entering just the path
 shopt -s checkwinsize # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 
+[ ! "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
+
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
 
