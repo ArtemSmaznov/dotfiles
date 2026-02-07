@@ -15,6 +15,7 @@
   - [[#window][Window]]
   - [[#playback][Playback]]
   - [[#video][Video]]
+  - [[#hdr][HDR]]
   - [[#audio][Audio]]
   - [[#osd][OSD]]
   - [[#cache][Cache]]
@@ -139,6 +140,11 @@ Enable hardware decoding if available. Often, this does not work with all video 
 If performance or energy usage is an issue, forcing the vdpau or vaapi VOs may or may not help.
 #+begin_src conf
 # hwdec=auto
+#+end_src
+
+** HDR
+#+begin_src conf
+target-colorspace-hint-mode=source
 #+end_src
 
 ** Audio
