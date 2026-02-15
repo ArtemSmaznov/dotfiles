@@ -9,7 +9,6 @@
 #+auto_tangle: t
 
 * Table of Contents :toc:
-- [[#dependencies][Dependencies]]
 - [[#configuration][Configuration]]
 - [[#list-view][List View]]
 - [[#imports][Imports]]
@@ -25,17 +24,6 @@
   - [[#misc-settings][Misc settings]]
   - [[#options-for-generating-new-password-entries][Options for generating new password entries]]
   - [[#keybindings-1][Keybindings]]
-
-* Dependencies
-|------+-------------|
-| Name | Description |
-|------+-------------|
-| [[https://archlinux.org/packages/?name=rofi][rofi]] | Run dialog  |
-|------+-------------|
-
-#+begin_example shell
-sudo pacman -S rofi
-#+end_example
 
 * Configuration
 #+begin_src conf
