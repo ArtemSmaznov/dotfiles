@@ -2,24 +2,27 @@ colors=themes/base16
 # gtk_dark=true
 
 layer=overlay
-normal_window=true
+normal_window=false
 monitor=DP-1
 
 width=25%;
 # height=40%;
-# dynamic_lines=true
-# lines=20
+dynamic_lines=true
+# lines=1
 
 orientation=vertical
 columns=1
 
 show=drun
-prompt=Type to filter
+prompt=Search...
 insensitive=true
 allow_markup=true
 
 allow_images=true
 image_size=50
+
+location=center
+close_on_focus_loss=true
 
 key_left=Ctrl-h
 key_down=Ctrl-j
