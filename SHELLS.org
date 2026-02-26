@@ -600,6 +600,8 @@ function ftext() {
 
 ** Tools
 #+begin_src shell
+alias diff="diff --color=always"
+
 # Start ArchiSteamFarm
 if [[ -d "$HOME/.local/bin/asf" ]]; then
     alias asf="$HOME/.local/bin/asf/ArchiSteamFarm"

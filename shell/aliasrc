@@ -108,6 +108,8 @@ function ftext() {
     grep -iIHrn --color=always "$1" . | less -r
 }
 
+alias diff="diff --color=always"
+
 # Start ArchiSteamFarm
 if [[ -d "$HOME/.local/bin/asf" ]]; then
     alias asf="$HOME/.local/bin/asf/ArchiSteamFarm"
