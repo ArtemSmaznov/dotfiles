@@ -18,7 +18,7 @@ alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
 
-alias vfm='vifmrun'
+alias vf='vifm'
 
 if hash eza 2>/dev/null; then
     alias eza='eza --icons --group-directories-first'

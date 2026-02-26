@@ -494,7 +494,7 @@ alias nano='nano -c'
 alias snano='sudo nano'
 alias svim='sudo vim'
 
-alias vfm='vifmrun'
+alias vf='vifm'
 #+end_src
 
 ** Listing directories
