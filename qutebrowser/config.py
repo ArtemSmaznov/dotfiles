@@ -1427,7 +1427,7 @@ c.tabs.mousewheel_switching = False
 
 # c.qt.args = []
 
-# c.qt.environ = {}
+c.qt.environ = {"QTWEBENGINE_FORCE_USE_GBM": "0"}
 
 # c.qt.force_platform = None
 
