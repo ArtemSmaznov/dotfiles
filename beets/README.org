@@ -123,7 +123,7 @@ per_disc_numbering: yes
 paths:
   default: '%lower{$albumartist}/%lower{$album%aunique{}}/%lower{${track}-${title}}'
   singleton: '%lower{$artist}/%lower{$title}'
-  albumtype:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
+  albumtypes:soundtrack: 'soundtracks/%lower{$album%aunique{}}/%lower{${track}-${title}}'
   comp: 'compilations/%lower{$album%aunique{}}/%lower{${track}-${title}}'
 #+end_src
 
