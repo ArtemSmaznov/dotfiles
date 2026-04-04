@@ -32,6 +32,7 @@
   - [[#xdg][XDG]]
   - [[#uwsm][UWSM]]
   - [[#japanese-input][Japanese Input]]
+  - [[#wine][Wine]]
 - [[#exportrc][Exportrc]]
   - [[#user-directories][User Directories]]
   - [[#editor][Editor]]
@@ -416,11 +417,6 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 #+end_src
 
-wine
-#+begin_src shell
-export WINEPREFIX="$HOME"/games/wine
-#+end_src
-
 ** UWSM
 #+begin_src shell
 start_hyprland=true
@@ -435,6 +431,11 @@ fi
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+#+end_src
+
+** Wine :game:
+#+begin_src shell
+export WINEPREFIX="$HOME"/games/wine
 #+end_src
 
 * Exportrc
