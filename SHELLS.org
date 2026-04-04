@@ -426,7 +426,6 @@ export WINEPREFIX="$HOME"/games/wine
 start_hyprland=true
 
 if uwsm check may-start && ($start_hyprland || uwsm select); then
-    # export UWSM_WAIT_VARNAMES_TIMEOUT=30
 	exec uwsm start default
 fi
 #+end_src
