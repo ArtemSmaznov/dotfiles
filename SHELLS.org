@@ -685,10 +685,17 @@ alias biosreboot='sudo systemctl reboot --firmware -setup'
 #+end_src
 
 ** AI :ai:
+Ollama
 #+begin_src shell
+# alias ollama='dx ollama ollama'
 alias or='ollama run'
 alias ops='ollama ps'
 alias ols='ollama list'
+#+end_src
+
+OpenCode
+#+begin_src shell
+# alias opencode='dx opencode opencode'
 #+end_src
 
 ** Server

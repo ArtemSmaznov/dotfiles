@@ -173,9 +173,12 @@ alias use='systemctl --user'
 
 alias biosreboot='sudo systemctl reboot --firmware -setup'
 
+# alias ollama='dx ollama ollama'
 alias or='ollama run'
 alias ops='ollama ps'
 alias ols='ollama list'
+
+# alias opencode='dx opencode opencode'
 
 # Extend screen
 alias extendtolaptop='ssh -YC amadeus x2x -east -to :0.0'
