@@ -436,7 +436,7 @@ export XMODIFIERS=@im=fcitx
 
 ** Wine :game:
 #+begin_src shell
-export WINEPREFIX="$HOME"/games/wine
+# export WINEPREFIX="$HOME"/games/wine
 #+end_src
 
 ** Ollama :ai:
