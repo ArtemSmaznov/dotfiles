@@ -2790,7 +2790,7 @@ Additional arguments to pass to Qt, without leading --. With ==QtWebEngine==,som
 Additional environment variables to set. Setting an environment variable to null/None will unset it.
 # Type: Dict
 #+begin_src python
-c.qt.environ = {"QTWEBENGINE_FORCE_USE_GBM": "0"}
+# c.qt.environ = {}
 #+end_src
 
 Force a Qt platform to use. This sets the =QT_QPA_PLATFORM= environment variable and is useful to force using the XCB plugin when running =QtWebEngine= on =Wayland=.
