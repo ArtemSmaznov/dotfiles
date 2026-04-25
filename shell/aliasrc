@@ -122,6 +122,10 @@ alias bsi="beet -s import"
 alias open="xdg-open"
 alias copy="wl-copy"
 
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
+
 alias pman='sudo pacman'
 # alias pman-mirrors-update='sudo pacman-mirrors --geoip'
 alias pman-orphans-clean='sudo pacman -Rs $(pacman -Qtdq)'

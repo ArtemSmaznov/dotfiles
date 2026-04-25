@@ -16,6 +16,7 @@ then
 fi
 
 [ ! "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
+[ ! "$XDG_CACHE_HOME" ] && export XDG_CONFIG_HOME="$HOME/.cache"
 
 # History
 export SAVEHIST=10000
@@ -41,11 +42,13 @@ zstyle :compinstall filename "$HOME/.zshrc"
 
 # Autocompletion
 autoload bashcompinit && bashcompinit # for aws cli
-autoload -Uz compinit && compinit # Load autocompletion
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" # Load autocompletion
+
 zstyle ':completion::complete:*' gain-privileges 1 # Enable aliases for Sudo commands
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true                 # automatically rehash bin files
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")' # Color the common prefix
 
