@@ -47,6 +47,7 @@
   - [[#search][Search]]
   - [[#tools][Tools]]
   - [[#system][System]]
+  - [[#zfs][ZFS]]
   - [[#ai][AI]]
   - [[#server][Server]]
   - [[#git][Git]]
@@ -692,6 +693,12 @@ alias use='systemctl --user'
 
 #+begin_src shell
 alias biosreboot='sudo systemctl reboot --firmware -setup'
+#+end_src
+
+** ZFS
+#+begin_src shell
+alias zls='zfs list -o name,used,available,referenced,mounted,mountpoint'
+alias zll='zfs list -o type,name,used,available,referenced,mounted,mountpoint -t all'
 #+end_src
 
 ** AI :ai:

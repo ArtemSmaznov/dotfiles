@@ -172,6 +172,9 @@ alias use='systemctl --user'
 
 alias biosreboot='sudo systemctl reboot --firmware -setup'
 
+alias zls='zfs list -o name,used,available,referenced,mounted,mountpoint'
+alias zll='zfs list -o type,name,used,available,referenced,mounted,mountpoint -t all'
+
 # alias ollama='dx ollama ollama'
 alias or='ollama run'
 alias ops='ollama ps'
