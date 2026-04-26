@@ -346,23 +346,23 @@ msg_urgency = critical
 timeout = 0
 
 # Start flavours
-[base16_low]
-msg_urgency = low
-frame_color = "#f1f2f855"
-background = "#3a3c4e33"
-foreground = "#62d6e8"
+[base16_critical]
+msg_urgency = critical
+foreground = "#fabd2f"
+background = "#fb493411"
+frame_color = "#fb4934AA"
 
 [base16_normal]
 msg_urgency = normal
-frame_color = "#b45bcf88"
-background = "#4d4f6833"
-foreground = "#e9e9f4"
+foreground = "#fbf1c7"
+background = "#50494533"
+frame_color = "#ebdbb288"
 
-[base16_critical]
-msg_urgency = critical
-frame_color = "#00f769AA"
-background = "#ea51b233"
-foreground = "#f1f2f8"
+[base16_low]
+msg_urgency = low
+foreground = "#bdae93"
+background = "#28282833"
+frame_color = "#d5c4a133"
 # End flavours
 
 [experimental]
