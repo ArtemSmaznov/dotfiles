@@ -48,7 +48,7 @@ subtemplate = "torque-progressbar"
 rewrite = false
 
 [[item]]
-file = "~/.config/hypr/themes/base16.conf"
+file = "~/.config/hypr/themes/colors/base16.lua"
 template = "hyprland"
 light = true
 rewrite = true

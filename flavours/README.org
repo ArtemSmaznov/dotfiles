@@ -131,7 +131,7 @@ rewrite = false
 * Hyprland
 #+begin_src toml
 [[item]]
-file = "~/.config/hypr/themes/base16.conf"
+file = "~/.config/hypr/themes/colors/base16.lua"
 template = "hyprland"
 light = true
 rewrite = true
