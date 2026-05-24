@@ -4,8 +4,12 @@
 
 [core]
   editor = vim
+  pager = delta
   autocrlf = input
   excludesFile = ~/.config/git/ignore
+
+[interactive]
+  diffFilter = delta --color-only
 
 [init]
   defaultBranch = master
@@ -18,3 +22,10 @@
 
 # [commit]
 #   template = /home/artem/.config/git/message
+
+[merge]
+  conflictStyle = zdiff3
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
