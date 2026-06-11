@@ -23,6 +23,8 @@ image_size=50
 location=center
 close_on_focus_loss=true
 
+matching=fuzzy
+
 key_left=Ctrl-h
 key_down=Ctrl-j
 key_up=Ctrl-k
