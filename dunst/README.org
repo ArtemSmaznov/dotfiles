@@ -498,13 +498,13 @@ Otherwise the "#" and following would be interpreted as a comment.
 #+begin_src conf
 [urgency_low]
 msg_urgency = low
-timeout = 10
+timeout = 7
 #+end_src
 
 #+begin_src conf
 [urgency_normal]
 msg_urgency = normal
-timeout = 30
+timeout = 10
 #+end_src
 
 #+begin_src conf
