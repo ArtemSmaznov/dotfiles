@@ -145,7 +145,7 @@ lastgenre:
   title_case: yes
 
 lyrics:
-  auto: no
+  auto: yes
   keep_synced: yes
   sources: [lrclib]
   synced: yes

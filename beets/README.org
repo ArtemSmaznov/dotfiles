@@ -285,7 +285,7 @@ Namely, the current version of the plugin uses Musixmatch, Genius.com,
 Tekstowo.pl, and, optionally, the Google custom search API.
 #+begin_src yaml
 lyrics:
-  auto: no
+  auto: yes
   keep_synced: yes
   sources: [lrclib]
   synced: yes
