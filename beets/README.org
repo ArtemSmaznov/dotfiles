@@ -160,7 +160,7 @@ plugins:
   - fetchart
   - info
   - lastgenre
-  # - lyrics
+  - lyrics
   - mbsubmit
   - mbsync
   - missing
@@ -286,6 +286,9 @@ Tekstowo.pl, and, optionally, the Google custom search API.
 #+begin_src yaml
 lyrics:
   auto: no
+  keep_synced: yes
+  sources: [lrclib]
+  synced: yes
 #+end_src
 
 ** MBSubmit

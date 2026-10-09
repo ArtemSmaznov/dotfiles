@@ -74,7 +74,7 @@ plugins:
   - fetchart
   - info
   - lastgenre
-  # - lyrics
+  - lyrics
   - mbsubmit
   - mbsync
   - missing
@@ -146,6 +146,9 @@ lastgenre:
 
 lyrics:
   auto: no
+  keep_synced: yes
+  sources: [lrclib]
+  synced: yes
 
 mpd:
   # host: $MPD_HOST
