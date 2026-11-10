@@ -147,6 +147,7 @@ zle -N down-line-or-beginning-search
 
 # extra completions
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[helm] ]] && source <(helm completion zsh)
 [[ $commands[beet] ]] && eval $(beet completion)
 #+end_src
 
@@ -317,6 +318,8 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # extra completions
+[[ $commands[kubectl] ]] && eval $(kubectl completion zsh)
+[[ $commands[helm] ]] && eval $(helm completion zsh)
 [[ $commands[beet] ]] && eval $(beet completion)
 #+end_src
 

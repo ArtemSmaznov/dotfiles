@@ -51,6 +51,8 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # extra completions
+[[ $commands[kubectl] ]] && eval $(kubectl completion zsh)
+[[ $commands[helm] ]] && eval $(helm completion zsh)
 [[ $commands[beet] ]] && eval $(beet completion)
 
 function source_config() {
